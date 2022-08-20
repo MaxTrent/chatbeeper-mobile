@@ -1,0 +1,249 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'constants.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class AppTheme {
+  //
+
+  AppTheme._();
+
+  static final ThemeData lightTheme = ThemeData(
+    primaryColor: bcolor3,
+    scaffoldBackgroundColor: const Color(0xfffafafa),
+    backgroundColor: Colors.white12,
+    appBarTheme: const AppBarTheme(
+      color: Colors.white,
+      iconTheme:  IconThemeData(
+        color: bcolor2,
+      ),
+    ),
+   colorScheme: const ColorScheme.light(
+     primary: bcolor,
+     onPrimary:bcolor1,
+     primaryVariant: bcolor3,
+     primaryContainer: bcolor4,
+     secondary: Colors.black38,
+       secondaryVariant: Colors.black
+  ),
+    iconTheme: IconThemeData(
+        color: Colors.black
+    ),
+    textTheme:  TextTheme(
+      headline5:  TextStyle(
+        color: Colors.black,
+        fontSize: 20.sp, fontWeight: FontWeight.w700,
+        fontFamily: 'Nunito', fontStyle: FontStyle.normal,
+
+      ),// get started and thers like it
+      headline2: TextStyle(
+        color: Colors.grey.shade700,
+        fontFamily: 'Nunito',
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.bold,
+        fontSize: 15,
+      ),//for grey subheading
+      headline1: const TextStyle(
+        color: bcolor1,
+        fontFamily: 'Nunito',
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.bold,
+        fontSize: 25,
+      ), //FOR TOP
+      headline3: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Nunito',
+          fontSize: 18
+
+      ),//for button
+      headline4: TextStyle(
+        color: Colors.grey.shade700,
+        fontFamily: 'Nunito',
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.bold,
+        fontSize: 15,
+      ),
+      subtitle2: const TextStyle(
+        color: Color(0xff386fa4),
+        // fontSize: 20.0,
+      ),
+      subtitle1:   TextStyle(
+        color: Colors.grey.shade700,
+        fontFamily: 'Nunito',
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.bold,
+        fontSize: 15,
+      ),
+    ),
+    primaryTextTheme:   TextTheme(
+      headline6:  TextStyle(
+          color: Colors.white,
+          fontFamily: 'Nunito',
+          fontSize: 20,
+        fontWeight: FontWeight.w400,
+      ),//account name
+      headline2: TextStyle(
+          color: Colors.black87, fontFamily: 'Nunito', fontWeight: FontWeight.w500, fontStyle: FontStyle.normal, fontSize: 18.sp
+      ),//agree to terms account
+      bodyText1:  TextStyle(
+          color: Colors.black,
+          fontFamily: 'Nunito',
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w500
+      ),//label texts
+      headline5:   TextStyle(
+        color: Colors.white,
+        fontFamily: 'Ubuntu',
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.w400,
+        fontSize: 15,
+
+      ),//for subheadings after main Heading
+      headline4: TextStyle(
+        color: Colors.black,
+        fontFamily: 'Nunito',
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.w600,
+        fontSize: 32,
+      ),//main heading
+      headline3: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w600,
+          fontFamily: 'Nunito',
+          fontSize: 16
+
+      ),//for buttons
+      headline1: TextStyle(
+          color: Colors.black,
+          fontFamily: 'Nunito',
+          fontSize: 18
+      ),//label style
+      bodyText2: TextStyle(
+          color: uColor,
+          fontFamily: 'Nunito',
+          fontSize: 14,
+         fontWeight: FontWeight.w500
+      ),//hintstyle
+      subtitle1: TextStyle(
+          color: Colors.black,
+          fontFamily: 'Nunito',
+          fontSize: 14.sp,
+        fontWeight: FontWeight.w500
+      ),//textfield style
+      subtitle2: TextStyle(
+        color: Colors.black,
+        fontFamily: 'Ubuntu',
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.w400,
+        fontSize: 20.sp,
+      ),
+    ),
+  );
+  static final ThemeData darkTheme = ThemeData(
+    fontFamily: 'Nunito',
+    primaryColor: bcolor3,
+    scaffoldBackgroundColor:backgroundColor,
+    colorScheme: const ColorScheme.dark(
+      primary: bcolor,
+      onPrimary:bcolor1,
+      primaryVariant: bcolor2,
+      primaryContainer: bcolor4,
+      secondary: Colors.grey,
+      secondaryVariant: Colors.white
+    ),
+    iconTheme: IconThemeData(
+      color: Colors.white
+    ),
+    textTheme:  TextTheme(
+      headline5:  TextStyle(
+        color: Colors.white,
+        fontSize: 20.sp, fontWeight: FontWeight.w700,
+        fontFamily: 'Nunito', fontStyle: FontStyle.normal,
+
+      ),//for get started and others like it
+      headline4: TextStyle(
+        color: Colors.grey.shade700,
+        fontFamily: 'Nunito',
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.bold,
+        fontSize: 15,
+      ),
+      subtitle2: const TextStyle(
+        color: Color(0xff386fa4),
+        // fontSize: 20.0,
+      ),
+      subtitle1:   TextStyle(
+        color: Colors.grey.shade700,
+        fontFamily: 'Nunito',
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.bold,
+        fontSize: 15.sp,
+      ),
+    ),
+    primaryTextTheme:   TextTheme(
+      headline6:  TextStyle(
+        color: Colors.white,
+        fontFamily: 'Nunito',
+        fontSize: 20,
+        fontWeight: FontWeight.w400,
+      ),//account name
+      headline2: TextStyle( color: Colors.black87, fontFamily: 'Nunito', fontWeight: FontWeight.w500, fontStyle: FontStyle.normal, fontSize: 18.sp),//agree to terms account
+      bodyText1:  TextStyle(
+          color: Colors.white,
+          fontFamily: 'Nunito',
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w500
+      ),//label texts
+      headline5:   TextStyle(
+        color: Colors.white,
+        fontFamily: 'Ubuntu',
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.w400,
+        fontSize: 15,
+
+      ),//for subheadings after main Heading
+      headline4: TextStyle(
+        color: Colors.white,
+        fontFamily: 'Nunito',
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.w600,
+        fontSize: 32.sp,
+      ),//create account
+      headline3: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w600,
+          fontFamily: 'Nunito',
+          fontSize: 16
+
+      ),//for buttons
+      headline1: TextStyle(
+          color: Colors.black,
+          fontFamily: 'Nunito',
+          fontSize: 18
+      ),
+      bodyText2: TextStyle(
+          color: uColor,
+          fontFamily: 'Nunito',
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w500
+      ),//hintstyle
+      subtitle1:TextStyle(
+          color: Colors.white,
+          fontFamily: 'Nunito',
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w500
+      ),//textfield style
+      subtitle2: TextStyle(
+        color: Colors.white,
+          fontFamily: 'Nunito', fontWeight: FontWeight.w400, fontSize: 20.sp,
+          fontStyle: FontStyle.normal
+      ),
+    ),
+
+  );
+
+  //   ),
+
+}
