@@ -1,22 +1,24 @@
-import 'package:chat_beeper/Widgets/comment.dart';
 import 'package:chat_beeper/Widgets/image_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:chat_beeper/Widgets/comment.dart';
 import 'package:expandable/expandable.dart';
 import 'package:like_button/like_button.dart';
 import 'package:chat_beeper/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-class PostCard extends StatelessWidget {
- String loremIpsum ="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-String FullName = 'Sarah Madini';
-String username = 'Madini';
-String posttime = '1 hour ago';
-  PostCard({Key? key}) : super(key: key);
- static const String id = 'post-card';
+class PostBeep extends StatelessWidget {
+  String loremIpsum ="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+  String FullName = 'Sarah Madini';
+  String username = 'Madini';
+  String posttime = '1 hour ago';
+  PostBeep({Key? key}) : super(key: key);
+  static const String id = 'post-card';
   @override
   Widget build(BuildContext context) {
+    var brightness = MediaQuery.of(context).platformBrightness;
+    bool darkModeOn = brightness == Brightness.dark;
     buildImg(Color color, double height) {
       return SizedBox(
           height: height,
@@ -34,16 +36,26 @@ String posttime = '1 hour ago';
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top: 10.h, bottom: 10.h,left: 10.w,right: 10.w,),
+              padding:EdgeInsets.fromLTRB(4.w,8.w,4.w,12.h),
               child: SizedBox(
-                height: 60.h,
+                height: 80.h,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
+                    Container(color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.grey.shade200,
+                      height: 28.h, width: 105.w,
+                      child: Center(
+                        child: Text('Sponsored', style: TextStyle(
+                          color: (Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade800 : Colors.black),
+                        fontSize: 14.sp,
+                          fontFamily: 'Nunito', fontWeight: FontWeight.w500
+                        ),),
+                      ),
+                    ),
                     Row(
                       children: [
                         CircleAvatar(
-                         child: ClipRRect(
+                          child: ClipRRect(
                             borderRadius: BorderRadius.circular(100.0.r),
                             child: Image.asset('images/sarah.png'),
                           ),
@@ -80,44 +92,39 @@ String posttime = '1 hour ago';
     buildCollapsed2() {
       return Column(
         children: [
-          const ImageSlider(),
           Padding(
-            padding:  EdgeInsets.only(left: 10.w,right: 10.w),
+            padding:  EdgeInsets.only(left: 52.w,),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 ReadMoreText(
                   loremIpsum,
                   trimExpandedText: 'see Less',
-                    trimCollapsedText: 'see more',
-                    colorClickableText: Colors.grey,
-                    style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
+                  trimCollapsedText: 'see more',
+                  colorClickableText: Colors.grey,
+                  style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
 
                 ),
               ],
             ),
-          ),
+          ),//readmore text
           Container(
-            height: 0.2.h,
-            color: bcolor1,
+            height: 0.2,
+            color: Colors.grey,
           ),//divider
           Padding(
             padding:  EdgeInsets.only(left: 16.w, right: 16.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    IconButton( color: Colors.grey, icon:const Icon(CupertinoIcons.ellipses_bubble,), onPressed: () {
-                      Navigator.push(context,MaterialPageRoute(builder: (context) => const Comment()));
-                    },),
-                  ],
-                ),
+                IconButton( color: Colors.grey, icon:const Icon(CupertinoIcons.ellipses_bubble,), onPressed: () {
+                  Navigator.push(context,MaterialPageRoute(builder: (context) => const Comment()));
+                },),
                 LikeButton(
                   size: 24,
                   circleColor:
-                  CircleColor(start: Color(0xff00ddff), end: const Color(0xff0099cc)),
-                  bubblesColor: BubblesColor(
+                  CircleColor(start: Color(0xff00ddff), end: Color(0xff0099cc)),
+                  bubblesColor: const BubblesColor(
                     dotPrimaryColor: Color(0xff33b5e5),
                     dotSecondaryColor: Color(0xff0099cc),
                   ),
@@ -187,7 +194,7 @@ String posttime = '1 hour ago';
                   ),
                   likeBuilder: (bool isLiked) {
                     return Icon(
-                      isLiked ==false ?   Icons.favorite_border_outlined: Icons.favorite,
+                   isLiked ==false ?   Icons.favorite_border_outlined: Icons.favorite,
                       color: isLiked ? Colors.red : Colors.grey,
                       size: 24,
                     );
@@ -210,10 +217,10 @@ String posttime = '1 hour ago';
                   // },
                 ),//heart
                 SizedBox(width: 96.w,),
-                Padding(
-                  padding:  EdgeInsets.only(bottom: 10.0.h),
-                  child: IconButton(icon: Icon(CupertinoIcons.share_up, size: 24.h,), color: Colors.grey, onPressed: () {  },),
-                ),
+                 Padding(
+                   padding:  EdgeInsets.only(bottom: 10.0.h),
+                   child: IconButton(icon: Icon(CupertinoIcons.share_up, size: 24.h,), color: Colors.grey, onPressed: () {  },),
+                 ),
               ],),//icons
           ),//icons
         ],
@@ -246,27 +253,7 @@ String posttime = '1 hour ago';
               ),
             ),
           ]);
-    }
-
-    buildExpanded2() {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Expanded(child: buildImg(Colors.lightGreenAccent, 100)),
-              Expanded(child: buildImg(Colors.orange, 100)),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              Expanded(child: buildImg(Colors.lightBlue, 100)),
-              Expanded(child: buildImg(Colors.cyan, 100)),
-            ],
-          ),
-        ],
-      );
-    }
+    }//useless
 
     buildExpanded3() {
       return Padding(
@@ -280,7 +267,7 @@ String posttime = '1 hour ago';
           ],
         ),
       );
-    }//lorem ipsum
+    }//useless
 
     return ExpandableNotifier(
         child: Padding(
@@ -300,18 +287,38 @@ String posttime = '1 hour ago';
                         collapsed: buildCollapsed1(),
                         expanded: buildExpanded1(),
                       ),
-                    ),
+                    ),//top
                     Expandable(
                       collapsed: buildCollapsed2(),
-                      expanded: buildExpanded2(),
-                    ),
-                    // Expandable(
-                    //   collapsed: buildCollapsed3(),
-                    //   expanded: buildExpanded3(),
+                      expanded: buildExpanded1(),
+                    ),//write up
                     // ),
                     Divider(
                       height: 1,
                     ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.start,
+                    //   children: <Widget>[
+                    //     Builder(
+                    //       builder: (context) {
+                    //         var controller =
+                    //         ExpandableController.of(context, required: true)!;
+                    //         return TextButton(
+                    //           child: Text(
+                    //             controller.expanded ? "COLLAPSE" : "EXPAND",
+                    //             style: Theme.of(context)
+                    //                 .textTheme
+                    //                 .button!
+                    //                 .copyWith(color: Colors.deepPurple),
+                    //           ),
+                    //           onPressed: () {
+                    //             controller.toggle();
+                    //           },
+                    //         );
+                    //       },
+                    //     ),
+                    //   ],
+                    // ),
                   ],
                 ),
               ),

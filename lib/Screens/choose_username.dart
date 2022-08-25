@@ -163,8 +163,9 @@ class _ChooseUsernameState extends State<ChooseUsername> {
                         ),
                       backgroundColor: MaterialStateProperty.resolveWith<Color>(
                             (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.pressed))
+                          if (states.contains(MaterialState.pressed)) {
                             return bcolor3;
+                          }
                           return bcolor3; // Use the component's default.
                         },
                       ),

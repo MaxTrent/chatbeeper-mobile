@@ -4,6 +4,7 @@ import 'package:chat_beeper/Screens/profile_page.dart';
 import 'package:chat_beeper/Widgets/Post.dart';
 import 'package:chat_beeper/themedata.dart';
 import 'package:flutter/material.dart';
+import 'Screens/colllection/beep.dart';
 import 'Screens/colllection/dm.dart';
 import 'Screens/colllection/notifications.dart';
 import 'Screens/colllection/tour_page.dart';
@@ -67,6 +68,7 @@ class MyApp extends StatelessWidget {
           GetStarted.id:(context)=>GetStarted(),
           PostCard.id:(context)=>PostCard(),
           Profile.id:(context)=>Profile(),
+          Beep.id:(context)=>Beep(),
 
         },
       ),

@@ -54,6 +54,10 @@ dev_dependencies:
   country_code_picker: ^2.0.2
   pin_code_fields: ^7.4.0
   http: ^0.13.5
+  iconify_flutter: ^0.0.4
+  carousel_slider: ^4.1.1
+  expandable: ^5.0.1
+  like_button: ^2.0.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -88,5 +92,10 @@ flutter:
         - asset: fonts/inter/inter-Regular.ttf
         - asset: fonts/inter/inter-medium.ttf
         - asset: fonts/inter/inter-bold.ttf
+
+
+    - family: dislike
+      fonts:
+        - asset: fonts/dislike.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

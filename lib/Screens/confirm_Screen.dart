@@ -7,6 +7,8 @@ import '../constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
+import 'colllection/home_page.dart';
+
 
 
 class ConfirmRegister extends StatefulWidget {
@@ -124,7 +126,7 @@ class _ConfirmRegisterState extends State<ConfirmRegister> {
                               ),
                               onTap: () async {
                                 _selectedIndex == 2;
-                                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const CreateAccount(),));
+                                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const Home(),));
 
                                 // else if (_selectedIndex == 2) {
                                 //   // navigate to the desired route

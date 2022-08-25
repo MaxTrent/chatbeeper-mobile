@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:chat_beeper/Screens/colllection/home_page.dart';
 import 'package:chat_beeper/Screens/otp_failed.dart';
 import 'package:chat_beeper/Screens/sign_in.dart';
 import 'package:chat_beeper/model/OtpModel_email.dart';
@@ -137,7 +138,7 @@ class _OtpEmailState extends State<OtpEmail> {
               child: Image.asset('images/verify.png', height: 137.h, width: 150.w,),
             ),
             Padding(
-              padding:  EdgeInsets.all(17.0),
+              padding:  const EdgeInsets.all(17.0),
               child: Column(
                 children: [
                    SizedBox(width:5.w, height: 0.01.h),
@@ -184,9 +185,10 @@ class _OtpEmailState extends State<OtpEmail> {
                         },
                         //runs when every textfield is filled
                         onSubmit: (String pin){
+                          _otpfull==true;
                           setState(() {
-                            token == pin;
-                            print(pin);
+                            // token == pin;
+                            // print(pin);
                           });
                       }, // end onSubmit
                       ),
@@ -212,7 +214,8 @@ class _OtpEmailState extends State<OtpEmail> {
                           )
                       ),
                       onPressed: () async {
-                        // verify();
+                        Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const SignIn()
+                        ));
                       },
                       child:  Text('Verify',
                         textAlign: TextAlign.center,
@@ -246,7 +249,7 @@ class _OtpEmailState extends State<OtpEmail> {
                             children: [
                               TextSpan(
                                 text: 'Resend Code',style:  TextStyle(color: Colors.grey, fontStyle: FontStyle.normal, fontWeight: FontWeight.w700, fontSize: 18.sp, fontFamily: 'Nunito'),
-                                recognizer: TapGestureRecognizer()..onTap=()=>Navigator.of(context).push(MaterialPageRoute(builder: (context) => const OtpEmail(),
+                                recognizer: TapGestureRecognizer()..onTap=()=>Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Home(),
                                 ),),
                               ),
                             ]

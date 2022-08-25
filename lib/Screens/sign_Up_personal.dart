@@ -145,7 +145,7 @@ String generateRandomString(int len) {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     SizedBox(height: 108.h,),
-                    Center(child: Image.asset('images/logo1.png', height: 40.h, width: 40.w,)),
+                    Center(child: Image.asset('images/logo1.png', height: 90.h, width: 90.w,)),
                     SizedBox(height: 32.h,),
                     Text('Create an account', style:Theme.of(context).primaryTextTheme.headline4!.copyWith(fontSize: 32.sp),),
                     SizedBox(height: 32.h,),
@@ -584,7 +584,7 @@ String generateRandomString(int len) {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     SizedBox(height: 108.h,),
-                    Center(child: Image.asset('images/logo1.png', height: 40.h, width: 40.w,)),
+                    Center(child: Image.asset('images/logo1.png', height: 90.h, width: 90.w,)),
                     SizedBox(height: 32.h,),
                     Text('Create an account', style:Theme.of(context).primaryTextTheme.headline4!.copyWith(fontSize: 32.sp),),
                     SizedBox(height: 32.h,),
@@ -1042,7 +1042,7 @@ String generateRandomString(int len) {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     SizedBox(height: 108.h,),
-                    Center(child: Image.asset('images/logo1.png', height: 40.h, width: 40.w,)),
+                    Center(child: Image.asset('images/logo1.png', height: 90.h, width: 90.w,)),
                     SizedBox(height: 32.h,),
                     Text('Create an account ', style:Theme.of(context).primaryTextTheme.headline4!.copyWith(fontSize: 32.sp),),
                     SizedBox(height: 32.h,),
@@ -1238,7 +1238,8 @@ String generateRandomString(int len) {
                                   )
                               ),
                               onPressed: () async {
-                                signUp();
+                                // signUp();
+                                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const OtpEmail()));
                               },
                               child:  Text('Create Account',
                                 textAlign: TextAlign.center,
@@ -1334,20 +1335,20 @@ String generateRandomString(int len) {
         print('${_fnameTextController.text}, ${lnameTextController.text}, ${_passwordTextController.text}, ${_chooseusername.text}, $gender');
           // If the server did not return a 201 CREATED response,
           // then throw an exception.
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content:  Text('incomplete Registration',  style:Theme.of(context).primaryTextTheme.bodyText1!.copyWith(color: Colors.white)),
-              backgroundColor: bcolor,
-              behavior: SnackBarBehavior.floating,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6.r),
-              ),
-              margin: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).size.height - 150.h,
-                  right: 20.w,
-                  left: 20.w),
-            ),
-          );
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     content:  Text('incomplete Registration',  style:Theme.of(context).primaryTextTheme.bodyText1!.copyWith(color: Colors.white)),
+          //     backgroundColor: bcolor,
+          //     behavior: SnackBarBehavior.floating,
+          //     shape: RoundedRectangleBorder(
+          //       borderRadius: BorderRadius.circular(6.r),
+          //     ),
+          //     margin: EdgeInsets.only(
+          //         bottom: MediaQuery.of(context).size.height - 150.h,
+          //         right: 20.w,
+          //         left: 20.w),
+          //   ),
+          // );
         Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const OtpEmail()
         ));
       }

@@ -1,20 +1,21 @@
-import 'package:chat_beeper/Widgets/comment.dart';
-import 'package:chat_beeper/Widgets/image_slider.dart';
+import 'package:chat_beeper/Widgets/tour_page_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:expandable/expandable.dart';
-import 'package:like_button/like_button.dart';
-import 'package:chat_beeper/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-class PostCard extends StatelessWidget {
- String loremIpsum ="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-String FullName = 'Sarah Madini';
-String username = 'Madini';
-String posttime = '1 hour ago';
-  PostCard({Key? key}) : super(key: key);
- static const String id = 'post-card';
+import 'package:like_button/like_button.dart';
+import '../constants.dart';
+import 'image_slider.dart';
+class TourCard extends StatelessWidget {
+  String loremIpsum ="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+  String FullName = 'Sarah Madini';
+  String username = 'Madini';
+  String posttime = '1 hour ago';
+   TourCard({Key? key}) : super(key: key);
+  static const String id = 'tour-card';
+
   @override
   Widget build(BuildContext context) {
     buildImg(Color color, double height) {
@@ -34,7 +35,8 @@ String posttime = '1 hour ago';
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top: 10.h, bottom: 10.h,left: 10.w,right: 10.w,),
+              padding: EdgeInsets.only(
+                top: 10.h, bottom: 10.h, left: 10.w, right: 10.w,),
               child: SizedBox(
                 height: 60.h,
                 child: Column(
@@ -43,7 +45,7 @@ String posttime = '1 hour ago';
                     Row(
                       children: [
                         CircleAvatar(
-                         child: ClipRRect(
+                          child: ClipRRect(
                             borderRadius: BorderRadius.circular(100.0.r),
                             child: Image.asset('images/sarah.png'),
                           ),
@@ -56,17 +58,33 @@ String posttime = '1 hour ago';
                               children: [
                                 Text(
                                   "\ $FullName\ ",
-                                  style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500),
+                                  style: Theme
+                                      .of(context)
+                                      .primaryTextTheme
+                                      .bodyText1!
+                                      .copyWith(fontWeight: FontWeight.w500),
                                 ),
-                                Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey  ),),
-                                const Icon(Icons.verified_rounded, color: bcolor5,size: 15,),
+                                Text('@$username', style: const TextStyle(
+                                    fontFamily: 'Nunito',
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.grey),),
+                                const Icon(
+                                  Icons.verified_rounded, color: bcolor5,
+                                  size: 15,),
                               ],
                             ),
-                            Text('\ $posttime', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w500, color: Colors.grey  ),),
+                            Text('\ $posttime', style: TextStyle(
+                                fontFamily: 'Nunito',
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey),),
                           ],
                         ),
                         Spacer(),
-                        IconButton(onPressed: (){}, icon: Icon(Icons.more_vert_sharp, color: Theme.of(context).colorScheme.secondaryVariant, size: 30,), )
+                        IconButton(onPressed: () {},
+                          icon: Icon(Icons.more_vert_sharp, color: Theme
+                              .of(context)
+                              .colorScheme
+                              .secondaryVariant, size: 30,),)
                       ],
                     ),
 
@@ -74,24 +92,66 @@ String posttime = '1 hour ago';
                 ),
               ),
             ),
-          ]);//top of card
+          ]); //top of card
     }
 
     buildCollapsed2() {
       return Column(
         children: [
-          const ImageSlider(),
+          TourSlider(),
+          SizedBox(
+            height: 80.h,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
+                  children: [
+                    CircleAvatar(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(100.0.r),
+                        child: Image.asset('images/sarah.png'),
+                      ),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "\ $FullName\ ",
+                              style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500),
+                            ),
+                            Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey  ),),
+                            const Icon(Icons.verified_rounded, color: bcolor5,size: 15,),
+                          ],
+                        ),
+                        Text('\ $posttime', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w500, color: Colors.grey  ),),
+                      ],
+                    ),
+                    Spacer(),
+                    IconButton(onPressed: (){}, icon: Icon(Icons.more_vert_sharp, color: Theme.of(context).colorScheme.secondaryVariant, size: 30,), )
+                  ],
+                ),
+
+              ],
+            ),
+          ),//avatar
           Padding(
-            padding:  EdgeInsets.only(left: 10.w,right: 10.w),
+            padding: EdgeInsets.only(left: 10.w, right: 10.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 ReadMoreText(
                   loremIpsum,
                   trimExpandedText: 'see Less',
-                    trimCollapsedText: 'see more',
-                    colorClickableText: Colors.grey,
-                    style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
+                  trimCollapsedText: 'see more',
+                  colorClickableText: Colors.grey,
+                  style: Theme
+                      .of(context)
+                      .primaryTextTheme
+                      .bodyText1!
+                      .copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
 
                 ),
               ],
@@ -100,24 +160,23 @@ String posttime = '1 hour ago';
           Container(
             height: 0.2.h,
             color: bcolor1,
-          ),//divider
+          ), //divider
           Padding(
-            padding:  EdgeInsets.only(left: 16.w, right: 16.w),
+            padding: EdgeInsets.only(left: 16.w, right: 16.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
-                  children: [
-                    IconButton( color: Colors.grey, icon:const Icon(CupertinoIcons.ellipses_bubble,), onPressed: () {
-                      Navigator.push(context,MaterialPageRoute(builder: (context) => const Comment()));
-                    },),
+                  children: const [
+                    Icon(CupertinoIcons.ellipses_bubble, color: Colors.grey,),
+                    Text('10')
                   ],
                 ),
                 LikeButton(
                   size: 24,
                   circleColor:
-                  CircleColor(start: Color(0xff00ddff), end: const Color(0xff0099cc)),
-                  bubblesColor: BubblesColor(
+                  CircleColor(start: const Color(0xff00ddff), end: Color(0xff0099cc)),
+                  bubblesColor: const BubblesColor(
                     dotPrimaryColor: Color(0xff33b5e5),
                     dotSecondaryColor: Color(0xff0099cc),
                   ),
@@ -144,11 +203,12 @@ String posttime = '1 hour ago';
                   //     );
                   //   return result;
                   // },
-                ),//infinite
+                ), //infinite
                 LikeButton(
                   size: 24,
                   circleColor:
-                  CircleColor(start: Colors.red.shade700, end: Colors.red.shade800),
+                  CircleColor(
+                      start: Colors.red.shade700, end: Colors.red.shade800),
                   bubblesColor: BubblesColor(
                     dotPrimaryColor: Colors.red.shade700,
                     dotSecondaryColor: Colors.red.shade800,
@@ -176,7 +236,7 @@ String posttime = '1 hour ago';
                   //     );
                   //   return result;
                   // },
-                ),//brokenheart
+                ), //brokenheart
                 LikeButton(
                   size: 24,
                   circleColor:
@@ -187,7 +247,8 @@ String posttime = '1 hour ago';
                   ),
                   likeBuilder: (bool isLiked) {
                     return Icon(
-                      isLiked ==false ?   Icons.favorite_border_outlined: Icons.favorite,
+                      isLiked == false ? Icons.favorite_border_outlined : Icons
+                          .favorite,
                       color: isLiked ? Colors.red : Colors.grey,
                       size: 24,
                     );
@@ -208,17 +269,20 @@ String posttime = '1 hour ago';
                   //     );
                   //   return result;
                   // },
-                ),//heart
+                ), //heart
                 SizedBox(width: 96.w,),
                 Padding(
-                  padding:  EdgeInsets.only(bottom: 10.0.h),
-                  child: IconButton(icon: Icon(CupertinoIcons.share_up, size: 24.h,), color: Colors.grey, onPressed: () {  },),
+                  padding: EdgeInsets.only(bottom: 10.0.h),
+                  child: IconButton(
+                    icon: Icon(CupertinoIcons.share_up, size: 24.h,),
+                    color: Colors.grey,
+                    onPressed: () {},),
                 ),
-              ],),//icons
-          ),//icons
+              ],), //icons
+          ), //icons
         ],
       );
-    }//image of card
+    } //image of card
 
     // buildCollapsed3() {
     //   return Container();
@@ -236,11 +300,17 @@ String posttime = '1 hour ago';
                 children: <Widget>[
                   Text(
                     "Expandable",
-                    style: Theme.of(context).primaryTextTheme.bodyText1,
+                    style: Theme
+                        .of(context)
+                        .primaryTextTheme
+                        .bodyText1,
                   ),
                   Text(
                     "3 Expandable widgets",
-                    style: Theme.of(context).textTheme.caption,
+                    style: Theme
+                        .of(context)
+                        .textTheme
+                        .caption,
                   ),
                 ],
               ),
@@ -280,44 +350,49 @@ String posttime = '1 hour ago';
           ],
         ),
       );
-    }//lorem ipsum
+    } //lorem ipsum
 
     return ExpandableNotifier(
         child: Padding(
-          padding:  EdgeInsets.only(bottom: 10.h),
+          padding: EdgeInsets.only(bottom: 10.h),
           child: ScrollOnExpand(
             child: SizedBox(
-              child: Card(
-                elevation: 0,
-                color: Theme.of(context).scaffoldBackgroundColor,
-                clipBehavior: Clip.antiAlias,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    ExpandableTheme(
-                      data: ExpandableThemeData(),
-                      child: Expandable(
-                        collapsed: buildCollapsed1(),
-                        expanded: buildExpanded1(),
-                      ),
+              child: Column(
+                children: [
+                  Card(
+                    elevation: 0,
+                    color: Theme
+                        .of(context)
+                        .scaffoldBackgroundColor,
+                    clipBehavior: Clip.antiAlias,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        ExpandableTheme(
+                          data: const ExpandableThemeData(),
+                          child: Expandable(
+                            collapsed: buildCollapsed2(),
+                            expanded: buildExpanded1(),
+                          ),
+                        ),
+                        // Expandable(
+                        //   collapsed: buildCollapsed2(),
+                        //   expanded: buildExpanded2(),
+                        // ),
+                        // Expandable(
+                        //   collapsed: buildCollapsed3(),
+                        //   expanded: buildExpanded3(),
+                        // ),
+                        Divider(
+                          height: 1,
+                        ),
+                      ],
                     ),
-                    Expandable(
-                      collapsed: buildCollapsed2(),
-                      expanded: buildExpanded2(),
-                    ),
-                    // Expandable(
-                    //   collapsed: buildCollapsed3(),
-                    //   expanded: buildExpanded3(),
-                    // ),
-                    Divider(
-                      height: 1,
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
         ));
   }
 }
-

@@ -256,7 +256,8 @@ class _SignInState extends State<SignIn> {
                               )
                           ),
                           onPressed: (){
-                           logIn();
+                           // logIn();
+                            Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const Home()));
                           },
                           child:  Text('Log in',
                             textAlign: TextAlign.center,

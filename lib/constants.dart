@@ -11,6 +11,7 @@ const bcolor5= Color(0xff11cdf3); //icons
 const uColor= Color(0xffc1c1c1);
 const fColor= Color(0xff295b85);
 const backgroundColor= Color(0xff0a151e);
+const dColor= Color(0xff690d0d);
 // const dPrimaryColor = Colors.blue;
 // const lPrimaryColor = Color(0xff5da6e3);
 
