@@ -1,3 +1,4 @@
+import 'package:chat_beeper/Screens/colllection/settings_page.dart';
 import 'package:chat_beeper/Screens/sign_Up_personal.dart';
 import 'package:chat_beeper/Screens/sign_up_business.dart';
 import 'package:flutter/cupertino.dart';
@@ -126,7 +127,7 @@ class _ConfirmRegisterState extends State<ConfirmRegister> {
                               ),
                               onTap: () async {
                                 _selectedIndex == 2;
-                                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const Home(),));
+                                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const SettingsPage(),));
 
                                 // else if (_selectedIndex == 2) {
                                 //   // navigate to the desired route
