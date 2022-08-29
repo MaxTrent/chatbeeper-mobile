@@ -89,7 +89,19 @@ class _PasswordChangeState extends State<PasswordChange> {
                       .copyWith(fontSize: 16.sp),
                 ),
               ),
-              TextFormField(),
+              Padding(
+                padding: EdgeInsets.only(left: 16.0.w, right: 16.0.w),
+                child: TextFormField(
+                  enableSuggestions: false,
+                  keyboardType: TextInputType.visiblePassword,
+                  decoration: InputDecoration(
+                    border: UnderlineInputBorder(),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
               Padding(
                 padding: EdgeInsets.only(left: 16.0.w),
                 child: Text(
@@ -101,7 +113,19 @@ class _PasswordChangeState extends State<PasswordChange> {
                       .copyWith(fontSize: 16.sp),
                 ),
               ),
-              TextFormField(),
+              Padding(
+                padding: EdgeInsets.only(left: 16.0.w, right: 16.0.w),
+                child: TextFormField(
+                  enableSuggestions: false,
+                  keyboardType: TextInputType.visiblePassword,
+                  decoration: InputDecoration(
+                    border: UnderlineInputBorder(),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
               Padding(
                 padding: EdgeInsets.only(left: 16.0.w),
                 child: Text(
@@ -113,7 +137,16 @@ class _PasswordChangeState extends State<PasswordChange> {
                       .copyWith(fontSize: 16.sp),
                 ),
               ),
-              TextFormField(),
+              Padding(
+                padding: EdgeInsets.only(left: 16.0.w, right: 16.0.w),
+                child: TextFormField(
+                  enableSuggestions: false,
+                  keyboardType: TextInputType.visiblePassword,
+                  decoration: InputDecoration(
+                    border: UnderlineInputBorder(),
+                  ),
+                ),
+              ),
               SizedBox(
                 height: 357.h,
               ),

@@ -1,3 +1,4 @@
+import 'package:chat_beeper/Screens/colllection/login_activity.dart';
 import 'package:chat_beeper/Screens/colllection/password.dart';
 import 'package:chat_beeper/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -173,7 +174,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 Icons.arrow_forward_ios,
                 size: 17.h,
               ),
-              onTap: () {},
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => LoginActivity())),
             ),
             ListTile(
               dense: true,
