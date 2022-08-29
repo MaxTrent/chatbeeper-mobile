@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'contact_info.dart';
+import 'deactivate_account.dart';
 import 'identity_confirmation.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -117,7 +118,8 @@ class _SettingsPageState extends State<SettingsPage> {
                     .headline2!
                     .copyWith(fontSize: 14.sp, color: Colors.red),
               ),
-              onTap: () {},
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => DeactivateAccount())),
             ),
             ListTile(
               dense: true,
