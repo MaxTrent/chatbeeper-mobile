@@ -32,7 +32,7 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
               Icons.arrow_back_ios,
               color: darkModeOn == true ? Colors.white : Colors.black,
             ),
-            onPressed: () {},
+            onPressed: () => Navigator.pop(context),
           ),
           title: Padding(
             padding: EdgeInsets.only(left: 135.0.w),
@@ -85,7 +85,7 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline4!
-                      .copyWith(fontSize: 16.sp, color: Colors.black),
+                      .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500),
                 ),
               ),
               SizedBox(

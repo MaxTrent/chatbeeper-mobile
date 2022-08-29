@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-class DeactivateAccount extends StatefulWidget {
-  const DeactivateAccount({Key? key}) : super(key: key);
+class PasswordChange extends StatefulWidget {
+  const PasswordChange({Key? key}) : super(key: key);
 
   @override
-  State<DeactivateAccount> createState() => _DeactivateAccountState();
+  State<PasswordChange> createState() => _PasswordChangeState();
 }
 
-class _DeactivateAccountState extends State<DeactivateAccount> {
+class _PasswordChangeState extends State<PasswordChange> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(
@@ -51,7 +51,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
               ListTile(
                 dense: true,
                 title: Text(
-                  'Deactivate your account',
+                  'Password',
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline4!
@@ -63,21 +63,25 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
                 thickness: 2.h,
               ),
               SizedBox(
-                height: 93.h,
-              ),
-              Center(
-                child: SizedBox(
-                    height: 156.72.h,
-                    width: 217.54.w,
-                    child:
-                        SvgPicture.asset('images/undraw_monitor_iqpq 1.svg')),
-              ),
-              SizedBox(
-                height: 7.28.h,
+                height: 20.h,
               ),
               Center(
                 child: Text(
-                  'The procedure to delete your account is about to\nbegin. All chatbeeper platforms will no longer allow\nusers to access your display name, @username, or\npublic profile.',
+                  'Your password must be strong. We advise a\ncombination of alphabets and numbers.',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .headline4!
+                      .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500),
+                ),
+              ),
+              SizedBox(
+                height: 58.h,
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 16.0.w),
+                child: Text(
+                  'Current password',
                   textAlign: TextAlign.center,
                   style: Theme.of(context)
                       .primaryTextTheme
@@ -85,8 +89,33 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
                       .copyWith(fontSize: 16.sp),
                 ),
               ),
+              TextFormField(),
+              Padding(
+                padding: EdgeInsets.only(left: 16.0.w),
+                child: Text(
+                  'New password',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .headline4!
+                      .copyWith(fontSize: 16.sp),
+                ),
+              ),
+              TextFormField(),
+              Padding(
+                padding: EdgeInsets.only(left: 16.0.w),
+                child: Text(
+                  'Re-enter new password',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .headline4!
+                      .copyWith(fontSize: 16.sp),
+                ),
+              ),
+              TextFormField(),
               SizedBox(
-                height: 136.h,
+                height: 357.h,
               ),
               Center(
                 child: SizedBox(
@@ -95,7 +124,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
                   child: ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(const Color(0xffF62B2B)),
+                            MaterialStateProperty.all(const Color(0xff9E9E9E)),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
@@ -104,7 +133,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
                         ))),
                     onPressed: () {},
                     child: Text(
-                      'Deactivate',
+                      'Save',
                       textAlign: TextAlign.center,
                       style: Theme.of(context)
                           .primaryTextTheme
