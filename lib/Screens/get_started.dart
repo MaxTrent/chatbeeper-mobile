@@ -1,3 +1,4 @@
+import 'package:chat_beeper/Screens/colllection/home_page.dart';
 import 'package:chat_beeper/Screens/colllection/settings_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -78,7 +79,7 @@ class _GetStartedState extends State<GetStarted> {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const SettingsPage(),
+                      builder: (context) => const Home(),
                     ));
               },
               child: Row(
