@@ -86,16 +86,9 @@ flutter:
         - asset: fonts/Nunito/Nunito-medium.ttf
         - asset: fonts/Nunito/Nunito-bold.ttf
 
-    - family: inter
-      fonts:
-        - asset: fonts/inter/inter-Light.ttf
-        - asset: fonts/inter/inter-Regular.ttf
-        - asset: fonts/inter/inter-medium.ttf
-        - asset: fonts/inter/inter-bold.ttf
 
-
-    - family: dislike
+    - family: Beep
       fonts:
-        - asset: fonts/dislike.ttf
+        - asset: fonts/Beep.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

@@ -13,7 +13,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:chat_beeper/model/OtpModel_email.dart';
 
 
 class OtpEmail extends StatefulWidget {
@@ -131,141 +130,202 @@ class _OtpEmailState extends State<OtpEmail> {
     return Scaffold(
       body:SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
-        child: Column(
-          children: [
-            Padding(
-              padding:  EdgeInsets.only(top: 60.h),
-              child: Image.asset('images/verify.png', height: 137.h, width: 150.w,),
-            ),
-            Padding(
-              padding:  const EdgeInsets.all(17.0),
-              child: Column(
-                children: [
-                   SizedBox(width:5.w, height: 0.01.h),
-                  Text(
-                      'Authentication',
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).primaryTextTheme.subtitle2
-                    // style: TextStyle(fontFamily: 'Anton', fontSize: 30),
-                  ),//Authenticate
-                   SizedBox(width:5.w, height: 0.03.h),
-                  Center(
-                    child: Center(
-                      child: Padding(
-                        padding: EdgeInsets.all(15.0),
-                        child: Center(
-                          child: Text(
-                              'Please enter the 6 digit Authentication code sent to $email',
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context).primaryTextTheme.bodyText1
-                            // style: TextStyle(fontFamily: 'Anton', fontSize: 30),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),//AND WRITE UP, whois creating
-                  Padding(
-                    padding:  EdgeInsets.only(top: 36.h, bottom: 30.h),
-                    child: Form(
-                      key: formKey,
-                      child: OtpTextField(
-                        cursorColor:  Theme.of(context).colorScheme.secondaryVariant,
-                        textStyle:  Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 25.sp),
-                        hasCustomInputDecoration: false,
-                        showFieldAsBox: false,
-                        numberOfFields: 6,
-                        borderColor: Colors.grey,
-                        focusedBorderColor: Colors.grey,
-                        disabledBorderColor: Colors.grey,
-                        autoFocus: true,
-                          clearText: true,
-                          enabledBorderColor: Colors.grey,
-                        onCodeChanged: (String code) {
-                          //handle validation or checks here
-                        },
-                        //runs when every textfield is filled
-                        onSubmit: (String pin){
-                          _otpfull==true;
-                          setState(() {
-                            // token == pin;
-                            // print(pin);
-                          });
-                      }, // end onSubmit
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 54.h,
-                    width: 400.w,
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                              (Set<MaterialState> states){
-                                if (_otpfull == true ) return  bcolor1;
-                                return uColor;
-                              }
-                          ),
-                          // elevation: ,
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(6.r),
-                                side: const BorderSide(color: Colors.transparent),
-                              )
-                          )
-                      ),
-                      onPressed: () async {
-                        Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const SignIn()
-                        ));
-                      },
-                      child:  Text('Verify',
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).primaryTextTheme.headline3,
-                        // TextStyle(
-                        //     color: Colors.white,
-                        //     fontWeight: FontWeight.w500,
-                        //     fontFamily: 'Nunito',
-                        //     fontSize: 16.sp
-                        //
-                        // ),
-                      ),),
-                  ),//button
-                  SizedBox(height: 60.h,),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      RichText(
-                        text: TextSpan(
-                            text: '',
-                            children: [
-                              TextSpan(text: 'Resend code after 60 Seconds',style:Theme.of(context).primaryTextTheme.bodyText1 ),
-                            ]
-                        ),
-
-                      ),
-                      SizedBox(height: 8.h,),
-                      RichText(
-                        text: TextSpan(
-                            text: '',
-                            children: [
-                              TextSpan(
-                                text: 'Resend Code',style:  TextStyle(color: Colors.grey, fontStyle: FontStyle.normal, fontWeight: FontWeight.w700, fontSize: 18.sp, fontFamily: 'Nunito'),
-                                recognizer: TapGestureRecognizer()..onTap=()=>Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Home(),
-                                ),),
-                              ),
-                            ]
-                        ),
-
-                      ),
-                    ],
-                  ),
-
-                ],
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              Padding(
+                padding:  EdgeInsets.only(top: 60.h),
+                child: Image.asset('images/verify.png', height: 137.h, width: 150.w,),
               ),
-            ),//TopOW
-          ],
+              Padding(
+                padding:  const EdgeInsets.all(17.0),
+                child: Column(
+                  children: [
+                     SizedBox(width:5.w, height: 0.01.h),
+                    Text(
+                        'Authentication',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).primaryTextTheme.subtitle2
+                      // style: TextStyle(fontFamily: 'Anton', fontSize: 30),
+                    ),//Authenticate
+                     SizedBox(width:5.w, height: 0.03.h),
+                    Center(
+                      child: Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(15.0),
+                          child: Center(
+                            child: Text(
+                                'Please enter the 6 digit Authentication code sent to $email',
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context).primaryTextTheme.bodyText1
+                              // style: TextStyle(fontFamily: 'Anton', fontSize: 30),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),//AND WRITE UP, whois creating
+                    Padding(
+                      padding:  EdgeInsets.only(top: 36.h, bottom: 30.h),
+                      child: Form(
+                        key: formKey,
+                        child: OtpTextField(
+                          cursorColor:  Theme.of(context).colorScheme.secondaryVariant,
+                          textStyle:  Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 25.sp),
+                          hasCustomInputDecoration: false,
+                          showFieldAsBox: false,
+                          numberOfFields: 6,
+                          borderColor: Colors.grey,
+                          focusedBorderColor: Colors.grey,
+                          disabledBorderColor: Colors.grey,
+                          autoFocus: true,
+                            clearText: true,
+                            enabledBorderColor: Colors.grey,
+                          onCodeChanged: (String code) {
+                            _otpfull==true;
+                          },
+                          //runs when every textfield is filled
+                          onSubmit: (String pin){
+                            _otpfull==true;
+                            // setState(() {
+                            //   // token == pin;
+                            //   // print(pin);
+                            // });
+                        }, // end onSubmit
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 54.h,
+                      width: 400.w,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                                (Set<MaterialState> states){
+                                  if (_otpfull == true ) return  bcolor1;
+                                  return uColor;
+                                }
+                            ),
+                            // elevation: ,
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(6.r),
+                                  side: const BorderSide(color: Colors.transparent),
+                                )
+                            )
+                        ),
+                        onPressed: () async {
+                          verifyEmail();
+                        },
+                        child:  Text('Verify',
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).primaryTextTheme.headline3,
+                          // TextStyle(
+                          //     color: Colors.white,
+                          //     fontWeight: FontWeight.w500,
+                          //     fontFamily: 'Nunito',
+                          //     fontSize: 16.sp
+                          //
+                          // ),
+                        ),),
+                    ),//button
+                    SizedBox(height: 60.h,),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        RichText(
+                          text: TextSpan(
+                              text: '',
+                              children: [
+                                TextSpan(text: 'Resend code after 60 Seconds',style:Theme.of(context).primaryTextTheme.bodyText1 ),
+                              ]
+                          ),
+
+                        ),
+                        SizedBox(height: 8.h,),
+                        RichText(
+                          text: TextSpan(
+                              text: '',
+                              children: [
+                                TextSpan(
+                                  text: 'Resend Code',style:  TextStyle(color: Colors.grey, fontStyle: FontStyle.normal, fontWeight: FontWeight.w700, fontSize: 18.sp, fontFamily: 'Nunito'),
+                                  recognizer: TapGestureRecognizer()..onTap=()=>Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Home(),
+                                  ),),
+                                ),
+                              ]
+                          ),
+
+                        ),
+                      ],
+                    ),
+
+                  ],
+                ),
+              ),//TopOW
+            ],
+          ),
         ),
       ),
     );
   }
+  Future<void> verifyEmail() async{
+    if(_formKey.currentState!.validate() && otpcontroller.text.isNotEmpty){
+      final response = await http.patch(Uri.https('beeperchat.herokuapp.com', 'auth/verify-token/email'),
+          body: ({
+            "username": username.toString(),
+            "email": email.toString(),
+            "token": otpcontroller.text
+          }));
+      if (response.statusCode == 201) {
+        if (!mounted) return;
+        print('object');
+        Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const SignIn()
+        ));
+        // If the server did return a 201 CREATED response,
+        // then parse the JSON.
+        // return LogIn.fromJson(jsonDecode(response.body));
+      }
+      if (response.statusCode == 400) {
+        print('object2');
+        if (!mounted) return;
+        print(otpcontroller.text.toString());
+        print(response.body);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content:  Text(response.body,  style:Theme.of(context).primaryTextTheme.bodyText1!.copyWith(color: Colors.white)),
+            backgroundColor: bcolor,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6.r),
+            ),
+            margin: EdgeInsets.only(
+                bottom: MediaQuery.of(context).size.height - 150.h,
+                right: 20.w,
+                left: 20.w),
+          ),
+        );
+      }
+      if(otpcontroller.text.isEmpty){
+        if(mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content:  Text('Incorrect details',  style:Theme.of(context).primaryTextTheme.bodyText1!.copyWith(color: Colors.white)),
+            backgroundColor: bcolor,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6.r),
+            ),
+            margin: EdgeInsets.only(
+                bottom: MediaQuery.of(context).size.height - 150.h,
+                right: 20.w,
+                left: 20.w),
+          ),
+        );
+      }
+      // else{
+      //   if (!mounted) return;
 
+      // }
+    }
+  }
 }

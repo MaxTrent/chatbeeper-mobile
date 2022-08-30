@@ -1,16 +1,12 @@
 import 'package:chat_beeper/Screens/otp_email.dart';
 import 'package:chat_beeper/Screens/otp_number.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constants.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 
-String _verticalGroupValue = "Phone Number";
 String _singleValue = "none";
 
-List<String> _status = ["Email", "Phone Number"];
 
 class AuthenticateSignup extends StatefulWidget {
    const AuthenticateSignup({Key? key}) : super(key: key);

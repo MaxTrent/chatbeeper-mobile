@@ -1,5 +1,7 @@
+import 'package:chat_beeper/Screens/colllection/compose_beep.dart';
 import 'package:chat_beeper/Screens/profile_page.dart';
 import 'package:chat_beeper/Widgets/post_imageless.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,23 +18,29 @@ class Timeline extends StatefulWidget {
 }
 
 class _TimelineState extends State<Timeline> {
+  final _key = GlobalKey<ScaffoldState>();
+  String fullName = 'Jane Doe';
+  String username = 'Janedoe_10';
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    var brightness = MediaQuery.of(context).platformBrightness;
+    bool darkModeOn = brightness == Brightness.dark;
     ScreenUtil.init(
       context,
       designSize:Size(485,926),
     );
     return Scaffold(
+      key: _key,
       floatingActionButton: FloatingActionButton(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10.r), bottomRight:Radius.circular(10.r), topLeft:Radius.circular(10.r),topRight: Radius.circular(10.r), )
           ),
           foregroundColor: bcolor1,
           backgroundColor: bcolor1,
-          child: IconButton(icon: Icon(CupertinoIcons.pen), onPressed: () {
-            Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) =>  PostCard()));
+          child: IconButton(icon: const Icon(CupertinoIcons.pen), onPressed: () {
+            Navigator.push(context,MaterialPageRoute(builder: (context) =>  ComposeBeep()));
           }, color: Colors.white,),
           onPressed: (){}),
       appBar: PreferredSize(
@@ -47,7 +55,7 @@ class _TimelineState extends State<Timeline> {
                   height: 32.h,
                   child:  GestureDetector(
                     onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Profile(),));
+                      _key.currentState!.openDrawer();
                     },
                     child: CircleAvatar(
                       child: ClipRRect(
@@ -126,6 +134,258 @@ class _TimelineState extends State<Timeline> {
       // );
     }
     ),
+      drawer: SizedBox(
+        width: 372.w,
+        child: Drawer(
+          backgroundColor:  Theme.of(context).scaffoldBackgroundColor,
+          child: SafeArea(
+            child: ListView(
+              // Important: Remove any padding from the ListView.
+              padding: EdgeInsets.zero,
+              children: [
+                Padding(
+                  padding:  EdgeInsets.only(left: 16.w,top: 32.h),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child:   Image.asset('images/logo1.png',height: 32.h, width: 32.w,),
+                  ),
+                ),//logo
+                SizedBox(height: 39.h,),
+                Column(
+                  children: [
+                    Padding(
+                      padding:  EdgeInsets.only(bottom: 20.h, left: 16.w),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Row(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(100.0.r),
+                              child: Image.asset('images/pp_round.png', height: 65.h,),
+                            ),
+                            SizedBox(width: 12.w,),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  fullName,
+                                  style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500, fontSize: 18.sp ),
+                                ),//full name
+                                Text('\  $username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 16.sp ),),//username
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:  EdgeInsets.only(left: 16.w, right: 17.w),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            child: Row(
+                              children: [
+                                Text('2k', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
+                                  fontWeight: FontWeight.w600, fontSize: 18.sp,
+                                ),
+                                ),
+                                SizedBox(width: 5.w,),
+                                Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 16.sp,), ),
+                              ],
+                            ),
+                          ),//following
+                          SizedBox(width: 18.w,),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 5, left: 5),
+                            child: Row(
+                              children: [
+                                Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
+                                  fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                ),
+                                ),
+                                SizedBox(width: 5.w,),
+                                Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 14.sp,), ),
+                              ],
+                            ),
+                          ),//followers
+                          SizedBox(width: 20.w,),
+                          SizedBox(
+                            child: Row(
+                              children: [
+                                Text('100K', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
+                                  fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                ),
+                                ),
+                                SizedBox(width: 3.w,),
+                                Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 14.sp,), ),
+                              ],
+                            ),
+                          ),//beeps
+                        ],
+                      ),
+                    ),//following followers
+                    SizedBox(height: 12.h,),
+                    const Divider(color: Colors.grey, thickness: 0.5,),
+                  ],
+                ),//profilepicture and username
+                // SizedBox(height: 20.h,),
+                // ListTile(
+                //   horizontalTitleGap: 0,
+                //   leading: Row(children:[
+                //     Icon(IconlyLight.profile, size: 20.h,color: darkModeOn ? Colors.white:Colors.black,),
+                //     SizedBox(width: 12.w,),
+                //     Text('My Profile',
+                //         style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 16.sp, fontWeight: FontWeight.w600)
+                //         ),
+                //   ]
+                //     ),
+                //   title: const Text('Page 2'),
+                //   onTap: () {
+                //     Navigator.pop(context);
+                //   },
+                // ),
+                Align(
+                  alignment: Alignment.topLeft,
+                    child:TextButton(
+                        style: TextButton.styleFrom(
+                          splashFactory: NoSplash.splashFactory,
+                          onSurface: Colors.transparent,
+
+                          // overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        ),
+                        onPressed: (){
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => const Profile(),));
+                        }, child: Row(
+                      children: [
+                        Icon(IconlyLight.profile, size: 20.h,color: darkModeOn? Colors.white:Colors.black),
+                        SizedBox(width: 12.w,),
+                        Text('My Profile',
+                          style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                          ),
+                      ],
+                    ))),//myprofile
+                Align(
+                    alignment: Alignment.topLeft,
+                    child:TextButton(   style: TextButton.styleFrom(
+                          splashFactory: NoSplash.splashFactory,
+                          onSurface: Colors.transparent,
+                          
+                          // overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        ),onPressed: (){}, child: Row(
+                      children: [
+                        Icon(Icons.supervisor_account_outlined, size: 20.h,color: darkModeOn? Colors.white:Colors.black),
+                        SizedBox(width: 12.w,),
+                        Text('Follower Requests',
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                        ),
+                      ],
+                    ))),//follower request
+                Align(
+                    alignment: Alignment.topLeft,
+                    child:TextButton(   style: TextButton.styleFrom(
+                          splashFactory: NoSplash.splashFactory,
+                          onSurface: Colors.transparent,
+                          
+                          // overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        ),onPressed: (){}, child: Row(
+                      children: [
+                        Icon(Icons.trending_down, size: 20.h,color: darkModeOn? Colors.white:Colors.black),
+                        SizedBox(width: 12.w,),
+                        Text('Trending',
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                        ),
+                      ],
+                    ))),//Trending
+                Align(
+                    alignment: Alignment.topLeft,
+                    child:TextButton(   style: TextButton.styleFrom(
+                          splashFactory: NoSplash.splashFactory,
+                          onSurface: Colors.transparent,
+                          
+                          // overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        ),onPressed: (){}, child: Row(
+                      children: [
+                        Icon(CupertinoIcons.bookmark, size: 20.h,color: darkModeOn? Colors.white:Colors.black),
+                        SizedBox(width: 12.w,),
+                        Text('Saved Beeps',
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                        ),
+                      ],
+                    ))),//saved
+                Align(
+                    alignment: Alignment.topLeft,
+                    child:TextButton(   style: TextButton.styleFrom(
+                          splashFactory: NoSplash.splashFactory,
+                          onSurface: Colors.transparent,
+                          
+                          // overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        ),onPressed: (){}, child: Row(
+                      children: [
+                        Icon(CupertinoIcons.briefcase, size: 20.h,color: darkModeOn? Colors.white:Colors.black),
+                        SizedBox(width: 12.w,),
+                        Text('Create Business Account',
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                        ),
+                      ],
+                    ))),//create businessman
+                Align(
+                    alignment: Alignment.topLeft,
+                    child:TextButton(   style: TextButton.styleFrom(
+                          splashFactory: NoSplash.splashFactory,
+                          onSurface: Colors.transparent,
+                          
+                          // overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        ),onPressed: (){}, child: Row(
+                      children: [
+                        Icon(IconlyLight.setting, size: 20.h,color: darkModeOn? Colors.white:Colors.black),
+                        SizedBox(width: 12.w,),
+                        Text('Settings',
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                        ),
+                      ],
+                    ))),//settings
+                Align(
+                    alignment: Alignment.topLeft,
+                    child:TextButton(   style: TextButton.styleFrom(
+                          splashFactory: NoSplash.splashFactory,
+                          onSurface: Colors.transparent,
+                          
+                          // overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        ),
+                        onPressed: (){},
+
+                        child: Row(
+                      children: [
+                        Icon(Icons.verified_outlined, size: 20.h,color: darkModeOn? Colors.white:Colors.black),
+                        SizedBox(width: 12.w,),
+                        Text('Request Verification',
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                        ),
+                      ],
+                    ))),//request verification
+                Align(
+                    alignment: Alignment.topLeft,
+                    child:TextButton(   style: TextButton.styleFrom(
+                          splashFactory: NoSplash.splashFactory,
+                          onSurface: Colors.transparent,
+                          
+                          // overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        ),onPressed: (){}, child: Row(
+                      children: [
+                        Icon(Icons.phonelink_ring_outlined, size: 20.h,color: darkModeOn? Colors.white:Colors.black),
+                        SizedBox(width: 12.w,),
+                        Text('Promotions',
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                        ),
+                      ],
+                    ))),//promotions
+
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

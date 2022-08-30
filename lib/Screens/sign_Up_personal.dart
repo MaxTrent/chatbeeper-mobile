@@ -67,16 +67,18 @@ class CreateAccount extends StatefulWidget {
 
 class _CreateAccountState extends State<CreateAccount> {
 
-var _pageController = PageController();
+final _pageController = PageController();
 final format = DateFormat("dd/MM/yyyy");
-String? email;
-DateTime? birthday;
-String? password;
-String? fullname;
+late final String _email = _emailTextController.text;
+// late String birthday= _birthdateControlller.text.toString();
+  late final String _dob = _birthdateControlller.text;
+late String password= _passwordTextController.text;
+late final String _fname = _fnameTextController.text;
+late final String _lname = lnameTextController.text;
 String? gender;
-String? phone;
-String? username;
-String dropdownValue = 'Male';
+late final String _phone = '+234${_phoneTextController.text}';
+late final String _username = _chooseusername.text;
+// String dropdownValue = 'Male';
 bool _visible = false;
 bool _isvalid = false;
 bool _expanded = false;
@@ -95,11 +97,6 @@ var _fnameTextController = TextEditingController();
 var _chooseusername = TextEditingController();
 int _currentPage = 1;
 
-String generateRandomString(int len) {
-  var r = Random();
-  const _chars = 'JaneDoe';
-  return List.generate(len, (index) => _chars[r.nextInt(_chars.length)]).join();
-}
 
 
 
@@ -128,7 +125,7 @@ String generateRandomString(int len) {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         resizeToAvoidBottomInset: false,
       body: PageView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         controller: _pageController,
           // onPageChanged: (num) async{ // what will happen when you switch
           //   setState(() { // Update state
@@ -383,7 +380,8 @@ String generateRandomString(int len) {
                                 if (val!.isValidPhone|| val.isEmpty|| val.length > 10 ||val.length < 10 ) {
                                   return 'Enter valid phone number';
 
-                                } return null;
+                                }
+                                return null;
                               },
 
                               keyboardType: TextInputType.number,
@@ -484,7 +482,7 @@ String generateRandomString(int len) {
                               ),
                                                     onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              print('${_phoneTextController.text.toString()}, ${_phoneTextController.text.toString()}, ${lnameTextController.text.toString()},${_fnameTextController.text.toString()}');
+                              print('+234${_phoneTextController.text.toString()}, $_phone, ${lnameTextController.text.toString()},${_fnameTextController.text.toString()}');
                               _pageController.nextPage(
                                   duration: Duration(milliseconds: 1000),
                                                       curve: Curves.easeIn);
@@ -596,8 +594,8 @@ String generateRandomString(int len) {
                             maxRadius: 10.r,
                             foregroundColor: Colors.black,
                             backgroundColor: bcolor3,
-                            child: Center(
-                              child: const Icon(
+                            child: const Center(
+                              child: Icon(
                                 Icons.check_sharp, color: Colors.white,size: 8,),
                             ),
                           ),
@@ -629,9 +627,9 @@ String generateRandomString(int len) {
                                 if ( _birthdateControlller.text.isEmpty) {
                                   return 'Date of birth is Empty' ;
                                 }
-                                setState(() {
-                                  val = birthday;
-                                });
+                                // setState(() {
+                                //   val = ;
+                                // });
                                 return null;
                               },
                               decoration:    InputDecoration(
@@ -715,7 +713,7 @@ String generateRandomString(int len) {
                                         setState(() {
                                           // set current index!
                                           _selectedgender = 1;
-                                          gender = 'Male';
+                                          gender = 'male';
                                           print(gender);
                                         });
                                       },
@@ -742,7 +740,7 @@ String generateRandomString(int len) {
                                         setState(() {
                                           // set current index!
                                           _selectedgender = 2;
-                                          gender = 'Female';
+                                          gender = 'female';
                                           print(gender);
                                         });
                                       },
@@ -941,10 +939,10 @@ String generateRandomString(int len) {
                               ),
                               onPressed: () async {
 
-                                 if( formKey.currentState!.validate() && gender == 'Male'|| gender == 'Female') {
-                                   print('${_phoneTextController.text.toString()}, ${_birthdateControlller.text}, $gender,${_passwordTextController.text.toString()}');
+                                 if( formKey.currentState!.validate() && gender == 'male'|| gender == 'female') {
+                                   print('+234${_phoneTextController.text.toString()}, ${_birthdateControlller.text}, $gender,${_passwordTextController.text.toString()}');
                                   _pageController.nextPage(
-                                      duration: Duration(milliseconds: 1000),
+                                      duration: const Duration(milliseconds: 1000),
                                       curve: Curves.easeIn);
                                 }
                                  else   if (gender != 'male'|| gender != 'female' || _birthdateControlller.text.isEmpty){
@@ -1238,8 +1236,8 @@ String generateRandomString(int len) {
                                   )
                               ),
                               onPressed: () async {
-                                // signUp();
-                                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const OtpEmail()));
+                                signUp();
+                                // Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const OtpEmail()));
                               },
                               child:  Text('Create Account',
                                 textAlign: TextAlign.center,
@@ -1313,13 +1311,13 @@ String generateRandomString(int len) {
     if(_chooseusername.text.isValidUname && formKeyy.currentState!.validate()){
       final response = await http.post(Uri.https('beeperchat.herokuapp.com', '/user'),
           body: ({
-            "username": _chooseusername.text.toString(),
-            "email": _emailTextController.text.toString(),
-            "password": _passwordTextController.text.toString(),
-            "firstname": _fnameTextController.text.toString(),
-            "lastname": lnameTextController.text.toString(),
-            "phone": "+234${_phoneTextController.text.toString()}",
-            "dob": _birthdateControlller.text,
+            "username": _username.toString(),
+            "email": _email.toString(),
+            "password": password.toString(),
+            "firstname": _fname.toString(),
+            "lastname": _lname.toString(),
+            "phone": _phone.toString(),
+            "dob": _dob.toString(),
             "gender": gender.toString(),
           }));
       if (response.statusCode == 201) {
@@ -1330,9 +1328,29 @@ String generateRandomString(int len) {
         // If the server did return a 201 CREATED response,
         // then parse the JSON.
         // return LogIn.fromJson(jsonDecode(response.body));
-      } else{
+      }
+      if (response.statusCode == 400) {
         if (!mounted) return;
-        print('${_fnameTextController.text}, ${lnameTextController.text}, ${_passwordTextController.text}, ${_chooseusername.text}, $gender');
+        print(_birthdateControlller.text.toString());
+        print(response.body);
+        // ScaffoldMessenger.of(context).showSnackBar(
+        //   SnackBar(
+        //     content:  Text(response.body,  style:Theme.of(context).primaryTextTheme.bodyText1!.copyWith(color: Colors.white)),
+        //     backgroundColor: bcolor,
+        //     behavior: SnackBarBehavior.floating,
+        //     shape: RoundedRectangleBorder(
+        //       borderRadius: BorderRadius.circular(6.r),
+        //     ),
+        //     margin: EdgeInsets.only(
+        //         bottom: MediaQuery.of(context).size.height - 150.h,
+        //         right: 20.w,
+        //         left: 20.w),
+        //   ),
+        // );
+      }
+      else{
+        if (!mounted) return;
+        print('${_fnameTextController.text}, $_phone, ${_passwordTextController.text}, ${_chooseusername.text}, $gender');
           // If the server did not return a 201 CREATED response,
           // then throw an exception.
           // ScaffoldMessenger.of(context).showSnackBar(
@@ -1349,8 +1367,8 @@ String generateRandomString(int len) {
           //         left: 20.w),
           //   ),
           // );
-        Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const OtpEmail()
-        ));
+        // Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const OtpEmail()
+        // ));
       }
     }
   }

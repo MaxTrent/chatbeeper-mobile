@@ -34,7 +34,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> with TickerProviderStateMixin{
-  String FullName = 'Jane Doe';
+  String fullName = 'Jane Doe';
   String username = 'Janedoe_10';
 
   String location = 'Lagos, Nigeria';
@@ -138,27 +138,15 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                       ),
                     ),//image
                     Positioned(
-                      top: 30.h,
+                      top: 20.h,
                       left: 0.w,
                       right: 410.w,
-                      bottom: 100.h,
-                      child: Center(
-                        child:  Container(
-                          height: 39.h,
-                          width: 93.w,
-                          decoration: const BoxDecoration(
-                            color: Colors.transparent,
-                            shape: BoxShape.circle,
-                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                            // ),
-                          ),
-                          child: CircleAvatar(
-                            backgroundColor: Colors.black.withOpacity(0.2),
-                            child: Center(child: IconButton(icon:  Icon(Icons.arrow_back_ios_new, size:23.h,color: Colors.white,), onPressed: () {
-                              Navigator.of(context).pop();
-                            },)),
-                          ),
-                        ),
+                      bottom: 50.h,
+                      child: GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).pop();
+                        },
+                        child:Icon(Icons.arrow_back_ios_new, size:19.h,color: Colors.white,),
                       ),
                     ),//backbutton
                     SizedBox(height: 20.h,),
@@ -171,7 +159,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                     Column(
                       children: [
                         Text(
-                          "\  $FullName\ ",
+                          "\  $fullName\ ",
                           style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w600, color:bcolor3, fontSize: 22.sp ),
                         ),//full name
                         Row(

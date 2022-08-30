@@ -92,38 +92,43 @@ class PostBeep extends StatelessWidget {
     buildCollapsed2() {
       return Column(
         children: [
-          Padding(
-            padding:  EdgeInsets.only(left: 52.w,),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                ReadMoreText(
-                  loremIpsum,
-                  trimExpandedText: 'see Less',
-                  trimCollapsedText: 'see more',
-                  colorClickableText: Colors.grey,
-                  style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
+      Padding(
+      padding:  EdgeInsets.only(left: 16.w, right: 27.w),
+      child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+      ReadMoreText(
+      loremIpsum,
+      trimExpandedText: 'see Less',
+      trimCollapsedText: 'see more',
+      colorClickableText: Colors.grey,
+      style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
 
-                ),
-              ],
-            ),
-          ),//readmore text
+      ),
+      ],
+      ),
+      ),//readmore text
           Container(
             height: 0.2,
             color: Colors.grey,
           ),//divider
           Padding(
-            padding:  EdgeInsets.only(left: 16.w, right: 16.w),
+            padding:  EdgeInsets.only(left: 16.w,right: 19.w),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                IconButton( color: Colors.grey, icon:const Icon(CupertinoIcons.ellipses_bubble,), onPressed: () {
-                  Navigator.push(context,MaterialPageRoute(builder: (context) => const Comment()));
-                },),
+                Row(
+                  children: [
+                    IconButton( color: Colors.grey, icon:const Icon(CupertinoIcons.ellipses_bubble,), onPressed: () {
+                      Navigator.push(context,MaterialPageRoute(builder: (context) => const Comment()));
+                    },),
+                  ],
+                ),
+                SizedBox(width: 21.w,),
                 LikeButton(
                   size: 24,
                   circleColor:
-                  CircleColor(start: Color(0xff00ddff), end: Color(0xff0099cc)),
+                  CircleColor(start: Color(0xff00ddff), end: const Color(0xff0099cc)),
                   bubblesColor: const BubblesColor(
                     dotPrimaryColor: Color(0xff33b5e5),
                     dotSecondaryColor: Color(0xff0099cc),
@@ -152,6 +157,7 @@ class PostBeep extends StatelessWidget {
                   //   return result;
                   // },
                 ),//infinite
+                SizedBox(width: 21.w,),
                 LikeButton(
                   size: 24,
                   circleColor:
@@ -184,6 +190,7 @@ class PostBeep extends StatelessWidget {
                   //   return result;
                   // },
                 ),//brokenheart
+                SizedBox(width: 21.w,),
                 LikeButton(
                   size: 24,
                   circleColor:
@@ -194,7 +201,7 @@ class PostBeep extends StatelessWidget {
                   ),
                   likeBuilder: (bool isLiked) {
                     return Icon(
-                   isLiked ==false ?   Icons.favorite_border_outlined: Icons.favorite,
+                      isLiked ==false ?   Icons.favorite_border_outlined: Icons.favorite,
                       color: isLiked ? Colors.red : Colors.grey,
                       size: 24,
                     );
@@ -216,11 +223,11 @@ class PostBeep extends StatelessWidget {
                   //   return result;
                   // },
                 ),//heart
-                SizedBox(width: 96.w,),
-                 Padding(
-                   padding:  EdgeInsets.only(bottom: 10.0.h),
-                   child: IconButton(icon: Icon(CupertinoIcons.share_up, size: 24.h,), color: Colors.grey, onPressed: () {  },),
-                 ),
+                SizedBox(width: 90.w,),
+                Padding(
+                  padding:  EdgeInsets.only(bottom: 10.0.h),
+                  child: IconButton(icon: Icon(CupertinoIcons.share_up, size: 24.h,), color: Colors.grey, onPressed: () {  },),
+                ),
               ],),//icons
           ),//icons
         ],

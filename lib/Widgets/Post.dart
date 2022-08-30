@@ -82,7 +82,7 @@ String posttime = '1 hour ago';
         children: [
           const ImageSlider(),
           Padding(
-            padding:  EdgeInsets.only(left: 10.w,right: 10.w),
+            padding:  EdgeInsets.only(left: 16.w, right: 27.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -102,9 +102,9 @@ String posttime = '1 hour ago';
             color: bcolor1,
           ),//divider
           Padding(
-            padding:  EdgeInsets.only(left: 16.w, right: 16.w),
+            padding:  EdgeInsets.only(left: 16.w,right: 19.w),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -113,11 +113,12 @@ String posttime = '1 hour ago';
                     },),
                   ],
                 ),
+                SizedBox(width: 21.w,),
                 LikeButton(
                   size: 24,
                   circleColor:
                   CircleColor(start: Color(0xff00ddff), end: const Color(0xff0099cc)),
-                  bubblesColor: BubblesColor(
+                  bubblesColor: const BubblesColor(
                     dotPrimaryColor: Color(0xff33b5e5),
                     dotSecondaryColor: Color(0xff0099cc),
                   ),
@@ -145,6 +146,7 @@ String posttime = '1 hour ago';
                   //   return result;
                   // },
                 ),//infinite
+                SizedBox(width: 21.w,),
                 LikeButton(
                   size: 24,
                   circleColor:
@@ -177,6 +179,7 @@ String posttime = '1 hour ago';
                   //   return result;
                   // },
                 ),//brokenheart
+                SizedBox(width: 21.w,),
                 LikeButton(
                   size: 24,
                   circleColor:
@@ -209,7 +212,7 @@ String posttime = '1 hour ago';
                   //   return result;
                   // },
                 ),//heart
-                SizedBox(width: 96.w,),
+                SizedBox(width: 90.w,),
                 Padding(
                   padding:  EdgeInsets.only(bottom: 10.0.h),
                   child: IconButton(icon: Icon(CupertinoIcons.share_up, size: 24.h,), color: Colors.grey, onPressed: () {  },),
