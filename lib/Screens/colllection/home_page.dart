@@ -24,7 +24,7 @@ class _HomeState extends State<Home> {
 
   bool _istapped = false;
   static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   final List<Widget> _pages = <Widget>[
     const Timeline(),
     const TourPage(),
@@ -35,90 +35,101 @@ class _HomeState extends State<Home> {
   ];
 
   void _onItemTapped(int index) {
-
     setState(() {
       _selectedIndex = index;
       // _pages[_selectedIndex]
       _istapped = true;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     var brightness = MediaQuery.of(context).platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
-    return CupertinoTabScaffold(tabBar: CupertinoTabBar(
-      backgroundColor:Theme.of(context).scaffoldBackgroundColor ,
-      onTap: (index){
-        _selectedIndex = index;
-        setState(() {
-
-        });
-      },
-      items:    <BottomNavigationBarItem>[
-        const BottomNavigationBarItem(
-          icon: Icon(Icons.home_filled),
-          label: 'Home',
-          backgroundColor: Colors.white,
+    return CupertinoTabScaffold(
+        tabBar: CupertinoTabBar(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          onTap: (index) {
+            _selectedIndex = index;
+            setState(() {});
+          },
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: _selectedIndex == 0
+                  ? SvgPicture.asset('images/home fill.svg')
+                  : SvgPicture.asset('images/home.svg'),
+              label: 'Home',
+              backgroundColor: Colors.white,
+            ),
+            BottomNavigationBarItem(
+              icon: _selectedIndex == 1
+                  ? SvgPicture.asset('images/global fill.svg')
+                  : SvgPicture.asset('images/global.svg'),
+              label: 'Tour',
+              backgroundColor: Colors.white,
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset('images/message-add.svg'),
+              label: 'Beep',
+              backgroundColor: Colors.white,
+            ),
+            BottomNavigationBarItem(
+              icon: _selectedIndex == 3
+                  ? SvgPicture.asset('images/notification fill.svg')
+                  : SvgPicture.asset('images/notification 2.svg'),
+              label: 'Notification',
+              backgroundColor: Colors.white,
+            ),
+            BottomNavigationBarItem(
+              icon: _selectedIndex == 4
+                  ? SvgPicture.asset(
+                      'images/grid-9 fill.svg',
+                    )
+                  : SvgPicture.asset('images/grid-9.svg'),
+              label: 'Room',
+              backgroundColor: Colors.white,
+            ),
+          ],
         ),
-        const BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.globe,size: 28,),
-          label: 'Tour',
-          backgroundColor: Colors.white,
-        ),
-        const BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.bubble_left,size: 28,),
-          label: 'Beep',
-          backgroundColor: Colors.white,
-        ),
-        BottomNavigationBarItem(
-          icon: _selectedIndex ==3 ? const Icon(CupertinoIcons.bell_solid, size: 28,) : Icon(CupertinoIcons.bell, size: 28.h,),
-          label: 'Notification',
-          backgroundColor: Colors.white,
-        ),
-        BottomNavigationBarItem(
-          icon:
-          _selectedIndex == 4 ? Icon(CupertinoIcons.square_split_2x1_fill, size: 28.h,): const Icon(CupertinoIcons.square_split_2x1, size: 28,),
-          label: 'Room',
-          backgroundColor: Colors.white,
-        ),
-      ],
-    ),
-
-        tabBuilder: (context, index){
-          return CupertinoTabView(builder: (context){
-            switch(index){
-              case 0: return CupertinoTabView(
-                builder: (context){
-                  return _pages[0];
-                },
-              );
-              case 1: return CupertinoTabView(
-                builder: (context){
-                  return  _pages[1];
-                },
-              );
-              case 2: return CupertinoTabView(
-                builder: (context){
-                  return  _pages[2];
-                },
-              );
-              case 3: return CupertinoTabView(
-                builder: (context){
-                  return  _pages[3];
-                },
-              );
-              default: return CupertinoTabView(
-                builder: (context){
-                  return  _pages[4];
-                },
-              );
+        tabBuilder: (context, index) {
+          return CupertinoTabView(builder: (context) {
+            switch (index) {
+              case 0:
+                return CupertinoTabView(
+                  builder: (context) {
+                    return _pages[0];
+                  },
+                );
+              case 1:
+                return CupertinoTabView(
+                  builder: (context) {
+                    return _pages[1];
+                  },
+                );
+              case 2:
+                return CupertinoTabView(
+                  builder: (context) {
+                    return _pages[2];
+                  },
+                );
+              case 3:
+                return CupertinoTabView(
+                  builder: (context) {
+                    return _pages[3];
+                  },
+                );
+              default:
+                return CupertinoTabView(
+                  builder: (context) {
+                    return _pages[4];
+                  },
+                );
             }
             // return _pages[index];
           });
-      }
-    );
+        });
     //   Scaffold(
     //   body: _pages[_selectedIndex],
     //   bottomNavigationBar: BottomNavigationBar(
