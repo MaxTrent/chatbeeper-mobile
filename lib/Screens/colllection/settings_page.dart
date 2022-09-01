@@ -1,5 +1,6 @@
 import 'package:chat_beeper/Screens/colllection/login_activity.dart';
-import 'package:chat_beeper/Screens/colllection/password.dart';
+import 'package:chat_beeper/Screens/colllection/password_change.dart';
+import 'package:chat_beeper/Screens/colllection/two_fact_auth.dart';
 import 'package:chat_beeper/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class _SettingsPageState extends State<SettingsPage> {
     bool darkModeOn = brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         toolbarHeight: 40.h,
         elevation: 0,
@@ -38,7 +39,7 @@ class _SettingsPageState extends State<SettingsPage> {
             Icons.arrow_back_ios,
             color: darkModeOn == true ? Colors.white : Colors.black,
           ),
-          onPressed: () {},
+          onPressed: () => Navigator.pop(context),
         ),
         title: Padding(
           padding: EdgeInsets.only(left: 135.0.w),
@@ -158,8 +159,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 Icons.arrow_forward_ios,
                 size: 17.h,
               ),
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => PasswordChange())),
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const PasswordChange())),
             ),
             ListTile(
               dense: true,
@@ -190,7 +193,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 Icons.arrow_forward_ios,
                 size: 17.h,
               ),
-              onTap: () {},
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: ((context) => TwoFactAuth()))),
             ),
             ListTile(
               dense: true,

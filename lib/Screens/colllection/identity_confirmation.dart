@@ -23,7 +23,7 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
     bool darkModeOn = brightness == Brightness.dark;
 
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: AppBar(
           toolbarHeight: 40.h,
           elevation: 0.h,

@@ -79,7 +79,7 @@ class _GetStartedState extends State<GetStarted> {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const Home(),
+                      builder: (context) => const ConfirmRegister(),
                     ));
               },
               child: Row(
