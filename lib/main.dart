@@ -1,3 +1,4 @@
+import 'package:chat_beeper/Screens/colllection/settings_page.dart';
 import 'package:chat_beeper/Screens/get_started.dart';
 import 'package:chat_beeper/Screens/otp_email.dart';
 import 'package:chat_beeper/Screens/profile_page.dart';
@@ -24,6 +25,7 @@ import 'package:chat_beeper/Screens/authenticate_signup.dart';
 import 'package:chat_beeper/Screens/colllection/room.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/services.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -38,38 +40,38 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    return  ScreenUtilInit(
-      designSize: Size(428,926),
-      builder:(BuildContext context, child)=> MaterialApp(
+    return ScreenUtilInit(
+      designSize: Size(428, 926),
+      builder: (BuildContext context, child) => MaterialApp(
         themeMode: ThemeMode.system,
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
         debugShowCheckedModeBanner: false,
         initialRoute: SplashScreen.id,
         routes: {
-          SignIn.id :(context)=>SignIn(),
-          UploadBname.id :(context)=>const UploadBname(),
-          SplashScreen.id :(context)=>SplashScreen(),
-          CreateBusiness.id :(context)=>const CreateBusiness(),
-          ForgotPassword.id :(context)=>const ForgotPassword(),
-          CreateAccount.id :(context)=>CreateAccount(),
-          ConfirmRegister.id :(context)=>const ConfirmRegister(),
-          OtpAuth.id :(context)=>const OtpAuth(),
-          TourPage.id :(context)=>const TourPage(),
-          Timeline.id :(context)=>const Timeline(),
-          OtpFailed.id :(context)=>const OtpFailed(),
-          OtpPassed.id :(context)=>const OtpPassed(),
-          ChooseUsername.id :(context)=>const ChooseUsername(),
-          AuthenticateSignup.id :(context)=> AuthenticateSignup(),
-          OtpEmail.id:(context)=>const OtpEmail(),
-          Notifications.id:(context)=> Notifications(),
-          DirectMessage.id:(context)=>DirectMessage(),
-          Room.id:(context)=>Room(),
-          GetStarted.id:(context)=>GetStarted(),
-          PostCard.id:(context)=>PostCard(),
-          Profile.id:(context)=>Profile(),
-          Beep.id:(context)=>Beep(),
-
+          SignIn.id: (context) => SignIn(),
+          UploadBname.id: (context) => const UploadBname(),
+          SplashScreen.id: (context) => SplashScreen(),
+          CreateBusiness.id: (context) => const CreateBusiness(),
+          ForgotPassword.id: (context) => const ForgotPassword(),
+          CreateAccount.id: (context) => CreateAccount(),
+          ConfirmRegister.id: (context) => const ConfirmRegister(),
+          OtpAuth.id: (context) => const OtpAuth(),
+          TourPage.id: (context) => const TourPage(),
+          Timeline.id: (context) => const Timeline(),
+          OtpFailed.id: (context) => const OtpFailed(),
+          OtpPassed.id: (context) => const OtpPassed(),
+          ChooseUsername.id: (context) => const ChooseUsername(),
+          AuthenticateSignup.id: (context) => AuthenticateSignup(),
+          OtpEmail.id: (context) => const OtpEmail(),
+          Notifications.id: (context) => Notifications(),
+          DirectMessage.id: (context) => DirectMessage(),
+          Room.id: (context) => Room(),
+          GetStarted.id: (context) => GetStarted(),
+          PostCard.id: (context) => PostCard(),
+          Profile.id: (context) => Profile(),
+          Beep.id: (context) => Beep(),
+          SettingsPage.id: (context) => SettingsPage(),
         },
       ),
     );

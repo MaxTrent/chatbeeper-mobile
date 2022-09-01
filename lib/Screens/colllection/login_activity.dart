@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 
 class LoginActivity extends StatefulWidget {
   const LoginActivity({Key? key}) : super(key: key);
+  static const String id = 'Login Activity';
 
   @override
   State<LoginActivity> createState() => _LoginActivityState();
@@ -21,7 +22,7 @@ class _LoginActivityState extends State<LoginActivity> {
     bool darkModeOn = brightness == Brightness.dark;
 
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: AppBar(
           toolbarHeight: 40.h,
           elevation: 0.h,
@@ -65,10 +66,10 @@ class _LoginActivityState extends State<LoginActivity> {
               SizedBox(
                 height: 93.h,
               ),
-              //ListView.builder(
-              //physics: ScrollPhysics(),
-              // itemBuilder: _itemBuilder,
-              //),
+              /*ListView.builder(
+                physics: ScrollPhysics(),
+                itemBuilder: (context, ),
+              ),*/
             ],
           ),
         ));
