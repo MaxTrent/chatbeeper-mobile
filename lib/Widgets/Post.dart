@@ -142,35 +142,34 @@ class PostCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    IconButton(
-                      color: Colors.grey,
-                      icon: const Icon(
-                        CupertinoIcons.ellipses_bubble,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Comment()));
-                      },
-                    ),
-                  ],
+                IconButton(
+                  color: Colors.grey,
+                  icon: SvgPicture.asset(
+                    'images/message.svg',
+                    height: 25.h,
+                    width: 25.w,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Comment()));
+                  },
                 ),
                 LikeButton(
                   size: 24,
                   circleColor: CircleColor(
-                      start: Color(0xff00ddff), end: const Color(0xff0099cc)),
+                      start: Colors.red.shade700, end: Colors.red.shade800),
                   bubblesColor: BubblesColor(
-                    dotPrimaryColor: Color(0xff33b5e5),
-                    dotSecondaryColor: Color(0xff0099cc),
+                    dotPrimaryColor: Colors.red.shade700,
+                    dotSecondaryColor: Colors.red.shade800,
                   ),
                   likeBuilder: (bool isLiked) {
-                    return SvgPicture.asset(
-                      'images/Infinity.svg',
-                      color: isLiked ? bcolor5 : Colors.grey,
-                    );
+                    return isLiked == false
+                        ? SvgPicture.asset('images/Infinity.svg')
+                        : SvgPicture.asset(
+                            'images/infinity red.svg',
+                          );
                   },
                   likeCount: 100,
                   // countBuilder: (int count, bool isLiked, String text) {
@@ -198,10 +197,9 @@ class PostCard extends StatelessWidget {
                     dotSecondaryColor: Colors.red.shade800,
                   ),
                   likeBuilder: (bool isLiked) {
-                    return SvgPicture.asset(
-                      'images/dislike.svg',
-                      color: isLiked ? dColor : Color(0xff11CDF3),
-                    );
+                    return isLiked == false
+                        ? SvgPicture.asset('images/dislike.svg')
+                        : SvgPicture.asset('images/dislike fill.svg');
                   },
                   likeCount: 100,
                   // countBuilder: (int count, bool isLiked, String text) {
@@ -229,13 +227,9 @@ class PostCard extends StatelessWidget {
                     dotSecondaryColor: Colors.red,
                   ),
                   likeBuilder: (bool isLiked) {
-                    return Icon(
-                      isLiked == false
-                          ? Icons.favorite_border_outlined
-                          : Icons.favorite,
-                      color: isLiked ? Colors.red : Colors.grey,
-                      size: 24,
-                    );
+                    return isLiked == false
+                        ? SvgPicture.asset('images/like.svg')
+                        : SvgPicture.asset('images/like fill.svg');
                   },
                   likeCount: 100,
                   // countBuilder: (int count, bool isLiked, String text) {
