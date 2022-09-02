@@ -111,25 +111,34 @@ String posttime = '1 hour ago';
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+
+
                 GestureDetector(
                   child: SvgPicture.asset('images/comment.svg', height: 24,),
                   onTap: (){
                     Navigator.push(context,MaterialPageRoute(builder: (context) => const Comment()));
+
                   },
                 ),
                 SizedBox(width: 30.w,),
                 LikeButton(
+
+
                   size: 28,
                   circleColor:
                   CircleColor(start: Colors.red.shade700, end: Colors.red.shade800),
+
                   bubblesColor: BubblesColor(
                     dotPrimaryColor: Colors.red.shade700,
                     dotSecondaryColor: Colors.red.shade800,
                   ),
                   likeBuilder: (bool isLiked) {
+
+
                     return isLiked == false? SvgPicture.asset(
                       'images/rebeep.svg',
                     ): SvgPicture.asset('images/rebeep_red.svg');
+
                   },
                   likeCount: 100,
                   // countBuilder: (int count, bool isLiked, String text) {
@@ -158,9 +167,11 @@ String posttime = '1 hour ago';
                     dotSecondaryColor: Colors.red.shade800,
                   ),
                   likeBuilder: (bool isLiked) {
+
                     return isLiked == false? SvgPicture.asset(
                       'images/dislike_blue.svg',
                     ): SvgPicture.asset('images/dislike_red.svg');
+
                   },
                   likeCount: 100,
                   // countBuilder: (int count, bool isLiked, String text) {
@@ -189,9 +200,11 @@ String posttime = '1 hour ago';
                     dotSecondaryColor: Colors.red,
                   ),
                   likeBuilder: (bool isLiked) {
+
                     return isLiked == false ? SvgPicture.asset(
                     'images/like.svg',
                     ): SvgPicture.asset('images/favorite_red.svg');
+
                   },
                   likeCount: 100,
                   // countBuilder: (int count, bool isLiked, String text) {

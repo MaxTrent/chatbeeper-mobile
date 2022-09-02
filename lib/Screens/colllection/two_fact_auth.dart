@@ -1,11 +1,13 @@
 import 'package:chat_beeper/constants.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
 class TwoFactAuth extends StatefulWidget {
   const TwoFactAuth({Key? key}) : super(key: key);
@@ -72,7 +74,7 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
             ),
             Center(
               child: Text(
-                'Check if your phone number is on\nWhatsApp',
+                'Add phone number',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).primaryTextTheme.headline4!.copyWith(
                       fontSize: 24.sp,
@@ -81,7 +83,18 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
               ),
             ),
             SizedBox(
-              height: 37.h,
+              height: 14.h,
+            ),
+            Text(
+              'Before we can confirm your WhatsApp\naccount, you need to add your phone number',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).primaryTextTheme.headline4!.copyWith(
+                    fontSize: 16.sp,
+                    color: Colors.grey,
+                  ),
+            ),
+            SizedBox(
+              height: 13.h,
             ),
             Text(
               'We’ll send you a confirmation code next',
@@ -95,14 +108,14 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
             SizedBox(
               width: 372.w,
               child: TextFormField(
-                textInputAction: TextInputAction.done,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
                 inputFormatters: [
                   LengthLimitingTextInputFormatter(10),
                   FilteringTextInputFormatter.allow(
                     RegExp(r"[0-9]"),
                   ),
                 ],
+                textInputAction: TextInputAction.done,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (val) {
                   if (val!.isValidPhone ||
                       val.isEmpty ||
@@ -119,9 +132,9 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
                   prefixIcon: Padding(
                     padding: EdgeInsets.only(left: 10.0.w),
                     child: CountryCodePicker(
+                      showDropDownButton: true,
                       barrierColor: Colors.grey,
                       backgroundColor: CupertinoColors.systemGrey,
-                      // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
                       initialSelection: '+234',
                       favorite: const ['+234', 'NG'],
                       textStyle: Theme.of(context).primaryTextTheme.bodyText1,
@@ -130,18 +143,12 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
                         border: Border.all(width: 1.w, color: uColor),
                         borderRadius: BorderRadius.circular(6.r),
                       ),
-
-                      //showFlagDialog: true,
-                      //comparator: (a, b) => b.name.compareTo(a.name),
-                      //Get the country information relevant to the initial selection
-                      //onInit: (code) => print("${code.name} ${code.dialCode}"),
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(6.r)),
                       borderSide: BorderSide(
                         width: 0.5.w,
-                        // color: _isvalid == true ? bcolor1: Colors.red),
                         color: bcolor1,
                       )),
                   enabledBorder: OutlineInputBorder(
@@ -165,9 +172,38 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
                       .bodyText2!
                       .copyWith(fontSize: 14.sp),
                   contentPadding: EdgeInsets.only(top: 10.h, left: 10.w),
-                  // hintStyle: Theme.of(context).primaryTextTheme.subtitle1,
-
                   focusColor: uColor,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 68.h,
+            ),
+            SizedBox(
+              height: 54.h,
+              width: 372.w,
+              child: ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(const Color(0xff295B85)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6.r),
+                      side: const BorderSide(color: Colors.transparent),
+                    ))),
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TwoFaVerification(),
+                  ),
+                ),
+                child: Text(
+                  'Next',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .headline3!
+                      .copyWith(fontSize: 16.sp),
                 ),
               ),
             ),
@@ -182,5 +218,167 @@ extension StringEx on String {
   bool get isValidPhone {
     final phoneReg = RegExp(r"^\+?0[0-9]{10}$");
     return phoneReg.hasMatch(this);
+  }
+}
+
+class TwoFaVerification extends StatefulWidget {
+  const TwoFaVerification({Key? key}) : super(key: key);
+
+  @override
+  State<TwoFaVerification> createState() => _2faVerificationState();
+}
+
+class _2faVerificationState extends State<TwoFaVerification> {
+  final _formKey = GlobalKey<FormState>();
+  final otpcontroller = TextEditingController();
+  final focusNode = FocusNode();
+  final int _value = 1;
+  var email = 'JandeDoe@gmail,com';
+  @override
+  void dispose() {
+    otpcontroller.dispose();
+    focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
+    ScreenUtil.init(
+      context,
+      designSize: Size(485, 926),
+    );
+    return Scaffold(
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 60.h),
+            child: Image.asset(
+              'images/verify.png',
+              height: 137.h,
+              width: 150.w,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(17.0),
+            child: Column(
+              children: [
+                SizedBox(width: 5.w, height: 32.h),
+                Text('Verification',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context)
+                        .primaryTextTheme
+                        .subtitle2!
+                        .copyWith(fontSize: 25.sp, color: Colors.black)
+                    // style: TextStyle(fontFamily: 'Anton', fontSize: 30),
+                    ), //Authenticate
+                SizedBox(width: 5.w, height: 0.03.h),
+                Center(
+                  child: Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(15.0),
+                      child: Center(
+                        child: Text(
+                            'Please enter the 6 digit verification code sent to $email',
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context)
+                                .primaryTextTheme
+                                .headline5!
+                                .copyWith(
+                                    color: Colors.black,
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.w400)),
+                      ),
+                    ),
+                  ),
+                ), //AND WRITE UP, whois creating
+                Padding(
+                  padding: EdgeInsets.only(top: 36.h, bottom: 34.h),
+                  child: SizedBox(
+                    width: 272.w,
+                    height: 50.h,
+                    child: OtpTextField(
+                      textStyle:
+                          TextStyle(color: Colors.white, fontSize: 25.sp),
+                      numberOfFields: 4,
+                      showCursor: false,
+                      autoFocus: true,
+                      focusedBorderColor: bcolor3,
+                      borderColor: bcolor3,
+                      borderWidth: 1,
+                      fieldWidth: 50.w,
+                      cursorColor: Colors.white,
+                      fillColor: bcolor3,
+                      filled: true,
+                      borderRadius: BorderRadius.all(Radius.circular(8.r)),
+                      //set to true to show as box or false to show as dash
+                      showFieldAsBox: true,
+                      //runs when a code is typed in
+                      onCodeChanged: (pin) {
+                        //handle validation or checks here
+                      },
+                      //runs when every textfield is filled
+                      onSubmit: (pin) {
+                        if (pin == '2224') {
+                          null;
+                        } else {
+                          null;
+                        }
+                        return null;
+
+                        // showDialog(
+                        //     context: context,
+                        //     builder: (context){
+                        //       return AlertDialog(
+                        //         title: Text("Verification Code"),
+                        //         content: Text('Code entered is $verificationCode'),
+                        //       );
+                        //     }
+                        // );
+                      }, // end onSubmit
+                    ),
+                  ),
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    RichText(
+                      text: TextSpan(text: '', children: [
+                        TextSpan(
+                          text: 'Didn\'t get an OTP? ',
+                          style: TextStyle(
+                              color: Colors.grey.shade700,
+                              fontFamily: 'Nunito',
+                              fontWeight: FontWeight.w500,
+                              fontStyle: FontStyle.normal,
+                              fontSize: 18.sp),
+                        ),
+                        TextSpan(
+                            text: 'Resend',
+                            style: TextStyle(
+                                color: bcolor3,
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 18.sp,
+                                fontFamily: 'Nunito'),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap =
+                                  () {} /* => Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const OtpPassed(),
+                                  ),*/
+                            ),
+                      ]),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ), //TopOW
+        ],
+      ),
+    );
   }
 }
