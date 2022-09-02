@@ -1,5 +1,6 @@
 import 'package:chat_beeper/Screens/colllection/login_activity.dart';
-import 'package:chat_beeper/Screens/colllection/password.dart';
+// import 'package:chat_beeper/Screens/colllection/password.dart';
+import 'package:chat_beeper/Screens/colllection/password_change.dart';
 import 'package:chat_beeper/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

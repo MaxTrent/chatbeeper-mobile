@@ -305,7 +305,7 @@ class _TourCardState extends State<TourCard> {
                     ),
                     likeBuilder: (bool isLiked) {
                       return isLiked == false? SvgPicture.asset(
-                        'images/dislike.svg',
+                        'images/dislike_blue.svg',
                       ): SvgPicture.asset('images/dislike_red.svg');
                     },
                     likeCount: 100,
