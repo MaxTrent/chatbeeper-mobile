@@ -15,7 +15,7 @@ class OtpFailed extends StatelessWidget {
         preferredSize: Size(width,50.h),
         child: AppBar(
           elevation: 0,
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           iconTheme: IconThemeData(
             color: bcolor3, //change your color here
           ),
@@ -33,7 +33,7 @@ class OtpFailed extends StatelessWidget {
               child: Container(
                 height: 70.h,
                 width: 70.h,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(image: AssetImage('images/logo1.png',),
                       fit: BoxFit.contain
                   ),),

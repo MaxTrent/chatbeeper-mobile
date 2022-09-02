@@ -1,6 +1,6 @@
 import 'package:chat_beeper/Screens/colllection/login_activity.dart';
+// import 'package:chat_beeper/Screens/colllection/password.dart';
 import 'package:chat_beeper/Screens/colllection/password_change.dart';
-import 'package:chat_beeper/Screens/colllection/two_fact_auth.dart';
 import 'package:chat_beeper/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,22 +33,22 @@ class _SettingsPageState extends State<SettingsPage> {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         toolbarHeight: 40.h,
+        centerTitle: true,
         elevation: 0,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
             color: darkModeOn == true ? Colors.white : Colors.black,
           ),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
-        title: Padding(
-          padding: EdgeInsets.only(left: 135.0.w),
-          child: Text('Settings',
-              style: Theme.of(context)
-                  .primaryTextTheme
-                  .headline4!
-                  .copyWith(fontSize: 16.sp)),
-        ),
+        title: Text('Settings',
+            style: Theme.of(context)
+                .primaryTextTheme
+                .headline4!
+                .copyWith(fontSize: 16.sp)),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -159,10 +159,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 Icons.arrow_forward_ios,
                 size: 17.h,
               ),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const PasswordChange())),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => PasswordChange())),
             ),
             ListTile(
               dense: true,
@@ -193,8 +191,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 Icons.arrow_forward_ios,
                 size: 17.h,
               ),
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: ((context) => TwoFactAuth()))),
+              onTap: () {},
             ),
             ListTile(
               dense: true,
@@ -205,7 +202,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     .headline2!
                     .copyWith(fontSize: 14.sp, color: Color(0xff8E8E8E)),
               ),
-              trailing: CupertinoSwitch(
+              trailing: const CupertinoSwitch(
                 onChanged: null,
                 value: false,
               ),

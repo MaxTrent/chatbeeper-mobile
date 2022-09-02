@@ -37,7 +37,7 @@ class _ConfirmRegisterState extends State<ConfirmRegister> {
   Widget build(BuildContext context) {
     ScreenUtil.init(
       context,
-      designSize:Size(485,926),
+      designSize:const Size(485,926),
     );
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;

@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import '../Widgets/Post.dart';
 import '../Widgets/post_imageless.dart';
 import '../constants.dart';
@@ -34,7 +34,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> with TickerProviderStateMixin{
-  String FullName = 'Jane Doe';
+  String fullName = 'Jane Doe';
   String username = 'Janedoe_10';
 
   String location = 'Lagos, Nigeria';
@@ -60,7 +60,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
   // }
   @override
   Widget build(BuildContext context) {
-    _tabcontroller = new TabController(length: 3, vsync: this);
+    _tabcontroller = TabController(length: 3, vsync: this);
     var brightness = MediaQuery.of(context).platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
     double width = MediaQuery.of(context).size.width;
@@ -138,27 +138,15 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                       ),
                     ),//image
                     Positioned(
-                      top: 30.h,
+                      top: 20.h,
                       left: 0.w,
                       right: 410.w,
-                      bottom: 100.h,
-                      child: Center(
-                        child:  Container(
-                          height: 39.h,
-                          width: 93.w,
-                          decoration: const BoxDecoration(
-                            color: Colors.transparent,
-                            shape: BoxShape.circle,
-                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                            // ),
-                          ),
-                          child: CircleAvatar(
-                            backgroundColor: Colors.black.withOpacity(0.2),
-                            child: Center(child: IconButton(icon:  Icon(Icons.arrow_back_ios_new, size:23.h,color: Colors.white,), onPressed: () {
-                              Navigator.of(context).pop();
-                            },)),
-                          ),
-                        ),
+                      bottom: 50.h,
+                      child: GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).pop();
+                        },
+                        child:Icon(Icons.arrow_back_ios_new, size:19.h,color: Colors.white,),
                       ),
                     ),//backbutton
                     SizedBox(height: 20.h,),
@@ -167,11 +155,11 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 30.h,),
+                    SizedBox(height: 40.h,),
                     Column(
                       children: [
                         Text(
-                          "\  $FullName\ ",
+                          "\  $fullName\ ",
                           style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w600, color:bcolor3, fontSize: 22.sp ),
                         ),//full name
                         Row(
@@ -183,7 +171,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                         ),//username
                         // SizedBox(height: 5.h,),
                         Padding(
-                          padding:  EdgeInsets.only(left: 52.w, right: 52.w,),
+                          padding:  EdgeInsets.only(left: 52.w, right: 52.w, bottom: 14.h),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -244,13 +232,16 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                                 ),
                               ),//followers
                               Padding(
-                                padding:  EdgeInsets.only(right: 14.w, bottom: 8.h),
+                                padding:  EdgeInsets.only(right: 14.w, bottom: 13.h),
                                 child: Container(height: 30.h, color: uColor, width: 1,),
                               ),
                               Column(
                                 children: [
-                                Icon(CupertinoIcons.location, size: 20.h,),
-
+                                  SizedBox(
+                                      height: 20.h,  width: 20.w,
+                                      child: darkModeOn? SvgPicture.asset('images/location white.svg'):
+                                      SvgPicture.asset('images/location.svg')
+                                  ),
                                   Text(location,style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 14.sp,), ),
                                 ],
                               ),//location
@@ -262,7 +253,9 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(CupertinoIcons.link, size: 15.h,),
+                            SizedBox(
+                                height: 18.h, width: 18.h,
+                                child: SvgPicture.asset('images/link-2.svg')),
                             RichText(
                               text: TextSpan(
                                   text: '',
@@ -283,7 +276,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding:   EdgeInsets.fromLTRB(50.w,8.h,8.w,8.h),
                               child: SizedBox(
                                 height: 40.h,
                                 width: 130.w,
@@ -302,10 +295,11 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                                   onPressed: ()  {
                                     Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const ProfileTab()));
                                   },
-                                  child:  Row(
+                                  child: darkModeOn == false ?  Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text('Edit Profile',
+                                      Text(
+                                        'Edit profile',
                                         textAlign: TextAlign.center,
                                         style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp,fontWeight: FontWeight.w600),
                                         // TextStyle(
@@ -316,32 +310,57 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                                         //
                                         // ),
                                       ),
-                                      SizedBox(width: 2.w,),
-                                      IconTheme(
-
-                                          data: Theme.of(context).iconTheme.copyWith(color: Colors.white),
-                                          child: Icon(Icons.edit, size: 18.h,    color:darkModeOn ?  Colors.white: Colors.black, )),
+                                      SizedBox(width: 4.w,),
+                                      SizedBox(
+                                          height: 18.h,  width: 18.w,
+                                          child: darkModeOn? SvgPicture.asset('images/edit.svg'):
+                                          SvgPicture.asset('images/edit black.svg')
+                                      )
                                     ],
-                                  ),),
+                                  ):
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                      'Follow',
+                                      textAlign: TextAlign.center,
+                                      style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp,fontWeight: FontWeight.w600),
+                                      // TextStyle(
+                                      //     color: Colors.white,
+                                      //     fontWeight: FontWeight.w500,
+                                      //     fontFamily: 'Nunito',
+                                      //     fontSize: 16.sp
+                                      //
+                                      // ),
+                                    ),
+                                      SizedBox(width: 8,),
+                                      darkModeOn? SvgPicture.asset('images/plus.svg'): SvgPicture.asset('images/plus black.svg'),
+                                    ]
+                                  ),
+
+                                ),
                               ),
                             ),
-                            SizedBox(width: 12.w,),
-                            // Center(
-                            //   child:  Container(
-                            //     height: 40.h,
-                            //     width: 40.w,
-                            //     decoration: BoxDecoration(
-                            //       color: Colors.transparent,
-                            //       shape: BoxShape.circle,
-                            //       border: Border.all(
-                            //         color: bcolor3
-                            //       )
-                            //       // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                            //       // ),
-                            //     ),
-                            //     child: Center(child: IconButton(icon: Icon(Icons.mail_outline,size: 18.h, color: bcolor1,), onPressed: () {  },)),
-                            //   ),
-                            // ),
+                            SizedBox(width: 25.w,),
+                        Center(
+                              child:  darkModeOn ?   Container(
+                                height: 40.h,
+                                width: 40.w,
+                                decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: bcolor3
+                                  )
+                                  // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                  // ),
+                                ),
+                                child: Center(child: GestureDetector(
+                                  onTap: (){},
+                                  child: SvgPicture.asset('images/sms blue.svg'),
+                                ),),
+                              ):null,
+                            ),
                           ],
                         ),//edit profile and dm
                         SizedBox(height: 5.h,),
@@ -383,9 +402,9 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                                   child: Center(child: Text('Videos'))),
                           ],),
                         ),
-                        SizedBox(height: 5.h,),
+                        SizedBox(height: 16.h,),
                         Divider(
-                          color: Theme.of(context).brightness == Brightness.light ? uColor: bcolor1, height: 1.h,
+                          color: darkModeOn == false ? uColor: bcolor1, height: 1.h,
                         ),
                         SizedBox(
                           height: 500.h,
@@ -427,19 +446,6 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                     ),
                   ],
                 ),
-                // SizedBox(
-                //   height: 500.h,
-                //   child: ListView(
-                //     children:   [
-                //       Column(
-                //           children: [
-                //             PostBeep(),
-                //             PostCard(),
-                //             PostCard(),
-                //           ],
-                //         ),]
-                //   ),
-                // ),
               ],
             ),
           ),

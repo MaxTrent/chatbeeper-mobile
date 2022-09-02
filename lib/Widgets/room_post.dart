@@ -1,4 +1,4 @@
-import 'package:chat_beeper/Widgets/tour_page_slider.dart';
+import 'package:chat_beeper/Widgets/room_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:expandable/expandable.dart';
@@ -8,16 +8,21 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:like_button/like_button.dart';
 import '../constants.dart';
 import 'image_slider.dart';
-class TourCard extends StatelessWidget {
+class RoomCard extends StatelessWidget {
   String loremIpsum ="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
   String FullName = 'Sarah Madini';
   String username = 'Madini';
   String posttime = '1 hour ago';
-   TourCard({Key? key}) : super(key: key);
+  String bio = 'This is my bio';
+  RoomCard({Key? key}) : super(key: key);
   static const String id = 'tour-card';
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(
+      context,
+      designSize:const Size(485,926),
+    );
     buildImg(Color color, double height) {
       return SizedBox(
           height: height,
@@ -73,7 +78,7 @@ class TourCard extends StatelessWidget {
                                   size: 15,),
                               ],
                             ),
-                            Text('\ $posttime', style: TextStyle(
+                            Text('\ $posttime', style: const TextStyle(
                                 fontFamily: 'Nunito',
                                 fontWeight: FontWeight.w500,
                                 color: Colors.grey),),
@@ -98,9 +103,8 @@ class TourCard extends StatelessWidget {
     buildCollapsed2() {
       return Column(
         children: [
-          TourSlider(),
           SizedBox(
-            height: 80.h,
+            height: 100.h,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -133,153 +137,17 @@ class TourCard extends StatelessWidget {
                     IconButton(onPressed: (){}, icon: Icon(Icons.more_vert_sharp, color: Theme.of(context).colorScheme.secondaryVariant, size: 30,), )
                   ],
                 ),
-
+                Padding(
+                  padding:  EdgeInsets.only(left: 16.w, right: 16.w, top: 16.h),
+                  child: Text(bio,
+                    textAlign: TextAlign.left,
+                    style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 16.sp, fontWeight: FontWeight.w400, fontFamily: 'Nunito'),
+                  ),
+                ),
               ],
             ),
           ),//avatar
-          Padding(
-            padding: EdgeInsets.only(left: 10.w, right: 10.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                ReadMoreText(
-                  loremIpsum,
-                  trimExpandedText: 'see Less',
-                  trimCollapsedText: 'see more',
-                  colorClickableText: Colors.grey,
-                  style: Theme
-                      .of(context)
-                      .primaryTextTheme
-                      .bodyText1!
-                      .copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
-
-                ),
-              ],
-            ),
-          ),
-          Container(
-            height: 0.2.h,
-            color: bcolor1,
-          ), //divider
-          Padding(
-            padding: EdgeInsets.only(left: 16.w, right: 16.w),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: const [
-                    Icon(CupertinoIcons.ellipses_bubble, color: Colors.grey,),
-                    Text('10')
-                  ],
-                ),
-                LikeButton(
-                  size: 24,
-                  circleColor:
-                  CircleColor(start: const Color(0xff00ddff), end: Color(0xff0099cc)),
-                  bubblesColor: const BubblesColor(
-                    dotPrimaryColor: Color(0xff33b5e5),
-                    dotSecondaryColor: Color(0xff0099cc),
-                  ),
-                  likeBuilder: (bool isLiked) {
-                    return Icon(
-                      CupertinoIcons.infinite,
-                      color: isLiked ? bcolor5 : Colors.grey,
-                      size: 24,
-                    );
-                  },
-                  likeCount: 100,
-                  // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                  //   Widget result;
-                  //   if (count == 0) {
-                  //     result = Text(
-                  //       "love",
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   } else
-                  //     result = Text(
-                  //       text,
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   return result;
-                  // },
-                ), //infinite
-                LikeButton(
-                  size: 24,
-                  circleColor:
-                  CircleColor(
-                      start: Colors.red.shade700, end: Colors.red.shade800),
-                  bubblesColor: BubblesColor(
-                    dotPrimaryColor: Colors.red.shade700,
-                    dotSecondaryColor: Colors.red.shade800,
-                  ),
-                  likeBuilder: (bool isLiked) {
-                    return Icon(
-                      Icons.heart_broken_rounded,
-                      color: isLiked ? dColor : Colors.grey,
-                      size: 24,
-                    );
-                  },
-                  likeCount: 100,
-                  // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                  //   Widget result;
-                  //   if (count == 0) {
-                  //     result = Text(
-                  //       "love",
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   } else
-                  //     result = Text(
-                  //       text,
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   return result;
-                  // },
-                ), //brokenheart
-                LikeButton(
-                  size: 24,
-                  circleColor:
-                  CircleColor(start: Colors.red.shade200, end: Colors.red),
-                  bubblesColor: BubblesColor(
-                    dotPrimaryColor: Colors.red,
-                    dotSecondaryColor: Colors.red,
-                  ),
-                  likeBuilder: (bool isLiked) {
-                    return Icon(
-                      isLiked == false ? Icons.favorite_border_outlined : Icons
-                          .favorite,
-                      color: isLiked ? Colors.red : Colors.grey,
-                      size: 24,
-                    );
-                  },
-                  likeCount: 100,
-                  // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                  //   Widget result;
-                  //   if (count == 0) {
-                  //     result = Text(
-                  //       "love",
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   } else
-                  //     result = Text(
-                  //       text,
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   return result;
-                  // },
-                ), //heart
-                SizedBox(width: 96.w,),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 10.0.h),
-                  child: IconButton(
-                    icon: Icon(CupertinoIcons.share_up, size: 24.h,),
-                    color: Colors.grey,
-                    onPressed: () {},),
-                ),
-              ],), //icons
-          ), //icons
+          const RoomSlider(),
         ],
       );
     } //image of card

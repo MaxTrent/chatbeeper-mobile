@@ -6,6 +6,7 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:like_button/like_button.dart';
 import 'package:chat_beeper/constants.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -22,6 +23,10 @@ class PostBeep extends StatelessWidget {
   Widget build(BuildContext context) {
     var brightness = MediaQuery.of(context).platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
+    ScreenUtil.init(
+      context,
+      designSize:const Size(485,926),
+    );
     buildImg(Color color, double height) {
       return SizedBox(
           height: height,
@@ -131,123 +136,59 @@ class PostBeep extends StatelessWidget {
     buildCollapsed2() {
       return Column(
         children: [
-          Padding(
-            padding: EdgeInsets.only(
-              left: 52.w,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                ReadMoreText(
-                  loremIpsum,
-                  trimExpandedText: 'see Less',
-                  trimCollapsedText: 'see more',
-                  colorClickableText: Colors.grey,
-                  style: Theme.of(context)
-                      .primaryTextTheme
-                      .bodyText1!
-                      .copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
-                ),
-              ],
-            ),
-          ), //readmore text
+readmore text
+
+      Padding(
+        padding:  EdgeInsets.only(left: 16.w, right: 27.w,bottom: 12.h, top: 12.h),
+      child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+      ReadMoreText(
+      loremIpsum,
+      trimExpandedText: 'see Less',
+      trimCollapsedText: 'see more',
+      colorClickableText: Colors.grey,
+      style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
+
+      ),
+      ],
+      ),
+      ),//readmore text
+
           Container(
             height: 0.2,
             color: Colors.grey,
           ), //divider
           Padding(
-            padding: EdgeInsets.only(left: 16.w, right: 16.w),
+
+
+            padding:  EdgeInsets.only(left: 16.w,right: 19.w, top: 20.h, bottom: 15.h),
+
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                IconButton(
-                  color: Colors.grey,
-                  icon: SvgPicture.asset(
-                    'images/message.svg',
-                    height: 25.h,
-                    width: 25.w,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Comment()));
+
+
+                GestureDetector(
+                  child: SvgPicture.asset('images/comment.svg', height: 24,),
+                  onTap: (){
+                    Navigator.push(context,MaterialPageRoute(builder: (context) => const Comment()));
                   },
                 ),
-                LikeButton(
-                  size: 24,
-                  circleColor: CircleColor(
-                      start: Colors.red.shade700, end: Colors.red.shade800),
-                  bubblesColor: BubblesColor(
-                    dotPrimaryColor: Colors.red.shade700,
-                    dotSecondaryColor: Colors.red.shade800,
-                  ),
-                  likeBuilder: (bool isLiked) {
-                    return isLiked == false
-                        ? SvgPicture.asset('images/Infinity.svg')
-                        : SvgPicture.asset(
-                            'images/infinity red.svg',
-                          );
-                  },
-                  likeCount: 100,
-                  // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                  //   Widget result;
-                  //   if (count == 0) {
-                  //     result = Text(
-                  //       "love",
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   } else
-                  //     result = Text(
-                  //       text,
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   return result;
-                  // },
-                ), //infinite
-                LikeButton(
-                  size: 24,
-                  circleColor: CircleColor(
-                      start: Colors.red.shade700, end: Colors.red.shade800),
-                  bubblesColor: BubblesColor(
-                    dotPrimaryColor: Colors.red.shade700,
-                    dotSecondaryColor: Colors.red.shade800,
-                  ),
-                  likeBuilder: (bool isLiked) {
-                    return isLiked == false
-                        ? SvgPicture.asset('images/dislike.svg')
-                        : SvgPicture.asset('images/dislike fill.svg');
-                  },
-                  likeCount: 100,
-                  // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                  //   Widget result;
-                  //   if (count == 0) {
-                  //     result = Text(
-                  //       "love",
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   } else
-                  //     result = Text(
-                  //       text,
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   return result;
-                  // },
-                ), //brokenheart
+                SizedBox(width: 21.w,),
                 LikeButton(
                   size: 24,
                   circleColor:
-                      CircleColor(start: Colors.red.shade200, end: Colors.red),
-                  bubblesColor: BubblesColor(
-                    dotPrimaryColor: Colors.red,
-                    dotSecondaryColor: Colors.red,
+                  CircleColor(start: Color(0xff00ddff), end: const Color(0xff0099cc)),
+                  bubblesColor: const BubblesColor(
+                    dotPrimaryColor: Color(0xff33b5e5),
+                    dotSecondaryColor: Color(0xff0099cc),
                   ),
                   likeBuilder: (bool isLiked) {
-                    return isLiked == false
-                        ? SvgPicture.asset('images/like.svg')
-                        : SvgPicture.asset('images/like fill.svg');
+                    return isLiked == false? SvgPicture.asset(
+                      'images/rebeep.svg',
+                    ): SvgPicture.asset('images/rebeep_red.svg');
+
                   },
                   likeCount: 100,
                   // countBuilder: (int count, bool isLiked, String text) {
@@ -265,25 +206,44 @@ class PostBeep extends StatelessWidget {
                   //     );
                   //   return result;
                   // },
-                ), //heart
-                SizedBox(
-                  width: 96.w,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 10.0.h),
-                  child: IconButton(
-                    icon: Icon(
-                      CupertinoIcons.share_up,
-                      size: 24.h,
-                    ),
-                    color: Colors.grey,
-                    onPressed: () {},
+
+                ),//infinite
+                SizedBox(width: 30.w,),
+
+                LikeButton(
+                  size: 24,
+                  circleColor: CircleColor(
+                      start: Colors.red.shade700, end: Colors.red.shade800),
+                  bubblesColor: BubblesColor(
+                    dotPrimaryColor: Colors.red.shade700,
+                    dotSecondaryColor: Colors.red.shade800,
                   ),
-                ),
-              ],
-            ),
-            //icons
-          ), //icons
+                  likeBuilder: (bool isLiked) {
+
+
+                    return isLiked == false? SvgPicture.asset(
+                      'images/dislike_blue.svg',
+                    ): SvgPicture.asset('images/dislike_red.svg');
+
+                  },
+                  likeCount: 100,
+                  // countBuilder: (int count, bool isLiked, String text) {
+                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                  //   Widget result;
+                  //   if (count == 0) {
+                  //     result = Text(
+                  //       "love",
+                  //       style: TextStyle(color: color),
+                  //     );
+                  //   } else
+                  //     result = Text(
+                  //       text,
+                  //       style: TextStyle(color: color),
+                  //     );
+                  //   return result;
+                  // },
+
+
         ],
       );
     } //image of card
@@ -317,7 +277,7 @@ class PostBeep extends StatelessWidget {
 
     buildExpanded3() {
       return Padding(
-        padding: EdgeInsets.all(10),
+        padding:  EdgeInsets.only(left: 16.w, right: 27.w,bottom: 12.h, top: 12.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
