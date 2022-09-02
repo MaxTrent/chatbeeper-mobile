@@ -79,21 +79,21 @@ flutter:
       fonts:
         - asset: fonts/Arvo/Arvo-Italic.ttf
         - asset: fonts/Arvo/Arvo-Regular.ttf
-        - asset: fonts/Arvo/Arvo-bold.ttf
+        - asset: fonts/Arvo/Arvo-Bold.ttf
 
     - family: Nunito
       fonts:
         - asset: fonts/Nunito/Nunito-Light.ttf
         - asset: fonts/Nunito/Nunito-Regular.ttf
-        - asset: fonts/Nunito/Nunito-medium.ttf
-        - asset: fonts/Nunito/Nunito-bold.ttf
+        - asset: fonts/Nunito/Nunito-Medium.ttf
+        - asset: fonts/Nunito/Nunito-Bold.ttf
 
     - family: inter
       fonts:
-        - asset: fonts/inter/inter-Light.ttf
-        - asset: fonts/inter/inter-Regular.ttf
-        - asset: fonts/inter/inter-medium.ttf
-        - asset: fonts/inter/inter-bold.ttf
+        - asset: fonts/Inter/Inter-Light.ttf
+        - asset: fonts/Inter/Inter-Regular.ttf
+        - asset: fonts/Inter/Inter-Medium.ttf
+        - asset: fonts/Inter/Inter-Bold.ttf
 
 
     - family: dislike

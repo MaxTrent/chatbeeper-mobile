@@ -25,7 +25,7 @@ class PostBeep extends StatelessWidget {
     bool darkModeOn = brightness == Brightness.dark;
     ScreenUtil.init(
       context,
-      designSize:const Size(485,926),
+      designSize: const Size(485, 926),
     );
     buildImg(Color color, double height) {
       return SizedBox(
@@ -136,116 +136,123 @@ class PostBeep extends StatelessWidget {
     buildCollapsed2() {
       return Column(
         children: [
-readmore text
-
-      Padding(
-        padding:  EdgeInsets.only(left: 16.w, right: 27.w,bottom: 12.h, top: 12.h),
-      child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-      ReadMoreText(
-      loremIpsum,
-      trimExpandedText: 'see Less',
-      trimCollapsedText: 'see more',
-      colorClickableText: Colors.grey,
-      style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
-
-      ),
-      ],
-      ),
-      ),//readmore text
+          Padding(
+            padding: EdgeInsets.only(
+                left: 16.w, right: 27.w, bottom: 12.h, top: 12.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                ReadMoreText(
+                  loremIpsum,
+                  trimExpandedText: 'see Less',
+                  trimCollapsedText: 'see more',
+                  colorClickableText: Colors.grey,
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .bodyText1!
+                      .copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
+                ),
+              ],
+            ),
+          ), //readmore text
 
           Container(
             height: 0.2,
             color: Colors.grey,
           ), //divider
           Padding(
-
-
-            padding:  EdgeInsets.only(left: 16.w,right: 19.w, top: 20.h, bottom: 15.h),
-
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-
-
-                GestureDetector(
-                  child: SvgPicture.asset('images/comment.svg', height: 24,),
-                  onTap: (){
-                    Navigator.push(context,MaterialPageRoute(builder: (context) => const Comment()));
-                  },
-                ),
-                SizedBox(width: 21.w,),
-                LikeButton(
-                  size: 24,
-                  circleColor:
-                  CircleColor(start: Color(0xff00ddff), end: const Color(0xff0099cc)),
-                  bubblesColor: const BubblesColor(
-                    dotPrimaryColor: Color(0xff33b5e5),
-                    dotSecondaryColor: Color(0xff0099cc),
+              padding: EdgeInsets.only(
+                  left: 16.w, right: 19.w, top: 20.h, bottom: 15.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                    child: SvgPicture.asset(
+                      'images/comment.svg',
+                      height: 24,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Comment()));
+                    },
                   ),
-                  likeBuilder: (bool isLiked) {
-                    return isLiked == false? SvgPicture.asset(
-                      'images/rebeep.svg',
-                    ): SvgPicture.asset('images/rebeep_red.svg');
-
-                  },
-                  likeCount: 100,
-                  // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                  //   Widget result;
-                  //   if (count == 0) {
-                  //     result = Text(
-                  //       "love",
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   } else
-                  //     result = Text(
-                  //       text,
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   return result;
-                  // },
-
-                ),//infinite
-                SizedBox(width: 30.w,),
-
-                LikeButton(
-                  size: 24,
-                  circleColor: CircleColor(
-                      start: Colors.red.shade700, end: Colors.red.shade800),
-                  bubblesColor: BubblesColor(
-                    dotPrimaryColor: Colors.red.shade700,
-                    dotSecondaryColor: Colors.red.shade800,
+                  SizedBox(
+                    width: 21.w,
                   ),
-                  likeBuilder: (bool isLiked) {
+                  LikeButton(
+                    size: 24,
+                    circleColor: CircleColor(
+                        start: Color(0xff00ddff), end: const Color(0xff0099cc)),
+                    bubblesColor: const BubblesColor(
+                      dotPrimaryColor: Color(0xff33b5e5),
+                      dotSecondaryColor: Color(0xff0099cc),
+                    ),
+                    likeBuilder: (bool isLiked) {
+                      return isLiked == false
+                          ? SvgPicture.asset(
+                              'images/rebeep.svg',
+                            )
+                          : SvgPicture.asset('images/rebeep_red.svg');
+                    },
+                    likeCount: 100,
+                    // countBuilder: (int count, bool isLiked, String text) {
+                    //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                    //   Widget result;
+                    //   if (count == 0) {
+                    //     result = Text(
+                    //       "love",
+                    //       style: TextStyle(color: color),
+                    //     );
+                    //   } else
+                    //     result = Text(
+                    //       text,
+                    //       style: TextStyle(color: color),
+                    //     );
+                    //   return result;
+                    // },
+                  ), //infinite
+                  SizedBox(
+                    width: 30.w,
+                  ),
 
-
-                    return isLiked == false? SvgPicture.asset(
-                      'images/dislike_blue.svg',
-                    ): SvgPicture.asset('images/dislike_red.svg');
-
-                  },
-                  likeCount: 100,
-                  // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                  //   Widget result;
-                  //   if (count == 0) {
-                  //     result = Text(
-                  //       "love",
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   } else
-                  //     result = Text(
-                  //       text,
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   return result;
-                  // },
-
-
+                  LikeButton(
+                    size: 24,
+                    circleColor: CircleColor(
+                        start: Colors.red.shade700, end: Colors.red.shade800),
+                    bubblesColor: BubblesColor(
+                      dotPrimaryColor: Colors.red.shade700,
+                      dotSecondaryColor: Colors.red.shade800,
+                    ),
+                    likeBuilder: (bool isLiked) {
+                      return isLiked == false
+                          ? SvgPicture.asset(
+                              'images/dislike_blue.svg',
+                            )
+                          : SvgPicture.asset('images/dislike_red.svg');
+                    },
+                    likeCount: 100,
+                  ),
+                ],
+              )),
         ],
       );
+      // countBuilder: (int count, bool isLiked, String text) {
+      //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+      //   Widget result;
+      //   if (count == 0) {
+      //     result = Text(
+      //       "love",
+      //       style: TextStyle(color: color),
+      //     );
+      //   } else
+      //     result = Text(
+      //       text,
+      //       style: TextStyle(color: color),
+      //     );
+      //   return result;
+      // },
     } //image of card
 
     // buildCollapsed3() {
@@ -277,7 +284,8 @@ readmore text
 
     buildExpanded3() {
       return Padding(
-        padding:  EdgeInsets.only(left: 16.w, right: 27.w,bottom: 12.h, top: 12.h),
+        padding:
+            EdgeInsets.only(left: 16.w, right: 27.w, bottom: 12.h, top: 12.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[

@@ -1,6 +1,7 @@
 import 'package:chat_beeper/Screens/colllection/login_activity.dart';
 // import 'package:chat_beeper/Screens/colllection/password.dart';
 import 'package:chat_beeper/Screens/colllection/password_change.dart';
+import 'package:chat_beeper/Screens/colllection/two_fact_auth.dart';
 import 'package:chat_beeper/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -179,20 +180,20 @@ class _SettingsPageState extends State<SettingsPage> {
                   MaterialPageRoute(builder: (context) => LoginActivity())),
             ),
             ListTile(
-              dense: true,
-              title: Text(
-                'Two-factor Authenticator',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline2!
-                    .copyWith(fontSize: 14.sp, color: Color(0xff8E8E8E)),
-              ),
-              trailing: Icon(
-                Icons.arrow_forward_ios,
-                size: 17.h,
-              ),
-              onTap: () {},
-            ),
+                dense: true,
+                title: Text(
+                  'Two-factor Authenticator',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline2!
+                      .copyWith(fontSize: 14.sp, color: Color(0xff8E8E8E)),
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward_ios,
+                  size: 17.h,
+                ),
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => TwoFactAuth()))),
             ListTile(
               dense: true,
               title: Text(
