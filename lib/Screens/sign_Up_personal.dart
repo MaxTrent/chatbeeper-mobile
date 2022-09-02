@@ -1560,7 +1560,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const SettingsPage()));
+                                            const OtpEmail()));
                               },
                               child: Text(
                                 'Create Account',

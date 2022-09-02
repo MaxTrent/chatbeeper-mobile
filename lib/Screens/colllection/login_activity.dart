@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 
 class LoginActivity extends StatefulWidget {
   const LoginActivity({Key? key}) : super(key: key);
+  static const String id = 'Login Activity';
 
   @override
   State<LoginActivity> createState() => _LoginActivityState();
@@ -65,10 +66,10 @@ class _LoginActivityState extends State<LoginActivity> {
               SizedBox(
                 height: 93.h,
               ),
-              //ListView.builder(
-              //physics: ScrollPhysics(),
-              // itemBuilder: _itemBuilder,
-              //),
+              /*ListView.builder(
+                physics: ScrollPhysics(),
+                itemBuilder: (context, ),
+              ),*/
             ],
           ),
         ));
