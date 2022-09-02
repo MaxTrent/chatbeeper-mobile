@@ -1,9 +1,12 @@
 import 'package:chat_beeper/Screens/colllection/compose_beep.dart';
+import 'package:chat_beeper/Screens/colllection/dm.dart';
+import 'package:chat_beeper/Screens/colllection/settings_page.dart';
 import 'package:chat_beeper/Screens/profile_page.dart';
 import 'package:chat_beeper/Widgets/post_imageless.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../Widgets/Post.dart';
@@ -33,16 +36,16 @@ class _TimelineState extends State<Timeline> {
     );
     return Scaffold(
       key: _key,
-      floatingActionButton: FloatingActionButton(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10.r), bottomRight:Radius.circular(10.r), topLeft:Radius.circular(10.r),topRight: Radius.circular(10.r), )
-          ),
-          foregroundColor: bcolor1,
-          backgroundColor: bcolor1,
-          child: IconButton(icon: const Icon(CupertinoIcons.pen), onPressed: () {
-            Navigator.push(context,MaterialPageRoute(builder: (context) =>  ComposeBeep()));
-          }, color: Colors.white,),
-          onPressed: (){}),
+      // floatingActionButton: FloatingActionButton(
+      //     shape: RoundedRectangleBorder(
+      //         borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10.r), bottomRight:Radius.circular(10.r), topLeft:Radius.circular(10.r),topRight: Radius.circular(10.r), )
+      //     ),
+      //     foregroundColor: bcolor1,
+      //     backgroundColor: bcolor1,
+      //     child: IconButton(icon: const Icon(CupertinoIcons.pen), onPressed: () {
+      //       Navigator.push(context,MaterialPageRoute(builder: (context) =>  ComposeBeep()));
+      //     }, color: Colors.white,),
+      //     onPressed: (){}),
       appBar: PreferredSize(
         preferredSize: Size(428.w,68.h),
         child: Padding(
@@ -70,12 +73,43 @@ class _TimelineState extends State<Timeline> {
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             elevation: 0,
             actions: [
-       IconTheme(data: Theme.of(context).iconTheme,
-       child: Icon(Icons.search, size: 24.h,)),
+              SizedBox(
+                height: 24.h, width: 24.w,
+                child: GestureDetector(
+                  onTap: (){
+                    // Navigator.push(context,
+                    //     MaterialPageRoute(builder: (context) => DirectMessage()));
+                  },
+                  child:
+                  darkModeOn == false ? SvgPicture.asset(
+                    color: Colors.black,
+                    'images/search.svg',
+                  ):
+                  SvgPicture.asset(
+                    color: Colors.black,
+                    'images/search_dark.svg',
+                  ),
+                ),
+              ),
           SizedBox(width: 24.w,),
-          IconTheme(
-              data: Theme.of(context).iconTheme,
-              child: Icon(Icons.mail_outline,  size: 24.h,))
+          SizedBox(
+            height: 24.h,
+            width: 24.w,
+            child: GestureDetector(
+              onTap: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DirectMessage()));
+              },
+              child: darkModeOn == false? SvgPicture.asset(
+                  color: Colors.black,
+                  'images/Dm.svg',
+              ):
+              SvgPicture.asset(
+                color: Colors.black,
+                'images/sms.svg',
+              ),
+            ),
+          )
             ],
           ),
         ),
@@ -258,13 +292,18 @@ class _TimelineState extends State<Timeline> {
                           Navigator.push(context,MaterialPageRoute(builder: (context) => const Profile(),));
                         }, child: Row(
                       children: [
-                        Icon(IconlyLight.profile, size: 20.h,color: darkModeOn? Colors.white:Colors.black),
+                        SizedBox(
+                            height: 24.h,  width: 24.w,
+                            child: darkModeOn? SvgPicture.asset('images/profile white.svg'):
+                            SvgPicture.asset('images/profile.svg')
+                        ),
                         SizedBox(width: 12.w,),
                         Text('My Profile',
                           style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                           ),
                       ],
                     ))),//myprofile
+                SizedBox(height: 15.h,),
                 Align(
                     alignment: Alignment.topLeft,
                     child:TextButton(   style: TextButton.styleFrom(
@@ -274,13 +313,18 @@ class _TimelineState extends State<Timeline> {
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
                         ),onPressed: (){}, child: Row(
                       children: [
-                        Icon(Icons.supervisor_account_outlined, size: 20.h,color: darkModeOn? Colors.white:Colors.black),
+                        SizedBox(
+                            height: 24.h,  width: 24.w,
+                            child: darkModeOn? SvgPicture.asset('images/profile-2user white.svg'):
+                            SvgPicture.asset('images/profile-2user.svg')
+                        ),
                         SizedBox(width: 12.w,),
                         Text('Follower Requests',
                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                         ),
                       ],
                     ))),//follower request
+                SizedBox(height: 15.h,),
                 Align(
                     alignment: Alignment.topLeft,
                     child:TextButton(   style: TextButton.styleFrom(
@@ -290,13 +334,18 @@ class _TimelineState extends State<Timeline> {
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
                         ),onPressed: (){}, child: Row(
                       children: [
-                        Icon(Icons.trending_down, size: 20.h,color: darkModeOn? Colors.white:Colors.black),
+                        SizedBox(
+                            height: 24.h,  width: 24.w,
+                            child: darkModeOn? SvgPicture.asset('images/activity white.svg'):
+                            SvgPicture.asset('images/activity.svg')
+                        ),
                         SizedBox(width: 12.w,),
                         Text('Trending',
                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                         ),
                       ],
                     ))),//Trending
+                SizedBox(height: 15.h,),
                 Align(
                     alignment: Alignment.topLeft,
                     child:TextButton(   style: TextButton.styleFrom(
@@ -306,13 +355,18 @@ class _TimelineState extends State<Timeline> {
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
                         ),onPressed: (){}, child: Row(
                       children: [
-                        Icon(CupertinoIcons.bookmark, size: 20.h,color: darkModeOn? Colors.white:Colors.black),
+                        SizedBox(
+                            height: 24.h,  width: 24.w,
+                            child: darkModeOn? SvgPicture.asset('images/save-2 white.svg'):
+                            SvgPicture.asset('images/save-2.svg')
+                        ),
                         SizedBox(width: 12.w,),
                         Text('Saved Beeps',
                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                         ),
                       ],
                     ))),//saved
+                SizedBox(height: 15.h,),
                 Align(
                     alignment: Alignment.topLeft,
                     child:TextButton(   style: TextButton.styleFrom(
@@ -322,13 +376,18 @@ class _TimelineState extends State<Timeline> {
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
                         ),onPressed: (){}, child: Row(
                       children: [
-                        Icon(CupertinoIcons.briefcase, size: 20.h,color: darkModeOn? Colors.white:Colors.black),
+                        SizedBox(
+                            height: 24.h,  width: 24.w,
+                            child: darkModeOn? SvgPicture.asset('images/briefcase white.svg'):
+                            SvgPicture.asset('images/briefcase.svg')
+                        ),
                         SizedBox(width: 12.w,),
                         Text('Create Business Account',
                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                         ),
                       ],
                     ))),//create businessman
+                SizedBox(height: 15.h,),
                 Align(
                     alignment: Alignment.topLeft,
                     child:TextButton(   style: TextButton.styleFrom(
@@ -336,15 +395,23 @@ class _TimelineState extends State<Timeline> {
                           onSurface: Colors.transparent,
                           
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
-                        ),onPressed: (){}, child: Row(
+                        ),onPressed: (){
+                      Navigator.push(context,MaterialPageRoute(builder: (context) =>  const SettingsPage(),
+                      )
+                      );
+                    }, child: Row(
                       children: [
-                        Icon(IconlyLight.setting, size: 20.h,color: darkModeOn? Colors.white:Colors.black),
+                      SizedBox(
+                      height: 24.h,  width: 24.w,
+                      child:  darkModeOn? SvgPicture.asset('images/setting-2 white.svg'):
+                        SvgPicture.asset('images/setting-2.svg'),),
                         SizedBox(width: 12.w,),
                         Text('Settings',
                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                         ),
                       ],
                     ))),//settings
+                SizedBox(height: 15.h,),
                 Align(
                     alignment: Alignment.topLeft,
                     child:TextButton(   style: TextButton.styleFrom(
@@ -357,13 +424,17 @@ class _TimelineState extends State<Timeline> {
 
                         child: Row(
                       children: [
-                        Icon(Icons.verified_outlined, size: 20.h,color: darkModeOn? Colors.white:Colors.black),
+                          SizedBox(
+                          height: 24.h,  width: 24.w,
+                          child:   darkModeOn? Icon(Icons.verified_outlined, color: Colors.white, size: 24,):
+                        SvgPicture.asset('images/verify black.svg')),
                         SizedBox(width: 12.w,),
                         Text('Request Verification',
                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                         ),
                       ],
                     ))),//request verification
+                SizedBox(height: 15.h,),
                 Align(
                     alignment: Alignment.topLeft,
                     child:TextButton(   style: TextButton.styleFrom(
@@ -373,8 +444,11 @@ class _TimelineState extends State<Timeline> {
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
                         ),onPressed: (){}, child: Row(
                       children: [
-                        Icon(Icons.phonelink_ring_outlined, size: 20.h,color: darkModeOn? Colors.white:Colors.black),
-                        SizedBox(width: 12.w,),
+                        SizedBox(
+                          height: 24.h,  width: 24.w,
+                          child:  darkModeOn? SvgPicture.asset('images/promotions black.svg'):
+                          SvgPicture.asset('images/promotions black.svg'),),
+                      SizedBox(width: 12.w,),
                         Text('Promotions',
                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                         ),

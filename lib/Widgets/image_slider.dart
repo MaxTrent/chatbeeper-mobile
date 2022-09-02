@@ -38,6 +38,10 @@ class _ImageSliderState extends State<ImageSlider> {
   @override
   Widget build(BuildContext context) {
     var  width = MediaQuery.of(context).size.width;
+    ScreenUtil.init(
+      context,
+      designSize:const Size(485,926),
+    );
     return Container(
       child: Builder(
         builder: (context) {

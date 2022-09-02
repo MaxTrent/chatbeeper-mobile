@@ -1,4 +1,5 @@
 import 'package:chat_beeper/Screens/colllection/beep.dart';
+import 'package:chat_beeper/Screens/colllection/beep_create.dart';
 import 'package:chat_beeper/Screens/colllection/room.dart';
 import 'package:chat_beeper/Screens/colllection/tour_page.dart';
 import 'package:chat_beeper/Widgets/Post.dart';
@@ -28,7 +29,7 @@ class _HomeState extends State<Home> {
   final List<Widget> _pages = <Widget>[
     const Timeline(),
     const TourPage(),
-    const Beep(),
+    const WriteBeep(),
     const Notifications(),
     const Room(),
     // const DirectMessage(),

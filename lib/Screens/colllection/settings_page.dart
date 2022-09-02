@@ -29,25 +29,25 @@ class _SettingsPageState extends State<SettingsPage> {
     bool darkModeOn = brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         toolbarHeight: 40.h,
+        centerTitle: true,
         elevation: 0,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
             color: darkModeOn == true ? Colors.white : Colors.black,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
-        title: Padding(
-          padding: EdgeInsets.only(left: 135.0.w),
-          child: Text('Settings',
-              style: Theme.of(context)
-                  .primaryTextTheme
-                  .headline4!
-                  .copyWith(fontSize: 16.sp)),
-        ),
+        title: Text('Settings',
+            style: Theme.of(context)
+                .primaryTextTheme
+                .headline4!
+                .copyWith(fontSize: 16.sp)),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -201,7 +201,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     .headline2!
                     .copyWith(fontSize: 14.sp, color: Color(0xff8E8E8E)),
               ),
-              trailing: CupertinoSwitch(
+              trailing: const CupertinoSwitch(
                 onChanged: null,
                 value: false,
               ),

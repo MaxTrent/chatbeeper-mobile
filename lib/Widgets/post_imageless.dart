@@ -5,6 +5,7 @@ import 'package:chat_beeper/Widgets/comment.dart';
 import 'package:expandable/expandable.dart';
 import 'package:like_button/like_button.dart';
 import 'package:chat_beeper/constants.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -19,6 +20,10 @@ class PostBeep extends StatelessWidget {
   Widget build(BuildContext context) {
     var brightness = MediaQuery.of(context).platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
+    ScreenUtil.init(
+      context,
+      designSize:const Size(485,926),
+    );
     buildImg(Color color, double height) {
       return SizedBox(
           height: height,
@@ -93,7 +98,7 @@ class PostBeep extends StatelessWidget {
       return Column(
         children: [
       Padding(
-      padding:  EdgeInsets.only(left: 16.w, right: 27.w),
+        padding:  EdgeInsets.only(left: 16.w, right: 27.w,bottom: 12.h, top: 12.h),
       child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -113,16 +118,15 @@ class PostBeep extends StatelessWidget {
             color: Colors.grey,
           ),//divider
           Padding(
-            padding:  EdgeInsets.only(left: 16.w,right: 19.w),
+            padding:  EdgeInsets.only(left: 16.w,right: 19.w, top: 20.h, bottom: 15.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    IconButton( color: Colors.grey, icon:const Icon(CupertinoIcons.ellipses_bubble,), onPressed: () {
-                      Navigator.push(context,MaterialPageRoute(builder: (context) => const Comment()));
-                    },),
-                  ],
+                GestureDetector(
+                  child: SvgPicture.asset('images/comment.svg', height: 24,),
+                  onTap: (){
+                    Navigator.push(context,MaterialPageRoute(builder: (context) => const Comment()));
+                  },
                 ),
                 SizedBox(width: 21.w,),
                 LikeButton(
@@ -134,11 +138,9 @@ class PostBeep extends StatelessWidget {
                     dotSecondaryColor: Color(0xff0099cc),
                   ),
                   likeBuilder: (bool isLiked) {
-                    return Icon(
-                      CupertinoIcons.infinite,
-                      color: isLiked ? bcolor5 : Colors.grey,
-                      size: 24,
-                    );
+                    return isLiked == false? SvgPicture.asset(
+                      'images/rebeep.svg',
+                    ): SvgPicture.asset('images/rebeep_red.svg');
                   },
                   likeCount: 100,
                   // countBuilder: (int count, bool isLiked, String text) {
@@ -157,7 +159,7 @@ class PostBeep extends StatelessWidget {
                   //   return result;
                   // },
                 ),//infinite
-                SizedBox(width: 21.w,),
+                SizedBox(width: 30.w,),
                 LikeButton(
                   size: 24,
                   circleColor:
@@ -167,11 +169,9 @@ class PostBeep extends StatelessWidget {
                     dotSecondaryColor: Colors.red.shade800,
                   ),
                   likeBuilder: (bool isLiked) {
-                    return Icon(
-                      Icons.heart_broken_rounded,
-                      color: isLiked ? dColor : Colors.grey,
-                      size: 24,
-                    );
+                    return isLiked == false? SvgPicture.asset(
+                      'images/dislike.svg',
+                    ): SvgPicture.asset('images/dislike_red.svg');
                   },
                   likeCount: 100,
                   // countBuilder: (int count, bool isLiked, String text) {
@@ -190,43 +190,46 @@ class PostBeep extends StatelessWidget {
                   //   return result;
                   // },
                 ),//brokenheart
-                SizedBox(width: 21.w,),
-                LikeButton(
-                  size: 24,
-                  circleColor:
-                  CircleColor(start: Colors.red.shade200, end: Colors.red),
-                  bubblesColor: BubblesColor(
-                    dotPrimaryColor: Colors.red,
-                    dotSecondaryColor: Colors.red,
-                  ),
-                  likeBuilder: (bool isLiked) {
-                    return Icon(
-                      isLiked ==false ?   Icons.favorite_border_outlined: Icons.favorite,
-                      color: isLiked ? Colors.red : Colors.grey,
-                      size: 24,
-                    );
-                  },
-                  likeCount: 100,
-                  // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                  //   Widget result;
-                  //   if (count == 0) {
-                  //     result = Text(
-                  //       "love",
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   } else
-                  //     result = Text(
-                  //       text,
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   return result;
-                  // },
-                ),//heart
+                SizedBox(width: 30.w,),
+      LikeButton(
+      size: 24,
+      circleColor:
+      CircleColor(start: Colors.red.shade200, end: Colors.red),
+      bubblesColor: const BubblesColor(
+      dotPrimaryColor: Colors.red,
+      dotSecondaryColor: Colors.red,
+      ),
+      likeBuilder: (bool isLiked) {
+      return isLiked == false? SvgPicture.asset(
+      'images/like.svg',
+      ): SvgPicture.asset('images/favorite_red.svg');
+      },
+      likeCount: 100,
+      // countBuilder: (int count, bool isLiked, String text) {
+      //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+      //   Widget result;
+      //   if (count == 0) {
+      //     result = Text(
+      //       "love",
+      //       style: TextStyle(color: color),
+      //     );
+      //   } else
+      //     result = Text(
+      //       text,
+      //       style: TextStyle(color: color),
+      //     );
+      //   return result;
+      // },
+      ),//heart
                 SizedBox(width: 90.w,),
-                Padding(
-                  padding:  EdgeInsets.only(bottom: 10.0.h),
-                  child: IconButton(icon: Icon(CupertinoIcons.share_up, size: 24.h,), color: Colors.grey, onPressed: () {  },),
+                GestureDetector(
+                  child: Padding(
+                    padding:  EdgeInsets.only(bottom: 5.h),
+                    child: SvgPicture.asset('images/share.svg', height: 26,),
+                  ),
+                  onTap: (){
+                    Navigator.push(context,MaterialPageRoute(builder: (context) => const Comment()));
+                  },
                 ),
               ],),//icons
           ),//icons
@@ -264,7 +267,7 @@ class PostBeep extends StatelessWidget {
 
     buildExpanded3() {
       return Padding(
-        padding: EdgeInsets.all(10),
+        padding:  EdgeInsets.only(left: 16.w, right: 27.w,bottom: 12.h, top: 12.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[

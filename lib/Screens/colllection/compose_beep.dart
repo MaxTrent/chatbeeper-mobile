@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:chat_beeper/constants.dart';
+import 'package:like_button/like_button.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 class ComposeBeep extends StatelessWidget {
   const ComposeBeep({Key? key}) : super(key: key);
   @override
@@ -11,38 +13,46 @@ class ComposeBeep extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     var brightness = MediaQuery.of(context).platformBrightness;
+    late var currentFocus;
     bool darkModeOn = brightness == Brightness.dark;
     ScreenUtil.init(
       context,
-      designSize:Size(485,926),
+      designSize:const Size(485,926),
     );
     return Scaffold(
       body: Padding(
         padding:  EdgeInsets.only(top: 100.h),
         child: Container(
           color: Theme.of(context).scaffoldBackgroundColor,
-          height: 500.h, width: width,
+          height: 600.h, width: width,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding:  EdgeInsets.only(left: 12.w, bottom: 24.h),
+                padding:  EdgeInsets.only(left: 12.w, bottom: 10.h),
                 child: Row(
                 children: [
                   GestureDetector(
-                      child: Icon(Icons.arrow_back_ios_sharp, size: 20.h,color:  darkModeOn? Colors.white: Colors.black,),
+                      child: Icon(Icons.arrow_back_ios_sharp, size: 20.h,color:  darkModeOn? bcolor: bcolor,),
                     onTap: (){
-                        Navigator.pop(context);
+                      FocusScope.of(context).unfocus();
+                       TextEditingController().clear();
+                       Navigator.pop(context);
+                        // Navigator.pop(context);
                     },
                   ),
-                  SizedBox(width: 5.w,),
+                ],
+                ),
+              ),
+              Row(
+                children: [
+                  SizedBox(width: 50.w,),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(100.0.r),
                     child: Image.asset('images/pp_round.png', height: 30.h,),
                   ),
                 ],
-                ),
               ),
               SizedBox(
                height: 360,
@@ -89,7 +99,7 @@ class ComposeBeep extends StatelessWidget {
                     // ),
                     hintText: "What\'s going on?",
                     hintStyle: Theme.of(context).primaryTextTheme.bodyText2,
-                    contentPadding:  EdgeInsets.only(top:10.h, left: 10.w ),
+                    contentPadding:  EdgeInsets.only(top:10.h, left: 50.w ),
                     // hintStyle: Theme.of(context).primaryTextTheme.subtitle1,
 
 
@@ -100,15 +110,18 @@ class ComposeBeep extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Container(
-                    height: 40.h, width: 40.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(100.r)),
-                      color: Colors.grey.shade200,
-                    ),
-                    child:  ClipRRect(
-                      borderRadius: BorderRadius.circular(100.0.r),
-                      child: Icon(Icons.image_outlined, size: 25.h,),
+                  Padding(
+                    padding:  EdgeInsets.only(left: 16.w),
+                    child:  Container(
+                      height: 40.h, width: 40.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(100.r)),
+                        color: Colors.grey.shade200,
+                      ),
+                      child:  IconButton(onPressed: (){}, icon: SvgPicture.asset('images/gallery.svg'), iconSize: 26.h,),
+                      // SizedBox(
+                      //     height: 26.h,
+                      //     width: 26.w,
                     ),
                   ),
                   SizedBox(width: 24.w,),
@@ -118,9 +131,12 @@ class ComposeBeep extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(100.r)),
                       color: Colors.grey.shade200,
                     ),
-                    child:  Icon(Icons.lock_outlined, size: 25.h,),
+                    child:  IconButton(onPressed: (){}, icon: SvgPicture.asset('images/lock-slash.svg'), iconSize: 26.h,),
+                    // SizedBox(
+                    //     height: 26.h,
+                    //     width: 26.w,
                   ),
-                  SizedBox(width: width*0.51,),
+                  SizedBox(width: width*0.48,),
                   SizedBox(
                     height: 40.h,
                     width: 106.w,
@@ -152,14 +168,14 @@ class ComposeBeep extends StatelessWidget {
                             // ),
                           ),
                           SizedBox(width: 10.w,),
-                          IconTheme(
-
-                              data: Theme.of(context).iconTheme.copyWith(color: Colors.white),
-                              child: Icon(CupertinoIcons.paperplane, size: 18.h,    color:darkModeOn ?  bcolor1: Colors.white, )),
+                          SizedBox(
+                            height: 20.h,
+                            child: darkModeOn? SvgPicture.asset('images/paperplane blue.svg'):
+                            SvgPicture.asset('images/paperplane.svg'),
+                          )
                         ],
                       ),),
                   ),//beep button
-                  Divider(color: Colors.red,thickness: 0.5,),
                 ],
               ),
             ],
