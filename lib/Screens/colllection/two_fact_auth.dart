@@ -26,8 +26,181 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
       designSize: Size(485, 926),
     );
     var brightness = MediaQuery.of(context).platformBrightness;
+    bool _switchValue = false;
     bool darkModeOn = brightness == Brightness.dark;
 
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: AppBar(
+        toolbarHeight: 40.h,
+        elevation: 0.h,
+        leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: Theme.of(context).appBarTheme.iconTheme!.color,
+            ),
+            onPressed: () => Navigator.pop(context)),
+        title: Padding(
+          padding: EdgeInsets.only(left: 135.0.w),
+          child: Text('Settings',
+              style: Theme.of(context)
+                  .primaryTextTheme
+                  .headline4!
+                  .copyWith(fontSize: 16.sp)),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Divider(
+              thickness: 2.h,
+            ),
+            ListTile(
+              dense: true,
+              title: Text(
+                'Two-factor authetication',
+                style: Theme.of(context)
+                    .primaryTextTheme
+                    .headline4!
+                    .copyWith(fontSize: 16.sp),
+              ),
+            ),
+            Divider(
+              height: 16.h,
+              thickness: 2.h,
+            ),
+            SizedBox(
+              height: 27.h,
+            ),
+            Text(
+              'Choose your security method',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).primaryTextTheme.headline4!.copyWith(
+                    fontSize: 24.sp,
+                    color: fColor,
+                  ),
+            ),
+            SizedBox(
+              height: 14.h,
+            ),
+            Text(
+              'Choose how you want us to send security\ncodes',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).primaryTextTheme.headline4!.copyWith(
+                    fontSize: 16.sp,
+                    color: Colors.grey,
+                  ),
+            ),
+            SizedBox(height: 90.h),
+            ListTile(
+              visualDensity: VisualDensity.adaptivePlatformDensity,
+              dense: false,
+              title: Text(
+                'Text message',
+                style: Theme.of(context)
+                    .primaryTextTheme
+                    .headline4!
+                    .copyWith(fontSize: 16.sp),
+              ),
+              subtitle: Padding(
+                padding: EdgeInsets.only(top: 4.0.h),
+                child: Text(
+                    'We’ll send a login code to the number\nthat you choose.',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline2!
+                        .copyWith(fontSize: 16.sp)),
+              ),
+              trailing: CupertinoSwitch(
+                value: _switchValue,
+                onChanged: (bool? value) {
+                  setState(() {
+                    value = true;
+                    _switchValue = value!;
+                  });
+                },
+              ),
+            ),
+            SizedBox(height: 24.0.h),
+            ListTile(
+              visualDensity: VisualDensity.adaptivePlatformDensity,
+              dense: false,
+              title: Text(
+                'WhatsApp',
+                style: Theme.of(context)
+                    .primaryTextTheme
+                    .headline4!
+                    .copyWith(fontSize: 16.sp),
+              ),
+              subtitle: Padding(
+                padding: EdgeInsets.only(top: 4.0.h),
+                child: Text('We’ll send a login code to your whatsapp',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline2!
+                        .copyWith(fontSize: 16.sp)),
+              ),
+              trailing: CupertinoSwitch(
+                value: _switchValue,
+                onChanged: (bool? value) {
+                  setState(() {
+                    value = true;
+                    _switchValue = value!;
+                  });
+                },
+              ),
+            ),
+            SizedBox(
+              height: 24.0.h,
+            ),
+            ListTile(
+              visualDensity: VisualDensity.adaptivePlatformDensity,
+              dense: false,
+              title: Text(
+                'Third party app',
+                style: Theme.of(context)
+                    .primaryTextTheme
+                    .headline4!
+                    .copyWith(fontSize: 16.sp),
+              ),
+              subtitle: Padding(
+                padding: EdgeInsets.only(top: 4.0.h),
+                child: Text('Connect an app for verification',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline2!
+                        .copyWith(fontSize: 16.sp)),
+              ),
+              trailing: CupertinoSwitch(
+                value: _switchValue,
+                onChanged: (bool? value) {
+                  setState(() {
+                    value = true;
+                    _switchValue = value!;
+                  });
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class TwoFactAddPhone extends StatefulWidget {
+  const TwoFactAddPhone({Key? key}) : super(key: key);
+
+  @override
+  State<TwoFactAddPhone> createState() => _TwoFactAddPhoneState();
+}
+
+class _TwoFactAddPhoneState extends State<TwoFactAddPhone> {
+  var _phoneNumber = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
