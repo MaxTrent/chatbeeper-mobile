@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'constants.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class AppTheme {
   //
@@ -10,6 +10,8 @@ class AppTheme {
   AppTheme._();
 
   static final ThemeData lightTheme = ThemeData(
+    splashColor: Colors.transparent,
+    splashFactory: NoSplash.splashFactory,
     primaryColor: bcolor3,
     scaffoldBackgroundColor: const Color(0xfffafafa),
     backgroundColor: Colors.white12,
@@ -27,7 +29,7 @@ class AppTheme {
      secondary: Colors.black38,
        secondaryVariant: Colors.black
   ),
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
         color: Colors.black
     ),
     textTheme:  TextTheme(
@@ -81,7 +83,7 @@ class AppTheme {
       headline6:  TextStyle(
           color: Colors.white,
           fontFamily: 'Nunito',
-          fontSize: 20,
+          fontSize: 20.sp,
         fontWeight: FontWeight.w400,
       ),//account name
       headline2: TextStyle(
@@ -98,7 +100,7 @@ class AppTheme {
         fontFamily: 'Ubuntu',
         fontStyle: FontStyle.normal,
         fontWeight: FontWeight.w400,
-        fontSize: 15,
+        fontSize: 15.sp,
 
       ),//for subheadings after main Heading
       headline4: TextStyle(
@@ -106,24 +108,24 @@ class AppTheme {
         fontFamily: 'Nunito',
         fontStyle: FontStyle.normal,
         fontWeight: FontWeight.w600,
-        fontSize: 32,
+        fontSize: 32.sp,
       ),//main heading
       headline3: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.w600,
           fontFamily: 'Nunito',
-          fontSize: 16
+          fontSize: 16.sp
 
       ),//for buttons
       headline1: TextStyle(
           color: Colors.black,
           fontFamily: 'Nunito',
-          fontSize: 18
+          fontSize: 18.sp
       ),//label style
       bodyText2: TextStyle(
           color: uColor,
           fontFamily: 'Nunito',
-          fontSize: 14,
+          fontSize: 14.sp,
          fontWeight: FontWeight.w500
       ),//hintstyle
       subtitle1: TextStyle(
@@ -143,6 +145,8 @@ class AppTheme {
   );
   static final ThemeData darkTheme = ThemeData(
     fontFamily: 'Nunito',
+    splashColor: Colors.transparent,
+    splashFactory: NoSplash.splashFactory,
     primaryColor: bcolor3,
     scaffoldBackgroundColor:backgroundColor,
     colorScheme: const ColorScheme.dark(
@@ -153,7 +157,7 @@ class AppTheme {
       secondary: Colors.grey,
       secondaryVariant: Colors.white
     ),
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: Colors.white
     ),
     textTheme:  TextTheme(
@@ -183,7 +187,7 @@ class AppTheme {
       ),
     ),
     primaryTextTheme:   TextTheme(
-      headline6:  TextStyle(
+      headline6:  const TextStyle(
         color: Colors.white,
         fontFamily: 'Nunito',
         fontSize: 20,
@@ -196,7 +200,7 @@ class AppTheme {
           fontSize: 14.sp,
           fontWeight: FontWeight.w500
       ),//label texts
-      headline5:   TextStyle(
+      headline5:   const TextStyle(
         color: Colors.white,
         fontFamily: 'Ubuntu',
         fontStyle: FontStyle.normal,
@@ -211,14 +215,14 @@ class AppTheme {
         fontWeight: FontWeight.w600,
         fontSize: 32.sp,
       ),//create account
-      headline3: TextStyle(
+      headline3: const TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.w600,
           fontFamily: 'Nunito',
           fontSize: 16
 
       ),//for buttons
-      headline1: TextStyle(
+      headline1: const TextStyle(
           color: Colors.black,
           fontFamily: 'Nunito',
           fontSize: 18

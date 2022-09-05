@@ -13,12 +13,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 
 import 'response_beep.dart';
 class PostCard extends StatelessWidget {
- String loremIpsum ="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-String FullName = 'Sarah Madini';
-String username = 'Madini';
-String posttime = '1 hour ago';
+ final String loremIpsum ="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+final String FullName = 'Sarah Madini';
+final String username = 'Madini';
+final String posttime = '1 hour ago';
 
-  PostCard({Key? key}) : super(key: key);
+  const PostCard({Key? key}) : super(key: key);
  static const String id = 'post-card';
   @override
   Widget build(BuildContext context) {

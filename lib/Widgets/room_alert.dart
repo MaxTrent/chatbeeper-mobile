@@ -16,12 +16,12 @@ class UploadAlert extends StatelessWidget {
       buttonPadding:EdgeInsets.zero,
       contentPadding: EdgeInsets.zero,
       actionsPadding: EdgeInsets.only(bottom: 9.h),
-      alignment: const Alignment(-2,0.928),
+      alignment:  Alignment.center,
       backgroundColor: Colors.white.withOpacity(0.7),
       shape: RoundedRectangleBorder(
           borderRadius:
           BorderRadius.all(
-              Radius.circular(100.0.r))),
+              Radius.circular(8.0.r))),
       actionsAlignment: MainAxisAlignment.center,
       content: Builder(
         builder: (context) {
@@ -32,17 +32,22 @@ class UploadAlert extends StatelessWidget {
           bool darkModeOn = brightness == Brightness.dark;
 
           return SizedBox(
-            width: 257.w, height: 51.h,
+            width: 356.w, height: 174.h,
             child: Center(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SvgPicture.asset('images/warning.svg'),
-                  Text('Please upload your international passport to access this feature.',
-                    style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                        color: Colors.red,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w500
-                    ),),
+                  Padding(
+                    padding:  EdgeInsets.only(left: 26.w,right: 26.w, top: 10.5.h),
+                    child: Text('Please upload your international passport to access this feature.',
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
+                          color: Colors.red,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500
+                      ),),
+                  ),
                 ],
               ),
             )
