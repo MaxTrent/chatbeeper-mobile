@@ -97,7 +97,7 @@ class _TourPageState extends State<TourPage> {
                       'images/search.svg',
                     ):
                     SvgPicture.asset(
-                      color: Colors.black,
+                      color: Colors.white,
                       'images/search_dark.svg',
                     ),
                   ),
@@ -116,7 +116,7 @@ class _TourPageState extends State<TourPage> {
                       'images/Dm.svg',
                     ):
                     SvgPicture.asset(
-                      color: Colors.black,
+                      color: Colors.white,
                       'images/sms.svg',
                     ),
                   ),

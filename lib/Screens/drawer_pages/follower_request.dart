@@ -21,15 +21,22 @@ class _FollowerRequestsState extends State<FollowerRequests> {
         preferredSize: Size(428.w,68.h),
         child: Padding(
           padding:  EdgeInsets.only(left: 16.w,right: 18.w, top: 32.h),
-          child: AppBar(
-            // automaticallyImplyLeading: true,
-            title: Text('Requests', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 16.sp),),
-            centerTitle: true,
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            elevation: 0,
-            leading: Center(child: IconButton(icon:  Icon(Icons.arrow_back_ios_new, size:23.h,color: darkModeOn? Colors.white: Colors.black,), onPressed: () {
-             Navigator.pop(context);
-            },)),
+          child: Container(
+            decoration: const BoxDecoration(
+              border: Border(
+                bottom: BorderSide(color: Colors.grey)
+              )
+            ),
+            child: AppBar(
+              // automaticallyImplyLeading: true,
+              title: Text('Requests', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 16.sp),),
+              centerTitle: true,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              elevation: 0,
+              leading: Center(child: IconButton(icon:  Icon(Icons.arrow_back_ios_new, size:23.h,color: darkModeOn? Colors.white: Colors.black,), onPressed: () {
+               Navigator.pop(context);
+              },)),
+            ),
           ),
         ),
       ),

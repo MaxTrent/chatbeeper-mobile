@@ -24,7 +24,7 @@ class _FollowRequestCardState extends State<FollowRequestCard> {
       height: 161.h, width: width,
       child:  Card(
         color: Theme.of(context).scaffoldBackgroundColor,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
         ),
         child: Container(
           decoration: const BoxDecoration(

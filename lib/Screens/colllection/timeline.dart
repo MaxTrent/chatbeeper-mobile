@@ -2,6 +2,8 @@ import 'package:chat_beeper/Screens/colllection/compose_beep.dart';
 import 'package:chat_beeper/Screens/colllection/dm.dart';
 import 'package:chat_beeper/Screens/colllection/settings_page.dart';
 import 'package:chat_beeper/Screens/drawer_pages/follower_request.dart';
+import 'package:chat_beeper/Screens/drawer_pages/saved_beeps.dart';
+import 'package:chat_beeper/Screens/drawer_pages/trending.dart';
 import 'package:chat_beeper/Screens/followers.dart';
 import 'package:chat_beeper/Screens/following.dart';
 import 'package:chat_beeper/Screens/profile_page.dart';
@@ -372,7 +374,10 @@ class _TimelineState extends State<Timeline> {
                           onSurface: Colors.transparent,
                           
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
-                        ),onPressed: (){}, child: Row(
+                        ),onPressed: (){
+                      Navigator.pop(context);
+                      Navigator.push(context,MaterialPageRoute(builder: (context) => const Trending(),));
+                    }, child: Row(
                       children: [
                         SizedBox(
                             height: 24.h,  width: 24.w,
@@ -393,7 +398,10 @@ class _TimelineState extends State<Timeline> {
                           onSurface: Colors.transparent,
                           
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
-                        ),onPressed: (){}, child: Row(
+                        ),onPressed: (){
+                      Navigator.pop(context);
+                      Navigator.push(context,MaterialPageRoute(builder: (context) => const SavedBeeps(),));
+                    }, child: Row(
                       children: [
                         SizedBox(
                             height: 24.h,  width: 24.w,
