@@ -1,5 +1,6 @@
 import 'package:chat_beeper/Widgets/comment.dart';
 import 'package:chat_beeper/Widgets/image_slider.dart';
+import 'package:chat_beeper/Widgets/rebeep_response.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:expandable/expandable.dart';
@@ -240,99 +241,7 @@ String posttime = '1 hour ago';
                 GestureDetector(
                   onTap: (){
                     showDialog(context: context, builder: (context)=>
-                        // AlertDialog(
-                        //   titlePadding: EdgeInsets.zero,
-                        //   clipBehavior: Clip.antiAlias,
-                        //   buttonPadding:EdgeInsets.zero,
-                        //   contentPadding: EdgeInsets.zero,
-                        //   actionsPadding: EdgeInsets.only(bottom: 9.h),
-                        //   alignment: const Alignment(-2,0.928),
-                        //   backgroundColor: Colors.white.withOpacity(0.7),
-                        //   shape: RoundedRectangleBorder(
-                        //       borderRadius:
-                        //       BorderRadius.all(
-                        //           Radius.circular(100.0.r))),
-                        //   actionsAlignment: MainAxisAlignment.center,
-                        //   content: Builder(
-                        //     builder: (context) {
-                        //       // Get available height and width of the build area of this widget. Make a choice depending on the size.
-                        //       var height = MediaQuery.of(context).size.height;
-                        //       var width = MediaQuery.of(context).size.width;
-                        //
-                        //       return SizedBox(
-                        //         width: 383.w,
-                        //         height: 83.h,
-                        //         child: Row(
-                        //           // crossAxisAlignment: CrossAxisAlignment.center,
-                        //           mainAxisSize: MainAxisSize.min,
-                        //           children: [
-                        //             Padding(
-                        //               padding:  EdgeInsets.only(left: 34.w,),
-                        //               child:    SizedBox(
-                        //                 width: 152.w, height: 38.57.h,
-                        //                 child:OutlinedButton(
-                        //                     style: OutlinedButton.styleFrom(
-                        //                         shape: const StadiumBorder(),
-                        //                         backgroundColor: bcolor3),
-                        //                     onPressed: (){
-                        //                       // FocusScope.of(context).unfocus();
-                        //                       // TextEditingController().clear();
-                        //                       Navigator.of(context, rootNavigator: true).pop();
-                        //                       Navigator.pop(context);
-                        //                     }, child: Row(
-                        //                   mainAxisAlignment: MainAxisAlignment.center,
-                        //                   children: [
-                        //                     SizedBox(
-                        //                         height:23, width: 29,
-                        //                         child: SvgPicture.asset('images/rebeep.svg')),
-                        //                     SizedBox(width: 8.w,),
-                        //                     Text('Rebeep',
-                        //                       style: TextStyle(
-                        //                           color: Colors.white, fontFamily: 'Nunito', fontSize: 16.sp,
-                        //                           fontWeight: FontWeight.w400
-                        //                       ),
-                        //                     ),
-                        //                   ],
-                        //                 )),
-                        //               ),//rebeep
-                        //             ),//Rebeep
-                        //             SizedBox(
-                        //               width: 10.w,
-                        //             ),
-                        //             SizedBox(
-                        //               width: 152.w, height: 38.57.h,
-                        //               child:OutlinedButton(
-                        //                   style: OutlinedButton.styleFrom(
-                        //                       shape: StadiumBorder(),
-                        //                       backgroundColor: bcolor3),
-                        //                   onPressed: (){
-                        //                     // FocusScope.of(context).unfocus();
-                        //                     // TextEditingController().clear();
-                        //                     Navigator.of(context, rootNavigator: true).pop();
-                        //                     Navigator.pop(context);
-                        //                   }, child: Row(
-                        //                 mainAxisAlignment: MainAxisAlignment.start,
-                        //                 children: [
-                        //                   SizedBox(
-                        //                       height:23, width: 27,
-                        //                       child: SvgPicture.asset('images/echo.svg')),
-                        //                   SizedBox(width: 8.w,),
-                        //                   Text('Echo Beep',
-                        //                     style: TextStyle(
-                        //                         color: Colors.white, fontFamily: 'Nunito', fontSize: 16.sp,
-                        //                         fontWeight: FontWeight.w400
-                        //                     ),
-                        //                   ),
-                        //                 ],
-                        //               )),
-                        //             ),//echo
-                        //           ],
-                        //         ),
-                        //       );
-                        //     },
-                        //   ),
-                        // ),
-                    ResponsePost(),
+                    const RebeepResponse(),
                     );
                   },
                   child: SvgPicture.asset('images/rebeep.svg'),
