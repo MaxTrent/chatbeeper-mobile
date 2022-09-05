@@ -20,29 +20,34 @@ class _LoginActivityState extends State<LoginActivity> {
     );
     var brightness = MediaQuery.of(context).platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
+    String device = 'iPhone 13';
+    String location = 'Lagos, Nigeria';
+    String lastSeen = 'Active now';
 
     return Scaffold(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        appBar: AppBar(
-          toolbarHeight: 40.h,
-          elevation: 0.h,
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: darkModeOn == true ? Colors.white : Colors.black,
-            ),
-            onPressed: () => Navigator.pop(context),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: AppBar(
+        toolbarHeight: 40.h,
+        elevation: 0.h,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: darkModeOn == true ? Colors.white : Colors.black,
           ),
-          title: Padding(
-            padding: EdgeInsets.only(left: 135.0.w),
-            child: Text('Settings',
-                style: Theme.of(context)
-                    .primaryTextTheme
-                    .headline4!
-                    .copyWith(fontSize: 16.sp)),
-          ),
+          onPressed: () => Navigator.pop(context),
         ),
-        body: SingleChildScrollView(
+        title: Padding(
+          padding: EdgeInsets.only(left: 135.0.w),
+          child: Text('Settings',
+              style: Theme.of(context)
+                  .primaryTextTheme
+                  .headline4!
+                  .copyWith(fontSize: 16.sp)),
+        ),
+      ),
+      body:
+
+          /*SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -65,13 +70,45 @@ class _LoginActivityState extends State<LoginActivity> {
               ),
               SizedBox(
                 height: 93.h,
-              ),
-              /*ListView.builder(
-                physics: ScrollPhysics(),
-                itemBuilder: (context, ),
               ),*/
-            ],
-          ),
-        ));
+          ListView.builder(
+              itemCount: 15,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            'images/location2.svg',
+                            width: 20.w,
+                            height: 20.h,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 10.0.w),
+                            child: Text(location),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 32.0.w),
+                        child: Text(device),
+                      ),
+                    ],
+                  ),
+                  subtitle: Padding(
+                    padding: EdgeInsets.only(left: 32.0.w),
+                    child: Text(
+                      'Active now',
+                      style: Theme.of(context)
+                          .primaryTextTheme
+                          .headline4!
+                          .copyWith(fontSize: 12.sp, color: Color(0xff11CDF3)),
+                    ),
+                  ),
+                );
+              }),
+    );
   }
 }

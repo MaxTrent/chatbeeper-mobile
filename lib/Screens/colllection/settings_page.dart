@@ -1,3 +1,4 @@
+import 'package:chat_beeper/Screens/colllection/language.dart';
 import 'package:chat_beeper/Screens/colllection/login_activity.dart';
 // import 'package:chat_beeper/Screens/colllection/password.dart';
 import 'package:chat_beeper/Screens/colllection/password_change.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'contact_info.dart';
+import 'country.dart';
 import 'deactivate_account.dart';
 import 'identity_confirmation.dart';
 
@@ -289,7 +291,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 Icons.arrow_forward_ios,
                 size: 17.h,
               ),
-              onTap: () {},
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Language())),
             ),
             ListTile(
               dense: true,
@@ -304,7 +307,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 Icons.arrow_forward_ios,
                 size: 17.h,
               ),
-              onTap: () {},
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Country())),
             ),
             ListTile(
                 dense: true,

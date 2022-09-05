@@ -113,14 +113,7 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
                         .copyWith(fontSize: 16.sp)),
               ),
               trailing: CupertinoSwitch(
-                value: _switchValue,
-                onChanged: (bool? value) {
-                  setState(() {
-                    value = true;
-                    _switchValue = value!;
-                  });
-                },
-              ),
+                  value: _switchValue, onChanged: (bool? value) {}),
             ),
             SizedBox(height: 24.0.h),
             ListTile(
