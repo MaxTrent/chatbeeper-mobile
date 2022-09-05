@@ -43,7 +43,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
         ),
         body: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Divider(
                 thickness: 2.h,
