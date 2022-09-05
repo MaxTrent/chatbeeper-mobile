@@ -127,7 +127,7 @@ class _ConfirmRegisterState extends State<ConfirmRegister> {
                               ),
                               onTap: () async {
                                 _selectedIndex == 2;
-                                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const SettingsPage(),));
+                                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const Home(),));
 
                                 // else if (_selectedIndex == 2) {
                                 //   // navigate to the desired route

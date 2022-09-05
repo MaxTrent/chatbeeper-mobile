@@ -106,7 +106,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                       // )
                       Container(
                         width: MediaQuery.of(context).size.width,
-                        height: 80.h,
+                        height: 100.h,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30.r),bottomRight:Radius.circular(30.r),topRight: Radius.circular(-10.r) ),
                             image: DecorationImage(
@@ -149,18 +149,83 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                         child:Icon(Icons.arrow_back_ios_new, size:19.h,color: Colors.white,),
                       ),
                     ),//backbutton
+                 Positioned(
+                      top: 15.h,
+                      left: 410.w,
+                      right: 0.w,
+                      bottom: 50.h,
+                      child: darkModeOn? PopupMenuButton<int>(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8.r))
+                        ),
+                        icon: Icon(Icons.more_horiz_sharp, size: 30.h,color: Theme.of(context).colorScheme.secondaryVariant,),
+                        iconSize: 24.h,
+                        itemBuilder: (context) => [
+                          PopupMenuItem(
+                            value: 1,
+                            // row has two child icon and text.
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                    height: 24.h, width: 24.w,
+                                    child: darkModeOn == false? SvgPicture.asset('images/info.svg'):SvgPicture.asset('images/info.svg', color: Colors.white,)),
+                                SizedBox(width: 10.w,),
+                                Text("About",style:  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),)
+                              ],
+                            ),
+                          ),//about
+                          PopupMenuItem(
+                            value: 2,
+                            // row has two child icon and text.
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                    height: 24.h, width: 24.w,
+                                    child:darkModeOn == false? SvgPicture.asset('images/block.svg'):SvgPicture.asset('images/block.svg', color: Colors.white,)),
+                                SizedBox(width: 10.w,),
+                                Text("Block User", style:
+                                TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                )
+                              ],
+                            ),
+                          ),//block
+                          PopupMenuItem(
+                            value: 3,
+                            // row has two child icon and text.
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                    height: 24.h, width: 24.w,
+                                    child:darkModeOn == false? SvgPicture.asset('images/report profile.svg'):SvgPicture.asset('images/report profile.svg', color: Colors.white,)),
+                                SizedBox(width: 10.w,),
+                                Text("Report Account", style:
+                                TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                )
+                              ],
+                            ),
+                          ),//report
+                        ],
+                        offset: Offset(-28.w, 30.h),
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                        elevation: 2,
+                      )
+                          :
+                      GestureDetector(),
+                    ),//backbutton
                     SizedBox(height: 20.h,),
                   ],
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 40.h,),
+                    SizedBox(height: 20.h,),
                     Column(
                       children: [
-                        Text(
-                          "\  $fullName\ ",
-                          style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w600, color:bcolor3, fontSize: 22.sp ),
+                        Center(
+                          child: Text(
+                            "\  $fullName\ ",
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w600, color:bcolor3, fontSize: 22.sp ),
+                          ),
                         ),//full name
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -169,7 +234,12 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                              Icon(Icons.verified_rounded, color: bcolor5,size: 15.h,),
                           ],
                         ),//username
-                        // SizedBox(height: 5.h,),
+                        Container(
+                          height: 15.h, width: 64.w,
+                          color: Colors.grey.shade300,
+                          child: Center(child: Text('Follows you', style: TextStyle(fontSize: 10.sp, color: Colors.black, fontFamily: 'Nunito', fontWeight: FontWeight.bold,),)),
+                        ),
+                        SizedBox(height: 5.h,),
                         Padding(
                           padding:  EdgeInsets.only(left: 52.w, right: 52.w, bottom: 14.h),
                           child: Column(
@@ -321,20 +391,24 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(
-                                      'Follow',
-                                      textAlign: TextAlign.center,
-                                      style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp,fontWeight: FontWeight.w600),
-                                      // TextStyle(
-                                      //     color: Colors.white,
-                                      //     fontWeight: FontWeight.w500,
-                                      //     fontFamily: 'Nunito',
-                                      //     fontSize: 16.sp
-                                      //
-                                      // ),
+                                      Center(
+                                        child: Text(
+                                        'Follow',
+                                        textAlign: TextAlign.center,
+                                        style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp,fontWeight: FontWeight.w600),
+                                        // TextStyle(
+                                        //     color: Colors.white,
+                                        //     fontWeight: FontWeight.w500,
+                                        //     fontFamily: 'Nunito',
+                                        //     fontSize: 16.sp
+                                        //
+                                        // ),
                                     ),
-                                      SizedBox(width: 8,),
-                                      darkModeOn? SvgPicture.asset('images/plus.svg'): SvgPicture.asset('images/plus black.svg'),
+                                      ),
+                                      SizedBox(width: 2,),
+                                      SizedBox(
+                                          height: 13.h,
+                                          child: darkModeOn? SvgPicture.asset('images/plus.svg'): SvgPicture.asset('images/plus black.svg')),
                                     ]
                                   ),
 
@@ -364,44 +438,47 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                           ],
                         ),//edit profile and dm
                         SizedBox(height: 5.h,),
-                        SizedBox(
-                          width: 344.w,
-                          child: TabBar(
-                            splashFactory: NoSplash.splashFactory,
-                            overlayColor: MaterialStateProperty.all(Colors.transparent),
-                            indicatorColor: Colors.transparent,
-                            labelColor: bcolor1,
-                            unselectedLabelColor: Colors.grey,
-                            unselectedLabelStyle: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight: FontWeight.w400),
-                            controller: _tabcontroller,
-                            tabs:  [
-                              Container(
-                                  height: 36.h, width: 90.w,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.rectangle,
-                                border: Border.all(color: bcolor1),
-                                borderRadius: BorderRadius.all(Radius.circular(100.r)),
-                              ),
-                                  child: const Center(child: Text('Beeps',)),
-                              ),
-                              Container(
-                                  height: 36.h, width: 90.w,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    border: Border.all(color: bcolor1),
-                                    borderRadius: BorderRadius.all(Radius.circular(100.r)),
-                                  ),
-                                  child: const Center(child: Text('Pictures'))),
-                              Container(
-                                  height: 36.h, width: 90.w,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    border: Border.all(color: bcolor1),
-                                    borderRadius: BorderRadius.all(Radius.circular(100.r)),
-                                  ),
-                                  child: Center(child: Text('Videos'))),
-                          ],),
-                        ),
+                        Padding(
+                          padding:  EdgeInsets.only(right:20 ),
+                          child: SizedBox(
+                            width: 344.w,
+                            child: TabBar(
+                              splashFactory: NoSplash.splashFactory,
+                              overlayColor: MaterialStateProperty.all(Colors.transparent),
+                              indicatorColor: Colors.transparent,
+                              labelColor: bcolor1,
+                              unselectedLabelColor: Colors.grey,
+                              unselectedLabelStyle: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight: FontWeight.w400),
+                              controller: _tabcontroller,
+                              tabs:  [
+                                Container(
+                                    height: 36.h, width: 90.w,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  border: Border.all(color: bcolor1),
+                                  borderRadius: BorderRadius.all(Radius.circular(100.r)),
+                                ),
+                                    child: const Center(child: Text('Beeps',)),
+                                ),
+                                Container(
+                                    height: 36.h, width: 90.w,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.rectangle,
+                                      border: Border.all(color: bcolor1),
+                                      borderRadius: BorderRadius.all(Radius.circular(100.r)),
+                                    ),
+                                    child: const Center(child: Text('Pictures'))),
+                                Container(
+                                    height: 36.h, width: 90.w,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.rectangle,
+                                      border: Border.all(color: bcolor1),
+                                      borderRadius: BorderRadius.all(Radius.circular(100.r)),
+                                    ),
+                                    child: Center(child: const Text('Videos'))),
+                            ],),
+                          ),
+                        ),//tapbar
                         SizedBox(height: 16.h,),
                         Divider(
                           color: darkModeOn == false ? uColor: bcolor1, height: 1.h,
@@ -441,7 +518,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                               ),//videos
                             ],
                           ),
-                        ),
+                        ),//tabview
                       ],
                     ),
                   ],

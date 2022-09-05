@@ -83,7 +83,89 @@ class PostBeep extends StatelessWidget {
                           ],
                         ),
                         Spacer(),
-                        IconButton(onPressed: (){}, icon: Icon(Icons.more_vert_sharp, color: Theme.of(context).colorScheme.secondaryVariant, size: 30,), )
+                        PopupMenuButton<int>(
+
+                          icon: Icon(Icons.more_vert_sharp, size: 30.h,color: Theme.of(context).colorScheme.secondaryVariant,),
+                          iconSize: 24.h,
+                          itemBuilder: (context) => [
+                            PopupMenuItem(
+                              value: 1,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h, width: 24.w,
+                                      child: darkModeOn == false? SvgPicture.asset('images/mute.svg'):SvgPicture.asset('images/mute.svg', color: Colors.white,)),
+                                  SizedBox(width: 10.w,),
+                                  Text("Mute",style:  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),)
+                                ],
+                              ),
+                            ),//mute
+                            PopupMenuItem(
+                              value: 2,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h, width: 24.w,
+                                      child:darkModeOn == false? SvgPicture.asset('images/block.svg'):SvgPicture.asset('images/block.svg', color: Colors.white,)),
+                                  SizedBox(width: 10.w,),
+                                  Text("Block", style:
+                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                  )
+                                ],
+                              ),
+                            ),//block
+                            PopupMenuItem(
+                              value: 3,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h, width: 24.w,
+                                      child:darkModeOn == false? SvgPicture.asset('images/unfollow.svg'):SvgPicture.asset('images/unfollow.svg', color: Colors.white,)),
+                                  SizedBox(width: 10.w,),
+                                  Text("Unfollow", style:
+                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                  )
+                                ],
+                              ),
+                            ),//unfollow
+                            PopupMenuItem(
+                              value: 4,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h, width: 24.w,
+                                      child:darkModeOn == false? SvgPicture.asset('images/not interested.svg'):SvgPicture.asset('images/not interested.svg', color: Colors.white,)),
+                                  SizedBox(width: 10.w,),
+                                  Text("Not interested in this", style:
+                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                  )
+                                ],
+                              ),
+                            ),//not interested
+                            PopupMenuItem(
+                              value: 5,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h, width: 24.w,
+                                      child:darkModeOn == false? SvgPicture.asset('images/report.svg'):SvgPicture.asset('images/report.svg', color: Colors.white,)),
+                                  SizedBox(width: 10.w,),
+                                  Text("Report this account", style:
+                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                  )
+                                ],
+                              ),
+                            ),//report
+                          ],
+                          offset: Offset(-28.w, 40.h),
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                          elevation: 2,
+                        ),
                       ],
                     ),
 

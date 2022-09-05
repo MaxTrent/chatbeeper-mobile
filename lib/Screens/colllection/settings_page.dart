@@ -176,7 +176,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 size: 17.h,
               ),
               onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => LoginActivity())),
+                  MaterialPageRoute(builder: (context) => const LoginActivity())),
             ),
             ListTile(
               dense: true,
@@ -185,7 +185,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 14.sp, color: Color(0xff8E8E8E)),
+                    .copyWith(fontSize: 14.sp, color: const Color(0xff8E8E8E)),
               ),
               trailing: Icon(
                 Icons.arrow_forward_ios,
@@ -238,7 +238,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     .headline2!
                     .copyWith(fontSize: 14.sp, color: Color(0xff8E8E8E)),
               ),
-              trailing: CupertinoSwitch(
+              trailing: const CupertinoSwitch(
                 onChanged: null,
                 value: false,
               ),

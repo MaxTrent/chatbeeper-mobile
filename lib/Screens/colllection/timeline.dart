@@ -86,7 +86,7 @@ class _TimelineState extends State<Timeline> {
                     'images/search.svg',
                   ):
                   SvgPicture.asset(
-                    color: Colors.black,
+                    color: Colors.white,
                     'images/search_dark.svg',
                   ),
                 ),
@@ -105,7 +105,7 @@ class _TimelineState extends State<Timeline> {
                   'images/Dm.svg',
               ):
               SvgPicture.asset(
-                color: Colors.black,
+                color: Colors.white,
                 'images/sms.svg',
               ),
             ),
