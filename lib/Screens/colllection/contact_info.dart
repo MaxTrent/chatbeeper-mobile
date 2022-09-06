@@ -33,21 +33,21 @@ class _ContactInfoState extends State<ContactInfo> {
           ),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Padding(
-          padding: EdgeInsets.only(left: 135.0.w),
-          child: Text(
-            'Settings',
-            style: Theme.of(context)
-                .primaryTextTheme
-                .headline4!
-                .copyWith(fontSize: 16.sp),
-          ),
+        title:  Padding(
+          padding: EdgeInsets.only(top: 25.0.h),
+          child: Text('Settings',
+              style: Theme.of(context)
+                  .primaryTextTheme
+                  .headline4!
+                  .copyWith(fontSize: 16.sp)),
         ),
+        centerTitle: true,
       ),
       body: Column(
         children: [
           Divider(
-            thickness: 2.h,
+            color: Color(0xff8E8E8E),
+          thickness: 1.h,
           ),
           ListTile(
             dense: true,
@@ -60,7 +60,8 @@ class _ContactInfoState extends State<ContactInfo> {
             ),
           ),
           Divider(
-            thickness: 2.h,
+          thickness: 1.h,
+            color:  Color(0xff8E8E8E),
           ),
           ListTile(
             dense: true,

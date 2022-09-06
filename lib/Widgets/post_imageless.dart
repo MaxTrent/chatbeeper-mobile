@@ -1,4 +1,5 @@
 import 'package:chat_beeper/Widgets/image_slider.dart';
+import 'package:chat_beeper/Widgets/rebeep_response.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:chat_beeper/Widgets/comment.dart';
@@ -9,13 +10,26 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-class PostBeep extends StatelessWidget {
-  String loremIpsum ="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-  String FullName = 'Sarah Madini';
-  String username = 'Madini';
-  String posttime = '1 hour ago';
+class PostBeep extends StatefulWidget {
+
   PostBeep({Key? key}) : super(key: key);
   static const String id = 'post-card';
+
+  @override
+  State<PostBeep> createState() => _PostBeepState();
+}
+
+class _PostBeepState extends State<PostBeep> {
+  String loremIpsum ="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+  String FullName = 'Sarah Madini';
+
+  String username = 'Madini';
+
+  String posttime = '1 hour ago';
+
+  final  bool _rebeeped = false;
+
   @override
   Widget build(BuildContext context) {
     var brightness = MediaQuery.of(context).platformBrightness;
@@ -200,7 +214,7 @@ class PostBeep extends StatelessWidget {
             color: Colors.grey,
           ),//divider
           Padding(
-            padding:  EdgeInsets.only(left: 16.w,right: 19.w, top: 20.h, bottom: 15.h),
+            padding:  EdgeInsets.only(left: 30.w,right: 19.w, top: 20.h, bottom: 15.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -210,38 +224,46 @@ class PostBeep extends StatelessWidget {
                     Navigator.push(context,MaterialPageRoute(builder: (context) => const Comment()));
                   },
                 ),
-                SizedBox(width: 21.w,),
-                LikeButton(
-                  size: 24,
-                  circleColor:
-                  CircleColor(start: Color(0xff00ddff), end: const Color(0xff0099cc)),
-                  bubblesColor: const BubblesColor(
-                    dotPrimaryColor: Color(0xff33b5e5),
-                    dotSecondaryColor: Color(0xff0099cc),
-                  ),
-                  likeBuilder: (bool isLiked) {
-                    return isLiked == false? SvgPicture.asset(
-                      'images/rebeep.svg',
-                    ): SvgPicture.asset('images/rebeep_red.svg');
+                SizedBox(width: 40.w,),
+                GestureDetector(
+                  onTap: () async{
+                    showDialog(context: context, builder: (context)=>
+                        const RebeepResponse(),
+                    );
                   },
-                  likeCount: 100,
-                  // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                  //   Widget result;
-                  //   if (count == 0) {
-                  //     result = Text(
-                  //       "love",
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   } else
-                  //     result = Text(
-                  //       text,
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   return result;
-                  // },
-                ),//infinite
-                SizedBox(width: 30.w,),
+                  child: _rebeeped == false?  SvgPicture.asset('images/rebeep.svg'): SvgPicture.asset('images/rebeep.svg', color: Colors.red,),
+                ),//rebeep
+                // LikeButton(
+                //   size: 24,
+                //   circleColor:
+                //   CircleColor(start: Color(0xff00ddff), end: const Color(0xff0099cc)),
+                //   bubblesColor: const BubblesColor(
+                //     dotPrimaryColor: Color(0xff33b5e5),
+                //     dotSecondaryColor: Color(0xff0099cc),
+                //   ),
+                //   likeBuilder: (bool isLiked) {
+                //     return isLiked == false? SvgPicture.asset(
+                //       'images/rebeep.svg',
+                //     ): SvgPicture.asset('images/rebeep_red.svg');
+                //   },
+                //   likeCount: 100,
+                //   // countBuilder: (int count, bool isLiked, String text) {
+                //   //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                //   //   Widget result;
+                //   //   if (count == 0) {
+                //   //     result = Text(
+                //   //       "love",
+                //   //       style: TextStyle(color: color),
+                //   //     );
+                //   //   } else
+                //   //     result = Text(
+                //   //       text,
+                //   //       style: TextStyle(color: color),
+                //   //     );
+                //   //   return result;
+                //   // },
+                // ),//infinite
+                SizedBox(width: 40.w,),
                 LikeButton(
                   size: 24,
                   circleColor:
@@ -272,8 +294,8 @@ class PostBeep extends StatelessWidget {
                   //   return result;
                   // },
                 ),//brokenheart
-                SizedBox(width: 30.w,),
-      LikeButton(
+                SizedBox(width: 40.w,),
+                 LikeButton(
       size: 24,
       circleColor:
       CircleColor(start: Colors.red.shade200, end: Colors.red),
@@ -387,6 +409,7 @@ class PostBeep extends StatelessWidget {
                     // ),
                     Divider(
                       height: 1,
+                      color: Color(0xff8E8E8E),
                     ),
                     // Row(
                     //   mainAxisAlignment: MainAxisAlignment.start,

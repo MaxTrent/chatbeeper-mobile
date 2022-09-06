@@ -53,7 +53,8 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Divider(
-              thickness: 2.h,
+              thickness: 1.h,
+              color: Color(0xff8E8E8E),
             ),
             ListTile(
               dense: true,
@@ -67,7 +68,8 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
             ),
             Divider(
               height: 16.h,
-              thickness: 2.h,
+              thickness: 1.h,
+              color: Color(0xff8E8E8E),
             ),
             SizedBox(
               height: 27.h,

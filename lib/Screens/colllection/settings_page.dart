@@ -28,39 +28,57 @@ class _SettingsPageState extends State<SettingsPage> {
     );
     var brightness = MediaQuery.of(context).platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
-
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      appBar: AppBar(
-        toolbarHeight: 40.h,
-        centerTitle: true,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: darkModeOn == true ? Colors.white : Colors.black,
+      appBar: PreferredSize(
+        preferredSize: Size(width, 74.h),
+        child: Container(
+          decoration: const BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: Color(0xff8E8E8E),
+              )
+            )
           ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          child: AppBar(
+            toolbarHeight: 74.h,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            centerTitle: true,
+            elevation: 0,
+            leading: Padding(
+              padding:  EdgeInsets.only(top: 25.h),
+              child: IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios,
+                  color: darkModeOn == true ? Colors.white : Colors.black,
+                  size: 20,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ),
+            title: Padding(
+              padding:  EdgeInsets.only(top: 32.h),
+              child: Text('Settings',
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .headline4!
+                      .copyWith(fontSize: 16.sp)),
+            ),
+          ),
         ),
-        title: Text('Settings',
-            style: Theme.of(context)
-                .primaryTextTheme
-                .headline4!
-                .copyWith(fontSize: 16.sp)),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Divider(
-              thickness: 2.h,
-            ),
             ListTile(
               dense: true,
               title: Row(
                 children: [
-                  SvgPicture.asset('images/frame.svg'),
+                darkModeOn ?  SvgPicture.asset('images/frame.svg',color: Colors.white,): SvgPicture.asset('images/frame.svg') ,
                   Padding(
                     padding: EdgeInsets.only(left: 8.0.w),
                     child: Text(
@@ -76,7 +94,8 @@ class _SettingsPageState extends State<SettingsPage> {
               onTap: null,
             ),
             Divider(
-              thickness: 2.h,
+              thickness: 1.h,
+              color: Color(0xff8E8E8E),
             ),
             ListTile(
               dense: true,
@@ -122,13 +141,13 @@ class _SettingsPageState extends State<SettingsPage> {
                     .copyWith(fontSize: 14.sp, color: Colors.red),
               ),
               onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => DeactivateAccount())),
+                  MaterialPageRoute(builder: (context) => const DeactivateAccount())),
             ),
             ListTile(
               dense: true,
               title: Row(
                 children: [
-                  SvgPicture.asset('images/security-safe.svg'),
+                  darkModeOn == false? SvgPicture.asset('images/security-safe.svg'):SvgPicture.asset('images/security-safe.svg', color: Colors.white,),
                   Padding(
                     padding: EdgeInsets.only(left: 8.0.w),
                     child: Text(
@@ -144,7 +163,8 @@ class _SettingsPageState extends State<SettingsPage> {
               onTap: null,
             ),
             Divider(
-              thickness: 2.h,
+              thickness: 1.h,
+              color: Color(0xff8E8E8E),
             ),
             ListTile(
               dense: true,
@@ -211,7 +231,7 @@ class _SettingsPageState extends State<SettingsPage> {
               dense: true,
               title: Row(
                 children: [
-                  SvgPicture.asset('images/notification.svg'),
+                  SvgPicture.asset('images/notification.svg', color: darkModeOn? Colors.white: Colors.black,),
                   Padding(
                     padding: EdgeInsets.only(left: 8.0.w),
                     child: Text(
@@ -227,7 +247,8 @@ class _SettingsPageState extends State<SettingsPage> {
               onTap: null,
             ),
             Divider(
-              thickness: 2.h,
+              thickness: 1.h,
+              color: Color(0xff8E8E8E),
             ),
             ListTile(
               dense: true,
@@ -236,7 +257,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 14.sp, color: Color(0xff8E8E8E)),
+                    .copyWith(fontSize: 14.sp, color: const Color(0xff8E8E8E)),
               ),
               trailing: const CupertinoSwitch(
                 onChanged: null,
@@ -247,7 +268,7 @@ class _SettingsPageState extends State<SettingsPage> {
               dense: true,
               title: Row(
                 children: [
-                  SvgPicture.asset('images/note.svg'),
+                  SvgPicture.asset('images/note.svg',color: darkModeOn? Colors.white: Colors.black,),
                   Padding(
                     padding: EdgeInsets.only(left: 8.0.w),
                     child: Text(
@@ -262,7 +283,8 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             Divider(
-              thickness: 2.h,
+              thickness: 1.h,
+              color: Color(0xff8E8E8E),
             ),
             ListTile(
               dense: true,
@@ -315,7 +337,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       child: Text(
                         'Log Out',
                         style: Theme.of(context).textTheme.headline2!.copyWith(
-                            fontSize: 14.sp, color: Color(0xff386FA4)),
+                            fontSize: 14.sp, color: const Color(0xff386FA4)),
                       ),
                     ),
                   ],

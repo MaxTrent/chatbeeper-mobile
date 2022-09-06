@@ -338,6 +338,7 @@ class RoomCard extends StatelessWidget {
                         // ),
                         Divider(
                           height: 1,
+                          color: Color(0xff8E8E8E),
                         ),
                       ],
                     ),

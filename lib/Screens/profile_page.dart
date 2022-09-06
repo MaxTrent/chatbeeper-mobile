@@ -481,7 +481,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                         ),//tapbar
                         SizedBox(height: 16.h,),
                         Divider(
-                          color: darkModeOn == false ? uColor: bcolor1, height: 1.h,
+                          color: darkModeOn == false ?Color(0xff8E8E8E): bcolor1, height: 1.h,
                         ),
                         SizedBox(
                           height: 500.h,

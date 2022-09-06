@@ -36,21 +36,22 @@ class _PasswordChangeState extends State<PasswordChange> {
             ),
             onPressed: () => Navigator.pop(context),
           ),
-          title: Padding(
-            padding: EdgeInsets.only(left: 135.0.w),
-            child: Text('Settings',
-                style: Theme.of(context)
-                    .primaryTextTheme
-                    .headline4!
-                    .copyWith(fontSize: 16.sp)),
-          ),
-        ),
+          title:  Padding(
+    padding: EdgeInsets.only(top: 25.0.h),
+    child: Text('Settings',
+    style: Theme.of(context)
+        .primaryTextTheme
+        .headline4!
+        .copyWith(fontSize: 16.sp)),
+    ),
+        centerTitle: true,),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Divider(
-                thickness: 2.h,
+                thickness: 1.h,
+                color: Color(0xff8E8E8E),
               ),
               ListTile(
                 dense: true,
@@ -63,8 +64,9 @@ class _PasswordChangeState extends State<PasswordChange> {
                 ),
               ),
               Divider(
+                color: Color(0xff8E8E8E),
                 height: 16.h,
-                thickness: 2.h,
+              thickness: 1.h
               ),
               SizedBox(
                 height: 20.h,

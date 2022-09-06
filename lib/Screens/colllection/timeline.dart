@@ -297,7 +297,7 @@ class _TimelineState extends State<Timeline> {
                       ),
                     ),//following followers
                     SizedBox(height: 12.h,),
-                    const Divider(color: Colors.grey, thickness: 0.5,),
+                     Divider(color: Color(0xff8E8E8E), thickness: 0.5,),
                   ],
                 ),//profilepicture and username
                 // SizedBox(height: 20.h,),

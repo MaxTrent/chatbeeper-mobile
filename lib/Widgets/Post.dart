@@ -12,14 +12,26 @@ import 'package:readmore/readmore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'response_beep.dart';
-class PostCard extends StatelessWidget {
- final String loremIpsum ="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-final String FullName = 'Sarah Madini';
-final String username = 'Madini';
-final String posttime = '1 hour ago';
+class PostCard extends StatefulWidget {
 
   const PostCard({Key? key}) : super(key: key);
  static const String id = 'post-card';
+
+  @override
+  State<PostCard> createState() => _PostCardState();
+}
+
+class _PostCardState extends State<PostCard> {
+ final String loremIpsum ="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+final String FullName = 'Sarah Madini';
+
+final String username = 'Madini';
+
+final String posttime = '1 hour ago';
+
+final  bool _rebeeped = false;
+
   @override
   Widget build(BuildContext context) {
     var brightness = MediaQuery.of(context).platformBrightness;
@@ -197,7 +209,7 @@ final String posttime = '1 hour ago';
             color: bcolor1,
           ),//divider
           Padding(
-            padding:  EdgeInsets.only(left: 16.w, right: 27.w,bottom: 12.h, top: 12.h),
+            padding:  EdgeInsets.only(left: 30.w, right: 27.w,bottom: 12.h, top: 12.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -207,7 +219,7 @@ final String posttime = '1 hour ago';
                     Navigator.push(context,MaterialPageRoute(builder: (context) => const Comment()));
                   },
                 ),
-                SizedBox(width: 30.w,),
+                SizedBox(width: 40.w,),
                 // LikeButton(
                 //   size: 28,
                 //   circleColor:
@@ -239,14 +251,14 @@ final String posttime = '1 hour ago';
                 //   // },
                 // ),//infinite
                 GestureDetector(
-                  onTap: (){
+                  onTap: () async{
                     showDialog(context: context, builder: (context)=>
-                    const RebeepResponse(),
+                    RebeepResponse(),
                     );
                   },
-                  child: SvgPicture.asset('images/rebeep.svg'),
+                  child: _rebeeped == false?  SvgPicture.asset('images/rebeep.svg'): SvgPicture.asset('images/rebeep.svg', color: Colors.red,),
                 ),//rebeep
-                SizedBox(width: 30.w,),
+                SizedBox(width: 40.w,),
                 LikeButton(
                   size: 24,
                   circleColor:
@@ -277,7 +289,7 @@ final String posttime = '1 hour ago';
                   //   return result;
                   // },
                 ),//brokenheart
-                SizedBox(width: 30.w,),
+                SizedBox(width: 40.w,),
                 LikeButton(
                   size: 24,
                   circleColor:
@@ -683,6 +695,7 @@ final String posttime = '1 hour ago';
                     // ),
                     Divider(
                       height: 1,
+                      color: Color(0xff8E8E8E),
                     ),
                   ],
                 ),

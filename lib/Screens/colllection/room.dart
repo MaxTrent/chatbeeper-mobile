@@ -173,7 +173,7 @@ import 'dm.dart';
            ),
            Padding(
              padding:  EdgeInsets.only(left: 16.w,right: 16.w),
-             child: const Divider(color: Colors.grey, thickness: 0.5,),
+             child: const Divider( color: Color(0xff8E8E8E), thickness: 0.5,),
            ),
            SizedBox(
              height: 560.h,
