@@ -133,14 +133,11 @@ class _LoginActivityState extends State<LoginActivity> {
     return showDialog(
         context: context,
         builder: (context) {
-          return Dialog(
-              child: GoogleMap(
-            initialCameraPosition: _kGooglePlex,
-            onMapCreated: (GoogleMapController controller) {
-              _controller.complete(controller);
-            },
-            mapType: MapType.hybrid,
-          ));
+          return Container(
+            height: 50.h,
+            width: 50.w,
+            child: GoogleMap(),
+          );
         });
   }
 }
