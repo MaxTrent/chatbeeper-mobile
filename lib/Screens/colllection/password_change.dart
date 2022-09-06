@@ -50,7 +50,7 @@ class _PasswordChangeState extends State<PasswordChange> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Divider(
-                thickness: 1.h,
+                thickness: 0.5.h,
                 color: Color(0xff8E8E8E),
               ),
               ListTile(

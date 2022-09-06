@@ -25,7 +25,7 @@ class _LoginActivityState extends State<LoginActivity> {
     zoom: 14.4746,
   );
 
-  static final CameraPosition _kLake = CameraPosition(
+  static final CameraPosition _kLake = const CameraPosition(
       bearing: 192.8334901395799,
       target: LatLng(37.43296265331129, -122.08832357078792),
       tilt: 59.440717697143555,
@@ -53,20 +53,21 @@ class _LoginActivityState extends State<LoginActivity> {
             onPressed: () => Navigator.pop(context),
           ),
           title:  Padding(
-    padding: EdgeInsets.only(top: 25.0.h),
-    child: Text('Settings',
-    style: Theme.of(context)
-        .primaryTextTheme
-        .headline4!
-        .copyWith(fontSize: 16.sp)),
-    ),
-        centerTitle: true,),
+            padding: EdgeInsets.only(top: 25.0.h),
+            child: Text('Settings',
+                style: Theme.of(context)
+                    .primaryTextTheme
+                    .headline4!
+                    .copyWith(fontSize: 16.sp)),
+          ),
+          centerTitle: true,
+        ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Divider(
-                thickness: 1.h,
+                thickness: 0.5.h,
               ),
               ListTile(
                 dense: true,
@@ -80,7 +81,7 @@ class _LoginActivityState extends State<LoginActivity> {
               ),
               Divider(
                 height: 16.h,
-                thickness: 1.h,
+                thickness: 0.5.h,
               ),
               SizedBox(
                 height: 93.h,

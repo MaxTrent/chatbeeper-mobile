@@ -47,7 +47,7 @@ class _ContactInfoState extends State<ContactInfo> {
         children: [
           Divider(
             color: Color(0xff8E8E8E),
-          thickness: 1.h,
+          thickness: 0.5.h,
           ),
           ListTile(
             dense: true,
@@ -60,7 +60,7 @@ class _ContactInfoState extends State<ContactInfo> {
             ),
           ),
           Divider(
-          thickness: 1.h,
+          thickness: 0.5.h,
             color:  Color(0xff8E8E8E),
           ),
           ListTile(
