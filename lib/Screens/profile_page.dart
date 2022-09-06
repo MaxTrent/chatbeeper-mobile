@@ -160,12 +160,10 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                           color: Colors.white,
                         ),
                       ),
-<<<<<<< HEAD
                     ), //backbutton
                     SizedBox(
                       height: 20.h,
                     ),
-=======
                     ),//backbutton
                  Positioned(
                       top: 15.h,
@@ -231,13 +229,11 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                       GestureDetector(),
                     ),//backbutton
                     SizedBox(height: 20.h,),
->>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                   ],
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-<<<<<<< HEAD
                     SizedBox(
                       height: 40.h,
                     ),
@@ -253,7 +249,6 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                   color: bcolor3,
                                   fontSize: 22.sp),
                         ), //full name
-=======
                     SizedBox(height: 20.h,),
                     Column(
                       children: [
@@ -263,7 +258,6 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w600, color:bcolor3, fontSize: 22.sp ),
                           ),
                         ),//full name
->>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -281,10 +275,8 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                               size: 15.h,
                             ),
                           ],
-<<<<<<< HEAD
                         ), //username
                         // SizedBox(height: 5.h,),
-=======
                         ),//username
                         Container(
                           height: 15.h, width: 64.w,
@@ -292,7 +284,6 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                           child: Center(child: Text('Follows you', style: TextStyle(fontSize: 10.sp, color: Colors.black, fontFamily: 'Nunito', fontWeight: FontWeight.bold,),)),
                         ),
                         SizedBox(height: 5.h,),
->>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                         Padding(
                           padding: EdgeInsets.only(
                               left: 52.w, right: 52.w, bottom: 14.h),
@@ -483,7 +474,6 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                             builder: (context) =>
                                                 const ProfileTab()));
                                   },
-<<<<<<< HEAD
                                   child: darkModeOn == false
                                       ? Row(
                                           mainAxisAlignment:
@@ -543,7 +533,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                                 // ),
                                               ),
                                               SizedBox(
-                                                width: 8,
+                                                width: 8.w,
                                               ),
                                               darkModeOn
                                                   ? SvgPicture.asset(
@@ -551,7 +541,6 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                                   : SvgPicture.asset(
                                                       'images/plus black.svg'),
                                             ]),
-=======
                                   child: darkModeOn == false ?  Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -598,8 +587,6 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                           child: darkModeOn? SvgPicture.asset('images/plus.svg'): SvgPicture.asset('images/plus black.svg')),
                                     ]
                                   ),
-
->>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                                 ),
                               ),
                             ),
@@ -629,7 +616,6 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                   : null,
                             ),
                           ],
-<<<<<<< HEAD
                         ), //edit profile and dm
                         SizedBox(
                           height: 5.h,
@@ -694,7 +680,6 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                         Divider(
                           color: darkModeOn == false ? uColor : bcolor1,
                           height: 1.h,
-=======
                         ),//edit profile and dm
                         SizedBox(height: 5.h,),
                         Padding(
@@ -741,7 +726,6 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                         SizedBox(height: 16.h,),
                         Divider(
                           color: darkModeOn == false ?Color(0xff8E8E8E): bcolor1, height: 1.h,
->>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                         ),
                         SizedBox(
                           height: 500.h,

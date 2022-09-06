@@ -87,7 +87,6 @@ class _TimelineState extends State<Timeline> {
                     // Navigator.push(context,
                     //     MaterialPageRoute(builder: (context) => DirectMessage()));
                   },
-<<<<<<< HEAD
                   child: darkModeOn == false
                       ? SvgPicture.asset(
                           color: Colors.black,
@@ -101,7 +100,6 @@ class _TimelineState extends State<Timeline> {
               ),
               SizedBox(
                 width: 24.w,
-=======
                   child:
                   darkModeOn == false ? SvgPicture.asset(
                     color: Colors.black,
@@ -112,7 +110,6 @@ class _TimelineState extends State<Timeline> {
                     'images/search_dark.svg',
                   ),
                 ),
-              ),
           SizedBox(width: 24.w,),
           SizedBox(
             height: 24.h,
@@ -129,8 +126,7 @@ class _TimelineState extends State<Timeline> {
               SvgPicture.asset(
                 color: Colors.white,
                 'images/sms.svg',
->>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
-              ),
+              ),),),
               SizedBox(
                 height: 24.h,
                 width: 24.w,
@@ -282,7 +278,6 @@ class _TimelineState extends State<Timeline> {
                         children: [
 
                           SizedBox(
-<<<<<<< HEAD
                             child: Row(
                               children: [
                                 Text(
@@ -309,11 +304,10 @@ class _TimelineState extends State<Timeline> {
                                 ),
                               ],
                             ),
-                          ), //following
+                          ),//following
                           SizedBox(
                             width: 18.w,
                           ),
-=======
                             child: GestureDetector(
                               onTap: (){
                                 Navigator.pop(context);
@@ -356,7 +350,6 @@ class _TimelineState extends State<Timeline> {
                             ),
                           ),//beeps
                           SizedBox(width: 18.w,),
->>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                           Padding(
                             padding: const EdgeInsets.only(right: 5, left: 5),
                             child: Row(
@@ -392,7 +385,6 @@ class _TimelineState extends State<Timeline> {
                           SizedBox(
                             child: Row(
                               children: [
-<<<<<<< HEAD
                                 Text(
                                   '100K',
                                   style: Theme.of(context)
@@ -401,12 +393,10 @@ class _TimelineState extends State<Timeline> {
                                       .copyWith(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 16.sp,
-                                      ),
-=======
+                                      )),
                                 Text('2k', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
                                   fontWeight: FontWeight.w600, fontSize: 18.sp,
->>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
-                                ),
+                                ),),
                                 SizedBox(
                                   width: 3.w,
                                 ),
@@ -419,7 +409,6 @@ class _TimelineState extends State<Timeline> {
                                     fontSize: 14.sp,
                                   ),
                                 ),
-<<<<<<< HEAD
                               ],
                             ),
                           ), //beeps
@@ -433,7 +422,6 @@ class _TimelineState extends State<Timeline> {
                       color: Colors.grey,
                       thickness: 0.5,
                     ),
-=======
                                 SizedBox(width: 5.w,),
                                 Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 16.sp,), ),
                               ],
@@ -444,7 +432,6 @@ class _TimelineState extends State<Timeline> {
                     ),//following followers
                     SizedBox(height: 12.h,),
                      Divider(color: Color(0xff8E8E8E), thickness: 0.5,),
->>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                   ],
                 ), //profilepicture and username
                 // SizedBox(height: 20.h,),
@@ -472,7 +459,6 @@ class _TimelineState extends State<Timeline> {
 
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
                         ),
-<<<<<<< HEAD
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -507,7 +493,6 @@ class _TimelineState extends State<Timeline> {
                 SizedBox(
                   height: 15.h,
                 ),
-=======
                         onPressed: (){
                           Navigator.pop(context);
                           Navigator.push(context,MaterialPageRoute(builder: (context) => const Profile(),));
@@ -523,9 +508,8 @@ class _TimelineState extends State<Timeline> {
                           style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                           ),
                       ],
-                    ))),//myprofile
+                    ),//myprofile
                 SizedBox(height: 15.h,),
->>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                 Align(
                     alignment: Alignment.topLeft,
                     child: TextButton(
@@ -534,8 +518,6 @@ class _TimelineState extends State<Timeline> {
                           onSurface: Colors.transparent,
 
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
-<<<<<<< HEAD
-=======
                         ),onPressed: (){
                       Navigator.pop(context);
                       Navigator.push(context,MaterialPageRoute(builder: (context) => const FollowerRequests(),));
@@ -546,7 +528,6 @@ class _TimelineState extends State<Timeline> {
                             height: 24.h,  width: 24.w,
                             child: darkModeOn? SvgPicture.asset('images/profile-2user white.svg'):
                             SvgPicture.asset('images/profile-2user.svg')
->>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                         ),
                         onPressed: () {},
                         child: Row(
@@ -585,8 +566,7 @@ class _TimelineState extends State<Timeline> {
                           onSurface: Colors.transparent,
 
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
-<<<<<<< HEAD
-=======
+
                         ),onPressed: (){
                       Navigator.pop(context);
                       Navigator.push(context,MaterialPageRoute(builder: (context) => const Trending(),));
@@ -596,7 +576,6 @@ class _TimelineState extends State<Timeline> {
                             height: 24.h,  width: 24.w,
                             child: darkModeOn? SvgPicture.asset('images/activity white.svg'):
                             SvgPicture.asset('images/activity.svg')
->>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                         ),
                         onPressed: () {},
                         child: Row(
@@ -634,8 +613,6 @@ class _TimelineState extends State<Timeline> {
                           onSurface: Colors.transparent,
 
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
-<<<<<<< HEAD
-=======
                         ),onPressed: (){
                       Navigator.pop(context);
                       Navigator.push(context,MaterialPageRoute(builder: (context) => const SavedBeeps(),));
@@ -649,7 +626,6 @@ class _TimelineState extends State<Timeline> {
                         SizedBox(width: 12.w,),
                         Text('Saved Beeps',
                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
->>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                         ),
                         onPressed: () {},
                         child: Row(
@@ -724,8 +700,6 @@ class _TimelineState extends State<Timeline> {
                           onSurface: Colors.transparent,
 
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
-<<<<<<< HEAD
-=======
                         ),onPressed: (){
                       Navigator.pop(context);
                       Navigator.push(context,MaterialPageRoute(builder: (context) =>  const SettingsPage(),
@@ -740,7 +714,6 @@ class _TimelineState extends State<Timeline> {
                         SizedBox(width: 12.w,),
                         Text('Settings',
                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
->>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                         ),
                         onPressed: () {
                           Navigator.push(
@@ -786,7 +759,6 @@ class _TimelineState extends State<Timeline> {
 
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
                         ),
-<<<<<<< HEAD
                         onPressed: () {},
                         child: Row(
                           children: [
@@ -819,7 +791,6 @@ class _TimelineState extends State<Timeline> {
                 SizedBox(
                   height: 15.h,
                 ),
-=======
                         onPressed: (){
                           Navigator.pop(context);
                           Navigator.push(context,MaterialPageRoute(builder: (context) =>  const RequestVerification(),));
@@ -838,7 +809,6 @@ class _TimelineState extends State<Timeline> {
                       ],
                     ))),//request verification
                 SizedBox(height: 15.h,),
->>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                 Align(
                     alignment: Alignment.topLeft,
                     child: TextButton(
@@ -847,8 +817,7 @@ class _TimelineState extends State<Timeline> {
                           onSurface: Colors.transparent,
 
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
-<<<<<<< HEAD
-=======
+
                         ),onPressed: (){}, child: Row(
                       children: [
                         SizedBox(
@@ -858,7 +827,7 @@ class _TimelineState extends State<Timeline> {
                       SizedBox(width: 12.w,),
                         Text('Sponsored Beeps',
                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
->>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
+
                         ),
                         onPressed: () {},
                         child: Row(
