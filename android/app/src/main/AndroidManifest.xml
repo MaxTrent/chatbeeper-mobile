@@ -2,9 +2,9 @@
     package="com.example.chatbeeper.chat_beeper">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="chat_beeper"
+        android:label="chatbeeper"
         android:name="${applicationName}"
-        android:icon="@mipmap/chatbeeper">
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:exported="true"

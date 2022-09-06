@@ -28,11 +28,18 @@ import 'dm.dart';
 
        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
        appBar: PreferredSize(
-         preferredSize: Size(428.w,68.h),
-         child: Padding(
-           padding:  EdgeInsets.only(left: 16.w,right: 18.w, top: 32.h),
+         preferredSize: Size(428.w,74.h),
+         child: Container(
+           decoration: const BoxDecoration(
+             border: Border(
+               bottom: BorderSide( color: Colors.grey)
+             )
+           ),
            child: AppBar(
-             title: Text('Room', style: Theme.of(context).primaryTextTheme.bodyText1,),
+             title: Padding(
+               padding:  EdgeInsets.only(top: 45.w,),
+               child: Text('Room', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 16.sp, fontWeight: FontWeight.w600),),
+             ),
              centerTitle: true,
              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
              elevation: 0,
@@ -42,21 +49,30 @@ import 'dm.dart';
              // },)),
              actions: [
                SizedBox(width: 24.w,),
-               SizedBox(
-                 height: 24.h,
-                 width: 24.w,
-                 child: GestureDetector(
-                   onTap: (){
-                     Navigator.push(context,
-                         MaterialPageRoute(builder: (context) => DirectMessage()));
-                   },
-                   child: darkModeOn == false? SvgPicture.asset(
-                     color: Colors.black,
-                     'images/Dm.svg',
-                   ):
-                   SvgPicture.asset(
-                     color: Colors.black,
-                     'images/sms.svg',
+               Padding(
+                 padding:  EdgeInsets.only(top: 39.w,right: 18.w,),
+                 child: SizedBox(
+                   height: 24.h,
+                   width: 24.w,
+                   child: GestureDetector(
+                     onTap: (){
+                       Navigator.push(context,
+                           MaterialPageRoute(builder: (context) => DirectMessage()));
+                     },
+                     child: darkModeOn == false? SizedBox(
+                       height: 20.h,
+                       child: SvgPicture.asset(
+                         color: Colors.black,
+                         'images/Dm.svg',
+                       ),
+                     ):
+                     SizedBox(
+                       height: 20.h, width: 17.w,
+                       child: SvgPicture.asset(
+                         // color: Colors.black,
+                         'images/sms.svg',
+                       ),
+                     ),
                    ),
                  ),
                )
@@ -74,7 +90,7 @@ import 'dm.dart';
                    child: Row(
                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                      children: [
-                       Text('interests', style: TextStyle(fontWeight: FontWeight.w600, fontFamily: 'Nunito', fontSize: 16.sp, color: bcolor5),),
+                       Text('Interests', style: TextStyle(fontWeight: FontWeight.w600, fontFamily: 'Nunito', fontSize: 16.sp, color: bcolor5),),
                        PopupMenuButton<int>(
 
                          icon: SvgPicture.asset('images/setting-4.svg'),
@@ -92,7 +108,7 @@ import 'dm.dart';
                            ),
                            // popupmenu item 2
                            PopupMenuItem(
-                             value: 1,
+                             value: 2,
                              // row has two child icon and text.
                              child: Row(
                                children: [
@@ -102,7 +118,9 @@ import 'dm.dart';
                                ],
                              ),
                            ),
-                           PopupMenuItem(child: Row(
+                           PopupMenuItem(
+                             value: 3,
+                             child: Row(
                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                              children: [
                                Text(
@@ -110,8 +128,11 @@ import 'dm.dart';
                                  style:
                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
                                ),
-                               CupertinoSwitch(value: false, onChanged: null,
-                               thumbColor: Colors.grey.shade500,
+                               Transform.scale(
+                                 scale: 0.7,
+                                 child: CupertinoSwitch(value: false, onChanged: null,
+                                 thumbColor: Colors.grey.shade500,
+                                 ),
                                )
                              ],
                            ),),
@@ -123,7 +144,7 @@ import 'dm.dart';
                        )
                      ],
                    ),
-                 ),
+                 ),//interest and settings
                  Padding(
                    padding:  EdgeInsets.only(top: 5.h, left: 16.w, right: 16.w),
                    child: SizedBox(
@@ -146,13 +167,13 @@ import 'dm.dart';
                        },
                      ),
                    ),
-                 ),
+                 ),//row of accounts
                ],
              ),
            ),
            Padding(
              padding:  EdgeInsets.only(left: 16.w,right: 16.w),
-             child: const Divider(color: Colors.grey, thickness: 0.5,),
+             child: const Divider( color: Color(0xff8E8E8E), thickness: 0.5,),
            ),
            SizedBox(
              height: 560.h,

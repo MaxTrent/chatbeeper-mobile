@@ -1,6 +1,11 @@
 import 'package:chat_beeper/Screens/colllection/compose_beep.dart';
 import 'package:chat_beeper/Screens/colllection/dm.dart';
 import 'package:chat_beeper/Screens/colllection/settings_page.dart';
+import 'package:chat_beeper/Screens/drawer_pages/follower_request.dart';
+import 'package:chat_beeper/Screens/drawer_pages/saved_beeps.dart';
+import 'package:chat_beeper/Screens/drawer_pages/trending.dart';
+import 'package:chat_beeper/Screens/followers.dart';
+import 'package:chat_beeper/Screens/following.dart';
 import 'package:chat_beeper/Screens/profile_page.dart';
 import 'package:chat_beeper/Widgets/post_imageless.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -11,6 +16,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../Widgets/Post.dart';
 import '../../constants.dart';
+import '../drawer_pages/request_verification.dart';
 
 class Timeline extends StatefulWidget {
   const Timeline({Key? key}) : super(key: key);
@@ -81,6 +87,7 @@ class _TimelineState extends State<Timeline> {
                     // Navigator.push(context,
                     //     MaterialPageRoute(builder: (context) => DirectMessage()));
                   },
+<<<<<<< HEAD
                   child: darkModeOn == false
                       ? SvgPicture.asset(
                           color: Colors.black,
@@ -94,6 +101,35 @@ class _TimelineState extends State<Timeline> {
               ),
               SizedBox(
                 width: 24.w,
+=======
+                  child:
+                  darkModeOn == false ? SvgPicture.asset(
+                    color: Colors.black,
+                    'images/search.svg',
+                  ):
+                  SvgPicture.asset(
+                    color: Colors.white,
+                    'images/search_dark.svg',
+                  ),
+                ),
+              ),
+          SizedBox(width: 24.w,),
+          SizedBox(
+            height: 24.h,
+            width: 24.w,
+            child: GestureDetector(
+              onTap: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DirectMessage()));
+              },
+              child: darkModeOn == false? SvgPicture.asset(
+                  color: Colors.black,
+                  'images/Dm.svg',
+              ):
+              SvgPicture.asset(
+                color: Colors.white,
+                'images/sms.svg',
+>>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
               ),
               SizedBox(
                 height: 24.h,
@@ -244,7 +280,9 @@ class _TimelineState extends State<Timeline> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
+
                           SizedBox(
+<<<<<<< HEAD
                             child: Row(
                               children: [
                                 Text(
@@ -275,6 +313,50 @@ class _TimelineState extends State<Timeline> {
                           SizedBox(
                             width: 18.w,
                           ),
+=======
+                            child: GestureDetector(
+                              onTap: (){
+                                Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const Following(),
+                                    ));
+                              },
+                              child: GestureDetector(
+                                onTap: (){
+                                  Navigator.pop(context);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const Followers(),
+                                      ));
+                                },
+                                child: GestureDetector(
+                                  onTap: (){
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => const Followers(),
+                                        ));
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Text('100K', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
+                                        fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                      ),
+                                      ),
+                                      SizedBox(width: 3.w,),
+                                      Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 14.sp,), ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),//beeps
+                          SizedBox(width: 18.w,),
+>>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                           Padding(
                             padding: const EdgeInsets.only(right: 5, left: 5),
                             child: Row(
@@ -310,6 +392,7 @@ class _TimelineState extends State<Timeline> {
                           SizedBox(
                             child: Row(
                               children: [
+<<<<<<< HEAD
                                 Text(
                                   '100K',
                                   style: Theme.of(context)
@@ -319,6 +402,10 @@ class _TimelineState extends State<Timeline> {
                                         fontWeight: FontWeight.w600,
                                         fontSize: 16.sp,
                                       ),
+=======
+                                Text('2k', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
+                                  fontWeight: FontWeight.w600, fontSize: 18.sp,
+>>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                                 ),
                                 SizedBox(
                                   width: 3.w,
@@ -332,6 +419,7 @@ class _TimelineState extends State<Timeline> {
                                     fontSize: 14.sp,
                                   ),
                                 ),
+<<<<<<< HEAD
                               ],
                             ),
                           ), //beeps
@@ -345,6 +433,18 @@ class _TimelineState extends State<Timeline> {
                       color: Colors.grey,
                       thickness: 0.5,
                     ),
+=======
+                                SizedBox(width: 5.w,),
+                                Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 16.sp,), ),
+                              ],
+                            ),
+                          ),//following
+                        ],
+                      ),
+                    ),//following followers
+                    SizedBox(height: 12.h,),
+                     Divider(color: Color(0xff8E8E8E), thickness: 0.5,),
+>>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                   ],
                 ), //profilepicture and username
                 // SizedBox(height: 20.h,),
@@ -372,6 +472,7 @@ class _TimelineState extends State<Timeline> {
 
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
                         ),
+<<<<<<< HEAD
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -406,6 +507,25 @@ class _TimelineState extends State<Timeline> {
                 SizedBox(
                   height: 15.h,
                 ),
+=======
+                        onPressed: (){
+                          Navigator.pop(context);
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => const Profile(),));
+                        }, child: Row(
+                      children: [
+                        SizedBox(
+                            height: 24.h,  width: 24.w,
+                            child: darkModeOn? SvgPicture.asset('images/profile white.svg'):
+                            SvgPicture.asset('images/profile.svg')
+                        ),
+                        SizedBox(width: 12.w,),
+                        Text('My Profile',
+                          style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                          ),
+                      ],
+                    ))),//myprofile
+                SizedBox(height: 15.h,),
+>>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                 Align(
                     alignment: Alignment.topLeft,
                     child: TextButton(
@@ -414,6 +534,19 @@ class _TimelineState extends State<Timeline> {
                           onSurface: Colors.transparent,
 
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
+<<<<<<< HEAD
+=======
+                        ),onPressed: (){
+                      Navigator.pop(context);
+                      Navigator.push(context,MaterialPageRoute(builder: (context) => const FollowerRequests(),));
+                    },
+                        child: Row(
+                      children: [
+                        SizedBox(
+                            height: 24.h,  width: 24.w,
+                            child: darkModeOn? SvgPicture.asset('images/profile-2user white.svg'):
+                            SvgPicture.asset('images/profile-2user.svg')
+>>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                         ),
                         onPressed: () {},
                         child: Row(
@@ -452,6 +585,18 @@ class _TimelineState extends State<Timeline> {
                           onSurface: Colors.transparent,
 
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
+<<<<<<< HEAD
+=======
+                        ),onPressed: (){
+                      Navigator.pop(context);
+                      Navigator.push(context,MaterialPageRoute(builder: (context) => const Trending(),));
+                    }, child: Row(
+                      children: [
+                        SizedBox(
+                            height: 24.h,  width: 24.w,
+                            child: darkModeOn? SvgPicture.asset('images/activity white.svg'):
+                            SvgPicture.asset('images/activity.svg')
+>>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                         ),
                         onPressed: () {},
                         child: Row(
@@ -489,6 +634,22 @@ class _TimelineState extends State<Timeline> {
                           onSurface: Colors.transparent,
 
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
+<<<<<<< HEAD
+=======
+                        ),onPressed: (){
+                      Navigator.pop(context);
+                      Navigator.push(context,MaterialPageRoute(builder: (context) => const SavedBeeps(),));
+                    }, child: Row(
+                      children: [
+                        SizedBox(
+                            height: 24.h,  width: 24.w,
+                            child: darkModeOn? SvgPicture.asset('images/save-2 white.svg'):
+                            SvgPicture.asset('images/save-2.svg')
+                        ),
+                        SizedBox(width: 12.w,),
+                        Text('Saved Beeps',
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+>>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                         ),
                         onPressed: () {},
                         child: Row(
@@ -563,6 +724,23 @@ class _TimelineState extends State<Timeline> {
                           onSurface: Colors.transparent,
 
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
+<<<<<<< HEAD
+=======
+                        ),onPressed: (){
+                      Navigator.pop(context);
+                      Navigator.push(context,MaterialPageRoute(builder: (context) =>  const SettingsPage(),
+                      )
+                      );
+                    }, child: Row(
+                      children: [
+                      SizedBox(
+                      height: 24.h,  width: 24.w,
+                      child:  darkModeOn? SvgPicture.asset('images/setting-2 white.svg'):
+                        SvgPicture.asset('images/setting-2.svg'),),
+                        SizedBox(width: 12.w,),
+                        Text('Settings',
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+>>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                         ),
                         onPressed: () {
                           Navigator.push(
@@ -608,6 +786,7 @@ class _TimelineState extends State<Timeline> {
 
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
                         ),
+<<<<<<< HEAD
                         onPressed: () {},
                         child: Row(
                           children: [
@@ -640,6 +819,26 @@ class _TimelineState extends State<Timeline> {
                 SizedBox(
                   height: 15.h,
                 ),
+=======
+                        onPressed: (){
+                          Navigator.pop(context);
+                          Navigator.push(context,MaterialPageRoute(builder: (context) =>  const RequestVerification(),));
+                        },
+
+                        child: Row(
+                      children: [
+                          SizedBox(
+                          height: 24.h,  width: 24.w,
+                          child:   darkModeOn? const Icon(Icons.verified_outlined, color: Colors.white, size: 24,):
+                        SvgPicture.asset('images/verify black.svg')),
+                        SizedBox(width: 12.w,),
+                        Text('Request Verification',
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                        ),
+                      ],
+                    ))),//request verification
+                SizedBox(height: 15.h,),
+>>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                 Align(
                     alignment: Alignment.topLeft,
                     child: TextButton(
@@ -648,6 +847,18 @@ class _TimelineState extends State<Timeline> {
                           onSurface: Colors.transparent,
 
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
+<<<<<<< HEAD
+=======
+                        ),onPressed: (){}, child: Row(
+                      children: [
+                        SizedBox(
+                          height: 24.h,  width: 24.w,
+                          child:  darkModeOn? SvgPicture.asset('images/promotions black.svg', color: Colors.white,):
+                          SvgPicture.asset('images/promotions black.svg'),),
+                      SizedBox(width: 12.w,),
+                        Text('Sponsored Beeps',
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+>>>>>>> 8debe5bf08d9e8be21159e59dec975abaac1414f
                         ),
                         onPressed: () {},
                         child: Row(

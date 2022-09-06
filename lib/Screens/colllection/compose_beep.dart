@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:chat_beeper/constants.dart';
 import 'package:like_button/like_button.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'beep_create.dart';
 class ComposeBeep extends StatelessWidget {
   const ComposeBeep({Key? key}) : super(key: key);
   @override
@@ -14,6 +16,7 @@ class ComposeBeep extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     var brightness = MediaQuery.of(context).platformBrightness;
     late var currentFocus;
+    bool _leaving = false;
     bool darkModeOn = brightness == Brightness.dark;
     ScreenUtil.init(
       context,
@@ -36,9 +39,131 @@ class ComposeBeep extends StatelessWidget {
                   GestureDetector(
                       child: Icon(Icons.arrow_back_ios_sharp, size: 20.h,color:  darkModeOn? bcolor: bcolor,),
                     onTap: (){
-                      FocusScope.of(context).unfocus();
-                       TextEditingController().clear();
-                       Navigator.pop(context);
+                        showDialog(context: context, builder: (ctx)=> ConstrainedBox(
+                          constraints: BoxConstraints(  maxHeight: 64.h, maxWidth: 257.w,),
+                          child: AlertDialog(
+                            titlePadding: EdgeInsets.zero,
+                            buttonPadding:EdgeInsets.zero,
+                            contentPadding: EdgeInsets.zero,
+                            actionsPadding: EdgeInsets.only(bottom: 9.h),
+                            alignment: AlignmentDirectional.topCenter,
+                            backgroundColor: Colors.white.withOpacity(0.8),
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                BorderRadius.all(
+                                    Radius.circular(100.0.r))),
+                            actions: [
+                              SizedBox(
+                                width: 63.38.w, height: 21.13.h,
+                                child:OutlinedButton(
+                                    style: OutlinedButton.styleFrom(
+                                        shape: StadiumBorder(),
+                                        backgroundColor: Colors.white),
+                                    onPressed: (){
+                                      Navigator.of(context, rootNavigator: true).pop();
+                                      // FocusScope.of(context).unfocus();
+                                    }, child: Text('Cancel',
+                                  style: TextStyle(
+                                      color: Colors.black, fontFamily: 'Nunito', fontSize: 8.5.sp,
+                                      fontWeight: FontWeight.w500
+                                  ),
+                                )),
+                              ),//cancel
+                              SizedBox(
+                                width: 9.24.w,
+                              ),
+                              SizedBox(
+                                width: 63.38.w, height: 21.13.h,
+                                child:OutlinedButton(
+                                    style: OutlinedButton.styleFrom(
+                                        shape: const StadiumBorder(),
+                                        backgroundColor: bcolor3),
+                                    onPressed: (){
+                                      // FocusScope.of(context).unfocus();
+                                      // TextEditingController().clear();
+                                      Navigator.of(context, rootNavigator: true).pop();
+                                     Navigator.pop(context);
+                                    }, child: Text('Save',
+                                  style: TextStyle(
+                                      color: Colors.white, fontFamily: 'Nunito', fontSize: 9.sp,
+                                      fontWeight: FontWeight.w600
+                                  ),
+                                )),
+                              ),//save
+                            ],
+                            actionsAlignment: MainAxisAlignment.center,
+                            content: Builder(
+                              builder: (context) {
+                                // Get available height and width of the build area of this widget. Make a choice depending on the size.
+                                var height = MediaQuery.of(context).size.height;
+                                var width = MediaQuery.of(context).size.width;
+
+                                return Column(
+                                  // crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    SizedBox(height: 8.h,),
+                                    Text('Save Beeps?', style: TextStyle(
+                                        color: bcolor3, fontFamily: 'Nunito', fontSize: 16.sp,
+                                      fontWeight: FontWeight.w700
+                                    ),),
+                                    SizedBox(height: 5.h,),
+                                    // Padding(
+                                    //   padding:  EdgeInsets.only(bottom: 8.h),
+                                    //   child: Row(
+                                    //     // mainAxisAlignment: MainAxisAlignment.center,
+                                    //     // mainAxisSize: MainAxisSize.min,
+                                    //     children: [
+                                    //       SizedBox(
+                                    //         width: 63.38.w, height: 21.13.h,
+                                    //         child:OutlinedButton(
+                                    //             style: OutlinedButton.styleFrom(
+                                    //                 shape: StadiumBorder(),
+                                    //                 backgroundColor: Colors.white),
+                                    //             onPressed: (){
+                                    //               FocusScope.of(context).unfocus();
+                                    //               TextEditingController().clear();
+                                    //             }, child: Text('Cancel',
+                                    //          style: TextStyle(
+                                    //               color: Colors.black, fontFamily: 'Nunito', fontSize: 8.5.sp,
+                                    //               fontWeight: FontWeight.w500
+                                    //           ),
+                                    //         )),
+                                    //       ),//cancel
+                                    //       SizedBox(
+                                    //         width: 9.24.w,
+                                    //       ),
+                                    //       SizedBox(
+                                    //         width: 63.38.w, height: 21.13.h,
+                                    //         child:OutlinedButton(
+                                    //             style: OutlinedButton.styleFrom(
+                                    //                 shape: StadiumBorder(),
+                                    //                 backgroundColor: bcolor3),
+                                    //             onPressed: (){
+                                    //               FocusScope.of(context).unfocus();
+                                    //               TextEditingController().clear();
+                                    //               Navigator.pop(context);
+                                    //             }, child: Text('Save',
+                                    //           style: TextStyle(
+                                    //               color: Colors.white, fontFamily: 'Nunito', fontSize: 9.sp,
+                                    //               fontWeight: FontWeight.w600
+                                    //           ),
+                                    //         )),
+                                    //       ),//save
+                                    //     ],
+                                    //   ),
+                                    // ),
+                                  ],
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+
+                        );
+                      // FocusScope.of(context).unfocus();
+                      //  TextEditingController().clear();
+                      //  Navigator.pop(context);
                         // Navigator.pop(context);
                     },
                   ),
@@ -58,6 +183,7 @@ class ComposeBeep extends StatelessWidget {
                height: 360,
                 child:TextFormField(
                   controller: _beepController,
+                  style: Theme.of(context).primaryTextTheme.bodyText2!.copyWith(color: darkModeOn?Colors.white:Colors.black),
                   autofocus: true,
                   maxLines: 10,
                   decoration:   InputDecoration(

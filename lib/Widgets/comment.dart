@@ -39,9 +39,9 @@ class _CommentState extends State<Comment> {
       ),
       body: Column(
         children: [
-          Container(
-            height: 1.h,
-            color: bcolor1,
+          Divider(
+            thickness: 0.5.h,
+            color: Color(0xff8E8E8E),
           ),
           PostBeep(),//divider
         ],

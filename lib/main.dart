@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     return ScreenUtilInit(
-      designSize: Size(428, 926),
+      designSize: const Size(428, 926),
       builder: (BuildContext context, child) => MaterialApp(
         themeMode: ThemeMode.system,
         theme: AppTheme.lightTheme,

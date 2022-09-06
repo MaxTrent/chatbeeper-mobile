@@ -136,7 +136,14 @@ class _LoginActivityState extends State<LoginActivity> {
           return Container(
             height: 50.h,
             width: 50.w,
-            child: GoogleMap(),
+            child: Column(
+              children: [
+                Text('Login Location'),
+                Text('Login Location'),
+                Text('Login Location'),
+                Text('Login Location'),
+              ],
+            ),
           );
         });
   }
