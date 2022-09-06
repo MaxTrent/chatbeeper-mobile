@@ -14,7 +14,6 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-
 class OtpEmail extends StatefulWidget {
   const OtpEmail({Key? key}) : super(key: key);
   static const String id = 'otpemail-screen';
@@ -55,6 +54,7 @@ class _OtpEmailState extends State<OtpEmail> {
       ),
     );
   }
+
   bool _otpcorrect = false;
   bool _otpfull = false;
 
@@ -125,31 +125,34 @@ class _OtpEmailState extends State<OtpEmail> {
     double h = MediaQuery.of(context).size.height;
     ScreenUtil.init(
       context,
-      designSize:Size(485,926),
+      designSize: Size(485, 926),
     );
     return Scaffold(
-      body:SingleChildScrollView(
+      body: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
         child: Form(
           key: _formKey,
           child: Column(
             children: [
               Padding(
-                padding:  EdgeInsets.only(top: 60.h),
-                child: Image.asset('images/verify.png', height: 137.h, width: 150.w,),
+                padding: EdgeInsets.only(top: 60.h),
+                child: Image.asset(
+                  'images/verify.png',
+                  height: 137.h,
+                  width: 150.w,
+                ),
               ),
               Padding(
-                padding:  const EdgeInsets.all(17.0),
+                padding: const EdgeInsets.all(17.0),
                 child: Column(
                   children: [
-                     SizedBox(width:5.w, height: 0.01.h),
-                    Text(
-                        'Authentication',
+                    SizedBox(width: 5.w, height: 0.01.h),
+                    Text('Authentication',
                         textAlign: TextAlign.center,
                         style: Theme.of(context).primaryTextTheme.subtitle2
-                      // style: TextStyle(fontFamily: 'Anton', fontSize: 30),
-                    ),//Authenticate
-                     SizedBox(width:5.w, height: 0.03.h),
+                        // style: TextStyle(fontFamily: 'Anton', fontSize: 30),
+                        ), //Authenticate
+                    SizedBox(width: 5.w, height: 0.03.h),
                     Center(
                       child: Center(
                         child: Padding(
@@ -158,20 +161,25 @@ class _OtpEmailState extends State<OtpEmail> {
                             child: Text(
                                 'Please enter the 6 digit Authentication code sent to $email',
                                 textAlign: TextAlign.center,
-                                style: Theme.of(context).primaryTextTheme.bodyText1
-                              // style: TextStyle(fontFamily: 'Anton', fontSize: 30),
-                            ),
+                                style:
+                                    Theme.of(context).primaryTextTheme.bodyText1
+                                // style: TextStyle(fontFamily: 'Anton', fontSize: 30),
+                                ),
                           ),
                         ),
                       ),
-                    ),//AND WRITE UP, whois creating
+                    ), //AND WRITE UP, whois creating
                     Padding(
-                      padding:  EdgeInsets.only(top: 36.h, bottom: 30.h),
+                      padding: EdgeInsets.only(top: 36.h, bottom: 30.h),
                       child: Form(
                         key: formKey,
                         child: OtpTextField(
-                          cursorColor:  Theme.of(context).colorScheme.secondaryVariant,
-                          textStyle:  Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 25.sp),
+                          cursorColor:
+                              Theme.of(context).colorScheme.secondaryVariant,
+                          textStyle: Theme.of(context)
+                              .primaryTextTheme
+                              .bodyText1!
+                              .copyWith(fontSize: 25.sp),
                           hasCustomInputDecoration: false,
                           showFieldAsBox: false,
                           numberOfFields: 6,
@@ -179,19 +187,19 @@ class _OtpEmailState extends State<OtpEmail> {
                           focusedBorderColor: Colors.grey,
                           disabledBorderColor: Colors.grey,
                           autoFocus: true,
-                            clearText: true,
-                            enabledBorderColor: Colors.grey,
+                          clearText: true,
+                          enabledBorderColor: Colors.grey,
                           onCodeChanged: (String code) {
-                            _otpfull==true;
+                            _otpfull == true;
                           },
                           //runs when every textfield is filled
-                          onSubmit: (String pin){
-                            _otpfull==true;
+                          onSubmit: (String pin) {
+                            _otpfull == true;
                             // setState(() {
                             //   // token == pin;
                             //   // print(pin);
                             // });
-                        }, // end onSubmit
+                          }, // end onSubmit
                         ),
                       ),
                     ),
@@ -200,24 +208,22 @@ class _OtpEmailState extends State<OtpEmail> {
                       width: 400.w,
                       child: ElevatedButton(
                         style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                                (Set<MaterialState> states){
-                                  if (_otpfull == true ) return  bcolor1;
-                                  return uColor;
-                                }
-                            ),
+                            backgroundColor:
+                                MaterialStateProperty.resolveWith<Color>(
+                                    (Set<MaterialState> states) {
+                              if (_otpfull == true) return bcolor1;
+                              return uColor;
+                            }),
                             // elevation: ,
-                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(6.r),
-                                  side: const BorderSide(color: Colors.transparent),
-                                )
-                            )
-                        ),
-                        onPressed: () async {
-                          verifyEmail();
-                        },
-                        child:  Text('Verify',
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(6.r),
+                              side: const BorderSide(color: Colors.transparent),
+                            ))),
+                        onPressed: () => Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => SignIn())),
+                        child: Text(
+                          'Verify',
                           textAlign: TextAlign.center,
                           style: Theme.of(context).primaryTextTheme.headline3,
                           // TextStyle(
@@ -227,50 +233,62 @@ class _OtpEmailState extends State<OtpEmail> {
                           //     fontSize: 16.sp
                           //
                           // ),
-                        ),),
-                    ),//button
-                    SizedBox(height: 60.h,),
+                        ),
+                      ),
+                    ), //button
+                    SizedBox(
+                      height: 60.h,
+                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         RichText(
-                          text: TextSpan(
-                              text: '',
-                              children: [
-                                TextSpan(text: 'Resend code after 60 Seconds',style:Theme.of(context).primaryTextTheme.bodyText1 ),
-                              ]
-                          ),
-
+                          text: TextSpan(text: '', children: [
+                            TextSpan(
+                                text: 'Resend code after 60 Seconds',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1),
+                          ]),
                         ),
-                        SizedBox(height: 8.h,),
+                        SizedBox(
+                          height: 8.h,
+                        ),
                         RichText(
-                          text: TextSpan(
-                              text: '',
-                              children: [
-                                TextSpan(
-                                  text: 'Resend Code',style:  TextStyle(color: Colors.grey, fontStyle: FontStyle.normal, fontWeight: FontWeight.w700, fontSize: 18.sp, fontFamily: 'Nunito'),
-                                  recognizer: TapGestureRecognizer()..onTap=()=>Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Home(),
-                                  ),),
-                                ),
-                              ]
-                          ),
-
+                          text: TextSpan(text: '', children: [
+                            TextSpan(
+                              text: 'Resend Code',
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 18.sp,
+                                  fontFamily: 'Nunito'),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () => Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => const Home(),
+                                      ),
+                                    ),
+                            ),
+                          ]),
                         ),
                       ],
                     ),
-
                   ],
                 ),
-              ),//TopOW
+              ), //TopOW
             ],
           ),
         ),
       ),
     );
   }
-  Future<void> verifyEmail() async{
-    if(_formKey.currentState!.validate() && otpcontroller.text.isNotEmpty){
-      final response = await http.patch(Uri.https('beeperchat.herokuapp.com', 'auth/verify-token/email'),
+
+  Future<void> verifyEmail() async {
+    if (_formKey.currentState!.validate() && otpcontroller.text.isNotEmpty) {
+      final response = await http.patch(
+          Uri.https('beeperchat.herokuapp.com', 'auth/verify-token/email'),
           body: ({
             "username": username.toString(),
             "email": email.toString(),
@@ -279,8 +297,8 @@ class _OtpEmailState extends State<OtpEmail> {
       if (response.statusCode == 201) {
         if (!mounted) return;
         print('object');
-        Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const SignIn()
-        ));
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => const SignIn()));
         // If the server did return a 201 CREATED response,
         // then parse the JSON.
         // return LogIn.fromJson(jsonDecode(response.body));
@@ -292,7 +310,11 @@ class _OtpEmailState extends State<OtpEmail> {
         print(response.body);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content:  Text(response.body,  style:Theme.of(context).primaryTextTheme.bodyText1!.copyWith(color: Colors.white)),
+            content: Text(response.body,
+                style: Theme.of(context)
+                    .primaryTextTheme
+                    .bodyText1!
+                    .copyWith(color: Colors.white)),
             backgroundColor: bcolor,
             behavior: SnackBarBehavior.floating,
             shape: RoundedRectangleBorder(
@@ -305,11 +327,15 @@ class _OtpEmailState extends State<OtpEmail> {
           ),
         );
       }
-      if(otpcontroller.text.isEmpty){
-        if(mounted) return;
+      if (otpcontroller.text.isEmpty) {
+        if (mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content:  Text('Incorrect details',  style:Theme.of(context).primaryTextTheme.bodyText1!.copyWith(color: Colors.white)),
+            content: Text('Incorrect details',
+                style: Theme.of(context)
+                    .primaryTextTheme
+                    .bodyText1!
+                    .copyWith(color: Colors.white)),
             backgroundColor: bcolor,
             behavior: SnackBarBehavior.floating,
             shape: RoundedRectangleBorder(

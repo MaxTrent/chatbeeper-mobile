@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class LoginActivity extends StatefulWidget {
   const LoginActivity({Key? key}) : super(key: key);
@@ -12,6 +15,22 @@ class LoginActivity extends StatefulWidget {
 }
 
 class _LoginActivityState extends State<LoginActivity> {
+  String device = 'iPhone 13';
+  String location = 'Lagos, Nigeria';
+  String lastSeen = 'Active now';
+  Completer<GoogleMapController> _controller = Completer();
+
+  static final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
+
+  static final CameraPosition _kLake = CameraPosition(
+      bearing: 192.8334901395799,
+      target: LatLng(37.43296265331129, -122.08832357078792),
+      tilt: 59.440717697143555,
+      zoom: 19.151926040649414);
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(
@@ -65,13 +84,61 @@ class _LoginActivityState extends State<LoginActivity> {
               ),
               SizedBox(
                 height: 93.h,
-              ),
-              /*ListView.builder(
-                physics: ScrollPhysics(),
-                itemBuilder: (context, ),
               ),*/
-            ],
-          ),
-        ));
+          ListView.builder(
+              itemCount: 15,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  onTap: () => _mapDialog(context),
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            'images/location2.svg',
+                            width: 20.w,
+                            height: 20.h,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 10.0.w),
+                            child: Text(location),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 32.0.w),
+                        child: Text(device),
+                      ),
+                    ],
+                  ),
+                  subtitle: Padding(
+                    padding: EdgeInsets.only(left: 32.0.w),
+                    child: Text(
+                      'Active now',
+                      style: Theme.of(context)
+                          .primaryTextTheme
+                          .headline4!
+                          .copyWith(fontSize: 12.sp, color: Color(0xff11CDF3)),
+                    ),
+                  ),
+                );
+              }),
+    );
+  }
+
+  Future<void> _mapDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+              child: GoogleMap(
+            initialCameraPosition: _kGooglePlex,
+            onMapCreated: (GoogleMapController controller) {
+              _controller.complete(controller);
+            },
+            mapType: MapType.hybrid,
+          ));
+        });
   }
 }
