@@ -1,6 +1,6 @@
 import 'package:chat_beeper/constants.dart';
 import 'package:flutter/material.dart'; import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:flutter_svg/svg.dart';
 class DirectMessage extends StatefulWidget {
   const DirectMessage({Key? key}) : super(key: key);
   static const String id = 'Dm';
@@ -12,46 +12,123 @@ class DirectMessage extends StatefulWidget {
 class _DirectMessageState extends State<DirectMessage> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    var brightness = MediaQuery.of(context).platformBrightness;
+    bool darkModeOn = brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: bcolor1,
-      // appBar: AppBar(
-      //   centerTitle: true,
-      //   backgroundColor: Colors.transparent,
-      //   elevation: 0,
-      //   leading: Image.asset('images/logo1', height: 50, width: 50,),
-      //   // title: Text(
-      //   //   'Zeesta',
-      //   //   style: TextStyle(
-      //   //       fontSize: 22,
-      //   //       fontWeight: FontWeight.bold,
-      //   //       fontStyle: FontStyle.italic,
-      //   //       color: Colors.white),
-      //   // ),
-      //   actions: [
-      //     Icon(Icons.message_outlined, color: Colors.white, size: 18),
-      //     SizedBox(
-      //       width: 8,
-      //     ),
-      //     Icon(Icons.settings, color: Colors.white, size: 19),
-      //     SizedBox(
-      //       width: 15,
-      //     )
-      //   ],
-      // ),
-      body: Container(
-        child: Column(
-          children: [
-            ListView.builder(  itemCount: 5,
-                itemBuilder: (BuildContext context, int index,){
-              return Column(
-                children: [
-                  Center(child: Text('data')),
-                ],
-              );
-                }
-      ),
-          ],
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar:PreferredSize(
+        preferredSize: Size(428.w,68.h),
+        child: Container(
+          decoration: const BoxDecoration(
+              border: Border(
+                  bottom: BorderSide(color: Colors.grey)
+              )
+          ),
+          child: AppBar(
+            // automaticallyImplyLeading: true,
+            title: Padding(
+              padding:  EdgeInsets.only(top: 32.h),
+              child: Text('Messages', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 16.sp),),
+            ),
+            centerTitle: true,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            elevation: 0,
+            leading: Center(child: Padding(
+              padding:  EdgeInsets.only(top: 25.h),
+              child: IconButton(icon:  Icon(Icons.arrow_back_ios_new, size:20.h,color: darkModeOn? Colors.white: Colors.black,), onPressed: () {
+                Navigator.pop(context);
+              },),
+            )),
+            actions: [
+              Padding(
+                padding:  EdgeInsets.only(left: 0, right: 17.w, top: 22.h),
+                child: SizedBox(
+                  height: 24.h,
+                  width: 24.w,
+                  child: GestureDetector(
+                    onTap: (){
+                    },
+                    child: SvgPicture.asset(
+                      color: bcolor1,
+                      'images/sms filled.svg',
+                    )
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
+      ),
+      body: Column(
+        children: [
+          SizedBox(height: 10.h,),
+          GestureDetector(
+            onTap: (){
+            },
+            child: Container(
+              height: 80.h, width: width,
+              decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(color: Colors.grey),
+                  )
+              ),
+              child:     SizedBox(
+                child: Padding(
+                  padding:  EdgeInsets.all(8),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      floatingLabelBehavior:
+                      FloatingLabelBehavior.auto,
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius:
+                          BorderRadius.all(Radius.circular(30.r)),
+                          borderSide: BorderSide(
+                            width: 0.5.w,
+                            // color: _isvalid == true ? bcolor1: Colors.red),
+                            color: bcolor1,
+                          )),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius:
+                        BorderRadius.all(Radius.circular(30.r)),
+                        borderSide:
+                        BorderSide(width: 0.5.w, color: uColor),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderRadius:
+                        BorderRadius.all(Radius.circular(30.r)),
+                        borderSide: BorderSide(
+                            width: 0.5.w, color: Colors.red),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius:
+                        BorderRadius.all(Radius.circular(30.r)),
+                        borderSide: BorderSide(
+                            width: 0.5.w, color: Colors.red),
+                      ),
+                      errorStyle:
+                      TextStyle(height: 0, fontSize: 10.sp),
+                      hintText: 'Search message',
+                      hintStyle: Theme.of(context)
+                          .primaryTextTheme
+                          .bodyText2,
+                      contentPadding:
+                      EdgeInsets.only(top: 10.h, left: 10.w),
+                      prefixIcon: Transform.scale(
+                          scale: 0.5,
+                          child: SvgPicture.asset('images/search.svg', color: darkModeOn? Colors.white: Colors.black,)),
+                      // hintStyle: Theme.of(context).primaryTextTheme.subtitle1,
+
+                      focusColor: uColor,
+                      // focusColor: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

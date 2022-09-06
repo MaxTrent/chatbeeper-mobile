@@ -1321,8 +1321,8 @@ class _CreateAccountState extends State<CreateAccount> {
                             maxRadius: 10.r,
                             foregroundColor: Colors.black,
                             backgroundColor: bcolor3,
-                            child: Center(
-                              child: const Icon(
+                            child: const Center(
+                              child: Icon(
                                 Icons.check_sharp,
                                 color: Colors.white,
                                 size: 8,

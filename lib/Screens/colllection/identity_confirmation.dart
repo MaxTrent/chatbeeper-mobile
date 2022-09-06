@@ -35,20 +35,22 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
             onPressed: () => Navigator.pop(context),
           ),
           title: Padding(
-            padding: EdgeInsets.only(left: 135.0.w),
+            padding: EdgeInsets.only(top: 25.0.h),
             child: Text('Settings',
                 style: Theme.of(context)
                     .primaryTextTheme
                     .headline4!
                     .copyWith(fontSize: 16.sp)),
           ),
+          centerTitle: true,
         ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Divider(
-                thickness: 2.h,
+              thickness: 1.h,
+                color: Color(0xff8E8E8E),
               ),
               ListTile(
                 dense: true,
@@ -62,7 +64,8 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
               ),
               Divider(
                 height: 16.h,
-                thickness: 2.h,
+              thickness: 1.h,
+                color: Color(0xff8E8E8E),
               ),
               SizedBox(
                 height: 20.h,

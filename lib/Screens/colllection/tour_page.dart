@@ -75,7 +75,7 @@ class _TourPageState extends State<TourPage> {
             padding:  EdgeInsets.only(left: 16.w,right: 18.w, top: 32.h),
             child: AppBar(
               // automaticallyImplyLeading: true,
-              title: Text('Tour', style: Theme.of(context).primaryTextTheme.bodyText1,),
+              title: Text('Tour', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 16.sp),),
               centerTitle: true,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               elevation: 0,
@@ -97,7 +97,7 @@ class _TourPageState extends State<TourPage> {
                       'images/search.svg',
                     ):
                     SvgPicture.asset(
-                      color: Colors.black,
+                      color: Colors.white,
                       'images/search_dark.svg',
                     ),
                   ),
@@ -116,7 +116,7 @@ class _TourPageState extends State<TourPage> {
                       'images/Dm.svg',
                     ):
                     SvgPicture.asset(
-                      color: Colors.black,
+                      color: Colors.white,
                       'images/sms.svg',
                     ),
                   ),
