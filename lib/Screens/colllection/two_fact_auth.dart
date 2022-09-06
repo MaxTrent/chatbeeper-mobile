@@ -35,26 +35,28 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
         toolbarHeight: 40.h,
         elevation: 0.h,
         leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: Theme.of(context).appBarTheme.iconTheme!.color,
-            ),
-            onPressed: () => Navigator.pop(context)),
-        title: Padding(
-          padding: EdgeInsets.only(left: 135.0.w),
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: darkModeOn == true ? Colors.white : Colors.black,
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title:  Padding(
+          padding: EdgeInsets.only(top: 25.0.h),
           child: Text('Settings',
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
                   .copyWith(fontSize: 16.sp)),
         ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Divider(
-              thickness: 1.h,
+              thickness: 0.5.h,
               color: Color(0xff8E8E8E),
             ),
             ListTile(
@@ -69,7 +71,7 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
             ),
             Divider(
               height: 16.h,
-              thickness: 1.h,
+              thickness: 0.5.h,
               color: Color(0xff8E8E8E),
             ),
             SizedBox(

@@ -429,6 +429,7 @@ class _PostBeepState extends State<PostBeep> {
                 SizedBox(
                   width: 40.w,
                 ),
+<<<<<<< HEAD
                 LikeButton(
                   size: 24,
                   circleColor:
@@ -639,6 +640,15 @@ class _PostBeepState extends State<PostBeep> {
         )); //icons
 
     //image of card
+=======
+              ],),//icons
+          ),//icons
+        ],
+      );
+    }
+       //image of card
+
+>>>>>>> dc7d3258da91b0f2d296681bc4b89e49df457c9d
 
     // buildCollapsed3() {
     //   return Container();

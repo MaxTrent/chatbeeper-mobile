@@ -77,27 +77,30 @@ class _SettingsPageState extends State<SettingsPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ListTile(
-              dense: true,
-              title: Row(
-                children: [
-                darkModeOn ?  SvgPicture.asset('images/frame.svg',color: Colors.white,): SvgPicture.asset('images/frame.svg') ,
-                  Padding(
-                    padding: EdgeInsets.only(left: 8.0.w),
-                    child: Text(
-                      'Personal Information',
-                      style: Theme.of(context)
-                          .primaryTextTheme
-                          .headline4!
-                          .copyWith(fontSize: 16.sp),
+            Padding(
+              padding: EdgeInsets.only(top: 10.0.w),
+              child: ListTile(
+                dense: true,
+                title: Row(
+                  children: [
+                  darkModeOn ?  SvgPicture.asset('images/frame.svg',color: Colors.white,): SvgPicture.asset('images/frame.svg') ,
+                    Padding(
+                      padding: EdgeInsets.only(left: 8.0.w),
+                      child: Text(
+                        'Personal Information',
+                        style: Theme.of(context)
+                            .primaryTextTheme
+                            .headline4!
+                            .copyWith(fontSize: 16.sp),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
+                onTap: null,
               ),
-              onTap: null,
             ),
             Divider(
-              thickness: 1.h,
+              thickness: 0.5.h,
               color: Color(0xff8E8E8E),
             ),
             ListTile(
@@ -146,27 +149,30 @@ class _SettingsPageState extends State<SettingsPage> {
               onTap: () => Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const DeactivateAccount())),
             ),
-            ListTile(
-              dense: true,
-              title: Row(
-                children: [
-                  darkModeOn == false? SvgPicture.asset('images/security-safe.svg'):SvgPicture.asset('images/security-safe.svg', color: Colors.white,),
-                  Padding(
-                    padding: EdgeInsets.only(left: 8.0.w),
-                    child: Text(
-                      'Security',
-                      style: Theme.of(context)
-                          .primaryTextTheme
-                          .headline4!
-                          .copyWith(fontSize: 16.sp),
+            Padding(
+              padding: EdgeInsets.only(top: 5.0.w),
+              child: ListTile(
+                dense: true,
+                title: Row(
+                  children: [
+                    darkModeOn == false? SvgPicture.asset('images/security-safe.svg'):SvgPicture.asset('images/security-safe.svg', color: Colors.white,),
+                    Padding(
+                      padding: EdgeInsets.only(left: 8.0.w),
+                      child: Text(
+                        'Security',
+                        style: Theme.of(context)
+                            .primaryTextTheme
+                            .headline4!
+                            .copyWith(fontSize: 16.sp),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
+                onTap: null,
               ),
-              onTap: null,
-            ),
+            ),//security
             Divider(
-              thickness: 1.h,
+              thickness: 0.5.h,
               color: Color(0xff8E8E8E),
             ),
             ListTile(
@@ -250,7 +256,7 @@ class _SettingsPageState extends State<SettingsPage> {
               onTap: null,
             ),
             Divider(
-              thickness: 1.h,
+              thickness: 0.5.h,
               color: Color(0xff8E8E8E),
             ),
             ListTile(
@@ -286,7 +292,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             Divider(
-              thickness: 1.h,
+              thickness: 0.5.h,
               color: Color(0xff8E8E8E),
             ),
             ListTile(

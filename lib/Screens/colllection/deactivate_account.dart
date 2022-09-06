@@ -48,7 +48,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Divider(
-              thickness: 1.h,
+              thickness: 0.5.h,
                 color: Color(0xff8E8E8E),
               ),
               ListTile(
@@ -63,7 +63,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
               ),
               Divider(
                 height: 16.h,
-              thickness: 1.h,
+              thickness: 0.5.h,
                 color: Color(0xff8E8E8E),
               ),
               SizedBox(
