@@ -98,6 +98,7 @@ class _TimelineState extends State<Timeline> {
                     // Navigator.push(context,
                     //     MaterialPageRoute(builder: (context) => DirectMessage()));
                   },
+
                   child:
                   darkModeOn == false ? SvgPicture.asset(
                     color: Colors.black,
@@ -112,6 +113,7 @@ class _TimelineState extends State<Timeline> {
               SizedBox(width: 12.w,),
               Padding(
                 padding:  EdgeInsets.only(top: 32.h, right: 16.w),
+
                 child: GestureDetector(
                   onTap: (){
                     Navigator.push(context,
@@ -299,6 +301,7 @@ class _TimelineState extends State<Timeline> {
                                   fontWeight: FontWeight.w600, fontSize: 18.sp,
                                 ),
                                 ),
+
                                 SizedBox(width: 5.w,),
                                 Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 16.sp,), ),
                               ],
@@ -308,7 +311,9 @@ class _TimelineState extends State<Timeline> {
                       ),
                     ),//following followers
                     SizedBox(height: 12.h,),
+
                      Divider(color:uColor, thickness: 0.5,),
+
                   ],
                 ),//profilepicture and username
                 // SizedBox(height: 20.h,),
@@ -336,6 +341,8 @@ class _TimelineState extends State<Timeline> {
 
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
                         ),
+
+
                         onPressed: (){
                           Navigator.pop(context);
                           Navigator.push(context,MaterialPageRoute(builder: (context) => const Profile(),));
@@ -351,7 +358,7 @@ class _TimelineState extends State<Timeline> {
                           style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                           ),
                       ],
-                    ))),//myprofile
+                    ),//myprofile
                 SizedBox(height: 15.h,),
                 Align(
                     alignment: Alignment.topLeft,
@@ -385,6 +392,7 @@ class _TimelineState extends State<Timeline> {
                           onSurface: Colors.transparent,
                           
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
+
                         ),onPressed: (){
                       Navigator.pop(context);
                       Navigator.push(context,MaterialPageRoute(builder: (context) => const Trending(),));
@@ -480,6 +488,7 @@ class _TimelineState extends State<Timeline> {
                           
                           // overlayColor: MaterialStateProperty.all(Colors.transparent),
                         ),
+
                         onPressed: (){
                           Navigator.pop(context);
                           Navigator.push(context,MaterialPageRoute(builder: (context) =>  const RequestVerification(),));

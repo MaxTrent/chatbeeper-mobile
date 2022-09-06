@@ -148,6 +148,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                         },
                         child:Icon(Icons.arrow_back_ios_new, size:19.h,color: Colors.white,),
                       ),
+
                     ),//backbutton
                  Positioned(
                      top: 20.h,
@@ -222,7 +223,9 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+
                     SizedBox(height: 40.h,),
+
                     Column(
                       children: [
                         Center(
@@ -237,6 +240,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                             Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey, fontSize: 14.sp ),),
                              Icon(Icons.verified_rounded, color: bcolor5,size: 15.h,),
                           ],
+
                         ),//username
                         Container(
                           height: 15.h, width: 64.w,
@@ -368,6 +372,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                                   onPressed: ()  {
                                     Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const ProfileTab()));
                                   },
+
                                   child: darkModeOn == false ?  Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -415,6 +420,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                                     ]
                                   ),
 
+
                                 ),
                               ),
                             ),
@@ -423,6 +429,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                               child:  darkModeOn ?   Container(
                                 height: 40.h,
                                 width: 40.w,
+
                                 decoration: BoxDecoration(
                                   color: Colors.transparent,
                                   shape: BoxShape.circle,
@@ -439,6 +446,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                               ):null,
                             ),
                           ],
+
                         ),//edit profile and dm
                         SizedBox(height: 5.h,),
                         Padding(
