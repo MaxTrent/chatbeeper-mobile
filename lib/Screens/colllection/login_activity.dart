@@ -41,17 +41,16 @@ class _LoginActivityState extends State<LoginActivity> {
     bool darkModeOn = brightness == Brightness.dark;
 
     return Scaffold(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        appBar: AppBar(
-          toolbarHeight: 40.h,
-          elevation: 0.h,
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: darkModeOn == true ? Colors.white : Colors.black,
-            ),
-            onPressed: () => Navigator.pop(context),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: AppBar(
+        toolbarHeight: 40.h,
+        elevation: 0.h,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: darkModeOn == true ? Colors.white : Colors.black,
           ),
+
           title:  Padding(
             padding: EdgeInsets.only(top: 25.0.h),
             child: Text('Settings',
@@ -68,6 +67,7 @@ class _LoginActivityState extends State<LoginActivity> {
             children: [
               Divider(
                 thickness: 0.5.h,
+
               ),
               ListTile(
                 dense: true,
@@ -82,6 +82,7 @@ class _LoginActivityState extends State<LoginActivity> {
               Divider(
                 height: 16.h,
                 thickness: 0.5.h,
+
               ),
               SizedBox(
                 height: 93.h,
@@ -134,14 +135,18 @@ class _LoginActivityState extends State<LoginActivity> {
     return showDialog(
         context: context,
         builder: (context) {
-          return Dialog(
-              child: GoogleMap(
-            initialCameraPosition: _kGooglePlex,
-            onMapCreated: (GoogleMapController controller) {
-              _controller.complete(controller);
-            },
-            mapType: MapType.hybrid,
-          ));
+          return Container(
+            height: 50.h,
+            width: 50.w,
+            child: Column(
+              children: [
+                Text('Login Location'),
+                Text('Login Location'),
+                Text('Login Location'),
+                Text('Login Location'),
+              ],
+            ),
+          );
         });
   }
 }

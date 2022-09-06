@@ -342,6 +342,7 @@ Padding(
     }
        //image of card
 
+
     // buildCollapsed3() {
     //   return Container();
     // }
