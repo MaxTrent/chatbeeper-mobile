@@ -47,7 +47,7 @@ class _IdentityVerifiedState extends State<IdentityVerified> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Divider(
-              thickness: 1.h,
+              thickness: 0.5.h,
                 color: Color(0xff8E8E8E),
               ),
               ListTile(
@@ -62,7 +62,7 @@ class _IdentityVerifiedState extends State<IdentityVerified> {
               ),
               Divider(
                 height: 16.h,
-              thickness: 1.h,
+              thickness: 0.5.h,
                 color: Color(0xff8E8E8E),
               ),
               SizedBox(

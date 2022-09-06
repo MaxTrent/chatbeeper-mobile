@@ -49,7 +49,7 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Divider(
-              thickness: 1.h,
+              thickness: 0.5.h,
                 color: Color(0xff8E8E8E),
               ),
               ListTile(
@@ -64,7 +64,7 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
               ),
               Divider(
                 height: 16.h,
-              thickness: 1.h,
+              thickness: 0.5.h,
                 color: Color(0xff8E8E8E),
               ),
               SizedBox(
