@@ -9,10 +9,9 @@ import 'package:chat_beeper/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
-import 'package:expandable/expandable.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
 class PostBeep extends StatefulWidget {
+
   PostBeep({Key? key}) : super(key: key);
   static const String id = 'post-card';
 
@@ -21,8 +20,7 @@ class PostBeep extends StatefulWidget {
 }
 
 class _PostBeepState extends State<PostBeep> {
-  String loremIpsum =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+  String loremIpsum ="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
   String FullName = 'Sarah Madini';
 
@@ -30,7 +28,7 @@ class _PostBeepState extends State<PostBeep> {
 
   String posttime = '1 hour ago';
 
-  final bool _rebeeped = false;
+  final  bool _rebeeped = false;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +51,6 @@ class _PostBeepState extends State<PostBeep> {
     }
 
     buildCollapsed1() {
-
       return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -75,277 +72,170 @@ class _PostBeepState extends State<PostBeep> {
                             fontFamily: 'Nunito', fontWeight: FontWeight.w500
                           ),),
                         ),
-
                       ),
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Row(
                       children: [
-                        Row(
+                        CircleAvatar(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(100.0.r),
+                            child: Image.asset('images/sarah.png'),
+                          ),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "\ $FullName\ ",
-                              style: Theme.of(context)
-                                  .primaryTextTheme
-                                  .bodyText1!
-                                  .copyWith(fontWeight: FontWeight.w500),
+                            Row(
+                              children: [
+                                Text(
+                                  "\ $FullName\ ",
+                                  style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500),
+                                ),
+                                Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey  ),),
+                                const Icon(Icons.verified_rounded, color: bcolor5,size: 15,),
+                              ],
                             ),
-                            Text(
-                              '@$username',
-                              style: TextStyle(
-                                  fontFamily: 'Nunito',
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.grey),
-                            ),
-                            const Icon(
-                              Icons.verified_rounded,
-                              color: bcolor5,
-                              size: 15,
-                            ),
+                            Text('\ $posttime', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w500, color: Colors.grey  ),),
                           ],
                         ),
-                        Text(
-                          '\ $posttime',
-                          style: TextStyle(
-                              fontFamily: 'Nunito',
-                              fontWeight: FontWeight.w500,
-                              color: Colors.grey),
+                        Spacer(),
+                        PopupMenuButton<int>(
+
+                          icon: Icon(Icons.more_vert_sharp, size: 30.h,color: Theme.of(context).colorScheme.secondaryVariant,),
+                          iconSize: 24.h,
+                          itemBuilder: (context) => [
+                            PopupMenuItem(
+                              value: 1,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h, width: 24.w,
+                                      child: darkModeOn == false? SvgPicture.asset('images/mute.svg'):SvgPicture.asset('images/mute.svg', color: Colors.white,)),
+                                  SizedBox(width: 10.w,),
+                                  Text("Mute",style:  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),)
+                                ],
+                              ),
+                            ),//mute
+                            PopupMenuItem(
+                              value: 2,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h, width: 24.w,
+                                      child:darkModeOn == false? SvgPicture.asset('images/block.svg'):SvgPicture.asset('images/block.svg', color: Colors.white,)),
+                                  SizedBox(width: 10.w,),
+                                  Text("Block", style:
+                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                  )
+                                ],
+                              ),
+                            ),//block
+                            PopupMenuItem(
+                              value: 3,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h, width: 24.w,
+                                      child:darkModeOn == false? SvgPicture.asset('images/unfollow.svg'):SvgPicture.asset('images/unfollow.svg', color: Colors.white,)),
+                                  SizedBox(width: 10.w,),
+                                  Text("Unfollow", style:
+                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                  )
+                                ],
+                              ),
+                            ),//unfollow
+                            PopupMenuItem(
+                              value: 4,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h, width: 24.w,
+                                      child:darkModeOn == false? SvgPicture.asset('images/not interested.svg'):SvgPicture.asset('images/not interested.svg', color: Colors.white,)),
+                                  SizedBox(width: 10.w,),
+                                  Text("Not interested in this", style:
+                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                  )
+                                ],
+                              ),
+                            ),//not interested
+                            PopupMenuItem(
+                              value: 5,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h, width: 24.w,
+                                      child:darkModeOn == false? SvgPicture.asset('images/report.svg'):SvgPicture.asset('images/report.svg', color: Colors.white,)),
+                                  SizedBox(width: 10.w,),
+                                  Text("Report this account", style:
+                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                  )
+                                ],
+                              ),
+                            ),//report
+                          ],
+                          offset: Offset(-28.w, 40.h),
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                          elevation: 2,
                         ),
                       ],
                     ),
-                    Spacer(),
-                    PopupMenuButton<int>(
-                      icon: Icon(
-                        Icons.more_vert_sharp,
-                        size: 30.h,
-                        color: Theme.of(context).colorScheme.secondaryVariant,
-                      ),
-                      iconSize: 24.h,
-                      itemBuilder: (context) => [
-                        PopupMenuItem(
-                          value: 1,
-                          // row has two child icon and text.
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                  height: 24.h,
-                                  width: 24.w,
-                                  child: darkModeOn == false
-                                      ? SvgPicture.asset('images/mute.svg')
-                                      : SvgPicture.asset(
-                                          'images/mute.svg',
-                                          color: Colors.white,
-                                        )),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              Text(
-                                "Mute",
-                                style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: darkModeOn
-                                        ? Colors.white
-                                        : Colors.black),
-                              )
-                            ],
-                          ),
-                        ), //mute
-                        PopupMenuItem(
-                          value: 2,
-                          // row has two child icon and text.
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                  height: 24.h,
-                                  width: 24.w,
-                                  child: darkModeOn == false
-                                      ? SvgPicture.asset('images/block.svg')
-                                      : SvgPicture.asset(
-                                          'images/block.svg',
-                                          color: Colors.white,
-                                        )),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              Text(
-                                "Block",
-                                style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: darkModeOn
-                                        ? Colors.white
-                                        : Colors.black),
-                              )
-                            ],
-                          ),
-                        ), //block
-                        PopupMenuItem(
-                          value: 3,
-                          // row has two child icon and text.
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                  height: 24.h,
-                                  width: 24.w,
-                                  child: darkModeOn == false
-                                      ? SvgPicture.asset('images/unfollow.svg')
-                                      : SvgPicture.asset(
-                                          'images/unfollow.svg',
-                                          color: Colors.white,
-                                        )),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              Text(
-                                "Unfollow",
-                                style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: darkModeOn
-                                        ? Colors.white
-                                        : Colors.black),
-                              )
-                            ],
-                          ),
-                        ), //unfollow
-                        PopupMenuItem(
-                          value: 4,
-                          // row has two child icon and text.
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                  height: 24.h,
-                                  width: 24.w,
-                                  child: darkModeOn == false
-                                      ? SvgPicture.asset(
-                                          'images/not interested.svg')
-                                      : SvgPicture.asset(
-                                          'images/not interested.svg',
-                                          color: Colors.white,
-                                        )),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              Text(
-                                "Not interested in this",
-                                style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: darkModeOn
-                                        ? Colors.white
-                                        : Colors.black),
-                              )
-                            ],
-                          ),
-                        ), //not interested
-                        PopupMenuItem(
-                          value: 5,
-                          // row has two child icon and text.
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                  height: 24.h,
-                                  width: 24.w,
-                                  child: darkModeOn == false
-                                      ? SvgPicture.asset('images/report.svg')
-                                      : SvgPicture.asset(
-                                          'images/report.svg',
-                                          color: Colors.white,
-                                        )),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              Text(
-                                "Report this account",
-                                style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: darkModeOn
-                                        ? Colors.white
-                                        : Colors.black),
-                              )
-                            ],
-                          ),
-                        ), //report
-                      ],
-                      offset: Offset(-28.w, 40.h),
-                      color: Theme.of(context).scaffoldBackgroundColor,
-                      elevation: 2,
-                    ),
+
                   ],
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
-      ]); //top of card
+          ]);//top of card
     }
 
     buildCollapsed2() {
       return Column(
         children: [
-          Padding(
-            padding: EdgeInsets.only(
-                left: 16.w, right: 27.w, bottom: 12.h, top: 12.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                ReadMoreText(
-                  loremIpsum,
-                  trimExpandedText: 'see Less',
-                  trimCollapsedText: 'see more',
-                  colorClickableText: Colors.grey,
-                  style: Theme.of(context)
-                      .primaryTextTheme
-                      .bodyText1!
-                      .copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
-                ),
-              ],
-            ),
-          ), //readmore text
+Padding(
+        padding:  EdgeInsets.only(left: 16.w, right: 27.w,bottom: 12.h, top: 12.h),
+      child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+      ReadMoreText(
+      loremIpsum,
+      trimExpandedText: 'see Less',
+      trimCollapsedText: 'see more',
+      colorClickableText: Colors.grey,
+      style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
+
+      ),
+      ],
+      ),
+      ),//readmore text
           Container(
             height: 0.2,
             color: Colors.grey,
-          ), //divider
+          ),//divider
           Padding(
-            padding: EdgeInsets.only(
-                left: 30.w, right: 19.w, top: 20.h, bottom: 15.h),
+            padding:  EdgeInsets.only(left: 30.w,right: 19.w, top: 20.h, bottom: 15.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 GestureDetector(
-                  child: SvgPicture.asset(
-                    'images/comment.svg',
-                    height: 24,
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Comment()));
+                  child: SvgPicture.asset('images/comment.svg', height: 24,),
+                  onTap: (){
+                    Navigator.push(context,MaterialPageRoute(builder: (context) => const Comment()));
                   },
                 ),
-                SizedBox(
-                  width: 40.w,
-                ),
+                SizedBox(width: 40.w,),
                 GestureDetector(
-                  onTap: () async {
-                    showDialog(
-                      context: context,
-                      builder: (context) => const RebeepResponse(),
+                  onTap: () async{
+                    showDialog(context: context, builder: (context)=>
+                        const RebeepResponse(),
                     );
                   },
-
                   child: _rebeeped == false?  SizedBox(height:35.h,child: SvgPicture.asset('images/rebeep.svg', height: 30.h,)): SvgPicture.asset('images/rebeep.svg', color: Colors.red,  height: 35.h,),
                 ),//rebeep
-
                 // LikeButton(
                 //   size: 24,
                 //   circleColor:
@@ -376,23 +266,19 @@ class _PostBeepState extends State<PostBeep> {
                 //   //   return result;
                 //   // },
                 // ),//infinite
-                SizedBox(
-                  width: 40.w,
-                ),
+                SizedBox(width: 40.w,),
                 LikeButton(
                   size: 24,
-                  circleColor: CircleColor(
-                      start: Colors.red.shade700, end: Colors.red.shade800),
+                  circleColor:
+                  CircleColor(start: Colors.red.shade700, end: Colors.red.shade800),
                   bubblesColor: BubblesColor(
                     dotPrimaryColor: Colors.red.shade700,
                     dotSecondaryColor: Colors.red.shade800,
                   ),
                   likeBuilder: (bool isLiked) {
-                    return isLiked == false
-                        ? SvgPicture.asset(
-                            'images/dislike_blue.svg',
-                          )
-                        : SvgPicture.asset('images/dislike_red.svg');
+                    return isLiked == false? SvgPicture.asset(
+                      'images/dislike_blue.svg',
+                    ): SvgPicture.asset('images/dislike_red.svg');
                   },
                   likeCount: 100,
                   // countBuilder: (int count, bool isLiked, String text) {
@@ -410,53 +296,43 @@ class _PostBeepState extends State<PostBeep> {
                   //     );
                   //   return result;
                   // },
-                ), //brokenheart
-                SizedBox(
-                  width: 40.w,
-                ),
-
-                LikeButton(
-                  size: 24,
-                  circleColor:
-                      CircleColor(start: Colors.red.shade200, end: Colors.red),
-                  bubblesColor: const BubblesColor(
-                    dotPrimaryColor: Colors.red,
-                    dotSecondaryColor: Colors.red,
-                  ),
-                  likeBuilder: (bool isLiked) {
-                    return isLiked == false
-                        ? SvgPicture.asset(
-                            'images/like.svg',
-                          )
-                        : SvgPicture.asset('images/favorite_red.svg');
-                  },
-                  likeCount: 100,
-                  // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                  //   Widget result;
-                  //   if (count == 0) {
-                  //     result = Text(
-                  //       "love",
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   } else
-                  //     result = Text(
-                  //       text,
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   return result;
-                  // },
-                ), //heart
-                SizedBox(
-                  width: 90.w,
-                ),
+                ),//brokenheart
+                SizedBox(width: 40.w,),
+                 LikeButton(
+      size: 24,
+      circleColor:
+      CircleColor(start: Colors.red.shade200, end: Colors.red),
+      bubblesColor: const BubblesColor(
+      dotPrimaryColor: Colors.red,
+      dotSecondaryColor: Colors.red,
+      ),
+      likeBuilder: (bool isLiked) {
+      return isLiked == false? SvgPicture.asset(
+      'images/like.svg',
+      ): SvgPicture.asset('images/favorite_red.svg');
+      },
+      likeCount: 100,
+      // countBuilder: (int count, bool isLiked, String text) {
+      //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+      //   Widget result;
+      //   if (count == 0) {
+      //     result = Text(
+      //       "love",
+      //       style: TextStyle(color: color),
+      //     );
+      //   } else
+      //     result = Text(
+      //       text,
+      //       style: TextStyle(color: color),
+      //     );
+      //   return result;
+      // },
+      ),//heart
+                SizedBox(width: 90.w,),
                 GestureDetector(
                   child: Padding(
-                    padding: EdgeInsets.only(bottom: 5.h),
-                    child: SvgPicture.asset(
-                      'images/share.svg',
-                      height: 26,
-                    ),
+                    padding:  EdgeInsets.only(bottom: 5.h),
+                    child: SvgPicture.asset('images/share.svg', height: 26,),
                   ),
                   onTap: (){
                     showModalBottomSheet(
@@ -716,170 +592,8 @@ class _PostBeepState extends State<PostBeep> {
                       ),
                     ),
                     );
-
                   },
                 ),
-              ],
-            ), //icons
-          ), //icons
-        ],
-      );
-    }
-
-    Padding(
-        padding:
-            EdgeInsets.only(left: 30.w, right: 19.w, top: 20.h, bottom: 15.h),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            GestureDetector(
-              child: SvgPicture.asset(
-                'images/comment.svg',
-                height: 24,
-              ),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Comment()));
-              },
-            ),
-            SizedBox(
-              width: 40.w,
-            ),
-            GestureDetector(
-              onTap: () async {
-                showDialog(
-                  context: context,
-                  builder: (context) => const RebeepResponse(),
-                );
-              },
-              child: _rebeeped == false
-                  ? SvgPicture.asset('images/rebeep.svg')
-                  : SvgPicture.asset(
-                      'images/rebeep.svg',
-                      color: Colors.red,
-                    ),
-            ), //rebeep
-            // LikeButton(
-            //   size: 24,
-            //   circleColor:
-            //   CircleColor(start: Color(0xff00ddff), end: const Color(0xff0099cc)),
-            //   bubblesColor: const BubblesColor(
-            //     dotPrimaryColor: Color(0xff33b5e5),
-            //     dotSecondaryColor: Color(0xff0099cc),
-            //   ),
-            //   likeBuilder: (bool isLiked) {
-            //     return isLiked == false? SvgPicture.asset(
-            //       'images/rebeep.svg',
-            //     ): SvgPicture.asset('images/rebeep_red.svg');
-            //   },
-            //   likeCount: 100,
-            //   // countBuilder: (int count, bool isLiked, String text) {
-            //   //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-            //   //   Widget result;
-            //   //   if (count == 0) {
-            //   //     result = Text(
-            //   //       "love",
-            //   //       style: TextStyle(color: color),
-            //   //     );
-            //   //   } else
-            //   //     result = Text(
-            //   //       text,
-            //   //       style: TextStyle(color: color),
-            //   //     );
-            //   //   return result;
-            //   // },
-            // ),//infinite
-            SizedBox(
-              width: 40.w,
-            ),
-            LikeButton(
-              size: 24,
-              circleColor: CircleColor(
-                  start: Colors.red.shade700, end: Colors.red.shade800),
-              bubblesColor: BubblesColor(
-                dotPrimaryColor: Colors.red.shade700,
-                dotSecondaryColor: Colors.red.shade800,
-              ),
-              likeBuilder: (bool isLiked) {
-                return isLiked == false
-                    ? SvgPicture.asset(
-                        'images/dislike_blue.svg',
-                      )
-                    : SvgPicture.asset('images/dislike_red.svg');
-              },
-              likeCount: 100,
-              // countBuilder: (int count, bool isLiked, String text) {
-              //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-              //   Widget result;
-              //   if (count == 0) {
-              //     result = Text(
-              //       "love",
-              //       style: TextStyle(color: color),
-              //     );
-              //   } else
-              //     result = Text(
-              //       text,
-              //       style: TextStyle(color: color),
-              //     );
-              //   return result;
-              // },
-            ), //brokenheart
-            SizedBox(
-              width: 40.w,
-            ),
-            LikeButton(
-              size: 24,
-              circleColor:
-                  CircleColor(start: Colors.red.shade200, end: Colors.red),
-              bubblesColor: const BubblesColor(
-                dotPrimaryColor: Colors.red,
-                dotSecondaryColor: Colors.red,
-              ),
-              likeBuilder: (bool isLiked) {
-                return isLiked == false
-                    ? SvgPicture.asset(
-                        'images/like.svg',
-                      )
-                    : SvgPicture.asset('images/favorite_red.svg');
-              },
-              likeCount: 100,
-              // countBuilder: (int count, bool isLiked, String text) {
-              //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-              //   Widget result;
-              //   if (count == 0) {
-              //     result = Text(
-              //       "love",
-              //       style: TextStyle(color: color),
-              //     );
-              //   } else
-              //     result = Text(
-              //       text,
-              //       style: TextStyle(color: color),
-              //     );
-              //   return result;
-              // },
-            ), //heart
-            SizedBox(
-              width: 90.w,
-            ),
-            GestureDetector(
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 5.h),
-                child: SvgPicture.asset(
-                  'images/share.svg',
-                  height: 26,
-                ),
-              ),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Comment()));
-              },
-            ),
-          ],
-        )); //icons
-
-    //image of card
-=======
               ],),//icons
           ),//icons
         ],
@@ -888,10 +602,10 @@ class _PostBeepState extends State<PostBeep> {
        //image of card
 
 
-
     // buildCollapsed3() {
     //   return Container();
     // }
+
 
     buildExpanded1() {
       return Column(
@@ -914,7 +628,7 @@ class _PostBeepState extends State<PostBeep> {
               ),
             ),
           ]);
-    } //useless
+    }//useless
 
     buildExpanded3() {
       return Padding(
@@ -929,11 +643,10 @@ class _PostBeepState extends State<PostBeep> {
           ],
         ),
       );
-    } //useless
+    }//useless
 
     return ExpandableNotifier(
         child: Padding(
-
           padding:  EdgeInsets.only(bottom: 10.h),
           child: ScrollOnExpand(
             child: SizedBox(
@@ -984,36 +697,11 @@ class _PostBeepState extends State<PostBeep> {
                     //   ],
                     // ),
                   ],
-
                 ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.start,
-                //   children: <Widget>[
-                //     Builder(
-                //       builder: (context) {
-                //         var controller =
-                //         ExpandableController.of(context, required: true)!;
-                //         return TextButton(
-                //           child: Text(
-                //             controller.expanded ? "COLLAPSE" : "EXPAND",
-                //             style: Theme.of(context)
-                //                 .textTheme
-                //                 .button!
-                //                 .copyWith(color: Colors.deepPurple),
-                //           ),
-                //           onPressed: () {
-                //             controller.toggle();
-                //           },
-                //         );
-                //       },
-                //     ),
-                //   ],
-                // ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
-    ));
+        ));
   }
 }
+

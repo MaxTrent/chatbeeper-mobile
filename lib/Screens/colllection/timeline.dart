@@ -267,7 +267,7 @@ class _TimelineState extends State<Timeline> {
                       ),
                     ),//following followers
                     SizedBox(height: 12.h,),
-                     Divider(color:uColor, thickness: 0.5,),
+                      Divider(color:uColor, thickness: 0.5.h,),
                   ],
                 ),
                 Align(
