@@ -84,7 +84,7 @@ class _LoginActivityState extends State<LoginActivity> {
               ),
               SizedBox(
                 height: 93.h,
-              ),*/
+              ),
           ListView.builder(
               itemCount: 15,
               itemBuilder: (context, index) {
@@ -124,9 +124,11 @@ class _LoginActivityState extends State<LoginActivity> {
                   ),
                 );
               }),
+    ]
+    )
+    )
     );
   }
-
   Future<void> _mapDialog(BuildContext context) {
     return showDialog(
         context: context,
