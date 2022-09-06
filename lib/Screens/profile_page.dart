@@ -106,7 +106,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                       // )
                       Container(
                         width: MediaQuery.of(context).size.width,
-                        height: 100.h,
+                        height: 85.h,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30.r),bottomRight:Radius.circular(30.r),topRight: Radius.circular(-10.r) ),
                             image: DecorationImage(
@@ -150,21 +150,25 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                       ),
                     ),//backbutton
                  Positioned(
-                      top: 15.h,
+                     top: 20.h,
                       left: 410.w,
                       right: 0.w,
                       bottom: 50.h,
-                      child: darkModeOn? PopupMenuButton<int>(
+                      child: PopupMenuButton<int>(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8.r))
                         ),
-                        icon: Icon(Icons.more_horiz_sharp, size: 30.h,color: Theme.of(context).colorScheme.secondaryVariant,),
+                        padding: EdgeInsets.zero,
+                        icon: Icon(Icons.more_horiz_sharp, size: 30.h,color: Colors.white,),
                         iconSize: 24.h,
                         itemBuilder: (context) => [
                           PopupMenuItem(
+
+                            padding: EdgeInsets.zero,
                             value: 1,
                             // row has two child icon and text.
                             child: Row(
+                              mainAxisSize: MainAxisSize.min,
                               children: [
                                 SizedBox(
                                     height: 24.h, width: 24.w,
@@ -176,8 +180,10 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                           ),//about
                           PopupMenuItem(
                             value: 2,
+                            padding: EdgeInsets.zero,
                             // row has two child icon and text.
                             child: Row(
+                              mainAxisSize: MainAxisSize.min,
                               children: [
                                 SizedBox(
                                     height: 24.h, width: 24.w,
@@ -191,12 +197,12 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                           ),//block
                           PopupMenuItem(
                             value: 3,
+                            padding: EdgeInsets.zero,
                             // row has two child icon and text.
                             child: Row(
+                              mainAxisSize: MainAxisSize.min,
                               children: [
-                                SizedBox(
-                                    height: 24.h, width: 24.w,
-                                    child:darkModeOn == false? SvgPicture.asset('images/report profile.svg'):SvgPicture.asset('images/report profile.svg', color: Colors.white,)),
+                                darkModeOn == false? SvgPicture.asset('images/report profile.svg'):SvgPicture.asset('images/report profile.svg', color: Colors.white,),
                                 SizedBox(width: 10.w,),
                                 Text("Report Account", style:
                                 TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
@@ -209,16 +215,14 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                         color: Theme.of(context).scaffoldBackgroundColor,
                         elevation: 2,
                       )
-                          :
-                      GestureDetector(),
-                    ),//backbutton
+                    ),//menu
                     SizedBox(height: 20.h,),
                   ],
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 20.h,),
+                    SizedBox(height: 40.h,),
                     Column(
                       children: [
                         Center(
@@ -309,8 +313,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                                 children: [
                                   SizedBox(
                                       height: 20.h,  width: 20.w,
-                                      child: darkModeOn? SvgPicture.asset('images/location white.svg'):
-                                      SvgPicture.asset('images/location.svg')
+                                      child: SvgPicture.asset('images/location.svg', color: darkModeOn? Colors.white: Colors.black,)
                                   ),
                                   Text(location,style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 14.sp,), ),
                                 ],
@@ -346,7 +349,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding:   EdgeInsets.fromLTRB(50.w,8.h,8.w,8.h),
+                              padding:   EdgeInsets.fromLTRB(35.w,8.h,30.w,8.h),
                               child: SizedBox(
                                 height: 40.h,
                                 width: 130.w,
@@ -439,7 +442,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                         ),//edit profile and dm
                         SizedBox(height: 5.h,),
                         Padding(
-                          padding:  EdgeInsets.only(right:20 ),
+                          padding:  EdgeInsets.only(right:15.h ),
                           child: SizedBox(
                             width: 344.w,
                             child: TabBar(
@@ -447,12 +450,13 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                               overlayColor: MaterialStateProperty.all(Colors.transparent),
                               indicatorColor: Colors.transparent,
                               labelColor: bcolor1,
+                              labelPadding: EdgeInsets.zero,
                               unselectedLabelColor: Colors.grey,
                               unselectedLabelStyle: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight: FontWeight.w400),
                               controller: _tabcontroller,
                               tabs:  [
                                 Container(
-                                    height: 36.h, width: 90.w,
+                                    height: 36.h, width: 100.w,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.rectangle,
                                   border: Border.all(color: bcolor1),
@@ -461,7 +465,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                                     child: const Center(child: Text('Beeps',)),
                                 ),
                                 Container(
-                                    height: 36.h, width: 90.w,
+                                    height: 36.h, width: 100.w,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.rectangle,
                                       border: Border.all(color: bcolor1),
@@ -469,13 +473,13 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                                     ),
                                     child: const Center(child: Text('Pictures'))),
                                 Container(
-                                    height: 36.h, width: 90.w,
+                                    height: 36.h, width: 100.w,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.rectangle,
                                       border: Border.all(color: bcolor1),
                                       borderRadius: BorderRadius.all(Radius.circular(100.r)),
                                     ),
-                                    child: Center(child: const Text('Videos'))),
+                                    child: const Center(child: Text('Videos'))),
                             ],),
                           ),
                         ),//tapbar

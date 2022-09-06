@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../constants.dart';
 import 'identity_verified.dart';
 
 class IdentityConfirmation extends StatefulWidget {
@@ -50,7 +51,7 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
             children: [
               Divider(
               thickness: 0.5.h,
-                color: Color(0xff8E8E8E),
+                color:uColor,
               ),
               ListTile(
                 dense: true,
@@ -65,7 +66,7 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
               Divider(
                 height: 16.h,
               thickness: 0.5.h,
-                color: Color(0xff8E8E8E),
+                color:uColor,
               ),
               SizedBox(
                 height: 20.h,

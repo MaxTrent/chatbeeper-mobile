@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../constants.dart';
+
 class ContactInfo extends StatefulWidget {
   const ContactInfo({Key? key}) : super(key: key);
 
@@ -46,7 +48,7 @@ class _ContactInfoState extends State<ContactInfo> {
       body: Column(
         children: [
           Divider(
-            color: Color(0xff8E8E8E),
+            color:uColor,
           thickness: 0.5.h,
           ),
           ListTile(
@@ -61,7 +63,7 @@ class _ContactInfoState extends State<ContactInfo> {
           ),
           Divider(
           thickness: 0.5.h,
-            color:  Color(0xff8E8E8E),
+            color: uColor,
           ),
           ListTile(
             dense: true,

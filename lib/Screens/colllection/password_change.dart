@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../constants.dart';
+
 class PasswordChange extends StatefulWidget {
   const PasswordChange({Key? key}) : super(key: key);
 
@@ -51,7 +53,7 @@ class _PasswordChangeState extends State<PasswordChange> {
             children: [
               Divider(
                 thickness: 0.5.h,
-                color: Color(0xff8E8E8E),
+                color:uColor,
               ),
               ListTile(
                 dense: true,
@@ -64,7 +66,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                 ),
               ),
               Divider(
-                color: Color(0xff8E8E8E),
+                color:uColor,
                 height: 16.h,
               thickness: 1.h
               ),

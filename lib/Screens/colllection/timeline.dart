@@ -52,36 +52,48 @@ class _TimelineState extends State<Timeline> {
       //       Navigator.push(context,MaterialPageRoute(builder: (context) =>  ComposeBeep()));
       //     }, color: Colors.white,),
       //     onPressed: (){}),
-      appBar: PreferredSize(
+      appBar:  PreferredSize(
         preferredSize: Size(428.w,68.h),
-        child: Padding(
-          padding:  EdgeInsets.only(left: 16.w,right: 18.w),
+        child: Container(
+          decoration: const BoxDecoration(
+              border: Border(
+                  bottom: BorderSide(
+                      color: uColor,
+                      style: BorderStyle.solid
+                  )
+              )
+          ),
           child: AppBar(
-            automaticallyImplyLeading: false,
-            leading:Row(
-              children: [
-                SizedBox(
-                  height: 32.h,
-                  child:  GestureDetector(
-                    onTap: (){
-                      _key.currentState!.openDrawer();
-                    },
-                    child: CircleAvatar(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(100.0.r),
-                        child: Image.asset('images/pp_round.png'),
-                      ),
+            automaticallyImplyLeading: true,
+            leading: Padding(
+              padding:  EdgeInsets.only(top: 29.h),
+              child:    SizedBox(
+                height: 32.h,
+                child:  GestureDetector(
+                  onTap: (){
+                    _key.currentState!.openDrawer();
+                  },
+                  child: CircleAvatar(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(100.0.r),
+                      child: Image.asset('images/pp_round.png'),
                     ),
                   ),
                 ),
-              ],
+              ),
             ),
+            // title: Padding(
+            //   padding:  EdgeInsets.only(top: 32.h),
+            //   child: Text('Tour', style: Theme.of(context).primaryTextTheme.bodyText1,),
+            // ),
+            centerTitle: true,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            elevation: 0,
+            elevation: 0.5,
             actions: [
-              SizedBox(
-                height: 24.h, width: 24.w,
-                child: GestureDetector(
+              SizedBox(width: 35.w,),
+              Padding(
+                padding:  EdgeInsets.only(top: 32.h, right: 5.w),
+                child:GestureDetector(
                   onTap: (){
                     // Navigator.push(context,
                     //     MaterialPageRoute(builder: (context) => DirectMessage()));
@@ -97,25 +109,24 @@ class _TimelineState extends State<Timeline> {
                   ),
                 ),
               ),
-          SizedBox(width: 24.w,),
-          SizedBox(
-            height: 24.h,
-            width: 24.w,
-            child: GestureDetector(
-              onTap: (){
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DirectMessage()));
-              },
-              child: darkModeOn == false? SvgPicture.asset(
-                  color: Colors.black,
-                  'images/Dm.svg',
-              ):
-              SvgPicture.asset(
-                color: Colors.white,
-                'images/sms.svg',
-              ),
-            ),
-          )
+              SizedBox(width: 12.w,),
+              Padding(
+                padding:  EdgeInsets.only(top: 32.h, right: 16.w),
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => DirectMessage()));
+                  },
+                  child: darkModeOn == false? SvgPicture.asset(
+                    color: Colors.black,
+                    'images/Dm.svg',
+                  ):
+                  SvgPicture.asset(
+                    color: Colors.white,
+                    'images/sms.svg',
+                  ),
+                ),
+              )
             ],
           ),
         ),
@@ -297,7 +308,7 @@ class _TimelineState extends State<Timeline> {
                       ),
                     ),//following followers
                     SizedBox(height: 12.h,),
-                     Divider(color: Color(0xff8E8E8E), thickness: 0.5,),
+                     Divider(color:uColor, thickness: 0.5,),
                   ],
                 ),//profilepicture and username
                 // SizedBox(height: 20.h,),
