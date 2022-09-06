@@ -27,7 +27,7 @@ class _LoginActivityState extends State<LoginActivity> {
     zoom: 14.4746,
   );
 
-  static final CameraPosition _kLake = const CameraPosition(
+  static const CameraPosition _kLake = const CameraPosition(
       bearing: 192.8334901395799,
       target: LatLng(37.43296265331129, -122.08832357078792),
       tilt: 59.440717697143555,

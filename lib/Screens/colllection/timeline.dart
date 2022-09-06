@@ -142,47 +142,6 @@ class _TimelineState extends State<Timeline> {
         ],
       );
 
-      //   Card(
-      //   child: Wrap(
-      //     children: [
-      //       Column(
-      //         children: [
-      //           Container(
-      //             decoration: BoxDecoration(
-      //               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10.r), bottomRight:Radius.circular(10.r), ),
-      //             ),
-      //             height: 50.h,
-      //             child: Row(
-      //               crossAxisAlignment: CrossAxisAlignment.start,
-      //               mainAxisAlignment: MainAxisAlignment.start,
-      //               children: [
-      //                 Image.asset('images/Pp.png', height: 50.h, width: 50.w,),
-      //                 Text('Mark Peter'),
-      //                 Text('@markpetr', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(color: uColor, fontSize: 15.sp),),
-      //               ],
-      //             ),
-      //           ),
-      //           //mark caption
-      //           Padding(
-      //             padding:  EdgeInsets.only(left: 10.w, right: 10.w),
-      //             child: Wrap(
-      //               children: [
-      //                 SizedBox(
-      //                   height:80.h,
-      //                 ),
-      //                 Align(
-      //                     alignment: Alignment.bottomRight,
-      //                     child: Text('10 minutes ago',
-      //                       style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(color: Colors.black),
-      //                     )),
-      //               ],
-      //             ),
-      //           ),
-      //         ],
-      //       ),
-      //     ],
-      //   ),
-      // );
     }
     ),
       drawer: SizedBox(
@@ -310,23 +269,7 @@ class _TimelineState extends State<Timeline> {
                     SizedBox(height: 12.h,),
                      Divider(color:uColor, thickness: 0.5,),
                   ],
-                ),//profilepicture and username
-                // SizedBox(height: 20.h,),
-                // ListTile(
-                //   horizontalTitleGap: 0,
-                //   leading: Row(children:[
-                //     Icon(IconlyLight.profile, size: 20.h,color: darkModeOn ? Colors.white:Colors.black,),
-                //     SizedBox(width: 12.w,),
-                //     Text('My Profile',
-                //         style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 16.sp, fontWeight: FontWeight.w600)
-                //         ),
-                //   ]
-                //     ),
-                //   title: const Text('Page 2'),
-                //   onTap: () {
-                //     Navigator.pop(context);
-                //   },
-                // ),
+                ),
                 Align(
                   alignment: Alignment.topLeft,
                     child:TextButton(
@@ -351,7 +294,9 @@ class _TimelineState extends State<Timeline> {
                           style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                           ),
                       ],
-                    ))),//myprofile
+                    )
+                    )
+                ),//myprofile
                 SizedBox(height: 15.h,),
                 Align(
                     alignment: Alignment.topLeft,
