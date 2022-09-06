@@ -1,3 +1,4 @@
+import 'package:chat_beeper/Screens/drafts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -166,6 +167,15 @@ class ComposeBeep extends StatelessWidget {
                       //  Navigator.pop(context);
                         // Navigator.pop(context);
                     },
+                  ),
+                  Spacer(),
+                  Padding(
+                    padding:  EdgeInsets.only(right: 30.w,),
+                    child: GestureDetector(
+                    onTap: (){
+                      Navigator.push(context,MaterialPageRoute(builder: (context) => const Drafts()));
+                    },
+                        child: const Text('Drafts', style: TextStyle(color: bcolor3),)),
                   ),
                 ],
                 ),

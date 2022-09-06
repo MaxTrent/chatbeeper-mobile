@@ -57,7 +57,7 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
           children: [
             Divider(
               thickness: 0.5.h,
-              color: Color(0xff8E8E8E),
+              color:uColor,
             ),
             ListTile(
               dense: true,
@@ -72,7 +72,7 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
             Divider(
               height: 16.h,
               thickness: 0.5.h,
-              color: Color(0xff8E8E8E),
+              color:uColor,
             ),
             SizedBox(
               height: 27.h,

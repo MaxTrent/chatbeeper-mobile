@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../constants.dart';
+
 class IdentityVerified extends StatefulWidget {
   const IdentityVerified({Key? key}) : super(key: key);
 
@@ -48,7 +50,7 @@ class _IdentityVerifiedState extends State<IdentityVerified> {
             children: [
               Divider(
               thickness: 0.5.h,
-                color: Color(0xff8E8E8E),
+                color:uColor,
               ),
               ListTile(
                 dense: true,
@@ -63,7 +65,7 @@ class _IdentityVerifiedState extends State<IdentityVerified> {
               Divider(
                 height: 16.h,
               thickness: 0.5.h,
-                color: Color(0xff8E8E8E),
+                color:uColor,
               ),
               SizedBox(
                 height: 117.h,

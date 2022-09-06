@@ -253,7 +253,7 @@ final  bool _rebeeped = false;
                 GestureDetector(
                   onTap: () async{
                     showDialog(context: context, builder: (context)=>
-                    RebeepResponse(),
+                    const RebeepResponse(),
                     );
                   },
                   child: _rebeeped == false?  SvgPicture.asset('images/rebeep.svg'): SvgPicture.asset('images/rebeep.svg', color: Colors.red,),
@@ -580,24 +580,13 @@ final  bool _rebeeped = false;
                           ],
                         ),
                       ),//icons 2
-                      Padding(
-                        padding:   EdgeInsets.only(top: 65.h,),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: darkModeOn? Colors.white: Colors.black,
-                            shape: BoxShape.rectangle,
-                            borderRadius: BorderRadius.all(Radius.circular(100.r),),
-                          ),
-                          height:5.h,
-                          width: 180.w,
-                        ),
-                      ),// long container
+                     // long container
                     ],
                   ),
                 ),
                 );
                   },
-                ),
+                ),//share
               ],),//icons
           ),//icons
         ],
@@ -695,7 +684,7 @@ final  bool _rebeeped = false;
                     // ),
                     Divider(
                       height: 1,
-                      color: Color(0xff8E8E8E),
+                      color:uColor,
                     ),
                   ],
                 ),

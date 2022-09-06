@@ -6,6 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import '../../constants.dart';
+
 class LoginActivity extends StatefulWidget {
   const LoginActivity({Key? key}) : super(key: key);
   static const String id = 'Login Activity';
@@ -41,25 +43,46 @@ class _LoginActivityState extends State<LoginActivity> {
     bool darkModeOn = brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      appBar: AppBar(
-        toolbarHeight: 40.h,
-        elevation: 0.h,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: darkModeOn == true ? Colors.white : Colors.black,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        appBar:  PreferredSize(
+          preferredSize: Size(428.w,68.h),
+          child: Container(
+            decoration:  BoxDecoration(
+                border: Border(
+                    bottom: BorderSide(
+                        color: uColor,
+                        style: BorderStyle.solid
+                    )
+                )
+            ),
+            child: AppBar(
+              automaticallyImplyLeading: true,
+              leading: Padding(
+                padding:  EdgeInsets.only(top: 29.h),
+                child: IconButton(
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    color: darkModeOn == true ? Colors.white : Colors.black,
+                    size: 20,
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
+              title: Padding(
+                padding:  EdgeInsets.only(top: 32.h),
+                child: Text('Settings', style: Theme.of(context).primaryTextTheme.bodyText1,),
+              ),
+              centerTitle: true,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              elevation: 0.5,
+              // leading: Center(child: IconButton(icon:  Icon(Icons.arrow_back_ios_new, size:23.h,color: darkModeOn? Colors.white: Colors.black,), onPressed: () {
+              //   Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) =>  Timeline()
+              //   ));
+              // },)),
+            ),
           ),
-
-          title:  Padding(
-            padding: EdgeInsets.only(top: 25.0.h),
-            child: Text('Settings',
-                style: Theme.of(context)
-                    .primaryTextTheme
-                    .headline4!
-                    .copyWith(fontSize: 16.sp)),
-          ),
-          centerTitle: true,
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -67,7 +90,6 @@ class _LoginActivityState extends State<LoginActivity> {
             children: [
               Divider(
                 thickness: 0.5.h,
-
               ),
               ListTile(
                 dense: true,
@@ -82,7 +104,6 @@ class _LoginActivityState extends State<LoginActivity> {
               Divider(
                 height: 16.h,
                 thickness: 0.5.h,
-
               ),
               SizedBox(
                 height: 93.h,
@@ -139,7 +160,7 @@ class _LoginActivityState extends State<LoginActivity> {
             height: 50.h,
             width: 50.w,
             child: Column(
-              children: [
+              children: const [
                 Text('Login Location'),
                 Text('Login Location'),
                 Text('Login Location'),

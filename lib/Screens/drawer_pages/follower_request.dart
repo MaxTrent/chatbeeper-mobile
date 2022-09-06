@@ -2,6 +2,8 @@ import 'package:chat_beeper/Widgets/follow_request_card.dart';
 import 'package:chat_beeper/Widgets/room_post.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../constants.dart';
 class FollowerRequests extends StatefulWidget {
   const FollowerRequests({Key? key}) : super(key: key);
 
@@ -19,24 +21,41 @@ class _FollowerRequestsState extends State<FollowerRequests> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(428.w,68.h),
-        child: Padding(
-          padding:  EdgeInsets.only(left: 16.w,right: 18.w, top: 32.h),
-          child: Container(
-            decoration: const BoxDecoration(
+        child: Container(
+          decoration:  BoxDecoration(
               border: Border(
-                bottom: BorderSide(color: Colors.grey)
+                  bottom: BorderSide(
+                      color: uColor,
+                      style: BorderStyle.solid
+                  )
               )
+          ),
+          child: AppBar(
+            automaticallyImplyLeading: true,
+            leading: Padding(
+              padding:  EdgeInsets.only(top: 25.h),
+              child: IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios,
+                  color: darkModeOn == true ? Colors.white : Colors.black,
+                  size: 20,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
             ),
-            child: AppBar(
-              // automaticallyImplyLeading: true,
-              title: Text('Requests', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 16.sp),),
-              centerTitle: true,
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              elevation: 0,
-              leading: Center(child: IconButton(icon:  Icon(Icons.arrow_back_ios_new, size:23.h,color: darkModeOn? Colors.white: Colors.black,), onPressed: () {
-               Navigator.pop(context);
-              },)),
+            title: Padding(
+              padding:  EdgeInsets.only(top: 32.h),
+              child: Text('Requests', style: Theme.of(context).primaryTextTheme.bodyText1,),
             ),
+            centerTitle: true,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            elevation: 0.5,
+            // leading: Center(child: IconButton(icon:  Icon(Icons.arrow_back_ios_new, size:23.h,color: darkModeOn? Colors.white: Colors.black,), onPressed: () {
+            //   Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) =>  Timeline()
+            //   ));
+            // },)),
           ),
         ),
       ),

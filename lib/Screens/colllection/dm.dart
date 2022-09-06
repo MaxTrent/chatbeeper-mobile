@@ -30,7 +30,11 @@ class _DirectMessageState extends State<DirectMessage> {
             // automaticallyImplyLeading: true,
             title: Padding(
               padding:  EdgeInsets.only(top: 32.h),
-              child: Text('Messages', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 16.sp),),
+              child:  SizedBox(
+                height: 30.h,
+                child: Image.asset('images/chatb.png',),
+
+              ),
             ),
             centerTitle: true,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -44,17 +48,13 @@ class _DirectMessageState extends State<DirectMessage> {
             actions: [
               Padding(
                 padding:  EdgeInsets.only(left: 0, right: 17.w, top: 22.h),
-                child: SizedBox(
-                  height: 24.h,
-                  width: 24.w,
-                  child: GestureDetector(
-                    onTap: (){
-                    },
-                    child: SvgPicture.asset(
-                      color: bcolor1,
-                      'images/sms filled.svg',
-                    )
-                  ),
+                child: GestureDetector(
+                  onTap: (){
+                  },
+                  child: SvgPicture.asset(
+                    color: bcolor1,
+                    'images/sms filled.svg',
+                  )
                 ),
               )
             ],
@@ -64,68 +64,76 @@ class _DirectMessageState extends State<DirectMessage> {
       body: Column(
         children: [
           SizedBox(height: 10.h,),
-          GestureDetector(
-            onTap: (){
-            },
-            child: Container(
-              height: 80.h, width: width,
-              decoration: const BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(color: Colors.grey),
-                  )
-              ),
-              child:     SizedBox(
-                child: Padding(
-                  padding:  EdgeInsets.all(8),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      floatingLabelBehavior:
-                      FloatingLabelBehavior.auto,
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius:
-                          BorderRadius.all(Radius.circular(30.r)),
-                          borderSide: BorderSide(
-                            width: 0.5.w,
-                            // color: _isvalid == true ? bcolor1: Colors.red),
-                            color: bcolor1,
-                          )),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius:
-                        BorderRadius.all(Radius.circular(30.r)),
-                        borderSide:
-                        BorderSide(width: 0.5.w, color: uColor),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius:
-                        BorderRadius.all(Radius.circular(30.r)),
-                        borderSide: BorderSide(
-                            width: 0.5.w, color: Colors.red),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius:
-                        BorderRadius.all(Radius.circular(30.r)),
-                        borderSide: BorderSide(
-                            width: 0.5.w, color: Colors.red),
-                      ),
-                      errorStyle:
-                      TextStyle(height: 0, fontSize: 10.sp),
-                      hintText: 'Search message',
-                      hintStyle: Theme.of(context)
-                          .primaryTextTheme
-                          .bodyText2,
-                      contentPadding:
-                      EdgeInsets.only(top: 10.h, left: 10.w),
-                      prefixIcon: Transform.scale(
-                          scale: 0.5,
-                          child: SvgPicture.asset('images/search.svg', color: darkModeOn? Colors.white: Colors.black,)),
-                      // hintStyle: Theme.of(context).primaryTextTheme.subtitle1,
+          Container(
+            height: 80.h,
+            width: width,
+            decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: Colors.grey),
+                )
+            ),
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: (){
+                  },
+                  child:     SizedBox(
+                    width: 256.w,
+                    child: Padding(
+                      padding:  EdgeInsets.all(8),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          floatingLabelBehavior:
+                          FloatingLabelBehavior.auto,
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius:
+                              BorderRadius.all(Radius.circular(30.r)),
+                              borderSide: BorderSide(
+                                width: 0.5.w,
+                                // color: _isvalid == true ? bcolor1: Colors.red),
+                                color: bcolor1,
+                              )),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(30.r)),
+                            borderSide:
+                            BorderSide(width: 0.5.w, color: uColor),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(30.r)),
+                            borderSide: BorderSide(
+                                width: 0.5.w, color: Colors.red),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(30.r)),
+                            borderSide: BorderSide(
+                                width: 0.5.w, color: Colors.red),
+                          ),
+                          errorStyle:
+                          TextStyle(height: 0, fontSize: 10.sp),
+                          hintText: 'Search message',
+                          hintStyle: Theme.of(context)
+                              .primaryTextTheme
+                              .bodyText2,
+                          contentPadding:
+                          EdgeInsets.only(top: 10.h, left: 10.w),
+                          prefixIcon: Transform.scale(
+                              scale: 0.5,
+                              child: SvgPicture.asset('images/search.svg', color: darkModeOn? Colors.white: Colors.black,)),
+                          // hintStyle: Theme.of(context).primaryTextTheme.subtitle1,
 
-                      focusColor: uColor,
-                      // focusColor: Theme.of(context).colorScheme.primary,
+                          focusColor: uColor,
+                          // focusColor: Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
+                SizedBox(width: width*0.2,),
+                Text('Message requests', style: TextStyle(color: bcolor3,fontWeight: FontWeight.w500, fontSize: 14.sp),),
+              ],
             ),
           ),
         ],

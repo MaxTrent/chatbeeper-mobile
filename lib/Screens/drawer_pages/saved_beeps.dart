@@ -58,7 +58,7 @@ class _SavedBeepsState extends State<SavedBeeps> {
       body: Column(
         children: [
           Padding(
-            padding:  EdgeInsets.only(top: 17.h, left: 16.w, right: 20.w),
+            padding:  EdgeInsets.only(left: 16.w, right: 20.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

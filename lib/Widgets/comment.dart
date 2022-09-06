@@ -41,7 +41,7 @@ class _CommentState extends State<Comment> {
         children: [
           Divider(
             thickness: 0.5.h,
-            color: Color(0xff8E8E8E),
+            color:uColor,
           ),
           PostBeep(),//divider
         ],

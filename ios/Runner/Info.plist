@@ -13,7 +13,7 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Need to upload image</string>
 	<key>CFBundleDisplayName</key>
-	<string>Chat Beeper</string>
+	<string>Chatbeeper</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

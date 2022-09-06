@@ -25,7 +25,7 @@ class RequestVerification extends StatelessWidget {
                 child:
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 197.h,
+                  height: 180.h,
                   decoration: BoxDecoration(
                     color: bcolor3,
                     borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30.r),bottomRight:Radius.circular(30.r),topRight: Radius.circular(-10.r) ),
@@ -36,8 +36,9 @@ class RequestVerification extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
+                          SizedBox(width: 20,),
                           Padding(
-                            padding:  EdgeInsets.only(left: 16.w, right: 142.w),
+                            padding:  EdgeInsets.only(left: 16.w, right: 130.w,  top: 10),
                             child: GestureDetector(
                               onTap: (){
                                 Navigator.of(context).pop();
@@ -48,7 +49,7 @@ class RequestVerification extends StatelessWidget {
                         ],
                       ),
                       Padding(
-                        padding:  EdgeInsets.only(left: 150.w,top: 5.h),
+                        padding:  EdgeInsets.only(left: 160.w,top: 5.h),
                         child: Row(
                           children: [
                             Text('Verification',
@@ -104,16 +105,19 @@ class RequestVerification extends StatelessWidget {
           Column(
             children: [
               SizedBox(height: 15.h,),
-              Text('Here’s what you need to know',
-                style: TextStyle(
-                    fontSize: 16.sp,
-                    color: bcolor1,
-                    fontWeight: FontWeight.w500
+              Center(
+                child: Text('Here’s what you need to know',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 16.sp,
+                      color: bcolor1,
+                      fontWeight: FontWeight.w500
+                  ),
                 ),
               ),
               SizedBox(height: 40.h,),
               Padding(
-                padding:  EdgeInsets.only(left: 17.w,bottom: 11.h, right: 17.w),
+                padding:  EdgeInsets.only(left: 17.w,bottom: 40.h, right: 17.w),
                 child: Text(verifyDisclaimer,
                   style:
                 TextStyle(
@@ -132,7 +136,7 @@ class RequestVerification extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('A verified phone number'),
+                  Text('A verified phone number', style: TextStyle(color: darkModeOn? Colors.white:Colors.black),),
                   SizedBox(height: 16.h,),
                   Text('A confirmed email address'),
                   SizedBox(height: 16.h,),
