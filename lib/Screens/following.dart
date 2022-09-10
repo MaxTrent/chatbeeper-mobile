@@ -21,7 +21,7 @@ class _FollowingState extends State<Following> {
   Widget build(BuildContext context) {
     ScreenUtil.init(
       context,
-      designSize: Size(485, 926),
+      designSize: const Size(485, 926),
     );
     var brightness = MediaQuery.of(context).platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
@@ -32,7 +32,7 @@ class _FollowingState extends State<Following> {
       appBar: PreferredSize(
         preferredSize: Size(428.w, 68.h),
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               border: Border(
                   bottom: BorderSide(color: uColor, style: BorderStyle.solid))),
           child: AppBar(
@@ -65,79 +65,89 @@ class _FollowingState extends State<Following> {
       ),
       body: ListView.builder(
         itemCount: 10,
-        itemBuilder: (context, index) => ListTile(
-          dense: true,
-          title: Row(
-            children: [
-              CircleAvatar(
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100.0.r),
-                      child: SvgPicture.asset('images/Frame 1.svg'))),
-              SizedBox(
-                width: 8.0.w,
-              ),
-              Text(
-                "$displayName",
-                style: Theme.of(context)
-                    .primaryTextTheme
-                    .bodyText1!
-                    .copyWith(fontWeight: FontWeight.w600),
-              ),
-              Text(
-                ' @$username',
-                style: TextStyle(
-                    fontFamily: 'Nunito',
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey),
-              ),
-              const Icon(
-                Icons.verified_rounded,
-                color: bcolor5,
-                size: 15,
-              ),
-            ],
+        itemBuilder: (context, index) => Container(
+          decoration: const BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: uColor
+              )
+            )
           ),
-          subtitle: Padding(
-            padding: EdgeInsets.only(left: 56.0.w),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: ListTile(
+            dense: true,
+            title: Row(
               children: [
+                CircleAvatar(
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(100.0.r),
+                        child: SvgPicture.asset('images/Frame 1.svg'))),
+                SizedBox(
+                  width: 8.0.w,
+                ),
                 Text(
-                  'A product design who loves\nsolving real life problems\nwith my superpower 😁',
+                  displayName,
                   style: Theme.of(context)
                       .primaryTextTheme
                       .bodyText1!
-                      .copyWith(fontWeight: FontWeight.w400, fontSize: 14),
+                      .copyWith(fontWeight: FontWeight.w600),
                 ),
-                GestureDetector(
-                  onTap: (() {
-                    setState(() {
-                      _isFollowed = true;
-                    });
-                  }),
-                  child: Container(
-                    height: 31.h,
-                    width: 99.w,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xff386FA4)),
-                        borderRadius: BorderRadius.circular(16.0.r)),
-                    child: Center(
-                      child: _isFollowed == false
-                          ? Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('Follow'),
-                                Icon(
-                                  Icons.add,
-                                  size: 18.sp,
-                                )
-                              ],
-                            )
-                          : Text('Following'),
-                    ),
-                  ),
+                Text(
+                  ' @$username',
+                  style: const TextStyle(
+                      fontFamily: 'Nunito',
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey),
+                ),
+                const Icon(
+                  Icons.verified_rounded,
+                  color: bcolor5,
+                  size: 15,
                 ),
               ],
+            ),
+            subtitle: Padding(
+              padding: EdgeInsets.only(left: 56.0.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'A product design who loves\nsolving real life problems\nwith my superpower 😁',
+                    style: Theme.of(context)
+                        .primaryTextTheme
+                        .bodyText1!
+                        .copyWith(fontWeight: FontWeight.w400, fontSize: 14),
+                  ),
+                  GestureDetector(
+                    onTap: (() {
+                      setState(() {
+                        _isFollowed = true;
+                        print(_isFollowed);
+                      });
+                    }),
+                    child: Container(
+                      height: 31.h,
+                      width: 99.w,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: const Color(0xff386FA4)),
+                          borderRadius: BorderRadius.circular(16.0.r)),
+                      child: Center(
+                        child: _isFollowed == false
+                            ? Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text('Follow'),
+                                  Icon(
+                                    Icons.add,
+                                    size: 18.sp,
+                                  )
+                                ],
+                              )
+                            : const Text('Following'),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

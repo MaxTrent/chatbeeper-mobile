@@ -297,6 +297,53 @@ import '../profile_page.dart';
                            SizedBox(
                              child: GestureDetector(
                                onTap: (){
+                                 // Navigator.pop(context);
+                                 // Navigator.push(
+                                 //     context,
+                                 //     MaterialPageRoute(
+                                 //       builder: (context) => const Following(),
+                                 //     ));
+                               },
+                               child: Row(
+                                 children: [
+                                   Text('100K', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
+                                     fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                   ),
+                                   ),
+                                   SizedBox(width: 3.w,),
+                                   Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 14.sp,), ),
+                                 ],
+                               ),
+                             ),
+                           ),//beeps
+                           SizedBox(width: 18.w,),
+                           Padding(
+                             padding: const EdgeInsets.only(right: 5, left: 5),
+                             child: GestureDetector(
+                               onTap: (){
+                                 Navigator.pop(context);
+                                 Navigator.push(
+                                     context,
+                                     MaterialPageRoute(
+                                       builder: (context) => const Followers(),
+                                     ));
+                               },
+                               child: Row(
+                                 children: [
+                                   Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
+                                     fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                   ),
+                                   ),
+                                   SizedBox(width: 5.w,),
+                                   Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 14.sp,), ),
+                                 ],
+                               ),
+                             ),
+                           ),//followers
+                           SizedBox(width: 20.w,),
+                           SizedBox(
+                             child: GestureDetector(
+                               onTap: (){
                                  Navigator.pop(context);
                                  Navigator.push(
                                      context,
@@ -304,88 +351,25 @@ import '../profile_page.dart';
                                        builder: (context) => const Following(),
                                      ));
                                },
-                               child: GestureDetector(
-                                 onTap: (){
-                                   Navigator.pop(context);
-                                   Navigator.push(
-                                       context,
-                                       MaterialPageRoute(
-                                         builder: (context) => const Followers(),
-                                       ));
-                                 },
-                                 child: GestureDetector(
-                                   onTap: (){
-                                     Navigator.pop(context);
-                                     Navigator.push(
-                                         context,
-                                         MaterialPageRoute(
-                                           builder: (context) => const Followers(),
-                                         ));
-                                   },
-                                   child: Row(
-                                     children: [
-                                       Text('100K', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                         fontWeight: FontWeight.w600, fontSize: 16.sp,
-                                       ),
-                                       ),
-                                       SizedBox(width: 3.w,),
-                                       Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 14.sp,), ),
-                                     ],
+                               child: Row(
+                                 children: [
+                                   Text('2k', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
+                                     fontWeight: FontWeight.w600, fontSize: 18.sp,
                                    ),
-                                 ),
+                                   ),
+                                   SizedBox(width: 5.w,),
+                                   Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 16.sp,), ),
+                                 ],
                                ),
-                             ),
-                           ),//beeps
-                           SizedBox(width: 18.w,),
-                           Padding(
-                             padding: const EdgeInsets.only(right: 5, left: 5),
-                             child: Row(
-                               children: [
-                                 Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                   fontWeight: FontWeight.w600, fontSize: 16.sp,
-                                 ),
-                                 ),
-                                 SizedBox(width: 5.w,),
-                                 Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 14.sp,), ),
-                               ],
-                             ),
-                           ),//followers
-                           SizedBox(width: 20.w,),
-                           SizedBox(
-                             child: Row(
-                               children: [
-                                 Text('2k', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                   fontWeight: FontWeight.w600, fontSize: 18.sp,
-                                 ),
-                                 ),
-                                 SizedBox(width: 5.w,),
-                                 Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 16.sp,), ),
-                               ],
                              ),
                            ),//following
                          ],
                        ),
                      ),//following followers
                      SizedBox(height: 12.h,),
-                     Divider(color:uColor, thickness: 0.5,),
+                     Divider(color:uColor, thickness: 0.5.h,),
                    ],
-                 ),//profilepicture and username
-                 // SizedBox(height: 20.h,),
-                 // ListTile(
-                 //   horizontalTitleGap: 0,
-                 //   leading: Row(children:[
-                 //     Icon(IconlyLight.profile, size: 20.h,color: darkModeOn ? Colors.white:Colors.black,),
-                 //     SizedBox(width: 12.w,),
-                 //     Text('My Profile',
-                 //         style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 16.sp, fontWeight: FontWeight.w600)
-                 //         ),
-                 //   ]
-                 //     ),
-                 //   title: const Text('Page 2'),
-                 //   onTap: () {
-                 //     Navigator.pop(context);
-                 //   },
-                 // ),
+                 ),
                  Align(
                      alignment: Alignment.topLeft,
                      child:TextButton(
@@ -410,7 +394,9 @@ import '../profile_page.dart';
                              style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                          ),
                        ],
-                     ))),//myprofile
+                     )
+                     )
+                 ),//myprofile
                  SizedBox(height: 15.h,),
                  Align(
                      alignment: Alignment.topLeft,

@@ -210,6 +210,53 @@ class _TimelineState extends State<Timeline> {
                           SizedBox(
                             child: GestureDetector(
                               onTap: (){
+                                // Navigator.pop(context);
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //       builder: (context) => const Following(),
+                                //     ));
+                              },
+                              child: Row(
+                                children: [
+                                  Text('100K', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
+                                    fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                  ),
+                                  ),
+                                  SizedBox(width: 3.w,),
+                                  Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 14.sp,), ),
+                                ],
+                              ),
+                            ),
+                          ),//beeps
+                          SizedBox(width: 18.w,),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 5, left: 5),
+                            child: GestureDetector(
+                              onTap: (){
+                                Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const Followers(),
+                                    ));
+                              },
+                              child: Row(
+                                children: [
+                                  Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
+                                    fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                  ),
+                                  ),
+                                  SizedBox(width: 5.w,),
+                                  Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 14.sp,), ),
+                                ],
+                              ),
+                            ),
+                          ),//followers
+                          SizedBox(width: 20.w,),
+                          SizedBox(
+                            child: GestureDetector(
+                              onTap: (){
                                 Navigator.pop(context);
                                 Navigator.push(
                                     context,
@@ -217,63 +264,16 @@ class _TimelineState extends State<Timeline> {
                                       builder: (context) => const Following(),
                                     ));
                               },
-                              child: GestureDetector(
-                                onTap: (){
-                                  Navigator.pop(context);
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const Followers(),
-                                      ));
-                                },
-                                child: GestureDetector(
-                                  onTap: (){
-                                    Navigator.pop(context);
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => const Followers(),
-                                        ));
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Text('100K', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                        fontWeight: FontWeight.w600, fontSize: 16.sp,
-                                      ),
-                                      ),
-                                      SizedBox(width: 3.w,),
-                                      Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 14.sp,), ),
-                                    ],
+                              child: Row(
+                                children: [
+                                  Text('2k', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
+                                    fontWeight: FontWeight.w600, fontSize: 18.sp,
                                   ),
-                                ),
+                                  ),
+                                  SizedBox(width: 5.w,),
+                                  Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 16.sp,), ),
+                                ],
                               ),
-                            ),
-                          ),//beeps
-                          SizedBox(width: 18.w,),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 5, left: 5),
-                            child: Row(
-                              children: [
-                                Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                  fontWeight: FontWeight.w600, fontSize: 16.sp,
-                                ),
-                                ),
-                                SizedBox(width: 5.w,),
-                                Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 14.sp,), ),
-                              ],
-                            ),
-                          ),//followers
-                          SizedBox(width: 20.w,),
-                          SizedBox(
-                            child: Row(
-                              children: [
-                                Text('2k', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                  fontWeight: FontWeight.w600, fontSize: 18.sp,
-                                ),
-                                ),
-                                SizedBox(width: 5.w,),
-                                Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 16.sp,), ),
-                              ],
                             ),
                           ),//following
                         ],

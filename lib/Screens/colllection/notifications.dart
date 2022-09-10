@@ -37,7 +37,7 @@ class _NotificationsState extends State<Notifications> {
     );
     return Scaffold(
       appBar:  PreferredSize(
-        preferredSize: Size(428.w,60.h),
+        preferredSize: Size(428.w,62.h),
         child: Container(
           decoration: const BoxDecoration(
               border: Border(
@@ -49,35 +49,35 @@ class _NotificationsState extends State<Notifications> {
           ),
           child: SafeArea(
             child: AppBar(
-              automaticallyImplyLeading: true,
               leading: Padding(
                 padding:  EdgeInsets.only(top: 20.h,),
-                child: Transform.scale(
-                  scale: 0.5,
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.black,
+                  ),
+                  height: 28.h,
                   child: GestureDetector(
                     onTap: (){
                       _key.currentState!.openDrawer();
                     },
-                    child: Transform.scale(
-                      scale: 2,
-                      child: CircleAvatar(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(100.0.r),
-                          child: Image.asset('images/pp_round.png'),
-                        ),
+                    child: CircleAvatar(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(100.0.r),
+                        child: Image.asset('images/pp_round.png'),
                       ),
                     ),
                   ),
                 ),
               ),
               title: Padding(
-                padding:  EdgeInsets.only(top: 28.h, right: 100.w),
-                child:  SizedBox(
-                  height: 28.h,
-                  child: SvgPicture.asset('images/chatbeeper_blue.svg',),
-
-                ),
+                padding:  EdgeInsets.only(top: 20.h, right: 66.w),
+                child: SizedBox(
+                    height: 34.h,
+                    // width: 159.w,
+                    child: SvgPicture.asset('images/chatbeeper_blue.svg',)),
               ),
+              centerTitle: true,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               elevation: 0.5,
             ),
@@ -138,6 +138,53 @@ class _NotificationsState extends State<Notifications> {
                           SizedBox(
                             child: GestureDetector(
                               onTap: (){
+                                // Navigator.pop(context);
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //       builder: (context) => const Following(),
+                                //     ));
+                              },
+                              child: Row(
+                                children: [
+                                  Text('100K', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
+                                    fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                  ),
+                                  ),
+                                  SizedBox(width: 3.w,),
+                                  Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 14.sp,), ),
+                                ],
+                              ),
+                            ),
+                          ),//beeps
+                          SizedBox(width: 18.w,),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 5, left: 5),
+                            child: GestureDetector(
+                              onTap: (){
+                                Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const Followers(),
+                                    ));
+                              },
+                              child: Row(
+                                children: [
+                                  Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
+                                    fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                  ),
+                                  ),
+                                  SizedBox(width: 5.w,),
+                                  Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 14.sp,), ),
+                                ],
+                              ),
+                            ),
+                          ),//followers
+                          SizedBox(width: 20.w,),
+                          SizedBox(
+                            child: GestureDetector(
+                              onTap: (){
                                 Navigator.pop(context);
                                 Navigator.push(
                                     context,
@@ -145,88 +192,25 @@ class _NotificationsState extends State<Notifications> {
                                       builder: (context) => const Following(),
                                     ));
                               },
-                              child: GestureDetector(
-                                onTap: (){
-                                  Navigator.pop(context);
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const Followers(),
-                                      ));
-                                },
-                                child: GestureDetector(
-                                  onTap: (){
-                                    Navigator.pop(context);
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => const Followers(),
-                                        ));
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Text('100K', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                        fontWeight: FontWeight.w600, fontSize: 16.sp,
-                                      ),
-                                      ),
-                                      SizedBox(width: 3.w,),
-                                      Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 14.sp,), ),
-                                    ],
+                              child: Row(
+                                children: [
+                                  Text('2k', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
+                                    fontWeight: FontWeight.w600, fontSize: 18.sp,
                                   ),
-                                ),
+                                  ),
+                                  SizedBox(width: 5.w,),
+                                  Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 16.sp,), ),
+                                ],
                               ),
-                            ),
-                          ),//beeps
-                          SizedBox(width: 18.w,),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 5, left: 5),
-                            child: Row(
-                              children: [
-                                Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                  fontWeight: FontWeight.w600, fontSize: 16.sp,
-                                ),
-                                ),
-                                SizedBox(width: 5.w,),
-                                Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 14.sp,), ),
-                              ],
-                            ),
-                          ),//followers
-                          SizedBox(width: 20.w,),
-                          SizedBox(
-                            child: Row(
-                              children: [
-                                Text('2k', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                  fontWeight: FontWeight.w600, fontSize: 18.sp,
-                                ),
-                                ),
-                                SizedBox(width: 5.w,),
-                                Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 16.sp,), ),
-                              ],
                             ),
                           ),//following
                         ],
                       ),
                     ),//following followers
                     SizedBox(height: 12.h,),
-                    Divider(color:uColor, thickness: 0.5,),
+                    Divider(color:uColor, thickness: 0.5.h,),
                   ],
-                ),//profilepicture and username
-                // SizedBox(height: 20.h,),
-                // ListTile(
-                //   horizontalTitleGap: 0,
-                //   leading: Row(children:[
-                //     Icon(IconlyLight.profile, size: 20.h,color: darkModeOn ? Colors.white:Colors.black,),
-                //     SizedBox(width: 12.w,),
-                //     Text('My Profile',
-                //         style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 16.sp, fontWeight: FontWeight.w600)
-                //         ),
-                //   ]
-                //     ),
-                //   title: const Text('Page 2'),
-                //   onTap: () {
-                //     Navigator.pop(context);
-                //   },
-                // ),
+                ),
                 Align(
                     alignment: Alignment.topLeft,
                     child:TextButton(
@@ -251,7 +235,9 @@ class _NotificationsState extends State<Notifications> {
                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                         ),
                       ],
-                    ))),//myprofile
+                    )
+                    )
+                ),//myprofile
                 SizedBox(height: 15.h,),
                 Align(
                     alignment: Alignment.topLeft,

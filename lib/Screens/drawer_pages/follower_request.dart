@@ -66,7 +66,7 @@ class _FollowerRequestsState extends State<FollowerRequests> {
             itemCount: 5,
             itemBuilder: (BuildContext context, int index) {
               return Column(
-                children:  [
+                children:  const [
                   FollowRequestCard(),
                  // FollowerRequests(),
                 ],
