@@ -1,10 +1,10 @@
 import 'dart:async';
-
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 
 import '../../constants.dart';
 
@@ -44,21 +44,17 @@ class _LoginActivityState extends State<LoginActivity> {
 
     return Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        appBar:  PreferredSize(
-          preferredSize: Size(428.w,68.h),
+        appBar: PreferredSize(
+          preferredSize: Size(428.w, 68.h),
           child: Container(
-            decoration:  BoxDecoration(
+            decoration: BoxDecoration(
                 border: Border(
-                    bottom: BorderSide(
-                        color: uColor,
-                        style: BorderStyle.solid
-                    )
-                )
-            ),
+                    bottom:
+                        BorderSide(color: uColor, style: BorderStyle.solid))),
             child: AppBar(
               automaticallyImplyLeading: true,
               leading: Padding(
-                padding:  EdgeInsets.only(top: 29.h),
+                padding: EdgeInsets.only(top: 29.h),
                 child: IconButton(
                   icon: Icon(
                     Icons.arrow_back_ios,
@@ -71,8 +67,11 @@ class _LoginActivityState extends State<LoginActivity> {
                 ),
               ),
               title: Padding(
-                padding:  EdgeInsets.only(top: 32.h),
-                child: Text('Settings', style: Theme.of(context).primaryTextTheme.bodyText1,),
+                padding: EdgeInsets.only(top: 32.h),
+                child: Text(
+                  'Settings',
+                  style: Theme.of(context).primaryTextTheme.bodyText1,
+                ),
               ),
               centerTitle: true,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -84,90 +83,68 @@ class _LoginActivityState extends State<LoginActivity> {
             ),
           ),
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Divider(
-                thickness: 0.5.h,
-              ),
-              ListTile(
-                dense: true,
-                title: Text(
-                  'Login Activity',
-                  style: Theme.of(context)
-                      .primaryTextTheme
-                      .headline4!
-                      .copyWith(fontSize: 16.sp),
-                ),
-              ),
-              Divider(
-                height: 16.h,
-                thickness: 0.5.h,
-              ),
-              SizedBox(
-                height: 93.h,
-              ),
-          ListView.builder(
-              itemCount: 15,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  onTap: () => _mapDialog(context),
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          SvgPicture.asset(
-                            'images/location2.svg',
-                            width: 20.w,
-                            height: 20.h,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 10.0.w),
-                            child: Text(location),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 32.0.w),
-                        child: Text(device),
-                      ),
-                    ],
-                  ),
-                  subtitle: Padding(
-                    padding: EdgeInsets.only(left: 32.0.w),
-                    child: Text(
-                      'Active now',
-                      style: Theme.of(context)
-                          .primaryTextTheme
-                          .headline4!
-                          .copyWith(fontSize: 12.sp, color: Color(0xff11CDF3)),
+        body: ListView.builder(
+            itemCount: 15,
+            itemBuilder: (context, index) {
+              return ListTile(
+                onTap: () => _mapDialog(context),
+                title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        SvgPicture.asset(
+                          'images/location2.svg',
+                          width: 20.w,
+                          height: 20.h,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10.0.w),
+                          child: Text(location),
+                        ),
+                      ],
                     ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 32.0.w),
+                      child: Text(device),
+                    ),
+                  ],
+                ),
+                subtitle: Padding(
+                  padding: EdgeInsets.only(left: 32.0.w),
+                  child: Text(
+                    'Active now',
+                    style: Theme.of(context)
+                        .primaryTextTheme
+                        .headline4!
+                        .copyWith(fontSize: 12.sp, color: Color(0xff11CDF3)),
                   ),
-                );
-              }),
-    ]
-    )
-    )
-    );
+                ),
+              );
+            }));
   }
+
   Future<void> _mapDialog(BuildContext context) {
-    return showDialog(
+    {
+      return showDialog(
         context: context,
-        builder: (context) {
-          return Container(
-            height: 50.h,
-            width: 50.w,
-            child: Column(
-              children: const [
-                Text('Login Location'),
-                Text('Login Location'),
-                Text('Login Location'),
-                Text('Login Location'),
-              ],
+        builder: (context) => SimpleDialog(
+          title: Text('Login Activity'),
+          children: [
+            GoogleMap(initialCameraPosition: _kGooglePlex),
+            /*title: Text("Show Alert Dialog Box"),
+          content: Text("You have raised a Alert Dialog Box"),
+          actions: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("Ok"),
             ),
-          );
-        });
+          ],*/
+          ],
+        ),
+      );
+    }
   }
 }
