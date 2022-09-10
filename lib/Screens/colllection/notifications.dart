@@ -37,46 +37,50 @@ class _NotificationsState extends State<Notifications> {
     );
     return Scaffold(
       appBar:  PreferredSize(
-        preferredSize: Size(428.w,68.h),
+        preferredSize: Size(428.w,60.h),
         child: Container(
           decoration: const BoxDecoration(
               border: Border(
                   bottom: BorderSide(
-                    color: uColor,
-                    style: BorderStyle.solid
+                      color: uColor,
+                      style: BorderStyle.solid
                   )
               )
           ),
-          child: AppBar(
-            automaticallyImplyLeading: true,
-            leading: Padding(
-              padding:  EdgeInsets.only(top: 29.h),
-              child:    SizedBox(
-                height: 32.h,
-                child:  GestureDetector(
-                  onTap: (){
-                    _key.currentState!.openDrawer();
-                  },
-                  child: CircleAvatar(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100.0.r),
-                      child: Image.asset('images/pp_round.png'),
+          child: SafeArea(
+            child: AppBar(
+              automaticallyImplyLeading: true,
+              leading: Padding(
+                padding:  EdgeInsets.only(top: 20.h,),
+                child: Transform.scale(
+                  scale: 0.5,
+                  child: GestureDetector(
+                    onTap: (){
+                      _key.currentState!.openDrawer();
+                    },
+                    child: Transform.scale(
+                      scale: 2,
+                      child: CircleAvatar(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(100.0.r),
+                          child: Image.asset('images/pp_round.png'),
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
+              title: Padding(
+                padding:  EdgeInsets.only(top: 28.h, right: 100.w),
+                child:  SizedBox(
+                  height: 28.h,
+                  child: SvgPicture.asset('images/chatbeeper_blue.svg',),
+
+                ),
+              ),
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              elevation: 0.5,
             ),
-            title: Padding(
-              padding:  EdgeInsets.only(top: 32.h),
-              child: Text('Notifications', style: Theme.of(context).primaryTextTheme.bodyText1,),
-            ),
-            centerTitle: true,
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            elevation: 0.5,
-            // leading: Center(child: IconButton(icon:  Icon(Icons.arrow_back_ios_new, size:23.h,color: darkModeOn? Colors.white: Colors.black,), onPressed: () {
-            //   Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) =>  Timeline()
-            //   ));
-            // },)),
           ),
         ),
       ),

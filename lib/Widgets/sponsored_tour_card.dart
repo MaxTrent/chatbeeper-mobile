@@ -6,7 +6,7 @@ import 'package:readmore/readmore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:expandable/expandable.dart';
-
+// import 'package:cached_network_image/cached_network_image.dart';
 import '../../Widgets/comment.dart';
 import '../Screens/colllection/dm.dart';
 
@@ -65,6 +65,17 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
       children: [
         Stack(
             children: [
+              // SizedBox(
+              //   height: 486.h,
+              //   width: width,
+              //   child: CachedNetworkImage(
+              //     imageUrl:  'https://images.unsplash.com/photo-1657299141984-dd9196274cde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+              //
+              //     key: Key(displayImage.id),
+              //     // placeholder: (context, url) => const CircularProgressIndicator(),
+              //     errorWidget: (context, url, error) => const Icon(Icons.error),
+              //   ),
+              // ),
               SizedBox(
                 height: 486.h,
                 width: width,
@@ -76,6 +87,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                   fit: BoxFit.cover,
                 ),
               ),
+
               // Positioned(
               //     top: 420,
               //     left: 70,
@@ -144,7 +156,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                       value: 1,
                       // row has two child icon and text.
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.star),
                           SizedBox(
                             // sized box with width 10

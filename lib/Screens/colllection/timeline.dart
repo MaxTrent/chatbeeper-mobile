@@ -53,7 +53,7 @@ class _TimelineState extends State<Timeline> {
       //     }, color: Colors.white,),
       //     onPressed: (){}),
       appBar:  PreferredSize(
-        preferredSize: Size(428.w,68.h),
+        preferredSize: Size(428.w,62.h),
         child: Container(
           decoration: const BoxDecoration(
               border: Border(
@@ -63,71 +63,84 @@ class _TimelineState extends State<Timeline> {
                   )
               )
           ),
-          child: AppBar(
-            automaticallyImplyLeading: true,
-            leading: Padding(
-              padding:  EdgeInsets.only(top: 29.h),
-              child:    SizedBox(
-                height: 32.h,
-                child:  GestureDetector(
-                  onTap: (){
-                    _key.currentState!.openDrawer();
-                  },
-                  child: CircleAvatar(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100.0.r),
-                      child: Image.asset('images/pp_round.png'),
+          child: SafeArea(
+            child: AppBar(
+              leading: Padding(
+                padding:  EdgeInsets.only(top: 20.h,),
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.black,
+                  ),
+                  height: 28.h,
+                  child: GestureDetector(
+                    onTap: (){
+                      _key.currentState!.openDrawer();
+                    },
+                    child: CircleAvatar(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(100.0.r),
+                        child: Image.asset('images/pp_round.png'),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            // title: Padding(
-            //   padding:  EdgeInsets.only(top: 32.h),
-            //   child: Text('Tour', style: Theme.of(context).primaryTextTheme.bodyText1,),
-            // ),
-            centerTitle: true,
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            elevation: 0.5,
-            actions: [
-              SizedBox(width: 35.w,),
-              Padding(
-                padding:  EdgeInsets.only(top: 32.h, right: 5.w),
-                child:GestureDetector(
-                  onTap: (){
-                    // Navigator.push(context,
-                    //     MaterialPageRoute(builder: (context) => DirectMessage()));
-                  },
-                  child:
-                  darkModeOn == false ? SvgPicture.asset(
-                    color: Colors.black,
-                    'images/search.svg',
-                  ):
-                  SvgPicture.asset(
-                    color: Colors.white,
-                    'images/search_dark.svg',
-                  ),
-                ),
+              title: Padding(
+                padding:  EdgeInsets.only(top: 20.h, right: 9.w),
+                child: SizedBox(
+                    height: 34.h,
+                    // width: 159.w,
+                    child: SvgPicture.asset('images/chatbeeper_blue.svg',)),
               ),
-              SizedBox(width: 12.w,),
-              Padding(
-                padding:  EdgeInsets.only(top: 32.h, right: 16.w),
-                child: GestureDetector(
-                  onTap: (){
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => DirectMessage()));
-                  },
-                  child: darkModeOn == false? SvgPicture.asset(
-                    color: Colors.black,
-                    'images/Dm.svg',
-                  ):
-                  SvgPicture.asset(
-                    color: Colors.white,
-                    'images/sms.svg',
+              centerTitle: true,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              elevation: 0.5,
+              actions: [
+                // SizedBox(width: 12.w,),
+                Padding(
+                  padding:  EdgeInsets.only(top: 32.h, right: 25.w),
+                  child: GestureDetector(
+                    onTap: (){
+                      // Navigator.push(context,
+                      //     MaterialPageRoute(builder: (context) => DirectMessage()));
+                    },
+                    child:
+                    darkModeOn == false ? SvgPicture.asset(
+                      color: Colors.black,
+                      'images/search.svg',
+                    ):
+                    SvgPicture.asset(
+                      color: Colors.white,
+                      'images/search_dark.svg',
+                    ),
                   ),
                 ),
-              )
-            ],
+                Padding(
+                  padding:  EdgeInsets.only(top: 32.h, right: 16.w),
+                  child: SizedBox(
+                    height: 28.h, width: 28.h,
+                    child: Transform.scale(
+                      scale: 1.2,
+                      child: GestureDetector(
+                        onTap: (){
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => DirectMessage()));
+                        },
+                        child: darkModeOn == false? SvgPicture.asset(
+                          color: Colors.black,
+                          'images/Dm.svg',
+                        ):
+                        SvgPicture.asset(
+                          color: Colors.white,
+                          'images/sms.svg',
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

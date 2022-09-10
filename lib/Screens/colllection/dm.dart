@@ -1,3 +1,4 @@
+import 'package:chat_beeper/Screens/colllection/message_screen.dart';
 import 'package:chat_beeper/constants.dart';
 import 'package:flutter/material.dart'; import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,6 +11,7 @@ class DirectMessage extends StatefulWidget {
 }
 
 class _DirectMessageState extends State<DirectMessage> {
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -136,8 +138,13 @@ class _DirectMessageState extends State<DirectMessage> {
               ],
             ),
           ),
+          IconButton(onPressed: (){
+            Navigator.push(context,MaterialPageRoute(builder: (context) => const Messages()));
+          }, icon: Icon(Icons.sms)),
         ],
       ),
     );
   }
 }
+
+

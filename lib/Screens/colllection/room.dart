@@ -36,13 +36,13 @@ import '../profile_page.dart';
      bool darkModeOn = brightness == Brightness.dark;
      ScreenUtil.init(
        context,
-       designSize:Size(485,926),
+       designSize:const Size(485,926),
      );
      return Scaffold(
        key: _key,
        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
        appBar:  PreferredSize(
-         preferredSize: Size(428.w,68.h),
+         preferredSize: Size(428.w,65.h),
          child: Container(
            decoration: const BoxDecoration(
                border: Border(
@@ -52,56 +52,84 @@ import '../profile_page.dart';
                    )
                )
            ),
-           child: AppBar(
-             automaticallyImplyLeading: true,
-             leading: Padding(
-               padding:  EdgeInsets.only(top: 29.h),
-               child:    SizedBox(
-                 height: 32.h,
-                 child:  GestureDetector(
-                   onTap: (){
-                     _key.currentState!.openDrawer();
-                   },
-                   child: CircleAvatar(
-                     child: ClipRRect(
-                       borderRadius: BorderRadius.circular(100.0.r),
-                       child: Image.asset('images/pp_round.png'),
+           child: SafeArea(
+             child: AppBar(
+               leading: Padding(
+                 padding:  EdgeInsets.only(top: 20.h,),
+                 child: Container(
+                   decoration: BoxDecoration(
+                     shape: BoxShape.circle,
+                     color: Colors.black,
+                   ),
+                   height: 28.h,
+                   child: GestureDetector(
+                     onTap: (){
+                       _key.currentState!.openDrawer();
+                     },
+                     child: CircleAvatar(
+                       child: ClipRRect(
+                         borderRadius: BorderRadius.circular(100.0.r),
+                         child: Image.asset('images/pp_round.png'),
+                       ),
                      ),
                    ),
                  ),
                ),
-             ),
-             title: Padding(
-               padding:  EdgeInsets.only(top: 32.h),
-               child:  SizedBox(
-                   height: 30.h,
-                   child: Image.asset('images/chatb.png',),
-
+               title: Padding(
+                 padding:  EdgeInsets.only(top: 20.h, right: 9.w),
+                 child: SizedBox(
+                   height: 34.h,
+                     // width: 159.w,
+                     child: SvgPicture.asset('images/chatbeeper_blue.svg',)),
                ),
+               centerTitle: true,
+               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+               elevation: 0.5,
+               actions: [
+                 // SizedBox(width: 12.w,),
+                 Padding(
+                   padding:  EdgeInsets.only(top: 32.h, right: 25.w),
+                   child: GestureDetector(
+                     onTap: (){
+                       // Navigator.push(context,
+                       //     MaterialPageRoute(builder: (context) => DirectMessage()));
+                     },
+                     child:
+                     darkModeOn == false ? SvgPicture.asset(
+                       color: Colors.black,
+                       'images/search.svg',
+                     ):
+                     SvgPicture.asset(
+                       color: Colors.white,
+                       'images/search_dark.svg',
+                     ),
+                   ),
+                 ),
+                 Padding(
+                   padding:  EdgeInsets.only(top: 32.h, right: 16.w),
+                   child: SizedBox(
+                     height: 28.h, width: 28.h,
+                     child: Transform.scale(
+                       scale: 1.2,
+                       child: GestureDetector(
+                         onTap: (){
+                           Navigator.push(context,
+                               MaterialPageRoute(builder: (context) => DirectMessage()));
+                         },
+                         child: darkModeOn == false? SvgPicture.asset(
+                           color: Colors.black,
+                           'images/Dm.svg',
+                         ):
+                         SvgPicture.asset(
+                           color: Colors.white,
+                           'images/sms.svg',
+                         ),
+                       ),
+                     ),
+                   ),
+                 )
+               ],
              ),
-             centerTitle: true,
-             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-             elevation: 0.5,
-            actions: [
-              SizedBox(width: 12.w,),
-              Padding(
-                padding:  EdgeInsets.only(top: 32.h, right: 16.w),
-                child: GestureDetector(
-                  onTap: (){
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const DirectMessage()));
-                  },
-                  child: darkModeOn == false? SvgPicture.asset(
-                    color: Colors.black,
-                    'images/Dm.svg',
-                  ):
-                  SvgPicture.asset(
-                    color: Colors.white,
-                    'images/sms.svg',
-                  ),
-                ),
-              )
-            ],
            ),
          ),
        ),
@@ -111,7 +139,7 @@ import '../profile_page.dart';
              child: Column(
                children: [
                  Padding(
-                   padding:  EdgeInsets.only( left: 16.w, right: 20.w),
+                   padding:  EdgeInsets.only( left: 16.w, right: 15.w),
                    child: Row(
                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                      children: [
@@ -119,7 +147,7 @@ import '../profile_page.dart';
                        PopupMenuButton<int>(
 
                          icon: SvgPicture.asset('images/setting-4.svg'),
-                         iconSize: 24.h,
+                         iconSize: 28.h,
                          itemBuilder: (context) => [
                            // popupmenu item 1
                            PopupMenuItem(

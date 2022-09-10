@@ -59,7 +59,7 @@ final  bool _rebeeped = false;
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top: 10.h, bottom: 10.h,left: 10.w,right: 10.w,),
+              padding:EdgeInsets.fromLTRB(4.w,8.w,2.w,12.h),
               child: SizedBox(
                 height: 60.h,
                 child: Column(

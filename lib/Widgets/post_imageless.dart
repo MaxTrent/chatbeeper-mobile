@@ -55,7 +55,7 @@ class _PostBeepState extends State<PostBeep> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding:EdgeInsets.fromLTRB(4.w,8.w,4.w,12.h),
+              padding:EdgeInsets.fromLTRB(4.w,8.w,0.w,12.h),
               child: SizedBox(
                 height: 80.h,
                 child: Column(

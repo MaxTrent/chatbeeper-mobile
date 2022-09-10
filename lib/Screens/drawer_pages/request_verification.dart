@@ -25,7 +25,7 @@ class RequestVerification extends StatelessWidget {
                 child:
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 180.h,
+                  height: 150.h,
                   decoration: BoxDecoration(
                     color: bcolor3,
                     borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30.r),bottomRight:Radius.circular(30.r),topRight: Radius.circular(-10.r) ),
@@ -45,11 +45,14 @@ class RequestVerification extends StatelessWidget {
                               },
                                 child: Image.asset('images/back.png', height: 30.h, width: 40.w,)),
                           ),
-                          Image.asset('images/logo1.png', height: 32.h,),
+                          Padding(
+                            padding:  EdgeInsets.only(bottom: 5.h,top: 15.h),
+                            child: Image.asset('images/logo1.png', height: 45.h,),
+                          ),
                         ],
                       ),
                       Padding(
-                        padding:  EdgeInsets.only(left: 160.w,top: 5.h),
+                        padding:  EdgeInsets.only(left: 160.w,top: 5.h,),
                         child: Row(
                           children: [
                             Text('Verification',
