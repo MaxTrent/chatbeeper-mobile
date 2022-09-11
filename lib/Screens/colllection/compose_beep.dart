@@ -58,17 +58,21 @@ class ComposeBeep extends StatelessWidget {
                                 width: 63.38.w, height: 21.13.h,
                                 child:OutlinedButton(
                                     style: OutlinedButton.styleFrom(
-                                        shape: StadiumBorder(),
+                                        shape: const StadiumBorder(),
+                                        padding: EdgeInsets.zero,
                                         backgroundColor: Colors.white),
                                     onPressed: (){
-                                      Navigator.of(context, rootNavigator: true).pop();
                                       // FocusScope.of(context).unfocus();
-                                    }, child: Text('Cancel',
+                                      // TextEditingController().clear();
+                                      Navigator.of(context, rootNavigator: true).pop();
+                                    }, child: Center(
+                                      child: Text('Cancel',
                                   style: TextStyle(
-                                      color: Colors.black, fontFamily: 'Nunito', fontSize: 8.5.sp,
-                                      fontWeight: FontWeight.w500
+                                        color: Colors.black, fontFamily: 'Nunito', fontSize: 9.sp,
+                                        fontWeight: FontWeight.w700
                                   ),
-                                )),
+                                ),
+                                    )),
                               ),//cancel
                               SizedBox(
                                 width: 9.24.w,
@@ -190,7 +194,7 @@ class ComposeBeep extends StatelessWidget {
                 ],
               ),
               SizedBox(
-               height: 360,
+               height: 360.h,
                 child:TextFormField(
                   controller: _beepController,
                   style: Theme.of(context).primaryTextTheme.bodyText2!.copyWith(color: darkModeOn?Colors.white:Colors.black),
