@@ -1,4 +1,3 @@
-
 import 'package:chat_beeper/Screens/colllection/settings_page.dart';
 import 'package:chat_beeper/Widgets/GradientText.dart';
 import 'package:chat_beeper/constants.dart';
@@ -15,6 +14,7 @@ import '../drawer_pages/trending.dart';
 import '../followers.dart';
 import '../following.dart';
 import '../profile_page.dart';
+
 
  class Room extends StatefulWidget {
    const Room({Key? key}) : super(key: key);
@@ -488,99 +488,351 @@ import '../profile_page.dart';
                        splashFactory: NoSplash.splashFactory,
                        onSurface: Colors.transparent,
 
-                       // overlayColor: MaterialStateProperty.all(Colors.transparent),
-                     ),onPressed: (){}, child: Row(
-                       children: [
-                         SizedBox(
-                             height: 24.h,  width: 24.w,
-                             child: darkModeOn? SvgPicture.asset('images/briefcase white.svg'):
-                             SvgPicture.asset('images/briefcase.svg')
-                         ),
-                         SizedBox(width: 12.w,),
-                         Text('Create Business Account',
-                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
-                         ),
-                       ],
-                     ))),//create businessman
-                 SizedBox(height: 15.h,),
-                 Align(
-                     alignment: Alignment.topLeft,
-                     child:TextButton(   style: TextButton.styleFrom(
-                       splashFactory: NoSplash.splashFactory,
-                       onSurface: Colors.transparent,
 
-                       // overlayColor: MaterialStateProperty.all(Colors.transparent),
-                     ),onPressed: (){
-                       Navigator.pop(context);
-                       Navigator.push(context,MaterialPageRoute(builder: (context) =>  const SettingsPage(),
-                       )
-                       );
-                     }, child: Row(
-                       children: [
-                         SizedBox(
-                           height: 24.h,  width: 24.w,
-                           child:  darkModeOn? SvgPicture.asset('images/setting-2 white.svg'):
-                           SvgPicture.asset('images/setting-2.svg'),),
-                         SizedBox(width: 12.w,),
-                         Text('Settings',
-                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
-                         ),
-                       ],
-                     ))),//settings
-                 SizedBox(height: 15.h,),
-                 Align(
-                     alignment: Alignment.topLeft,
-                     child:TextButton(   style: TextButton.styleFrom(
-                       splashFactory: NoSplash.splashFactory,
-                       onSurface: Colors.transparent,
+                          // overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Profile(),
+                              ));
+                        },
+                        child: Row(
+                          children: [
+                            SizedBox(
+                                height: 24.h,
+                                width: 24.w,
+                                child: darkModeOn
+                                    ? SvgPicture.asset(
+                                        'images/profile white.svg')
+                                    : SvgPicture.asset('images/profile.svg')),
+                            SizedBox(
+                              width: 12.w,
+                            ),
+                            Text('My Profile',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black)),
+                          ],
+                        ))), //myprofile
+                SizedBox(
+                  height: 15.h,
+                ),
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: TextButton(
+                        style: TextButton.styleFrom(
+                          splashFactory: NoSplash.splashFactory,
+                          onSurface: Colors.transparent,
 
-                       // overlayColor: MaterialStateProperty.all(Colors.transparent),
-                     ),
-                         onPressed: (){
-                           Navigator.pop(context);
-                           Navigator.push(context,MaterialPageRoute(builder: (context) =>  const RequestVerification(),));
-                         },
+                          // overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const FollowerRequests(),
+                              ));
+                        },
+                        child: Row(
+                          children: [
+                            SizedBox(
+                                height: 24.h,
+                                width: 24.w,
+                                child: darkModeOn
+                                    ? SvgPicture.asset(
+                                        'images/profile-2user white.svg')
+                                    : SvgPicture.asset(
+                                        'images/profile-2user.svg')),
+                            SizedBox(
+                              width: 12.w,
+                            ),
+                            Text('Follower Requests',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black)),
+                          ],
+                        ))), //follower request
+                SizedBox(
+                  height: 15.h,
+                ),
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: TextButton(
+                        style: TextButton.styleFrom(
+                          splashFactory: NoSplash.splashFactory,
+                          onSurface: Colors.transparent,
 
-                         child: Row(
-                           children: [
-                             SizedBox(
-                                 height: 24.h,  width: 24.w,
-                                 child:   darkModeOn? const Icon(Icons.verified_outlined, color: Colors.white, size: 24,):
-                                 SvgPicture.asset('images/verify black.svg')),
-                             SizedBox(width: 12.w,),
-                             Text('Request Verification',
-                                 style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
-                             ),
-                           ],
-                         ))),//request verification
-                 SizedBox(height: 15.h,),
-                 Align(
-                     alignment: Alignment.topLeft,
-                     child:TextButton(   style: TextButton.styleFrom(
-                       splashFactory: NoSplash.splashFactory,
-                       onSurface: Colors.transparent,
+                          // overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Trending(),
+                              ));
+                        },
+                        child: Row(
+                          children: [
+                            SizedBox(
+                                height: 24.h,
+                                width: 24.w,
+                                child: darkModeOn
+                                    ? SvgPicture.asset(
+                                        'images/activity white.svg')
+                                    : SvgPicture.asset('images/activity.svg')),
+                            SizedBox(
+                              width: 12.w,
+                            ),
+                            Text('Trending',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black)),
+                          ],
+                        ))), //Trending
+                SizedBox(
+                  height: 15.h,
+                ),
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: TextButton(
+                        style: TextButton.styleFrom(
+                          splashFactory: NoSplash.splashFactory,
+                          onSurface: Colors.transparent,
 
-                       // overlayColor: MaterialStateProperty.all(Colors.transparent),
-                     ),onPressed: (){}, child: Row(
-                       children: [
-                         SizedBox(
-                           height: 24.h,  width: 24.w,
-                           child:  darkModeOn? SvgPicture.asset('images/promotions black.svg', color: Colors.white,):
-                           SvgPicture.asset('images/promotions black.svg'),),
-                         SizedBox(width: 12.w,),
-                         Text('Sponsored Beeps',
-                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
-                         ),
-                       ],
-                     ))),//promotions
+                          // overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SavedBeeps(),
+                              ));
+                        },
+                        child: Row(
+                          children: [
+                            SizedBox(
+                                height: 24.h,
+                                width: 24.w,
+                                child: darkModeOn
+                                    ? SvgPicture.asset(
+                                        'images/save-2 white.svg')
+                                    : SvgPicture.asset('images/save-2.svg')),
+                            SizedBox(
+                              width: 12.w,
+                            ),
+                            Text('Saved Beeps',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black)),
+                          ],
+                        ))), //saved
+                SizedBox(
+                  height: 15.h,
+                ),
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: TextButton(
+                        style: TextButton.styleFrom(
+                          splashFactory: NoSplash.splashFactory,
+                          onSurface: Colors.transparent,
 
-               ],
-             ),
-           ),
-         ),
-       ),
-     );
+                          // overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        ),
+                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            SizedBox(
+                                height: 24.h,
+                                width: 24.w,
+                                child: darkModeOn
+                                    ? SvgPicture.asset(
+                                        'images/briefcase white.svg')
+                                    : SvgPicture.asset('images/briefcase.svg')),
+                            SizedBox(
+                              width: 12.w,
+                            ),
+                            Text('Create Business Account',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black)),
+                          ],
+                        ))), //create businessman
+                SizedBox(
+                  height: 15.h,
+                ),
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: TextButton(
+                        style: TextButton.styleFrom(
+                          splashFactory: NoSplash.splashFactory,
+                          onSurface: Colors.transparent,
 
-   }
- }
+                          // overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SettingsPage(),
+                              ));
+                        },
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              height: 24.h,
+                              width: 24.w,
+                              child: darkModeOn
+                                  ? SvgPicture.asset(
+                                      'images/setting-2 white.svg')
+                                  : SvgPicture.asset('images/setting-2.svg'),
+                            ),
+                            SizedBox(
+                              width: 12.w,
+                            ),
+                            Text('Settings',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black)),
+                          ],
+                        ))), //settings
+                SizedBox(
+                  height: 15.h,
+                ),
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: TextButton(
+                        style: TextButton.styleFrom(
+                          splashFactory: NoSplash.splashFactory,
+                          onSurface: Colors.transparent,
 
+                          // overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const RequestVerification(),
+                              ));
+                        },
+                        child: Row(
+                          children: [
+                            SizedBox(
+                                height: 24.h,
+                                width: 24.w,
+                                child: darkModeOn
+                                    ? const Icon(
+                                        Icons.verified_outlined,
+                                        color: Colors.white,
+                                        size: 24,
+                                      )
+                                    : SvgPicture.asset(
+                                        'images/verify black.svg')),
+                            SizedBox(
+                              width: 12.w,
+                            ),
+                            Text('Request Verification',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black)),
+                          ],
+                        ))), //request verification
+                SizedBox(
+                  height: 15.h,
+                ),
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: TextButton(
+                        style: TextButton.styleFrom(
+                          splashFactory: NoSplash.splashFactory,
+                          onSurface: Colors.transparent,
+
+                          // overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        ),
+                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              height: 24.h,
+                              width: 24.w,
+                              child: darkModeOn
+                                  ? SvgPicture.asset(
+                                      'images/promotions black.svg',
+                                      color: Colors.white,
+                                    )
+                                  : SvgPicture.asset(
+                                      'images/promotions black.svg'),
+                            ),
+                            SizedBox(
+                              width: 12.w,
+                            ),
+                            Text('Sponsored Beeps',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black)),
+                          ],
+                        ))), //promotions
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

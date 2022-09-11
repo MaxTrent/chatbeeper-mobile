@@ -36,6 +36,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  bottom_drawer:
+    dependency: "direct main"
+    description:
+      name: bottom_drawer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.5"
   carousel_slider:
     dependency: "direct dev"
     description:
@@ -305,6 +312,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.17.0"
+  js:
+    dependency: "direct main"
+    description:
+      name: js
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.4"
   json_annotation:
     dependency: transitive
     description:

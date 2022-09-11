@@ -28,7 +28,9 @@ class _PostBeepState extends State<PostBeep> {
 
   String posttime = '1 hour ago';
 
+
   final  bool _rebeeped = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +51,7 @@ class _PostBeepState extends State<PostBeep> {
             ),
           ));
     }
+
 
     buildCollapsed1() {
       return Column(
@@ -189,6 +192,7 @@ class _PostBeepState extends State<PostBeep> {
                     ),
 
                   ],
+
                 ),
               ),
             ),
@@ -351,6 +355,7 @@ Padding(
                     padding:  EdgeInsets.only(bottom: 5.h),
                     child: SvgPicture.asset('images/share.svg', height: 26.h,),
                   ),
+
                   onTap: (){
                     showModalBottomSheet(
                       useRootNavigator: true,
