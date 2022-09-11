@@ -60,6 +60,10 @@ class _TimelineState extends State<Timeline> {
               border: Border(
                   bottom: BorderSide(color: uColor, style: BorderStyle.solid))),
           child: AppBar(
+            title: Padding(
+              padding: EdgeInsets.only(top: 29.h),
+              child: SvgPicture.asset('images/chatbeeper.svg'),
+            ),
             automaticallyImplyLeading: true,
             leading: Padding(
               padding: EdgeInsets.only(top: 29.h),

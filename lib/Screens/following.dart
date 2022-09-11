@@ -27,6 +27,8 @@ class _FollowingState extends State<Following> {
     bool darkModeOn = brightness == Brightness.dark;
 
     bool _isFollowed = false;
+    IconData? _addIcon = Icons.add;
+    String _followText = 'Follow';
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: PreferredSize(
@@ -110,11 +112,6 @@ class _FollowingState extends State<Following> {
                       .copyWith(fontWeight: FontWeight.w400, fontSize: 14),
                 ),
                 GestureDetector(
-                  onTap: (() {
-                    setState(() {
-                      _isFollowed = true;
-                    });
-                  }),
                   child: Container(
                     height: 31.h,
                     width: 99.w,
@@ -122,20 +119,24 @@ class _FollowingState extends State<Following> {
                         border: Border.all(color: Color(0xff386FA4)),
                         borderRadius: BorderRadius.circular(16.0.r)),
                     child: Center(
-                      child: _isFollowed == false
-                          ? Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('Follow'),
-                                Icon(
-                                  Icons.add,
-                                  size: 18.sp,
-                                )
-                              ],
-                            )
-                          : Text('Following'),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(_followText),
+                          Icon(
+                            _addIcon,
+                            size: 18.sp,
+                          )
+                        ],
+                      ),
                     ),
                   ),
+                  onTap: (() {
+                    setState(() {
+                      _addIcon = null;
+                      _followText = 'Following';
+                    });
+                  }),
                 ),
               ],
             ),
