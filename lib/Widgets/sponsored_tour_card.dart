@@ -1,3 +1,4 @@
+import 'package:chat_beeper/Widgets/rebeep_response.dart';
 import 'package:chat_beeper/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:like_button/like_button.dart';
@@ -6,7 +7,7 @@ import 'package:readmore/readmore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:expandable/expandable.dart';
-
+// import 'package:cached_network_image/cached_network_image.dart';
 import '../../Widgets/comment.dart';
 import '../Screens/colllection/dm.dart';
 
@@ -20,6 +21,7 @@ class SponsoredTourCard extends StatefulWidget {
 class _SponsoredTourCardState extends State<SponsoredTourCard> {
   late List<TourImage> images;
   late TourImage displayImage;
+  bool _rebeeped = false;
   bool _itemtapped = false;
   @override
   void initState() {
@@ -65,6 +67,17 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
       children: [
         Stack(
             children: [
+              // SizedBox(
+              //   height: 486.h,
+              //   width: width,
+              //   child: CachedNetworkImage(
+              //     imageUrl:  'https://images.unsplash.com/photo-1657299141984-dd9196274cde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+              //
+              //     key: Key(displayImage.id),
+              //     // placeholder: (context, url) => const CircularProgressIndicator(),
+              //     errorWidget: (context, url, error) => const Icon(Icons.error),
+              //   ),
+              // ),
               SizedBox(
                 height: 486.h,
                 width: width,
@@ -76,6 +89,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                   fit: BoxFit.cover,
                 ),
               ),
+
               // Positioned(
               //     top: 420,
               //     left: 70,
@@ -122,7 +136,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
               //     )),//small pics
               Positioned(
                   top: 30.h,
-                  left: 420.w,
+                  left: 430.w,
                   child: Container(
                     height: 40.h,
                     width: 40.w,
@@ -131,49 +145,88 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                       shape: BoxShape.circle,
                       color: Colors.black.withOpacity(0.4),
                     ),
+                    child: PopupMenuButton<int>(
+                      icon: const Icon(Icons.more_vert_sharp, color: Colors.white,),
+                      iconSize: 24.h,
+                      itemBuilder: (context) => [
+                        // popupmenu item 1
+                        PopupMenuItem(
+                          value: 1,
+                          // row has two child icon and text.
+                          child: Row(
+                            children: const [
+                              Icon(Icons.star),
+                              SizedBox(
+                                // sized box with width 10
+                                width: 10,
+                              ),
+                              Text("Get The App")
+                            ],
+                          ),
+                        ),
+                        // popupmenu item 2
+                        PopupMenuItem(
+                          value: 2,
+                          // row has two child icon and text
+                          child: Row(
+                            children: [
+                              Icon(Icons.chrome_reader_mode),
+                              SizedBox(
+                                // sized box with width 10
+                                width: 10,
+                              ),
+                              Text("About")
+                            ],
+                          ),
+                        ),
+                      ],
+                      // offset: Offset(0, 100),
+                      color: Theme.of(context).scaffoldBackgroundColor,
+                      elevation: 2,
+                    ),
                   )),
-              Positioned(
-                top: 25.h,
-                left: 413.w,
-                child: PopupMenuButton<int>(
-                  icon: const Icon(Icons.more_vert_sharp, color: Colors.white,),
-                  iconSize: 24.h,
-                  itemBuilder: (context) => [
-                    // popupmenu item 1
-                    PopupMenuItem(
-                      value: 1,
-                      // row has two child icon and text.
-                      child: Row(
-                        children: [
-                          Icon(Icons.star),
-                          SizedBox(
-                            // sized box with width 10
-                            width: 10,
-                          ),
-                          Text("Get The App")
-                        ],
-                      ),
-                    ),
-                    // popupmenu item 2
-                    PopupMenuItem(
-                      value: 2,
-                      // row has two child icon and text
-                      child: Row(
-                        children: [
-                          Icon(Icons.chrome_reader_mode),
-                          SizedBox(
-                            // sized box with width 10
-                            width: 10,
-                          ),
-                          Text("About")
-                        ],
-                      ),
-                    ),
-                  ],
-                  // offset: Offset(0, 100),
-                  color: Theme.of(context).scaffoldBackgroundColor,
-                  elevation: 2,
-                ),),
+              // Positioned(
+              //   top: 25.h,
+              //   left: 425.w,
+              //   child: PopupMenuButton<int>(
+              //     icon: const Icon(Icons.more_vert_sharp, color: Colors.white,),
+              //     iconSize: 24.h,
+              //     itemBuilder: (context) => [
+              //       // popupmenu item 1
+              //       PopupMenuItem(
+              //         value: 1,
+              //         // row has two child icon and text.
+              //         child: Row(
+              //           children: const [
+              //             Icon(Icons.star),
+              //             SizedBox(
+              //               // sized box with width 10
+              //               width: 10,
+              //             ),
+              //             Text("Get The App")
+              //           ],
+              //         ),
+              //       ),
+              //       // popupmenu item 2
+              //       PopupMenuItem(
+              //         value: 2,
+              //         // row has two child icon and text
+              //         child: Row(
+              //           children: [
+              //             Icon(Icons.chrome_reader_mode),
+              //             SizedBox(
+              //               // sized box with width 10
+              //               width: 10,
+              //             ),
+              //             Text("About")
+              //           ],
+              //         ),
+              //       ),
+              //     ],
+              //     // offset: Offset(0, 100),
+              //     color: Theme.of(context).scaffoldBackgroundColor,
+              //     elevation: 2,
+              //   ),),
               Positioned(
                 top: 30.h,
                 left: 28.w,
@@ -205,8 +258,9 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                         // mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          SizedBox(height: 5.h,),
                           Padding(
-                            padding:  EdgeInsets.only(top: 17.h, left: 16.w, right: 32.w),
+                            padding:  EdgeInsets.only(left: 16.w, bottom: 5.w),
                             child: Text('The Sarah Antony Foundation', style: TextStyle(
                                 color: ( Colors.white),
                                 fontSize: 18.sp,
@@ -214,7 +268,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                             ),),
                           ),
                           Padding(
-                            padding:  EdgeInsets.only(left: 16.w, bottom: 16.w),
+                            padding:  EdgeInsets.only(left: 16.w,),
                             child: Text('Help children get the best care across the world.', style: TextStyle(
                                 color: ( Colors.white),
                                 fontSize: 14.sp,
@@ -226,14 +280,14 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                       Padding(
                         padding:  EdgeInsets.only(left: 50.w, ),
                         child: SizedBox(
-                            width: 100.w, height: 36.h,
+                            width: 100.w, height: 40.h,
                             child: TextButton(
                             style: TextButton.styleFrom(
                               splashFactory: NoSplash.splashFactory,
                               onSurface: Colors.transparent,
                               backgroundColor: bcolor1
                             ),
-                            onPressed: (){}, child: Center(child: Text('Donate', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w700, fontSize: 14.sp,color: Colors.white),)))),
+                            onPressed: (){}, child: Text('Donate', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w700, fontSize: 14.sp,color: Colors.white),))),
                       ),
 
                     ],
@@ -300,132 +354,130 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  LikeButton(
-                    size: 24,
-                    circleColor:
-                    CircleColor(start: Colors.red.shade200, end: Colors.red),
-                    bubblesColor: BubblesColor(
-                      dotPrimaryColor: Colors.red,
-                      dotSecondaryColor: Colors.red,
+                  Expanded(
+                    flex: 1,
+                    child: GestureDetector(
+                      child: SvgPicture.asset(
+                        'images/comment.svg',
+                        height: 24.h,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Comment()));
+                      },
                     ),
-                    likeBuilder: (bool isLiked) {
-                      return SvgPicture.asset('images/comment.svg', height: 24,);
+                  ),
+                  SizedBox(
+                    width: 30.w,
+                  ),
+                  GestureDetector(
+                    onTap: () async{
+                      showDialog(context: context, builder: (context)=>
+                      const RebeepResponse(),
+                      );
                     },
-                    likeCount: 100,
-                    // countBuilder: (int count, bool isLiked, String text) {
-                    //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                    //   Widget result;
-                    //   if (count == 0) {
-                    //     result = Text(
-                    //       "love",
-                    //       style: TextStyle(color: color),
-                    //     );
-                    //   } else
-                    //     result = Text(
-                    //       text,
-                    //       style: TextStyle(color: color),
-                    //     );
-                    //   return result;
-                    // },
-                  ),//heart
-                  SizedBox(width: 30.w,),
-                  // LikeButton(
-                  //   size: 24,
-                  //   circleColor:
-                  //   CircleColor(start: Color(0xff00ddff), end: const Color(0xff0099cc)),
-                  //   bubblesColor: const BubblesColor(
-                  //     dotPrimaryColor: Color(0xff33b5e5),
-                  //     dotSecondaryColor: Color(0xff0099cc),
-                  //   ),
-                  //   likeBuilder: (bool isLiked) {
-                  //     return isLiked == false? SvgPicture.asset(
-                  //       'images/rebeep.svg',
-                  //     ): SvgPicture.asset('images/rebeep_red.svg');
-                  //   },
-                  //   likeCount: 100,
-                  //   // countBuilder: (int count, bool isLiked, String text) {
-                  //   //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                  //   //   Widget result;
-                  //   //   if (count == 0) {
-                  //   //     result = Text(
-                  //   //       "love",
-                  //   //       style: TextStyle(color: color),
-                  //   //     );
-                  //   //   } else
-                  //   //     result = Text(
-                  //   //       text,
-                  //   //       style: TextStyle(color: color),
-                  //   //     );
-                  //   //   return result;
-                  //   // },
-                  // ),//infinite
-                  // SizedBox(width: 21.w,),
-                  LikeButton(
-                    size: 24,
-                    circleColor:
-                    CircleColor(start: Colors.red.shade700, end: Colors.red.shade800),
-                    bubblesColor: BubblesColor(
-                      dotPrimaryColor: Colors.red.shade700,
-                      dotSecondaryColor: Colors.red.shade800,
+                    child: _rebeeped == false?  SizedBox(height:35.h,child: SvgPicture.asset('images/rebeep.svg', height: 30.h,)): SvgPicture.asset('images/rebeep.svg', color: Colors.red,  height: 35.h,),
+                  ),//rebeep //infinite
+                  SizedBox(
+                    width: 30.w,
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: LikeButton(
+                      size: 24.h,
+                      circleColor: CircleColor(
+                          start: Colors.red.shade700, end: Colors.red.shade800),
+                      bubblesColor: BubblesColor(
+                        dotPrimaryColor: Colors.red.shade700,
+                        dotSecondaryColor: Colors.red.shade800,
+                      ),
+                      likeBuilder: (bool isLiked) {
+                        return isLiked == false
+                            ? SvgPicture.asset(
+                          'images/dislike_blue.svg',
+                        )
+                            : SvgPicture.asset('images/dislike_red.svg');
+                      },
+                      likeCount: 100,
+                      likeCountPadding: EdgeInsets.only(left: 3.w),
+                      // countBuilder: (int count, bool isLiked, String text) {
+                      //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                      //   Widget result;
+                      //   if (count == 0) {
+                      //     result = Text(
+                      //       "love",
+                      //       style: TextStyle(color: color),
+                      //     );
+                      //   } else
+                      //     result = Text(
+                      //       text,
+                      //       style: TextStyle(color: color),
+                      //     );
+                      //   return result;
+                      // },
                     ),
-                    likeBuilder: (bool isLiked) {
-                      return isLiked == false? SvgPicture.asset(
-                        'images/dislike_blue.svg',
-                      ): SvgPicture.asset('images/dislike_red.svg');
-                    },
-                    likeCount: 100,
-                    // countBuilder: (int count, bool isLiked, String text) {
-                    //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                    //   Widget result;
-                    //   if (count == 0) {
-                    //     result = Text(
-                    //       "love",
-                    //       style: TextStyle(color: color),
-                    //     );
-                    //   } else
-                    //     result = Text(
-                    //       text,
-                    //       style: TextStyle(color: color),
-                    //     );
-                    //   return result;
-                    // },
-                  ),//brokenheart
-                  SizedBox(width: 30.w,),
-                  LikeButton(
-                    size: 24,
-                    circleColor:
-                    CircleColor(start: Colors.red.shade200, end: Colors.red),
-                    bubblesColor: BubblesColor(
-                      dotPrimaryColor: Colors.red,
-                      dotSecondaryColor: Colors.red,
+                  ), //brokenheart
+                  SizedBox(
+                    width: 30.w,
+                  ),
+                  Expanded(
+                    flex:3,
+                    child: LikeButton(
+                      size: 24.h,
+                      circleColor:
+                      CircleColor(start: Colors.red.shade200, end: Colors.red),
+                      bubblesColor: const BubblesColor(
+                        dotPrimaryColor: Colors.red,
+                        dotSecondaryColor: Colors.red,
+                      ),
+                      likeBuilder: (bool isLiked) {
+                        return isLiked == false
+                            ? SvgPicture.asset(
+                          'images/like.svg',
+                        )
+                            : SvgPicture.asset('images/favorite_red.svg');
+                      },
+                      likeCount: 100,
+                      likeCountPadding: EdgeInsets.only(left: 2.w,),
+                      //   countBuilder: (int count, bool isLiked, String text){
+                      //     var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                      //     Widget result;
+                      //     if (count == 0) {
+                      //       result = Text(
+                      //         "love",
+                      //         style: TextStyle(color: color),
+                      //       );
+                      //     }else
+                      //       result = Text(
+                      //         text,
+                      //         style: TextStyle(color: color),
+                      //       );
+                      //     return result;
+                      //   }
+                      // countBuilder: (int count, bool isLiked, String text) {
+                      //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                      //   Widget result;
+                      //   if (count == 0) {
+                      //     result = Text(
+                      //       "love",
+                      //       style: TextStyle(color: color),
+                      //     );
+                      //   } else
+                      //     result = Text(
+                      //       text,
+                      //       style: TextStyle(color: color),
+                      //     );
+                      //   return result;
+                      // },
                     ),
-                    likeBuilder: (bool isLiked) {
-                      return isLiked == false? SvgPicture.asset(
-                        'images/like.svg',
-                      ): SvgPicture.asset('images/favorite_red.svg');
-                    },
-                    likeCount: 100,
-                    // countBuilder: (int count, bool isLiked, String text) {
-                    //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                    //   Widget result;
-                    //   if (count == 0) {
-                    //     result = Text(
-                    //       "love",
-                    //       style: TextStyle(color: color),
-                    //     );
-                    //   } else
-                    //     result = Text(
-                    //       text,
-                    //       style: TextStyle(color: color),
-                    //     );
-                    //   return result;
-                    // },
-                  ),//heart
-                  SizedBox(width: 170.w,),
+                  ), //heart
+                  SizedBox(width: 72.w,),
                   GestureDetector(
                     child: Padding(
                       padding:  EdgeInsets.only(bottom: 5.h),
-                      child: SvgPicture.asset('images/share.svg', height: 26,),
+                      child: SvgPicture.asset('images/share.svg', height: 26.h,),
                     ),
                     onTap: (){
                       showModalBottomSheet(
@@ -536,11 +588,11 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                         ),
                                         child: Center(child: GestureDetector(
                                           onTap: (){},
-                                          child: Image.asset('images/whatsapp.png', height: 20.h,width: 18.w,),
+                                          child: SvgPicture.asset( 'images/Dm.svg', height: 30.h,width: 20.w, color: bcolor3,),
                                         ),),
                                       ),
                                       SizedBox(height: 8.h,),
-                                      Text('Whatsapp', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
+                                      Text('DM', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
                                     ],
                                   ),//whatsappp
                                   SizedBox(width: 35.w,),
@@ -619,13 +671,14 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                         child: Center(child: GestureDetector(
                                           onTap: (){},
                                           child: SizedBox(
-                                              height: 24.h,
-                                              width: 24.w,
-                                              child: SvgPicture.asset('images/slack.svg',)),
+                                            height: 24.h,
+                                            width: 24.w,
+                                            child:Image.asset('images/whatsapp.png', height: 30.h,width: 20.w,),
+                                          ),
                                         ),),
                                       ),
                                       SizedBox(height: 8.h,),
-                                      Text('Slack', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
+                                      Text('Whatsapp', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
                                     ],
                                   ),
                                   SizedBox(width: 35.w,),
@@ -686,7 +739,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                       ),
                       );
                     },
-                  ),
+                  ),//share
                 ],),//icons
             ),//icons
           ],

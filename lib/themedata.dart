@@ -51,17 +51,17 @@ class AppTheme {
         fontWeight: FontWeight.bold,
         fontSize: 25,
       ), //FOR TOP
-      headline3: const TextStyle(
+      headline3:  TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
           fontFamily: 'Nunito',
-          fontSize: 18), //for button
+          fontSize: 18.sp), //for button
       headline4: TextStyle(
         color: Colors.grey.shade700,
         fontFamily: 'Nunito',
         fontStyle: FontStyle.normal,
         fontWeight: FontWeight.bold,
-        fontSize: 15,
+        fontSize: 15.sp,
       ),
       subtitle2: const TextStyle(
         color: Color(0xff386fa4),
@@ -72,7 +72,7 @@ class AppTheme {
         fontFamily: 'Nunito',
         fontStyle: FontStyle.normal,
         fontWeight: FontWeight.bold,
-        fontSize: 15,
+        fontSize: 15.sp,
       ),
     ),
     primaryTextTheme:   TextTheme(
@@ -113,15 +113,15 @@ class AppTheme {
           color: Colors.white,
           fontWeight: FontWeight.w600,
           fontFamily: 'Nunito',
-          fontSize: 16), //for buttons
+          fontSize: 16.sp), //for buttons
       headline1: TextStyle(
           color: Colors.black,
           fontFamily: 'Nunito',
-          fontSize: 18), //label style
+          fontSize: 18.sp), //label style
       bodyText2: TextStyle(
           color: uColor,
           fontFamily: 'Nunito',
-          fontSize: 14,
+          fontSize: 14.sp,
           fontWeight: FontWeight.w500), //hintstyle
       subtitle1: TextStyle(
           color: Colors.black,
@@ -171,7 +171,7 @@ class AppTheme {
         fontFamily: 'Nunito',
         fontStyle: FontStyle.normal,
         fontWeight: FontWeight.bold,
-        fontSize: 15,
+        fontSize: 15.sp,
       ),
       subtitle2: const TextStyle(
         color: Color(0xff386fa4),
@@ -187,10 +187,10 @@ class AppTheme {
     ),
 
     primaryTextTheme:   TextTheme(
-      headline6:  const TextStyle(
+      headline6:   TextStyle(
         color: Colors.white,
         fontFamily: 'Nunito',
-        fontSize: 20,
+        fontSize: 20.sp,
         fontWeight: FontWeight.w400,
       ), //account name
       headline2: TextStyle(
@@ -210,7 +210,7 @@ class AppTheme {
         fontFamily: 'Ubuntu',
         fontStyle: FontStyle.normal,
         fontWeight: FontWeight.w400,
-        fontSize: 15,
+        fontSize: 15.sp,
       ), //for subheadings after main Heading
       headline4: TextStyle(
         color: Colors.white,
@@ -220,17 +220,17 @@ class AppTheme {
         fontSize: 32.sp,
 
       ),//create account
-      headline3: const TextStyle(
+      headline3:  TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.w600,
           fontFamily: 'Nunito',
-          fontSize: 16
+          fontSize: 16.sp
 
       ),//for buttons
-      headline1: const TextStyle(
+      headline1:  TextStyle(
           color: Colors.black,
           fontFamily: 'Nunito',
-          fontSize: 18
+          fontSize: 18.sp
       ),
       bodyText2: TextStyle(
           color: uColor,

@@ -1,3 +1,4 @@
+import 'package:chat_beeper/Screens/colllection/message_screen.dart';
 import 'package:chat_beeper/constants.dart';
 import 'package:flutter/material.dart'; import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,6 +11,7 @@ class DirectMessage extends StatefulWidget {
 }
 
 class _DirectMessageState extends State<DirectMessage> {
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -29,12 +31,11 @@ class _DirectMessageState extends State<DirectMessage> {
           child: AppBar(
             // automaticallyImplyLeading: true,
             title: Padding(
-              padding:  EdgeInsets.only(top: 32.h),
-              child:  SizedBox(
-                height: 30.h,
-                child: Image.asset('images/chatb.png',),
-
-              ),
+              padding:  EdgeInsets.only(top: 20.h, right: 9.w),
+              child: SizedBox(
+                  height: 34.h,
+                  // width: 159.w,
+                  child: SvgPicture.asset('images/chatbeeper_blue.svg',)),
             ),
             centerTitle: true,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -136,8 +137,13 @@ class _DirectMessageState extends State<DirectMessage> {
               ],
             ),
           ),
+          // IconButton(onPressed: (){
+          //   Navigator.push(context,MaterialPageRoute(builder: (context) => const Messages()));
+          // }, icon: Icon(Icons.sms)),
         ],
       ),
     );
   }
 }
+
+

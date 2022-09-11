@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
+// import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 
 import '../../constants.dart';
 
@@ -18,6 +18,24 @@ class LoginActivity extends StatefulWidget {
 }
 
 class _LoginActivityState extends State<LoginActivity> {
+
+  String device = 'iPhone 13';
+  String location = 'Lagos, Nigeria';
+  String lastSeen = 'Active now';
+  Completer<GoogleMapController> _controller = Completer();
+
+  static final CameraPosition _kGooglePlex = const CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
+
+  static const CameraPosition _kLake = const CameraPosition(
+      bearing: 192.8334901395799,
+      target: LatLng(37.43296265331129, -122.08832357078792),
+      tilt: 59.440717697143555,
+      zoom: 19.151926040649414);
+
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(

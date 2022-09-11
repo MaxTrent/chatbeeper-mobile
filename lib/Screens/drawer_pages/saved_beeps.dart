@@ -55,86 +55,88 @@ class _SavedBeepsState extends State<SavedBeeps> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding:  EdgeInsets.only(left: 16.w, right: 20.w),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Clear all', style: TextStyle(fontWeight: FontWeight.w600, fontFamily: 'Nunito', fontSize: 16.sp, color: bcolor5),),
-                PopupMenuButton<int>(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding:  EdgeInsets.only(left: 16.w, right: 20.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Clear all', style: TextStyle(fontWeight: FontWeight.w600, fontFamily: 'Nunito', fontSize: 16.sp, color: bcolor5),),
+                  PopupMenuButton<int>(
 
-                  icon: SvgPicture.asset('images/setting-4.svg'),
-                  iconSize: 24.h,
-                  itemBuilder: (context) => [
-                    // popupmenu item 1
-                    PopupMenuItem(
-                      value: 1,
-                      // row has two child icon and text.
-                      child: Row(
-                        children: [
-                          Text("Change location",style:  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),)
-                        ],
+                    icon: SvgPicture.asset('images/setting-4.svg'),
+                    iconSize: 24.h,
+                    itemBuilder: (context) => [
+                      // popupmenu item 1
+                      PopupMenuItem(
+                        value: 1,
+                        // row has two child icon and text.
+                        child: Row(
+                          children: [
+                            Text("Change location",style:  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),)
+                          ],
+                        ),
                       ),
-                    ),
-                    // popupmenu item 2
-                    PopupMenuItem(
-                      value: 2,
-                      // row has two child icon and text.
-                      child: Row(
-                        children: [
-                          Text("Preferred gender", style:
-                          TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
-                          )
-                        ],
-                      ),
-                    ),
-                    PopupMenuItem(
-                      value: 3,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Lock your room',
-                            style:
+                      // popupmenu item 2
+                      PopupMenuItem(
+                        value: 2,
+                        // row has two child icon and text.
+                        child: Row(
+                          children: [
+                            Text("Preferred gender", style:
                             TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
-                          ),
-                          Transform.scale(
-                            scale: 0.7,
-                            child: CupertinoSwitch(value: false, onChanged: null,
-                              thumbColor: Colors.grey.shade500,
+                            )
+                          ],
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: 3,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Lock your room',
+                              style:
+                              TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
                             ),
-                          )
-                        ],
-                      ),),
+                            Transform.scale(
+                              scale: 0.7,
+                              child: CupertinoSwitch(value: false, onChanged: null,
+                                thumbColor: Colors.grey.shade500,
+                              ),
+                            )
+                          ],
+                        ),),
 
-                  ],
-                  offset: Offset(0, 40.h),
-                  color: Theme.of(context).scaffoldBackgroundColor,
-                  elevation: 2,
-                )
-              ],
-            ),
-          ),//clear all and settings
-          SizedBox(
-            height: 650.h,
-            // width: 368.w,
-            child: ListView.builder(
-              itemCount: 10,
-              itemBuilder: (BuildContext context, index){
-                return Column(
-                  children: [
-                    PostBeep(),
-                    SponsoredTourCard(),
-                    PostCard(),
-                    TourCard()
-                  ],
-                );
-              },
-            ),
-          ),//listview
-        ],
+                    ],
+                    offset: Offset(0, 40.h),
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                    elevation: 2,
+                  )
+                ],
+              ),
+            ),//clear all and settings
+            SizedBox(
+              height: 700.h,
+              // width: 368.w,
+              child: ListView.builder(
+                itemCount: 10,
+                itemBuilder: (BuildContext context, index){
+                  return Column(
+                    children: [
+                      PostBeep(),
+                      const SponsoredTourCard(),
+                      PostCard(),
+                      TourCard()
+                    ],
+                  );
+                },
+              ),
+            ),//listview
+          ],
+        ),
       ),
     );
   }

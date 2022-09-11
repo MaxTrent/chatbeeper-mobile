@@ -159,13 +159,13 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8.r))
                         ),
-                        padding: EdgeInsets.zero,
+                      padding: EdgeInsets.only(left: 10.w),
                         icon: Icon(Icons.more_horiz_sharp, size: 30.h,color: Colors.white,),
                         iconSize: 24.h,
                         itemBuilder: (context) => [
                           PopupMenuItem(
 
-                            padding: EdgeInsets.zero,
+                            padding: EdgeInsets.only(left: 10.w),
                             value: 1,
                             // row has two child icon and text.
                             child: Row(
@@ -181,7 +181,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                           ),//about
                           PopupMenuItem(
                             value: 2,
-                            padding: EdgeInsets.zero,
+                            padding: EdgeInsets.only(left: 10.w),
                             // row has two child icon and text.
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -198,7 +198,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                           ),//block
                           PopupMenuItem(
                             value: 3,
-                            padding: EdgeInsets.zero,
+                            padding: EdgeInsets.only(left: 10.w),
                             // row has two child icon and text.
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -279,18 +279,20 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                         ),//divider
                         SizedBox(height: 15.h,),
                         SizedBox(
-                          height: 40.h, width: 276.w,
+                          height: 50.h, width: 276.w,
                           child: Row(
                             children: [
-                              Column(
-                                children: [
-                                  Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                    fontWeight: FontWeight.w600, fontSize: 16.sp,
-                                  ),
-                                  ),
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
+                                      fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                    ),
+                                    ),
 
-                                  Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 14.sp,), ),
-                                ],
+                                    Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 14.sp,), ),
+                                  ],
+                                ),
                               ),//following
                               Padding(
                                 padding:  EdgeInsets.only(left: 14.w, bottom: 8.h),
