@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
+// import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 
 import '../../constants.dart';
 
@@ -22,7 +22,7 @@ class _LoginActivityState extends State<LoginActivity> {
   String lastSeen = 'Active now';
   Completer<GoogleMapController> _controller = Completer();
 
-  static final CameraPosition _kGooglePlex = CameraPosition(
+  static final CameraPosition _kGooglePlex = const CameraPosition(
     target: LatLng(37.42796133580664, -122.085749655962),
     zoom: 14.4746,
   );

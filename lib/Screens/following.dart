@@ -1,4 +1,5 @@
 import 'package:chat_beeper/Screens/colllection/home_page.dart';
+import 'package:chat_beeper/Screens/colllection/notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,7 +27,7 @@ class _FollowingState extends State<Following> {
     var brightness = MediaQuery.of(context).platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
 
-    bool _isFollowed = false;
+    bool _isFollowed = true;
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: PreferredSize(
@@ -46,7 +47,7 @@ class _FollowingState extends State<Following> {
                   size: 20,
                 ),
                 onPressed: () {
-                  Navigator.popAndPushNamed(context, Home.id);
+                  Navigator.pop(context);
                 },
               ),
             ),
@@ -80,7 +81,7 @@ class _FollowingState extends State<Following> {
                 CircleAvatar(
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(100.0.r),
-                        child: SvgPicture.asset('images/Frame 1.svg'))),
+                        child: Image.asset('images/sarah.png'))),
                 SizedBox(
                   width: 8.0.w,
                 ),
@@ -120,29 +121,32 @@ class _FollowingState extends State<Following> {
                   GestureDetector(
                     onTap: (() {
                       setState(() {
-                        _isFollowed = true;
+                        _isFollowed = !_isFollowed;
                         print(_isFollowed);
                       });
                     }),
-                    child: Container(
-                      height: 31.h,
-                      width: 99.w,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: const Color(0xff386FA4)),
-                          borderRadius: BorderRadius.circular(16.0.r)),
-                      child: Center(
-                        child: _isFollowed == false
-                            ? Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text('Follow'),
-                                  Icon(
-                                    Icons.add,
-                                    size: 18.sp,
-                                  )
-                                ],
-                              )
-                            : const Text('Following'),
+                    child: Padding(
+                      padding:  EdgeInsets.only(bottom: 30.h),
+                      child: Container(
+                        height: 31.h,
+                        width: 99.w,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: const Color(0xff386FA4)),
+                            borderRadius: BorderRadius.circular(16.0.r)),
+                        child: Center(
+                          child: _isFollowed == false
+                              ? Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text('Follow'),
+                                    Icon(
+                                      Icons.add,
+                                      size: 18.sp,
+                                    )
+                                  ],
+                                )
+                              :const Text('Following', style: TextStyle(color: bcolor3),),
+                        ),
                       ),
                     ),
                   ),

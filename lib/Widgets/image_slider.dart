@@ -51,7 +51,7 @@ class _ImageSliderState extends State<ImageSlider> {
               CarouselSlider(
                 carouselController: _controller,
                 options: CarouselOptions(
-                  height: 333.h,
+                  height: width,
                   viewportFraction: 1.0,
                   enlargeCenterPage: false,
                     onPageChanged: (index, reason) {

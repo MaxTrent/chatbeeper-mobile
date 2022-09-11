@@ -74,116 +74,118 @@ class _PostBeepState extends State<PostBeep> {
                         ),
                       ),
                     ),
-                    Row(
-                      children: [
-                        CircleAvatar(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(100.0.r),
-                            child: Image.asset('images/sarah.png'),
-                          ),
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "\ $FullName\ ",
-                                  style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500),
-                                ),
-                                Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey  ),),
-                                const Icon(Icons.verified_rounded, color: bcolor5,size: 15,),
-                              ],
+                    Expanded(
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(100.0.r),
+                              child: Image.asset('images/sarah.png'),
                             ),
-                            Text('\ $posttime', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w500, color: Colors.grey  ),),
-                          ],
-                        ),
-                        Spacer(),
-                        PopupMenuButton<int>(
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "\ $FullName\ ",
+                                    style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500),
+                                  ),
+                                  Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey  ),),
+                                   Icon(Icons.verified_rounded, color: bcolor5,size: 15.h,),
+                                ],
+                              ),
+                              Expanded(child: Text('\ $posttime', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w500, color: Colors.grey  ),)),
+                            ],
+                          ),
+                          Spacer(),
+                          PopupMenuButton<int>(
 
-                          icon: Icon(Icons.more_vert_sharp, size: 30.h,color: Theme.of(context).colorScheme.secondaryVariant,),
-                          iconSize: 24.h,
-                          itemBuilder: (context) => [
-                            PopupMenuItem(
-                              value: 1,
-                              // row has two child icon and text.
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                      height: 24.h, width: 24.w,
-                                      child: darkModeOn == false? SvgPicture.asset('images/mute.svg'):SvgPicture.asset('images/mute.svg', color: Colors.white,)),
-                                  SizedBox(width: 10.w,),
-                                  Text("Mute",style:  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),)
-                                ],
-                              ),
-                            ),//mute
-                            PopupMenuItem(
-                              value: 2,
-                              // row has two child icon and text.
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                      height: 24.h, width: 24.w,
-                                      child:darkModeOn == false? SvgPicture.asset('images/block.svg'):SvgPicture.asset('images/block.svg', color: Colors.white,)),
-                                  SizedBox(width: 10.w,),
-                                  Text("Block", style:
-                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
-                                  )
-                                ],
-                              ),
-                            ),//block
-                            PopupMenuItem(
-                              value: 3,
-                              // row has two child icon and text.
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                      height: 24.h, width: 24.w,
-                                      child:darkModeOn == false? SvgPicture.asset('images/unfollow.svg'):SvgPicture.asset('images/unfollow.svg', color: Colors.white,)),
-                                  SizedBox(width: 10.w,),
-                                  Text("Unfollow", style:
-                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
-                                  )
-                                ],
-                              ),
-                            ),//unfollow
-                            PopupMenuItem(
-                              value: 4,
-                              // row has two child icon and text.
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                      height: 24.h, width: 24.w,
-                                      child:darkModeOn == false? SvgPicture.asset('images/not interested.svg'):SvgPicture.asset('images/not interested.svg', color: Colors.white,)),
-                                  SizedBox(width: 10.w,),
-                                  Text("Not interested in this", style:
-                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
-                                  )
-                                ],
-                              ),
-                            ),//not interested
-                            PopupMenuItem(
-                              value: 5,
-                              // row has two child icon and text.
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                      height: 24.h, width: 24.w,
-                                      child:darkModeOn == false? SvgPicture.asset('images/report.svg'):SvgPicture.asset('images/report.svg', color: Colors.white,)),
-                                  SizedBox(width: 10.w,),
-                                  Text("Report this account", style:
-                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
-                                  )
-                                ],
-                              ),
-                            ),//report
-                          ],
-                          offset: Offset(-28.w, 40.h),
-                          color: Theme.of(context).scaffoldBackgroundColor,
-                          elevation: 2,
-                        ),
-                      ],
+                            icon: Icon(Icons.more_vert_sharp, size: 30.h,color: Theme.of(context).colorScheme.secondaryVariant,),
+                            iconSize: 24.h,
+                            itemBuilder: (context) => [
+                              PopupMenuItem(
+                                value: 1,
+                                // row has two child icon and text.
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                        height: 24.h, width: 24.w,
+                                        child: darkModeOn == false? SvgPicture.asset('images/mute.svg'):SvgPicture.asset('images/mute.svg', color: Colors.white,)),
+                                    SizedBox(width: 10.w,),
+                                    Text("Mute",style:  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),)
+                                  ],
+                                ),
+                              ),//mute
+                              PopupMenuItem(
+                                value: 2,
+                                // row has two child icon and text.
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                        height: 24.h, width: 24.w,
+                                        child:darkModeOn == false? SvgPicture.asset('images/block.svg'):SvgPicture.asset('images/block.svg', color: Colors.white,)),
+                                    SizedBox(width: 10.w,),
+                                    Text("Block", style:
+                                    TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                    )
+                                  ],
+                                ),
+                              ),//block
+                              PopupMenuItem(
+                                value: 3,
+                                // row has two child icon and text.
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                        height: 24.h, width: 24.w,
+                                        child:darkModeOn == false? SvgPicture.asset('images/unfollow.svg'):SvgPicture.asset('images/unfollow.svg', color: Colors.white,)),
+                                    SizedBox(width: 10.w,),
+                                    Text("Unfollow", style:
+                                    TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                    )
+                                  ],
+                                ),
+                              ),//unfollow
+                              PopupMenuItem(
+                                value: 4,
+                                // row has two child icon and text.
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                        height: 24.h, width: 24.w,
+                                        child:darkModeOn == false? SvgPicture.asset('images/not interested.svg'):SvgPicture.asset('images/not interested.svg', color: Colors.white,)),
+                                    SizedBox(width: 10.w,),
+                                    Text("Not interested in this", style:
+                                    TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                    )
+                                  ],
+                                ),
+                              ),//not interested
+                              PopupMenuItem(
+                                value: 5,
+                                // row has two child icon and text.
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                        height: 24.h, width: 24.w,
+                                        child:darkModeOn == false? SvgPicture.asset('images/report.svg'):SvgPicture.asset('images/report.svg', color: Colors.white,)),
+                                    SizedBox(width: 10.w,),
+                                    Text("Report this account", style:
+                                    TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                    )
+                                  ],
+                                ),
+                              ),//report
+                            ],
+                            offset: Offset(-28.w, 40.h),
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                            elevation: 2,
+                          ),
+                        ],
+                      ),
                     ),
 
                   ],
@@ -213,126 +215,141 @@ Padding(
       ),
       ),//readmore text
           Container(
-            height: 0.2,
-            color: Colors.grey,
-          ),//divider
+            height: 0.2.h,
+            color: uColor,
+          ), //divider
           Padding(
-            padding:  EdgeInsets.only(left: 30.w,right: 19.w, top: 20.h, bottom: 15.h),
+            padding: EdgeInsets.only(
+                left: 16.w, right: 27.w, bottom: 12.h, top: 12.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                GestureDetector(
-                  child: SvgPicture.asset('images/comment.svg', height: 24,),
-                  onTap: (){
-                    Navigator.push(context,MaterialPageRoute(builder: (context) => const Comment()));
-                  },
+                Expanded(
+                  flex: 1,
+                  child: GestureDetector(
+                    child: SvgPicture.asset(
+                      'images/comment.svg',
+                      height: 24.h,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Comment()));
+                    },
+                  ),
                 ),
-                SizedBox(width: 40.w,),
+                SizedBox(
+                  width: 30.w,
+                ),
                 GestureDetector(
                   onTap: () async{
                     showDialog(context: context, builder: (context)=>
-                        const RebeepResponse(),
+                    const RebeepResponse(),
                     );
                   },
                   child: _rebeeped == false?  SizedBox(height:35.h,child: SvgPicture.asset('images/rebeep.svg', height: 30.h,)): SvgPicture.asset('images/rebeep.svg', color: Colors.red,  height: 35.h,),
-                ),//rebeep
-                // LikeButton(
-                //   size: 24,
-                //   circleColor:
-                //   CircleColor(start: Color(0xff00ddff), end: const Color(0xff0099cc)),
-                //   bubblesColor: const BubblesColor(
-                //     dotPrimaryColor: Color(0xff33b5e5),
-                //     dotSecondaryColor: Color(0xff0099cc),
-                //   ),
-                //   likeBuilder: (bool isLiked) {
-                //     return isLiked == false? SvgPicture.asset(
-                //       'images/rebeep.svg',
-                //     ): SvgPicture.asset('images/rebeep_red.svg');
-                //   },
-                //   likeCount: 100,
-                //   // countBuilder: (int count, bool isLiked, String text) {
-                //   //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                //   //   Widget result;
-                //   //   if (count == 0) {
-                //   //     result = Text(
-                //   //       "love",
-                //   //       style: TextStyle(color: color),
-                //   //     );
-                //   //   } else
-                //   //     result = Text(
-                //   //       text,
-                //   //       style: TextStyle(color: color),
-                //   //     );
-                //   //   return result;
-                //   // },
-                // ),//infinite
-                SizedBox(width: 40.w,),
-                LikeButton(
-                  size: 24,
-                  circleColor:
-                  CircleColor(start: Colors.red.shade700, end: Colors.red.shade800),
-                  bubblesColor: BubblesColor(
-                    dotPrimaryColor: Colors.red.shade700,
-                    dotSecondaryColor: Colors.red.shade800,
+                ),//rebeep //infinite
+                SizedBox(
+                  width: 30.w,
+                ),
+                Expanded(
+                  flex: 1,
+                  child: LikeButton(
+                    size: 24.h,
+                    circleColor: CircleColor(
+                        start: Colors.red.shade700, end: Colors.red.shade800),
+                    bubblesColor: BubblesColor(
+                      dotPrimaryColor: Colors.red.shade700,
+                      dotSecondaryColor: Colors.red.shade800,
+                    ),
+                    likeBuilder: (bool isLiked) {
+                      return isLiked == false
+                          ? SvgPicture.asset(
+                        'images/dislike_blue.svg',
+                      )
+                          : SvgPicture.asset('images/dislike_red.svg');
+                    },
+                    likeCount: 100,
+                    likeCountPadding: EdgeInsets.only(left: 3.w),
+                    // countBuilder: (int count, bool isLiked, String text) {
+                    //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                    //   Widget result;
+                    //   if (count == 0) {
+                    //     result = Text(
+                    //       "love",
+                    //       style: TextStyle(color: color),
+                    //     );
+                    //   } else
+                    //     result = Text(
+                    //       text,
+                    //       style: TextStyle(color: color),
+                    //     );
+                    //   return result;
+                    // },
                   ),
-                  likeBuilder: (bool isLiked) {
-                    return isLiked == false? SvgPicture.asset(
-                      'images/dislike_blue.svg',
-                    ): SvgPicture.asset('images/dislike_red.svg');
-                  },
-                  likeCount: 100,
-                  // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                  //   Widget result;
-                  //   if (count == 0) {
-                  //     result = Text(
-                  //       "love",
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   } else
-                  //     result = Text(
-                  //       text,
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   return result;
-                  // },
-                ),//brokenheart
-                SizedBox(width: 40.w,),
-                 LikeButton(
-      size: 24,
-      circleColor:
-      CircleColor(start: Colors.red.shade200, end: Colors.red),
-      bubblesColor: const BubblesColor(
-      dotPrimaryColor: Colors.red,
-      dotSecondaryColor: Colors.red,
-      ),
-      likeBuilder: (bool isLiked) {
-      return isLiked == false? SvgPicture.asset(
-      'images/like.svg',
-      ): SvgPicture.asset('images/favorite_red.svg');
-      },
-      likeCount: 100,
-      // countBuilder: (int count, bool isLiked, String text) {
-      //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-      //   Widget result;
-      //   if (count == 0) {
-      //     result = Text(
-      //       "love",
-      //       style: TextStyle(color: color),
-      //     );
-      //   } else
-      //     result = Text(
-      //       text,
-      //       style: TextStyle(color: color),
-      //     );
-      //   return result;
-      // },
-      ),//heart
-                SizedBox(width: 90.w,),
+                ), //brokenheart
+                SizedBox(
+                  width: 30.w,
+                ),
+                Expanded(
+                  flex: 1,
+                  child: LikeButton(
+                    size: 24.h,
+                    circleColor:
+                    CircleColor(start: Colors.red.shade200, end: Colors.red),
+                    bubblesColor: const BubblesColor(
+                      dotPrimaryColor: Colors.red,
+                      dotSecondaryColor: Colors.red,
+                    ),
+                    likeBuilder: (bool isLiked) {
+                      return isLiked == false
+                          ? SvgPicture.asset(
+                        'images/like.svg',
+                      )
+                          : SvgPicture.asset('images/favorite_red.svg');
+                    },
+                    likeCount: 100,
+                    likeCountPadding: EdgeInsets.only(left: 3.w),
+                    //   countBuilder: (int count, bool isLiked, String text){
+                    //     var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                    //     Widget result;
+                    //     if (count == 0) {
+                    //       result = Text(
+                    //         "love",
+                    //         style: TextStyle(color: color),
+                    //       );
+                    //     }else
+                    //       result = Text(
+                    //         text,
+                    //         style: TextStyle(color: color),
+                    //       );
+                    //     return result;
+                    //   }
+                    // countBuilder: (int count, bool isLiked, String text) {
+                    //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                    //   Widget result;
+                    //   if (count == 0) {
+                    //     result = Text(
+                    //       "love",
+                    //       style: TextStyle(color: color),
+                    //     );
+                    //   } else
+                    //     result = Text(
+                    //       text,
+                    //       style: TextStyle(color: color),
+                    //     );
+                    //   return result;
+                    // },
+                  ),
+                ), //heart
+                SizedBox(
+                  width: 90.w,
+                ),
                 GestureDetector(
                   child: Padding(
                     padding:  EdgeInsets.only(bottom: 5.h),
-                    child: SvgPicture.asset('images/share.svg', height: 26,),
+                    child: SvgPicture.asset('images/share.svg', height: 26.h,),
                   ),
                   onTap: (){
                     showModalBottomSheet(
@@ -443,11 +460,11 @@ Padding(
                                       ),
                                       child: Center(child: GestureDetector(
                                         onTap: (){},
-                                        child: Image.asset('images/whatsapp.png', height: 20.h,width: 18.w,),
+                                        child: SvgPicture.asset( 'images/Dm.svg', height: 30.h,width: 20.w, color: bcolor3,),
                                       ),),
                                     ),
                                     SizedBox(height: 8.h,),
-                                    Text('Whatsapp', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
+                                    Text('DM', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
                                   ],
                                 ),//whatsappp
                                 SizedBox(width: 35.w,),
@@ -526,13 +543,14 @@ Padding(
                                       child: Center(child: GestureDetector(
                                         onTap: (){},
                                         child: SizedBox(
-                                            height: 24.h,
-                                            width: 24.w,
-                                            child: SvgPicture.asset('images/slack.svg',)),
+                                          height: 24.h,
+                                          width: 24.w,
+                                          child:Image.asset('images/whatsapp.png', height: 30.h,width: 20.w,),
+                                        ),
                                       ),),
                                     ),
                                     SizedBox(height: 8.h,),
-                                    Text('Slack', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
+                                    Text('Whatsapp', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
                                   ],
                                 ),
                                 SizedBox(width: 35.w,),
@@ -593,9 +611,10 @@ Padding(
                     ),
                     );
                   },
-                ),
-              ],),//icons
-          ),//icons
+                ),//share
+              ],
+            ), //icons
+          ), //icons
         ],
       );
     }

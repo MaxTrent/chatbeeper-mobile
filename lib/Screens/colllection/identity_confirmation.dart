@@ -129,10 +129,10 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
                     color: Color.fromRGBO(41, 91, 133, 1),
                     padding: EdgeInsets.only(top: 29.h, bottom: 29.h),
                     strokeWidth: 1,
-                    dashPattern: [8, 8],
+                    dashPattern: const [8, 8],
                     strokeCap: StrokeCap.butt,
                     child: Padding(
-                      padding: EdgeInsets.only(left: 47.0.w, right: 40.31.w),
+                      padding: EdgeInsets.only(left: 47.0.w, right: 35.w),
                       child: Row(
                         children: [
                           TextButton(

@@ -7,7 +7,7 @@ import 'package:group_radio_button/group_radio_button.dart';
 import '../constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import 'colllection/home_page.dart';
 
 
@@ -83,13 +83,16 @@ class _ConfirmRegisterState extends State<ConfirmRegister> {
                             height: 55.h,
                             width: 235.w,
                             child: ListTile(
-                              horizontalTitleGap: 0,
+                              horizontalTitleGap: 0.w,
+                              visualDensity: null,
+                              dense: true,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.r),
                                 side: BorderSide(color: _selectedIndex == 1 ? bcolor1 : uColor, width: 1.w),
                               ),
                               leading: Padding(
                                 padding:  EdgeInsets.only(left: 8.0.w, bottom: 12.h, right: 8.w),
-                                child: Icon(IconlyLight.profile, size: 20.h,),
+                                child:  SvgPicture.asset('images/profile.svg', height: 20.h, color: uColor,)
+
                               ),
                               title: Padding(
                                 padding: EdgeInsets.only(bottom: 12.h, right: 19.w),
@@ -134,9 +137,11 @@ class _ConfirmRegisterState extends State<ConfirmRegister> {
                                 //   Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const CreateBusiness(),));
                                 // }
                               },
+                              visualDensity: null,
+                              dense: true,
                               leading: Padding(
                                 padding:  EdgeInsets.only(left: 8.0.w, bottom: 12.h, right: 8.w),
-                                child: Icon(CupertinoIcons.briefcase, size: 20.h,),
+                                child:  SvgPicture.asset('images/briefcase.svg', height: 20.h,color: uColor,)
                               ),
                               title: Padding(
                                 padding: EdgeInsets.only(bottom: 12.h, right: 19.w),

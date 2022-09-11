@@ -52,7 +52,7 @@ class _RoomSliderState extends State<RoomSlider> {
                     carouselController: _controller,
                     options: CarouselOptions(
                         height: 456.h,
-                        viewportFraction: 1.0,
+                        viewportFraction: 2.0,
                         enlargeCenterPage: false,
                         onPageChanged: (index, reason) {
                           setState(() {

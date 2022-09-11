@@ -50,9 +50,9 @@ class _NotificationsState extends State<Notifications> {
           child: SafeArea(
             child: AppBar(
               leading: Padding(
-                padding:  EdgeInsets.only(top: 20.h,),
+                padding:  EdgeInsets.only(top: 15.h,bottom: 5.h),
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.black,
                   ),
@@ -97,8 +97,19 @@ class _NotificationsState extends State<Notifications> {
                 Padding(
                   padding:  EdgeInsets.only(left: 16.w,top: 32.h),
                   child: Align(
-                    alignment: Alignment.topLeft,
-                    child:   Image.asset('images/logo1.png',height: 32.h, width: 32.w,),
+                    alignment: Alignment.topCenter,
+                    child:   Column(
+                      children: [
+                        Image.asset('images/logo1.png',height: 36.h, width: 36.w,),
+                        Padding(
+                          padding:  EdgeInsets.only(top: 5.h,),
+                          child: SizedBox(
+                              height: 34.h,
+                              // width: 159.w,
+                              child: SvgPicture.asset('images/chatbeeper_blue.svg',)),
+                        ),
+                      ],
+                    ),
                   ),
                 ),//logo
                 SizedBox(height: 39.h,),

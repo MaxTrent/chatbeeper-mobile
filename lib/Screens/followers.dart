@@ -44,14 +44,14 @@ class _FollowersState extends State<Followers> {
                   size: 20,
                 ),
                 onPressed: () {
-                  Navigator.popAndPushNamed(context, Home.id);
+                  Navigator.pop(context);
                 },
               ),
             ),
             title: Padding(
               padding: EdgeInsets.only(top: 32.h),
               child: Text(
-                'Following',
+                'Followers',
                 style: Theme.of(context).primaryTextTheme.bodyText1,
               ),
             ),
@@ -78,7 +78,7 @@ class _FollowersState extends State<Followers> {
                 CircleAvatar(
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(100.0.r),
-                        child: SvgPicture.asset('images/Frame 1.svg'))),
+                     child: Image.asset('images/sarah.png'))),
                 SizedBox(
                   width: 8.0.w,
                 ),
@@ -122,25 +122,28 @@ class _FollowersState extends State<Followers> {
                         print(_isFollowed);
                       });
                     }),
-                    child: Container(
-                      height: 31.h,
-                      width: 99.w,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: const Color(0xff386FA4)),
-                          borderRadius: BorderRadius.circular(16.0.r)),
-                      child: Center(
-                        child: _isFollowed == false
-                            ? Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text('Follow'),
-                            Icon(
-                              Icons.add,
-                              size: 18.sp,
-                            )
-                          ],
-                        )
-                            : const Text('Following'),
+                    child: Padding(
+                      padding:  EdgeInsets.only(bottom: 30.h),
+                      child: Container(
+                        height: 31.h,
+                        width: 99.w,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: const Color(0xff386FA4)),
+                            borderRadius: BorderRadius.circular(16.0.r)),
+                        child: Center(
+                          child: _isFollowed == false
+                              ? Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text('Follow'),
+                              Icon(
+                                Icons.add,
+                                size: 18.sp,
+                              )
+                            ],
+                          )
+                              : const Text('Following', style: TextStyle(color: bcolor3),),
+                        ),
                       ),
                     ),
                   ),

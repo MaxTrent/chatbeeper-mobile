@@ -1,3 +1,4 @@
+import 'package:chat_beeper/Widgets/rebeep_response.dart';
 import 'package:chat_beeper/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:like_button/like_button.dart';
@@ -52,6 +53,7 @@ class _TourCardState extends State<TourCard> {
   String FullName = 'Sarah Madini';
   String username = 'Madini';
   String posttime = '1 hour ago';
+  bool _rebeeped = false;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -78,8 +80,8 @@ class _TourCardState extends State<TourCard> {
                 ),
               ),
               Positioned(
-                  top: 420,
-                  left: 70,
+                  top: 420.h,
+                  left: 70.w,
                   child: SizedBox(
                     // color: Colors.pink,
                     width: 320.w,
@@ -123,7 +125,7 @@ class _TourCardState extends State<TourCard> {
                   )),//small pics
               Positioned(
                   top: 15.h,
-                  left: 420.w,
+                  left: 430.w,
                   child: Container(
                     height: 40.h,
                     width: 40.w,
@@ -132,49 +134,46 @@ class _TourCardState extends State<TourCard> {
                       shape: BoxShape.circle,
                       color: Colors.black.withOpacity(0.4),
                     ),
+                    child:  PopupMenuButton<int>(
+                      icon: const Icon(Icons.more_vert_sharp, color: Colors.white,),
+                      iconSize: 24.h,
+                      itemBuilder: (context) => [
+                        // popupmenu item 1
+                        PopupMenuItem(
+                          value: 1,
+                          // row has two child icon and text.
+                          child: Row(
+                            children: [
+                              Icon(Icons.star),
+                              SizedBox(
+                                // sized box with width 10
+                                width: 10.h,
+                              ),
+                              Text("Get The App")
+                            ],
+                          ),
+                        ),
+                        // popupmenu item 2
+                        PopupMenuItem(
+                          value: 2,
+                          // row has two child icon and text
+                          child: Row(
+                            children: const [
+                              Icon(Icons.chrome_reader_mode),
+                              SizedBox(
+                                // sized box with width 10
+                                width: 10,
+                              ),
+                              Text("About")
+                            ],
+                          ),
+                        ),
+                      ],
+                      // offset: Offset(0, 100),
+                      color: Theme.of(context).scaffoldBackgroundColor,
+                      elevation: 2,
+                    ),
                   )),
-              Positioned(
-                top: 10.h,
-                left: 413.w,
-                child: PopupMenuButton<int>(
-                  icon: const Icon(Icons.more_vert_sharp, color: Colors.white,),
-                  iconSize: 24.h,
-                  itemBuilder: (context) => [
-                    // popupmenu item 1
-                    PopupMenuItem(
-                      value: 1,
-                      // row has two child icon and text.
-                      child: Row(
-                        children: [
-                          Icon(Icons.star),
-                          SizedBox(
-                            // sized box with width 10
-                            width: 10,
-                          ),
-                          Text("Get The App")
-                        ],
-                      ),
-                    ),
-                    // popupmenu item 2
-                    PopupMenuItem(
-                      value: 2,
-                      // row has two child icon and text
-                      child: Row(
-                        children: [
-                          Icon(Icons.chrome_reader_mode),
-                          SizedBox(
-                            // sized box with width 10
-                            width: 10,
-                          ),
-                          Text("About")
-                        ],
-                      ),
-                    ),
-                  ],
-                  // offset: Offset(0, 100),
-                  color: Theme.of(context).scaffoldBackgroundColor,
-                  elevation: 2,
-                ),),
             ]),
         Column(
           children: [
@@ -235,132 +234,130 @@ class _TourCardState extends State<TourCard> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  LikeButton(
-                    size: 24,
-                    circleColor:
-                    CircleColor(start: Colors.red.shade200, end: Colors.red),
-                    bubblesColor: BubblesColor(
-                      dotPrimaryColor: Colors.red,
-                      dotSecondaryColor: Colors.red,
+                  Expanded(
+                    flex: 1,
+                    child: GestureDetector(
+                      child: SvgPicture.asset(
+                        'images/comment.svg',
+                        height: 24.h,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Comment()));
+                      },
                     ),
-                    likeBuilder: (bool isLiked) {
-                      return SvgPicture.asset('images/comment.svg', height: 24,);
+                  ),
+                  SizedBox(
+                    width: 30.w,
+                  ),
+                  GestureDetector(
+                    onTap: () async{
+                      showDialog(context: context, builder: (context)=>
+                      const RebeepResponse(),
+                      );
                     },
-                    likeCount: 100,
-                    // countBuilder: (int count, bool isLiked, String text) {
-                    //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                    //   Widget result;
-                    //   if (count == 0) {
-                    //     result = Text(
-                    //       "love",
-                    //       style: TextStyle(color: color),
-                    //     );
-                    //   } else
-                    //     result = Text(
-                    //       text,
-                    //       style: TextStyle(color: color),
-                    //     );
-                    //   return result;
-                    // },
-                  ),//heart
-                  SizedBox(width: 30.w,),
-                  // LikeButton(
-                  //   size: 24,
-                  //   circleColor:
-                  //   CircleColor(start: Color(0xff00ddff), end: const Color(0xff0099cc)),
-                  //   bubblesColor: const BubblesColor(
-                  //     dotPrimaryColor: Color(0xff33b5e5),
-                  //     dotSecondaryColor: Color(0xff0099cc),
-                  //   ),
-                  //   likeBuilder: (bool isLiked) {
-                  //     return isLiked == false? SvgPicture.asset(
-                  //       'images/rebeep.svg',
-                  //     ): SvgPicture.asset('images/rebeep_red.svg');
-                  //   },
-                  //   likeCount: 100,
-                  //   // countBuilder: (int count, bool isLiked, String text) {
-                  //   //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                  //   //   Widget result;
-                  //   //   if (count == 0) {
-                  //   //     result = Text(
-                  //   //       "love",
-                  //   //       style: TextStyle(color: color),
-                  //   //     );
-                  //   //   } else
-                  //   //     result = Text(
-                  //   //       text,
-                  //   //       style: TextStyle(color: color),
-                  //   //     );
-                  //   //   return result;
-                  //   // },
-                  // ),//infinite
-                  // SizedBox(width: 21.w,),
-                  LikeButton(
-                    size: 24,
-                    circleColor:
-                    CircleColor(start: Colors.red.shade700, end: Colors.red.shade800),
-                    bubblesColor: BubblesColor(
-                      dotPrimaryColor: Colors.red.shade700,
-                      dotSecondaryColor: Colors.red.shade800,
+                    child: _rebeeped == false?  SizedBox(height:35.h,child: SvgPicture.asset('images/rebeep.svg', height: 30.h,)): SvgPicture.asset('images/rebeep.svg', color: Colors.red,  height: 35.h,),
+                  ),//rebeep //infinite
+                  SizedBox(
+                    width: 30.w,
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: LikeButton(
+                      size: 24.h,
+                      circleColor: CircleColor(
+                          start: Colors.red.shade700, end: Colors.red.shade800),
+                      bubblesColor: BubblesColor(
+                        dotPrimaryColor: Colors.red.shade700,
+                        dotSecondaryColor: Colors.red.shade800,
+                      ),
+                      likeBuilder: (bool isLiked) {
+                        return isLiked == false
+                            ? SvgPicture.asset(
+                          'images/dislike_blue.svg',
+                        )
+                            : SvgPicture.asset('images/dislike_red.svg');
+                      },
+                      likeCount: 100,
+                      likeCountPadding: EdgeInsets.only(left: 3.w),
+                      // countBuilder: (int count, bool isLiked, String text) {
+                      //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                      //   Widget result;
+                      //   if (count == 0) {
+                      //     result = Text(
+                      //       "love",
+                      //       style: TextStyle(color: color),
+                      //     );
+                      //   } else
+                      //     result = Text(
+                      //       text,
+                      //       style: TextStyle(color: color),
+                      //     );
+                      //   return result;
+                      // },
                     ),
-                    likeBuilder: (bool isLiked) {
-                      return isLiked == false? SvgPicture.asset(
-                        'images/dislike_blue.svg',
-                      ): SvgPicture.asset('images/dislike_red.svg');
-                    },
-                    likeCount: 100,
-                    // countBuilder: (int count, bool isLiked, String text) {
-                    //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                    //   Widget result;
-                    //   if (count == 0) {
-                    //     result = Text(
-                    //       "love",
-                    //       style: TextStyle(color: color),
-                    //     );
-                    //   } else
-                    //     result = Text(
-                    //       text,
-                    //       style: TextStyle(color: color),
-                    //     );
-                    //   return result;
-                    // },
-                  ),//brokenheart
-                  SizedBox(width: 30.w,),
-                  LikeButton(
-                    size: 24,
-                    circleColor:
-                    CircleColor(start: Colors.red.shade200, end: Colors.red),
-                    bubblesColor: BubblesColor(
-                      dotPrimaryColor: Colors.red,
-                      dotSecondaryColor: Colors.red,
+                  ), //brokenheart
+                  SizedBox(
+                    width: 30.w,
+                  ),
+                  Expanded(
+                    flex:3,
+                    child: LikeButton(
+                      size: 24.h,
+                      circleColor:
+                      CircleColor(start: Colors.red.shade200, end: Colors.red),
+                      bubblesColor: const BubblesColor(
+                        dotPrimaryColor: Colors.red,
+                        dotSecondaryColor: Colors.red,
+                      ),
+                      likeBuilder: (bool isLiked) {
+                        return isLiked == false
+                            ? SvgPicture.asset(
+                          'images/like.svg',
+                        )
+                            : SvgPicture.asset('images/favorite_red.svg');
+                      },
+                      likeCount: 100,
+                      likeCountPadding: EdgeInsets.only(left: 2.w,),
+                      //   countBuilder: (int count, bool isLiked, String text){
+                      //     var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                      //     Widget result;
+                      //     if (count == 0) {
+                      //       result = Text(
+                      //         "love",
+                      //         style: TextStyle(color: color),
+                      //       );
+                      //     }else
+                      //       result = Text(
+                      //         text,
+                      //         style: TextStyle(color: color),
+                      //       );
+                      //     return result;
+                      //   }
+                      // countBuilder: (int count, bool isLiked, String text) {
+                      //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                      //   Widget result;
+                      //   if (count == 0) {
+                      //     result = Text(
+                      //       "love",
+                      //       style: TextStyle(color: color),
+                      //     );
+                      //   } else
+                      //     result = Text(
+                      //       text,
+                      //       style: TextStyle(color: color),
+                      //     );
+                      //   return result;
+                      // },
                     ),
-                    likeBuilder: (bool isLiked) {
-                      return isLiked == false? SvgPicture.asset(
-                        'images/like.svg',
-                      ): SvgPicture.asset('images/favorite_red.svg');
-                    },
-                    likeCount: 100,
-                    // countBuilder: (int count, bool isLiked, String text) {
-                    //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                    //   Widget result;
-                    //   if (count == 0) {
-                    //     result = Text(
-                    //       "love",
-                    //       style: TextStyle(color: color),
-                    //     );
-                    //   } else
-                    //     result = Text(
-                    //       text,
-                    //       style: TextStyle(color: color),
-                    //     );
-                    //   return result;
-                    // },
-                  ),//heart
-                  SizedBox(width: 170.w,),
+                  ), //heart
+                  SizedBox(width: 72.w,),
                   GestureDetector(
                     child: Padding(
                       padding:  EdgeInsets.only(bottom: 5.h),
-                      child: SvgPicture.asset('images/share.svg', height: 26,),
+                      child: SvgPicture.asset('images/share.svg', height: 26.h,),
                     ),
                     onTap: (){
                       showModalBottomSheet(
@@ -453,7 +450,7 @@ class _TourCardState extends State<TourCard> {
                                       SizedBox(height: 8.h,),
                                       Text('Save', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
                                     ],
-                                  ),
+                                  ),//save
                                   SizedBox(width: 35.w,),
                                   Column(
                                     children: [
@@ -471,13 +468,13 @@ class _TourCardState extends State<TourCard> {
                                         ),
                                         child: Center(child: GestureDetector(
                                           onTap: (){},
-                                          child: Image.asset('images/whatsapp.png', height: 30.h,width: 20.w,),
+                                          child: SvgPicture.asset( 'images/Dm.svg', height: 30.h,width: 20.w, color: bcolor3,),
                                         ),),
                                       ),
                                       SizedBox(height: 8.h,),
-                                      Text('Whatsapp', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
+                                      Text('DM', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
                                     ],
-                                  ),//whatsappp
+                                  ),//dm
                                   SizedBox(width: 35.w,),
                                   Column(
                                     children: [
@@ -556,11 +553,12 @@ class _TourCardState extends State<TourCard> {
                                           child: SizedBox(
                                               height: 24.h,
                                               width: 24.w,
-                                              child: SvgPicture.asset('images/slack.svg',)),
+                                              child:Image.asset('images/whatsapp.png', height: 30.h,width: 20.w,),
+                                          ),
                                         ),),
                                       ),
                                       SizedBox(height: 8.h,),
-                                      Text('Slack', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
+                                      Text('Whatsapp', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
                                     ],
                                   ),
                                   SizedBox(width: 35.w,),
@@ -621,7 +619,7 @@ class _TourCardState extends State<TourCard> {
                       ),
                       );
                     },
-                  ),
+                  ),//share
                 ],),//icons
             ),//icons
           ],

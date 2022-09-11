@@ -93,9 +93,9 @@ class _TourPageState extends State<TourPage> {
           child: SafeArea(
             child: AppBar(
               leading: Padding(
-                padding:  EdgeInsets.only(top: 20.h,),
+                padding:  EdgeInsets.only(top: 15.h,bottom: 5.h),
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.black,
                   ),
@@ -114,7 +114,7 @@ class _TourPageState extends State<TourPage> {
                 ),
               ),
               title: Padding(
-                padding:  EdgeInsets.only(top: 20.h, right: 9.w),
+                padding:  EdgeInsets.only(top: 20.h, right: 9.w, left: 10),
                 child: SizedBox(
                     height: 34.h,
                     // width: 159.w,
@@ -126,7 +126,7 @@ class _TourPageState extends State<TourPage> {
               actions: [
                 // SizedBox(width: 12.w,),
                 Padding(
-                  padding:  EdgeInsets.only(top: 32.h, right: 25.w),
+                  padding:  EdgeInsets.only(top: 28.h, right: 20.w, bottom: 5.h),
                   child: GestureDetector(
                     onTap: (){
                       // Navigator.push(context,
@@ -144,7 +144,7 @@ class _TourPageState extends State<TourPage> {
                   ),
                 ),
                 Padding(
-                  padding:  EdgeInsets.only(top: 32.h, right: 16.w),
+                  padding:  EdgeInsets.only(top: 28.h, right: 14.w, bottom: 5.h),
                   child: SizedBox(
                     height: 28.h, width: 28.h,
                     child: Transform.scale(
@@ -201,8 +201,19 @@ class _TourPageState extends State<TourPage> {
                 Padding(
                   padding:  EdgeInsets.only(left: 16.w,top: 32.h),
                   child: Align(
-                    alignment: Alignment.topLeft,
-                    child:   Image.asset('images/logo1.png',height: 32.h, width: 32.w,),
+                    alignment: Alignment.topCenter,
+                    child:   Column(
+                      children: [
+                        Image.asset('images/logo1.png',height: 36.h, width: 36.w,),
+                        Padding(
+                          padding:  EdgeInsets.only(top: 5.h,),
+                          child: SizedBox(
+                              height: 34.h,
+                              // width: 159.w,
+                              child: SvgPicture.asset('images/chatbeeper_blue.svg',)),
+                        ),
+                      ],
+                    ),
                   ),
                 ),//logo
                 SizedBox(height: 39.h,),
