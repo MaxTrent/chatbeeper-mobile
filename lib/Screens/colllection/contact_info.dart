@@ -41,7 +41,7 @@ class _ContactInfoState extends State<ContactInfo> {
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 16.sp)),
+                  .copyWith(fontSize: 17.sp)),
         ),
         centerTitle: true,
       ),
@@ -58,7 +58,7 @@ class _ContactInfoState extends State<ContactInfo> {
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 16.sp),
+                  .copyWith(fontSize: 17.sp),
             ),
           ),
           Divider(
@@ -72,14 +72,14 @@ class _ContactInfoState extends State<ContactInfo> {
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 14.sp),
+                  .copyWith(fontSize: 15.sp),
             ),
             trailing: Text(
               '@$username',
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 14.sp, color: Color(0xff386FA4)),
+                  .copyWith(fontSize: 15.sp, color: Color(0xff386FA4)),
             ),
           ),
           ListTile(
@@ -89,14 +89,14 @@ class _ContactInfoState extends State<ContactInfo> {
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 14.sp),
+                  .copyWith(fontSize: 15.sp),
             ),
             trailing: Text(
               phoneNumber,
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 14.sp, color: Color(0xff386FA4)),
+                  .copyWith(fontSize: 15.sp, color: Color(0xff386FA4)),
             ),
           ),
           ListTile(
@@ -106,14 +106,14 @@ class _ContactInfoState extends State<ContactInfo> {
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 14.sp),
+                  .copyWith(fontSize: 15.sp),
             ),
             trailing: Text(
               email,
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 14.sp, color: Color(0xff386FA4)),
+                  .copyWith(fontSize: 15.sp, color: Color(0xff386FA4)),
             ),
           )
         ],

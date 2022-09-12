@@ -79,53 +79,8 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                   fit: BoxFit.cover,
                 ),
               ),
-
-              // Positioned(
-              //     top: 420,
-              //     left: 70,
-              //     child: SizedBox(
-              //       // color: Colors.pink,
-              //       width: 320.w,
-              //       height: 48.h,
-              //       child: ListView.separated(
-              //         scrollDirection: Axis.horizontal,
-              //         shrinkWrap: true,
-              //         itemBuilder: ((context, index) => InkWell(
-              //           onTap: () {
-              //             setState(() {
-              //               displayImage = images[index];
-              //               _itemtapped = true;
-              //             });
-              //           },
-              //           child: Container(
-              //             width: 48,
-              //             height: 48,
-              //             decoration: BoxDecoration(
-              //               // color: Colors.black,
-              //                 border: displayImage.id == images[index].id
-              //                     ? Border.all(
-              //                   width: 2,
-              //                   color: bcolor5,
-              //                 )
-              //                     : Border.all(
-              //                   width: 2,
-              //                   color: Colors.white,
-              //                 )),
-              //             child: Image.network(
-              //               images[index].url,
-              //               fit: BoxFit.cover,
-              //               key: Key(images[index].id),
-              //             ),
-              //           ),
-              //         )),
-              //         separatorBuilder: ((context, index) =>  SizedBox(
-              //           width: 10.w,
-              //         )),
-              //         itemCount: images.length,
-              //       ),
-              //     )),//small pics
               Positioned(
-                  top: 25.h,
+                  top: 15.h,
                   left: 430.w,
                   child: Container(
                     height: 40.h,
@@ -133,92 +88,94 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                     alignment: Alignment.topCenter,
                     decoration:  BoxDecoration(
                       shape: BoxShape.circle,
-                        color: Colors.black.withOpacity(0.6),
+                      color: Colors.black.withOpacity(0.6),
                     ),
                     child: PopupMenuButton<int>(
-                      icon: const Icon(Icons.more_vert_sharp, color: Colors.white,),
+
+                      icon: Icon(Icons.more_vert_sharp, size: 24.h,color: Colors.white,),
                       iconSize: 24.h,
                       itemBuilder: (context) => [
-                        // popupmenu item 1
                         PopupMenuItem(
                           value: 1,
                           // row has two child icon and text.
                           child: Row(
-                            children: const [
-                              Icon(Icons.star),
+                            children: [
                               SizedBox(
-                                // sized box with width 10
-                                width: 10,
-                              ),
-                              Text("Get The App")
+                                  height: 24.h, width: 24.w,
+                                  child: darkModeOn == false? SvgPicture.asset('images/mute.svg'):SvgPicture.asset('images/mute.svg', color: Colors.white,)),
+                              SizedBox(width: 10.w,),
+                              Text("Mute",style:  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),)
                             ],
                           ),
-                        ),
-                        // popupmenu item 2
+                        ),//mute
                         PopupMenuItem(
                           value: 2,
-                          // row has two child icon and text
+                          // row has two child icon and text.
                           child: Row(
                             children: [
-                              Icon(Icons.chrome_reader_mode),
                               SizedBox(
-                                // sized box with width 10
-                                width: 10,
-                              ),
-                              Text("About")
+                                  height: 24.h, width: 24.w,
+                                  child:darkModeOn == false? SvgPicture.asset('images/block.svg'):SvgPicture.asset('images/block.svg', color: Colors.white,)),
+                              SizedBox(width: 10.w,),
+                              Text("Block", style:
+                              TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                              )
                             ],
                           ),
-                        ),
+                        ),//block
+                        PopupMenuItem(
+                          value: 3,
+                          // row has two child icon and text.
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                  height: 24.h, width: 24.w,
+                                  child:darkModeOn == false? SvgPicture.asset('images/unfollow.svg'):SvgPicture.asset('images/unfollow.svg', color: Colors.white,)),
+                              SizedBox(width: 10.w,),
+                              Text("Unfollow", style:
+                              TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                              )
+                            ],
+                          ),
+                        ),//unfollow
+                        PopupMenuItem(
+                          value: 4,
+                          // row has two child icon and text.
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                  height: 24.h, width: 24.w,
+                                  child:darkModeOn == false? SvgPicture.asset('images/not interested.svg'):SvgPicture.asset('images/not interested.svg', color: Colors.white,)),
+                              SizedBox(width: 10.w,),
+                              Text("Not interested in this", style:
+                              TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                              )
+                            ],
+                          ),
+                        ),//not interested
+                        PopupMenuItem(
+                          value: 5,
+                          // row has two child icon and text.
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                  height: 24.h, width: 24.w,
+                                  child:darkModeOn == false? SvgPicture.asset('images/report.svg'):SvgPicture.asset('images/report.svg', color: Colors.white,)),
+                              SizedBox(width: 10.w,),
+                              Text("Report this account", style:
+                              TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                              )
+                            ],
+                          ),
+                        ),//report
                       ],
-                      // offset: Offset(0, 100),
+                      offset: Offset(-28.w, 40.h),
                       color: Theme.of(context).scaffoldBackgroundColor,
                       elevation: 2,
                     ),
-                  )),
-              // Positioned(
-              //   top: 25.h,
-              //   left: 425.w,
-              //   child: PopupMenuButton<int>(
-              //     icon: const Icon(Icons.more_vert_sharp, color: Colors.white,),
-              //     iconSize: 24.h,
-              //     itemBuilder: (context) => [
-              //       // popupmenu item 1
-              //       PopupMenuItem(
-              //         value: 1,
-              //         // row has two child icon and text.
-              //         child: Row(
-              //           children: const [
-              //             Icon(Icons.star),
-              //             SizedBox(
-              //               // sized box with width 10
-              //               width: 10,
-              //             ),
-              //             Text("Get The App")
-              //           ],
-              //         ),
-              //       ),
-              //       // popupmenu item 2
-              //       PopupMenuItem(
-              //         value: 2,
-              //         // row has two child icon and text
-              //         child: Row(
-              //           children: [
-              //             Icon(Icons.chrome_reader_mode),
-              //             SizedBox(
-              //               // sized box with width 10
-              //               width: 10,
-              //             ),
-              //             Text("About")
-              //           ],
-              //         ),
-              //       ),
-              //     ],
-              //     // offset: Offset(0, 100),
-              //     color: Theme.of(context).scaffoldBackgroundColor,
-              //     elevation: 2,
-              //   ),),
+                  )),//pop up menu
               Positioned(
-                top: 30.h,
+                top: 15.h,
                 left: 28.w,
                 child:  Container(
                   decoration: BoxDecoration(
@@ -228,12 +185,12 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                   child: Center(
                     child: Text('Sponsored', style: TextStyle(
                         color: ( Colors.white),
-                        fontSize: 14.sp,
+                        fontSize: 15.sp,
                         fontFamily: 'Nunito', fontWeight: FontWeight.w500
                     ),),
                   ),
                 ),
-              ),
+              ),//sponsored
               Positioned(
                 top: 415.h,
                 // left: 10.w,
@@ -261,14 +218,14 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                             padding:  EdgeInsets.only(left: 16.w,),
                             child: Text('Help children get the best care across the world.', style: TextStyle(
                                 color: ( Colors.white),
-                                fontSize: 14.sp,
+                                fontSize: 15.sp,
                                 fontFamily: 'Nunito', fontWeight: FontWeight.w400
                             ),),
                           ),
                         ],
                       ),
                       Padding(
-                        padding:  EdgeInsets.only(left: 50.w, ),
+                        padding:  EdgeInsets.only(left: 20.w, ),
                         child: SizedBox(
                             width: 100.w, height: 40.h,
                             child: TextButton(
@@ -277,47 +234,47 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                               onSurface: Colors.transparent,
                               backgroundColor: bcolor1
                             ),
-                            onPressed: (){}, child: Text('Donate', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w700, fontSize: 14.sp,color: Colors.white),))),
+                            onPressed: (){}, child: Text('Donate', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w700, fontSize: 15.sp,color: Colors.white),))),
                       ),
 
                     ],
                   ),
                 ),
-              ),
+              ),//write up
             ]),
         Column(
           children: [
             Padding(
-              padding:  EdgeInsets.only(top: 20.h),
-              child: Row(
+              padding:  EdgeInsets.only(top: 20.h, left: 16.w),
+              child:Row(
                 children: [
-                  CircleAvatar(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100.0.r),
-                      child: Image.asset('images/sarah.png'),
-                    ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(100.0.r),
+                    child: Image.asset('images/sarah.png',height: 40.h,),
                   ),
+                  SizedBox(width: 8.w,),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(height: 12.h,),
                       Row(
                         children: [
                           Text(
                             "\ $FullName\ ",
-                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500),
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500, fontSize: 18.sp),
                           ),
-                          Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey  ),),
+                          Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey, fontSize: 17.sp ),),
                           const Icon(Icons.verified_rounded, color: bcolor5,size: 15,),
                         ],
                       ),
-                      Text('\ $posttime', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w500, color: Colors.grey  ),),
+                      Text('\ $posttime', style:  TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w500, color: Colors.grey, fontSize: 17.sp  ),),
                     ],
                   ),
                   Spacer(),
                   PopupMenuButton<int>(
 
-                    icon: Icon(Icons.more_vert_sharp, size: 30.h,color: Theme.of(context).colorScheme.secondaryVariant,),
+                    icon: Icon(Icons.more_vert_sharp, size: 24.h,color: Theme.of(context).colorScheme.secondaryVariant,),
                     iconSize: 24.h,
                     itemBuilder: (context) => [
                       PopupMenuItem(
@@ -402,7 +359,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
               ),
             ),
             Padding(
-              padding:  EdgeInsets.only(left: 16.w, right: 27.w,bottom: 12.h),
+              padding:  EdgeInsets.only(left: 16.w, right: 27.w,bottom: 12.h, top: 12.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -411,7 +368,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                     trimExpandedText: 'see Less',
                     trimCollapsedText: 'see more',
                     colorClickableText: Colors.grey,
-                    style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
+                    style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 19.sp),
 
                   ),
                 ],
@@ -419,11 +376,11 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
             ),//readmore text
             Container(
               height: 0.2,
-              color: uColor,
+              color: Colors.grey,
             ),//divider
             Padding(
               padding: EdgeInsets.only(
-                  left: 16.w, right: 27.w, bottom: 12.h, top: 12.h),
+                  left: 16.w, right: 0.w, bottom: 12.h, top: 12.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -527,7 +484,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                     // },
                   ), //heart
                   SizedBox(
-                    width: 140.w,
+                    width: 160.w,
                   ),
                   Expanded(
                     child: GestureDetector(
@@ -563,7 +520,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                   alignment:Alignment.topLeft,
                                   child: Text('Share Beep',style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
                                     color: bcolor3,
-                                    fontSize: 16.sp,
+                                    fontSize: 17.sp,
                                     fontWeight: FontWeight.w700,
 
                                   ),),
@@ -597,7 +554,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                           ),),
                                         ),
                                         SizedBox(height: 8.h,),
-                                        Text('Copy Link', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
+                                        Text('Copy Link', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 15.sp, fontFamily: 'Nunito'),),
                                       ],
                                     ),//copy
                                     SizedBox(width: 35.w,),
@@ -624,7 +581,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                           ),),
                                         ),
                                         SizedBox(height: 8.h,),
-                                        Text('Save', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
+                                        Text('Save', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 15.sp, fontFamily: 'Nunito'),),
                                       ],
                                     ),
                                     SizedBox(width: 35.w,),
@@ -648,7 +605,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                           ),),
                                         ),
                                         SizedBox(height: 8.h,),
-                                        Text('DM', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
+                                        Text('DM', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 15.sp, fontFamily: 'Nunito'),),
                                       ],
                                     ),//whatsappp
                                     SizedBox(width: 35.w,),
@@ -672,7 +629,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                           ),),
                                         ),
                                         SizedBox(height: 8.h,),
-                                        Text('Facebook', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
+                                        Text('Facebook', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 15.sp, fontFamily: 'Nunito'),),
                                       ],
                                     ),//facebook
                                   ],
@@ -706,7 +663,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                           ),),
                                         ),
                                         SizedBox(height: 8.h,),
-                                        Text('Gmail', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
+                                        Text('Gmail', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 15.sp, fontFamily: 'Nunito'),),
                                       ],
                                     ),//gmail
                                     SizedBox(width: 35.w,),
@@ -734,7 +691,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                           ),),
                                         ),
                                         SizedBox(height: 8.h,),
-                                        Text('Whatsapp', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
+                                        Text('Whatsapp', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 15.sp, fontFamily: 'Nunito'),),
                                       ],
                                     ),
                                     SizedBox(width: 35.w,),
@@ -758,7 +715,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                           ),),
                                         ),
                                         SizedBox(height: 8.h,),
-                                        Text('Telegram', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
+                                        Text('Telegram', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 15.sp, fontFamily: 'Nunito'),),
                                       ],
                                     ),//telegram
                                     SizedBox(width: 35.w,),
@@ -784,7 +741,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                           ),),
                                         ),
                                         SizedBox(height: 8.h,),
-                                        Text('Discord', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 14.sp, fontFamily: 'Nunito'),),
+                                        Text('Discord', style: TextStyle(color: darkModeOn?Colors.white: Colors.black, fontWeight: FontWeight.w500,fontSize: 15.sp, fontFamily: 'Nunito'),),
                                       ],
                                     ),//discord
                                   ],

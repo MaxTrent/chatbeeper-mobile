@@ -44,7 +44,7 @@ class _PasswordChangeState extends State<PasswordChange> {
     style: Theme.of(context)
         .primaryTextTheme
         .headline4!
-        .copyWith(fontSize: 16.sp)),
+        .copyWith(fontSize: 17.sp)),
     ),
         centerTitle: true,),
         body: SingleChildScrollView(
@@ -62,7 +62,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline4!
-                      .copyWith(fontSize: 16.sp),
+                      .copyWith(fontSize: 17.sp),
                 ),
               ),
               Divider(
@@ -80,7 +80,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline4!
-                      .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500),
+                      .copyWith(fontSize: 17.sp, fontWeight: FontWeight.w500),
                 ),
               ),
               SizedBox(
@@ -94,7 +94,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline4!
-                      .copyWith(fontSize: 16.sp),
+                      .copyWith(fontSize: 17.sp),
                 ),
               ),
               Padding(
@@ -119,7 +119,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline4!
-                      .copyWith(fontSize: 16.sp),
+                      .copyWith(fontSize: 17.sp),
                 ),
               ),
               Padding(
@@ -144,7 +144,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline4!
-                      .copyWith(fontSize: 16.sp),
+                      .copyWith(fontSize: 17.sp),
                 ),
               ),
               Padding(
@@ -182,7 +182,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                       style: Theme.of(context)
                           .primaryTextTheme
                           .headline3!
-                          .copyWith(fontSize: 16.sp),
+                          .copyWith(fontSize: 17.sp),
                     ),
                   ),
                 ),

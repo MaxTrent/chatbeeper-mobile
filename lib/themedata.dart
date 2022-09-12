@@ -91,7 +91,7 @@ class AppTheme {
       bodyText1: TextStyle(
           color: Colors.black,
           fontFamily: 'Nunito',
-          fontSize: 14.sp,
+          fontSize: 15.sp,
           fontWeight: FontWeight.w500), //label texts
       headline5: TextStyle(
         color: Colors.white,
@@ -113,7 +113,7 @@ class AppTheme {
           color: Colors.white,
           fontWeight: FontWeight.w600,
           fontFamily: 'Nunito',
-          fontSize: 16.sp), //for buttons
+          fontSize: 17.sp), //for buttons
       headline1: TextStyle(
           color: Colors.black,
           fontFamily: 'Nunito',
@@ -121,12 +121,12 @@ class AppTheme {
       bodyText2: TextStyle(
           color: uColor,
           fontFamily: 'Nunito',
-          fontSize: 14.sp,
+          fontSize: 15.sp,
           fontWeight: FontWeight.w500), //hintstyle
       subtitle1: TextStyle(
           color: Colors.black,
           fontFamily: 'Nunito',
-          fontSize: 14.sp,
+          fontSize: 15.sp,
           fontWeight: FontWeight.w500), //textfield style
       subtitle2: TextStyle(
         color: Colors.black,
@@ -202,7 +202,7 @@ class AppTheme {
       bodyText1: TextStyle(
           color: Colors.white,
           fontFamily: 'Nunito',
-          fontSize: 14.sp,
+          fontSize: 15.sp,
           fontWeight: FontWeight.w500), //label texts
       headline5: TextStyle(
 
@@ -224,7 +224,7 @@ class AppTheme {
           color: Colors.white,
           fontWeight: FontWeight.w600,
           fontFamily: 'Nunito',
-          fontSize: 16.sp
+          fontSize: 17.sp
 
       ),//for buttons
       headline1:  TextStyle(
@@ -235,12 +235,12 @@ class AppTheme {
       bodyText2: TextStyle(
           color: uColor,
           fontFamily: 'Nunito',
-          fontSize: 14.sp,
+          fontSize: 15.sp,
           fontWeight: FontWeight.w500), //hintstyle
       subtitle1: TextStyle(
           color: Colors.white,
           fontFamily: 'Nunito',
-          fontSize: 14.sp,
+          fontSize: 15.sp,
           fontWeight: FontWeight.w500), //textfield style
       subtitle2: TextStyle(
           color: Colors.white,

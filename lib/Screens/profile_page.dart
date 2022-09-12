@@ -160,7 +160,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                           borderRadius: BorderRadius.all(Radius.circular(8.r))
                         ),
                       padding: EdgeInsets.only(left: 10.w),
-                        icon: Icon(Icons.more_horiz_sharp, size: 30.h,color: Colors.white,),
+                        icon: Icon(Icons.more_horiz_sharp, size: 24.h,color: Colors.white,),
                         iconSize: 24.h,
                         itemBuilder: (context) => [
                           PopupMenuItem(
@@ -237,7 +237,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey, fontSize: 14.sp ),),
+                            Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey, fontSize: 15.sp ),),
                              Icon(Icons.verified_rounded, color: bcolor5,size: 15.h,),
                           ],
 
@@ -279,18 +279,18 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                         ),//divider
                         SizedBox(height: 15.h,),
                         SizedBox(
-                          height: 50.h, width: 276.w,
+                          height: 56.h, width: 276.w,
                           child: Row(
                             children: [
                               Expanded(
                                 child: Column(
                                   children: [
                                     Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                      fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                      fontWeight: FontWeight.w600, fontSize: 17.sp,
                                     ),
                                     ),
 
-                                    Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 14.sp,), ),
+                                    Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 15.sp,), ),
                                   ],
                                 ),
                               ),//following
@@ -303,11 +303,11 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                                 child: Column(
                                   children: [
                                     Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                      fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                      fontWeight: FontWeight.w600, fontSize: 17.sp,
                                     ),
                                     ),
 
-                                    Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 14.sp,), ),
+                                    Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 15.sp,), ),
                                   ],
                                 ),
                               ),//followers
@@ -321,7 +321,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                                       height: 20.h,  width: 20.w,
                                       child: SvgPicture.asset('images/location.svg', color: darkModeOn? Colors.white: Colors.black,)
                                   ),
-                                  Text(location,style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 14.sp,), ),
+                                  Text(location,style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 15.sp,), ),
                                 ],
                               ),//location
 
@@ -372,7 +372,6 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                                       )
                                   ),
                                   onPressed: ()  {
-                                    Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const ProfileTab()));
                                   },
 
                                   child: darkModeOn == false ?  Row(
@@ -381,12 +380,12 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                                       Text(
                                         'Edit profile',
                                         textAlign: TextAlign.center,
-                                        style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp,fontWeight: FontWeight.w600),
+                                        style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w600),
                                         // TextStyle(
                                         //     color: Colors.white,
                                         //     fontWeight: FontWeight.w500,
                                         //     fontFamily: 'Nunito',
-                                        //     fontSize: 16.sp
+                                        //     fontSize: 17.sp
                                         //
                                         // ),
                                       ),
@@ -405,12 +404,12 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                                         child: Text(
                                         'Follow',
                                         textAlign: TextAlign.center,
-                                        style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp,fontWeight: FontWeight.w600),
+                                        style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w600),
                                         // TextStyle(
                                         //     color: Colors.white,
                                         //     fontWeight: FontWeight.w500,
                                         //     fontFamily: 'Nunito',
-                                        //     fontSize: 16.sp
+                                        //     fontSize: 17.sp
                                         //
                                         // ),
                                     ),
@@ -462,7 +461,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                               labelColor: bcolor1,
                               labelPadding: EdgeInsets.zero,
                               unselectedLabelColor: Colors.grey,
-                              unselectedLabelStyle: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight: FontWeight.w400),
+                              unselectedLabelStyle: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight: FontWeight.w400),
                               controller: _tabcontroller,
                               tabs:  [
                                 Container(

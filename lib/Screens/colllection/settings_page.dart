@@ -69,7 +69,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline4!
-                      .copyWith(fontSize: 16.sp)),
+                      .copyWith(fontSize: 17.sp)),
             ),
           ),
         ),
@@ -91,7 +91,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         style: Theme.of(context)
                             .primaryTextTheme
                             .headline4!
-                            .copyWith(fontSize: 16.sp),
+                            .copyWith(fontSize: 17.sp),
                       ),
                     ),
                   ],
@@ -110,7 +110,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 14.sp, color:uColor),
+                    .copyWith(fontSize: 15.sp, color:uColor),
               ),
               trailing: Icon(
                 Icons.arrow_forward_ios,
@@ -126,7 +126,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 14.sp, color:uColor),
+                    .copyWith(fontSize: 15.sp, color:uColor),
               ),
               trailing: Icon(
                 Icons.arrow_forward_ios,
@@ -144,7 +144,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 14.sp, color: Colors.red),
+                    .copyWith(fontSize: 15.sp, color: Colors.red),
               ),
               onTap: () => Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const DeactivateAccount())),
@@ -163,7 +163,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         style: Theme.of(context)
                             .primaryTextTheme
                             .headline4!
-                            .copyWith(fontSize: 16.sp),
+                            .copyWith(fontSize: 17.sp),
                       ),
                     ),
                   ],
@@ -182,7 +182,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 14.sp, color:uColor),
+                    .copyWith(fontSize: 15.sp, color:uColor),
               ),
               trailing: Icon(
                 Icons.arrow_forward_ios,
@@ -198,7 +198,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 14.sp, color:uColor),
+                    .copyWith(fontSize: 15.sp, color:uColor),
               ),
               trailing: Icon(
                 Icons.arrow_forward_ios,
@@ -214,7 +214,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   style: Theme.of(context)
                       .textTheme
                       .headline2!
-                      .copyWith(fontSize: 14.sp, color:uColor),
+                      .copyWith(fontSize: 15.sp, color:uColor),
                 ),
                 trailing: Icon(
                   Icons.arrow_forward_ios,
@@ -229,7 +229,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 14.sp, color:uColor),
+                    .copyWith(fontSize: 15.sp, color:uColor),
               ),
               trailing: const CupertinoSwitch(
                 onChanged: null,
@@ -248,7 +248,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       style: Theme.of(context)
                           .primaryTextTheme
                           .headline4!
-                          .copyWith(fontSize: 16.sp),
+                          .copyWith(fontSize: 17.sp),
                     ),
                   ),
                 ],
@@ -266,7 +266,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 14.sp, color:uColor),
+                    .copyWith(fontSize: 15.sp, color:uColor),
               ),
               trailing: const CupertinoSwitch(
                 onChanged: null,
@@ -285,7 +285,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       style: Theme.of(context)
                           .primaryTextTheme
                           .headline4!
-                          .copyWith(fontSize: 16.sp),
+                          .copyWith(fontSize: 17.sp),
                     ),
                   ),
                 ],
@@ -302,7 +302,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 14.sp, color:uColor),
+                    .copyWith(fontSize: 15.sp, color:uColor),
               ),
               onTap: () {},
             ),
@@ -313,7 +313,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 14.sp, color:uColor),
+                    .copyWith(fontSize: 15.sp, color:uColor),
               ),
               trailing: Icon(
                 Icons.arrow_forward_ios,
@@ -329,7 +329,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 14.sp, color:uColor),
+                    .copyWith(fontSize: 15.sp, color:uColor),
               ),
               trailing: Icon(
                 Icons.arrow_forward_ios,
@@ -348,7 +348,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       child: Text(
                         'Log Out',
                         style: Theme.of(context).textTheme.headline2!.copyWith(
-                            fontSize: 14.sp, color: const Color(0xff386FA4)),
+                            fontSize: 15.sp, color: const Color(0xff386FA4)),
                       ),
                     ),
                   ],

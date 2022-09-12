@@ -34,7 +34,7 @@ class OtpPassed extends StatelessWidget {
               child: Text(
                   'Account successfully authenticated',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).primaryTextTheme.headline5!.copyWith(color: Colors.grey.shade700,fontSize: 15.sp)
+                  style: Theme.of(context).primaryTextTheme.headline5!.copyWith(color: Colors.grey.shade700,fontSize: 17.sp)
                 // style: TextStyle(fontFamily: 'Anton', fontSize: 30),
               ),
             ),

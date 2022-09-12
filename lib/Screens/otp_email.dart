@@ -230,7 +230,7 @@ class _OtpEmailState extends State<OtpEmail> {
                           //     color: Colors.white,
                           //     fontWeight: FontWeight.w500,
                           //     fontFamily: 'Nunito',
-                          //     fontSize: 16.sp
+                          //     fontSize: 17.sp
                           //
                           // ),
                         ),

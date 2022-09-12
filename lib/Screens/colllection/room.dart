@@ -76,7 +76,7 @@ import '../profile_page.dart';
                  ),
                ),
                title: Padding(
-                 padding:  EdgeInsets.only(top: 20.h, right: 9.w, left: 10),
+                 padding:  EdgeInsets.only(top: 20.h, right: 10.w, left: 7),
                  child: SizedBox(
                      height: 34.h,
                      // width: 159.w,
@@ -143,7 +143,7 @@ import '../profile_page.dart';
                    child: Row(
                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                      children: [
-                       Text('Interests', style: TextStyle(fontWeight: FontWeight.w600, fontFamily: 'Nunito', fontSize: 16.sp, color: bcolor5),),
+                       Text('Interests', style: TextStyle(fontWeight: FontWeight.w600, fontFamily: 'Nunito', fontSize: 17.sp, color: bcolor5),),
                        PopupMenuButton<int>(
 
                          icon: SvgPicture.asset('images/setting-4.svg'),
@@ -263,7 +263,7 @@ import '../profile_page.dart';
                          Padding(
                            padding:  EdgeInsets.only(top: 5.h,),
                            child: SizedBox(
-                               height: 34.h,
+                               height: 35.h,
                                // width: 159.w,
                                child: SvgPicture.asset('images/chatbeeper_blue.svg',)),
                          ),
@@ -292,7 +292,7 @@ import '../profile_page.dart';
                                    fullName,
                                    style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500, fontSize: 18.sp ),
                                  ),//full name
-                                 Text('\  $username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 16.sp ),),//username
+                                 Text('\  $username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 17.sp ),),//username
                                ],
                              ),
                            ],
@@ -304,7 +304,6 @@ import '../profile_page.dart';
                        child: Row(
                          mainAxisAlignment: MainAxisAlignment.start,
                          children: [
-
                            SizedBox(
                              child: GestureDetector(
                                onTap: (){
@@ -318,16 +317,16 @@ import '../profile_page.dart';
                                child: Row(
                                  children: [
                                    Text('100K', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                     fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                     fontWeight: FontWeight.w600, fontSize: 17.sp,
                                    ),
                                    ),
                                    SizedBox(width: 3.w,),
-                                   Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 14.sp,), ),
+                                   Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 17.sp,), ),
                                  ],
                                ),
                              ),
                            ),//beeps
-                           SizedBox(width: 18.w,),
+                           SizedBox(width: 7.w,),
                            Padding(
                              padding: const EdgeInsets.only(right: 5, left: 5),
                              child: GestureDetector(
@@ -342,16 +341,16 @@ import '../profile_page.dart';
                                child: Row(
                                  children: [
                                    Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                     fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                     fontWeight: FontWeight.w600, fontSize: 17.sp,
                                    ),
                                    ),
                                    SizedBox(width: 5.w,),
-                                   Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 14.sp,), ),
+                                   Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 17.sp,), ),
                                  ],
                                ),
                              ),
                            ),//followers
-                           SizedBox(width: 20.w,),
+                           SizedBox(width: 7.w,),
                            SizedBox(
                              child: GestureDetector(
                                onTap: (){
@@ -369,7 +368,7 @@ import '../profile_page.dart';
                                    ),
                                    ),
                                    SizedBox(width: 5.w,),
-                                   Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 16.sp,), ),
+                                   Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 17.sp,), ),
                                  ],
                                ),
                              ),
@@ -402,7 +401,7 @@ import '../profile_page.dart';
                          ),
                          SizedBox(width: 12.w,),
                          Text('My Profile',
-                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 17.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                          ),
                        ],
                      )
@@ -429,7 +428,7 @@ import '../profile_page.dart';
                              ),
                              SizedBox(width: 12.w,),
                              Text('Follower Requests',
-                                 style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                                 style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                              ),
                            ],
                          ))),//follower request
@@ -453,7 +452,7 @@ import '../profile_page.dart';
                          ),
                          SizedBox(width: 12.w,),
                          Text('Trending',
-                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                          ),
                        ],
                      ))),//Trending
@@ -477,7 +476,7 @@ import '../profile_page.dart';
                          ),
                          SizedBox(width: 12.w,),
                          Text('Saved Beeps',
-                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                          ),
                        ],
                      ))),//saved
@@ -498,7 +497,7 @@ import '../profile_page.dart';
                          ),
                          SizedBox(width: 12.w,),
                          Text('Create Business Account',
-                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                          ),
                        ],
                      ))),//create businessman
@@ -523,7 +522,7 @@ import '../profile_page.dart';
                            SvgPicture.asset('images/setting-2.svg'),),
                          SizedBox(width: 12.w,),
                          Text('Settings',
-                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                          ),
                        ],
                      ))),//settings
@@ -549,7 +548,7 @@ import '../profile_page.dart';
                                  SvgPicture.asset('images/verify black.svg')),
                              SizedBox(width: 12.w,),
                              Text('Request Verification',
-                                 style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                                 style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                              ),
                            ],
                          ))),//request verification
@@ -569,7 +568,7 @@ import '../profile_page.dart';
                            SvgPicture.asset('images/promotions black.svg'),),
                          SizedBox(width: 12.w,),
                          Text('Sponsored Beeps',
-                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                          ),
                        ],
                      ))),//promotions

@@ -40,7 +40,7 @@ class _IdentityVerifiedState extends State<IdentityVerified> {
                 style: Theme.of(context)
                     .primaryTextTheme
                     .headline4!
-                    .copyWith(fontSize: 16.sp)),
+                    .copyWith(fontSize: 17.sp)),
           ),
           centerTitle: true,
         ),
@@ -59,7 +59,7 @@ class _IdentityVerifiedState extends State<IdentityVerified> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline4!
-                      .copyWith(fontSize: 16.sp),
+                      .copyWith(fontSize: 17.sp),
                 ),
               ),
               Divider(
@@ -85,7 +85,7 @@ class _IdentityVerifiedState extends State<IdentityVerified> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline4!
-                      .copyWith(fontSize: 16.sp, color: Color(0xff13D03D)),
+                      .copyWith(fontSize: 17.sp, color: Color(0xff13D03D)),
                 ),
               ),
               SizedBox(
@@ -112,7 +112,7 @@ class _IdentityVerifiedState extends State<IdentityVerified> {
                       style: Theme.of(context)
                           .primaryTextTheme
                           .headline3!
-                          .copyWith(fontSize: 16.sp),
+                          .copyWith(fontSize: 17.sp),
                     ),
                   ),
                 ),

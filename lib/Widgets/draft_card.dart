@@ -43,7 +43,7 @@ class Draftcard extends StatelessWidget {
                       trimExpandedText: 'see Less',
                       trimCollapsedText: 'see more',
                       colorClickableText: Colors.grey,
-                      style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
+                      style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 19.sp),
 
                     ),
                   ),

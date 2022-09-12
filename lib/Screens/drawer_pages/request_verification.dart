@@ -112,7 +112,7 @@ class RequestVerification extends StatelessWidget {
                 child: Text('Here’s what you need to know',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: 16.sp,
+                      fontSize: 17.sp,
                       color: bcolor1,
                       fontWeight: FontWeight.w500
                   ),
@@ -124,7 +124,7 @@ class RequestVerification extends StatelessWidget {
                 child: Text(verifyDisclaimer,
                   style:
                 TextStyle(
-                    fontSize: 16.sp,
+                    fontSize: 17.sp,
                     color: darkModeOn? Colors.white: Colors.black,
                     fontWeight: FontWeight.w500
                 ),
@@ -181,13 +181,13 @@ class RequestVerification extends StatelessWidget {
                     style: Theme.of(context)
                         .primaryTextTheme
                         .headline3!
-                        .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500
+                        .copyWith(fontSize: 17.sp, fontWeight: FontWeight.w500
                     ),
                     // TextStyle(
                     //     color: Colors.white,
                     //     fontWeight: FontWeight.w500,
                     //     fontFamily: 'Nunito',
-                    //     fontSize: 16.sp
+                    //     fontSize: 17.sp
                     //
                     // ),
                   ),

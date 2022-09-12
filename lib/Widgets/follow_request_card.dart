@@ -49,7 +49,7 @@ class _FollowRequestCardState extends State<FollowRequestCard> {
                               "\ $FullName\ ",
                               style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500),
                             ),
-                            Text(sent, style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey , fontSize: 16.sp ),),
+                            Text(sent, style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey , fontSize: 17.sp ),),
                           ],
                         ),
                         Text('\ $posttime', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w500, color: Colors.grey  ),),
@@ -60,7 +60,7 @@ class _FollowRequestCardState extends State<FollowRequestCard> {
                       padding:  EdgeInsets.only(bottom: 12.h),
                       child: PopupMenuButton<int>(
 
-                        icon: Icon(Icons.more_vert_sharp, size: 30.h,color: Theme.of(context).colorScheme.secondaryVariant,),
+                        icon: Icon(Icons.more_vert_sharp, size: 24.h,color: Theme.of(context).colorScheme.secondaryVariant,),
                         iconSize: 24.h,
                         itemBuilder: (context) => [
                           PopupMenuItem(
@@ -164,7 +164,7 @@ class _FollowRequestCardState extends State<FollowRequestCard> {
                           // Perform some action
                         },
                         child:  Text('Decline', style: TextStyle(
-                          color: Colors.black, fontSize: 14.sp, fontWeight: FontWeight.w600
+                          color: Colors.black, fontSize: 15.sp, fontWeight: FontWeight.w600
                         ),),
                       ),
                     ),
@@ -182,7 +182,7 @@ class _FollowRequestCardState extends State<FollowRequestCard> {
                           // Perform some action
                         },
                         child:  Text('Accept', style: TextStyle(
-                            color: Colors.white, fontSize: 14.sp, fontWeight: FontWeight.w600
+                            color: Colors.white, fontSize: 15.sp, fontWeight: FontWeight.w600
                         ),),
                       ),
                     ),

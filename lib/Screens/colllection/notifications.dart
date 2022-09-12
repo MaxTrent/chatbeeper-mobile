@@ -133,7 +133,7 @@ class _NotificationsState extends State<Notifications> {
                                   fullName,
                                   style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500, fontSize: 18.sp ),
                                 ),//full name
-                                Text('\  $username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 16.sp ),),//username
+                                Text('\  $username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 17.sp ),),//username
                               ],
                             ),
                           ],
@@ -145,7 +145,6 @@ class _NotificationsState extends State<Notifications> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-
                           SizedBox(
                             child: GestureDetector(
                               onTap: (){
@@ -159,16 +158,16 @@ class _NotificationsState extends State<Notifications> {
                               child: Row(
                                 children: [
                                   Text('100K', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                    fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                    fontWeight: FontWeight.w600, fontSize: 17.sp,
                                   ),
                                   ),
                                   SizedBox(width: 3.w,),
-                                  Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 14.sp,), ),
+                                  Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 15.sp,), ),
                                 ],
                               ),
                             ),
                           ),//beeps
-                          SizedBox(width: 18.w,),
+                          SizedBox(width: 12.w,),
                           Padding(
                             padding: const EdgeInsets.only(right: 5, left: 5),
                             child: GestureDetector(
@@ -183,16 +182,16 @@ class _NotificationsState extends State<Notifications> {
                               child: Row(
                                 children: [
                                   Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                    fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                    fontWeight: FontWeight.w600, fontSize: 17.sp,
                                   ),
                                   ),
                                   SizedBox(width: 5.w,),
-                                  Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 14.sp,), ),
+                                  Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 15.sp,), ),
                                 ],
                               ),
                             ),
                           ),//followers
-                          SizedBox(width: 20.w,),
+                          SizedBox(width: 12.w,),
                           SizedBox(
                             child: GestureDetector(
                               onTap: (){
@@ -210,7 +209,7 @@ class _NotificationsState extends State<Notifications> {
                                   ),
                                   ),
                                   SizedBox(width: 5.w,),
-                                  Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 16.sp,), ),
+                                  Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 17.sp,), ),
                                 ],
                               ),
                             ),
@@ -243,7 +242,7 @@ class _NotificationsState extends State<Notifications> {
                         ),
                         SizedBox(width: 12.w,),
                         Text('My Profile',
-                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                         ),
                       ],
                     )
@@ -270,7 +269,7 @@ class _NotificationsState extends State<Notifications> {
                             ),
                             SizedBox(width: 12.w,),
                             Text('Follower Requests',
-                                style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                                style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                             ),
                           ],
                         ))),//follower request
@@ -294,7 +293,7 @@ class _NotificationsState extends State<Notifications> {
                         ),
                         SizedBox(width: 12.w,),
                         Text('Trending',
-                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                         ),
                       ],
                     ))),//Trending
@@ -318,7 +317,7 @@ class _NotificationsState extends State<Notifications> {
                         ),
                         SizedBox(width: 12.w,),
                         Text('Saved Beeps',
-                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                         ),
                       ],
                     ))),//saved
@@ -339,7 +338,7 @@ class _NotificationsState extends State<Notifications> {
                         ),
                         SizedBox(width: 12.w,),
                         Text('Create Business Account',
-                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                         ),
                       ],
                     ))),//create businessman
@@ -364,7 +363,7 @@ class _NotificationsState extends State<Notifications> {
                           SvgPicture.asset('images/setting-2.svg'),),
                         SizedBox(width: 12.w,),
                         Text('Settings',
-                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                         ),
                       ],
                     ))),//settings
@@ -390,7 +389,7 @@ class _NotificationsState extends State<Notifications> {
                                 SvgPicture.asset('images/verify black.svg')),
                             SizedBox(width: 12.w,),
                             Text('Request Verification',
-                                style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                                style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                             ),
                           ],
                         ))),//request verification
@@ -410,7 +409,7 @@ class _NotificationsState extends State<Notifications> {
                           SvgPicture.asset('images/promotions black.svg'),),
                         SizedBox(width: 12.w,),
                         Text('Sponsored Beeps',
-                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                         ),
                       ],
                     ))),//promotions

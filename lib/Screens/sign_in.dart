@@ -93,7 +93,7 @@ class _SignInState extends State<SignIn> {
                           style: Theme.of(context)
                               .primaryTextTheme
                               .subtitle1!
-                              .copyWith(fontSize: 14.sp),
+                              .copyWith(fontSize: 15.sp),
                           controller: _userTextController,
                           // validator: (val) {
                           //   if (!val!.isValidEmail || val.isEmpty) {
@@ -146,9 +146,9 @@ class _SignInState extends State<SignIn> {
                             hintStyle: Theme.of(context)
                                 .primaryTextTheme
                                 .bodyText2!
-                                .copyWith(fontSize: 14.sp),
-                            // _isvalid == true ? Theme.of(context).primaryTextTheme.bodyText2!.copyWith(fontSize: 14.sp):
-                            // Theme.of(context).primaryTextTheme.bodyText2!.copyWith(fontSize: 14.sp, color: Colors.red),
+                                .copyWith(fontSize: 15.sp),
+                            // _isvalid == true ? Theme.of(context).primaryTextTheme.bodyText2!.copyWith(fontSize: 15.sp):
+                            // Theme.of(context).primaryTextTheme.bodyText2!.copyWith(fontSize: 15.sp, color: Colors.red),
                             contentPadding:
                                 EdgeInsets.only(top: 10.h, left: 10.w),
                             // hintStyle: Theme.of(context).primaryTextTheme.subtitle1,
@@ -185,7 +185,7 @@ class _SignInState extends State<SignIn> {
                           style: Theme.of(context)
                               .primaryTextTheme
                               .subtitle1!
-                              .copyWith(fontSize: 14.sp),
+                              .copyWith(fontSize: 15.sp),
                           controller: _passwordTextController,
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
@@ -315,12 +315,12 @@ class _SignInState extends State<SignIn> {
                             style: Theme.of(context)
                                 .primaryTextTheme
                                 .headline3!
-                                .copyWith(fontSize: 16.sp),
+                                .copyWith(fontSize: 17.sp),
                             // TextStyle(
                             //     color: Colors.white,
                             //     fontWeight: FontWeight.w500,
                             //     fontFamily: 'Nunito',
-                            //     fontSize: 16.sp
+                            //     fontSize: 17.sp
                             //
                             // ),
                           ),

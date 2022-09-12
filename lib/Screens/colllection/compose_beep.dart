@@ -109,7 +109,7 @@ class ComposeBeep extends StatelessWidget {
                                   children: [
                                     SizedBox(height: 8.h,),
                                     Text('Save Beeps?', style: TextStyle(
-                                        color: bcolor3, fontFamily: 'Nunito', fontSize: 16.sp,
+                                        color: bcolor3, fontFamily: 'Nunito', fontSize: 17.sp,
                                       fontWeight: FontWeight.w700
                                     ),),
                                     SizedBox(height: 5.h,),
@@ -298,12 +298,12 @@ class ComposeBeep extends StatelessWidget {
                         children: [
                           Text('Beep',
                             textAlign: TextAlign.center,
-                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp,fontWeight: FontWeight.w400, color: darkModeOn? bcolor1 : Colors.white),
+                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w400, color: darkModeOn? bcolor1 : Colors.white),
                             // TextStyle(
                             //     color: Colors.white,
                             //     fontWeight: FontWeight.w500,
                             //     fontFamily: 'Nunito',
-                            //     fontSize: 16.sp
+                            //     fontSize: 17.sp
                             //
                             // ),
                           ),

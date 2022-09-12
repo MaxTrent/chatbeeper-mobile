@@ -97,7 +97,7 @@ class _ConfirmRegisterState extends State<ConfirmRegister> {
                               title: Padding(
                                 padding: EdgeInsets.only(bottom: 12.h, right: 19.w),
                                 child: Text('Personal Account',
-                                    style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, color:  _selectedIndex == 2 ? bcolor1 : uColor, )
+                                    style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, color:  _selectedIndex == 2 ? bcolor1 : uColor, )
                                 ),
                               ),
                               onTap: () async {
@@ -146,10 +146,10 @@ class _ConfirmRegisterState extends State<ConfirmRegister> {
                               title: Padding(
                                 padding: EdgeInsets.only(bottom: 12.h, right: 19.w),
                                 child: Text('Business Account',
-                                  style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, color:  _selectedIndex == 2 ? bcolor1 : uColor, )
+                                  style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, color:  _selectedIndex == 2 ? bcolor1 : uColor, )
                                 //   TextStyle(
                                 //   fontWeight: FontWeight.w400,
-                                //     fontFamily: 'Nunito', fontSize: 16.sp, color:  _selectedIndex == 2 ? bcolor1 : uColor,
+                                //     fontFamily: 'Nunito', fontSize: 17.sp, color:  _selectedIndex == 2 ? bcolor1 : uColor,
                                 // ),
                                 ),
                               ),
@@ -196,7 +196,7 @@ class _ConfirmRegisterState extends State<ConfirmRegister> {
                         //               color: Colors.white,
                         //               fontWeight: FontWeight.w600,
                         //               fontFamily: 'Nunito',
-                        //               fontSize: 16.sp
+                        //               fontSize: 17.sp
                         //
                         //           ),
                         //         ),

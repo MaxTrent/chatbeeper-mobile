@@ -41,7 +41,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
                 style: Theme.of(context)
                     .primaryTextTheme
                     .headline4!
-                    .copyWith(fontSize: 16.sp)),
+                    .copyWith(fontSize: 17.sp)),
           ),
           centerTitle: true,
         ),
@@ -60,7 +60,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline4!
-                      .copyWith(fontSize: 16.sp),
+                      .copyWith(fontSize: 17.sp),
                 ),
               ),
               Divider(
@@ -84,7 +84,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 16.sp),
+                    .copyWith(fontSize: 17.sp),
               ),
               SizedBox(
                 height: 136.h,
@@ -111,7 +111,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
                     style: Theme.of(context)
                         .primaryTextTheme
                         .headline3!
-                        .copyWith(fontSize: 16.sp),
+                        .copyWith(fontSize: 17.sp),
                   ),
                 ),
               ),
@@ -156,7 +156,7 @@ class _AccountDeactivatedState extends State<AccountDeactivated> {
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 16.sp)),
+                  .copyWith(fontSize: 17.sp)),
         ),
       ),
       body: SingleChildScrollView(
@@ -183,7 +183,7 @@ class _AccountDeactivatedState extends State<AccountDeactivated> {
               style: Theme.of(context)
                   .textTheme
                   .headline2!
-                  .copyWith(fontSize: 16.sp),
+                  .copyWith(fontSize: 17.sp),
             ),
             SizedBox(
               height: 257.0.h,
@@ -214,7 +214,7 @@ class _AccountDeactivatedState extends State<AccountDeactivated> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline3!
-                      .copyWith(fontSize: 16.sp),
+                      .copyWith(fontSize: 17.sp),
                 ),
               ),
             ),

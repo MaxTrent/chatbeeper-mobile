@@ -107,131 +107,134 @@ class RoomCard extends StatelessWidget {
       return Column(
         children: [
           SizedBox(
-            height: 100.h,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Expanded(
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        child: ClipRRect(
+            height: 105.h,
+            child: Padding(
+              padding:  EdgeInsets.only(left: 16.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                    child:  Row(
+                      children: [
+                        ClipRRect(
                           borderRadius: BorderRadius.circular(100.0.r),
-                          child: Image.asset('images/sarah.png'),
+                          child: Image.asset('images/sarah.png',height: 40.h,),
                         ),
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "\ $FullName\ ",
-                                style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500),
-                              ),
-                              Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey  ),),
-                              const Icon(Icons.verified_rounded, color: bcolor5,size: 15,),
-                            ],
-                          ),
-                          Text('\ $posttime', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w500, color: Colors.grey  ),),
-                        ],
-                      ),
-                      Spacer(),
-                      PopupMenuButton<int>(
+                        SizedBox(width: 8.w,),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 12.h,),
+                            Row(
+                              children: [
+                                Text(
+                                  "\ $FullName\ ",
+                                  style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500, fontSize: 18.sp),
+                                ),
+                                Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey, fontSize: 17.sp ),),
+                                const Icon(Icons.verified_rounded, color: bcolor5,size: 15,),
+                              ],
+                            ),
+                            Text('\ $posttime', style:  TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w500, color: Colors.grey, fontSize: 17.sp  ),),
+                          ],
+                        ),
+                        Spacer(),
+                        PopupMenuButton<int>(
 
-                        icon: Icon(Icons.more_vert_sharp, size: 30.h,color: Theme.of(context).colorScheme.secondaryVariant,),
-                        iconSize: 24.h,
-                        itemBuilder: (context) => [
-                          PopupMenuItem(
-                            value: 1,
-                            // row has two child icon and text.
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                    height: 24.h, width: 24.w,
-                                    child: darkModeOn == false? SvgPicture.asset('images/mute.svg'):SvgPicture.asset('images/mute.svg', color: Colors.white,)),
-                                SizedBox(width: 10.w,),
-                                Text("Mute",style:  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),)
-                              ],
-                            ),
-                          ),//mute
-                          PopupMenuItem(
-                            value: 2,
-                            // row has two child icon and text.
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                    height: 24.h, width: 24.w,
-                                    child:darkModeOn == false? SvgPicture.asset('images/block.svg'):SvgPicture.asset('images/block.svg', color: Colors.white,)),
-                                SizedBox(width: 10.w,),
-                                Text("Block", style:
-                                TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
-                                )
-                              ],
-                            ),
-                          ),//block
-                          PopupMenuItem(
-                            value: 3,
-                            // row has two child icon and text.
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                    height: 24.h, width: 24.w,
-                                    child:darkModeOn == false? SvgPicture.asset('images/unfollow.svg'):SvgPicture.asset('images/unfollow.svg', color: Colors.white,)),
-                                SizedBox(width: 10.w,),
-                                Text("Unfollow", style:
-                                TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
-                                )
-                              ],
-                            ),
-                          ),//unfollow
-                          PopupMenuItem(
-                            value: 4,
-                            // row has two child icon and text.
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                    height: 24.h, width: 24.w,
-                                    child:darkModeOn == false? SvgPicture.asset('images/not interested.svg'):SvgPicture.asset('images/not interested.svg', color: Colors.white,)),
-                                SizedBox(width: 10.w,),
-                                Text("Not interested in this", style:
-                                TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
-                                )
-                              ],
-                            ),
-                          ),//not interested
-                          PopupMenuItem(
-                            value: 5,
-                            // row has two child icon and text.
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                    height: 24.h, width: 24.w,
-                                    child:darkModeOn == false? SvgPicture.asset('images/report.svg'):SvgPicture.asset('images/report.svg', color: Colors.white,)),
-                                SizedBox(width: 10.w,),
-                                Text("Report this account", style:
-                                TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
-                                )
-                              ],
-                            ),
-                          ),//report
-                        ],
-                        offset: Offset(-28.w, 40.h),
-                        color: Theme.of(context).scaffoldBackgroundColor,
-                        elevation: 2,
-                      ),
-                    ],
+                          icon: Icon(Icons.more_vert_sharp, size: 24.h,color: Theme.of(context).colorScheme.secondaryVariant,),
+                          iconSize: 24.h,
+                          itemBuilder: (context) => [
+                            PopupMenuItem(
+                              value: 1,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h, width: 24.w,
+                                      child: darkModeOn == false? SvgPicture.asset('images/mute.svg'):SvgPicture.asset('images/mute.svg', color: Colors.white,)),
+                                  SizedBox(width: 10.w,),
+                                  Text("Mute",style:  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),)
+                                ],
+                              ),
+                            ),//mute
+                            PopupMenuItem(
+                              value: 2,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h, width: 24.w,
+                                      child:darkModeOn == false? SvgPicture.asset('images/block.svg'):SvgPicture.asset('images/block.svg', color: Colors.white,)),
+                                  SizedBox(width: 10.w,),
+                                  Text("Block", style:
+                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                  )
+                                ],
+                              ),
+                            ),//block
+                            PopupMenuItem(
+                              value: 3,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h, width: 24.w,
+                                      child:darkModeOn == false? SvgPicture.asset('images/unfollow.svg'):SvgPicture.asset('images/unfollow.svg', color: Colors.white,)),
+                                  SizedBox(width: 10.w,),
+                                  Text("Unfollow", style:
+                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                  )
+                                ],
+                              ),
+                            ),//unfollow
+                            PopupMenuItem(
+                              value: 4,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h, width: 24.w,
+                                      child:darkModeOn == false? SvgPicture.asset('images/not interested.svg'):SvgPicture.asset('images/not interested.svg', color: Colors.white,)),
+                                  SizedBox(width: 10.w,),
+                                  Text("Not interested in this", style:
+                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                  )
+                                ],
+                              ),
+                            ),//not interested
+                            PopupMenuItem(
+                              value: 5,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h, width: 24.w,
+                                      child:darkModeOn == false? SvgPicture.asset('images/report.svg'):SvgPicture.asset('images/report.svg', color: Colors.white,)),
+                                  SizedBox(width: 10.w,),
+                                  Text("Report this account", style:
+                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                  )
+                                ],
+                              ),
+                            ),//report
+                          ],
+                          offset: Offset(-28.w, 40.h),
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                          elevation: 2,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Padding(
-                  padding:  EdgeInsets.only(left: 16.w, right: 16.w, top: 16.h),
-                  child: Text(bio,
-                    textAlign: TextAlign.left,
-                    style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 16.sp, fontWeight: FontWeight.w400, fontFamily: 'Nunito'),
+                  Padding(
+                    padding:  EdgeInsets.only(top: 14.h, bottom: 17.h,),
+                    child: Text(bio,
+                      textAlign: TextAlign.left,
+                      style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 17.sp, fontWeight: FontWeight.w400, fontFamily: 'Nunito'),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),//avatar
           const RoomSlider(),
@@ -301,6 +304,7 @@ class RoomCard extends StatelessWidget {
           children: <Widget>[
             ReadMoreText(
               loremIpsum,
+              style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 19.sp),
             ),
           ],
         ),

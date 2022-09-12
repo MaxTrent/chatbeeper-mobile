@@ -202,7 +202,7 @@ class _FollowersState extends State<Followers> {
 //                           children: [
 //                             Text(
 //                               "\ $fullName\ ",
-//                               style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500, fontSize: 16.sp),
+//                               style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500, fontSize: 17.sp),
 //                             ),
 //                             Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey  ),),
 //                             const Icon(Icons.verified_rounded, color: bcolor5,size: 15,),
@@ -234,7 +234,7 @@ class _FollowersState extends State<Followers> {
 //                     height: 60.h,
 //                     child: Text(
 //                       bio,
-//                       style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 14.sp),
+//                       style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 15.sp),
 //
 //                     ),
 //                   ),
@@ -264,12 +264,12 @@ class _FollowersState extends State<Followers> {
 //                             child: Text(
 //                               'Follow',
 //                               textAlign: TextAlign.center,
-//                               style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp,fontWeight: FontWeight.w600),
+//                               style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w600),
 //                               // TextStyle(
 //                               //     color: Colors.white,
 //                               //     fontWeight: FontWeight.w500,
 //                               //     fontFamily: 'Nunito',
-//                               //     fontSize: 16.sp
+//                               //     fontSize: 17.sp
 //                               //
 //                               // ),
 //                             ),
@@ -287,12 +287,12 @@ class _FollowersState extends State<Followers> {
 //                             child: Text(
 //                               'Following',
 //                               textAlign: TextAlign.center,
-//                               style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp,fontWeight: FontWeight.w600, color: bcolor3),
+//                               style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w600, color: bcolor3),
 //                               // TextStyle(
 //                               //     color: Colors.white,
 //                               //     fontWeight: FontWeight.w500,
 //                               //     fontFamily: 'Nunito',
-//                               //     fontSize: 16.sp
+//                               //     fontSize: 17.sp
 //                               //
 //                               // ),
 //                             ),

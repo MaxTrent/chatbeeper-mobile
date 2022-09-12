@@ -54,7 +54,7 @@ class _LanguageState extends State<Language> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .headline4!
-                .copyWith(fontSize: 16.sp)),
+                .copyWith(fontSize: 17.sp)),
       ),
       body: Column(
         children: [
@@ -68,7 +68,7 @@ class _LanguageState extends State<Language> {
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 16.sp),
+                  .copyWith(fontSize: 17.sp),
             ),
           ),
           Divider(
@@ -111,7 +111,7 @@ class _LanguageState extends State<Language> {
                       style: Theme.of(context)
                           .primaryTextTheme
                           .headline4!
-                          .copyWith(fontSize: 16.sp),
+                          .copyWith(fontSize: 17.sp),
                     ),
                   ),
                   onTap: null,
