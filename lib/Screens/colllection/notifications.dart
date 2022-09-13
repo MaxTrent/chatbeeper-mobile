@@ -104,7 +104,7 @@ class _NotificationsState extends State<Notifications> {
                         Padding(
                           padding:  EdgeInsets.only(top: 5.h,),
                           child: SizedBox(
-                              height: 34.h,
+                              height: 35.h,
                               // width: 159.w,
                               child: SvgPicture.asset('images/chatbeeper_blue.svg',)),
                         ),
@@ -162,12 +162,12 @@ class _NotificationsState extends State<Notifications> {
                                   ),
                                   ),
                                   SizedBox(width: 3.w,),
-                                  Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 15.sp,), ),
+                                  Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 17.sp,), ),
                                 ],
                               ),
                             ),
                           ),//beeps
-                          SizedBox(width: 12.w,),
+                          SizedBox(width: 7.w,),
                           Padding(
                             padding: const EdgeInsets.only(right: 5, left: 5),
                             child: GestureDetector(
@@ -186,12 +186,12 @@ class _NotificationsState extends State<Notifications> {
                                   ),
                                   ),
                                   SizedBox(width: 5.w,),
-                                  Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 15.sp,), ),
+                                  Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 17.sp,), ),
                                 ],
                               ),
                             ),
                           ),//followers
-                          SizedBox(width: 12.w,),
+                          SizedBox(width: 7.w,),
                           SizedBox(
                             child: GestureDetector(
                               onTap: (){

@@ -199,16 +199,18 @@ class _PostBeepState extends State<PostBeep> {
       return Column(
         children: [
 Padding(
-        padding:  EdgeInsets.only(left: 16.w, right: 27.w,bottom: 12.h, top: 12.h),
+        padding:  EdgeInsets.only(   left: 16.w, right: 10.w, bottom: 12.h, top: 12.h),
       child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
       ReadMoreText(
       loremIpsum,
       trimExpandedText: 'see Less',
+        trimLines: 3,
+        trimMode: TrimMode.Line,
       trimCollapsedText: 'see more',
       colorClickableText: Colors.grey,
-      style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 19.sp),
+      style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 21.sp),
 
       ),
       ],

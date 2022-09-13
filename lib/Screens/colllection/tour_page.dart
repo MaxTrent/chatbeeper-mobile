@@ -64,7 +64,7 @@ class _TourPageState extends State<TourPage> {
   }
   String loremIpsum ="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
   String FullName = 'Sarah Madini';
-  String username = 'Madini';
+  String username = 'Janedoe_10';
   String posttime = '1 hour ago';
   final _key = GlobalKey<ScaffoldState>();
   @override
@@ -206,9 +206,9 @@ class _TourPageState extends State<TourPage> {
                       children: [
                         Image.asset('images/logo1.png',height: 36.h, width: 36.w,),
                         Padding(
-                          padding:  EdgeInsets.only(top: 7.h,),
+                          padding:  EdgeInsets.only(top: 5.h,),
                           child: SizedBox(
-                              height: 34.h,
+                              height: 35.h,
                               // width: 159.w,
                               child: SvgPicture.asset('images/chatbeeper_blue.svg',)),
                         ),
@@ -266,12 +266,12 @@ class _TourPageState extends State<TourPage> {
                                   ),
                                   ),
                                   SizedBox(width: 3.w,),
-                                  Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 15.sp,), ),
+                                  Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 17.sp,), ),
                                 ],
                               ),
                             ),
                           ),//beeps
-                          SizedBox(width: 12.w,),
+                          SizedBox(width: 7.w,),
                           Padding(
                             padding: const EdgeInsets.only(right: 5, left: 5),
                             child: GestureDetector(
@@ -290,12 +290,12 @@ class _TourPageState extends State<TourPage> {
                                   ),
                                   ),
                                   SizedBox(width: 5.w,),
-                                  Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 15.sp,), ),
+                                  Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 17.sp,), ),
                                 ],
                               ),
                             ),
                           ),//followers
-                          SizedBox(width: 12.w,),
+                          SizedBox(width: 7.w,),
                           SizedBox(
                             child: GestureDetector(
                               onTap: (){

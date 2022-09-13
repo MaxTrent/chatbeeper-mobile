@@ -64,7 +64,7 @@ class PostCard extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(height: 12.h,),
+                              SizedBox(height: 10.h,),
                               Row(
                                 children: [
                                   Text(
@@ -178,7 +178,7 @@ class PostCard extends StatelessWidget {
           const ImageSlider(),
           Padding(
             padding: EdgeInsets.only(
-                left: 16.w, right: 27.w, bottom: 12.h, top: 12.h),
+                left: 16.w, right: 10.w, bottom: 12.h, top: 12.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -186,11 +186,13 @@ class PostCard extends StatelessWidget {
                   loremIpsum,
                   trimExpandedText: 'see Less',
                   trimCollapsedText: 'see more',
+                  trimLines: 3,
+                  trimMode: TrimMode.Line,
                   colorClickableText: Colors.grey,
                   style: Theme.of(context)
                       .primaryTextTheme
                       .bodyText1!
-                      .copyWith(fontWeight: FontWeight.w400, fontSize: 19.sp),
+                      .copyWith(fontWeight: FontWeight.w400, fontSize: 21.sp,),
                 ),
               ],
             ),

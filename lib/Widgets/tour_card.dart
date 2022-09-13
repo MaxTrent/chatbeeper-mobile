@@ -424,7 +424,7 @@ class _TourCardState extends State<TourCard> {
               ),
             ),
             Padding(
-              padding:  EdgeInsets.only(left: 16.w, right: 27.w,bottom: 12.h, top: 12.h),
+              padding:  EdgeInsets.only(   left: 16.w, right: 10.w, bottom: 12.h, top: 12.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -432,8 +432,10 @@ class _TourCardState extends State<TourCard> {
                     loremIpsum,
                     trimExpandedText: 'see Less',
                     trimCollapsedText: 'see more',
+                    trimLines: 3,
+                    trimMode: TrimMode.Line,
                     colorClickableText: Colors.grey,
-                    style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 19.sp),
+                    style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 21.sp),
 
                   ),
                 ],

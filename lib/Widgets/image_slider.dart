@@ -80,13 +80,13 @@ class _ImageSliderState extends State<ImageSlider> {
                     child: Container(
                       width: 16.0.w,
                       height: 4.0.h,
-                      margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
                           color: (Theme.of(context).brightness == Brightness.dark
                               ? bcolor3
                               : bcolor3)
-                              .withOpacity(_current == entry.key ? 0.9 : 0)),
+                              .withOpacity(_current == entry.key ? 0.9 : 0.2)),
                     ),
                   );
                 }).toList(),

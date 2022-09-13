@@ -401,7 +401,7 @@ import '../profile_page.dart';
                          ),
                          SizedBox(width: 12.w,),
                          Text('My Profile',
-                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 17.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
+                             style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
                          ),
                        ],
                      )

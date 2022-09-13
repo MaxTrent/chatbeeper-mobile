@@ -70,15 +70,16 @@ class RoomCard extends StatelessWidget {
                                       .of(context)
                                       .primaryTextTheme
                                       .bodyText1!
-                                      .copyWith(fontWeight: FontWeight.w500),
+                                      .copyWith(fontWeight: FontWeight.w500, fontSize: 18.sp),
                                 ),
-                                Text('@$username', style: const TextStyle(
+                                Text('@$username', style:  TextStyle(
                                     fontFamily: 'Nunito',
                                     fontWeight: FontWeight.w600,
+                                    fontSize: 17.sp,
                                     color: Colors.grey),),
-                                const Icon(
+                                 Icon(
                                   Icons.verified_rounded, color: bcolor5,
-                                  size: 15,),
+                                  size: 15.h,),
                               ],
                             ),
                             Text('\ $posttime', style: const TextStyle(
@@ -107,7 +108,7 @@ class RoomCard extends StatelessWidget {
       return Column(
         children: [
           SizedBox(
-            height: 105.h,
+            height: 110.h,
             child: Padding(
               padding:  EdgeInsets.only(left: 16.w),
               child: Column(
@@ -133,7 +134,7 @@ class RoomCard extends StatelessWidget {
                                   style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500, fontSize: 18.sp),
                                 ),
                                 Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey, fontSize: 17.sp ),),
-                                const Icon(Icons.verified_rounded, color: bcolor5,size: 15,),
+                                 Icon(Icons.verified_rounded, color: bcolor5,size: 15.h,),
                               ],
                             ),
                             Text('\ $posttime', style:  TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w500, color: Colors.grey, fontSize: 17.sp  ),),
@@ -230,7 +231,7 @@ class RoomCard extends StatelessWidget {
                     padding:  EdgeInsets.only(top: 14.h, bottom: 17.h,),
                     child: Text(bio,
                       textAlign: TextAlign.left,
-                      style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 17.sp, fontWeight: FontWeight.w400, fontFamily: 'Nunito'),
+                      style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 21.sp, fontWeight: FontWeight.w400, fontFamily: 'Nunito'),
                     ),
                   ),
                 ],
