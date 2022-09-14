@@ -79,23 +79,18 @@ class _TourPageState extends State<TourPage> {
     );
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-   child: Image.asset('images/pp_round.png'),
+      //child: Image.asset('images/pp_round.png'),
 
-      appBar:  PreferredSize(
-        preferredSize: Size(428.w,62.h),
+      appBar: PreferredSize(
+        preferredSize: Size(428.w, 62.h),
         child: Container(
           decoration: const BoxDecoration(
               border: Border(
-                  bottom: BorderSide(
-                      color: uColor,
-                      style: BorderStyle.solid
-                  )
-              )
-          ),
+                  bottom: BorderSide(color: uColor, style: BorderStyle.solid))),
           child: SafeArea(
             child: AppBar(
               leading: Padding(
-                padding:  EdgeInsets.only(top: 15.h,bottom: 5.h),
+                padding: EdgeInsets.only(top: 15.h, bottom: 5.h),
                 child: Container(
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
@@ -103,7 +98,7 @@ class _TourPageState extends State<TourPage> {
                   ),
                   height: 28.h,
                   child: GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       _key.currentState!.openDrawer();
                     },
                     child: CircleAvatar(
@@ -111,17 +106,18 @@ class _TourPageState extends State<TourPage> {
                         borderRadius: BorderRadius.circular(100.0.r),
                         child: Image.asset('images/pp_round.png'),
                       ),
-
                     ),
                   ),
                 ),
               ),
               title: Padding(
-                padding:  EdgeInsets.only(top: 20.h, right: 9.w, left: 10),
+                padding: EdgeInsets.only(top: 20.h, right: 9.w, left: 10),
                 child: SizedBox(
                     height: 34.h,
                     // width: 159.w,
-                    child: SvgPicture.asset('images/chatbeeper_blue.svg',)),
+                    child: SvgPicture.asset(
+                      'images/chatbeeper_blue.svg',
+                    )),
               ),
               centerTitle: true,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -129,49 +125,52 @@ class _TourPageState extends State<TourPage> {
               actions: [
                 // SizedBox(width: 12.w,),
                 Padding(
-                  padding:  EdgeInsets.only(top: 28.h, right: 20.w, bottom: 5.h),
+                  padding: EdgeInsets.only(top: 28.h, right: 20.w, bottom: 5.h),
                   child: GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       // Navigator.push(context,
                       //     MaterialPageRoute(builder: (context) => DirectMessage()));
                     },
-                    child:
-                    darkModeOn == false ? SvgPicture.asset(
-                      color: Colors.black,
-                      'images/search.svg',
-                    ):
-                    SvgPicture.asset(
-                      color: Colors.white,
-                      'images/search_dark.svg',
-                    ),
+                    child: darkModeOn == false
+                        ? SvgPicture.asset(
+                            color: Colors.black,
+                            'images/search.svg',
+                          )
+                        : SvgPicture.asset(
+                            color: Colors.white,
+                            'images/search_dark.svg',
+                          ),
                   ),
                 ),
                 Padding(
-                  padding:  EdgeInsets.only(top: 28.h, right: 14.w, bottom: 5.h),
+                  padding: EdgeInsets.only(top: 28.h, right: 14.w, bottom: 5.h),
                   child: SizedBox(
-                    height: 28.h, width: 28.h,
+                    height: 28.h,
+                    width: 28.h,
                     child: Transform.scale(
                       scale: 1.2,
                       child: GestureDetector(
-                        onTap: (){
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => DirectMessage()));
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => DirectMessage()));
                         },
-                        child: darkModeOn == false? SvgPicture.asset(
-                          color: Colors.black,
-                          'images/Dm.svg',
-                        ):
-                        SvgPicture.asset(
-                          color: Colors.white,
-                          'images/sms.svg',
-                        ),
+                        child: darkModeOn == false
+                            ? SvgPicture.asset(
+                                color: Colors.black,
+                                'images/Dm.svg',
+                              )
+                            : SvgPicture.asset(
+                                color: Colors.white,
+                                'images/sms.svg',
+                              ),
                       ),
                     ),
                   ),
                 )
               ],
             ),
-
           ),
         ),
       ),
@@ -202,20 +201,27 @@ class _TourPageState extends State<TourPage> {
                 Padding(
                   padding: EdgeInsets.only(left: 16.w, top: 32.h),
                   child: Align(
-
                     alignment: Alignment.topCenter,
-                    child:   Column(
+                    child: Column(
                       children: [
-                        Image.asset('images/logo1.png',height: 36.h, width: 36.w,),
+                        Image.asset(
+                          'images/logo1.png',
+                          height: 36.h,
+                          width: 36.w,
+                        ),
                         Padding(
-                          padding:  EdgeInsets.only(top: 5.h,),
+                          padding: EdgeInsets.only(
+                            top: 5.h,
+                          ),
                           child: SizedBox(
                               height: 34.h,
                               // width: 159.w,
-                              child: SvgPicture.asset('images/chatbeeper_blue.svg',)),
+                              child: SvgPicture.asset(
+                                'images/chatbeeper_blue.svg',
+                              )),
                         ),
                       ],
-     ),
+                    ),
                   ),
                 ), //logo
                 SizedBox(
@@ -272,8 +278,7 @@ class _TourPageState extends State<TourPage> {
                         children: [
                           SizedBox(
                             child: GestureDetector(
-
-                              onTap: (){
+                              onTap: () {
                                 // Navigator.pop(context);
                                 // Navigator.push(
                                 //     context,
@@ -283,13 +288,28 @@ class _TourPageState extends State<TourPage> {
                               },
                               child: Row(
                                 children: [
-                                  Text('100K', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                    fontWeight: FontWeight.w600, fontSize: 16.sp,
-
+                                  Text(
+                                    '100K',
+                                    style: Theme.of(context)
+                                        .primaryTextTheme
+                                        .bodyText1!
+                                        .copyWith(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 16.sp,
+                                        ),
                                   ),
+                                  SizedBox(
+                                    width: 3.w,
                                   ),
-                                  SizedBox(width: 3.w,),
-                                  Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 14.sp,), ),
+                                  Text(
+                                    'Beeps',
+                                    style: TextStyle(
+                                      fontFamily: 'Nunito',
+                                      fontWeight: FontWeight.w600,
+                                      color: uColor,
+                                      fontSize: 14.sp,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -300,7 +320,7 @@ class _TourPageState extends State<TourPage> {
                           Padding(
                             padding: const EdgeInsets.only(right: 5, left: 5),
                             child: GestureDetector(
-                              onTap: (){
+                              onTap: () {
                                 Navigator.pop(context);
                                 Navigator.push(
                                     context,
@@ -310,15 +330,30 @@ class _TourPageState extends State<TourPage> {
                               },
                               child: Row(
                                 children: [
-                                  Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                    fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                  Text(
+                                    '800',
+                                    style: Theme.of(context)
+                                        .primaryTextTheme
+                                        .bodyText1!
+                                        .copyWith(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 16.sp,
+                                        ),
                                   ),
+                                  SizedBox(
+                                    width: 5.w,
                                   ),
-                                  SizedBox(width: 5.w,),
-                                  Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 14.sp,), ),
+                                  Text(
+                                    'Followers',
+                                    style: TextStyle(
+                                      fontFamily: 'Nunito',
+                                      fontWeight: FontWeight.w700,
+                                      color: uColor,
+                                      fontSize: 14.sp,
+                                    ),
+                                  ),
                                 ],
                               ),
-
                             ),
                           ), //followers
                           SizedBox(
@@ -326,7 +361,7 @@ class _TourPageState extends State<TourPage> {
                           ),
                           SizedBox(
                             child: GestureDetector(
-                              onTap: (){
+                              onTap: () {
                                 Navigator.pop(context);
                                 Navigator.push(
                                     context,
@@ -336,22 +371,42 @@ class _TourPageState extends State<TourPage> {
                               },
                               child: Row(
                                 children: [
-                                  Text('2k', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                    fontWeight: FontWeight.w600, fontSize: 18.sp,
+                                  Text(
+                                    '2k',
+                                    style: Theme.of(context)
+                                        .primaryTextTheme
+                                        .bodyText1!
+                                        .copyWith(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18.sp,
+                                        ),
                                   ),
+                                  SizedBox(
+                                    width: 5.w,
                                   ),
-                                  SizedBox(width: 5.w,),
-                                  Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 16.sp,), ),
+                                  Text(
+                                    'Following',
+                                    style: TextStyle(
+                                      fontFamily: 'Nunito',
+                                      fontWeight: FontWeight.w600,
+                                      color: uColor,
+                                      fontSize: 16.sp,
+                                    ),
+                                  ),
                                 ],
                               ),
-
                             ),
                           ), //following
                         ],
                       ),
-                    ),//following followers
-                    SizedBox(height: 12.h,),
-                    Divider(color:uColor, thickness: 0.5.h,),
+                    ), //following followers
+                    SizedBox(
+                      height: 12.h,
+                    ),
+                    Divider(
+                      color: uColor,
+                      thickness: 0.5.h,
+                    ),
                   ],
                 ),
 
@@ -366,23 +421,39 @@ class _TourPageState extends State<TourPage> {
                         ),
                         onPressed: () {
                           Navigator.pop(context);
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => const Profile(),));
-                        }, child: Row(
-                      children: [
-                        SizedBox(
-                            height: 24.h,  width: 24.w,
-                            child: darkModeOn? SvgPicture.asset('images/profile white.svg'):
-                            SvgPicture.asset('images/profile.svg')
-                        ),
-                        SizedBox(width: 12.w,),
-                        Text('My Profile',
-                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
-                        ),
-                      ],
-                    )
-                    )
-                ),//myprofile
-                SizedBox(height: 15.h,),
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Profile(),
+                              ));
+                        },
+                        child: Row(
+                          children: [
+                            SizedBox(
+                                height: 24.h,
+                                width: 24.w,
+                                child: darkModeOn
+                                    ? SvgPicture.asset(
+                                        'images/profile white.svg')
+                                    : SvgPicture.asset('images/profile.svg')),
+                            SizedBox(
+                              width: 12.w,
+                            ),
+                            Text('My Profile',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black)),
+                          ],
+                        ))), //myprofile
+                SizedBox(
+                  height: 15.h,
+                ),
 
                 Align(
                     alignment: Alignment.topLeft,
