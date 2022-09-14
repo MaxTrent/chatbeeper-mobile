@@ -57,6 +57,7 @@ class _TimelineState extends State<Timeline> {
         child: Container(
           decoration: const BoxDecoration(
               border: Border(
+
                   bottom: BorderSide(
                       color: uColor,
                       style: BorderStyle.solid
@@ -82,6 +83,7 @@ class _TimelineState extends State<Timeline> {
                         borderRadius: BorderRadius.circular(100.0.r),
                         child: Image.asset('images/pp_round.png'),
                       ),
+
                     ),
                   ),
                 ),

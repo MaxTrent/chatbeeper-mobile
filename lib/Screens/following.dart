@@ -27,7 +27,9 @@ class _FollowingState extends State<Following> {
     var brightness = MediaQuery.of(context).platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
 
+
     bool _isFollowed = true;
+
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: PreferredSize(
@@ -152,6 +154,7 @@ class _FollowingState extends State<Following> {
                   ),
                 ],
               ),
+
             ),
           ),
         ),
