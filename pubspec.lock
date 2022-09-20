@@ -285,7 +285,7 @@ packages:
     source: hosted
     version: "5.1.2"
   http:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: http
       url: "https://pub.dartlang.org"
