@@ -27,6 +27,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: AppBar(
           toolbarHeight: 40.h,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           elevation: 0.h,
           leading: IconButton(
             icon: Icon(
@@ -41,7 +42,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
                 style: Theme.of(context)
                     .primaryTextTheme
                     .headline4!
-                    .copyWith(fontSize: 16.sp)),
+                    .copyWith(fontSize: 17.sp)),
           ),
           centerTitle: true,
         ),
@@ -60,7 +61,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline4!
-                      .copyWith(fontSize: 16.sp),
+                      .copyWith(fontSize: 17.sp),
                 ),
               ),
               Divider(
@@ -84,7 +85,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 16.sp),
+                    .copyWith(fontSize: 17.sp),
               ),
               SizedBox(
                 height: 136.h,
@@ -111,7 +112,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
                     style: Theme.of(context)
                         .primaryTextTheme
                         .headline3!
-                        .copyWith(fontSize: 16.sp),
+                        .copyWith(fontSize: 17.sp),
                   ),
                 ),
               ),
@@ -141,6 +142,7 @@ class _AccountDeactivatedState extends State<AccountDeactivated> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         toolbarHeight: 40.h,
         elevation: 0.h,
         leading: IconButton(
@@ -156,7 +158,7 @@ class _AccountDeactivatedState extends State<AccountDeactivated> {
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 16.sp)),
+                  .copyWith(fontSize: 17.sp)),
         ),
       ),
       body: SingleChildScrollView(
@@ -183,7 +185,7 @@ class _AccountDeactivatedState extends State<AccountDeactivated> {
               style: Theme.of(context)
                   .textTheme
                   .headline2!
-                  .copyWith(fontSize: 16.sp),
+                  .copyWith(fontSize: 17.sp),
             ),
             SizedBox(
               height: 257.0.h,
@@ -214,7 +216,7 @@ class _AccountDeactivatedState extends State<AccountDeactivated> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline3!
-                      .copyWith(fontSize: 16.sp),
+                      .copyWith(fontSize: 17.sp),
                 ),
               ),
             ),

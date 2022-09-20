@@ -41,7 +41,7 @@ class _ResponsePostState extends State<ResponsePost> {
               child: Text('Ding! You’ve already beeped that',
               style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
                 color: Colors.red,
-               fontSize: 16.sp,
+               fontSize: 17.sp,
                 fontWeight: FontWeight.w500
               ),),
             ):
@@ -49,7 +49,7 @@ class _ResponsePostState extends State<ResponsePost> {
               child: Text('Your beep has been sent',
                 style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
                     color: bcolor3,
-                    fontSize: 16.sp,
+                    fontSize: 17.sp,
                     fontWeight: FontWeight.w500
                 ),),
             ),

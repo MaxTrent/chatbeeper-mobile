@@ -111,7 +111,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
                             height: 50.h,
                             child: DateTimeField(
 
-                              style:Theme.of(context).primaryTextTheme.subtitle1!.copyWith(fontSize: 14.sp),
+                              style:Theme.of(context).primaryTextTheme.subtitle1!.copyWith(fontSize: 15.sp),
 
                               controller: _birthdateControlller,
                               decoration:    InputDecoration(
@@ -134,7 +134,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                 labelStyle: TextStyle(
                                   color: Colors.black,
                                 ),
-                                hintStyle: Theme.of(context).primaryTextTheme.bodyText2!.copyWith(fontSize: 14.sp),
+                                hintStyle: Theme.of(context).primaryTextTheme.bodyText2!.copyWith(fontSize: 15.sp),
                                 contentPadding:  EdgeInsets.only(top:10.h, left: 10.w ),
                                 focusColor: uColor,
                                 // hintStyle: Theme.of(context).primaryTextTheme.subtitle1,

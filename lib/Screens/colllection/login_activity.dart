@@ -55,6 +55,7 @@ class _LoginActivityState extends State<LoginActivity> {
                     bottom:
                         BorderSide(color: uColor, style: BorderStyle.solid))),
             child: AppBar(
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               automaticallyImplyLeading: true,
               leading: Padding(
                 padding: EdgeInsets.only(top: 29.h),
@@ -77,7 +78,6 @@ class _LoginActivityState extends State<LoginActivity> {
                 ),
               ),
               centerTitle: true,
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               elevation: 0.5,
               // leading: Center(child: IconButton(icon:  Icon(Icons.arrow_back_ios_new, size:23.h,color: darkModeOn? Colors.white: Colors.black,), onPressed: () {
               //   Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) =>  Timeline()

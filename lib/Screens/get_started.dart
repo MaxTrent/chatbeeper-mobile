@@ -91,12 +91,12 @@ class _GetStartedState extends State<GetStarted> {
                     style: Theme.of(context)
                         .primaryTextTheme
                         .headline3!
-                        .copyWith(fontSize: 16.sp),
+                        .copyWith(fontSize: 17.sp),
                     // TextStyle(
                     //     color: Colors.white,
                     //     fontWeight: FontWeight.w500,
                     //     fontFamily: 'Nunito',
-                    //     fontSize: 16.sp
+                    //     fontSize: 17.sp
                     //
                     // ),
                   ),

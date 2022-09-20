@@ -28,6 +28,7 @@ class _CountryState extends State<Country> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         toolbarHeight: 40.h,
         centerTitle: true,
         elevation: 0,
@@ -44,7 +45,7 @@ class _CountryState extends State<Country> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .headline4!
-                .copyWith(fontSize: 16.sp)),
+                .copyWith(fontSize: 17.sp)),
       ),
       body: Column(
         children: [
@@ -58,7 +59,7 @@ class _CountryState extends State<Country> {
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 16.sp),
+                  .copyWith(fontSize: 17.sp),
             ),
           ),
           Divider(

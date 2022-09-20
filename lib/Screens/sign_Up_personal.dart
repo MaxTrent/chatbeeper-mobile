@@ -396,9 +396,9 @@ class _CreateAccountState extends State<CreateAccount> {
                                 hintStyle: Theme.of(context)
                                     .primaryTextTheme
                                     .bodyText2!
-                                    .copyWith(fontSize: 14.sp),
-                                // _isvalid == true ? Theme.of(context).primaryTextTheme.bodyText2!.copyWith(fontSize: 14.sp):
-                                // Theme.of(context).primaryTextTheme.bodyText2!.copyWith(fontSize: 14.sp, color: Colors.red),
+                                    .copyWith(fontSize: 15.sp),
+                                // _isvalid == true ? Theme.of(context).primaryTextTheme.bodyText2!.copyWith(fontSize: 15.sp):
+                                // Theme.of(context).primaryTextTheme.bodyText2!.copyWith(fontSize: 15.sp, color: Colors.red),
                                 contentPadding:
                                     EdgeInsets.only(top: 10.h, left: 10.w),
                                 // hintStyle: Theme.of(context).primaryTextTheme.subtitle1,
@@ -497,7 +497,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                 hintStyle: Theme.of(context)
                                     .primaryTextTheme
                                     .bodyText2!
-                                    .copyWith(fontSize: 14.sp),
+                                    .copyWith(fontSize: 15.sp),
                                 contentPadding:
                                     EdgeInsets.only(top: 10.h, left: 10.w),
                                 // hintStyle: Theme.of(context).primaryTextTheme.subtitle1,
@@ -575,12 +575,12 @@ class _CreateAccountState extends State<CreateAccount> {
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .headline3!
-                                    .copyWith(fontSize: 16.sp),
+                                    .copyWith(fontSize: 17.sp),
                                 // TextStyle(
                                 //     color: Colors.white,
                                 //     fontWeight: FontWeight.w500,
                                 //     fontFamily: 'Nunito',
-                                //     fontSize: 16.sp
+                                //     fontSize: 17.sp
                                 //
                                 // ),
                               ),
@@ -784,7 +784,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                 hintStyle: Theme.of(context)
                                     .primaryTextTheme
                                     .bodyText2!
-                                    .copyWith(fontSize: 14.sp),
+                                    .copyWith(fontSize: 15.sp),
                                 hintText: 'Date of Birth',
                                 labelText: 'Date of Birth',
                                 contentPadding:
@@ -847,7 +847,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                         'Male',
                                         style: TextStyle(
                                           fontFamily: 'Nunito',
-                                          fontSize: 16.sp,
+                                          fontSize: 17.sp,
                                           color: _selectedgender == 1
                                               ? bcolor1
                                               : uColor,
@@ -913,7 +913,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                         style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Nunito',
-                                          fontSize: 16.sp,
+                                          fontSize: 17.sp,
                                           color: _selectedgender == 2
                                               ? bcolor1
                                               : uColor,
@@ -1008,7 +1008,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                 hintStyle: Theme.of(context)
                                     .primaryTextTheme
                                     .bodyText2!
-                                    .copyWith(fontSize: 14.sp),
+                                    .copyWith(fontSize: 15.sp),
                                 contentPadding:
                                     EdgeInsets.only(top: 10.h, left: 10.w),
                                 // hintStyle: Theme.of(context).primaryTextTheme.subtitle1,
@@ -1101,7 +1101,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                 hintStyle: Theme.of(context)
                                     .primaryTextTheme
                                     .bodyText2!
-                                    .copyWith(fontSize: 14.sp),
+                                    .copyWith(fontSize: 15.sp),
                                 contentPadding:
                                     EdgeInsets.only(top: 10.h, left: 10.w),
                                 // hintStyle: Theme.of(context).primaryTextTheme.subtitle1,
@@ -1184,12 +1184,12 @@ class _CreateAccountState extends State<CreateAccount> {
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .headline3!
-                                    .copyWith(fontSize: 16.sp),
+                                    .copyWith(fontSize: 17.sp),
                                 // TextStyle(
                                 //     color: Colors.white,
                                 //     fontWeight: FontWeight.w500,
                                 //     fontFamily: 'Nunito',
-                                //     fontSize: 16.sp
+                                //     fontSize: 17.sp
                                 //
                                 // ),
                               ),
@@ -1414,7 +1414,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .subtitle1!
-                                    .copyWith(fontSize: 16.sp),
+                                    .copyWith(fontSize: 17.sp),
                                 controller: _chooseusername,
                                 decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
@@ -1463,7 +1463,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                   hintStyle: Theme.of(context)
                                       .primaryTextTheme
                                       .bodyText2!
-                                      .copyWith(fontSize: 14.sp),
+                                      .copyWith(fontSize: 15.sp),
                                   hintText: 'Username',
                                   // errorText: 'This username is unavailable. Please try another.',
                                   contentPadding:
@@ -1502,7 +1502,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                               .bodyText1!
                                               .copyWith(
                                                   fontWeight: FontWeight.w500,
-                                                  fontSize: 14.sp),
+                                                  fontSize: 15.sp),
                                         ),
                                       );
                                     },
@@ -1568,12 +1568,12 @@ class _CreateAccountState extends State<CreateAccount> {
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .headline3!
-                                    .copyWith(fontSize: 16.sp),
+                                    .copyWith(fontSize: 17.sp),
                                 // TextStyle(
                                 //     color: Colors.white,
                                 //     fontWeight: FontWeight.w500,
                                 //     fontFamily: 'Nunito',
-                                //     fontSize: 16.sp
+                                //     fontSize: 17.sp
                                 //
                                 // ),
                               ),

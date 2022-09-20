@@ -139,7 +139,7 @@ class _UploadBnameState extends State<UploadBname> {
                                     ),
                                     onPressed: (){
                                       // pickImage();
-                                    }, child:  Text('Choose File', style: Theme.of(context).primaryTextTheme.headline5!.copyWith(color: Colors.white,fontSize: 16.sp, fontWeight: FontWeight.w500),)),
+                                    }, child:  Text('Choose File', style: Theme.of(context).primaryTextTheme.headline5!.copyWith(color: Colors.white,fontSize: 17.sp, fontWeight: FontWeight.w500),)),
                               )//choose
 
                             ],

@@ -181,16 +181,10 @@ class _DirectMessageState extends State<DirectMessage> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: width * 0.2,
-                ),
-                Text(
-                  'Message requests',
-                  style: TextStyle(
-                      color: bcolor3,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14.sp),
-                ),
+
+                SizedBox(width: width*0.2,),
+                Text('Message requests', style: TextStyle(color: bcolor3,fontWeight: FontWeight.w500, fontSize: 15.sp),),
+
               ],
             ),
           ),

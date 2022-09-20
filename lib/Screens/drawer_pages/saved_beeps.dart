@@ -43,7 +43,7 @@ class _SavedBeepsState extends State<SavedBeeps> {
                     style: Theme.of(context)
                         .primaryTextTheme
                         .headline4!
-                        .copyWith(fontSize: 16.sp)),
+                        .copyWith(fontSize: 17.sp)),
               ),
               centerTitle: true,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -63,7 +63,7 @@ class _SavedBeepsState extends State<SavedBeeps> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Clear all', style: TextStyle(fontWeight: FontWeight.w600, fontFamily: 'Nunito', fontSize: 16.sp, color: bcolor5),),
+                  Text('Clear all', style: TextStyle(fontWeight: FontWeight.w600, fontFamily: 'Nunito', fontSize: 17.sp, color: bcolor5),),
                   PopupMenuButton<int>(
 
                     icon: SvgPicture.asset('images/setting-4.svg'),

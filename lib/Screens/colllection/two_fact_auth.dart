@@ -32,6 +32,7 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         toolbarHeight: 40.h,
         elevation: 0.h,
         leading: IconButton(
@@ -47,7 +48,7 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 16.sp)),
+                  .copyWith(fontSize: 17.sp)),
         ),
         centerTitle: true,
       ),
@@ -66,7 +67,7 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
                 style: Theme.of(context)
                     .primaryTextTheme
                     .headline4!
-                    .copyWith(fontSize: 16.sp),
+                    .copyWith(fontSize: 17.sp),
               ),
             ),
             Divider(
@@ -92,7 +93,7 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
               'Choose how you want us to send security\ncodes',
               textAlign: TextAlign.center,
               style: Theme.of(context).primaryTextTheme.headline4!.copyWith(
-                    fontSize: 16.sp,
+                    fontSize: 17.sp,
                     color: Colors.grey,
                   ),
             ),
@@ -105,7 +106,7 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
                 style: Theme.of(context)
                     .primaryTextTheme
                     .headline4!
-                    .copyWith(fontSize: 16.sp),
+                    .copyWith(fontSize: 17.sp),
               ),
               subtitle: Padding(
                 padding: EdgeInsets.only(top: 4.0.h),
@@ -114,7 +115,7 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
                     style: Theme.of(context)
                         .textTheme
                         .headline2!
-                        .copyWith(fontSize: 16.sp)),
+                        .copyWith(fontSize: 17.sp)),
               ),
               trailing: CupertinoSwitch(
                   value: _switchValue, onChanged: (bool? value) {}),
@@ -128,7 +129,7 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
                 style: Theme.of(context)
                     .primaryTextTheme
                     .headline4!
-                    .copyWith(fontSize: 16.sp),
+                    .copyWith(fontSize: 17.sp),
               ),
               subtitle: Padding(
                 padding: EdgeInsets.only(top: 4.0.h),
@@ -136,7 +137,7 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
                     style: Theme.of(context)
                         .textTheme
                         .headline2!
-                        .copyWith(fontSize: 16.sp)),
+                        .copyWith(fontSize: 17.sp)),
               ),
               trailing: CupertinoSwitch(
                 value: _switchValue,
@@ -159,7 +160,7 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
                 style: Theme.of(context)
                     .primaryTextTheme
                     .headline4!
-                    .copyWith(fontSize: 16.sp),
+                    .copyWith(fontSize: 17.sp),
               ),
               subtitle: Padding(
                 padding: EdgeInsets.only(top: 4.0.h),
@@ -167,7 +168,7 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
                     style: Theme.of(context)
                         .textTheme
                         .headline2!
-                        .copyWith(fontSize: 16.sp)),
+                        .copyWith(fontSize: 17.sp)),
               ),
               trailing: CupertinoSwitch(
                 value: _switchValue,
@@ -201,6 +202,7 @@ class _TwoFactAddPhoneState extends State<TwoFactAddPhone> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         toolbarHeight: 40.h,
         elevation: 0.h,
         leading: IconButton(
@@ -215,7 +217,7 @@ class _TwoFactAddPhoneState extends State<TwoFactAddPhone> {
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 16.sp)),
+                  .copyWith(fontSize: 17.sp)),
         ),
       ),
       body: SingleChildScrollView(
@@ -232,7 +234,7 @@ class _TwoFactAddPhoneState extends State<TwoFactAddPhone> {
                 style: Theme.of(context)
                     .primaryTextTheme
                     .headline4!
-                    .copyWith(fontSize: 16.sp),
+                    .copyWith(fontSize: 17.sp),
               ),
             ),
             Divider(
@@ -257,7 +259,7 @@ class _TwoFactAddPhoneState extends State<TwoFactAddPhone> {
               'Before we can confirm your WhatsApp\naccount, you need to add your phone number',
               textAlign: TextAlign.center,
               style: Theme.of(context).primaryTextTheme.headline4!.copyWith(
-                    fontSize: 16.sp,
+                    fontSize: 17.sp,
                     color: Colors.grey,
                   ),
             ),
@@ -268,7 +270,7 @@ class _TwoFactAddPhoneState extends State<TwoFactAddPhone> {
               'We’ll send you a confirmation code next',
               textAlign: TextAlign.center,
               style: Theme.of(context).primaryTextTheme.headline4!.copyWith(
-                    fontSize: 16.sp,
+                    fontSize: 17.sp,
                     color: Colors.grey,
                   ),
             ),
@@ -338,7 +340,7 @@ class _TwoFactAddPhoneState extends State<TwoFactAddPhone> {
                   hintStyle: Theme.of(context)
                       .primaryTextTheme
                       .bodyText2!
-                      .copyWith(fontSize: 14.sp),
+                      .copyWith(fontSize: 15.sp),
                   contentPadding: EdgeInsets.only(top: 10.h, left: 10.w),
                   focusColor: uColor,
                 ),
@@ -371,7 +373,7 @@ class _TwoFactAddPhoneState extends State<TwoFactAddPhone> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline3!
-                      .copyWith(fontSize: 16.sp),
+                      .copyWith(fontSize: 17.sp),
                 ),
               ),
             ),
@@ -499,7 +501,7 @@ class _2faVerificationState extends State<TwoFaVerification> {
                   textAlign: TextAlign.center,
                   style: Theme.of(context).primaryTextTheme.headline5!.copyWith(
                       color: Colors.black,
-                      fontSize: 16.sp,
+                      fontSize: 17.sp,
                       fontWeight: FontWeight.w400)),
 
               SizedBox(height: 8.h),
@@ -513,7 +515,7 @@ class _2faVerificationState extends State<TwoFaVerification> {
                         .headline5!
                         .copyWith(
                             color: Colors.black,
-                            fontSize: 16.sp,
+                            fontSize: 17.sp,
                             fontWeight: FontWeight.w600)),
               ),
             ]),
@@ -548,7 +550,7 @@ class _2faVerificationState extends State<TwoFaVerification> {
                 //     color: Colors.white,
                 //     fontWeight: FontWeight.w500,
                 //     fontFamily: 'Nunito',
-                //     fontSize: 16.sp
+                //     fontSize: 17.sp
                 //
                 // ),
               ),
@@ -585,6 +587,7 @@ class _RecoverCodesState extends State<RecoverCodes> {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         toolbarHeight: 40.h,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0.h,
         leading: IconButton(
             icon: Icon(
@@ -598,7 +601,7 @@ class _RecoverCodesState extends State<RecoverCodes> {
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 16.sp)),
+                  .copyWith(fontSize: 17.sp)),
         ),
       ),
       body: SingleChildScrollView(
@@ -615,7 +618,7 @@ class _RecoverCodesState extends State<RecoverCodes> {
                 style: Theme.of(context)
                     .primaryTextTheme
                     .headline4!
-                    .copyWith(fontSize: 16.sp),
+                    .copyWith(fontSize: 17.sp),
               ),
             ),
             Divider(
@@ -640,7 +643,7 @@ class _RecoverCodesState extends State<RecoverCodes> {
               'Save your backup code in a safe place. This\nenables you to log in to your acccount if you\nlose access to your phone.',
               textAlign: TextAlign.center,
               style: Theme.of(context).primaryTextTheme.headline4!.copyWith(
-                    fontSize: 16.sp,
+                    fontSize: 17.sp,
                     fontWeight: FontWeight.w500,
                   ),
             ),
@@ -683,7 +686,7 @@ class _RecoverCodesState extends State<RecoverCodes> {
                   //     color: Colors.white,
                   //     fontWeight: FontWeight.w500,
                   //     fontFamily: 'Nunito',
-                  //     fontSize: 16.sp
+                  //     fontSize: 17.sp
                   //
                   // ),
                 ),

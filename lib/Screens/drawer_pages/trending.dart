@@ -122,7 +122,7 @@ class _TrendingState extends State<Trending> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Now Trending', style: TextStyle(fontWeight: FontWeight.w600, fontFamily: 'Nunito', fontSize: 16.sp, color: bcolor5),),
+                Text('Now Trending', style: TextStyle(fontWeight: FontWeight.w600, fontFamily: 'Nunito', fontSize: 17.sp, color: bcolor5),),
                 PopupMenuButton<int>(
 
                   icon: SvgPicture.asset('images/setting-4.svg'),

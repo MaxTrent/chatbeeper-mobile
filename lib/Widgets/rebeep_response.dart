@@ -67,7 +67,7 @@ class _RebeepResponseState extends State<RebeepResponse> {
                           SizedBox(width: 8.w,),
                           Text('Rebeep',
                             style: TextStyle(
-                                color: Colors.white, fontFamily: 'Nunito', fontSize: 16.sp,
+                                color: Colors.white, fontFamily: 'Nunito', fontSize: 17.sp,
                                 fontWeight: FontWeight.w400
                             ),
                           ),
@@ -90,13 +90,15 @@ class _RebeepResponseState extends State<RebeepResponse> {
                         }, child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SizedBox(
-                            height:23, width: 27,
-                            child: SvgPicture.asset('images/echo.svg')),
-                        SizedBox(width: 8.w,),
+                        Expanded(
+                          child: SizedBox(
+                              height:23, width: 27,
+                              child: SvgPicture.asset('images/echo.svg')),
+                        ),
+                    SizedBox(width: 8.w,),
                         Text('Echo Beep',
                           style: TextStyle(
-                              color: Colors.white, fontFamily: 'Nunito', fontSize: 16.sp,
+                              color: Colors.white, fontFamily: 'Nunito', fontSize: 17.sp,
                               fontWeight: FontWeight.w400
                           ),
                         ),

@@ -44,7 +44,7 @@ class UploadAlert extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
                           color: Colors.red,
-                          fontSize: 16.sp,
+                          fontSize: 17.sp,
                           fontWeight: FontWeight.w500
                       ),),
                   ),
