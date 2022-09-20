@@ -38,7 +38,8 @@ class LastLoginCard extends StatelessWidget {
           builder: (context) => SimpleDialog(
             title: Text('Login Activity'),
             children: [
-              GoogleMap(initialCameraPosition: _kGooglePlex),
+              SingleChildScrollView(
+                  child: GoogleMap(initialCameraPosition: _kGooglePlex)),
               /*title: Text("Show Alert Dialog Box"),
           content: Text("You have raised a Alert Dialog Box"),
           actions: <Widget>[

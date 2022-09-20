@@ -10,18 +10,20 @@ import '../Widgets/post_imageless.dart';
 import '../constants.dart';
 
 class CustomClipPath extends CustomClipper<Path> {
-
   @override
   Path getClip(Size size) {
     Path path = Path();
-    path.lineTo(0,size.height);//point 1
-    path.quadraticBezierTo(size.width*0.5, //2
-        size.height-50,//3
-        size.width, size.height //4
-    );
+    path.lineTo(0, size.height); //point 1
+    path.quadraticBezierTo(
+        size.width * 0.5, //2
+        size.height - 50, //3
+        size.width,
+        size.height //4
+        );
     path.lineTo(size.width, 0);
     return path;
   }
+
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
@@ -33,13 +35,14 @@ class Profile extends StatefulWidget {
   State<Profile> createState() => _ProfileState();
 }
 
-class _ProfileState extends State<Profile> with TickerProviderStateMixin{
+class _ProfileState extends State<Profile> with TickerProviderStateMixin {
   String fullName = 'Jane Doe';
   String username = 'Janedoe_10';
 
   String location = 'Lagos, Nigeria';
   String biollink = 'https://behance.net/janedoe';
-  String bio = 'Hi there, I’m a product design who loves solving real life problems with my superpower 😁';
+  String bio =
+      'Hi there, I’m a product design who loves solving real life problems with my superpower 😁';
   var bgPictureUrl = 'images/tlimage1.png';
   var profilePictureUrl = 'images/pp_round.png';
   bool _onTap = false;
@@ -67,23 +70,23 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
     double height = MediaQuery.of(context).size.height;
     ScreenUtil.init(
       context,
-      designSize:const Size(485,926),
+      designSize: const Size(485, 926),
     );
     return SafeArea(
       child: Form(
         key: formKey,
         child: Scaffold(
-         // appBar: AppBar(
-         //    title: Text('Anything'),
-         //    shape: const RoundedRectangleBorder(
-         //      borderRadius: BorderRadius.horizontal(
-         //        left: Radius.circular(30),
-         //      ),
-         //    ),
-         //  ),
+          // appBar: AppBar(
+          //    title: Text('Anything'),
+          //    shape: const RoundedRectangleBorder(
+          //      borderRadius: BorderRadius.horizontal(
+          //        left: Radius.circular(30),
+          //      ),
+          //    ),
+          //  ),
           body: SingleChildScrollView(
             physics: NeverScrollableScrollPhysics(),
-              child: Column(
+            child: Column(
               children: [
                 Stack(
                   clipBehavior: Clip.none,
@@ -91,37 +94,39 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                     Align(
                       alignment: Alignment.topCenter,
                       child:
-                      // ClipPath(
-                      //   clipper: CustomClipPath(),
-                      //   child: Container(
-                      //     width: MediaQuery.of(context).size.width,
-                      //     height: 92.h,
-                      //     decoration: BoxDecoration(
-                      //       image: DecorationImage(
-                      //         image: AssetImage(bgPictureUrl),
-                      //         fit: BoxFit.cover,
-                      //       )
-                      //     ),
-                      //   ),
-                      // )
-                      Container(
+                          // ClipPath(
+                          //   clipper: CustomClipPath(),
+                          //   child: Container(
+                          //     width: MediaQuery.of(context).size.width,
+                          //     height: 92.h,
+                          //     decoration: BoxDecoration(
+                          //       image: DecorationImage(
+                          //         image: AssetImage(bgPictureUrl),
+                          //         fit: BoxFit.cover,
+                          //       )
+                          //     ),
+                          //   ),
+                          // )
+                          Container(
                         width: MediaQuery.of(context).size.width,
                         height: 85.h,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30.r),bottomRight:Radius.circular(30.r),topRight: Radius.circular(-10.r) ),
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(30.r),
+                                bottomRight: Radius.circular(30.r),
+                                topRight: Radius.circular(-10.r)),
                             image: DecorationImage(
                               image: AssetImage(bgPictureUrl),
                               fit: BoxFit.cover,
-                            )
-                        ),
+                            )),
                       ),
-                    ),//background
+                    ), //background
                     Positioned(
                       top: 45.h,
                       left: 10.w,
                       right: 0.w,
                       child: Center(
-                        child:  Container(
+                        child: Container(
                           height: 80.h,
                           width: 75.w,
                           decoration: const BoxDecoration(
@@ -132,124 +137,210 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                           ),
                           child: CircleAvatar(
                             backgroundColor: Colors.white,
-                            child: Image.asset(profilePictureUrl, width: 68.w,),
+                            child: Image.asset(
+                              profilePictureUrl,
+                              width: 68.w,
+                            ),
                           ),
                         ),
                       ),
-                    ),//image
+                    ), //image
                     Positioned(
                       top: 20.h,
                       left: 0.w,
                       right: 410.w,
                       bottom: 50.h,
                       child: GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           Navigator.of(context).pop();
                         },
-                        child:Icon(Icons.arrow_back_ios_new, size:19.h,color: Colors.white,),
-                      ),
-
-                    ),//backbutton
-                 Positioned(
-                     top: 20.h,
-                      left: 410.w,
-                      right: 0.w,
-                      bottom: 50.h,
-                      child: PopupMenuButton<int>(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8.r))
+                        child: Icon(
+                          Icons.arrow_back_ios_new,
+                          size: 19.h,
+                          color: Colors.white,
                         ),
-                      padding: EdgeInsets.only(left: 10.w),
-                        icon: Icon(Icons.more_horiz_sharp, size: 30.h,color: Colors.white,),
-                        iconSize: 24.h,
-                        itemBuilder: (context) => [
-                          PopupMenuItem(
-
-                            padding: EdgeInsets.only(left: 10.w),
-                            value: 1,
-                            // row has two child icon and text.
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                SizedBox(
-                                    height: 24.h, width: 24.w,
-                                    child: darkModeOn == false? SvgPicture.asset('images/info.svg'):SvgPicture.asset('images/info.svg', color: Colors.white,)),
-                                SizedBox(width: 10.w,),
-                                Text("About",style:  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),)
-                              ],
-                            ),
-                          ),//about
-                          PopupMenuItem(
-                            value: 2,
-                            padding: EdgeInsets.only(left: 10.w),
-                            // row has two child icon and text.
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                SizedBox(
-                                    height: 24.h, width: 24.w,
-                                    child:darkModeOn == false? SvgPicture.asset('images/block.svg'):SvgPicture.asset('images/block.svg', color: Colors.white,)),
-                                SizedBox(width: 10.w,),
-                                Text("Block User", style:
-                                TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
-                                )
-                              ],
-                            ),
-                          ),//block
-                          PopupMenuItem(
-                            value: 3,
-                            padding: EdgeInsets.only(left: 10.w),
-                            // row has two child icon and text.
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                darkModeOn == false? SvgPicture.asset('images/report profile.svg'):SvgPicture.asset('images/report profile.svg', color: Colors.white,),
-                                SizedBox(width: 10.w,),
-                                Text("Report Account", style:
-                                TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
-                                )
-                              ],
-                            ),
-                          ),//report
-                        ],
-                        offset: Offset(-28.w, 30.h),
-                        color: Theme.of(context).scaffoldBackgroundColor,
-                        elevation: 2,
-                      )
-                    ),//menu
-                    SizedBox(height: 20.h,),
+                      ),
+                    ), //backbutton
+                    Positioned(
+                        top: 20.h,
+                        left: 410.w,
+                        right: 0.w,
+                        bottom: 50.h,
+                        child: PopupMenuButton<int>(
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.r))),
+                          padding: EdgeInsets.only(left: 10.w),
+                          icon: Icon(
+                            Icons.more_horiz_sharp,
+                            size: 30.h,
+                            color: Colors.white,
+                          ),
+                          iconSize: 24.h,
+                          itemBuilder: (context) => [
+                            PopupMenuItem(
+                              padding: EdgeInsets.only(left: 10.w),
+                              value: 1,
+                              // row has two child icon and text.
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  SizedBox(
+                                      height: 24.h,
+                                      width: 24.w,
+                                      child: darkModeOn == false
+                                          ? SvgPicture.asset('images/info.svg')
+                                          : SvgPicture.asset(
+                                              'images/info.svg',
+                                              color: Colors.white,
+                                            )),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Text(
+                                    "About",
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black),
+                                  )
+                                ],
+                              ),
+                            ), //about
+                            PopupMenuItem(
+                              value: 2,
+                              padding: EdgeInsets.only(left: 10.w),
+                              // row has two child icon and text.
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  SizedBox(
+                                      height: 24.h,
+                                      width: 24.w,
+                                      child: darkModeOn == false
+                                          ? SvgPicture.asset('images/block.svg')
+                                          : SvgPicture.asset(
+                                              'images/block.svg',
+                                              color: Colors.white,
+                                            )),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Text(
+                                    "Block User",
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black),
+                                  )
+                                ],
+                              ),
+                            ), //block
+                            PopupMenuItem(
+                              value: 3,
+                              padding: EdgeInsets.only(left: 10.w),
+                              // row has two child icon and text.
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  darkModeOn == false
+                                      ? SvgPicture.asset(
+                                          'images/report profile.svg')
+                                      : SvgPicture.asset(
+                                          'images/report profile.svg',
+                                          color: Colors.white,
+                                        ),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Text(
+                                    "Report Account",
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black),
+                                  )
+                                ],
+                              ),
+                            ), //report
+                          ],
+                          offset: Offset(-28.w, 30.h),
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                          elevation: 2,
+                        )), //menu
+                    SizedBox(
+                      height: 20.h,
+                    ),
                   ],
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-
-                    SizedBox(height: 40.h,),
-
+                    SizedBox(
+                      height: 40.h,
+                    ),
                     Column(
                       children: [
                         Center(
                           child: Text(
                             "\  $fullName\ ",
-                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w600, color:bcolor3, fontSize: 22.sp ),
+                            style: Theme.of(context)
+                                .primaryTextTheme
+                                .bodyText1!
+                                .copyWith(
+                                    fontWeight: FontWeight.w600,
+                                    color: bcolor3,
+                                    fontSize: 22.sp),
                           ),
-                        ),//full name
+                        ), //full name
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey, fontSize: 14.sp ),),
-                             Icon(Icons.verified_rounded, color: bcolor5,size: 15.h,),
+                            Text(
+                              '@$username',
+                              style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.grey,
+                                  fontSize: 14.sp),
+                            ),
+                            Icon(
+                              Icons.verified_rounded,
+                              color: bcolor5,
+                              size: 15.h,
+                            ),
                           ],
-
-                        ),//username
+                        ), //username
                         Container(
-                          height: 15.h, width: 64.w,
+                          height: 15.h,
+                          width: 64.w,
                           color: Colors.grey.shade300,
-                          child: Center(child: Text('Follows you', style: TextStyle(fontSize: 10.sp, color: Colors.black, fontFamily: 'Nunito', fontWeight: FontWeight.bold,),)),
+                          child: Center(
+                              child: Text(
+                            'Follows you',
+                            style: TextStyle(
+                              fontSize: 10.sp,
+                              color: Colors.black,
+                              fontFamily: 'Nunito',
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )),
                         ),
-                        SizedBox(height: 5.h,),
+                        SizedBox(
+                          height: 5.h,
+                        ),
                         Padding(
-                          padding:  EdgeInsets.only(left: 52.w, right: 52.w, bottom: 14.h),
+                          padding: EdgeInsets.only(
+                              left: 52.w, right: 52.w, bottom: 14.h),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -257,248 +348,363 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                                 width: 324.w,
                                 child: RichText(
                                   textAlign: TextAlign.center,
-                                  text: TextSpan(
-                                      text: '',
-                                      children: [
-                                        TextSpan(text: bio,
-                                          style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                            fontWeight: FontWeight.w400, fontSize: 15.sp,
-                                          ),),
-
-                                      ]
-                                  ),
-
+                                  text: TextSpan(text: '', children: [
+                                    TextSpan(
+                                      text: bio,
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .bodyText1!
+                                          .copyWith(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 15.sp,
+                                          ),
+                                    ),
+                                  ]),
                                 ),
                               ),
                             ],
                           ),
-                        ),//bio
+                        ), //bio
                         Container(
                           height: 0.5.h,
                           color: Colors.grey,
-                        ),//divider
-                        SizedBox(height: 15.h,),
+                        ), //divider
                         SizedBox(
-                          height: 50.h, width: 276.w,
+                          height: 15.h,
+                        ),
+                        SizedBox(
+                          height: 50.h,
+                          width: 276.w,
                           child: Row(
                             children: [
                               Expanded(
                                 child: Column(
                                   children: [
-                                    Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                      fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                    Text(
+                                      '800',
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .bodyText1!
+                                          .copyWith(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 16.sp,
+                                          ),
                                     ),
+                                    Text(
+                                      'Following',
+                                      style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontWeight: FontWeight.w600,
+                                        color: uColor,
+                                        fontSize: 14.sp,
+                                      ),
                                     ),
-
-                                    Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 14.sp,), ),
                                   ],
                                 ),
-                              ),//following
+                              ), //following
                               Padding(
-                                padding:  EdgeInsets.only(left: 14.w, bottom: 8.h),
-                                child: Container(height: 30.h, color: uColor, width: 1,),
+                                padding:
+                                    EdgeInsets.only(left: 14.w, bottom: 8.h),
+                                child: Container(
+                                  height: 30.h,
+                                  color: uColor,
+                                  width: 1,
+                                ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(right: 5, left: 5),
+                                padding:
+                                    const EdgeInsets.only(right: 5, left: 5),
                                 child: Column(
                                   children: [
-                                    Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                      fontWeight: FontWeight.w600, fontSize: 16.sp,
+                                    Text(
+                                      '800',
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .bodyText1!
+                                          .copyWith(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 16.sp,
+                                          ),
                                     ),
+                                    Text(
+                                      'Followers',
+                                      style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontWeight: FontWeight.w700,
+                                        color: uColor,
+                                        fontSize: 14.sp,
+                                      ),
                                     ),
-
-                                    Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 14.sp,), ),
                                   ],
                                 ),
-                              ),//followers
+                              ), //followers
                               Padding(
-                                padding:  EdgeInsets.only(right: 14.w, bottom: 13.h),
-                                child: Container(height: 30.h, color: uColor, width: 1,),
+                                padding:
+                                    EdgeInsets.only(right: 14.w, bottom: 13.h),
+                                child: Container(
+                                  height: 30.h,
+                                  color: uColor,
+                                  width: 1,
+                                ),
                               ),
                               Column(
                                 children: [
                                   SizedBox(
-                                      height: 20.h,  width: 20.w,
-                                      child: SvgPicture.asset('images/location.svg', color: darkModeOn? Colors.white: Colors.black,)
+                                      height: 20.h,
+                                      width: 20.w,
+                                      child: SvgPicture.asset(
+                                        'images/location.svg',
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black,
+                                      )),
+                                  Text(
+                                    location,
+                                    style: TextStyle(
+                                      fontFamily: 'Nunito',
+                                      fontWeight: FontWeight.w700,
+                                      color: uColor,
+                                      fontSize: 14.sp,
+                                    ),
                                   ),
-                                  Text(location,style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 14.sp,), ),
                                 ],
-                              ),//location
-
+                              ), //location
                             ],
                           ),
-                        ),//following followers location
+                        ), //following followers location
                         // SizedBox(height:1.h,),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(
-                                height: 18.h, width: 18.h,
+                                height: 18.h,
+                                width: 18.h,
                                 child: SvgPicture.asset('images/link-2.svg')),
                             RichText(
-                              text: TextSpan(
-                                  text: '',
-                                  children: [
-                                    TextSpan(
-                                      text: biollink, style: TextStyle(color: bcolor3, fontSize: 17.sp,fontWeight: FontWeight.w500, fontFamily: 'Nunito'),
-                                      recognizer: TapGestureRecognizer()..onTap=()=>Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Profile(),
-                                      ),),
-                                    ),
-                                  ]
-                              ),
-
+                              text: TextSpan(text: '', children: [
+                                TextSpan(
+                                  text: biollink,
+                                  style: TextStyle(
+                                      color: bcolor3,
+                                      fontSize: 17.sp,
+                                      fontWeight: FontWeight.w500,
+                                      fontFamily: 'Nunito'),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () => Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const Profile(),
+                                          ),
+                                        ),
+                                ),
+                              ]),
                             ),
                           ],
-                        ),//bio link
+                        ), //bio link
                         // SizedBox(height:2.h,),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding:   EdgeInsets.fromLTRB(35.w,8.h,30.w,8.h),
+                              padding:
+                                  EdgeInsets.fromLTRB(35.w, 8.h, 30.w, 8.h),
                               child: SizedBox(
                                 height: 40.h,
                                 width: 130.w,
                                 child: TextButton(
                                   style: ButtonStyle(
-                                      backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              Colors.transparent),
 
                                       // elevation: ,
-                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                      shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
                                           RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(100.r),
-                                            side:  const BorderSide(color: bcolor3),
-                                          )
-                                      )
-                                  ),
-                                  onPressed: ()  {
-                                    Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const ProfileTab()));
+                                        borderRadius:
+                                            BorderRadius.circular(100.r),
+                                        side: const BorderSide(color: bcolor3),
+                                      ))),
+                                  onPressed: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ProfileTab()));
                                   },
-
-                                  child: darkModeOn == false ?  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Edit profile',
-                                        textAlign: TextAlign.center,
-                                        style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp,fontWeight: FontWeight.w600),
-                                        // TextStyle(
-                                        //     color: Colors.white,
-                                        //     fontWeight: FontWeight.w500,
-                                        //     fontFamily: 'Nunito',
-                                        //     fontSize: 16.sp
-                                        //
-                                        // ),
-                                      ),
-                                      SizedBox(width: 4.w,),
-                                      SizedBox(
-                                          height: 18.h,  width: 18.w,
-                                          child: darkModeOn? SvgPicture.asset('images/edit.svg'):
-                                          SvgPicture.asset('images/edit black.svg')
-                                      )
-                                    ],
-                                  ):
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Center(
-                                        child: Text(
-                                        'Follow',
-                                        textAlign: TextAlign.center,
-                                        style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp,fontWeight: FontWeight.w600),
-                                        // TextStyle(
-                                        //     color: Colors.white,
-                                        //     fontWeight: FontWeight.w500,
-                                        //     fontFamily: 'Nunito',
-                                        //     fontSize: 16.sp
-                                        //
-                                        // ),
-                                    ),
-                                      ),
-                                      SizedBox(width: 2,),
-                                      SizedBox(
-                                          height: 13.h,
-                                          child: darkModeOn? SvgPicture.asset('images/plus.svg'): SvgPicture.asset('images/plus black.svg')),
-                                    ]
-                                  ),
-
-
+                                  child: darkModeOn == false
+                                      ? Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Edit profile',
+                                              textAlign: TextAlign.center,
+                                              style: Theme.of(context)
+                                                  .primaryTextTheme
+                                                  .bodyText1!
+                                                  .copyWith(
+                                                      fontSize: 14.sp,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                              // TextStyle(
+                                              //     color: Colors.white,
+                                              //     fontWeight: FontWeight.w500,
+                                              //     fontFamily: 'Nunito',
+                                              //     fontSize: 16.sp
+                                              //
+                                              // ),
+                                            ),
+                                            SizedBox(
+                                              width: 4.w,
+                                            ),
+                                            SizedBox(
+                                                height: 18.h,
+                                                width: 18.w,
+                                                child: darkModeOn
+                                                    ? SvgPicture.asset(
+                                                        'images/edit.svg')
+                                                    : SvgPicture.asset(
+                                                        'images/edit black.svg'))
+                                          ],
+                                        )
+                                      : Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                              Center(
+                                                child: Text(
+                                                  'Follow',
+                                                  textAlign: TextAlign.center,
+                                                  style: Theme.of(context)
+                                                      .primaryTextTheme
+                                                      .bodyText1!
+                                                      .copyWith(
+                                                          fontSize: 14.sp,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                  // TextStyle(
+                                                  //     color: Colors.white,
+                                                  //     fontWeight: FontWeight.w500,
+                                                  //     fontFamily: 'Nunito',
+                                                  //     fontSize: 16.sp
+                                                  //
+                                                  // ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 2,
+                                              ),
+                                              SizedBox(
+                                                  height: 13.h,
+                                                  child: darkModeOn
+                                                      ? SvgPicture.asset(
+                                                          'images/plus.svg')
+                                                      : SvgPicture.asset(
+                                                          'images/plus black.svg')),
+                                            ]),
                                 ),
                               ),
                             ),
-                            SizedBox(width: 25.w,),
-                        Center(
-                              child:  darkModeOn ?   Container(
-                                height: 40.h,
-                                width: 40.w,
-
-                                decoration: BoxDecoration(
-                                  color: Colors.transparent,
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                    color: bcolor3
-                                  )
-                                  // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                  // ),
-                                ),
-                                child: Center(child: GestureDetector(
-                                  onTap: (){},
-                                  child: SvgPicture.asset('images/sms blue.svg'),
-                                ),),
-                              ):null,
+                            SizedBox(
+                              width: 25.w,
+                            ),
+                            Center(
+                              child: darkModeOn
+                                  ? Container(
+                                      height: 40.h,
+                                      width: 40.w,
+                                      decoration: BoxDecoration(
+                                          color: Colors.transparent,
+                                          shape: BoxShape.circle,
+                                          border: Border.all(color: bcolor3)
+                                          // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                          // ),
+                                          ),
+                                      child: Center(
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: SvgPicture.asset(
+                                              'images/sms blue.svg'),
+                                        ),
+                                      ),
+                                    )
+                                  : null,
                             ),
                           ],
-
-                        ),//edit profile and dm
-                        SizedBox(height: 5.h,),
+                        ), //edit profile and dm
+                        SizedBox(
+                          height: 5.h,
+                        ),
                         Padding(
-                          padding:  EdgeInsets.only(right:15.h ),
+                          padding: EdgeInsets.only(right: 15.h),
                           child: SizedBox(
                             width: 344.w,
                             child: TabBar(
                               splashFactory: NoSplash.splashFactory,
-                              overlayColor: MaterialStateProperty.all(Colors.transparent),
+                              overlayColor:
+                                  MaterialStateProperty.all(Colors.transparent),
                               indicatorColor: Colors.transparent,
                               labelColor: bcolor1,
                               labelPadding: EdgeInsets.zero,
                               unselectedLabelColor: Colors.grey,
-                              unselectedLabelStyle: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 14.sp, fontWeight: FontWeight.w400),
+                              unselectedLabelStyle: Theme.of(context)
+                                  .primaryTextTheme
+                                  .bodyText1!
+                                  .copyWith(
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w400),
                               controller: _tabcontroller,
-                              tabs:  [
+                              tabs: [
                                 Container(
-                                    height: 36.h, width: 100.w,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.rectangle,
-                                  border: Border.all(color: bcolor1),
-                                  borderRadius: BorderRadius.all(Radius.circular(100.r)),
-                                ),
-                                    child: const Center(child: Text('Beeps',)),
+                                  height: 36.h,
+                                  width: 100.w,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    border: Border.all(color: bcolor1),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(100.r)),
+                                  ),
+                                  child: const Center(
+                                      child: Text(
+                                    'Beeps',
+                                  )),
                                 ),
                                 Container(
-                                    height: 36.h, width: 100.w,
+                                    height: 36.h,
+                                    width: 100.w,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.rectangle,
                                       border: Border.all(color: bcolor1),
-                                      borderRadius: BorderRadius.all(Radius.circular(100.r)),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(100.r)),
                                     ),
-                                    child: const Center(child: Text('Pictures'))),
+                                    child:
+                                        const Center(child: Text('Pictures'))),
                                 Container(
-                                    height: 36.h, width: 100.w,
+                                    height: 36.h,
+                                    width: 100.w,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.rectangle,
                                       border: Border.all(color: bcolor1),
-                                      borderRadius: BorderRadius.all(Radius.circular(100.r)),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(100.r)),
                                     ),
                                     child: const Center(child: Text('Videos'))),
-                            ],),
+                              ],
+                            ),
                           ),
-                        ),//tapbar
-                        SizedBox(height: 16.h,),
+                        ), //tapbar
+                        SizedBox(
+                          height: 16.h,
+                        ),
                         Divider(
-                          color: darkModeOn == false ?Color(0xff8E8E8E): bcolor1, height: 1.h,
+                          color:
+                              darkModeOn == false ? Color(0xff8E8E8E) : bcolor1,
+                          height: 1.h,
                         ),
                         SizedBox(
-                          height: 500.h,
+                          height: height,
                           width: width,
                           child: TabBarView(
                             controller: _tabcontroller,
@@ -507,32 +713,35 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin{
                                 height: 500.h,
                                 child: ListView.builder(
                                   itemCount: 10,
-                                  itemBuilder: (BuildContext context, int index) {
-                                    return   PostBeep();
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return PostBeep();
                                   },
                                 ),
-                              ),//beeps
+                              ), //beeps
                               SizedBox(
                                 height: 500.h,
                                 child: ListView.builder(
                                   itemCount: 10,
-                                    itemBuilder: (BuildContext context, int index) {
-                                      return   PostCard();
-                                    },
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return PostCard();
+                                  },
                                 ),
-                              ),//images
+                              ), //images
                               SizedBox(
                                 height: 500.h,
                                 child: ListView.builder(
                                   itemCount: 10,
-                                  itemBuilder: (BuildContext context, int index) {
-                                    return   PostCard();
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return PostCard();
                                   },
                                 ),
-                              ),//videos
+                              ), //videos
                             ],
                           ),
-                        ),//tabview
+                        ), //tabview
                       ],
                     ),
                   ],

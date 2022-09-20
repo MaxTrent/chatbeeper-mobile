@@ -30,24 +30,24 @@ class SignUp {
   String gender;
 
   factory SignUp.fromJson(Map<String, dynamic> json) => SignUp(
-    username: json["username"],
-    firstname: json["firstname"],
-    lastname: json["lastname"],
-    phone: json["phone"],
-    email: json["email"],
-    password: json["password"],
-    dob: json["dob"],
-    gender: json["gender"],
-  );
+        username: json["username"],
+        firstname: json["firstname"],
+        lastname: json["lastname"],
+        phone: json["phone"],
+        email: json["email"],
+        password: json["password"],
+        dob: json["dob"],
+        gender: json["gender"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "username": username,
-    "firstname": firstname,
-    "lastname": lastname,
-    "phone": phone,
-    "email": email,
-    "password": password,
-    "dob": dob,
-    "gender": gender,
-  };
+        "username": username,
+        "firstname": firstname,
+        "lastname": lastname,
+        "phone": phone,
+        "email": email,
+        "password": password,
+        "dob": dob,
+        "gender": gender,
+      };
 }

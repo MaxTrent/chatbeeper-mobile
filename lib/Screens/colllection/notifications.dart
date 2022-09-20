@@ -1,6 +1,6 @@
-import 'package:chat_beeper/Screens/colllection/settings_page.dart';
-import 'package:chat_beeper/Widgets/post_imageless.dart';
-import 'package:chat_beeper/constants.dart';
+import 'settings_page.dart';
+import '../../Widgets/post_imageless.dart';
+import '../../constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -609,7 +609,7 @@ class _NotificationsState extends State<Notifications> {
                                 fontWeight: FontWeight.w600, fontSize: 14.sp),
                         children: [
                           TextSpan(
-                            text: ' showed interest in you',
+                            text: ' echoed your beep',
                             style: Theme.of(context)
                                 .primaryTextTheme
                                 .bodyText1!
