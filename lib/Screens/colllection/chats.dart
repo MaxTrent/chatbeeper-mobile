@@ -1,3 +1,5 @@
+import 'package:chat_beeper/Screens/colllection/message_screen.dart';
+import 'package:chat_beeper/model/chatMessageModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../constants.dart';
@@ -15,6 +17,74 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
+    List<ChatModel> chatContent = [
+      ChatModel(
+          message: Text(
+            'Hello, how are you?',
+            style: Theme.of(context)
+                .primaryTextTheme
+                .bodyText1!
+                .copyWith(fontSize: 15.sp),
+          ),
+          messageType: 'receiver',
+          imageUrl: 'imageUrl',
+          time: 'Sent ${DateTime.now().microsecondsSinceEpoch.toString()}'),
+      ChatModel(
+          message: Text(
+            'I’m okay, wbu?',
+            style: Theme.of(context)
+                .primaryTextTheme
+                .bodyText1!
+                .copyWith(fontSize: 15.sp),
+          ),
+          messageType: 'sender',
+          imageUrl: 'imageUrl',
+          time: 'Sent ${DateTime.now().microsecondsSinceEpoch.toString()}'),
+      ChatModel(
+          message: Text(
+            'We missed you at the party\ntoday 😕',
+            style: Theme.of(context)
+                .primaryTextTheme
+                .bodyText1!
+                .copyWith(fontSize: 15.sp),
+          ),
+          messageType: 'receiver',
+          imageUrl: 'imageUrl',
+          time: 'Sent ${DateTime.now().microsecondsSinceEpoch.toString()}'),
+      ChatModel(
+          message: Text(
+            'Yeah, sorry about that lexy, had\nan emergency with nancy 😶',
+            style: Theme.of(context)
+                .primaryTextTheme
+                .bodyText1!
+                .copyWith(fontSize: 15.sp),
+          ),
+          messageType: 'sender',
+          imageUrl: 'imageUrl',
+          time: 'Sent ${DateTime.now().microsecondsSinceEpoch.toString()}'),
+      ChatModel(
+          message: Container(
+            width: 306.w,
+            height: 280.h,
+            decoration:
+                BoxDecoration(borderRadius: BorderRadius.circular(15.r)),
+            child: SvgPicture.asset(''),
+          ),
+          messageType: 'receiver',
+          imageUrl: 'imageUrl',
+          time: 'Sent ${DateTime.now().microsecondsSinceEpoch.toString()}'),
+      ChatModel(
+          message: Text(
+            'You missed a lot!!! 😍😋',
+            style: Theme.of(context)
+                .primaryTextTheme
+                .bodyText1!
+                .copyWith(fontSize: 15.sp),
+          ),
+          messageType: 'receiver',
+          imageUrl: 'imageUrl',
+          time: 'Sent ${DateTime.now().toLocal().toString()}'),
+    ];
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     var brightness = MediaQuery.of(context).platformBrightness;
@@ -73,6 +143,103 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
       body: Stack(
         children: [
+          Padding(
+            padding: EdgeInsets.only(top: 30.0.h),
+            child: ListView.builder(
+              itemCount: chatContent.length,
+              shrinkWrap: true,
+              //padding: ,
+              itemBuilder: (context, index) => Container(
+                alignment: Alignment.topRight,
+                padding:
+                    EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
+                child: Align(
+                  child: chatContent[index].messageType == 'receiver'
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 20.0.h),
+                              child: CircleAvatar(
+                                radius: 20.r,
+                                child: ClipRRect(
+                                    //clipper: ,
+                                    borderRadius: BorderRadius.circular(100.r),
+                                    child: Image.asset('')),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 8.w,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 12.w, vertical: 8.h),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20.r),
+                                      color: Color(0xfff1f1f1),
+                                    ),
+                                    child: chatContent[index].message),
+                                SizedBox(
+                                  height: 6.h,
+                                ),
+                                Text(
+                                  chatContent[index].time,
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .bodyText1!
+                                      .copyWith(fontSize: 15.sp),
+                                ),
+                              ],
+                            ),
+                          ],
+                        )
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 12.w, vertical: 8.h),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20.r),
+                                      color: Color(0xfff1f1f1),
+                                    ),
+                                    child: chatContent[index].message),
+                                SizedBox(
+                                  height: 6.h,
+                                ),
+                                Text(
+                                  chatContent[index].time,
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .bodyText1!
+                                      .copyWith(fontSize: 15.sp),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 8.w,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 20.0.h),
+                              child: CircleAvatar(
+                                radius: 20.r,
+                                child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(100.r),
+                                    child: Image.asset('')),
+                              ),
+                            ),
+                          ],
+                        ),
+                ),
+              ),
+            ),
+          ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
@@ -83,13 +250,24 @@ class _ChatScreenState extends State<ChatScreen> {
                 child: Row(children: [
                   Expanded(
                     child: TextField(
+                      onTap: () {
+                        FocusScopeNode currentFocus = FocusScope.of(context);
+
+                        if (!currentFocus.hasPrimaryFocus) {
+                          currentFocus.unfocus();
+                        }
+                      },
                       decoration: InputDecoration(
+                        focusColor: Colors.black,
                         border: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
+                          borderSide: BorderSide(color: Colors.grey),
                         ),
                         label: Text(
                           'Type a message',
-                          style: Theme.of(context).primaryTextTheme.bodyText1!,
+                          style: Theme.of(context)
+                              .primaryTextTheme
+                              .bodyText1!
+                              .copyWith(fontSize: 15.sp),
                         ),
                       ),
                     ),
@@ -112,12 +290,16 @@ class _ChatScreenState extends State<ChatScreen> {
                           width: 40.w,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100.r),
-                            color: Color(0xffF1F1F1),
+                            color: Color(0xfff1f1f1),
                           ),
-                          child: SvgPicture.asset(
-                            'images/gallery.svg',
-                            width: 10.w,
-                            height: 10.h,
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: SvgPicture.asset(
+                              'images/gallery.svg',
+                              width: 20.w,
+                              height: 10.h,
+                              fit: BoxFit.fitHeight,
+                            ),
                           )),
                 ]),
               ),

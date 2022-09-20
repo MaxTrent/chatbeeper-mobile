@@ -159,67 +159,127 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                           size: 19.h,
                           color: Colors.white,
                         ),
-
-                      padding: EdgeInsets.only(left: 10.w),
-                        icon: Icon(Icons.more_horiz_sharp, size: 24.h,color: Colors.white,),
-                        iconSize: 24.h,
-                        itemBuilder: (context) => [
-                          PopupMenuItem(
-
-                            padding: EdgeInsets.only(left: 10.w),
-                            value: 1,
-                            // row has two child icon and text.
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                SizedBox(
-                                    height: 24.h, width: 24.w,
-                                    child: darkModeOn == false? SvgPicture.asset('images/info.svg'):SvgPicture.asset('images/info.svg', color: Colors.white,)),
-                                SizedBox(width: 10.w,),
-                                Text("About",style:  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),)
-                              ],
-                            ),
-                          ),//about
-                          PopupMenuItem(
-                            value: 2,
-                            padding: EdgeInsets.only(left: 10.w),
-                            // row has two child icon and text.
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                SizedBox(
-                                    height: 24.h, width: 24.w,
-                                    child:darkModeOn == false? SvgPicture.asset('images/block.svg'):SvgPicture.asset('images/block.svg', color: Colors.white,)),
-                                SizedBox(width: 10.w,),
-                                Text("Block User", style:
-                                TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
-                                )
-                              ],
-                            ),
-                          ),//block
-                          PopupMenuItem(
-                            value: 3,
-                            padding: EdgeInsets.only(left: 10.w),
-                            // row has two child icon and text.
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                darkModeOn == false? SvgPicture.asset('images/report profile.svg'):SvgPicture.asset('images/report profile.svg', color: Colors.white,),
-                                SizedBox(width: 10.w,),
-                                Text("Report Account", style:
-                                TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
-                                )
-                              ],
-                            ),
-                          ),//report
-                        ],
-                        offset: Offset(-28.w, 30.h),
-                        color: Theme.of(context).scaffoldBackgroundColor,
-                        elevation: 2,
-                      )
-                    ),//menu
-                    SizedBox(height: 20.h,),
-
+                      ),
+                    ), //backbutton
+                    Positioned(
+                        top: 20.h,
+                        left: 410.w,
+                        right: 0.w,
+                        bottom: 50.h,
+                        child: PopupMenuButton<int>(
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.r))),
+                          padding: EdgeInsets.only(left: 10.w),
+                          icon: Icon(
+                            Icons.more_horiz_sharp,
+                            size: 30.h,
+                            color: Colors.white,
+                          ),
+                          iconSize: 24.h,
+                          itemBuilder: (context) => [
+                            PopupMenuItem(
+                              padding: EdgeInsets.only(left: 10.w),
+                              value: 1,
+                              // row has two child icon and text.
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  SizedBox(
+                                      height: 24.h,
+                                      width: 24.w,
+                                      child: darkModeOn == false
+                                          ? SvgPicture.asset('images/info.svg')
+                                          : SvgPicture.asset(
+                                              'images/info.svg',
+                                              color: Colors.white,
+                                            )),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Text(
+                                    "About",
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black),
+                                  )
+                                ],
+                              ),
+                            ), //about
+                            PopupMenuItem(
+                              value: 2,
+                              padding: EdgeInsets.only(left: 10.w),
+                              // row has two child icon and text.
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  SizedBox(
+                                      height: 24.h,
+                                      width: 24.w,
+                                      child: darkModeOn == false
+                                          ? SvgPicture.asset('images/block.svg')
+                                          : SvgPicture.asset(
+                                              'images/block.svg',
+                                              color: Colors.white,
+                                            )),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Text(
+                                    "Block User",
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black),
+                                  )
+                                ],
+                              ),
+                            ), //block
+                            PopupMenuItem(
+                              value: 3,
+                              padding: EdgeInsets.only(left: 10.w),
+                              // row has two child icon and text.
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  darkModeOn == false
+                                      ? SvgPicture.asset(
+                                          'images/report profile.svg')
+                                      : SvgPicture.asset(
+                                          'images/report profile.svg',
+                                          color: Colors.white,
+                                        ),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Text(
+                                    "Report Account",
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black),
+                                  )
+                                ],
+                              ),
+                            ), //report
+                          ],
+                          offset: Offset(-28.w, 30.h),
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                          elevation: 2,
+                        )), //menu
+                    SizedBox(
+                      height: 20.h,
+                    ),
                   ],
                 ),
                 Column(
@@ -245,11 +305,19 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                  ),
-
-                            Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey, fontSize: 15.sp ),),
-                             Icon(Icons.verified_rounded, color: bcolor5,size: 15.h,),
-
+                            Text(
+                              '@$username',
+                              style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.grey,
+                                  fontSize: 14.sp),
+                            ),
+                            Icon(
+                              Icons.verified_rounded,
+                              color: bcolor5,
+                              size: 15.h,
+                            ),
                           ],
                         ), //username
                         Container(
@@ -302,18 +370,25 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                           color: Colors.grey,
                         ), //divider
                         SizedBox(
-
-                          height: 56.h, width: 276.w,
-
+                          height: 15.h,
+                        ),
+                        SizedBox(
+                          height: 50.h,
+                          width: 276.w,
                           child: Row(
                             children: [
                               Expanded(
                                 child: Column(
                                   children: [
-
-                                    Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                      fontWeight: FontWeight.w600, fontSize: 17.sp,
-
+                                    Text(
+                                      '800',
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .bodyText1!
+                                          .copyWith(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 16.sp,
+                                          ),
                                     ),
                                     Text(
                                       'Following',
@@ -324,10 +399,6 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                         fontSize: 14.sp,
                                       ),
                                     ),
-
-
-                                    Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 15.sp,), ),
-
                                   ],
                                 ),
                               ), //following
@@ -345,9 +416,15 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                     const EdgeInsets.only(right: 5, left: 5),
                                 child: Column(
                                   children: [
-                                    Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                      fontWeight: FontWeight.w600, fontSize: 17.sp,
-
+                                    Text(
+                                      '800',
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .bodyText1!
+                                          .copyWith(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 16.sp,
+                                          ),
                                     ),
                                     Text(
                                       'Followers',
@@ -358,10 +435,6 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                         fontSize: 14.sp,
                                       ),
                                     ),
-
-
-                                    Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 15.sp,), ),
-
                                   ],
                                 ),
                               ), //followers
@@ -394,9 +467,6 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                       fontSize: 14.sp,
                                     ),
                                   ),
-
-                                  Text(location,style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 15.sp,), ),
-
                                 ],
                               ), //location
                             ],
@@ -451,63 +521,88 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                       shape: MaterialStateProperty.all<
                                               RoundedRectangleBorder>(
                                           RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(100.r),
-                                            side:  const BorderSide(color: bcolor3),
-                                          )
-                                      )
-                                  ),
-                                  onPressed: ()  {
+                                        borderRadius:
+                                            BorderRadius.circular(100.r),
+                                        side: const BorderSide(color: bcolor3),
+                                      ))),
+                                  onPressed: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ProfileTab()));
                                   },
-
-                                  child: darkModeOn == false ?  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Edit profile',
-                                        textAlign: TextAlign.center,
-                                        style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w600),
-                                        // TextStyle(
-                                        //     color: Colors.white,
-                                        //     fontWeight: FontWeight.w500,
-                                        //     fontFamily: 'Nunito',
-                                        //     fontSize: 17.sp
-                                        //
-                                        // ),
-                                      ),
-                                      SizedBox(width: 4.w,),
-                                      SizedBox(
-                                          height: 18.h,  width: 18.w,
-                                          child: darkModeOn? SvgPicture.asset('images/edit.svg'):
-                                          SvgPicture.asset('images/edit black.svg')
-                                      )
-                                    ],
-                                  ):
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Center(
-                                        child: Text(
-                                        'Follow',
-                                        textAlign: TextAlign.center,
-                                        style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w600),
-                                        // TextStyle(
-                                        //     color: Colors.white,
-                                        //     fontWeight: FontWeight.w500,
-                                        //     fontFamily: 'Nunito',
-                                        //     fontSize: 17.sp
-                                        //
-                                        // ),
-                                    ),
-                                      ),
-                                      SizedBox(width: 2,),
-                                      SizedBox(
-                                          height: 13.h,
-                                          child: darkModeOn? SvgPicture.asset('images/plus.svg'): SvgPicture.asset('images/plus black.svg')),
-                                    ]
-                                  ),
-
-
-
+                                  child: darkModeOn == false
+                                      ? Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Edit profile',
+                                              textAlign: TextAlign.center,
+                                              style: Theme.of(context)
+                                                  .primaryTextTheme
+                                                  .bodyText1!
+                                                  .copyWith(
+                                                      fontSize: 14.sp,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                              // TextStyle(
+                                              //     color: Colors.white,
+                                              //     fontWeight: FontWeight.w500,
+                                              //     fontFamily: 'Nunito',
+                                              //     fontSize: 16.sp
+                                              //
+                                              // ),
+                                            ),
+                                            SizedBox(
+                                              width: 4.w,
+                                            ),
+                                            SizedBox(
+                                                height: 18.h,
+                                                width: 18.w,
+                                                child: darkModeOn
+                                                    ? SvgPicture.asset(
+                                                        'images/edit.svg')
+                                                    : SvgPicture.asset(
+                                                        'images/edit black.svg'))
+                                          ],
+                                        )
+                                      : Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                              Center(
+                                                child: Text(
+                                                  'Follow',
+                                                  textAlign: TextAlign.center,
+                                                  style: Theme.of(context)
+                                                      .primaryTextTheme
+                                                      .bodyText1!
+                                                      .copyWith(
+                                                          fontSize: 14.sp,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                  // TextStyle(
+                                                  //     color: Colors.white,
+                                                  //     fontWeight: FontWeight.w500,
+                                                  //     fontFamily: 'Nunito',
+                                                  //     fontSize: 16.sp
+                                                  //
+                                                  // ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 2,
+                                              ),
+                                              SizedBox(
+                                                  height: 13.h,
+                                                  child: darkModeOn
+                                                      ? SvgPicture.asset(
+                                                          'images/plus.svg')
+                                                      : SvgPicture.asset(
+                                                          'images/plus black.svg')),
+                                            ]),
                                 ),
                               ),
                             ),
@@ -553,8 +648,12 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                               labelColor: bcolor1,
                               labelPadding: EdgeInsets.zero,
                               unselectedLabelColor: Colors.grey,
-                              unselectedLabelStyle: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight: FontWeight.w400),
-
+                              unselectedLabelStyle: Theme.of(context)
+                                  .primaryTextTheme
+                                  .bodyText1!
+                                  .copyWith(
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w400),
                               controller: _tabcontroller,
                               tabs: [
                                 Container(
@@ -605,7 +704,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                           height: 1.h,
                         ),
                         SizedBox(
-                          height: height,
+                          height: 500.h,
                           width: width,
                           child: TabBarView(
                             controller: _tabcontroller,
