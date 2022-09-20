@@ -1,7 +1,11 @@
 import 'package:chat_beeper/Screens/colllection/message_screen.dart';
+import 'package:chat_beeper/Widgets/dm_list.dart';
 import 'package:chat_beeper/constants.dart';
-import 'package:flutter/material.dart'; import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:chat_beeper/model/dm_users_model.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+
 class DirectMessage extends StatefulWidget {
   const DirectMessage({Key? key}) : super(key: key);
   static const String id = 'Dm';
@@ -11,6 +15,47 @@ class DirectMessage extends StatefulWidget {
 }
 
 class _DirectMessageState extends State<DirectMessage> {
+  List<DmUsers> dmUsers = [
+    DmUsers(
+        name: 'Amber Lexy',
+        username: 'lexy4real2',
+        message: 'Hi baby 🥰',
+        imageURL: 'images/userdp1.png',
+        time: 'Just now'),
+    DmUsers(
+        name: 'Chi Chi',
+        username: 'hotbabechi',
+        message:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing\nFermentum arcu...',
+        imageURL: 'images/userdp2.png',
+        time: '1 hour ago'),
+    DmUsers(
+        name: 'Lagos babes',
+        message:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing\nFermentum arcu...',
+        imageURL: 'images/userdp1.png',
+        time: '4 hours ago'),
+    DmUsers(
+        name: 'Obinna Alex',
+        username: 'KingObii6',
+        message: 'Hi 👋',
+        imageURL: 'images/userdp2.png',
+        time: '3 hours ago'),
+    DmUsers(
+        name: 'Blackie Jack',
+        username: 'blaqiee_',
+        message:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing\nFermentum arcu...',
+        imageURL: 'images/userdp1',
+        time: '10 hours ago'),
+    DmUsers(
+        name: 'Tunde Ayomide',
+        username: 'Tumide.ox',
+        message:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing\nFermentum arcu...',
+        imageURL: 'images/userdp2',
+        time: '10 hours ago'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -20,43 +65,48 @@ class _DirectMessageState extends State<DirectMessage> {
     bool darkModeOn = brightness == Brightness.dark;
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      appBar:PreferredSize(
-        preferredSize: Size(428.w,68.h),
+      appBar: PreferredSize(
+        preferredSize: Size(428.w, 68.h),
         child: Container(
           decoration: const BoxDecoration(
-              border: Border(
-                  bottom: BorderSide(color: Colors.grey)
-              )
-          ),
+              border: Border(bottom: BorderSide(color: Colors.grey))),
           child: AppBar(
             // automaticallyImplyLeading: true,
             title: Padding(
-              padding:  EdgeInsets.only(top: 20.h, right: 9.w),
+              padding: EdgeInsets.only(top: 20.h, right: 9.w),
               child: SizedBox(
                   height: 34.h,
                   // width: 159.w,
-                  child: SvgPicture.asset('images/chatbeeper_blue.svg',)),
+                  child: SvgPicture.asset(
+                    'images/chatbeeper_blue.svg',
+                  )),
             ),
             centerTitle: true,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             elevation: 0,
-            leading: Center(child: Padding(
-              padding:  EdgeInsets.only(top: 25.h),
-              child: IconButton(icon:  Icon(Icons.arrow_back_ios_new, size:20.h,color: darkModeOn? Colors.white: Colors.black,), onPressed: () {
-                Navigator.pop(context);
-              },),
+            leading: Center(
+                child: Padding(
+              padding: EdgeInsets.only(top: 25.h),
+              child: IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios_new,
+                  size: 20.h,
+                  color: darkModeOn ? Colors.white : Colors.black,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
             )),
             actions: [
               Padding(
-                padding:  EdgeInsets.only(left: 0, right: 17.w, top: 22.h),
+                padding: EdgeInsets.only(left: 0, right: 17.w, top: 22.h),
                 child: GestureDetector(
-                  onTap: (){
-                  },
-                  child: SvgPicture.asset(
-                    color: bcolor1,
-                    'images/sms filled.svg',
-                  )
-                ),
+                    onTap: () {},
+                    child: SvgPicture.asset(
+                      color: bcolor1,
+                      'images/sms filled.svg',
+                    )),
               )
             ],
           ),
@@ -64,31 +114,30 @@ class _DirectMessageState extends State<DirectMessage> {
       ),
       body: Column(
         children: [
-          SizedBox(height: 10.h,),
+          SizedBox(
+            height: 10.h,
+          ),
           Container(
             height: 80.h,
             width: width,
             decoration: const BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(color: Colors.grey),
-                )
-            ),
+              bottom: BorderSide(color: Colors.grey),
+            )),
             child: Row(
               children: [
                 GestureDetector(
-                  onTap: (){
-                  },
-                  child:     SizedBox(
+                  onTap: () {},
+                  child: SizedBox(
                     width: 256.w,
                     child: Padding(
-                      padding:  EdgeInsets.all(8),
+                      padding: EdgeInsets.all(8),
                       child: TextFormField(
                         decoration: InputDecoration(
-                          floatingLabelBehavior:
-                          FloatingLabelBehavior.auto,
+                          floatingLabelBehavior: FloatingLabelBehavior.auto,
                           focusedBorder: OutlineInputBorder(
                               borderRadius:
-                              BorderRadius.all(Radius.circular(30.r)),
+                                  BorderRadius.all(Radius.circular(30.r)),
                               borderSide: BorderSide(
                                 width: 0.5.w,
                                 // color: _isvalid == true ? bcolor1: Colors.red),
@@ -96,33 +145,33 @@ class _DirectMessageState extends State<DirectMessage> {
                               )),
                           enabledBorder: OutlineInputBorder(
                             borderRadius:
-                            BorderRadius.all(Radius.circular(30.r)),
-                            borderSide:
-                            BorderSide(width: 0.5.w, color: uColor),
+                                BorderRadius.all(Radius.circular(30.r)),
+                            borderSide: BorderSide(width: 0.5.w, color: uColor),
                           ),
                           errorBorder: OutlineInputBorder(
                             borderRadius:
-                            BorderRadius.all(Radius.circular(30.r)),
-                            borderSide: BorderSide(
-                                width: 0.5.w, color: Colors.red),
+                                BorderRadius.all(Radius.circular(30.r)),
+                            borderSide:
+                                BorderSide(width: 0.5.w, color: Colors.red),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
                             borderRadius:
-                            BorderRadius.all(Radius.circular(30.r)),
-                            borderSide: BorderSide(
-                                width: 0.5.w, color: Colors.red),
+                                BorderRadius.all(Radius.circular(30.r)),
+                            borderSide:
+                                BorderSide(width: 0.5.w, color: Colors.red),
                           ),
-                          errorStyle:
-                          TextStyle(height: 0, fontSize: 10.sp),
+                          errorStyle: TextStyle(height: 0, fontSize: 10.sp),
                           hintText: 'Search message',
-                          hintStyle: Theme.of(context)
-                              .primaryTextTheme
-                              .bodyText2,
+                          hintStyle:
+                              Theme.of(context).primaryTextTheme.bodyText2,
                           contentPadding:
-                          EdgeInsets.only(top: 10.h, left: 10.w),
+                              EdgeInsets.only(top: 10.h, left: 10.w),
                           prefixIcon: Transform.scale(
                               scale: 0.5,
-                              child: SvgPicture.asset('images/search.svg', color: darkModeOn? Colors.white: Colors.black,)),
+                              child: SvgPicture.asset(
+                                'images/search.svg',
+                                color: darkModeOn ? Colors.white : Colors.black,
+                              )),
                           // hintStyle: Theme.of(context).primaryTextTheme.subtitle1,
 
                           focusColor: uColor,
@@ -132,11 +181,28 @@ class _DirectMessageState extends State<DirectMessage> {
                     ),
                   ),
                 ),
+
                 SizedBox(width: width*0.2,),
                 Text('Message requests', style: TextStyle(color: bcolor3,fontWeight: FontWeight.w500, fontSize: 15.sp),),
+
               ],
             ),
           ),
+          Expanded(
+            child: SizedBox(
+              height: height,
+              child: ListView.builder(
+                itemCount: dmUsers.length,
+                itemBuilder: (context, index) => DmList(
+                    name: dmUsers[index].name,
+                    message: dmUsers[index].message,
+                    imageURL: dmUsers[index].imageURL,
+                    time: dmUsers[index].time,
+                    isMessageOpened: (index == 0 || index == 3) ? true : false),
+              ),
+            ),
+          ),
+
           // IconButton(onPressed: (){
           //   Navigator.push(context,MaterialPageRoute(builder: (context) => const Messages()));
           // }, icon: Icon(Icons.sms)),
@@ -145,5 +211,3 @@ class _DirectMessageState extends State<DirectMessage> {
     );
   }
 }
-
-
