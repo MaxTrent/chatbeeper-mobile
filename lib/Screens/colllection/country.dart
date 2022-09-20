@@ -28,6 +28,7 @@ class _CountryState extends State<Country> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         toolbarHeight: 40.h,
         centerTitle: true,
         elevation: 0,

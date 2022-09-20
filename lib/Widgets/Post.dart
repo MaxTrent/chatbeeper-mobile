@@ -72,7 +72,7 @@ class PostCard extends StatelessWidget {
                                     style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500, fontSize: 18.sp),
                                   ),
                                   Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey, fontSize: 17.sp ),),
-                                  const Icon(Icons.verified_rounded, color: bcolor5,size: 15,),
+                                   Icon(Icons.verified_rounded, color: bcolor5,size: 15.h,),
                                 ],
                               ),
                               Text('\ $posttime', style:  TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w500, color: Colors.grey, fontSize: 17.sp  ),),

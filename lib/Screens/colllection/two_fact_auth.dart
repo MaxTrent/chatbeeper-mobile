@@ -32,6 +32,7 @@ class _TwoFactAuthState extends State<TwoFactAuth> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         toolbarHeight: 40.h,
         elevation: 0.h,
         leading: IconButton(
@@ -201,6 +202,7 @@ class _TwoFactAddPhoneState extends State<TwoFactAddPhone> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         toolbarHeight: 40.h,
         elevation: 0.h,
         leading: IconButton(
@@ -585,6 +587,7 @@ class _RecoverCodesState extends State<RecoverCodes> {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         toolbarHeight: 40.h,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0.h,
         leading: IconButton(
             icon: Icon(

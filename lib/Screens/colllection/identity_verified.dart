@@ -25,6 +25,7 @@ class _IdentityVerifiedState extends State<IdentityVerified> {
     return Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: AppBar(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           toolbarHeight: 40.h,
           elevation: 0.h,
           leading: IconButton(
