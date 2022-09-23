@@ -122,6 +122,7 @@ class _CreateAccountState extends State<CreateAccount> {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       resizeToAvoidBottomInset: false,
       body: PageView(
+        allowImplicitScrolling: false,
         physics: BouncingScrollPhysics(),
         controller: _pageController,
         // onPageChanged: (num) async{ // what will happen when you switch

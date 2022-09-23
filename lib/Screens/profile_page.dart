@@ -1,5 +1,6 @@
 import 'package:chat_beeper/Widgets/image_slider.dart';
 import 'package:chat_beeper/Widgets/profile_tab.dart';
+import 'package:chat_beeper/Widgets/user_post_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../Widgets/Post.dart';
 import '../Widgets/post_imageless.dart';
+import '../Widgets/user_post_imageless.dart';
 import '../constants.dart';
 
 class CustomClipPath extends CustomClipper<Path> {
@@ -715,7 +717,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                   itemCount: 10,
                                   itemBuilder:
                                       (BuildContext context, int index) {
-                                    return PostBeep();
+                                    return UserPostBeep();
                                   },
                                 ),
                               ), //beeps
@@ -725,7 +727,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                   itemCount: 10,
                                   itemBuilder:
                                       (BuildContext context, int index) {
-                                    return PostCard();
+                                    return UserPost();
                                   },
                                 ),
                               ), //images

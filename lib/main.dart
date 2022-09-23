@@ -2,6 +2,7 @@ import 'package:chat_beeper/Screens/colllection/settings_page.dart';
 import 'package:chat_beeper/Screens/get_started.dart';
 import 'package:chat_beeper/Screens/otp_email.dart';
 import 'package:chat_beeper/Screens/profile_page.dart';
+import 'package:chat_beeper/Screens/sponsor_beep.dart';
 import 'package:chat_beeper/Widgets/Post.dart';
 import 'package:chat_beeper/themedata.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: SplashScreen.id,
         routes: {
+          SponsorBeep.id: (context) => SponsorBeep(),
           SignIn.id: (context) => SignIn(),
           UploadBname.id: (context) => const UploadBname(),
           SplashScreen.id: (context) => SplashScreen(),

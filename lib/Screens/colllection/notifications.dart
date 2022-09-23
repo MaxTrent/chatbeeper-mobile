@@ -40,10 +40,10 @@ class _NotificationsState extends State<Notifications> {
       designSize: Size(485, 926),
     );
     bool? isOnline;
-    String? imageUrl;
-    String? notificationName;
-    String? notificationAction;
-    String? time;
+    String? imageUrl = '';
+    String? notificationName = '';
+    String? notificationAction = '';
+    String? time = '';
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(428.w, 62.h),
@@ -109,7 +109,7 @@ class _NotificationsState extends State<Notifications> {
                     CircleAvatar(
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(100.r),
-                          child: Image.asset(imageUrl!)),
+                          child: Image.asset(imageUrl)),
                     ),
                     Positioned(
                       left: 32.w,
@@ -160,7 +160,7 @@ class _NotificationsState extends State<Notifications> {
                   ),
                   SizedBox(width: 5.w),
                   Text(
-                    time!,
+                    time,
                     style: Theme.of(context)
                         .primaryTextTheme
                         .bodyText1!
@@ -245,10 +245,10 @@ class _NotificationsState extends State<Notifications> {
               ),
               trailing: GestureDetector(
                 onTap: (() {
-                  setState(() {
-                    _followBack = _followBack;
-                    print(_followBack);
-                  });
+                  // setState(() {
+                  //   _followBack = _followBack;
+                  //   print(_followBack);
+                  // });
                 }),
                 child: Container(
                   height: 31.h,
@@ -646,7 +646,7 @@ class _NotificationsState extends State<Notifications> {
                           borderRadius: BorderRadius.circular(16.0.r)),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: PostBeep(),
+                        child: Expanded(child: PostBeep()),
                       ),
                     ),
                     SizedBox(
