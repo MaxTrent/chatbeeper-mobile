@@ -48,12 +48,11 @@ class _SponsorPaymentSetupState extends State<SponsorPaymentSetup> {
               ),
               title: Padding(
                 padding: EdgeInsets.only(top: 20.h, right: 10.w, left: 7),
-                child: SizedBox(
-                    height: 34.h,
-                    // width: 159.w,
-                    child: SvgPicture.asset(
-                      'images/chatbeeper_blue.svg',
-                    )),
+                child: SvgPicture.asset(
+                  'images/chatbeeper_blue.svg',
+                  height: 34.h,
+                  width: 34.w,
+                ),
               ),
               centerTitle: true,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,

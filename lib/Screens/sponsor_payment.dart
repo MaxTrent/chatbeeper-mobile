@@ -49,12 +49,11 @@ class _SponsorPaymentState extends State<SponsorPayment> {
               ),
               title: Padding(
                 padding: EdgeInsets.only(top: 20.h, right: 10.w, left: 7),
-                child: SizedBox(
-                    height: 34.h,
-                    // width: 159.w,
-                    child: SvgPicture.asset(
-                      'images/chatbeeper_blue.svg',
-                    )),
+                child: SvgPicture.asset(
+                  'images/chatbeeper_blue.svg',
+                  height: 34.h,
+                  width: 34.w,
+                ),
               ),
               centerTitle: true,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -68,7 +67,7 @@ class _SponsorPaymentState extends State<SponsorPayment> {
     return Scaffold(
       appBar: Appbar(),
       body: Padding(
-        padding: EdgeInsets.only(left: 23.0.h, top: 23.h),
+        padding: EdgeInsets.only(left: 23.0.w, right: 23.w, top: 23.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -80,7 +79,7 @@ class _SponsorPaymentState extends State<SponsorPayment> {
             SizedBox(
               height: 67.h,
             ),
-            UserPostBeep(),
+            Center(child: UserPostBeep()),
             SizedBox(height: 179.h),
             Center(
               child: SizedBox(

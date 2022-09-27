@@ -9,8 +9,10 @@ import 'package:like_button/like_button.dart';
 import '../constants.dart';
 import 'image_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 class RoomCard extends StatelessWidget {
-  String loremIpsum ="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+  String loremIpsum =
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
   String FullName = 'Sarah Madini';
   String username = 'Madini';
   String posttime = '1 hour ago';
@@ -24,7 +26,7 @@ class RoomCard extends StatelessWidget {
     bool darkModeOn = brightness == Brightness.dark;
     ScreenUtil.init(
       context,
-      designSize:const Size(485,926),
+      designSize: const Size(485, 926),
     );
     buildImg(Color color, double height) {
       return SizedBox(
@@ -44,7 +46,11 @@ class RoomCard extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(
-                top: 10.h, bottom: 10.h, left: 10.w, right: 10.w,),
+                top: 10.h,
+                bottom: 10.h,
+                left: 10.w,
+                right: 10.w,
+              ),
               child: SizedBox(
                 height: 60.h,
                 child: Column(
@@ -66,37 +72,49 @@ class RoomCard extends StatelessWidget {
                               children: [
                                 Text(
                                   "\ $FullName\ ",
-                                  style: Theme
-                                      .of(context)
+                                  style: Theme.of(context)
                                       .primaryTextTheme
                                       .bodyText1!
-                                      .copyWith(fontWeight: FontWeight.w500, fontSize: 18.sp),
+                                      .copyWith(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 22.sp),
                                 ),
-                                Text('@$username', style:  TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 17.sp,
-                                    color: Colors.grey),),
-                                 Icon(
-                                  Icons.verified_rounded, color: bcolor5,
-                                  size: 15.h,),
+                                Text(
+                                  '@$username',
+                                  style: TextStyle(
+                                      fontFamily: 'Nunito',
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 21.sp,
+                                      color: Colors.grey),
+                                ),
+                                Icon(
+                                  Icons.verified_rounded,
+                                  color: bcolor5,
+                                  size: 15.h,
+                                ),
                               ],
                             ),
-                            Text('\ $posttime', style: const TextStyle(
-                                fontFamily: 'Nunito',
-                                fontWeight: FontWeight.w500,
-                                color: Colors.grey),),
+                            Text(
+                              '\ $posttime',
+                              style: const TextStyle(
+                                  fontFamily: 'Nunito',
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey),
+                            ),
                           ],
                         ),
                         Spacer(),
-                        IconButton(onPressed: () {},
-                          icon: Icon(Icons.more_vert_sharp, color: Theme
-                              .of(context)
-                              .colorScheme
-                              .secondaryVariant, size: 30,),)
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.more_vert_sharp,
+                            color:
+                                Theme.of(context).colorScheme.secondaryVariant,
+                            size: 30,
+                          ),
+                        )
                       ],
                     ),
-
                   ],
                 ),
               ),
@@ -110,40 +128,74 @@ class RoomCard extends StatelessWidget {
           SizedBox(
             height: 110.h,
             child: Padding(
-              padding:  EdgeInsets.only(left: 16.w),
+              padding: EdgeInsets.only(left: 16.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(
-                    child:  Row(
+                    child: Row(
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(100.0.r),
-                          child: Image.asset('images/sarah.png',height: 40.h,),
+                          child: Image.asset(
+                            'images/sarah.png',
+                            height: 40.h,
+                          ),
                         ),
-                        SizedBox(width: 8.w,),
+                        SizedBox(
+                          width: 8.w,
+                        ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(height: 12.h,),
+                            SizedBox(
+                              height: 12.h,
+                            ),
                             Row(
                               children: [
                                 Text(
                                   "\ $FullName\ ",
-                                  style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500, fontSize: 18.sp),
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .bodyText1!
+                                      .copyWith(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 22.sp),
                                 ),
-                                Text('@$username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: Colors.grey, fontSize: 17.sp ),),
-                                 Icon(Icons.verified_rounded, color: bcolor5,size: 15.h,),
+                                Text(
+                                  '@$username',
+                                  style: TextStyle(
+                                      fontFamily: 'Nunito',
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.grey,
+                                      fontSize: 21.sp),
+                                ),
+                                Icon(
+                                  Icons.verified_rounded,
+                                  color: bcolor5,
+                                  size: 15.h,
+                                ),
                               ],
                             ),
-                            Text('\ $posttime', style:  TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w500, color: Colors.grey, fontSize: 17.sp  ),),
+                            Text(
+                              '\ $posttime',
+                              style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey,
+                                  fontSize: 17.sp),
+                            ),
                           ],
                         ),
                         Spacer(),
                         PopupMenuButton<int>(
-
-                          icon: Icon(Icons.more_vert_sharp, size: 24.h,color: Theme.of(context).colorScheme.secondaryVariant,),
+                          icon: Icon(
+                            Icons.more_vert_sharp,
+                            size: 24.h,
+                            color:
+                                Theme.of(context).colorScheme.secondaryVariant,
+                          ),
                           iconSize: 24.h,
                           itemBuilder: (context) => [
                             PopupMenuItem(
@@ -152,73 +204,153 @@ class RoomCard extends StatelessWidget {
                               child: Row(
                                 children: [
                                   SizedBox(
-                                      height: 24.h, width: 24.w,
-                                      child: darkModeOn == false? SvgPicture.asset('images/mute.svg'):SvgPicture.asset('images/mute.svg', color: Colors.white,)),
-                                  SizedBox(width: 10.w,),
-                                  Text("Mute",style:  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),)
+                                      height: 24.h,
+                                      width: 24.w,
+                                      child: darkModeOn == false
+                                          ? SvgPicture.asset('images/mute.svg')
+                                          : SvgPicture.asset(
+                                              'images/mute.svg',
+                                              color: Colors.white,
+                                            )),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Text(
+                                    "Mute",
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black),
+                                  )
                                 ],
                               ),
-                            ),//mute
+                            ), //mute
                             PopupMenuItem(
                               value: 2,
                               // row has two child icon and text.
                               child: Row(
                                 children: [
                                   SizedBox(
-                                      height: 24.h, width: 24.w,
-                                      child:darkModeOn == false? SvgPicture.asset('images/block.svg'):SvgPicture.asset('images/block.svg', color: Colors.white,)),
-                                  SizedBox(width: 10.w,),
-                                  Text("Block", style:
-                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                      height: 24.h,
+                                      width: 24.w,
+                                      child: darkModeOn == false
+                                          ? SvgPicture.asset('images/block.svg')
+                                          : SvgPicture.asset(
+                                              'images/block.svg',
+                                              color: Colors.white,
+                                            )),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Text(
+                                    "Block",
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black),
                                   )
                                 ],
                               ),
-                            ),//block
+                            ), //block
                             PopupMenuItem(
                               value: 3,
                               // row has two child icon and text.
                               child: Row(
                                 children: [
                                   SizedBox(
-                                      height: 24.h, width: 24.w,
-                                      child:darkModeOn == false? SvgPicture.asset('images/unfollow.svg'):SvgPicture.asset('images/unfollow.svg', color: Colors.white,)),
-                                  SizedBox(width: 10.w,),
-                                  Text("Unfollow", style:
-                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                      height: 24.h,
+                                      width: 24.w,
+                                      child: darkModeOn == false
+                                          ? SvgPicture.asset(
+                                              'images/unfollow.svg')
+                                          : SvgPicture.asset(
+                                              'images/unfollow.svg',
+                                              color: Colors.white,
+                                            )),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Text(
+                                    "Unfollow",
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black),
                                   )
                                 ],
                               ),
-                            ),//unfollow
+                            ), //unfollow
                             PopupMenuItem(
                               value: 4,
                               // row has two child icon and text.
                               child: Row(
                                 children: [
                                   SizedBox(
-                                      height: 24.h, width: 24.w,
-                                      child:darkModeOn == false? SvgPicture.asset('images/not interested.svg'):SvgPicture.asset('images/not interested.svg', color: Colors.white,)),
-                                  SizedBox(width: 10.w,),
-                                  Text("Not interested in this", style:
-                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                      height: 24.h,
+                                      width: 24.w,
+                                      child: darkModeOn == false
+                                          ? SvgPicture.asset(
+                                              'images/not interested.svg')
+                                          : SvgPicture.asset(
+                                              'images/not interested.svg',
+                                              color: Colors.white,
+                                            )),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Text(
+                                    "Not interested in this",
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black),
                                   )
                                 ],
                               ),
-                            ),//not interested
+                            ), //not interested
                             PopupMenuItem(
                               value: 5,
                               // row has two child icon and text.
                               child: Row(
                                 children: [
                                   SizedBox(
-                                      height: 24.h, width: 24.w,
-                                      child:darkModeOn == false? SvgPicture.asset('images/report.svg'):SvgPicture.asset('images/report.svg', color: Colors.white,)),
-                                  SizedBox(width: 10.w,),
-                                  Text("Report this account", style:
-                                  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                                      height: 24.h,
+                                      width: 24.w,
+                                      child: darkModeOn == false
+                                          ? SvgPicture.asset(
+                                              'images/report.svg')
+                                          : SvgPicture.asset(
+                                              'images/report.svg',
+                                              color: Colors.white,
+                                            )),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Text(
+                                    "Report this account",
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black),
                                   )
                                 ],
                               ),
-                            ),//report
+                            ), //report
                           ],
                           offset: Offset(-28.w, 40.h),
                           color: Theme.of(context).scaffoldBackgroundColor,
@@ -228,16 +360,26 @@ class RoomCard extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(top: 14.h, bottom: 17.h,),
-                    child: Text(bio,
+                    padding: EdgeInsets.only(
+                      top: 14.h,
+                      bottom: 17.h,
+                    ),
+                    child: Text(
+                      bio,
                       textAlign: TextAlign.left,
-                      style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 21.sp, fontWeight: FontWeight.w400, fontFamily: 'Nunito'),
+                      style: Theme.of(context)
+                          .primaryTextTheme
+                          .bodyText1!
+                          .copyWith(
+                              fontSize: 25.sp,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Nunito'),
                     ),
                   ),
                 ],
               ),
             ),
-          ),//avatar
+          ), //avatar
           const RoomSlider(),
         ],
       );
@@ -246,7 +388,6 @@ class RoomCard extends StatelessWidget {
     // buildCollapsed3() {
     //   return Container();
     // }
-
 
     buildExpanded1() {
       return Column(
@@ -259,17 +400,11 @@ class RoomCard extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     "Expandable",
-                    style: Theme
-                        .of(context)
-                        .primaryTextTheme
-                        .bodyText1,
+                    style: Theme.of(context).primaryTextTheme.bodyText1,
                   ),
                   Text(
                     "3 Expandable widgets",
-                    style: Theme
-                        .of(context)
-                        .textTheme
-                        .caption,
+                    style: Theme.of(context).textTheme.caption,
                   ),
                 ],
               ),
@@ -305,7 +440,10 @@ class RoomCard extends StatelessWidget {
           children: <Widget>[
             ReadMoreText(
               loremIpsum,
-              style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w400, fontSize: 19.sp),
+              style: Theme.of(context)
+                  .primaryTextTheme
+                  .bodyText1!
+                  .copyWith(fontWeight: FontWeight.w400, fontSize: 25.sp),
             ),
           ],
         ),
@@ -314,46 +452,44 @@ class RoomCard extends StatelessWidget {
 
     return ExpandableNotifier(
         child: Padding(
-          padding: EdgeInsets.only(bottom: 10.h),
-          child: ScrollOnExpand(
-            child: SizedBox(
-              child: Column(
-                children: [
-                  Card(
-                    elevation: 0,
-                    color: Theme
-                        .of(context)
-                        .scaffoldBackgroundColor,
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        ExpandableTheme(
-                          data: const ExpandableThemeData(),
-                          child: Expandable(
-                            collapsed: buildCollapsed2(),
-                            expanded: buildExpanded1(),
-                          ),
-                        ),
-                        // Expandable(
-                        //   collapsed: buildCollapsed2(),
-                        //   expanded: buildExpanded2(),
-                        // ),
-                        // Expandable(
-                        //   collapsed: buildCollapsed3(),
-                        //   expanded: buildExpanded3(),
-                        // ),
-                        Divider(
-                          height: 1,
-                          color:uColor,
-                        ),
-                      ],
+      padding: EdgeInsets.only(bottom: 10.h),
+      child: ScrollOnExpand(
+        child: SizedBox(
+          child: Column(
+            children: [
+              Card(
+                elevation: 0,
+                color: Theme.of(context).scaffoldBackgroundColor,
+                clipBehavior: Clip.antiAlias,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    ExpandableTheme(
+                      data: const ExpandableThemeData(),
+                      child: Expandable(
+                        collapsed: buildCollapsed2(),
+                        expanded: buildExpanded1(),
+                      ),
                     ),
-                  ),
-                ],
+                    // Expandable(
+                    //   collapsed: buildCollapsed2(),
+                    //   expanded: buildExpanded2(),
+                    // ),
+                    // Expandable(
+                    //   collapsed: buildCollapsed3(),
+                    //   expanded: buildExpanded3(),
+                    // ),
+                    Divider(
+                      height: 1,
+                      color: uColor,
+                    ),
+                  ],
+                ),
               ),
-            ),
+            ],
           ),
-        ));
+        ),
+      ),
+    ));
   }
 }

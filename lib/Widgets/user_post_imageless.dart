@@ -56,37 +56,15 @@ class _PostBeepState extends State<UserPostBeep> {
       return Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
           Widget>[
         Padding(
-          padding: EdgeInsets.fromLTRB(4.w, 8.w, 0.w, 12.h),
+          padding: EdgeInsets.fromLTRB(4.w, 0.h, 0.w, 0.h),
           child: SizedBox(
-            height: 83.h,
+            height: 55.h,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.grey.shade200,
-                    height: 28.h,
-                    width: 105.w,
-                    child: Center(
-                      child: Text(
-                        'Sponsored',
-                        style: TextStyle(
-                            color:
-                                (Theme.of(context).brightness == Brightness.dark
-                                    ? Colors.grey.shade800
-                                    : Colors.black),
-                            fontSize: 15.sp,
-                            fontFamily: 'Nunito',
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                  ),
-                ),
                 Expanded(
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(100.0.r),
@@ -99,11 +77,10 @@ class _PostBeepState extends State<UserPostBeep> {
                         width: 8.w,
                       ),
                       Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            height: 12.h,
+                            height: 7.h,
                           ),
                           Row(
                             children: [
@@ -114,7 +91,7 @@ class _PostBeepState extends State<UserPostBeep> {
                                     .bodyText1!
                                     .copyWith(
                                         fontWeight: FontWeight.w500,
-                                        fontSize: 18.sp),
+                                        fontSize: 22.sp),
                               ),
                               Text(
                                 '@$username',
@@ -122,7 +99,7 @@ class _PostBeepState extends State<UserPostBeep> {
                                     fontFamily: 'Nunito',
                                     fontWeight: FontWeight.w600,
                                     color: Colors.grey,
-                                    fontSize: 17.sp),
+                                    fontSize: 21.sp),
                               ),
                               const Icon(
                                 Icons.verified_rounded,
@@ -180,7 +157,7 @@ class _PostBeepState extends State<UserPostBeep> {
                                   "Sponsor beep",
                                   style: TextStyle(
                                       fontFamily: 'Nunito',
-                                      fontSize: 18.sp,
+                                      fontSize: 22.sp,
                                       fontWeight: FontWeight.w600,
                                       color: darkModeOn
                                           ? Colors.white
@@ -210,7 +187,7 @@ class _PostBeepState extends State<UserPostBeep> {
                                   "Beep data",
                                   style: TextStyle(
                                       fontFamily: 'Nunito',
-                                      fontSize: 18.sp,
+                                      fontSize: 22.sp,
                                       fontWeight: FontWeight.w600,
                                       color: darkModeOn
                                           ? Colors.white
@@ -236,7 +213,7 @@ class _PostBeepState extends State<UserPostBeep> {
                                   "Delete beep",
                                   style: TextStyle(
                                       fontFamily: 'Nunito',
-                                      fontSize: 18.sp,
+                                      fontSize: 22.sp,
                                       fontWeight: FontWeight.w600,
                                       color: Color(0xffC92828)),
                                 )
@@ -260,10 +237,11 @@ class _PostBeepState extends State<UserPostBeep> {
 
     buildCollapsed2() {
       return Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
             padding: EdgeInsets.only(
-                left: 16.w, right: 10.w, bottom: 12.h, top: 12.h),
+                left: 16.w, right: 10.w, bottom: 12.h, top: 3.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -277,7 +255,7 @@ class _PostBeepState extends State<UserPostBeep> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .bodyText1!
-                      .copyWith(fontWeight: FontWeight.w400, fontSize: 21.sp),
+                      .copyWith(fontWeight: FontWeight.w400, fontSize: 25.sp),
                 ),
               ],
             ),
@@ -466,7 +444,7 @@ class _PostBeepState extends State<UserPostBeep> {
           //                               .bodyText1!
           //                               .copyWith(
           //                                 color: bcolor3,
-          //                                 fontSize: 17.sp,
+          //                                 fontSize: 21.sp,
           //                                 fontWeight: FontWeight.w700,
           //                               ),
           //                         ),
@@ -869,21 +847,6 @@ class _PostBeepState extends State<UserPostBeep> {
               ),
             ),
           ]);
-    } //useless
-
-    buildExpanded3() {
-      return Padding(
-        padding:
-            EdgeInsets.only(left: 16.w, right: 27.w, bottom: 12.h, top: 12.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            ReadMoreText(
-              loremIpsum,
-            ),
-          ],
-        ),
-      );
     } //useless
 
     return ExpandableNotifier(

@@ -42,7 +42,7 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
                 style: Theme.of(context)
                     .primaryTextTheme
                     .headline4!
-                    .copyWith(fontSize: 17.sp)),
+                    .copyWith(fontSize: 19.sp)),
           ),
           centerTitle: true,
         ),
@@ -51,8 +51,8 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Divider(
-              thickness: 0.5.h,
-                color:uColor,
+                thickness: 0.5.h,
+                color: uColor,
               ),
               ListTile(
                 dense: true,
@@ -61,13 +61,13 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline4!
-                      .copyWith(fontSize: 17.sp),
+                      .copyWith(fontSize: 19.sp),
                 ),
               ),
               Divider(
                 height: 16.h,
-              thickness: 0.5.h,
-                color:uColor,
+                thickness: 0.5.h,
+                color: uColor,
               ),
               SizedBox(
                 height: 20.h,
@@ -90,7 +90,7 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline4!
-                      .copyWith(fontSize: 17.sp, fontWeight: FontWeight.w500),
+                      .copyWith(fontSize: 19.sp, fontWeight: FontWeight.w500),
                 ),
               ),
               SizedBox(
@@ -116,7 +116,7 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
                       style: Theme.of(context)
                           .primaryTextTheme
                           .headline4!
-                          .copyWith(fontSize: 17.sp, color: Color(0xff295B85)),
+                          .copyWith(fontSize: 19.sp, color: Color(0xff295B85)),
                     ),
                   ],
                 ),
@@ -144,7 +144,7 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
                                     .primaryTextTheme
                                     .headline4!
                                     .copyWith(
-                                        fontSize: 17.sp,
+                                        fontSize: 19.sp,
                                         color: Color(0xff295B85)),
                               )),
                           SizedBox(
@@ -182,7 +182,7 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
                       style: Theme.of(context)
                           .primaryTextTheme
                           .headline3!
-                          .copyWith(fontSize: 17.sp),
+                          .copyWith(fontSize: 19.sp),
                     ),
                   ),
                 ),

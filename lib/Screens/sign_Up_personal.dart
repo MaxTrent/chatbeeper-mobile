@@ -177,7 +177,7 @@ class _CreateAccountState extends State<CreateAccount> {
                           ),
                           CircleAvatar(
                             maxRadius: 8.r,
-                            backgroundColor: Colors.blue.shade100,
+                            backgroundColor: Color(0xffD1E1EF),
                           ),
                           Container(
                             height: 0.5.h,
@@ -186,7 +186,7 @@ class _CreateAccountState extends State<CreateAccount> {
                           ),
                           CircleAvatar(
                             maxRadius: 8.r,
-                            backgroundColor: Colors.blue.shade100,
+                            backgroundColor: Color(0xffD1E1EF),
                           ),
                         ],
                       ),
@@ -356,7 +356,7 @@ class _CreateAccountState extends State<CreateAccount> {
                               controller: _emailTextController,
                               validator: (val) {
                                 if (!val!.isValidEmail || val.isEmpty) {
-                                  return 'Enter valid email';
+                                  return 'Enter valid email address';
                                 }
                                 return null;
                               },
@@ -429,7 +429,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                     val.isEmpty ||
                                     val.length > 10 ||
                                     val.length < 10) {
-                                  return 'Enter valid phone number';
+                                  return 'Enter a valid phone number';
                                 }
                                 return null;
                               },
@@ -518,10 +518,10 @@ class _CreateAccountState extends State<CreateAccount> {
                                   backgroundColor:
                                       MaterialStateProperty.resolveWith<Color>(
                                           (Set<MaterialState> states) {
-                                    if (_emailTextController.text.isEmpty ||
+                                    if (_phoneTextController.text.isEmpty ||
                                         _emailTextController.text.isEmpty ||
                                         _fnameTextController.text.isEmpty) {
-                                      return uColor;
+                                      return Color(0xffD8D8D8);
                                     }
                                     return bcolor1;
                                   }),

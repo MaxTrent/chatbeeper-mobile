@@ -42,12 +42,11 @@ class SponsorDuration extends StatelessWidget {
               ),
               title: Padding(
                 padding: EdgeInsets.only(top: 20.h, right: 10.w, left: 7),
-                child: SizedBox(
-                    height: 34.h,
-                    // width: 159.w,
-                    child: SvgPicture.asset(
-                      'images/chatbeeper_blue.svg',
-                    )),
+                child: SvgPicture.asset(
+                  'images/chatbeeper_blue.svg',
+                  height: 34.h,
+                  width: 34.w,
+                ),
               ),
               centerTitle: true,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -893,6 +892,56 @@ class SponsorDuration extends StatelessWidget {
                       },
                       child: Text(
                         '3 Years',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context)
+                            .primaryTextTheme
+                            .headline3!
+                            .copyWith(
+                                fontSize: 17.sp,
+                                fontWeight: FontWeight.w500,
+                                color: darkModeOn ? Colors.white : bcolor1),
+                        // TextStyle(
+                        //     color: Colors.white,
+                        //     fontWeight: FontWeight.w500,
+                        //     fontFamily: 'Nunito',
+                        //     fontSize: 17.sp
+                        //
+                        // ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 20.w,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 16.0.h),
+                  child: SizedBox(
+                    height: 30.h,
+                    width: 90.w,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                          padding: MaterialStateProperty.all(
+                              EdgeInsets.symmetric(
+                                  vertical: 4.h, horizontal: 10.w)),
+                          elevation: MaterialStateProperty.all(0.0),
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.transparent),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.r),
+                            side: const BorderSide(color: bcolor1),
+                          ))),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SponsorPayment(),
+                            ));
+                      },
+                      child: Text(
+                        'More',
                         textAlign: TextAlign.center,
                         style: Theme.of(context)
                             .primaryTextTheme

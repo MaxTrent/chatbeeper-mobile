@@ -1,5 +1,5 @@
-
 import 'package:chat_beeper/Screens/colllection/settings_page.dart';
+import 'package:chat_beeper/Widgets/app_drawer.dart';
 import 'package:chat_beeper/Widgets/tour_card.dart';
 import 'package:chat_beeper/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -30,7 +30,6 @@ class TourPage extends StatefulWidget {
 }
 
 class _TourPageState extends State<TourPage> {
-
   late List<TourImage> images;
   late TourImage displayImage;
   String fullName = 'Jane Doe';
@@ -40,29 +39,31 @@ class _TourPageState extends State<TourPage> {
     images = [
       TourImage(
           url:
-          'https://images.unsplash.com/photo-1657299141984-dd9196274cde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+              'https://images.unsplash.com/photo-1657299141984-dd9196274cde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
           id: 'i001'),
       TourImage(
           url:
-          'https://images.unsplash.com/photo-1659536540455-161b929e650c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
+              'https://images.unsplash.com/photo-1659536540455-161b929e650c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
           id: 'i002'),
       TourImage(
           url:
-          'https://images.unsplash.com/photo-1657299170111-371dabe2e60d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
+              'https://images.unsplash.com/photo-1657299170111-371dabe2e60d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
           id: 'i003'),
       TourImage(
           url:
-          'https://images.unsplash.com/photo-1657299170111-371dabe2e60d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
+              'https://images.unsplash.com/photo-1657299170111-371dabe2e60d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
           id: 'i004'),
       TourImage(
           url:
-          'https://images.unsplash.com/photo-1659536540455-161b929e650c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
+              'https://images.unsplash.com/photo-1659536540455-161b929e650c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
           id: 'i005'),
     ];
     displayImage = images[0];
     super.initState();
   }
-  String loremIpsum ="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+  String loremIpsum =
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
   String FullName = 'Sarah Madini';
   String username = 'Janedoe_10';
   String posttime = '1 hour ago';
@@ -75,25 +76,20 @@ class _TourPageState extends State<TourPage> {
     bool darkModeOn = brightness == Brightness.dark;
     ScreenUtil.init(
       context,
-      designSize:const Size(485,926),
+      designSize: const Size(485, 926),
     );
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      appBar:  PreferredSize(
-        preferredSize: Size(428.w,62.h),
+      appBar: PreferredSize(
+        preferredSize: Size(428.w, 62.h),
         child: Container(
           decoration: const BoxDecoration(
               border: Border(
-                  bottom: BorderSide(
-                      color: uColor,
-                      style: BorderStyle.solid
-                  )
-              )
-          ),
+                  bottom: BorderSide(color: uColor, style: BorderStyle.solid))),
           child: SafeArea(
             child: AppBar(
               leading: Padding(
-                padding:  EdgeInsets.only(top: 15.h,bottom: 5.h),
+                padding: EdgeInsets.only(top: 15.h, bottom: 5.h),
                 child: Container(
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
@@ -101,7 +97,7 @@ class _TourPageState extends State<TourPage> {
                   ),
                   height: 28.h,
                   child: GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       _key.currentState!.openDrawer();
                     },
                     child: CircleAvatar(
@@ -114,11 +110,13 @@ class _TourPageState extends State<TourPage> {
                 ),
               ),
               title: Padding(
-                padding:  EdgeInsets.only(top: 20.h, right: 10.w, left: 7),
+                padding: EdgeInsets.only(top: 20.h, right: 10.w, left: 7),
                 child: SizedBox(
                     height: 34.h,
                     // width: 159.w,
-                    child: SvgPicture.asset('images/chatbeeper_blue.svg',)),
+                    child: SvgPicture.asset(
+                      'images/chatbeeper_blue.svg',
+                    )),
               ),
               centerTitle: true,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -126,42 +124,46 @@ class _TourPageState extends State<TourPage> {
               actions: [
                 // SizedBox(width: 12.w,),
                 Padding(
-                  padding:  EdgeInsets.only(top: 28.h, right: 20.w, bottom: 5.h),
+                  padding: EdgeInsets.only(top: 28.h, right: 20.w, bottom: 5.h),
                   child: GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       // Navigator.push(context,
                       //     MaterialPageRoute(builder: (context) => DirectMessage()));
                     },
-                    child:
-                    darkModeOn == false ? SvgPicture.asset(
-                      color: Colors.black,
-                      'images/search.svg',
-                    ):
-                    SvgPicture.asset(
-                      color: Colors.white,
-                      'images/search_dark.svg',
-                    ),
+                    child: darkModeOn == false
+                        ? SvgPicture.asset(
+                            color: Colors.black,
+                            'images/search.svg',
+                          )
+                        : SvgPicture.asset(
+                            color: Colors.white,
+                            'images/search_dark.svg',
+                          ),
                   ),
                 ),
                 Padding(
-                  padding:  EdgeInsets.only(top: 28.h, right: 14.w, bottom: 5.h),
+                  padding: EdgeInsets.only(top: 28.h, right: 14.w, bottom: 5.h),
                   child: SizedBox(
-                    height: 28.h, width: 28.h,
+                    height: 28.h,
+                    width: 28.h,
                     child: Transform.scale(
                       scale: 1.2,
                       child: GestureDetector(
-                        onTap: (){
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => DirectMessage()));
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => DirectMessage()));
                         },
-                        child: darkModeOn == false? SvgPicture.asset(
-                          color: Colors.black,
-                          'images/Dm.svg',
-                        ):
-                        SvgPicture.asset(
-                          color: Colors.white,
-                          'images/sms.svg',
-                        ),
+                        child: darkModeOn == false
+                            ? SvgPicture.asset(
+                                color: Colors.black,
+                                'images/Dm.svg',
+                              )
+                            : SvgPicture.asset(
+                                color: Colors.white,
+                                'images/sms.svg',
+                              ),
                       ),
                     ),
                   ),
@@ -179,354 +181,19 @@ class _TourPageState extends State<TourPage> {
               itemCount: 5,
               itemBuilder: (BuildContext context, int index) {
                 return Column(
-                  children: const [
-                    TourCard(),
-                    SponsoredTourCard()
-                  ],
+                  children: const [TourCard(), SponsoredTourCard()],
                 );
               },
             ),
           ),
         ),
       ),
-      drawer: SizedBox(
-        width: 372.w,
-        child: Drawer(
-          backgroundColor:  Theme.of(context).scaffoldBackgroundColor,
-          child: SafeArea(
-            child: ListView(
-              // Important: Remove any padding from the ListView.
-              padding: EdgeInsets.zero,
-              children: [
-                Padding(
-                  padding:  EdgeInsets.only(left: 16.w,top: 32.h),
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    child:   Column(
-                      children: [
-                        Image.asset('images/logo1.png',height: 36.h, width: 36.w,),
-                        Padding(
-                          padding:  EdgeInsets.only(top: 5.h,),
-                          child: SizedBox(
-                              height: 35.h,
-                              // width: 159.w,
-                              child: SvgPicture.asset('images/chatbeeper_blue.svg',)),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),//logo
-                SizedBox(height: 39.h,),
-                Column(
-                  children: [
-                    Padding(
-                      padding:  EdgeInsets.only(bottom: 20.h, left: 16.w),
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Row(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(100.0.r),
-                              child: Image.asset('images/pp_round.png', height: 65.h,),
-                            ),
-                            SizedBox(width: 12.w,),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  fullName,
-                                  style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500, fontSize: 18.sp ),
-                                ),//full name
-                                Text('\  $username', style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 17.sp ),),//username
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:  EdgeInsets.only(left: 16.w, right: 17.w),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            child: GestureDetector(
-                              onTap: (){
-                                // Navigator.pop(context);
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //       builder: (context) => const Following(),
-                                //     ));
-                              },
-                              child: Row(
-                                children: [
-                                  Text('100K', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                    fontWeight: FontWeight.w600, fontSize: 17.sp,
-                                  ),
-                                  ),
-                                  SizedBox(width: 3.w,),
-                                  Text('Beeps',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 17.sp,), ),
-                                ],
-                              ),
-                            ),
-                          ),//beeps
-                          SizedBox(width: 7.w,),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 5, left: 5),
-                            child: GestureDetector(
-                              onTap: (){
-                                Navigator.pop(context);
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const Followers(),
-                                    ));
-                              },
-                              child: Row(
-                                children: [
-                                  Text('800', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                    fontWeight: FontWeight.w600, fontSize: 17.sp,
-                                  ),
-                                  ),
-                                  SizedBox(width: 5.w,),
-                                  Text('Followers',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w700, color: uColor, fontSize: 17.sp,), ),
-                                ],
-                              ),
-                            ),
-                          ),//followers
-                          SizedBox(width: 7.w,),
-                          SizedBox(
-                            child: GestureDetector(
-                              onTap: (){
-                                Navigator.pop(context);
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const Following(),
-                                    ));
-                              },
-                              child: Row(
-                                children: [
-                                  Text('2k', style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                                    fontWeight: FontWeight.w600, fontSize: 18.sp,
-                                  ),
-                                  ),
-                                  SizedBox(width: 5.w,),
-                                  Text('Following',style: TextStyle(fontFamily: 'Nunito',fontWeight:FontWeight.w600, color: uColor, fontSize: 17.sp,), ),
-                                ],
-                              ),
-                            ),
-                          ),//following
-                        ],
-                      ),
-                    ),//following followers
-                    SizedBox(height: 12.h,),
-                    Divider(color:uColor, thickness: 0.5.h,),
-                  ],
-                ),
-                Align(
-                    alignment: Alignment.topLeft,
-                    child:TextButton(
-                        style: TextButton.styleFrom(
-                          splashFactory: NoSplash.splashFactory,
-                          onSurface: Colors.transparent,
-
-                          // overlayColor: MaterialStateProperty.all(Colors.transparent),
-                        ),
-                        onPressed: (){
-                          Navigator.pop(context);
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => const Profile(),));
-                        }, child: Row(
-                      children: [
-                        SizedBox(
-                            height: 24.h,  width: 24.w,
-                            child: darkModeOn? SvgPicture.asset('images/profile white.svg'):
-                            SvgPicture.asset('images/profile.svg')
-                        ),
-                        SizedBox(width: 12.w,),
-                        Text('My Profile',
-                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
-                        ),
-                      ],
-                    )
-                    )
-                ),//myprofile
-                SizedBox(height: 15.h,),
-                Align(
-                    alignment: Alignment.topLeft,
-                    child:TextButton(   style: TextButton.styleFrom(
-                      splashFactory: NoSplash.splashFactory,
-                      onSurface: Colors.transparent,
-
-                      // overlayColor: MaterialStateProperty.all(Colors.transparent),
-                    ),onPressed: (){
-                      Navigator.pop(context);
-                      Navigator.push(context,MaterialPageRoute(builder: (context) => const FollowerRequests(),));
-                    },
-                        child: Row(
-                          children: [
-                            SizedBox(
-                                height: 24.h,  width: 24.w,
-                                child: darkModeOn? SvgPicture.asset('images/profile-2user white.svg'):
-                                SvgPicture.asset('images/profile-2user.svg')
-                            ),
-                            SizedBox(width: 12.w,),
-                            Text('Follower Requests',
-                                style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
-                            ),
-                          ],
-                        ))),//follower request
-                SizedBox(height: 15.h,),
-                Align(
-                    alignment: Alignment.topLeft,
-                    child:TextButton(   style: TextButton.styleFrom(
-                      splashFactory: NoSplash.splashFactory,
-                      onSurface: Colors.transparent,
-
-                      // overlayColor: MaterialStateProperty.all(Colors.transparent),
-                    ),onPressed: (){
-                      Navigator.pop(context);
-                      Navigator.push(context,MaterialPageRoute(builder: (context) => const Trending(),));
-                    }, child: Row(
-                      children: [
-                        SizedBox(
-                            height: 24.h,  width: 24.w,
-                            child: darkModeOn? SvgPicture.asset('images/activity white.svg'):
-                            SvgPicture.asset('images/activity.svg')
-                        ),
-                        SizedBox(width: 12.w,),
-                        Text('Trending',
-                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
-                        ),
-                      ],
-                    ))),//Trending
-                SizedBox(height: 15.h,),
-                Align(
-                    alignment: Alignment.topLeft,
-                    child:TextButton(   style: TextButton.styleFrom(
-                      splashFactory: NoSplash.splashFactory,
-                      onSurface: Colors.transparent,
-
-                      // overlayColor: MaterialStateProperty.all(Colors.transparent),
-                    ),onPressed: (){
-                      Navigator.pop(context);
-                      Navigator.push(context,MaterialPageRoute(builder: (context) => const SavedBeeps(),));
-                    }, child: Row(
-                      children: [
-                        SizedBox(
-                            height: 24.h,  width: 24.w,
-                            child: darkModeOn? SvgPicture.asset('images/save-2 white.svg'):
-                            SvgPicture.asset('images/save-2.svg')
-                        ),
-                        SizedBox(width: 12.w,),
-                        Text('Saved Beeps',
-                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
-                        ),
-                      ],
-                    ))),//saved
-                SizedBox(height: 15.h,),
-                Align(
-                    alignment: Alignment.topLeft,
-                    child:TextButton(   style: TextButton.styleFrom(
-                      splashFactory: NoSplash.splashFactory,
-                      onSurface: Colors.transparent,
-
-                      // overlayColor: MaterialStateProperty.all(Colors.transparent),
-                    ),onPressed: (){}, child: Row(
-                      children: [
-                        SizedBox(
-                            height: 24.h,  width: 24.w,
-                            child: darkModeOn? SvgPicture.asset('images/briefcase white.svg'):
-                            SvgPicture.asset('images/briefcase.svg')
-                        ),
-                        SizedBox(width: 12.w,),
-                        Text('Create Business Account',
-                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
-                        ),
-                      ],
-                    ))),//create businessman
-                SizedBox(height: 15.h,),
-                Align(
-                    alignment: Alignment.topLeft,
-                    child:TextButton(   style: TextButton.styleFrom(
-                      splashFactory: NoSplash.splashFactory,
-                      onSurface: Colors.transparent,
-
-                      // overlayColor: MaterialStateProperty.all(Colors.transparent),
-                    ),onPressed: (){
-                      Navigator.pop(context);
-                      Navigator.push(context,MaterialPageRoute(builder: (context) =>  const SettingsPage(),
-                      )
-                      );
-                    }, child: Row(
-                      children: [
-                        SizedBox(
-                          height: 24.h,  width: 24.w,
-                          child:  darkModeOn? SvgPicture.asset('images/setting-2 white.svg'):
-                          SvgPicture.asset('images/setting-2.svg'),),
-                        SizedBox(width: 12.w,),
-                        Text('Settings',
-                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
-                        ),
-                      ],
-                    ))),//settings
-                SizedBox(height: 15.h,),
-                Align(
-                    alignment: Alignment.topLeft,
-                    child:TextButton(   style: TextButton.styleFrom(
-                      splashFactory: NoSplash.splashFactory,
-                      onSurface: Colors.transparent,
-
-                      // overlayColor: MaterialStateProperty.all(Colors.transparent),
-                    ),
-                        onPressed: (){
-                          Navigator.pop(context);
-                          Navigator.push(context,MaterialPageRoute(builder: (context) =>  const RequestVerification(),));
-                        },
-
-                        child: Row(
-                          children: [
-                            SizedBox(
-                                height: 24.h,  width: 24.w,
-                                child:   darkModeOn? const Icon(Icons.verified_outlined, color: Colors.white, size: 24,):
-                                SvgPicture.asset('images/verify black.svg')),
-                            SizedBox(width: 12.w,),
-                            Text('Request Verification',
-                                style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
-                            ),
-                          ],
-                        ))),//request verification
-                SizedBox(height: 15.h,),
-                Align(
-                    alignment: Alignment.topLeft,
-                    child:TextButton(   style: TextButton.styleFrom(
-                      splashFactory: NoSplash.splashFactory,
-                      onSurface: Colors.transparent,
-
-                      // overlayColor: MaterialStateProperty.all(Colors.transparent),
-                    ),onPressed: (){}, child: Row(
-                      children: [
-                        SizedBox(
-                          height: 24.h,  width: 24.w,
-                          child:  darkModeOn? SvgPicture.asset('images/promotions black.svg', color: Colors.white,):
-                          SvgPicture.asset('images/promotions black.svg'),),
-                        SizedBox(width: 12.w,),
-                        Text('Sponsored Beeps',
-                            style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(fontSize: 15.sp, fontWeight:FontWeight.w600, color: darkModeOn? Colors.white:Colors.black)
-                        ),
-                      ],
-                    ))),//promotions
-
-              ],
-            ),
-          ),
-        ),
-      ),
+      drawer: AppDrawer(),
       key: _key,
     );
   }
 }
+
 class TourImage {
   String id, url;
   TourImage({

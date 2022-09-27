@@ -24,7 +24,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 15.sp),
+                .copyWith(fontSize: 17.sp),
           ),
           messageType: 'receiver',
           imageUrl: 'imageUrl',
@@ -35,7 +35,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 15.sp),
+                .copyWith(fontSize: 17.sp),
           ),
           messageType: 'sender',
           imageUrl: 'imageUrl',
@@ -46,7 +46,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 15.sp),
+                .copyWith(fontSize: 17.sp),
           ),
           messageType: 'receiver',
           imageUrl: 'imageUrl',
@@ -57,7 +57,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 15.sp),
+                .copyWith(fontSize: 17.sp),
           ),
           messageType: 'sender',
           imageUrl: 'imageUrl',
@@ -79,7 +79,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 15.sp),
+                .copyWith(fontSize: 17.sp),
           ),
           messageType: 'receiver',
           imageUrl: 'imageUrl',
@@ -107,7 +107,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           .primaryTextTheme
                           .bodyText1!
                           .copyWith(
-                              fontWeight: FontWeight.w500, fontSize: 16.sp),
+                              fontWeight: FontWeight.w500, fontSize: 18.sp),
                       children: [
                         TextSpan(
                           text: ' @lexy4real',
@@ -116,7 +116,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               .bodyText1!
                               .copyWith(
                                   fontWeight: FontWeight.w500,
-                                  fontSize: 16.sp,
+                                  fontSize: 18.sp,
                                   color: uColor),
                         ),
                       ]),
@@ -190,7 +190,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                   style: Theme.of(context)
                                       .primaryTextTheme
                                       .bodyText1!
-                                      .copyWith(fontSize: 15.sp),
+                                      .copyWith(fontSize: 17.sp),
                                 ),
                               ],
                             ),
@@ -218,7 +218,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                   style: Theme.of(context)
                                       .primaryTextTheme
                                       .bodyText1!
-                                      .copyWith(fontSize: 15.sp),
+                                      .copyWith(fontSize: 17.sp),
                                 ),
                               ],
                             ),
@@ -267,7 +267,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           style: Theme.of(context)
                               .primaryTextTheme
                               .bodyText1!
-                              .copyWith(fontSize: 15.sp),
+                              .copyWith(fontSize: 17.sp),
                         ),
                       ),
                     ),

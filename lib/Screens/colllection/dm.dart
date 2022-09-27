@@ -160,7 +160,7 @@ class _DirectMessageState extends State<DirectMessage> {
                             borderSide:
                                 BorderSide(width: 0.5.w, color: Colors.red),
                           ),
-                          errorStyle: TextStyle(height: 0, fontSize: 10.sp),
+                          errorStyle: TextStyle(height: 0, fontSize: 12.sp),
                           hintText: 'Search message',
                           hintStyle:
                               Theme.of(context).primaryTextTheme.bodyText2,
@@ -181,10 +181,16 @@ class _DirectMessageState extends State<DirectMessage> {
                     ),
                   ),
                 ),
-
-                SizedBox(width: width*0.2,),
-                Text('Message requests', style: TextStyle(color: bcolor3,fontWeight: FontWeight.w500, fontSize: 15.sp),),
-
+                SizedBox(
+                  width: width * 0.2,
+                ),
+                Text(
+                  'Message requests',
+                  style: TextStyle(
+                      color: bcolor3,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18.sp),
+                ),
               ],
             ),
           ),
@@ -195,6 +201,7 @@ class _DirectMessageState extends State<DirectMessage> {
                 itemCount: dmUsers.length,
                 itemBuilder: (context, index) => DmList(
                     name: dmUsers[index].name,
+                    username: dmUsers[index].username,
                     message: dmUsers[index].message,
                     imageURL: dmUsers[index].imageURL,
                     time: dmUsers[index].time,

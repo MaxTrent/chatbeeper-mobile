@@ -80,7 +80,7 @@ class _DmListState extends State<DmList> {
                                 .bodyText1!
                                 .copyWith(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 14.sp),
+                                    fontSize: 20.sp),
                             children: [
                               TextSpan(
                                 text: ' @${widget.username}',
@@ -89,7 +89,7 @@ class _DmListState extends State<DmList> {
                                     .bodyText1!
                                     .copyWith(
                                         fontWeight: FontWeight.w500,
-                                        fontSize: 14.sp),
+                                        fontSize: 20.sp),
                               )
                             ]),
                       ),
@@ -100,7 +100,7 @@ class _DmListState extends State<DmList> {
                           .primaryTextTheme
                           .bodyText1!
                           .copyWith(
-                              fontWeight: FontWeight.w500, fontSize: 14.sp),
+                              fontWeight: FontWeight.w500, fontSize: 20.sp),
                     ),
                     SizedBox(
                       height: 5.5.h,
@@ -123,7 +123,7 @@ class _DmListState extends State<DmList> {
                                     .bodyText1!
                                     .copyWith(
                                         fontWeight: FontWeight.w500,
-                                        fontSize: 12.sp,
+                                        fontSize: 16.sp,
                                         color: Colors.white),
                               )),
                             ),
@@ -138,7 +138,7 @@ class _DmListState extends State<DmList> {
                             .primaryTextTheme
                             .bodyText1!
                             .copyWith(
-                                fontWeight: FontWeight.w500, fontSize: 12.sp),
+                                fontWeight: FontWeight.w500, fontSize: 16.sp),
                       )
                     ]),
                   ],
@@ -161,7 +161,7 @@ class _DmListState extends State<DmList> {
                 style: Theme.of(context)
                     .primaryTextTheme
                     .bodyText1!
-                    .copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                    .copyWith(fontWeight: FontWeight.w500, fontSize: 20.sp),
               ),
               SizedBox(
                 height: 4,
@@ -184,7 +184,7 @@ class _DmListState extends State<DmList> {
                               .bodyText1!
                               .copyWith(
                                   fontWeight: FontWeight.w500,
-                                  fontSize: 12.sp,
+                                  fontSize: 14.sp,
                                   color: Colors.white),
                         )),
                       ),
@@ -198,7 +198,7 @@ class _DmListState extends State<DmList> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .bodyText1!
-                      .copyWith(fontWeight: FontWeight.w500, fontSize: 12.sp),
+                      .copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                 )
               ]),
             ],

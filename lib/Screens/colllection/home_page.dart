@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
 
   bool _istapped = false;
   static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 32, fontWeight: FontWeight.bold);
   final List<Widget> _pages = <Widget>[
     const Timeline(),
     const TourPage(),

@@ -44,12 +44,11 @@ class SponsorBeep extends StatelessWidget {
               ),
               title: Padding(
                 padding: EdgeInsets.only(top: 20.h, right: 10.w, left: 7),
-                child: SizedBox(
-                    height: 34.h,
-                    // width: 159.w,
-                    child: SvgPicture.asset(
-                      'images/chatbeeper_blue.svg',
-                    )),
+                child: SvgPicture.asset(
+                  'images/chatbeeper_blue.svg',
+                  height: 34.h,
+                  width: 34.w,
+                ),
               ),
               centerTitle: true,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -72,7 +71,7 @@ class SponsorBeep extends StatelessWidget {
               child: Text(
                 'You care about your brand, we do too!',
                 style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                    fontSize: 19.sp,
+                    fontSize: 23.sp,
                     color: darkModeOn ? Colors.white : bcolor1,
                     fontWeight: FontWeight.w700),
               ),
@@ -83,7 +82,7 @@ class SponsorBeep extends StatelessWidget {
             Text(
               'Chatbeeper sponsored beeps are one of the effective advertising options offered to individuals and business owners. By defining your brand, or defining your beep, you get the best engagement regardless of the content. Be it about food, beauty, health, fashion, etc.\n\n\nSponsor your beeps to reach a vast array of users within our community and increase your brand awareness.',
               style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                  fontSize: 17.sp,
+                  fontSize: 21.sp,
                   color: darkModeOn ? Colors.white : bcolor1,
                   fontWeight: FontWeight.w500),
             ),
@@ -94,7 +93,7 @@ class SponsorBeep extends StatelessWidget {
               'Select plan:',
               style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
                   color: darkModeOn ? Colors.white : bcolor1,
-                  fontSize: 19.sp,
+                  fontSize: 21.sp,
                   fontWeight: FontWeight.w700),
             ),
             SizedBox(
@@ -112,7 +111,7 @@ class SponsorBeep extends StatelessWidget {
                     style: Theme.of(context)
                         .primaryTextTheme
                         .bodyText1!
-                        .copyWith(fontSize: 15.sp, color: bcolor1),
+                        .copyWith(fontSize: 21.sp, color: bcolor1),
                   ),
                   SizedBox(
                     height: 12.h,
@@ -144,12 +143,12 @@ class SponsorBeep extends StatelessWidget {
                             .primaryTextTheme
                             .headline3!
                             .copyWith(
-                                fontSize: 13.sp, fontWeight: FontWeight.w500),
+                                fontSize: 15.sp, fontWeight: FontWeight.w500),
                         // TextStyle(
                         //     color: Colors.white,
                         //     fontWeight: FontWeight.w500,
                         //     fontFamily: 'Nunito',
-                        //     fontSize: 17.sp
+                        //     fontSize: 21.sp
                         //
                         // ),
                       ),
@@ -173,7 +172,7 @@ class SponsorBeep extends StatelessWidget {
                     style: Theme.of(context)
                         .primaryTextTheme
                         .bodyText1!
-                        .copyWith(fontSize: 15.sp, color: bcolor1),
+                        .copyWith(fontSize: 21.sp, color: bcolor1),
                   ),
                   SizedBox(
                     height: 12.h,
@@ -205,12 +204,12 @@ class SponsorBeep extends StatelessWidget {
                             .primaryTextTheme
                             .headline3!
                             .copyWith(
-                                fontSize: 13.sp, fontWeight: FontWeight.w500),
+                                fontSize: 15.sp, fontWeight: FontWeight.w500),
                         // TextStyle(
                         //     color: Colors.white,
                         //     fontWeight: FontWeight.w500,
                         //     fontFamily: 'Nunito',
-                        //     fontSize: 17.sp
+                        //     fontSize: 21.sp
                         //
                         // ),
                       ),
@@ -234,7 +233,7 @@ class SponsorBeep extends StatelessWidget {
                     style: Theme.of(context)
                         .primaryTextTheme
                         .bodyText1!
-                        .copyWith(fontSize: 15.sp, color: bcolor1),
+                        .copyWith(fontSize: 21.sp, color: bcolor1),
                   ),
                   SizedBox(
                     height: 12.h,
@@ -266,12 +265,12 @@ class SponsorBeep extends StatelessWidget {
                             .primaryTextTheme
                             .headline3!
                             .copyWith(
-                                fontSize: 13.sp, fontWeight: FontWeight.w500),
+                                fontSize: 15.sp, fontWeight: FontWeight.w500),
                         // TextStyle(
                         //     color: Colors.white,
                         //     fontWeight: FontWeight.w500,
                         //     fontFamily: 'Nunito',
-                        //     fontSize: 17.sp
+                        //     fontSize: 21.sp
                         //
                         // ),
                       ),

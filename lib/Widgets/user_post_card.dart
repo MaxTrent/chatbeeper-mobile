@@ -47,7 +47,7 @@ class UserPost extends StatelessWidget {
       return Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
           Widget>[
         Padding(
-          padding: EdgeInsets.fromLTRB(4.w, 8.w, 0.w, 12.h),
+          padding: EdgeInsets.fromLTRB(4.w, 8.w, 0.w, 5.h),
           child: SizedBox(
             height: 60.h,
             child: Column(
@@ -82,7 +82,7 @@ class UserPost extends StatelessWidget {
                                     .bodyText1!
                                     .copyWith(
                                         fontWeight: FontWeight.w500,
-                                        fontSize: 18.sp),
+                                        fontSize: 22.sp),
                               ),
                               Text(
                                 '@$username',
@@ -90,7 +90,7 @@ class UserPost extends StatelessWidget {
                                     fontFamily: 'Nunito',
                                     fontWeight: FontWeight.w600,
                                     color: Colors.grey,
-                                    fontSize: 17.sp),
+                                    fontSize: 21.sp),
                               ),
                               Icon(
                                 Icons.verified_rounded,
@@ -140,8 +140,8 @@ class UserPost extends StatelessWidget {
                                   "Sponsor beep",
                                   style: TextStyle(
                                       fontFamily: 'Nunito',
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600,
+                                      fontSize: 22.sp,
+                                      fontWeight: FontWeight.w500,
                                       color: darkModeOn
                                           ? Colors.white
                                           : Colors.black),
@@ -170,8 +170,8 @@ class UserPost extends StatelessWidget {
                                   "Beep data",
                                   style: TextStyle(
                                       fontFamily: 'Nunito',
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600,
+                                      fontSize: 22.sp,
+                                      fontWeight: FontWeight.w500,
                                       color: darkModeOn
                                           ? Colors.white
                                           : Colors.black),
@@ -196,8 +196,8 @@ class UserPost extends StatelessWidget {
                                   "Delete beep",
                                   style: TextStyle(
                                       fontFamily: 'Nunito',
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600,
+                                      fontSize: 22.sp,
+                                      fontWeight: FontWeight.w500,
                                       color: Color(0xffC92828)),
                                 )
                               ],
@@ -224,7 +224,7 @@ class UserPost extends StatelessWidget {
           const ImageSlider(),
           Padding(
             padding: EdgeInsets.only(
-                left: 16.w, right: 10.w, bottom: 12.h, top: 12.h),
+                left: 16.w, right: 10.w, bottom: 12.h, top: 0.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -237,7 +237,7 @@ class UserPost extends StatelessWidget {
                   colorClickableText: Colors.grey,
                   style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
                         fontWeight: FontWeight.w400,
-                        fontSize: 21.sp,
+                        fontSize: 25.sp,
                       ),
                 ),
               ],
