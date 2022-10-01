@@ -55,10 +55,13 @@ class _AppDrawerState extends State<AppDrawer> {
                   alignment: Alignment.topCenter,
                   child: Column(
                     children: [
+                      SizedBox(
+                        height: 10.h,
+                      ),
                       Image.asset(
                         'images/logo1.png',
-                        height: 36.h,
-                        width: 36.w,
+                        height: 70.h,
+                        width: 70.w,
                       ),
                       Padding(
                         padding: EdgeInsets.only(
@@ -76,7 +79,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 ),
               ), //logo
               SizedBox(
-                height: 39.h,
+                height: 15.h,
               ),
               Column(
                 children: [
@@ -113,7 +116,7 @@ class _AppDrawerState extends State<AppDrawer> {
                                 style: TextStyle(
                                     fontFamily: 'Nunito',
                                     fontWeight: FontWeight.w600,
-                                    color: uColor,
+                                    color: fColor2,
                                     fontSize: 21.sp),
                               ), //username
                             ],
@@ -157,7 +160,7 @@ class _AppDrawerState extends State<AppDrawer> {
                                   style: TextStyle(
                                     fontFamily: 'Nunito',
                                     fontWeight: FontWeight.w600,
-                                    color: uColor,
+                                    color: fColor2,
                                     fontSize: 21.sp,
                                   ),
                                 ),
@@ -199,7 +202,7 @@ class _AppDrawerState extends State<AppDrawer> {
                                   style: TextStyle(
                                     fontFamily: 'Nunito',
                                     fontWeight: FontWeight.w700,
-                                    color: uColor,
+                                    color: fColor2,
                                     fontSize: 21.sp,
                                   ),
                                 ),
@@ -240,7 +243,7 @@ class _AppDrawerState extends State<AppDrawer> {
                                   style: TextStyle(
                                     fontFamily: 'Nunito',
                                     fontWeight: FontWeight.w600,
-                                    color: uColor,
+                                    color: fColor2,
                                     fontSize: 21.sp,
                                   ),
                                 ),
@@ -255,7 +258,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     height: 12.h,
                   ),
                   Divider(
-                    color: uColor,
+                    color: fColor2,
                     thickness: 0.5.h,
                   ),
                 ],

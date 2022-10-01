@@ -115,7 +115,7 @@ class _TimelineState extends State<Timeline> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 28.h, right: 30.w, bottom: 5.h),
+                  padding: EdgeInsets.only(top: 28.h, right: 18.w, bottom: 5.h),
                   child: SizedBox(
                     height: 28.h,
                     width: 28.h,

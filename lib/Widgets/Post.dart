@@ -1,4 +1,4 @@
-import 'package:chat_beeper/Widgets/comment.dart';
+import 'package:chat_beeper/Screens/comment_screen.dart';
 import 'package:chat_beeper/Widgets/image_slider.dart';
 import 'package:chat_beeper/Widgets/rebeep_response.dart';
 import 'package:flutter/cupertino.dart';
@@ -45,7 +45,7 @@ class PostCard extends StatelessWidget {
       return Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
           Widget>[
         Padding(
-          padding: EdgeInsets.fromLTRB(4.w, 8.w, 0.w, 12.h),
+          padding: EdgeInsets.fromLTRB(4.w, 8.w, 0.w, 5.h),
           child: SizedBox(
             height: 50.h,
             child: Column(
@@ -87,7 +87,7 @@ class PostCard extends StatelessWidget {
                                 style: TextStyle(
                                     fontFamily: 'Nunito',
                                     fontWeight: FontWeight.w600,
-                                    color: Colors.grey,
+                                    color: fColor2,
                                     fontSize: 21.sp),
                               ),
                               Icon(
@@ -102,7 +102,7 @@ class PostCard extends StatelessWidget {
                             style: TextStyle(
                                 fontFamily: 'Nunito',
                                 fontWeight: FontWeight.w500,
-                                color: Colors.grey,
+                                color: fColor2,
                                 fontSize: 17.sp),
                           ),
                         ],
@@ -299,7 +299,7 @@ class PostCard extends StatelessWidget {
                   trimCollapsedText: 'see more',
                   trimLines: 3,
                   trimMode: TrimMode.Line,
-                  colorClickableText: Colors.grey,
+                  colorClickableText: fColor2,
                   style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
                         fontWeight: FontWeight.w400,
                         fontSize: 25.sp,
@@ -330,6 +330,32 @@ class PostCard extends StatelessWidget {
                             builder: (context) => const Comment()));
                   },
                 ),
+                /* LikeButton(
+                  size: 24.h,
+                  circleColor: CircleColor(
+                      start: Colors.red.shade700, end: Colors.red.shade800),
+                  bubblesColor: BubblesColor(
+                    dotPrimaryColor: Colors.red.shade700,
+                    dotSecondaryColor: Colors.red.shade800,
+                  ),
+                  likeBuilder: (bool _rebeeped) {
+                    return _rebeeped == false
+                        ? SizedBox(
+                            height: 35.h,
+                            child: SvgPicture.asset(
+                              'images/comment.svg',
+                              height: 30.h,
+                            ))
+                        : SvgPicture.asset(
+                            'images/comment.svg',
+                            color: Colors.red,
+                            height: 35.h,
+                          );
+                  },
+                  likeCount: 100,
+                  likeCountPadding: EdgeInsets.only(left: 3.w),
+                ),
+             */
                 SizedBox(
                   width: 40.w,
                 ),
@@ -340,19 +366,53 @@ class PostCard extends StatelessWidget {
                       builder: (context) => const RebeepResponse(),
                     );
                   },
-                  child: _rebeeped == false
-                      ? SizedBox(
-                          height: 35.h,
-                          child: SvgPicture.asset(
-                            'images/rebeep.svg',
-                            height: 30.h,
-                          ))
-                      : SvgPicture.asset(
-                          'images/rebeep.svg',
-                          color: Colors.red,
-                          height: 35.h,
-                        ),
-                ), //infinite
+                  child: LikeButton(
+                    size: 30.h,
+                    circleColor: CircleColor(
+                        start: Colors.red.shade700, end: Colors.red.shade800),
+                    bubblesColor: BubblesColor(
+                      dotPrimaryColor: Colors.red.shade700,
+                      dotSecondaryColor: Colors.red.shade800,
+                    ),
+                    likeBuilder: (bool _rebeeped) {
+                      return _rebeeped == false
+                          ? SizedBox(
+                              height: 35.h,
+                              child: SvgPicture.asset(
+                                'images/rebeep.svg',
+                                height: 30.h,
+                                fit: BoxFit.fill,
+                              ))
+                          : SvgPicture.asset(
+                              'images/rebeep.svg',
+                              color: Colors.red,
+                              height: 30.h,
+                            );
+                    },
+                    likeCount: 100,
+                    likeCountPadding: EdgeInsets.only(left: 3.w),
+                  ),
+                ),
+                // GestureDetector(
+                //   onTap: () async {
+                //     showDialog(
+                //       context: context,
+                //       builder: (context) => const RebeepResponse(),
+                //     );
+                //   },
+                //   child: _rebeeped == false
+                //       ? SizedBox(
+                //           height: 35.h,
+                //           child: SvgPicture.asset(
+                //             'images/rebeep.svg',
+                //             height: 30.h,
+                //           ))
+                //       : SvgPicture.asset(
+                //           'images/rebeep.svg',
+                //           color: Colors.red,
+                //           height: 35.h,
+                //         ),
+                // ), //infinite
                 SizedBox(
                   width: 40.w,
                 ),
@@ -374,7 +434,7 @@ class PostCard extends StatelessWidget {
                   likeCount: 100,
                   likeCountPadding: EdgeInsets.only(left: 3.w),
                   // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                  //   var color = isLiked ? Colors.deepPurpleAccent : fColor2;
                   //   Widget result;
                   //   if (count == 0) {
                   //     result = Text(
@@ -410,7 +470,7 @@ class PostCard extends StatelessWidget {
                   likeCount: 100,
                   likeCountPadding: EdgeInsets.only(left: 3.w),
                   //   countBuilder: (int count, bool isLiked, String text){
-                  //     var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                  //     var color = isLiked ? Colors.deepPurpleAccent : fColor2;
                   //     Widget result;
                   //     if (count == 0) {
                   //       result = Text(
@@ -425,7 +485,7 @@ class PostCard extends StatelessWidget {
                   //     return result;
                   //   }
                   // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                  //   var color = isLiked ? Colors.deepPurpleAccent : fColor2;
                   //   Widget result;
                   //   if (count == 0) {
                   //     result = Text(
@@ -468,7 +528,7 @@ class PostCard extends StatelessWidget {
                                 ),
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    color: Colors.grey.shade700,
+                                    color: fColor2,
                                     shape: BoxShape.rectangle,
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(100.r),
@@ -869,11 +929,12 @@ class PostCard extends StatelessWidget {
       );
     } //image of card
 
-    // buildCollapsed3() {
-    //   return Container();
-    // }
+    Column
+        // buildCollapsed3() {
+        //   return Container();
+        // }
 
-    buildExpanded1() {
+        buildExpanded1() {
       return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[

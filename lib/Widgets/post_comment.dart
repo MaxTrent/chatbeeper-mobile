@@ -1,27 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:chat_beeper/Screens/comment_screen.dart';
-import 'package:chat_beeper/Widgets/image_slider.dart';
-import 'package:chat_beeper/Widgets/rebeep_response.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:chat_beeper/Widgets/image_slider.dart';
+import 'package:chat_beeper/Widgets/rebeep_response.dart';
+import 'package:chat_beeper/Screens/comment_screen.dart';
 import 'package:like_button/like_button.dart';
 import 'package:chat_beeper/constants.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import '../constants.dart';
 
-class UserPost extends StatelessWidget {
-  UserPost({Key? key}) : super(key: key);
-  static const String id = 'user-post';
+class PostComment extends StatefulWidget {
+  const PostComment({Key? key}) : super(key: key);
+
+  @override
+  State<PostComment> createState() => _PostCommentState();
+}
+
+class _PostCommentState extends State<PostComment> {
+  var FullName;
+
+  var username;
+
+  var posttime;
+
+  final bool _rebeeped = false;
 
   String loremIpsum =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-  String FullName = 'Jane Doe';
-  String username = 'Janedoe_10';
-  String posttime = '1 hour ago';
-
-  final bool _rebeeped = false;
 
   @override
   Widget build(BuildContext context) {
@@ -31,30 +38,21 @@ class UserPost extends StatelessWidget {
       context,
       designSize: const Size(485, 926),
     );
-    buildImg(Color color, double height) {
-      return SizedBox(
-          height: height,
-          width: 428.w,
-          child: Container(
-            decoration: BoxDecoration(
-              color: color,
-              shape: BoxShape.rectangle,
-            ),
-          ));
-    }
 
     buildCollapsed1() {
       return Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
           Widget>[
         Padding(
-          padding: EdgeInsets.fromLTRB(4.w, 0.h, 0.w, 5.h),
+          padding: EdgeInsets.fromLTRB(4.w, 8.h, 0.w, 12.h),
           child: SizedBox(
-            height: 60.h,
+            height: 55.h,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Expanded(
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(100.0.r),
@@ -71,7 +69,7 @@ class UserPost extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            height: 10.h,
+                            height: 2.h,
                           ),
                           Row(
                             children: [
@@ -89,13 +87,13 @@ class UserPost extends StatelessWidget {
                                 style: TextStyle(
                                     fontFamily: 'Nunito',
                                     fontWeight: FontWeight.w600,
-                                    color: fColor2,
+                                    color: Colors.grey,
                                     fontSize: 21.sp),
                               ),
-                              Icon(
+                              const Icon(
                                 Icons.verified_rounded,
                                 color: bcolor5,
-                                size: 15.h,
+                                size: 15,
                               ),
                             ],
                           ),
@@ -104,12 +102,41 @@ class UserPost extends StatelessWidget {
                             style: TextStyle(
                                 fontFamily: 'Nunito',
                                 fontWeight: FontWeight.w500,
-                                color: fColor2,
+                                color: Colors.grey,
                                 fontSize: 17.sp),
                           ),
                         ],
                       ),
                       Spacer(),
+                      Column(
+                        children: [
+                          SizedBox(height: 7.h),
+                          Container(
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Colors.white
+                                    : Colors.grey.shade200,
+                            height: 28.h,
+                            width: 105.w,
+                            child: Center(
+                              child: Text(
+                                'Sponsored',
+                                style: TextStyle(
+                                    color: (Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Colors.grey.shade800
+                                        : Colors.black),
+                                    fontSize: 15.sp,
+                                    fontFamily: 'Nunito',
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 3.w,
+                      ),
                       PopupMenuButton<int>(
                         icon: Icon(
                           Icons.more_vert_sharp,
@@ -127,20 +154,19 @@ class UserPost extends StatelessWidget {
                                     height: 24.h,
                                     width: 24.w,
                                     child: darkModeOn == false
-                                        ? SvgPicture.asset(
-                                            'images/fa_handshake-o.svg')
+                                        ? SvgPicture.asset('images/mute.svg')
                                         : SvgPicture.asset(
-                                            'images/fa_handshake-o.svg',
+                                            'images/mute.svg',
                                             color: Colors.white,
                                           )),
                                 SizedBox(
                                   width: 10.w,
                                 ),
                                 Text(
-                                  "Sponsor beep",
+                                  "Mute",
                                   style: TextStyle(
                                       fontFamily: 'Nunito',
-                                      fontSize: 22.sp,
+                                      fontSize: 18.sp,
                                       fontWeight: FontWeight.w500,
                                       color: darkModeOn
                                           ? Colors.white
@@ -158,19 +184,19 @@ class UserPost extends StatelessWidget {
                                     height: 24.h,
                                     width: 24.w,
                                     child: darkModeOn == false
-                                        ? SvgPicture.asset('images/data.svg')
+                                        ? SvgPicture.asset('images/block.svg')
                                         : SvgPicture.asset(
-                                            'images/data.svg',
+                                            'images/block.svg',
                                             color: Colors.white,
                                           )),
                                 SizedBox(
                                   width: 10.w,
                                 ),
                                 Text(
-                                  "Beep data",
+                                  "Block",
                                   style: TextStyle(
                                       fontFamily: 'Nunito',
-                                      fontSize: 22.sp,
+                                      fontSize: 18.sp,
                                       fontWeight: FontWeight.w500,
                                       color: darkModeOn
                                           ? Colors.white
@@ -187,22 +213,90 @@ class UserPost extends StatelessWidget {
                                 SizedBox(
                                     height: 24.h,
                                     width: 24.w,
-                                    child: SvgPicture.asset(
-                                        'images/uiw_delete.svg')),
+                                    child: darkModeOn == false
+                                        ? SvgPicture.asset(
+                                            'images/unfollow.svg')
+                                        : SvgPicture.asset(
+                                            'images/unfollow.svg',
+                                            color: Colors.white,
+                                          )),
                                 SizedBox(
                                   width: 10.w,
                                 ),
                                 Text(
-                                  "Delete beep",
+                                  "Unfollow",
                                   style: TextStyle(
                                       fontFamily: 'Nunito',
-                                      fontSize: 22.sp,
+                                      fontSize: 18.sp,
                                       fontWeight: FontWeight.w500,
-                                      color: Color(0xffC92828)),
+                                      color: darkModeOn
+                                          ? Colors.white
+                                          : Colors.black),
                                 )
                               ],
                             ),
                           ), //unfollow
+                          PopupMenuItem(
+                            value: 4,
+                            // row has two child icon and text.
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                    height: 24.h,
+                                    width: 24.w,
+                                    child: darkModeOn == false
+                                        ? SvgPicture.asset(
+                                            'images/not interested.svg')
+                                        : SvgPicture.asset(
+                                            'images/not interested.svg',
+                                            color: Colors.white,
+                                          )),
+                                SizedBox(
+                                  width: 10.w,
+                                ),
+                                Text(
+                                  "Not interested in this",
+                                  style: TextStyle(
+                                      fontFamily: 'Nunito',
+                                      fontSize: 18.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: darkModeOn
+                                          ? Colors.white
+                                          : Colors.black),
+                                )
+                              ],
+                            ),
+                          ), //not interested
+                          PopupMenuItem(
+                            value: 5,
+                            // row has two child icon and text.
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                    height: 24.h,
+                                    width: 24.w,
+                                    child: darkModeOn == false
+                                        ? SvgPicture.asset('images/report.svg')
+                                        : SvgPicture.asset(
+                                            'images/report.svg',
+                                            color: Colors.white,
+                                          )),
+                                SizedBox(
+                                  width: 10.w,
+                                ),
+                                Text(
+                                  "Report this account",
+                                  style: TextStyle(
+                                      fontFamily: 'Nunito',
+                                      fontSize: 18.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: darkModeOn
+                                          ? Colors.white
+                                          : Colors.black),
+                                )
+                              ],
+                            ),
+                          ), //report
                         ],
                         offset: Offset(-28.w, 40.h),
                         color: Theme.of(context).scaffoldBackgroundColor,
@@ -221,28 +315,30 @@ class UserPost extends StatelessWidget {
     buildCollapsed2() {
       return Column(
         children: [
-          const ImageSlider(),
           Padding(
             padding: EdgeInsets.only(
-                left: 16.w, right: 10.w, bottom: 12.h, top: 0.h),
+              left: 16.w,
+              right: 10.w,
+              bottom: 12.h,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 ReadMoreText(
                   loremIpsum,
                   trimExpandedText: 'see Less',
-                  trimCollapsedText: 'see more',
                   trimLines: 3,
                   trimMode: TrimMode.Line,
-                  colorClickableText: fColor2,
-                  style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 25.sp,
-                      ),
+                  trimCollapsedText: 'see more',
+                  colorClickableText: Colors.grey,
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .bodyText1!
+                      .copyWith(fontWeight: FontWeight.w400, fontSize: 25.sp),
                 ),
               ],
             ),
-          ),
+          ), //readmore text
           Container(
             height: 0.2.h,
             color: uColor,
@@ -253,42 +349,15 @@ class UserPost extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                // GestureDetector(
-                //   child: SvgPicture.asset(
-                //     'images/comment.svg',
-                //     height: 24.h,
-                //   ),
-                //   onTap: () {
-                //     Navigator.push(
-                //         context,
-                //         MaterialPageRoute(
-                //             builder: (context) => const Comment()));
-                //   },
-                // ),
-                LikeButton(
-                  size: 24.h,
-                  circleColor: CircleColor(
-                      start: Colors.red.shade700, end: Colors.red.shade800),
-                  bubblesColor: BubblesColor(
-                    dotPrimaryColor: Colors.red.shade700,
-                    dotSecondaryColor: Colors.red.shade800,
+                GestureDetector(
+                  child: SvgPicture.asset(
+                    'images/comment.svg',
+                    height: 24.h,
                   ),
-                  likeBuilder: (bool _rebeeped) {
-                    return _rebeeped == false
-                        ? SizedBox(
-                            height: 35.h,
-                            child: SvgPicture.asset(
-                              'images/comment.svg',
-                              height: 30.h,
-                            ))
-                        : SvgPicture.asset(
-                            'images/comment.svg',
-                            color: Colors.red,
-                            height: 35.h,
-                          );
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Comment()));
                   },
-                  likeCount: 100,
-                  likeCountPadding: EdgeInsets.only(left: 3.w),
                 ),
                 SizedBox(
                   width: 40.w,
@@ -300,52 +369,19 @@ class UserPost extends StatelessWidget {
                       builder: (context) => const RebeepResponse(),
                     );
                   },
-                  child: LikeButton(
-                    size: 30.h,
-                    circleColor: CircleColor(
-                        start: Colors.red.shade700, end: Colors.red.shade800),
-                    bubblesColor: BubblesColor(
-                      dotPrimaryColor: Colors.red.shade700,
-                      dotSecondaryColor: Colors.red.shade800,
-                    ),
-                    likeBuilder: (bool _rebeeped) {
-                      return _rebeeped == false
-                          ? SizedBox(
-                              height: 35.h,
-                              child: SvgPicture.asset(
-                                'images/rebeep.svg',
-                                height: 30.h,
-                              ))
-                          : SvgPicture.asset(
-                              'images/rebeep.svg',
-                              color: Colors.red,
-                              height: 35.h,
-                            );
-                    },
-                    likeCount: 100,
-                    likeCountPadding: EdgeInsets.only(left: 3.w),
-                  ),
-                ),
-                // GestureDetector(
-                //   onTap: () async {
-                //     showDialog(
-                //       context: context,
-                //       builder: (context) => const RebeepResponse(),
-                //     );
-                //   },
-                //   child: _rebeeped == false
-                //       ? SizedBox(
-                //           height: 35.h,
-                //           child: SvgPicture.asset(
-                //             'images/rebeep.svg',
-                //             height: 30.h,
-                //           ))
-                //       : SvgPicture.asset(
-                //           'images/rebeep.svg',
-                //           color: Colors.red,
-                //           height: 35.h,
-                //         ),
-                // ), //infinite
+                  child: _rebeeped == false
+                      ? SizedBox(
+                          height: 35.h,
+                          child: SvgPicture.asset(
+                            'images/rebeep.svg',
+                            height: 30.h,
+                          ))
+                      : SvgPicture.asset(
+                          'images/rebeep.svg',
+                          color: Colors.red,
+                          height: 35.h,
+                        ),
+                ), //infinite
                 SizedBox(
                   width: 40.w,
                 ),
@@ -367,7 +403,7 @@ class UserPost extends StatelessWidget {
                   likeCount: 100,
                   likeCountPadding: EdgeInsets.only(left: 3.w),
                   // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : fColor2;
+                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
                   //   Widget result;
                   //   if (count == 0) {
                   //     result = Text(
@@ -403,7 +439,7 @@ class UserPost extends StatelessWidget {
                   likeCount: 100,
                   likeCountPadding: EdgeInsets.only(left: 3.w),
                   //   countBuilder: (int count, bool isLiked, String text){
-                  //     var color = isLiked ? Colors.deepPurpleAccent : fColor2;
+                  //     var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
                   //     Widget result;
                   //     if (count == 0) {
                   //       result = Text(
@@ -418,7 +454,7 @@ class UserPost extends StatelessWidget {
                   //     return result;
                   //   }
                   // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : fColor2;
+                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
                   //   Widget result;
                   //   if (count == 0) {
                   //     result = Text(
@@ -434,7 +470,7 @@ class UserPost extends StatelessWidget {
                   // },
                 ), //heart
                 SizedBox(
-                  width: 95.w,
+                  width: 110.w,
                 ),
                 Expanded(
                   child: GestureDetector(
@@ -461,7 +497,7 @@ class UserPost extends StatelessWidget {
                                 ),
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    color: fColor2,
+                                    color: Colors.grey.shade700,
                                     shape: BoxShape.rectangle,
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(100.r),
@@ -857,14 +893,10 @@ class UserPost extends StatelessWidget {
                 ), //share
               ],
             ), //icons
-          ), //icons//icons
+          ), //icons
         ],
       );
-    } //image of card
-
-    // buildCollapsed3() {
-    //   return Container();
-    // }
+    }
 
     buildExpanded1() {
       return Column(
@@ -889,40 +921,6 @@ class UserPost extends StatelessWidget {
           ]);
     }
 
-    buildExpanded2() {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Expanded(child: buildImg(Colors.lightGreenAccent, 100)),
-              Expanded(child: buildImg(Colors.orange, 100)),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              Expanded(child: buildImg(Colors.lightBlue, 100)),
-              Expanded(child: buildImg(Colors.cyan, 100)),
-            ],
-          ),
-        ],
-      );
-    }
-
-    buildExpanded3() {
-      return Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            ReadMoreText(
-              loremIpsum,
-            ),
-          ],
-        ),
-      );
-    } //lorem ipsum
-
     return ExpandableNotifier(
         child: Padding(
       padding: EdgeInsets.only(bottom: 10.h),
@@ -936,7 +934,7 @@ class UserPost extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 ExpandableTheme(
-                  data: ExpandableThemeData(),
+                  data: const ExpandableThemeData(),
                   child: Expandable(
                     collapsed: buildCollapsed1(),
                     expanded: buildExpanded1(),
@@ -944,7 +942,7 @@ class UserPost extends StatelessWidget {
                 ),
                 Expandable(
                   collapsed: buildCollapsed2(),
-                  expanded: buildExpanded2(),
+                  expanded: buildExpanded1(),
                 ),
                 // Expandable(
                 //   collapsed: buildCollapsed3(),

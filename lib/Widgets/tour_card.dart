@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:expandable/expandable.dart';
 
-import '../../Widgets/comment.dart';
+import '../Screens/comment_screen.dart';
 import '../Screens/colllection/dm.dart';
 
 class TourCard extends StatefulWidget {
@@ -643,10 +643,8 @@ class _TourCardState extends State<TourCard> {
                       height: 24.h,
                     ),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Comment()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Comment()));
                     },
                   ),
                   SizedBox(

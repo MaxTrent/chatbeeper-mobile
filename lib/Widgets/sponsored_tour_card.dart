@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:expandable/expandable.dart';
 // import 'package:cached_network_image/cached_network_image.dart';
-import '../../Widgets/comment.dart';
+import 'package:chat_beeper/Screens/comment_screen.dart';
 import '../Screens/colllection/dm.dart';
 
 class SponsoredTourCard extends StatefulWidget {
@@ -603,10 +603,8 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                       height: 24.h,
                     ),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Comment()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Comment()));
                     },
                   ),
                   SizedBox(

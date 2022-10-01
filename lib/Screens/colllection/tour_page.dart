@@ -17,7 +17,7 @@ import '../followers.dart';
 import '../following.dart';
 import '../profile_page.dart';
 
-import '../../Widgets/comment.dart';
+import '../comment_screen.dart';
 import '../../Widgets/sponsored_tour_card.dart';
 import 'dm.dart';
 

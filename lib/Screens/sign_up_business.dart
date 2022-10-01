@@ -1,3 +1,5 @@
+import 'package:chat_beeper/Screens/sign_in.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -59,7 +61,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
   String? bname;
   String? mobile;
   String? date;
-  final format = DateFormat("dd-mm-yyyy");
+  final format = DateFormat("dd/MM/yyyy");
   bool _visible = false;
   bool _isvalid = false;
   bool _expanded = false;
@@ -74,6 +76,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
   final _formKey2 = GlobalKey<FormState>();
   final _formKey3 = GlobalKey<FormState>();
   DateTime? birthday;
+  var _cpasswordTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -381,9 +384,9 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                   if (_emailTextController.text.isEmpty ||
                                       _phoneTextController.text.isEmpty ||
                                       _bnameTextController.text.isEmpty) {
-                                    return Color(0xffD8D8D8);
+                                    return bcolor1;
                                   }
-                                  return bcolor1;
+                                  return fColor;
                                 }),
 
                                 // elevation: ,
@@ -399,7 +402,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                 print(
                                     '${_phoneTextController.text.toString()}, ${_bnameTextController.text.toString()},${_emailTextController.text.toString()}');
                                 _pageController.nextPage(
-                                    duration: Duration(milliseconds: 1000),
+                                    duration: Duration(milliseconds: 500),
                                     curve: Curves.easeIn);
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
@@ -507,151 +510,766 @@ class _CreateBusinessState extends State<CreateBusiness> {
           SingleChildScrollView(
             child: Form(
                 key: _formKey2,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 28.w, right: 28.w),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 108.h,
-                      ),
-                      Image.asset(
-                        'images/logo1.png',
-                        height: 90.h,
-                        width: 90.w,
-                      ),
-                      SizedBox(
-                        height: 32.h,
-                      ),
-                      Text(
-                        'Create an account',
-                        style: Theme.of(context)
-                            .primaryTextTheme
-                            .headline4!
-                            .copyWith(fontSize: 32.sp),
-                      ),
-                      SizedBox(
-                        height: 32.h,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 28.w, right: 28.w),
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              maxRadius: 10.r,
-                              foregroundColor: Colors.black,
-                              backgroundColor: bcolor3,
-                              child: Center(
-                                child: const Icon(
-                                  Icons.check_sharp,
-                                  color: Colors.white,
-                                  size: 8,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 108.h,
+                    ),
+                    Image.asset(
+                      'images/logo1.png',
+                      height: 90.h,
+                      width: 90.w,
+                    ),
+                    SizedBox(
+                      height: 32.h,
+                    ),
+                    Text(
+                      'Create an account',
+                      style: Theme.of(context)
+                          .primaryTextTheme
+                          .headline4!
+                          .copyWith(fontSize: 32.sp),
+                    ),
+                    SizedBox(
+                      height: 36.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          maxRadius: 10.r,
+                          foregroundColor: Colors.black,
+                          backgroundColor: bcolor3,
+                          child: Center(
+                            child: const Icon(
+                              Icons.check_sharp,
+                              color: Colors.white,
+                              size: 8,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 0.5.h,
+                          width: 158.w,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        CircleAvatar(
+                          maxRadius: 8.r,
+                          backgroundColor: bcolor3,
+                        ),
+                        Container(
+                          height: 0.5.h,
+                          width: 155.w,
+                          color: Theme.of(context).colorScheme.secondary,
+                        ),
+                        CircleAvatar(
+                          maxRadius: 8.r,
+                          backgroundColor: Color(0xffD1E1EF),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 35.h,
+                    ),
+                    SizedBox(
+                      width: 372.w,
+                      child: Column(
+                        children: [
+                          SizedBox(
+                              width: 372.w,
+                              child: DateTimeField(
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .subtitle1,
+                                controller: _dateControlller,
+                                format: format,
+                                onShowPicker: (context, currentValue) {
+                                  return showDatePicker(
+                                      context: context,
+                                      initialDate: DateTime(2004),
+                                      firstDate: DateTime(1900),
+                                      lastDate: DateTime(2101),
+                                      currentDate:
+                                          currentValue ?? DateTime.now());
+                                },
+                                validator: (value) {
+                                  if (_dateControlller.text.isEmpty) {
+                                    return 'Date of birth is empty';
+                                  }
+                                  setState(() {
+                                    value = birthday;
+                                  });
+                                  return null;
+                                },
+                                decoration: InputDecoration(
+                                  hintText: 'Date of Birth',
+                                  labelText: 'DD/MM/YYYY',
+                                  suffixIcon: SvgPicture.asset(
+                                    'images/calendar.svg',
+                                    fit: BoxFit.scaleDown,
+                                  ),
+                                  floatingLabelBehavior:
+                                      FloatingLabelBehavior.auto,
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(6.r)),
+                                      borderSide: BorderSide(
+                                        width: 0.5.w,
+                                        // color: _isvalid == true ? bcolor1: Colors.red),
+                                        color: bcolor1,
+                                      )),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(6.r)),
+                                      borderSide: BorderSide(
+                                        width: 0.5.w,
+                                        color: uColor,
+                                      )),
+                                  errorBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(6.r)),
+                                      borderSide: BorderSide(
+                                        width: 0.5.w,
+                                        color: Colors.red,
+                                      )),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(6.r)),
+                                      borderSide: BorderSide(
+                                        width: 0.5.w,
+                                        color: Colors.red,
+                                      )),
+                                  focusColor: uColor,
+                                  contentPadding:
+                                      EdgeInsets.only(top: 10.h, left: 10.w),
+                                ),
+                              )),
+                          SizedBox(height: 16.h),
+                          SizedBox(
+                            width: 372.w,
+                            child: TextFormField(
+                              style:
+                                  Theme.of(context).primaryTextTheme.subtitle1,
+                              controller: _passwordTextController,
+                              textInputAction: TextInputAction.next,
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                              obscureText: _visible == true ? false : true,
+                              validator: (value) {
+                                // if (value!.isValidPassword)
+                                //   return 'Enter valid password';
+                                if (!value!.isValidPassword) {
+                                  password = value;
+                                }
+                                if (value.isEmpty || value.length < 6) {
+                                  //print('$value is incorrect');
+                                  return 'Password has to be atleast 6 characters long. try again';
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                labelText: 'Password',
+                                hintText: 'Password',
+                                labelStyle: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1,
+                                hintStyle: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText2!
+                                    .copyWith(fontSize: 15.sp),
+                                contentPadding:
+                                    EdgeInsets.only(top: 10.h, left: 10.w),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(6.r)),
+                                  borderSide:
+                                      BorderSide(width: 0.5.w, color: uColor),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(6.r)),
+                                  borderSide:
+                                      BorderSide(width: 0.5.w, color: bcolor1),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(6.r)),
+                                  borderSide: BorderSide(
+                                      width: 0.5.w, color: Colors.red),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(6.r)),
+                                  borderSide: BorderSide(
+                                      width: 0.5.w, color: Colors.red),
+                                ),
+                                errorStyle:
+                                    TextStyle(height: 0, fontSize: 10.sp),
+                                suffixIcon: IconButton(
+                                  color: Colors.black,
+                                  icon: _visible
+                                      ? IconTheme(
+                                          data: Theme.of(context).iconTheme,
+                                          child: Icon(
+                                            Icons.visibility_outlined,
+                                            size: 18.h,
+                                          ))
+                                      : IconTheme(
+                                          data: Theme.of(context).iconTheme,
+                                          child: Icon(
+                                            Icons.visibility_off_outlined,
+                                            size: 18.h,
+                                          )),
+                                  onPressed: () {
+                                    setState(() {
+                                      _visible = !_visible;
+                                    });
+                                  },
+                                  focusColor: bcolor3,
                                 ),
                               ),
                             ),
-                            Container(
-                              height: 0.5.h,
-                              width: 158.w,
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
-                            CircleAvatar(
-                              maxRadius: 8.r,
-                              backgroundColor: bcolor3,
-                            ),
-                            Container(
-                              height: 0.5.h,
-                              width: 155.w,
-                              color: Theme.of(context).colorScheme.secondary,
-                            ),
-                            CircleAvatar(
-                              maxRadius: 8.r,
-                              backgroundColor: Color(0xffD1E1EF),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 28.h,
-                      ),
-                      SizedBox(
-                        width: 372.w,
-                        child: Column(
-                          children: [
-                            SizedBox(
-                                width: 372.w,
-                                child: DateTimeField(
-                                  controller: _dateControlller,
-                                  format: format,
-                                  onShowPicker: (context, currentValue) {
-                                    return showDatePicker(
-                                        context: context,
-                                        initialDate: DateTime(2004),
-                                        firstDate: DateTime(1900),
-                                        lastDate: DateTime(2101),
-                                        currentDate:
-                                            currentValue ?? DateTime.now());
-                                  },
-                                  validator: (value) {
-                                    if (_dateControlller.text.isEmpty) {
-                                      return 'Date of birth is empty';
-                                    }
+                          ),
+                          SizedBox(
+                            height: 16.h,
+                          ),
+                          SizedBox(
+                            width: 372.w,
+                            child: TextFormField(
+                              style:
+                                  Theme.of(context).primaryTextTheme.subtitle1,
+                              controller: _cpasswordTextController,
+                              textInputAction: TextInputAction.next,
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                              obscureText: _visible == true ? false : true,
+                              validator: (value) {
+                                // if (value!.isValidPassword)
+                                //   return 'Enter valid password';
+                                if (value != password) {
+                                  return 'Passwords are different. try again';
+                                }
+                                if (value!.isEmpty || value.length < 6) {
+                                  //print('$value is incorrect');
+                                  return 'Password has to be atleast 6 characters long. try again';
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                labelText: 'Confirm Password',
+                                hintText: 'Confirm Password',
+                                labelStyle: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1,
+                                hintStyle: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText2!
+                                    .copyWith(fontSize: 15.sp),
+                                contentPadding:
+                                    EdgeInsets.only(top: 10.h, left: 10.w),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(6.r)),
+                                  borderSide:
+                                      BorderSide(width: 0.5.w, color: uColor),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(6.r)),
+                                  borderSide:
+                                      BorderSide(width: 0.5.w, color: bcolor1),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(6.r)),
+                                  borderSide: BorderSide(
+                                      width: 0.5.w, color: Colors.red),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(6.r)),
+                                  borderSide: BorderSide(
+                                      width: 0.5.w, color: Colors.red),
+                                ),
+                                errorStyle:
+                                    TextStyle(height: 0, fontSize: 10.sp),
+                                suffixIcon: IconButton(
+                                  color: Colors.black,
+                                  icon: _visible
+                                      ? IconTheme(
+                                          data: Theme.of(context).iconTheme,
+                                          child: Icon(
+                                            Icons.visibility_outlined,
+                                            size: 18.h,
+                                          ))
+                                      : IconTheme(
+                                          data: Theme.of(context).iconTheme,
+                                          child: Icon(
+                                            Icons.visibility_off_outlined,
+                                            size: 18.h,
+                                          )),
+                                  onPressed: () {
                                     setState(() {
-                                      value = birthday;
+                                      _visible = !_visible;
                                     });
-                                    return null;
                                   },
-                                  decoration: InputDecoration(
-                                    hintText: 'Date of Birth',
-                                    labelText: 'DD/MM/YYYY',
-                                    suffixIcon: Container(
-                                      height: 10.h,
-                                      width: 10.w,
-                                      child: SvgPicture.asset(
-                                        'images/calendar.svg',
-                                        //fit: BoxFit.contain,
+                                  focusColor: bcolor3,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 40.h),
+                          SizedBox(
+                            height: 54.h,
+                            width: 400.w,
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.resolveWith<Color>(
+                                          (Set<MaterialState> states) {
+                                    if (_passwordTextController.text.isEmpty ||
+                                        _cpasswordTextController.text.isEmpty ||
+                                        _dateControlller.text.isEmpty)
+                                      return bcolor1;
+                                    return bcolor1;
+                                  }),
+
+                                  // elevation: ,
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(6.r),
+                                    side: const BorderSide(
+                                        color: Colors.transparent),
+                                  ))),
+                              onPressed: () async {
+                                if (_formKey2.currentState!.validate()) {
+                                  // print(
+                                  //     '${_phoneTextController.text.toString()}, ${_bnameTextController.text.toString()},${_emailTextController.text.toString()}');
+                                  _pageController.nextPage(
+                                      duration: Duration(milliseconds: 500),
+                                      curve: Curves.easeIn);
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Registration Incomplete',
+                                          style: Theme.of(context)
+                                              .primaryTextTheme
+                                              .bodyText1!
+                                              .copyWith(color: Colors.white)),
+                                      backgroundColor: bcolor,
+                                      behavior: SnackBarBehavior.floating,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(6.r),
                                       ),
+                                      margin: EdgeInsets.only(
+                                          bottom: MediaQuery.of(context)
+                                                  .size
+                                                  .height -
+                                              150.h,
+                                          right: 20.w,
+                                          left: 20.w),
                                     ),
-                                    floatingLabelBehavior:
-                                        FloatingLabelBehavior.auto,
-                                    focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(6.r)),
-                                        borderSide: BorderSide(
-                                          width: 0.5.w,
-                                          // color: _isvalid == true ? bcolor1: Colors.red),
-                                          color: bcolor1,
-                                        )),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(6.r)),
-                                        borderSide: BorderSide(
-                                          width: 0.5.w,
-                                          color: uColor,
-                                        )),
-                                    errorBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(6.r)),
-                                        borderSide: BorderSide(
-                                          width: 0.5.w,
-                                          color: Colors.red,
-                                        )),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(6.r)),
-                                        borderSide: BorderSide(
-                                          width: 0.5.w,
-                                          color: Colors.red,
-                                        )),
+                                  );
+                                }
+
+                                return;
+                              },
+                              child: Text(
+                                'Continue',
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .headline3!
+                                    .copyWith(fontSize: 17.sp),
+                              ),
+                            ),
+                          ), //button
+                          SizedBox(
+                            height: 24.h,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              RichText(
+                                text: TextSpan(text: '', children: [
+                                  TextSpan(
+                                    text:
+                                        'By creating an account you agree with our',
+                                    style: Theme.of(context)
+                                        .primaryTextTheme
+                                        .bodyText1,
                                   ),
-                                )),
-                          ],
-                        ),
+                                ]),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  RichText(
+                                    text: TextSpan(text: '', children: [
+                                      TextSpan(
+                                        text: 'Terms  of use',
+                                        style: TextStyle(
+                                            color: bcolor3,
+                                            fontFamily: 'Nunito',
+                                            fontWeight: FontWeight.w400,
+                                            fontStyle: FontStyle.normal,
+                                            fontSize: 18.sp),
+                                      ),
+                                    ]),
+                                  ),
+                                  SizedBox(
+                                    width: 5.w,
+                                  ),
+                                  Text(
+                                    'and',
+                                    style: Theme.of(context)
+                                        .primaryTextTheme
+                                        .bodyText1,
+                                  ),
+                                  SizedBox(
+                                    width: 5.w,
+                                  ),
+                                  RichText(
+                                    text: TextSpan(text: '', children: [
+                                      TextSpan(
+                                        text: 'Privacy Policy',
+                                        style: TextStyle(
+                                            color: bcolor3,
+                                            fontFamily: 'Nunito',
+                                            fontWeight: FontWeight.w400,
+                                            fontStyle: FontStyle.normal,
+                                            fontSize: 18.sp),
+                                      ),
+                                    ]),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          )
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 )),
           ),
-          SingleChildScrollView(),
+          SingleChildScrollView(
+            child: Form(
+              key: _formKey3,
+              child: Padding(
+                padding: EdgeInsets.only(left: 28.w, right: 28.w),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 108.h,
+                    ),
+                    Center(
+                        child: Image.asset(
+                      'images/logo1.png',
+                      height: 90.h,
+                      width: 90.w,
+                    )),
+                    SizedBox(
+                      height: 32.h,
+                    ),
+                    Text(
+                      'Upload Document',
+                      style: Theme.of(context)
+                          .primaryTextTheme
+                          .headline4!
+                          .copyWith(fontSize: 32.sp),
+                    ),
+                    SizedBox(
+                      height: 35.h,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 28.w, right: 28.w),
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                            maxRadius: 10.r,
+                            foregroundColor: Colors.black,
+                            backgroundColor: bcolor3,
+                            child: const Center(
+                              child: Icon(
+                                Icons.check_sharp,
+                                color: Colors.white,
+                                size: 8,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            height: 0.5.h,
+                            width: 158.w,
+                            color: Theme.of(context).colorScheme.primaryVariant,
+                          ),
+                          CircleAvatar(
+                            maxRadius: 10.r,
+                            foregroundColor: Colors.black,
+                            backgroundColor: bcolor3,
+                            child: const Center(
+                              child: Icon(
+                                Icons.check_sharp,
+                                color: Colors.white,
+                                size: 8,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            height: 0.5.h,
+                            width: 155.w,
+                            color: Theme.of(context).colorScheme.primaryVariant,
+                          ),
+                          _isvalid == true
+                              ? CircleAvatar(
+                                  maxRadius: 10.r,
+                                  backgroundColor: bcolor3,
+                                  child: const Center(
+                                    child: Icon(
+                                      Icons.check_sharp,
+                                      color: Colors.white,
+                                      size: 8,
+                                    ),
+                                  ),
+                                )
+                              : CircleAvatar(
+                                  maxRadius: 10.r,
+                                  backgroundColor: bcolor3,
+                                ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30.h,
+                    ),
+                    DottedBorder(
+                      strokeWidth: 1,
+                      color: fColor,
+                      dashPattern: [8, 8],
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 29.0.h, horizontal: 14.w),
+                        child: Row(
+                          //mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                'Upload your business credentials\n(CAC or International Passport)',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(fontSize: 18.sp, color: fColor),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 20.w,
+                            ),
+                            SvgPicture.asset('images/Group 156.svg'),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 16.h),
+                    Text('JPG, JPEG or PNG only (Max, 500KB)',
+                        style: Theme.of(context)
+                            .primaryTextTheme
+                            .bodyText1!
+                            .copyWith(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xff696969))),
+                    SizedBox(
+                      height: 162.h,
+                    ),
+                    SizedBox(
+                      height: 54.h,
+                      width: 400.w,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(fColor),
+                            //     MaterialStateProperty.resolveWith<Color>(
+                            //         (Set<MaterialState> states) {
+                            //   if (_passwordTextController.text.isEmpty ||
+                            //       _cpasswordTextController.text.isEmpty ||
+                            //       _dateControlller.text.isEmpty)
+                            //     return bcolor1;
+                            //   return bcolor1;
+                            // }),
+
+                            // elevation: ,
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(6.r),
+                              side: const BorderSide(color: Colors.transparent),
+                            ))),
+                        onPressed: () async {
+                          _pageController.nextPage(
+                              duration: const Duration(milliseconds: 500),
+                              curve: Curves.easeIn);
+                          // if (_formKey2.currentState!.validate()) {
+                          //   // print(
+                          //   //     '${_phoneTextController.text.toString()}, ${_bnameTextController.text.toString()},${_emailTextController.text.toString()}');
+                          //   _pageController.nextPage(
+                          //       duration: Duration(milliseconds: 500),
+                          //       curve: Curves.easeIn);
+                          // } else {
+                          //   ScaffoldMessenger.of(context).showSnackBar(
+                          //     SnackBar(
+                          //       content: Text('Registration Incomplete',
+                          //           style: Theme.of(context)
+                          //               .primaryTextTheme
+                          //               .bodyText1!
+                          //               .copyWith(color: Colors.white)),
+                          //       backgroundColor: bcolor,
+                          //       behavior: SnackBarBehavior.floating,
+                          //       shape: RoundedRectangleBorder(
+                          //         borderRadius: BorderRadius.circular(6.r),
+                          //       ),
+                          //       margin: EdgeInsets.only(
+                          //           bottom: MediaQuery.of(context).size.height -
+                          //               150.h,
+                          //           right: 20.w,
+                          //           left: 20.w),
+                          //     ),
+                          //   );
+                          // }
+
+                          // return;
+                        },
+                        child: Text(
+                          'Continue',
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context)
+                              .primaryTextTheme
+                              .headline3!
+                              .copyWith(fontSize: 17.sp),
+                        ),
+                      ),
+                    ), //button
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.only(left: 28.w, right: 28.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 108.h,
+                  ),
+                  Center(
+                      child: Image.asset(
+                    'images/logo1.png',
+                    height: 90.h,
+                    width: 90.w,
+                  )),
+                  SizedBox(
+                    height: 32.h,
+                  ),
+                  Text(
+                    'Upload Document',
+                    style: Theme.of(context)
+                        .primaryTextTheme
+                        .headline4!
+                        .copyWith(fontSize: 32.sp),
+                  ),
+                  SizedBox(
+                    height: 76.h,
+                  ),
+                  Image.asset(
+                    'images/green_tick.png',
+                    height: 90.h,
+                    width: 90.w,
+                  ),
+                  SizedBox(
+                    height: 18.h,
+                  ),
+                  Text('Your credential has been\nsuccessfully uploaded',
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context)
+                          .primaryTextTheme
+                          .bodyText1!
+                          .copyWith(fontSize: 25.sp, color: fColor)),
+                  SizedBox(height: 196.h),
+                  SizedBox(
+                    height: 54.h,
+                    width: 400.w,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(bcolor1),
+                          //     MaterialStateProperty.resolveWith<Color>(
+                          //         (Set<MaterialState> states) {
+                          //   if (_passwordTextController.text.isEmpty ||
+                          //       _cpasswordTextController.text.isEmpty ||
+                          //       _dateControlller.text.isEmpty)
+                          //     return bcolor1;
+                          //   return bcolor1;
+                          // }),
+
+                          // elevation: ,
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6.r),
+                            side: const BorderSide(color: Colors.transparent),
+                          ))),
+                      onPressed: () async {
+                        await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => SignIn())));
+                        // if (_formKey2.currentState!.validate()) {
+                        //   // print(
+                        //   //     '${_phoneTextController.text.toString()}, ${_bnameTextController.text.toString()},${_emailTextController.text.toString()}');
+                        //   _pageController.nextPage(
+                        //       duration: Duration(milliseconds: 500),
+                        //       curve: Curves.easeIn);
+                        // } else {
+                        //   ScaffoldMessenger.of(context).showSnackBar(
+                        //     SnackBar(
+                        //       content: Text('Registration Incomplete',
+                        //           style: Theme.of(context)
+                        //               .primaryTextTheme
+                        //               .bodyText1!
+                        //               .copyWith(color: Colors.white)),
+                        //       backgroundColor: bcolor,
+                        //       behavior: SnackBarBehavior.floating,
+                        //       shape: RoundedRectangleBorder(
+                        //         borderRadius: BorderRadius.circular(6.r),
+                        //       ),
+                        //       margin: EdgeInsets.only(
+                        //           bottom: MediaQuery.of(context).size.height -
+                        //               150.h,
+                        //           right: 20.w,
+                        //           left: 20.w),
+                        //     ),
+                        //   );
+                        // }
+
+                        // return;
+                      },
+                      child: Text(
+                        'Login',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context)
+                            .primaryTextTheme
+                            .headline3!
+                            .copyWith(fontSize: 17.sp),
+                      ),
+                    ),
+                  ), //button
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

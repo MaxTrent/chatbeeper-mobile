@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
               icon: _selectedIndex == 3
                   ? SvgPicture.asset('images/notification fill.svg')
                   : SvgPicture.asset('images/notification 2.svg'),
-              label: 'Notification',
+              label: 'Notifications',
               backgroundColor: Colors.white,
             ),
             BottomNavigationBarItem(

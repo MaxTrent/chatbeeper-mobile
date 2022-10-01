@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:math';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:chat_beeper/Screens/choose_username.dart';
 import 'package:chat_beeper/Screens/otp_email.dart';
 import 'package:chat_beeper/Screens/otp_number.dart';
@@ -749,6 +749,10 @@ class _CreateAccountState extends State<CreateAccount> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                suffixIcon: SvgPicture.asset(
+                                  'images/calendar.svg',
+                                  fit: BoxFit.scaleDown,
+                                ),
                                 floatingLabelBehavior:
                                     FloatingLabelBehavior.auto,
                                 focusedBorder: OutlineInputBorder(

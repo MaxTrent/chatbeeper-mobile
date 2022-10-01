@@ -301,19 +301,19 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                         .copyWith(
                                             fontWeight: FontWeight.w600,
                                             color: bcolor3,
-                                            fontSize: 15.sp),
+                                            fontSize: 20.sp),
                                   ),
                                 ), //full name
-                                SizedBox(height: 5.h),
+                                SizedBox(height: 2.h),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      '@$username',
+                                      '@$username ',
                                       style: TextStyle(
                                           fontFamily: 'Nunito',
                                           fontWeight: FontWeight.w600,
-                                          color: Colors.grey,
+                                          color: fColor2,
                                           fontSize: 15.sp),
                                     ),
                                     Icon(
@@ -323,7 +323,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                     ),
                                   ],
                                 ), //username
-                                SizedBox(height: 5.h),
+                                SizedBox(height: 2.h),
                                 Container(
                                   height: 20.h,
                                   width: 100.w,
@@ -371,7 +371,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                 ), //bio
                                 Container(
                                   height: 0.5.h,
-                                  color: Colors.grey,
+                                  color: fColor2,
                                 ), //divider
                                 SizedBox(
                                   height: 15.h,
@@ -381,26 +381,33 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                   width: 255.w,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Expanded(
                                         child: Column(
                                           children: [
-                                            Text(
-                                              '800',
-                                              style: Theme.of(context)
-                                                  .primaryTextTheme
-                                                  .bodyText1!
-                                                  .copyWith(
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 15.sp,
-                                                  ),
+                                            Padding(
+                                              padding:
+                                                  EdgeInsets.only(top: 4.0.h),
+                                              child: Text(
+                                                '800',
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .bodyText1!
+                                                    .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 15.sp,
+                                                    ),
+                                              ),
                                             ),
                                             Text(
                                               'Following',
                                               style: TextStyle(
                                                 fontFamily: 'Nunito',
                                                 fontWeight: FontWeight.w600,
-                                                color: uColor,
+                                                color: fColor2,
                                                 fontSize: 15.sp,
                                               ),
                                             ),
@@ -412,31 +419,38 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                             left: 8.w, bottom: 8.h),
                                         child: Container(
                                           height: 30.h,
-                                          color: uColor,
+                                          color: fColor2,
                                           width: 1,
                                         ),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.only(
-                                            right: 5, left: 5),
+                                          right: 5,
+                                          left: 5,
+                                        ),
                                         child: Column(
                                           children: [
-                                            Text(
-                                              '800',
-                                              style: Theme.of(context)
-                                                  .primaryTextTheme
-                                                  .bodyText1!
-                                                  .copyWith(
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 15.sp,
-                                                  ),
+                                            Padding(
+                                              padding:
+                                                  EdgeInsets.only(top: 4.0.h),
+                                              child: Text(
+                                                '800',
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .bodyText1!
+                                                    .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 15.sp,
+                                                    ),
+                                              ),
                                             ),
                                             Text(
                                               'Followers',
                                               style: TextStyle(
                                                 fontFamily: 'Nunito',
                                                 fontWeight: FontWeight.w700,
-                                                color: uColor,
+                                                color: fColor2,
                                                 fontSize: 15.sp,
                                               ),
                                             ),
@@ -448,7 +462,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                             right: 14.w, bottom: 13.h),
                                         child: Container(
                                           height: 30.h,
-                                          color: uColor,
+                                          color: fColor2,
                                           width: 1,
                                         ),
                                       ),
@@ -468,7 +482,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                             style: TextStyle(
                                               fontFamily: 'Nunito',
                                               fontWeight: FontWeight.w700,
-                                              color: uColor,
+                                              color: fColor2,
                                               fontSize: 15.sp,
                                             ),
                                           ),
@@ -680,14 +694,23 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                         overlayColor:
                             MaterialStateProperty.all(Colors.transparent),
                         indicatorColor: Colors.transparent,
-                        labelColor: bcolor1,
+                        labelColor: fColor,
                         labelPadding: EdgeInsets.zero,
-                        unselectedLabelColor: Colors.grey,
+                        unselectedLabelColor: fColor2,
+                        labelStyle: Theme.of(context)
+                            .primaryTextTheme
+                            .bodyText1!
+                            .copyWith(
+                                fontSize: 25.sp,
+                                fontWeight: FontWeight.w400,
+                                color: fColor),
                         unselectedLabelStyle: Theme.of(context)
                             .primaryTextTheme
                             .bodyText1!
                             .copyWith(
-                                fontSize: 22.sp, fontWeight: FontWeight.w400),
+                                fontSize: 22.sp,
+                                fontWeight: FontWeight.w400,
+                                color: fColor2),
                         controller: _tabcontroller,
                         tabs: [
                           Container(
@@ -695,7 +718,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                             width: 100.w,
                             decoration: BoxDecoration(
                               shape: BoxShape.rectangle,
-                              border: Border.all(color: bcolor1),
+                              border: Border.all(color: fColor2),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(100.r)),
                             ),
@@ -709,7 +732,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                               width: 100.w,
                               decoration: BoxDecoration(
                                 shape: BoxShape.rectangle,
-                                border: Border.all(color: bcolor1),
+                                border: Border.all(color: fColor2),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(100.r)),
                               ),
@@ -719,7 +742,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                               width: 100.w,
                               decoration: BoxDecoration(
                                 shape: BoxShape.rectangle,
-                                border: Border.all(color: bcolor1),
+                                border: Border.all(color: fColor2),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(100.r)),
                               ),
@@ -1005,7 +1028,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                               style: TextStyle(
                                   fontFamily: 'Nunito',
                                   fontWeight: FontWeight.w600,
-                                  color: Colors.grey,
+                                  color: fColor2,
                                   fontSize: 22.sp),
                             ),
                             Icon(
@@ -1019,7 +1042,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                         Container(
                           height: 20.h,
                           width: 100.w,
-                          color: Colors.grey.shade300,
+                          color: fColor2.shade300,
                           child: Center(
                               child: Text(
                             'Follows you',
@@ -1063,7 +1086,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                         ), //bio
                         Container(
                           height: 0.5.h,
-                          color: Colors.grey,
+                          color: fColor2,
                         ), //divider
                         SizedBox(
                           height: 15.h,
@@ -1092,7 +1115,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                       style: TextStyle(
                                         fontFamily: 'Nunito',
                                         fontWeight: FontWeight.w600,
-                                        color: uColor,
+                                        color: fColor2,
                                         fontSize: 22.sp,
                                       ),
                                     ),
@@ -1104,7 +1127,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                     EdgeInsets.only(left: 14.w, bottom: 8.h),
                                 child: Container(
                                   height: 30.h,
-                                  color: uColor,
+                                  color: fColor2,
                                   width: 1,
                                 ),
                               ),
@@ -1128,7 +1151,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                       style: TextStyle(
                                         fontFamily: 'Nunito',
                                         fontWeight: FontWeight.w700,
-                                        color: uColor,
+                                        color: fColor2,
                                         fontSize: 22.sp,
                                       ),
                                     ),
@@ -1140,7 +1163,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                     EdgeInsets.only(right: 14.w, bottom: 13.h),
                                 child: Container(
                                   height: 30.h,
-                                  color: uColor,
+                                  color: fColor2,
                                   width: 1,
                                 ),
                               ),
@@ -1160,7 +1183,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                     style: TextStyle(
                                       fontFamily: 'Nunito',
                                       fontWeight: FontWeight.w700,
-                                      color: uColor,
+                                      color: fColor2,
                                       fontSize: 22.sp,
                                     ),
                                   ),
@@ -1348,7 +1371,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                               indicatorColor: Colors.transparent,
                               labelColor: bcolor1,
                               labelPadding: EdgeInsets.zero,
-                              unselectedLabelColor: Colors.grey,
+                              unselectedLabelColor: fColor2,
                               unselectedLabelStyle: Theme.of(context)
                                   .primaryTextTheme
                                   .bodyText1!
