@@ -83,7 +83,7 @@ class PostCard extends StatelessWidget {
                                         fontSize: 22.sp),
                               ),
                               Text(
-                                '@$username',
+                                '@$username ',
                                 style: TextStyle(
                                     fontFamily: 'Nunito',
                                     fontWeight: FontWeight.w600,

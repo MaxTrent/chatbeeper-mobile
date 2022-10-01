@@ -55,9 +55,9 @@ class _PostBeepState extends State<PostBeep> {
       return Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
           Widget>[
         Padding(
-          padding: EdgeInsets.fromLTRB(4.w, 0.h, 0.w, 12.h),
+          padding: EdgeInsets.fromLTRB(4.w, 0.h, 0.w, 5.h),
           child: SizedBox(
-            height: 50.h,
+            height: 43.h,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,7 +96,7 @@ class _PostBeepState extends State<PostBeep> {
                                         fontSize: 22.sp),
                               ),
                               Text(
-                                '@$username',
+                                '@$username ',
                                 style: TextStyle(
                                     fontFamily: 'Nunito',
                                     fontWeight: FontWeight.w600,

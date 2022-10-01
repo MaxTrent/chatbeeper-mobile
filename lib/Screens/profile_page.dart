@@ -309,7 +309,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      '@$username ',
+                                      '@$username',
                                       style: TextStyle(
                                           fontFamily: 'Nunito',
                                           fontWeight: FontWeight.w600,

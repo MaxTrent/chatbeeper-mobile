@@ -153,7 +153,7 @@ class _RoomState extends State<Room> {
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontFamily: 'Nunito',
-                              fontSize: 17.sp,
+                              fontSize: 22.sp,
                               color: bcolor5),
                         ),
                         PopupMenuButton<int>(

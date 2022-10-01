@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const bcolor = Color(0xff133c55);
-const bcolor1 = Color(0xffD8D8D8);
+const bcolor1 = Color(0xff386FA4);
 const bcolor2 = Color(0xff59a5d8);
 const bcolor3 = Color.fromRGBO(41, 91, 133, 1);
 const bcolor4 = Color(0xff4585b9);
