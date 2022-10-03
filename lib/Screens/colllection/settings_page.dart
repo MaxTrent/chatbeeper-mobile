@@ -41,7 +41,7 @@ class _SettingsPageState extends State<SettingsPage> {
           decoration: const BoxDecoration(
               border: Border(
                   bottom: BorderSide(
-            color: uColor,
+            color: fColor2,
           ))),
           child: AppBar(
             toolbarHeight: 74.h,
@@ -67,7 +67,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .headline4!
-                      .copyWith(fontSize: 22.sp)),
+                      .copyWith(fontSize: 25.sp)),
             ),
           ),
         ),
@@ -94,7 +94,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         style: Theme.of(context)
                             .primaryTextTheme
                             .headline4!
-                            .copyWith(fontSize: 22.sp),
+                            .copyWith(fontSize: 25.sp),
                       ),
                     ),
                   ],
@@ -104,7 +104,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             Divider(
               thickness: 0.5.h,
-              color: uColor,
+              color: fColor2,
             ),
             ListTile(
               dense: true,
@@ -113,7 +113,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 20.sp, color: uColor),
+                    .copyWith(fontSize: 20.sp, color: fColor2),
               ),
               trailing: Icon(
                 Icons.arrow_forward_ios,
@@ -129,7 +129,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 20.sp, color: uColor),
+                    .copyWith(fontSize: 20.sp, color: fColor2),
               ),
               trailing: Icon(
                 Icons.arrow_forward_ios,
@@ -173,7 +173,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         style: Theme.of(context)
                             .primaryTextTheme
                             .headline4!
-                            .copyWith(fontSize: 22.sp),
+                            .copyWith(fontSize: 25.sp),
                       ),
                     ),
                   ],
@@ -183,7 +183,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ), //security
             Divider(
               thickness: 0.5.h,
-              color: uColor,
+              color: fColor2,
             ),
             ListTile(
               dense: true,
@@ -192,7 +192,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 20.sp, color: uColor),
+                    .copyWith(fontSize: 20.sp, color: fColor2),
               ),
               trailing: Icon(
                 Icons.arrow_forward_ios,
@@ -208,7 +208,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 20.sp, color: uColor),
+                    .copyWith(fontSize: 20.sp, color: fColor2),
               ),
               trailing: Icon(
                 Icons.arrow_forward_ios,
@@ -226,7 +226,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   style: Theme.of(context)
                       .textTheme
                       .headline2!
-                      .copyWith(fontSize: 20.sp, color: uColor),
+                      .copyWith(fontSize: 20.sp, color: fColor2),
                 ),
                 trailing: Icon(
                   Icons.arrow_forward_ios,
@@ -241,7 +241,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 20.sp, color: uColor),
+                    .copyWith(fontSize: 20.sp, color: fColor2),
               ),
               trailing: const CupertinoSwitch(
                 onChanged: null,
@@ -259,11 +259,11 @@ class _SettingsPageState extends State<SettingsPage> {
                   Padding(
                     padding: EdgeInsets.only(left: 8.0.w),
                     child: Text(
-                      'Notification',
+                      'Turn On Notifications',
                       style: Theme.of(context)
                           .primaryTextTheme
                           .headline4!
-                          .copyWith(fontSize: 22.sp),
+                          .copyWith(fontSize: 25.sp),
                     ),
                   ),
                 ],
@@ -272,7 +272,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             Divider(
               thickness: 0.5.h,
-              color: uColor,
+              color: fColor2,
             ),
             ListTile(
               dense: true,
@@ -281,13 +281,54 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 20.sp, color: uColor),
+                    .copyWith(fontSize: 20.sp, color: fColor2),
               ),
               trailing: const CupertinoSwitch(
                 onChanged: null,
                 value: false,
               ),
             ),
+            ListTile(
+              dense: true,
+              title: Row(
+                children: [
+                  SvgPicture.asset(
+                    'images/appearance.svg',
+                    color: darkModeOn ? Colors.white : Colors.black,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 8.0.w),
+                    child: Text(
+                      'Appearance',
+                      style: Theme.of(context)
+                          .primaryTextTheme
+                          .headline4!
+                          .copyWith(fontSize: 25.sp),
+                    ),
+                  ),
+                ],
+              ),
+              onTap: null,
+            ),
+            Divider(
+              thickness: 0.5.h,
+              color: fColor2,
+            ),
+            ListTile(
+              dense: true,
+              title: Text(
+                'Dark Mode',
+                style: Theme.of(context)
+                    .textTheme
+                    .headline2!
+                    .copyWith(fontSize: 20.sp, color: fColor2),
+              ),
+              trailing: const CupertinoSwitch(
+                onChanged: null,
+                value: false,
+              ),
+            ),
+
             ListTile(
               dense: true,
               title: Row(
@@ -303,7 +344,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       style: Theme.of(context)
                           .primaryTextTheme
                           .headline4!
-                          .copyWith(fontSize: 22.sp),
+                          .copyWith(fontSize: 25.sp),
                     ),
                   ),
                 ],
@@ -311,7 +352,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             Divider(
               thickness: 0.5.h,
-              color: uColor,
+              color: fColor2,
             ),
             ListTile(
               dense: true,
@@ -320,7 +361,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 20.sp, color: uColor),
+                    .copyWith(fontSize: 20.sp, color: fColor2),
               ),
               onTap: () {},
             ),
@@ -331,7 +372,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 20.sp, color: uColor),
+                    .copyWith(fontSize: 20.sp, color: fColor2),
               ),
               trailing: Icon(
                 Icons.arrow_forward_ios,
@@ -347,7 +388,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context)
                     .textTheme
                     .headline2!
-                    .copyWith(fontSize: 20.sp, color: uColor),
+                    .copyWith(fontSize: 20.sp, color: fColor2),
               ),
               trailing: Icon(
                 Icons.arrow_forward_ios,

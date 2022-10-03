@@ -94,12 +94,13 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                   icon: Icon(
                     Icons.more_vert_sharp,
                     size: 24.h,
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.secondaryVariant,
                   ),
                   iconSize: 24.h,
                   itemBuilder: (context) => [
                     PopupMenuItem(
                       value: 1,
+                      height: 40.h,
                       // row has two child icon and text.
                       child: Row(
                         children: [
@@ -128,6 +129,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                       ),
                     ), //mute
                     PopupMenuItem(
+                      height: 40.h,
                       value: 2,
                       // row has two child icon and text.
                       child: Row(
@@ -157,6 +159,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                       ),
                     ), //block
                     PopupMenuItem(
+                      height: 40.h,
                       value: 3,
                       // row has two child icon and text.
                       child: Row(
@@ -187,6 +190,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                     ), //unfollow
                     PopupMenuItem(
                       value: 4,
+                      height: 40.h,
                       // row has two child icon and text.
                       child: Row(
                         children: [
@@ -217,6 +221,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                     ), //not interested
                     PopupMenuItem(
                       value: 5,
+                      height: 40.h,
                       // row has two child icon and text.
                       child: Row(
                         children: [
@@ -258,7 +263,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                 color: Colors.black.withOpacity(0.6),
               ),
               height: 28.h,
-              width: 105.w,
+              width: 80.w,
               child: Center(
                 child: Text(
                   'Sponsored',
@@ -414,6 +419,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                     itemBuilder: (context) => [
                       PopupMenuItem(
                         value: 1,
+                        height: 40.h,
                         // row has two child icon and text.
                         child: Row(
                           children: [
@@ -442,6 +448,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                         ),
                       ), //mute
                       PopupMenuItem(
+                        height: 40.h,
                         value: 2,
                         // row has two child icon and text.
                         child: Row(
@@ -471,6 +478,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                         ),
                       ), //block
                       PopupMenuItem(
+                        height: 40.h,
                         value: 3,
                         // row has two child icon and text.
                         child: Row(
@@ -501,6 +509,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                       ), //unfollow
                       PopupMenuItem(
                         value: 4,
+                        height: 40.h,
                         // row has two child icon and text.
                         child: Row(
                           children: [
@@ -531,6 +540,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                       ), //not interested
                       PopupMenuItem(
                         value: 5,
+                        height: 40.h,
                         // row has two child icon and text.
                         child: Row(
                           children: [
@@ -722,7 +732,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                   ),
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color: Colors.grey.shade700,
+                                      color: fColor2,
                                       shape: BoxShape.rectangle,
                                       borderRadius: BorderRadius.all(
                                         Radius.circular(100.r),
@@ -755,8 +765,8 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                 Padding(
                                   padding: EdgeInsets.only(
                                       bottom: 0.h,
-                                      left: 59.w,
-                                      right: 60.w,
+                                      left: 40.w,
+                                      right: 40.w,
                                       top: 37.h),
                                   child: Row(
                                     mainAxisAlignment:
@@ -779,10 +789,13 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                               child: GestureDetector(
                                                 onTap: () {},
                                                 child: SizedBox(
-                                                    height: 24.h,
-                                                    width: 18.w,
+                                                    height: 35.h,
+                                                    width: 35.w,
                                                     child: SvgPicture.asset(
                                                       'images/link.svg',
+                                                      height: 40.h,
+                                                      width: 40.w,
+                                                      fit: BoxFit.contain,
                                                     )),
                                               ),
                                             ),
@@ -797,7 +810,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                     ? Colors.white
                                                     : Colors.black,
                                                 fontWeight: FontWeight.w500,
-                                                fontSize: 15.sp,
+                                                fontSize: 20.sp,
                                                 fontFamily: 'Nunito'),
                                           ),
                                         ],
@@ -822,10 +835,13 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                               child: GestureDetector(
                                                 onTap: () {},
                                                 child: SizedBox(
-                                                    height: 24.h,
-                                                    width: 18.w,
+                                                    height: 30.h,
+                                                    width: 30.w,
                                                     child: SvgPicture.asset(
                                                       'images/bookmark.svg',
+                                                      height: 50.h,
+                                                      width: 50.w,
+                                                      fit: BoxFit.contain,
                                                     )),
                                               ),
                                             ),
@@ -840,7 +856,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                     ? Colors.white
                                                     : Colors.black,
                                                 fontWeight: FontWeight.w500,
-                                                fontSize: 15.sp,
+                                                fontSize: 20.sp,
                                                 fontFamily: 'Nunito'),
                                           ),
                                         ],
@@ -866,8 +882,9 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                 onTap: () {},
                                                 child: SvgPicture.asset(
                                                   'images/Dm.svg',
-                                                  height: 30.h,
-                                                  width: 20.w,
+                                                  height: 40.h,
+                                                  width: 40.w,
+                                                  fit: BoxFit.contain,
                                                   color: bcolor3,
                                                 ),
                                               ),
@@ -883,7 +900,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                     ? Colors.white
                                                     : Colors.black,
                                                 fontWeight: FontWeight.w500,
-                                                fontSize: 15.sp,
+                                                fontSize: 20.sp,
                                                 fontFamily: 'Nunito'),
                                           ),
                                         ],
@@ -909,8 +926,9 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                 onTap: () {},
                                                 child: Image.asset(
                                                   'images/facebook.png',
-                                                  height: 19.h,
-                                                  width: 20.w,
+                                                  height: 50.h,
+                                                  width: 50.w,
+                                                  fit: BoxFit.contain,
                                                 ),
                                               ),
                                             ),
@@ -925,7 +943,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                     ? Colors.white
                                                     : Colors.black,
                                                 fontWeight: FontWeight.w500,
-                                                fontSize: 15.sp,
+                                                fontSize: 20.sp,
                                                 fontFamily: 'Nunito'),
                                           ),
                                         ],
@@ -937,7 +955,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                   padding: EdgeInsets.only(
                                       bottom: 0.h,
                                       left: 59.w,
-                                      right: 60.w,
+                                      right: 45.w,
                                       top: 37.h),
                                   child: Row(
                                     mainAxisAlignment:
@@ -960,10 +978,13 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                               child: GestureDetector(
                                                 onTap: () {},
                                                 child: SizedBox(
-                                                    height: 24.h,
-                                                    width: 18.w,
+                                                    height: 35.h,
+                                                    width: 35.w,
                                                     child: SvgPicture.asset(
                                                       'images/gmail.svg',
+                                                      height: 100.h,
+                                                      width: 100.w,
+                                                      fit: BoxFit.contain,
                                                     )),
                                               ),
                                             ),
@@ -978,13 +999,13 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                     ? Colors.white
                                                     : Colors.black,
                                                 fontWeight: FontWeight.w500,
-                                                fontSize: 15.sp,
+                                                fontSize: 20.sp,
                                                 fontFamily: 'Nunito'),
                                           ),
                                         ],
                                       ), //gmail
                                       SizedBox(
-                                        width: 35.w,
+                                        width: 45.w,
                                       ),
                                       Column(
                                         children: [
@@ -1003,12 +1024,13 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                               child: GestureDetector(
                                                 onTap: () {},
                                                 child: SizedBox(
-                                                  height: 24.h,
-                                                  width: 24.w,
+                                                  height: 35.h,
+                                                  width: 35.w,
                                                   child: Image.asset(
                                                     'images/whatsapp.png',
-                                                    height: 30.h,
-                                                    width: 20.w,
+                                                    height: 50.h,
+                                                    width: 50.w,
+                                                    fit: BoxFit.contain,
                                                   ),
                                                 ),
                                               ),
@@ -1024,7 +1046,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                     ? Colors.white
                                                     : Colors.black,
                                                 fontWeight: FontWeight.w500,
-                                                fontSize: 15.sp,
+                                                fontSize: 20.sp,
                                                 fontFamily: 'Nunito'),
                                           ),
                                         ],
@@ -1050,8 +1072,9 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                 onTap: () {},
                                                 child: Image.asset(
                                                   'images/telegram.png',
-                                                  height: 24.h,
-                                                  width: 24.w,
+                                                  height: 40.h,
+                                                  width: 40.w,
+                                                  fit: BoxFit.contain,
                                                 ),
                                               ),
                                             ),
@@ -1066,13 +1089,13 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                     ? Colors.white
                                                     : Colors.black,
                                                 fontWeight: FontWeight.w500,
-                                                fontSize: 15.sp,
+                                                fontSize: 20.sp,
                                                 fontFamily: 'Nunito'),
                                           ),
                                         ],
                                       ), //telegram
                                       SizedBox(
-                                        width: 35.w,
+                                        width: 50.w,
                                       ),
                                       Column(
                                         children: [
@@ -1091,10 +1114,13 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                               child: GestureDetector(
                                                 onTap: () {},
                                                 child: SizedBox(
-                                                    height: 24.h,
-                                                    width: 30.w,
+                                                    height: 40.h,
+                                                    width: 40.w,
                                                     child: SvgPicture.asset(
                                                       'images/discord.svg',
+                                                      height: 50.h,
+                                                      width: 50.w,
+                                                      fit: BoxFit.contain,
                                                     )),
                                               ),
                                             ),
@@ -1109,7 +1135,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                     ? Colors.white
                                                     : Colors.black,
                                                 fontWeight: FontWeight.w500,
-                                                fontSize: 15.sp,
+                                                fontSize: 20.sp,
                                                 fontFamily: 'Nunito'),
                                           ),
                                         ],

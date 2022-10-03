@@ -31,19 +31,20 @@ class _TrendingState extends State<Trending> {
             decoration: const BoxDecoration(
                 border: Border(bottom: BorderSide(color: Colors.grey))),
             child: AppBar(
-              // automaticallyImplyLeading: true,
               title: Padding(
-                padding: const EdgeInsets.only(bottom: 5),
-                child: Image.asset(
-                  'images/logo1.png',
-                  height: 32.h,
-                ),
+                padding: EdgeInsets.only(bottom: 5.h),
+                child: SizedBox(
+                    height: 34.h,
+                    width: 200.w,
+                    child: SvgPicture.asset(
+                      'images/chatbeeper_blue.svg',
+                    )),
               ),
               centerTitle: true,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               elevation: 0,
-              leading: Center(
-                  child: IconButton(
+              automaticallyImplyLeading: false,
+              leading: IconButton(
                 icon: Icon(
                   Icons.arrow_back_ios_new,
                   size: 23.h,
@@ -52,7 +53,7 @@ class _TrendingState extends State<Trending> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-              )),
+              ),
             ),
           ),
         ),
@@ -264,11 +265,10 @@ class _TrendingState extends State<Trending> {
                         },
                         child: Text(
                           'Cancel',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'Nunito',
-                              fontSize: 8.5.sp,
-                              fontWeight: FontWeight.w500),
+                          style: Theme.of(context)
+                              .primaryTextTheme
+                              .bodyText2!
+                              .copyWith(color: fColor),
                         )),
                   ),
                 ),

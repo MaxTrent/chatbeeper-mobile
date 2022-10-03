@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
   final List<Widget> _pages = <Widget>[
     const Timeline(),
     const TourPage(),
-    const WriteBeep(),
+    const Beep(),
     const Notifications(),
     const Room(),
     // const DirectMessage(),
@@ -81,7 +81,21 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
               icon: _selectedIndex == 3
                   ? SvgPicture.asset('images/notification fill.svg')
-                  : SvgPicture.asset('images/notification 2.svg'),
+                  : Stack(
+                      children: [
+                        SvgPicture.asset('images/notification 2.svg'),
+                        Positioned(
+                          left: 16.w,
+                          child: Container(
+                            height: 15.h,
+                            width: 15.w,
+                            decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(100.r)),
+                          ),
+                        )
+                      ],
+                    ),
               label: 'Notifications',
               backgroundColor: Colors.white,
             ),

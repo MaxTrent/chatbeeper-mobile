@@ -72,7 +72,8 @@ class RequestVerification extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: 29.sp,
                                       color: Colors.white,
-                                      fontWeight: FontWeight.w600),
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: 'Nunito'),
                                 ),
                               ],
                             ),
@@ -129,11 +130,12 @@ class RequestVerification extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 25.sp,
                       color: bcolor1,
-                      fontWeight: FontWeight.w500),
+                      fontFamily: 'Nunito',
+                      fontWeight: FontWeight.w600),
                 ),
               ),
               SizedBox(
-                height: 40.h,
+                height: 20.h,
               ),
               Padding(
                 padding: EdgeInsets.only(left: 17.w, bottom: 40.h, right: 17.w),
@@ -141,6 +143,7 @@ class RequestVerification extends StatelessWidget {
                   verifyDisclaimer,
                   style: TextStyle(
                       fontSize: 25.sp,
+                      fontFamily: 'Nunito',
                       color: darkModeOn ? Colors.white : Colors.black,
                       fontWeight: FontWeight.w500),
                 ),
@@ -161,6 +164,7 @@ class RequestVerification extends StatelessWidget {
                     'A verified phone number',
                     style: TextStyle(
                       fontSize: 25.sp,
+                      fontFamily: 'Nunito',
                       color: darkModeOn ? Colors.white : Colors.black,
                     ),
                   ),
@@ -171,6 +175,7 @@ class RequestVerification extends StatelessWidget {
                     'A confirmed email address',
                     style: TextStyle(
                       fontSize: 25.sp,
+                      fontFamily: 'Nunito',
                       color: darkModeOn ? Colors.white : Colors.black,
                     ),
                   ),
@@ -181,6 +186,7 @@ class RequestVerification extends StatelessWidget {
                     'A bio',
                     style: TextStyle(
                       fontSize: 25.sp,
+                      fontFamily: 'Nunito',
                       color: darkModeOn ? Colors.white : Colors.black,
                     ),
                   ),
@@ -191,6 +197,7 @@ class RequestVerification extends StatelessWidget {
                     'A profile photo',
                     style: TextStyle(
                       fontSize: 25.sp,
+                      fontFamily: 'Nunito',
                       color: darkModeOn ? Colors.white : Colors.black,
                     ),
                   ),
@@ -201,6 +208,7 @@ class RequestVerification extends StatelessWidget {
                     'A header photo',
                     style: TextStyle(
                       fontSize: 25.sp,
+                      fontFamily: 'Nunito',
                       color: darkModeOn ? Colors.white : Colors.black,
                     ),
                   ),
@@ -211,6 +219,7 @@ class RequestVerification extends StatelessWidget {
                     'A website',
                     style: TextStyle(
                       fontSize: 25.sp,
+                      fontFamily: 'Nunito',
                       color: darkModeOn ? Colors.white : Colors.black,
                     ),
                   ),
@@ -221,6 +230,7 @@ class RequestVerification extends StatelessWidget {
                     'A birthday',
                     style: TextStyle(
                       fontSize: 25.sp,
+                      fontFamily: 'Nunito',
                       color: darkModeOn ? Colors.white : Colors.black,
                     ),
                   ),

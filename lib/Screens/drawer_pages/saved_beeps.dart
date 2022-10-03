@@ -9,6 +9,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../Widgets/post_imageless.dart';
 import '../../Widgets/room_post.dart';
 import '../../constants.dart';
+
 class SavedBeeps extends StatefulWidget {
   const SavedBeeps({Key? key}) : super(key: key);
 
@@ -25,16 +26,13 @@ class _SavedBeepsState extends State<SavedBeeps> {
     var brightness = MediaQuery.of(context).platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
     return Scaffold(
-      appBar:PreferredSize(
-        preferredSize: Size(428.w,68.h),
+      appBar: PreferredSize(
+        preferredSize: Size(428.w, 68.h),
         child: Padding(
-          padding:  EdgeInsets.only( top: 28.h),
+          padding: EdgeInsets.only(top: 28.h),
           child: Container(
             decoration: const BoxDecoration(
-                border: Border(
-                    bottom: BorderSide(color: Colors.grey)
-                )
-            ),
+                border: Border(bottom: BorderSide(color: Colors.grey))),
             child: AppBar(
               // automaticallyImplyLeading: true,
               title: Padding(
@@ -43,14 +41,22 @@ class _SavedBeepsState extends State<SavedBeeps> {
                     style: Theme.of(context)
                         .primaryTextTheme
                         .headline4!
-                        .copyWith(fontSize: 17.sp)),
+                        .copyWith(fontSize: 25.sp)),
               ),
               centerTitle: true,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               elevation: 0,
-              leading: Center(child: IconButton(icon:  Icon(Icons.arrow_back_ios_new, size:23.h,color: darkModeOn? Colors.white: Colors.black,), onPressed: () {
-                Navigator.pop(context);
-              },)),
+              leading: Center(
+                  child: IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios_new,
+                  size: 23.h,
+                  color: darkModeOn ? Colors.white : Colors.black,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              )),
             ),
           ),
         ),
@@ -59,13 +65,19 @@ class _SavedBeepsState extends State<SavedBeeps> {
         child: Column(
           children: [
             Padding(
-              padding:  EdgeInsets.only(left: 16.w, right: 20.w),
+              padding: EdgeInsets.only(left: 16.w, right: 20.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Clear all', style: TextStyle(fontWeight: FontWeight.w600, fontFamily: 'Nunito', fontSize: 17.sp, color: bcolor5),),
+                  Text(
+                    'Clear all',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Nunito',
+                        fontSize: 17.sp,
+                        color: bcolor5),
+                  ),
                   PopupMenuButton<int>(
-
                     icon: SvgPicture.asset('images/setting-4.svg'),
                     iconSize: 24.h,
                     itemBuilder: (context) => [
@@ -75,7 +87,15 @@ class _SavedBeepsState extends State<SavedBeeps> {
                         // row has two child icon and text.
                         child: Row(
                           children: [
-                            Text("Change location",style:  TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),)
+                            Text(
+                              "Change location",
+                              style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color:
+                                      darkModeOn ? Colors.white : Colors.black),
+                            )
                           ],
                         ),
                       ),
@@ -85,8 +105,14 @@ class _SavedBeepsState extends State<SavedBeeps> {
                         // row has two child icon and text.
                         child: Row(
                           children: [
-                            Text("Preferred gender", style:
-                            TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                            Text(
+                              "Preferred gender",
+                              style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color:
+                                      darkModeOn ? Colors.white : Colors.black),
                             )
                           ],
                         ),
@@ -98,18 +124,24 @@ class _SavedBeepsState extends State<SavedBeeps> {
                           children: [
                             Text(
                               'Lock your room',
-                              style:
-                              TextStyle(fontFamily: 'Nunito', fontSize: 18.sp, fontWeight: FontWeight.w500, color: darkModeOn? Colors.white: Colors.black),
+                              style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color:
+                                      darkModeOn ? Colors.white : Colors.black),
                             ),
                             Transform.scale(
                               scale: 0.7,
-                              child: CupertinoSwitch(value: false, onChanged: null,
+                              child: CupertinoSwitch(
+                                value: false,
+                                onChanged: null,
                                 thumbColor: Colors.grey.shade500,
                               ),
                             )
                           ],
-                        ),),
-
+                        ),
+                      ),
                     ],
                     offset: Offset(0, 40.h),
                     color: Theme.of(context).scaffoldBackgroundColor,
@@ -117,13 +149,13 @@ class _SavedBeepsState extends State<SavedBeeps> {
                   )
                 ],
               ),
-            ),//clear all and settings
+            ), //clear all and settings
             SizedBox(
               height: 700.h,
               // width: 368.w,
               child: ListView.builder(
                 itemCount: 10,
-                itemBuilder: (BuildContext context, index){
+                itemBuilder: (BuildContext context, index) {
                   return Column(
                     children: [
                       PostBeep(),
@@ -134,7 +166,7 @@ class _SavedBeepsState extends State<SavedBeeps> {
                   );
                 },
               ),
-            ),//listview
+            ), //listview
           ],
         ),
       ),

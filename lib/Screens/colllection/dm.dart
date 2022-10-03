@@ -106,6 +106,9 @@ class _DirectMessageState extends State<DirectMessage> {
                     child: SvgPicture.asset(
                       color: bcolor1,
                       'images/sms filled.svg',
+                      height: 50.h,
+                      width: 50.w,
+                      fit: BoxFit.contain,
                     )),
               )
             ],

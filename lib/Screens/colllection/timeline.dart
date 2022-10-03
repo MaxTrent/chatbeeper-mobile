@@ -83,7 +83,9 @@ class _TimelineState extends State<Timeline> {
                 ),
               ),
               title: Padding(
-                padding: EdgeInsets.only(top: 20.h, right: 10.w, left: 7),
+                padding: EdgeInsets.only(
+                  top: 20.h,
+                ),
                 child: SizedBox(
                     height: 34.h,
                     // width: 159.w,
@@ -129,13 +131,43 @@ class _TimelineState extends State<Timeline> {
                                   builder: (context) => DirectMessage()));
                         },
                         child: darkModeOn == false
-                            ? SvgPicture.asset(
-                                color: Colors.black,
-                                'images/Dm.svg',
+                            ? Stack(
+                                children: [
+                                  SvgPicture.asset(
+                                    color: Colors.black,
+                                    'images/Dm.svg',
+                                  ),
+                                  Positioned(
+                                    left: 16.w,
+                                    child: Container(
+                                      height: 15.h,
+                                      width: 15.w,
+                                      decoration: BoxDecoration(
+                                          color: Colors.red,
+                                          borderRadius:
+                                              BorderRadius.circular(100.r)),
+                                    ),
+                                  ),
+                                ],
                               )
-                            : SvgPicture.asset(
-                                color: Colors.white,
-                                'images/sms.svg',
+                            : Stack(
+                                children: [
+                                  SvgPicture.asset(
+                                    color: Colors.white,
+                                    'images/sms.svg',
+                                  ),
+                                  Positioned(
+                                    left: 16.w,
+                                    child: Container(
+                                      height: 15.h,
+                                      width: 15.w,
+                                      decoration: BoxDecoration(
+                                          color: Colors.red,
+                                          borderRadius:
+                                              BorderRadius.circular(100.r)),
+                                    ),
+                                  )
+                                ],
                               ),
                       ),
                     ),

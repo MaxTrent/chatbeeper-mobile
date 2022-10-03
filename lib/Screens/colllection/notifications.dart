@@ -646,10 +646,7 @@ class _NotificationsState extends State<Notifications> {
                               color:
                                   const Color(0xff9E9E9E80).withOpacity(0.5)),
                           borderRadius: BorderRadius.circular(16.0.r)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Expanded(child: PostBeep()),
-                      ),
+                      child: PostBeep(),
                     ),
                     SizedBox(
                       height: 24.h,

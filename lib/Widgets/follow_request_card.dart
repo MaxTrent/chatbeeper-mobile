@@ -24,7 +24,7 @@ class _FollowRequestCardState extends State<FollowRequestCard> {
     var brightness = MediaQuery.of(context).platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
     return SizedBox(
-      height: 161.h,
+      height: 140.h,
       width: width,
       child: Card(
         color: Theme.of(context).scaffoldBackgroundColor,
@@ -252,7 +252,7 @@ class _FollowRequestCardState extends State<FollowRequestCard> {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                    left: 65.w, right: 148.w, bottom: 20.h, top: 8.h),
+                    left: 65.w, right: 148.w, bottom: 20.h, top: 2.h),
                 child: ButtonBar(
                   buttonPadding: EdgeInsets.zero,
                   alignment: MainAxisAlignment.start,

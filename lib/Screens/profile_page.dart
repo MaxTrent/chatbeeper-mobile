@@ -135,7 +135,8 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                     // ),
                                   ),
                                   child: CircleAvatar(
-                                    backgroundColor: Colors.white,
+                                    backgroundColor: Theme.of(context)
+                                        .scaffoldBackgroundColor,
                                     child: Image.asset(
                                       profilePictureUrl,
                                       width: 68.w,
@@ -285,6 +286,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                           ],
                         ),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(
@@ -293,58 +295,67 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                             Column(
                               children: [
                                 Center(
-                                  child: Text(
-                                    "\  $fullName\ ",
-                                    style: Theme.of(context)
-                                        .primaryTextTheme
-                                        .bodyText1!
-                                        .copyWith(
-                                            fontWeight: FontWeight.w600,
-                                            color: bcolor3,
-                                            fontSize: 20.sp),
+                                  child: Padding(
+                                    padding: EdgeInsets.only(left: 13.0.w),
+                                    child: Text(
+                                      "$fullName",
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .bodyText1!
+                                          .copyWith(
+                                              fontWeight: FontWeight.w600,
+                                              color: bcolor3,
+                                              fontSize: 20.sp),
+                                    ),
                                   ),
                                 ), //full name
                                 SizedBox(height: 2.h),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      '@$username',
-                                      style: TextStyle(
-                                          fontFamily: 'Nunito',
-                                          fontWeight: FontWeight.w600,
-                                          color: fColor2,
-                                          fontSize: 15.sp),
-                                    ),
-                                    Icon(
-                                      Icons.verified_rounded,
-                                      color: bcolor5,
-                                      size: 15.h,
-                                    ),
-                                  ],
+                                Padding(
+                                  padding: EdgeInsets.only(left: 13.0.w),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        '@$username',
+                                        style: TextStyle(
+                                            fontFamily: 'Nunito',
+                                            fontWeight: FontWeight.w600,
+                                            color: fColor2,
+                                            fontSize: 15.sp),
+                                      ),
+                                      Icon(
+                                        Icons.verified_rounded,
+                                        color: bcolor5,
+                                        size: 15.h,
+                                      ),
+                                    ],
+                                  ),
                                 ), //username
                                 SizedBox(height: 2.h),
-                                Container(
-                                  height: 20.h,
-                                  width: 100.w,
-                                  color: Colors.grey.shade300,
-                                  child: Center(
-                                      child: Text(
-                                    'Follows you',
-                                    style: TextStyle(
-                                      fontSize: 15.sp,
-                                      color: Colors.black,
-                                      fontFamily: 'Nunito',
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  )),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 13.0.w),
+                                  child: Container(
+                                    height: 20.h,
+                                    width: 100.w,
+                                    color: Colors.grey.shade300,
+                                    child: Center(
+                                        child: Text(
+                                      'Follows you',
+                                      style: TextStyle(
+                                        fontSize: 15.sp,
+                                        color: Colors.black,
+                                        fontFamily: 'Nunito',
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    )),
+                                  ),
                                 ),
                                 SizedBox(
                                   height: 14.h,
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(
-                                      left: 52.w, right: 52.w, bottom: 14.h),
+                                      left: 65.w, right: 52.w, bottom: 14.h),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -368,9 +379,11 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                       ),
                                     ],
                                   ),
-                                ), //bio
+                                ),
+                                //bio
                                 Container(
                                   height: 0.5.h,
+                                  width: 500.w,
                                   color: fColor2,
                                 ), //divider
                                 SizedBox(

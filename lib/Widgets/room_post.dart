@@ -126,7 +126,7 @@ class RoomCard extends StatelessWidget {
       return Column(
         children: [
           SizedBox(
-            height: 110.h,
+            height: 90.h,
             child: Padding(
               padding: EdgeInsets.only(left: 16.w),
               child: Column(
@@ -200,6 +200,7 @@ class RoomCard extends StatelessWidget {
                           itemBuilder: (context) => [
                             PopupMenuItem(
                               value: 1,
+                              height: 40.h,
                               // row has two child icon and text.
                               child: Row(
                                 children: [
@@ -229,6 +230,7 @@ class RoomCard extends StatelessWidget {
                               ),
                             ), //mute
                             PopupMenuItem(
+                              height: 40.h,
                               value: 2,
                               // row has two child icon and text.
                               child: Row(
@@ -259,6 +261,7 @@ class RoomCard extends StatelessWidget {
                               ),
                             ), //block
                             PopupMenuItem(
+                              height: 40.h,
                               value: 3,
                               // row has two child icon and text.
                               child: Row(
@@ -291,6 +294,7 @@ class RoomCard extends StatelessWidget {
                             ), //unfollow
                             PopupMenuItem(
                               value: 4,
+                              height: 40.h,
                               // row has two child icon and text.
                               child: Row(
                                 children: [
@@ -322,6 +326,7 @@ class RoomCard extends StatelessWidget {
                             ), //not interested
                             PopupMenuItem(
                               value: 5,
+                              height: 40.h,
                               // row has two child icon and text.
                               child: Row(
                                 children: [
@@ -361,8 +366,8 @@ class RoomCard extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                      top: 14.h,
-                      bottom: 17.h,
+                      top: 5.h,
+                      bottom: 5.h,
                     ),
                     child: Text(
                       bio,

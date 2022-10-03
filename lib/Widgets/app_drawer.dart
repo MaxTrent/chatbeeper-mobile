@@ -100,6 +100,7 @@ class _AppDrawerState extends State<AppDrawer> {
                             width: 12.w,
                           ),
                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
@@ -108,16 +109,17 @@ class _AppDrawerState extends State<AppDrawer> {
                                     .primaryTextTheme
                                     .bodyText1!
                                     .copyWith(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 22.sp),
+                                        fontWeight: FontWeight.w600,
+                                        color: bcolor3,
+                                        fontSize: 25.sp),
                               ), //full name
                               Text(
-                                '\  $username',
+                                '\@$username',
                                 style: TextStyle(
                                     fontFamily: 'Nunito',
                                     fontWeight: FontWeight.w600,
                                     color: fColor2,
-                                    fontSize: 21.sp),
+                                    fontSize: 20.sp),
                               ), //username
                             ],
                           ),

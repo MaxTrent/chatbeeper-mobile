@@ -57,10 +57,11 @@ class Drafts extends StatelessWidget {
             ),
             title: Padding(
               padding: EdgeInsets.only(top: 32.h),
-              child: Text(
-                'Drafts',
-                style: Theme.of(context).primaryTextTheme.bodyText1,
-              ),
+              child: Text('Drafts',
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .headline4!
+                      .copyWith(fontSize: 25.sp)),
             ),
             centerTitle: true,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,

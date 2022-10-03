@@ -24,7 +24,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 17.sp),
+                .copyWith(fontSize: 22.sp),
           ),
           messageType: 'receiver',
           imageUrl: 'imageUrl',
@@ -35,7 +35,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 17.sp),
+                .copyWith(fontSize: 22.sp),
           ),
           messageType: 'sender',
           imageUrl: 'imageUrl',
@@ -46,7 +46,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 17.sp),
+                .copyWith(fontSize: 22.sp),
           ),
           messageType: 'receiver',
           imageUrl: 'imageUrl',
@@ -57,7 +57,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 17.sp),
+                .copyWith(fontSize: 22.sp),
           ),
           messageType: 'sender',
           imageUrl: 'imageUrl',
@@ -79,7 +79,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 17.sp),
+                .copyWith(fontSize: 22.sp),
           ),
           messageType: 'receiver',
           imageUrl: 'imageUrl',
@@ -97,18 +97,35 @@ class _ChatScreenState extends State<ChatScreen> {
           decoration: const BoxDecoration(
               border: Border(bottom: BorderSide(color: Colors.grey))),
           child: AppBar(
-            // automaticallyImplyLeading: true,
+            automaticallyImplyLeading: false,
             title: Padding(
-                padding: EdgeInsets.only(top: 20.h, right: 9.w),
-                child: RichText(
-                  text: TextSpan(
-                      text: 'Amber Lexy',
-                      style: Theme.of(context)
-                          .primaryTextTheme
-                          .bodyText1!
-                          .copyWith(
-                              fontWeight: FontWeight.w500, fontSize: 18.sp),
-                      children: [
+                padding: EdgeInsets.only(
+                  top: 20.h,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 20.r,
+                      child: ClipRRect(
+                          //clipper: ,
+                          borderRadius: BorderRadius.circular(100.r),
+                          child: Image.asset('')),
+                    ),
+                    SizedBox(
+                      width: 5.w,
+                    ),
+                    RichText(
+                      text: TextSpan(text: '', children: [
+                        TextSpan(
+                            text: 'Amber Lexy',
+                            style: Theme.of(context)
+                                .primaryTextTheme
+                                .bodyText1!
+                                .copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 22.sp)),
                         TextSpan(
                           text: ' @lexy4real',
                           style: Theme.of(context)
@@ -116,16 +133,22 @@ class _ChatScreenState extends State<ChatScreen> {
                               .bodyText1!
                               .copyWith(
                                   fontWeight: FontWeight.w500,
-                                  fontSize: 18.sp,
+                                  fontSize: 22.sp,
                                   color: uColor),
                         ),
                       ]),
+                    ),
+                  ],
                 )),
             centerTitle: true,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             elevation: 0,
-            leading: Center(
-                child: Padding(
+            actions: [
+              SizedBox(
+                width: 20.w,
+              )
+            ],
+            leading: Padding(
               padding: EdgeInsets.only(top: 25.h),
               child: IconButton(
                 icon: Icon(
@@ -137,113 +160,110 @@ class _ChatScreenState extends State<ChatScreen> {
                   Navigator.pop(context);
                 },
               ),
-            )),
+            ),
           ),
         ),
       ),
       body: Stack(
         children: [
-          Padding(
-            padding: EdgeInsets.only(top: 30.0.h),
-            child: ListView.builder(
-              itemCount: chatContent.length,
-              shrinkWrap: true,
-              //padding: ,
-              itemBuilder: (context, index) => Container(
-                alignment: Alignment.topRight,
-                padding:
-                    EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
-                child: Align(
-                  child: chatContent[index].messageType == 'receiver'
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 20.0.h),
-                              child: CircleAvatar(
-                                radius: 20.r,
-                                child: ClipRRect(
-                                    //clipper: ,
-                                    borderRadius: BorderRadius.circular(100.r),
-                                    child: Image.asset('')),
+          ListView.builder(
+            itemCount: chatContent.length,
+            shrinkWrap: true,
+            //padding: ,
+            itemBuilder: (context, index) => Container(
+              alignment: Alignment.topRight,
+              padding: EdgeInsets.only(
+                  left: 28.w, right: 28.w, top: 10.h, bottom: 10.h),
+              child: Align(
+                child: chatContent[index].messageType == 'receiver'
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 20.0.h),
+                            child: CircleAvatar(
+                              radius: 20.r,
+                              child: ClipRRect(
+                                  //clipper: ,
+                                  borderRadius: BorderRadius.circular(100.r),
+                                  child: Image.asset('')),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 8.w,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 12.w, vertical: 8.h),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20.r),
+                                    color: Color(0xfff1f1f1),
+                                  ),
+                                  child: chatContent[index].message),
+                              SizedBox(
+                                height: 6.h,
                               ),
-                            ),
-                            SizedBox(
-                              width: 8.w,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 12.w, vertical: 8.h),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20.r),
-                                      color: Color(0xfff1f1f1),
-                                    ),
-                                    child: chatContent[index].message),
-                                SizedBox(
-                                  height: 6.h,
-                                ),
-                                Text(
-                                  chatContent[index].time,
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .bodyText1!
-                                      .copyWith(fontSize: 17.sp),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 12.w, vertical: 8.h),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20.r),
-                                      color: Color(0xfff1f1f1),
-                                    ),
-                                    child: chatContent[index].message),
-                                SizedBox(
-                                  height: 6.h,
-                                ),
-                                Text(
-                                  chatContent[index].time,
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .bodyText1!
-                                      .copyWith(fontSize: 17.sp),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 8.w,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 20.0.h),
-                              child: CircleAvatar(
-                                radius: 20.r,
-                                child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(100.r),
-                                    child: Image.asset('')),
+                              Text(
+                                chatContent[index].time,
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(fontSize: 22.sp),
                               ),
+                            ],
+                          ),
+                        ],
+                      )
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 12.w, vertical: 8.h),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20.r),
+                                    color: Color(0xfff1f1f1),
+                                  ),
+                                  child: chatContent[index].message),
+                              SizedBox(
+                                height: 6.h,
+                              ),
+                              Text(
+                                chatContent[index].time,
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(fontSize: 22.sp),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 8.w,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 20.0.h),
+                            child: CircleAvatar(
+                              radius: 20.r,
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(100.r),
+                                  child: Image.asset('')),
                             ),
-                          ],
-                        ),
-                ),
+                          ),
+                        ],
+                      ),
               ),
             ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: EdgeInsets.only(left: 28.0.w, right: 28.w),
+              padding: EdgeInsets.only(left: 26.0.w, right: 26.w),
               child: Container(
                 height: 36.h,
                 width: width,
@@ -258,7 +278,9 @@ class _ChatScreenState extends State<ChatScreen> {
                         }
                       },
                       decoration: InputDecoration(
+                        filled: true,
                         focusColor: Colors.black,
+                        fillColor: Theme.of(context).scaffoldBackgroundColor,
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.grey),
                         ),
@@ -267,7 +289,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           style: Theme.of(context)
                               .primaryTextTheme
                               .bodyText1!
-                              .copyWith(fontSize: 17.sp),
+                              .copyWith(fontSize: 25.sp),
                         ),
                       ),
                     ),
