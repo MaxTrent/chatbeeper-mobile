@@ -58,10 +58,18 @@ class _CommentState extends State<Comment> {
           ),
         ),
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) =>
-            Column(children: [PostBeep(), PostComment()]),
-        itemCount: 5,
+      body: Column(
+        children: [
+          PostBeep(),
+          Expanded(
+            // height: height,
+            child: ListView.builder(
+              itemBuilder: (context, index) =>
+                  Column(children: [PostComment()]),
+              itemCount: 10,
+            ),
+          ),
+        ],
       ),
     );
   }

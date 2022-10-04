@@ -43,13 +43,33 @@ class _PostCommentState extends State<PostComment> {
       return Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
           Widget>[
         Padding(
-          padding: EdgeInsets.fromLTRB(4.w, 8.h, 0.w, 12.h),
+          padding: EdgeInsets.fromLTRB(4.w, 3.h, 0.w, 12.h),
           child: SizedBox(
-            height: 55.h,
+            height: 65.h,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(left: 56.0.w),
+                  child: RichText(
+                      text: TextSpan(text: '', children: [
+                    TextSpan(
+                        text: 'Replying to',
+                        style: Theme.of(context)
+                            .primaryTextTheme
+                            .bodyText2!
+                            .copyWith(
+                              color: fColor2,
+                            )),
+                    TextSpan(
+                        text: '\ @$username',
+                        style: Theme.of(context)
+                            .primaryTextTheme
+                            .bodyText2!
+                            .copyWith(color: fColor)),
+                  ])),
+                ),
                 Expanded(
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,32 +128,6 @@ class _PostCommentState extends State<PostComment> {
                         ],
                       ),
                       Spacer(),
-                      Column(
-                        children: [
-                          SizedBox(height: 7.h),
-                          Container(
-                            color:
-                                Theme.of(context).brightness == Brightness.dark
-                                    ? Colors.white
-                                    : Colors.grey.shade200,
-                            height: 28.h,
-                            width: 105.w,
-                            child: Center(
-                              child: Text(
-                                'Sponsored',
-                                style: TextStyle(
-                                    color: (Theme.of(context).brightness ==
-                                            Brightness.dark
-                                        ? Colors.grey.shade800
-                                        : Colors.black),
-                                    fontSize: 15.sp,
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
                       SizedBox(
                         width: 3.w,
                       ),

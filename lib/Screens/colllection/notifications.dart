@@ -157,8 +157,8 @@ class _NotificationsState extends State<Notifications> {
                 child: Row(children: [
                   SvgPicture.asset(
                     'images/like.svg',
-                    height: 11.h,
-                    width: 13.w,
+                    height: 15.h,
+                    width: 15.w,
                   ),
                   SizedBox(width: 5.w),
                   Text(
@@ -166,7 +166,7 @@ class _NotificationsState extends State<Notifications> {
                     style: Theme.of(context)
                         .primaryTextTheme
                         .bodyText1!
-                        .copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                        .copyWith(fontWeight: FontWeight.w500, fontSize: 19.sp),
                   )
                 ]),
               ),
@@ -232,8 +232,8 @@ class _NotificationsState extends State<Notifications> {
                 child: Row(children: [
                   SvgPicture.asset(
                     'images/user-add.svg',
-                    height: 16.h,
-                    width: 16.w,
+                    height: 20.h,
+                    width: 20.w,
                   ),
                   SizedBox(width: 5.w),
                   Text(
@@ -241,7 +241,7 @@ class _NotificationsState extends State<Notifications> {
                     style: Theme.of(context)
                         .primaryTextTheme
                         .bodyText1!
-                        .copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                        .copyWith(fontWeight: FontWeight.w500, fontSize: 19.sp),
                   )
                 ]),
               ),
@@ -348,16 +348,16 @@ class _NotificationsState extends State<Notifications> {
                 child: Row(children: [
                   SvgPicture.asset(
                     'images/rebeep.svg',
-                    height: 16.h,
-                    width: 16.w,
+                    height: 20.h,
+                    width: 20.w,
                   ),
                   SizedBox(width: 5.w),
                   Text(
-                    time,
+                    '2 minutes ago',
                     style: Theme.of(context)
                         .primaryTextTheme
                         .bodyText1!
-                        .copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                        .copyWith(fontWeight: FontWeight.w500, fontSize: 19.sp),
                   )
                 ]),
               ),
@@ -414,7 +414,7 @@ class _NotificationsState extends State<Notifications> {
                           .primaryTextTheme
                           .bodyText1!
                           .copyWith(
-                              fontWeight: FontWeight.w500, fontSize: 14.sp),
+                              fontWeight: FontWeight.w500, fontSize: 19.sp),
                     ),
                     SizedBox(
                       height: 10.h,
@@ -435,7 +435,7 @@ class _NotificationsState extends State<Notifications> {
                                   .primaryTextTheme
                                   .bodyText1!
                                   .copyWith(
-                                      fontSize: 16.sp,
+                                      fontSize: 20.sp,
                                       fontWeight: FontWeight.w600)),
                           SizedBox(
                             width: 12.w,
@@ -462,7 +462,7 @@ class _NotificationsState extends State<Notifications> {
                                     .primaryTextTheme
                                     .headline3!
                                     .copyWith(
-                                        fontSize: 14.sp,
+                                        fontSize: 19.sp,
                                         color: backgroundColor),
                               ),
                             ),
@@ -492,7 +492,7 @@ class _NotificationsState extends State<Notifications> {
                                     .primaryTextTheme
                                     .headline3!
                                     .copyWith(
-                                      fontSize: 14.sp,
+                                      fontSize: 19.sp,
                                       color: Colors.white,
                                     ),
                               ),
@@ -569,8 +569,8 @@ class _NotificationsState extends State<Notifications> {
                 child: Row(children: [
                   SvgPicture.asset(
                     'images/dislike_blue.svg',
-                    height: 11.h,
-                    width: 13.w,
+                    height: 15.h,
+                    width: 15.w,
                   ),
                   SizedBox(width: 5.w),
                   Text(
@@ -578,7 +578,7 @@ class _NotificationsState extends State<Notifications> {
                     style: Theme.of(context)
                         .primaryTextTheme
                         .bodyText1!
-                        .copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                        .copyWith(fontWeight: FontWeight.w500, fontSize: 19.sp),
                   )
                 ]),
               ),
@@ -635,7 +635,7 @@ class _NotificationsState extends State<Notifications> {
                           .primaryTextTheme
                           .bodyText1!
                           .copyWith(
-                              fontWeight: FontWeight.w500, fontSize: 14.sp),
+                              fontWeight: FontWeight.w500, fontSize: 19.sp),
                     ),
                     SizedBox(
                       height: 10.h,
@@ -728,7 +728,7 @@ class _NotificationsState extends State<Notifications> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .bodyText1!
-                      .copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                      .copyWith(fontWeight: FontWeight.w500, fontSize: 19.sp),
                 )
               ]),
             ),

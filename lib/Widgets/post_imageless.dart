@@ -11,6 +11,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
+import '../Screens/colllection/create_screen.dart';
+
 class PostBeep extends StatefulWidget {
   PostBeep({Key? key}) : super(key: key);
   static const String id = 'post-card';
@@ -347,17 +349,24 @@ class _PostBeepState extends State<PostBeep> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                ReadMoreText(
-                  loremIpsum,
-                  trimExpandedText: 'see Less',
-                  trimLines: 3,
-                  trimMode: TrimMode.Line,
-                  trimCollapsedText: 'see more',
-                  colorClickableText: fColor2,
-                  style: Theme.of(context)
-                      .primaryTextTheme
-                      .bodyText1!
-                      .copyWith(fontWeight: FontWeight.w400, fontSize: 25.sp),
+                GestureDetector(
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Comment())),
+                  child: Container(
+                    child: ReadMoreText(
+                      loremIpsum,
+                      trimExpandedText: 'see Less',
+                      trimLines: 3,
+                      trimMode: TrimMode.Line,
+                      trimCollapsedText: 'see more',
+                      colorClickableText: fColor2,
+                      style: Theme.of(context)
+                          .primaryTextTheme
+                          .bodyText1!
+                          .copyWith(
+                              fontWeight: FontWeight.w400, fontSize: 25.sp),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -382,30 +391,36 @@ class _PostBeepState extends State<PostBeep> {
                 //         MaterialPageRoute(builder: (context) => Comment()));
                 //   },
                 // ),
-                LikeButton(
-                  size: 24.h,
-                  circleColor: CircleColor(
-                      start: Colors.red.shade700, end: Colors.red.shade800),
-                  bubblesColor: BubblesColor(
-                    dotPrimaryColor: Colors.red.shade700,
-                    dotSecondaryColor: Colors.red.shade800,
+                GestureDetector(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CreateComment(),
+                      )),
+                  child: LikeButton(
+                    size: 24.h,
+                    circleColor: CircleColor(
+                        start: Colors.red.shade700, end: Colors.red.shade800),
+                    bubblesColor: BubblesColor(
+                      dotPrimaryColor: Colors.red.shade700,
+                      dotSecondaryColor: Colors.red.shade800,
+                    ),
+                    likeBuilder: (bool _rebeeped) {
+                      // return _rebeeped == false
+                      //     ? SizedBox(
+                      //         height: 35.h,
+                      //         child: SvgPicture.asset(
+                      //           'images/comment.svg',
+                      //           height: 30.h,
+                      //         ))
+                      //     : SvgPicture.asset(
+                      //         'images/comment.svg',
+                      //         height: 35.h,
+                      //       );
+                    },
+                    likeCount: 100,
+                    likeCountPadding: EdgeInsets.only(left: 3.w),
                   ),
-                  likeBuilder: (bool _rebeeped) {
-                    return _rebeeped == false
-                        ? SizedBox(
-                            height: 35.h,
-                            child: SvgPicture.asset(
-                              'images/comment.svg',
-                              height: 30.h,
-                            ))
-                        : SvgPicture.asset(
-                            'images/comment.svg',
-                            color: Colors.red,
-                            height: 35.h,
-                          );
-                  },
-                  likeCount: 100,
-                  likeCountPadding: EdgeInsets.only(left: 3.w),
                 ),
 
                 SizedBox(
@@ -554,7 +569,7 @@ class _PostBeepState extends State<PostBeep> {
                   // },
                 ), //heart
                 SizedBox(
-                  width: 110.w,
+                  width: 100.w,
                 ),
                 Expanded(
                   child: GestureDetector(
@@ -1027,59 +1042,56 @@ class _PostBeepState extends State<PostBeep> {
     } //useless
 
     return ExpandableNotifier(
-        child: Padding(
-      padding: EdgeInsets.only(bottom: 10.h),
-      child: ScrollOnExpand(
-        child: SizedBox(
-          child: Card(
-            elevation: 0,
-            color: Theme.of(context).scaffoldBackgroundColor,
-            clipBehavior: Clip.antiAlias,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                ExpandableTheme(
-                  data: ExpandableThemeData(),
-                  child: Expandable(
-                    collapsed: buildCollapsed1(),
-                    expanded: buildExpanded1(),
-                  ),
-                ), //top
-                Expandable(
-                  collapsed: buildCollapsed2(),
+        child: ScrollOnExpand(
+      child: SizedBox(
+        child: Card(
+          elevation: 0,
+          color: Theme.of(context).scaffoldBackgroundColor,
+          clipBehavior: Clip.antiAlias,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              ExpandableTheme(
+                data: ExpandableThemeData(),
+                child: Expandable(
+                  collapsed: buildCollapsed1(),
                   expanded: buildExpanded1(),
-                ), //write up
-                // ),
-                Divider(
-                  height: 1,
-                  color: uColor,
                 ),
+              ), //top
+              Expandable(
+                collapsed: buildCollapsed2(),
+                expanded: buildExpanded1(),
+              ), //write up
+              // ),
+              Divider(
+                height: 1,
+                color: uColor,
+              ),
 
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.start,
-                //   children: <Widget>[
-                //     Builder(
-                //       builder: (context) {
-                //         var controller =
-                //         ExpandableController.of(context, required: true)!;
-                //         return TextButton(
-                //           child: Text(
-                //             controller.expanded ? "COLLAPSE" : "EXPAND",
-                //             style: Theme.of(context)
-                //                 .textTheme
-                //                 .button!
-                //                 .copyWith(color: Colors.deepPurple),
-                //           ),
-                //           onPressed: () {
-                //             controller.toggle();
-                //           },
-                //         );
-                //       },
-                //     ),
-                //   ],
-                // ),
-              ],
-            ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.start,
+              //   children: <Widget>[
+              //     Builder(
+              //       builder: (context) {
+              //         var controller =
+              //         ExpandableController.of(context, required: true)!;
+              //         return TextButton(
+              //           child: Text(
+              //             controller.expanded ? "COLLAPSE" : "EXPAND",
+              //             style: Theme.of(context)
+              //                 .textTheme
+              //                 .button!
+              //                 .copyWith(color: Colors.deepPurple),
+              //           ),
+              //           onPressed: () {
+              //             controller.toggle();
+              //           },
+              //         );
+              //       },
+              //     ),
+              //   ],
+              // ),
+            ],
           ),
         ),
       ),

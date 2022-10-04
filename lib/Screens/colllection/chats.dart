@@ -28,7 +28,7 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           messageType: 'receiver',
           imageUrl: 'imageUrl',
-          time: 'Sent ${DateTime.now().microsecondsSinceEpoch.toString()}'),
+          time: 'Sent 10:30pm'),
       ChatModel(
           message: Text(
             'I’m okay, wbu?',
@@ -39,7 +39,7 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           messageType: 'sender',
           imageUrl: 'imageUrl',
-          time: 'Sent ${DateTime.now().microsecondsSinceEpoch.toString()}'),
+          time: 'Sent 10:30pm'),
       ChatModel(
           message: Text(
             'We missed you at the party\ntoday 😕',
@@ -50,7 +50,7 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           messageType: 'receiver',
           imageUrl: 'imageUrl',
-          time: 'Sent ${DateTime.now().microsecondsSinceEpoch.toString()}'),
+          time: 'Sent 10:30pm'),
       ChatModel(
           message: Text(
             'Yeah, sorry about that lexy, had\nan emergency with nancy 😶',
@@ -61,7 +61,7 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           messageType: 'sender',
           imageUrl: 'imageUrl',
-          time: 'Sent ${DateTime.now().microsecondsSinceEpoch.toString()}'),
+          time: 'Sent 10:30pm'),
       ChatModel(
           message: Container(
             width: 306.w,
@@ -72,7 +72,7 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           messageType: 'receiver',
           imageUrl: 'imageUrl',
-          time: 'Sent ${DateTime.now().microsecondsSinceEpoch.toString()}'),
+          time: 'Sent 10:30pm'),
       ChatModel(
           message: Text(
             'You missed a lot!!! 😍😋',
@@ -83,7 +83,7 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           messageType: 'receiver',
           imageUrl: 'imageUrl',
-          time: 'Sent ${DateTime.now().toLocal().toString()}'),
+          time: 'Sent 10:30pm'),
     ];
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -211,7 +211,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .bodyText1!
-                                    .copyWith(fontSize: 22.sp),
+                                    .copyWith(fontSize: 15.sp),
                               ),
                             ],
                           ),
@@ -239,7 +239,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .bodyText1!
-                                    .copyWith(fontSize: 22.sp),
+                                    .copyWith(fontSize: 15.sp),
                               ),
                             ],
                           ),

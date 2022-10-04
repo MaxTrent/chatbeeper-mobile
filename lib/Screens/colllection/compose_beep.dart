@@ -65,7 +65,7 @@ class ComposeBeep extends StatelessWidget {
                                       Radius.circular(100.0.r))),
                               actions: [
                                 SizedBox(
-                                  width: 63.38.w,
+                                  width: 68.w,
                                   height: 21.13.h,
                                   child: OutlinedButton(
                                       style: OutlinedButton.styleFrom(
@@ -94,7 +94,7 @@ class ComposeBeep extends StatelessWidget {
                                   width: 9.24.w,
                                 ),
                                 SizedBox(
-                                  width: 63.38.w,
+                                  width: 68.w,
                                   height: 21.13.h,
                                   child: OutlinedButton(
                                       style: OutlinedButton.styleFrom(
@@ -157,7 +157,7 @@ class ComposeBeep extends StatelessWidget {
                                       //     // mainAxisSize: MainAxisSize.min,
                                       //     children: [
                                       //       SizedBox(
-                                      //         width: 63.38.w, height: 21.13.h,
+                                      //         width: 68.w, height: 21.13.h,
                                       //         child:OutlinedButton(
                                       //             style: OutlinedButton.styleFrom(
                                       //                 shape: StadiumBorder(),
@@ -176,7 +176,7 @@ class ComposeBeep extends StatelessWidget {
                                       //         width: 9.24.w,
                                       //       ),
                                       //       SizedBox(
-                                      //         width: 63.38.w, height: 21.13.h,
+                                      //         width: 68.w, height: 21.13.h,
                                       //         child:OutlinedButton(
                                       //             style: OutlinedButton.styleFrom(
                                       //                 shape: StadiumBorder(),

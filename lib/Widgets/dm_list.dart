@@ -46,12 +46,13 @@ class _DmListState extends State<DmList> {
               children: [
                 Stack(children: [
                   CircleAvatar(
+                    radius: 20.r,
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(100.r),
                         child: Image.asset(widget.imageURL)),
                   ),
                   Positioned(
-                    left: 32.w,
+                    left: 30.w,
                     child: Container(
                       width: 10.w,
                       height: 10.h,
