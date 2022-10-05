@@ -11,7 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-import '../Screens/colllection/create_screen.dart';
+import '../Screens/colllection/create_comment.dart';
 
 class PostBeep extends StatefulWidget {
   PostBeep({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class _PostBeepState extends State<PostBeep> {
   String loremIpsum =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
-  String FullName = 'Sarah Madini';
+  String fullName = 'Sarah Madini';
 
   String username = 'Madini';
 
@@ -89,7 +89,7 @@ class _PostBeepState extends State<PostBeep> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                "\ $FullName\ ",
+                                "\ $fullName\ ",
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .bodyText1!
@@ -381,46 +381,21 @@ class _PostBeepState extends State<PostBeep> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                // GestureDetector(
-                //   child: SvgPicture.asset(
-                //     'images/comment.svg',
-                //     height: 24.h,
-                //   ),
-                //   onTap: () {
-                //     Navigator.push(context,
-                //         MaterialPageRoute(builder: (context) => Comment()));
-                //   },
-                // ),
                 GestureDetector(
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CreateComment(),
-                      )),
-                  child: LikeButton(
-                    size: 24.h,
-                    circleColor: CircleColor(
-                        start: Colors.red.shade700, end: Colors.red.shade800),
-                    bubblesColor: BubblesColor(
-                      dotPrimaryColor: Colors.red.shade700,
-                      dotSecondaryColor: Colors.red.shade800,
-                    ),
-                    likeBuilder: (bool _rebeeped) {
-                      // return _rebeeped == false
-                      //     ? SizedBox(
-                      //         height: 35.h,
-                      //         child: SvgPicture.asset(
-                      //           'images/comment.svg',
-                      //           height: 30.h,
-                      //         ))
-                      //     : SvgPicture.asset(
-                      //         'images/comment.svg',
-                      //         height: 35.h,
-                      //       );
-                    },
-                    likeCount: 100,
-                    likeCountPadding: EdgeInsets.only(left: 3.w),
+                  child: SvgPicture.asset(
+                    'images/comment.svg',
+                    height: 24.h,
                   ),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CreateComment()));
+                  },
+                ),
+                Text(
+                  ' 100',
+                  style: TextStyle(color: Colors.grey),
                 ),
 
                 SizedBox(

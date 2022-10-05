@@ -1,3 +1,4 @@
+import 'package:chat_beeper/Screens/colllection/timeline.dart';
 import 'package:chat_beeper/Screens/drafts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -46,162 +47,172 @@ class ComposeBeep extends StatelessWidget {
                         color: darkModeOn ? bcolor : bcolor,
                       ),
                       onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (ctx) => ConstrainedBox(
-                            constraints: BoxConstraints(
-                              maxHeight: 64.h,
-                              maxWidth: 257.w,
-                            ),
-                            child: AlertDialog(
-                              titlePadding: EdgeInsets.zero,
-                              buttonPadding: EdgeInsets.zero,
-                              contentPadding: EdgeInsets.zero,
-                              actionsPadding: EdgeInsets.only(bottom: 9.h),
-                              alignment: AlignmentDirectional.topCenter,
-                              backgroundColor: Colors.white.withOpacity(0.8),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(100.0.r))),
-                              actions: [
-                                SizedBox(
-                                  width: 68.w,
-                                  height: 21.13.h,
-                                  child: OutlinedButton(
-                                      style: OutlinedButton.styleFrom(
-                                          shape: const StadiumBorder(),
-                                          padding: EdgeInsets.zero,
-                                          backgroundColor: Colors.white),
-                                      onPressed: () {
-                                        // FocusScope.of(context).unfocus();
-                                        // TextEditingController().clear();
-                                        Navigator.of(context,
-                                                rootNavigator: true)
-                                            .pop();
-                                      },
-                                      child: Center(
-                                        child: Text(
-                                          'Cancel',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontFamily: 'Nunito',
-                                              fontSize: 15.sp,
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                      )),
-                                ), //cancel
-                                SizedBox(
-                                  width: 9.24.w,
-                                ),
-                                SizedBox(
-                                  width: 68.w,
-                                  height: 21.13.h,
-                                  child: OutlinedButton(
-                                      style: OutlinedButton.styleFrom(
-                                          shape: const StadiumBorder(),
-                                          backgroundColor: bcolor3),
-                                      onPressed: () {
-                                        // FocusScope.of(context).unfocus();
-                                        // TextEditingController().clear();
-                                        Navigator.of(context,
-                                                rootNavigator: true)
-                                            .pop();
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Drafts()));
-                                      },
-                                      child: Center(
-                                        child: Text(
-                                          'Save',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontFamily: 'Nunito',
-                                              fontSize: 15.sp,
-                                              fontWeight: FontWeight.w600),
-                                        ),
-                                      )),
-                                ), //save
-                              ],
-                              actionsAlignment: MainAxisAlignment.center,
-                              content: Builder(
-                                builder: (context) {
-                                  // Get available height and width of the build area of this widget. Make a choice depending on the size.
-                                  var height =
-                                      MediaQuery.of(context).size.height;
-                                  var width = MediaQuery.of(context).size.width;
-
-                                  return Column(
-                                    // crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
+                        _beepController.text.isEmpty
+                            ? Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Timeline()))
+                            : showDialog(
+                                context: context,
+                                builder: (ctx) => ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    maxHeight: 64.h,
+                                    maxWidth: 257.w,
+                                  ),
+                                  child: AlertDialog(
+                                    titlePadding: EdgeInsets.zero,
+                                    buttonPadding: EdgeInsets.zero,
+                                    contentPadding: EdgeInsets.zero,
+                                    actionsPadding:
+                                        EdgeInsets.only(bottom: 9.h),
+                                    alignment: AlignmentDirectional.topCenter,
+                                    backgroundColor:
+                                        Colors.white.withOpacity(0.8),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(100.0.r))),
+                                    actions: [
                                       SizedBox(
-                                        height: 8.h,
-                                      ),
-                                      Text(
-                                        'Save Beeps?',
-                                        style: TextStyle(
-                                            color: bcolor3,
-                                            fontFamily: 'Nunito',
-                                            fontSize: 20.sp,
-                                            fontWeight: FontWeight.w700),
+                                        width: 68.w,
+                                        height: 21.13.h,
+                                        child: OutlinedButton(
+                                            style: OutlinedButton.styleFrom(
+                                                shape: const StadiumBorder(),
+                                                padding: EdgeInsets.zero,
+                                                backgroundColor: Colors.white),
+                                            onPressed: () {
+                                              // FocusScope.of(context).unfocus();
+                                              // TextEditingController().clear();
+                                              Navigator.of(context,
+                                                      rootNavigator: true)
+                                                  .pop();
+                                            },
+                                            child: Center(
+                                              child: Text(
+                                                'Cancel',
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontFamily: 'Nunito',
+                                                    fontSize: 15.sp,
+                                                    fontWeight:
+                                                        FontWeight.w700),
+                                              ),
+                                            )),
+                                      ), //cancel
+                                      SizedBox(
+                                        width: 9.24.w,
                                       ),
                                       SizedBox(
-                                        height: 5.h,
-                                      ),
-                                      // Padding(
-                                      //   padding:  EdgeInsets.only(bottom: 8.h),
-                                      //   child: Row(
-                                      //     // mainAxisAlignment: MainAxisAlignment.center,
-                                      //     // mainAxisSize: MainAxisSize.min,
-                                      //     children: [
-                                      //       SizedBox(
-                                      //         width: 68.w, height: 21.13.h,
-                                      //         child:OutlinedButton(
-                                      //             style: OutlinedButton.styleFrom(
-                                      //                 shape: StadiumBorder(),
-                                      //                 backgroundColor: Colors.white),
-                                      //             onPressed: (){
-                                      //               FocusScope.of(context).unfocus();
-                                      //               TextEditingController().clear();
-                                      //             }, child: Text('Cancel',
-                                      //          style: TextStyle(
-                                      //               color: Colors.black, fontFamily: 'Nunito', fontSize: 8.5.sp,
-                                      //               fontWeight: FontWeight.w500
-                                      //           ),
-                                      //         )),
-                                      //       ),//cancel
-                                      //       SizedBox(
-                                      //         width: 9.24.w,
-                                      //       ),
-                                      //       SizedBox(
-                                      //         width: 68.w, height: 21.13.h,
-                                      //         child:OutlinedButton(
-                                      //             style: OutlinedButton.styleFrom(
-                                      //                 shape: StadiumBorder(),
-                                      //                 backgroundColor: bcolor3),
-                                      //             onPressed: (){
-                                      //               FocusScope.of(context).unfocus();
-                                      //               TextEditingController().clear();
-                                      //               Navigator.pop(context);
-                                      //             }, child: Text('Save',
-                                      //           style: TextStyle(
-                                      //               color: Colors.white, fontFamily: 'Nunito', fontSize: 15.sp,
-                                      //               fontWeight: FontWeight.w600
-                                      //           ),
-                                      //         )),
-                                      //       ),//save
-                                      //     ],
-                                      //   ),
-                                      // ),
+                                        width: 68.w,
+                                        height: 21.13.h,
+                                        child: OutlinedButton(
+                                            style: OutlinedButton.styleFrom(
+                                                shape: const StadiumBorder(),
+                                                backgroundColor: bcolor3),
+                                            onPressed: () {
+                                              // FocusScope.of(context).unfocus();
+                                              // TextEditingController().clear();
+                                              Navigator.of(context,
+                                                      rootNavigator: true)
+                                                  .pop();
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Drafts()));
+                                            },
+                                            child: Center(
+                                              child: Text(
+                                                'Save',
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontFamily: 'Nunito',
+                                                    fontSize: 15.sp,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                            )),
+                                      ), //save
                                     ],
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                        );
+                                    actionsAlignment: MainAxisAlignment.center,
+                                    content: Builder(
+                                      builder: (context) {
+                                        // Get available height and width of the build area of this widget. Make a choice depending on the size.
+                                        var height =
+                                            MediaQuery.of(context).size.height;
+                                        var width =
+                                            MediaQuery.of(context).size.width;
+
+                                        return Column(
+                                          // crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            SizedBox(
+                                              height: 8.h,
+                                            ),
+                                            Text(
+                                              'Save Beep?',
+                                              style: TextStyle(
+                                                  color: bcolor3,
+                                                  fontFamily: 'Nunito',
+                                                  fontSize: 20.sp,
+                                                  fontWeight: FontWeight.w700),
+                                            ),
+                                            SizedBox(
+                                              height: 5.h,
+                                            ),
+                                            // Padding(
+                                            //   padding:  EdgeInsets.only(bottom: 8.h),
+                                            //   child: Row(
+                                            //     // mainAxisAlignment: MainAxisAlignment.center,
+                                            //     // mainAxisSize: MainAxisSize.min,
+                                            //     children: [
+                                            //       SizedBox(
+                                            //         width: 68.w, height: 21.13.h,
+                                            //         child:OutlinedButton(
+                                            //             style: OutlinedButton.styleFrom(
+                                            //                 shape: StadiumBorder(),
+                                            //                 backgroundColor: Colors.white),
+                                            //             onPressed: (){
+                                            //               FocusScope.of(context).unfocus();
+                                            //               TextEditingController().clear();
+                                            //             }, child: Text('Cancel',
+                                            //          style: TextStyle(
+                                            //               color: Colors.black, fontFamily: 'Nunito', fontSize: 8.5.sp,
+                                            //               fontWeight: FontWeight.w500
+                                            //           ),
+                                            //         )),
+                                            //       ),//cancel
+                                            //       SizedBox(
+                                            //         width: 9.24.w,
+                                            //       ),
+                                            //       SizedBox(
+                                            //         width: 68.w, height: 21.13.h,
+                                            //         child:OutlinedButton(
+                                            //             style: OutlinedButton.styleFrom(
+                                            //                 shape: StadiumBorder(),
+                                            //                 backgroundColor: bcolor3),
+                                            //             onPressed: (){
+                                            //               FocusScope.of(context).unfocus();
+                                            //               TextEditingController().clear();
+                                            //               Navigator.pop(context);
+                                            //             }, child: Text('Save',
+                                            //           style: TextStyle(
+                                            //               color: Colors.white, fontFamily: 'Nunito', fontSize: 15.sp,
+                                            //               fontWeight: FontWeight.w600
+                                            //           ),
+                                            //         )),
+                                            //       ),//save
+                                            //     ],
+                                            //   ),
+                                            // ),
+                                          ],
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              );
                         // FocusScope.of(context).unfocus();
                         //  TextEditingController().clear();
                         //  Navigator.pop(context);
@@ -372,7 +383,7 @@ class ComposeBeep extends StatelessWidget {
                                   .primaryTextTheme
                                   .bodyText1!
                                   .copyWith(
-                                      fontSize: 15.sp,
+                                      fontSize: 20.sp,
                                       fontWeight: FontWeight.w400,
                                       color:
                                           darkModeOn ? bcolor1 : Colors.white),
@@ -385,7 +396,7 @@ class ComposeBeep extends StatelessWidget {
                               // ),
                             ),
                             SizedBox(
-                              width: 10.w,
+                              width: 5.w,
                             ),
                             SizedBox(
                               height: 20.h,

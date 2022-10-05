@@ -24,7 +24,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 22.sp),
+                .copyWith(fontSize: 25.sp),
           ),
           messageType: 'receiver',
           imageUrl: 'imageUrl',
@@ -35,7 +35,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 22.sp),
+                .copyWith(fontSize: 25.sp),
           ),
           messageType: 'sender',
           imageUrl: 'imageUrl',
@@ -46,7 +46,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 22.sp),
+                .copyWith(fontSize: 25.sp),
           ),
           messageType: 'receiver',
           imageUrl: 'imageUrl',
@@ -57,7 +57,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 22.sp),
+                .copyWith(fontSize: 25.sp),
           ),
           messageType: 'sender',
           imageUrl: 'imageUrl',
@@ -79,7 +79,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 22.sp),
+                .copyWith(fontSize: 25.sp),
           ),
           messageType: 'receiver',
           imageUrl: 'imageUrl',
@@ -263,11 +263,12 @@ class _ChatScreenState extends State<ChatScreen> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: EdgeInsets.only(left: 26.0.w, right: 26.w),
+              padding: EdgeInsets.only(left: 10.0.w, right: 10.w),
               child: Container(
-                height: 36.h,
+                height: 80.h,
                 width: width,
-                child: Row(children: [
+                child:
+                    Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
                   Expanded(
                     child: TextField(
                       onTap: () {
@@ -286,10 +287,12 @@ class _ChatScreenState extends State<ChatScreen> {
                         ),
                         label: Text(
                           'Type a message',
+                          textAlign: TextAlign.end,
                           style: Theme.of(context)
                               .primaryTextTheme
                               .bodyText1!
-                              .copyWith(fontSize: 25.sp),
+                              .copyWith(
+                                  fontSize: 22.sp, fontWeight: FontWeight.w200),
                         ),
                       ),
                     ),

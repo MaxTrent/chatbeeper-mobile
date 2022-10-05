@@ -74,7 +74,9 @@ class _HomeState extends State<Home> {
               backgroundColor: Colors.white,
             ),
             BottomNavigationBarItem(
-              icon: SvgPicture.asset('images/message-add.svg'),
+              icon: _selectedIndex == 2
+                  ? SvgPicture.asset('images/message-add-fill.svg')
+                  : SvgPicture.asset('images/message-add.svg'),
               label: 'Beep',
               backgroundColor: Colors.white,
             ),

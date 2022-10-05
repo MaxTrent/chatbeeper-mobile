@@ -41,6 +41,7 @@ dependencies:
   http: ^0.13.5
   firebase_database: ^9.1.4
   flutter_multi_formatter: ^2.7.6
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
@@ -67,7 +68,6 @@ dev_dependencies:
   expandable: ^5.0.1
   like_button: ^2.0.4
   flutter_bloc: ^8.1.1
-  equatable: ^2.0.5
 #  image_picker: ^0.8.5+3
 #  cached_network_image: ^3.0.0
   grouped_list: ^5.1.2

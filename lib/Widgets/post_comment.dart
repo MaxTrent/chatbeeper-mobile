@@ -19,11 +19,11 @@ class PostComment extends StatefulWidget {
 }
 
 class _PostCommentState extends State<PostComment> {
-  var FullName;
+  String fullName = 'Mary Lera';
 
-  var username;
+  String username = 'markpetr';
 
-  var posttime;
+  String posttime = '1 hour ago';
 
   final bool _rebeeped = false;
 
@@ -63,7 +63,7 @@ class _PostCommentState extends State<PostComment> {
                               color: fColor2,
                             )),
                     TextSpan(
-                        text: '\ @$username',
+                        text: ' @$username',
                         style: Theme.of(context)
                             .primaryTextTheme
                             .bodyText2!
@@ -94,7 +94,7 @@ class _PostCommentState extends State<PostComment> {
                           Row(
                             children: [
                               Text(
-                                "\ $FullName\ ",
+                                "\ $fullName\ ",
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .bodyText1!
@@ -122,7 +122,7 @@ class _PostCommentState extends State<PostComment> {
                             style: TextStyle(
                                 fontFamily: 'Nunito',
                                 fontWeight: FontWeight.w500,
-                                color: Colors.grey,
+                                color: fColor2,
                                 fontSize: 17.sp),
                           ),
                         ],
