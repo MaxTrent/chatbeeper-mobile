@@ -306,7 +306,7 @@ class PostCard extends StatelessWidget {
                   trimMode: TrimMode.Line,
                   colorClickableText: fColor2,
                   style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w300,
                         fontSize: 25.sp,
                       ),
                 ),
@@ -364,40 +364,6 @@ class PostCard extends StatelessWidget {
                 SizedBox(
                   width: 40.w,
                 ),
-                GestureDetector(
-                  onTap: () async {
-                    showDialog(
-                      context: context,
-                      builder: (context) => const RebeepResponse(),
-                    );
-                  },
-                  child: LikeButton(
-                    size: 30.h,
-                    circleColor: CircleColor(
-                        start: Colors.red.shade700, end: Colors.red.shade800),
-                    bubblesColor: BubblesColor(
-                      dotPrimaryColor: Colors.red.shade700,
-                      dotSecondaryColor: Colors.red.shade800,
-                    ),
-                    likeBuilder: (bool _rebeeped) {
-                      return _rebeeped == false
-                          ? SizedBox(
-                              height: 35.h,
-                              child: SvgPicture.asset(
-                                'images/rebeep.svg',
-                                height: 30.h,
-                                fit: BoxFit.fill,
-                              ))
-                          : SvgPicture.asset(
-                              'images/rebeep.svg',
-                              color: Colors.red,
-                              height: 30.h,
-                            );
-                    },
-                    likeCount: 100,
-                    likeCountPadding: EdgeInsets.only(left: 3.w),
-                  ),
-                ),
                 // GestureDetector(
                 //   onTap: () async {
                 //     showDialog(
@@ -405,19 +371,54 @@ class PostCard extends StatelessWidget {
                 //       builder: (context) => const RebeepResponse(),
                 //     );
                 //   },
-                //   child: _rebeeped == false
-                //       ? SizedBox(
-                //           height: 35.h,
-                //           child: SvgPicture.asset(
-                //             'images/rebeep.svg',
-                //             height: 30.h,
-                //           ))
-                //       : SvgPicture.asset(
-                //           'images/rebeep.svg',
-                //           color: Colors.red,
-                //           height: 35.h,
-                //         ),
-                // ), //infinite
+                //   child: LikeButton(
+                //     size: 30.h,
+                //     circleColor: CircleColor(
+                //         start: Colors.red.shade700, end: Colors.red.shade800),
+                //     bubblesColor: BubblesColor(
+                //       dotPrimaryColor: Colors.red.shade700,
+                //       dotSecondaryColor: Colors.red.shade800,
+                //     ),
+                //     likeBuilder: (bool _rebeeped) {
+                //       return _rebeeped == false
+                //           ? SizedBox(
+                //               height: 35.h,
+                //               child: SvgPicture.asset(
+                //                 'images/rebeep.svg',
+                //                 height: 30.h,
+                //                 fit: BoxFit.fill,
+                //               ))
+                //           : SvgPicture.asset(
+                //               'images/rebeep.svg',
+                //               color: Colors.red,
+                //               height: 30.h,
+                //             );
+                //     },
+                //     likeCount: 100,
+                //     likeCountPadding: EdgeInsets.only(left: 3.w),
+                //   ),
+                // ),
+                GestureDetector(
+                  onTap: () async {
+                    showDialog(
+                      context: context,
+                      builder: (context) => const RebeepResponse(),
+                    );
+                  },
+                  child: _rebeeped == false
+                      ? SizedBox(
+                          height: 35.h,
+                          child: SvgPicture.asset(
+                            'images/rebeep.svg',
+                            height: 30.h,
+                          ))
+                      : SvgPicture.asset(
+                          'images/rebeep.svg',
+                          color: Colors.red,
+                          height: 35.h,
+                        ),
+                ),
+                Text('100'), //infinite
                 SizedBox(
                   width: 40.w,
                 ),

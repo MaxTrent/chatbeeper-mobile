@@ -249,7 +249,7 @@ class UserPost extends StatelessWidget {
                   trimMode: TrimMode.Line,
                   colorClickableText: fColor2,
                   style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w300,
                         fontSize: 25.sp,
                       ),
                 ),

@@ -259,7 +259,7 @@ class _PostBeepState extends State<UserPostBeep> {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .bodyText1!
-                      .copyWith(fontWeight: FontWeight.w400, fontSize: 25.sp),
+                      .copyWith(fontWeight: FontWeight.w300, fontSize: 25.sp),
                 ),
               ],
             ),
