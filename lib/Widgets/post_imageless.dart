@@ -1,3 +1,4 @@
+import 'package:chat_beeper/Widgets/Post.dart';
 import 'package:chat_beeper/Widgets/image_slider.dart';
 import 'package:chat_beeper/Widgets/rebeep_response.dart';
 import 'package:flutter/cupertino.dart';
@@ -350,15 +351,79 @@ class _PostBeepState extends State<PostBeep> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 GestureDetector(
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Comment())),
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) => Dialog(
+                              child: Container(
+                                height: 398.h,
+                                width: 385.w,
+                                child: Scaffold(
+                                  appBar: PreferredSize(
+                                    preferredSize: Size(428.w, 68.h),
+                                    child: Padding(
+                                      padding: EdgeInsets.only(top: 28.h),
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                            border: Border(
+                                                bottom: BorderSide(
+                                                    color: Colors.grey))),
+                                        child: AppBar(
+                                          title: Padding(
+                                            padding:
+                                                EdgeInsets.only(bottom: 5.h),
+                                            child: SizedBox(
+                                                height: 34.h,
+                                                width: 200.w,
+                                                child: SvgPicture.asset(
+                                                  'images/chatbeeper_blue.svg',
+                                                )),
+                                          ),
+                                          centerTitle: true,
+                                          backgroundColor: Theme.of(context)
+                                              .scaffoldBackgroundColor,
+                                          elevation: 0,
+                                          automaticallyImplyLeading: false,
+                                          leading: IconButton(
+                                            icon: Icon(
+                                              Icons.arrow_back_ios_new,
+                                              size: 23.h,
+                                              color: darkModeOn
+                                                  ? Colors.white
+                                                  : Colors.black,
+                                            ),
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  body: Wrap(
+                                    children: [
+                                      PostBeep(),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              elevation: 10,
+                              backgroundColor:
+                                  Theme.of(context).scaffoldBackgroundColor,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(20.0.r))),
+                            ));
+                    /*Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Comment()))*/
+                  },
                   child: Container(
                     child: ReadMoreText(
                       loremIpsum,
-                      trimExpandedText: 'see Less',
+                      trimExpandedText: 'See less',
                       trimLines: 3,
                       trimMode: TrimMode.Line,
-                      trimCollapsedText: 'see more',
+                      trimCollapsedText: 'See more',
                       colorClickableText: fColor2,
                       style: Theme.of(context)
                           .primaryTextTheme

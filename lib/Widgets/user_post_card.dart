@@ -11,6 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
+import '../Screens/colllection/create_comment.dart';
 import '../Screens/sponsor_beep.dart';
 
 class UserPost extends StatelessWidget {
@@ -243,8 +244,8 @@ class UserPost extends StatelessWidget {
               children: <Widget>[
                 ReadMoreText(
                   loremIpsum,
-                  trimExpandedText: 'see Less',
-                  trimCollapsedText: 'see more',
+                  trimExpandedText: ' See less',
+                  trimCollapsedText: ' See more',
                   trimLines: 3,
                   trimMode: TrimMode.Line,
                   colorClickableText: fColor2,
@@ -266,43 +267,23 @@ class UserPost extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                // GestureDetector(
-                //   child: SvgPicture.asset(
-                //     'images/comment.svg',
-                //     height: 24.h,
-                //   ),
-                //   onTap: () {
-                //     Navigator.push(
-                //         context,
-                //         MaterialPageRoute(
-                //             builder: (context) => const Comment()));
-                //   },
-                // ),
-                LikeButton(
-                  size: 24.h,
-                  circleColor: CircleColor(
-                      start: Colors.red.shade700, end: Colors.red.shade800),
-                  bubblesColor: BubblesColor(
-                    dotPrimaryColor: Colors.red.shade700,
-                    dotSecondaryColor: Colors.red.shade800,
+                GestureDetector(
+                  child: SvgPicture.asset(
+                    'images/comment.svg',
+                    height: 24.h,
                   ),
-                  likeBuilder: (bool _rebeeped) {
-                    return _rebeeped == false
-                        ? SizedBox(
-                            height: 35.h,
-                            child: SvgPicture.asset(
-                              'images/comment.svg',
-                              height: 30.h,
-                            ))
-                        : SvgPicture.asset(
-                            'images/comment.svg',
-                            color: Colors.red,
-                            height: 35.h,
-                          );
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CreateComment()));
                   },
-                  likeCount: 100,
-                  likeCountPadding: EdgeInsets.only(left: 3.w),
                 ),
+                Text(
+                  ' 100',
+                  style: TextStyle(color: Colors.grey),
+                ),
+
                 SizedBox(
                   width: 40.w,
                 ),
@@ -328,17 +309,19 @@ class UserPost extends StatelessWidget {
                               child: SvgPicture.asset(
                                 'images/rebeep.svg',
                                 height: 30.h,
+                                fit: BoxFit.fill,
                               ))
                           : SvgPicture.asset(
                               'images/rebeep.svg',
                               color: Colors.red,
-                              height: 35.h,
+                              height: 30.h,
                             );
                     },
                     likeCount: 100,
                     likeCountPadding: EdgeInsets.only(left: 3.w),
                   ),
                 ),
+
                 // GestureDetector(
                 //   onTap: () async {
                 //     showDialog(
@@ -447,7 +430,7 @@ class UserPost extends StatelessWidget {
                   // },
                 ), //heart
                 SizedBox(
-                  width: 95.w,
+                  width: 100.w,
                 ),
                 Expanded(
                   child: GestureDetector(
@@ -886,7 +869,7 @@ class UserPost extends StatelessWidget {
                 ), //share
               ],
             ), //icons
-          ), //icons//icons
+          ), //icons
         ],
       );
     } //image of card

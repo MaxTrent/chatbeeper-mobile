@@ -11,6 +11,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
+import '../Screens/colllection/create_comment.dart';
+
 class PostCard extends StatelessWidget {
   String loremIpsum =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
@@ -300,8 +302,8 @@ class PostCard extends StatelessWidget {
               children: <Widget>[
                 ReadMoreText(
                   loremIpsum,
-                  trimExpandedText: 'see Less',
-                  trimCollapsedText: 'see more',
+                  trimExpandedText: ' See less',
+                  trimCollapsedText: ' See more',
                   trimLines: 3,
                   trimMode: TrimMode.Line,
                   colorClickableText: fColor2,
@@ -334,6 +336,10 @@ class PostCard extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (context) => const Comment()));
                   },
+                ),
+                Text(
+                  '100',
+                  style: TextStyle(color: Colors.grey),
                 ),
                 /* LikeButton(
                   size: 24.h,
@@ -418,7 +424,10 @@ class PostCard extends StatelessWidget {
                           height: 35.h,
                         ),
                 ),
-                Text('100'), //infinite
+                Text(
+                  '100',
+                  style: TextStyle(color: Colors.grey),
+                ), //infinite
                 SizedBox(
                   width: 40.w,
                 ),

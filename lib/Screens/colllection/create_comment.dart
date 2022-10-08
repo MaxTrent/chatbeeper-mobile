@@ -307,7 +307,7 @@ class _CreateCommentState extends State<CreateComment> {
                     // errorStyle: TextStyle(
                     //     height: 0, fontSize: 10.sp
                     // ),
-                    hintText: "What\'s going on?",
+                    hintText: "Type a reply",
                     hintStyle: Theme.of(context)
                         .primaryTextTheme
                         .bodyText2!
