@@ -6,6 +6,7 @@ import 'package:chat_beeper/Screens/sponsor_beep.dart';
 import 'package:chat_beeper/Widgets/Post.dart';
 import 'package:chat_beeper/themedata.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'Screens/colllection/beep.dart';
 import 'Screens/colllection/dm.dart';
 import 'Screens/colllection/notifications.dart';

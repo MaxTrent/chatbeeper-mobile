@@ -75,6 +75,7 @@ class _CreateAccountState extends State<CreateAccount> {
   bool _visible = false;
   bool _isvalid = false;
   bool _expanded = false;
+  String get emailController => _emailTextController.text.toString();
 
   int _selectedgender = 0;
   final _formKey = GlobalKey<FormState>();
@@ -1037,7 +1038,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                   return 'Passwords are different. try again';
                                 }
                                 if (val!.isEmpty || val.length < 6) {
-                                  return 'Password has to be atleast 8 characters long. try again';
+                                  return 'Password has to be atleast 6 characters long. try again';
                                 }
                                 // setState(() {
                                 //   print(password);

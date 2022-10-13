@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:chat_beeper/constants.dart';
-
+import 'package:http/http.dart' as http;
 import '../drafts.dart';
 
 class CreateComment extends StatefulWidget {
@@ -15,10 +15,12 @@ class CreateComment extends StatefulWidget {
 
 class _CreateCommentState extends State<CreateComment> {
   var username = 'markpetr';
+  var _commentController = TextEditingController();
+
+  var _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    var _commentController = TextEditingController();
     String comment = _commentController.text;
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
@@ -269,6 +271,7 @@ class _CreateCommentState extends State<CreateComment> {
               ),
               Expanded(
                 child: TextFormField(
+                  key: _formKey,
                   controller: _commentController,
                   style: Theme.of(context).primaryTextTheme.bodyText2!.copyWith(
                       color: darkModeOn ? Colors.white : Colors.black),
@@ -428,5 +431,22 @@ class _CreateCommentState extends State<CreateComment> {
         ),
       ),
     );
+  }
+
+  Future<dynamic> createComment() async {
+    String authority = 'beeperchat.herokuapp.com';
+    String unencodedPath = '/beep/6315fe0790e0ef30da0b8f05/comment';
+    final userJwt;
+
+    final uri = Uri.https(authority, unencodedPath);
+    if (_commentController.text.isNotEmpty &&
+        _formKey.currentState!.validate()) {
+      final response = await http.post(uri,
+          headers: {"Authorization": "Bearer userJwt"},
+          body: {"text": _commentController.text});
+      if (!mounted) return;
+      print(_commentController.text);
+      return response.body;
+    }
   }
 }

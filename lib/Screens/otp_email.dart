@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:chat_beeper/Screens/colllection/home_page.dart';
 import 'package:chat_beeper/Screens/otp_failed.dart';
 import 'package:chat_beeper/Screens/sign_in.dart';
@@ -31,6 +32,8 @@ class _OtpEmailState extends State<OtpEmail> {
   bool hasError = false;
   String currentText = "";
   final formKey = GlobalKey<FormState>();
+
+  int? countTime;
 
   @override
   void initState() {
@@ -120,6 +123,7 @@ class _OtpEmailState extends State<OtpEmail> {
   //   }
   // }
   @override
+  @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
@@ -128,161 +132,163 @@ class _OtpEmailState extends State<OtpEmail> {
       designSize: Size(485, 926),
     );
     return Scaffold(
-      body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: 60.h),
-                child: Image.asset(
-                  'images/verify.png',
-                  height: 137.h,
-                  width: 150.w,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(17.0),
-                child: Column(
-                  children: [
-                    SizedBox(width: 5.w, height: 0.01.h),
-                    Text('Authentication',
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).primaryTextTheme.subtitle2
-                        // style: TextStyle(fontFamily: 'Anton', fontSize: 30),
-                        ), //Authenticate
-                    SizedBox(width: 5.w, height: 0.03.h),
-                    Center(
-                      child: Center(
-                        child: Padding(
-                          padding: EdgeInsets.all(15.0),
-                          child: Center(
-                            child: Text(
-                                'Please enter the 6 digit Authentication code sent to $email',
-                                textAlign: TextAlign.center,
-                                style:
-                                    Theme.of(context).primaryTextTheme.bodyText1
-                                // style: TextStyle(fontFamily: 'Anton', fontSize: 30),
-                                ),
+        body: SingleChildScrollView(
+            physics: NeverScrollableScrollPhysics(),
+            child: Form(
+                key: _formKey,
+                child: Column(children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 60.h),
+                    child: Image.asset(
+                      'images/verify.png',
+                      height: 137.h,
+                      width: 150.w,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(17.0),
+                    child: Column(children: [
+                      SizedBox(width: 5.w, height: 0.01.h),
+                      Text('Authentication',
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).primaryTextTheme.subtitle2
+                          // style: TextStyle(fontFamily: 'Anton', fontSize: 30),
+                          ), //Authenticate
+                      SizedBox(width: 5.w, height: 0.03.h),
+                      Center(
+                        child: Center(
+                          child: Padding(
+                            padding: EdgeInsets.all(15.0),
+                            child: Center(
+                              child: Text(
+                                  'Please enter the 6 digit Authentication code sent to $email',
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .bodyText1
+                                  // style: TextStyle(fontFamily: 'Anton', fontSize: 30),
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ), //AND WRITE UP, whois creating
+                      Padding(
+                        padding: EdgeInsets.only(top: 36.h, bottom: 30.h),
+                        child: Form(
+                          key: formKey,
+                          child: OtpTextField(
+                            cursorColor:
+                                Theme.of(context).colorScheme.secondaryVariant,
+                            textStyle: Theme.of(context)
+                                .primaryTextTheme
+                                .bodyText1!
+                                .copyWith(fontSize: 25.sp),
+                            hasCustomInputDecoration: false,
+                            showFieldAsBox: false,
+                            numberOfFields: 6,
+                            borderColor: Colors.grey,
+                            focusedBorderColor: Colors.grey,
+                            disabledBorderColor: Colors.grey,
+                            autoFocus: true,
+                            clearText: true,
+                            enabledBorderColor: Colors.grey,
+                            onCodeChanged: (String code) {
+                              _otpfull == true;
+                            },
+                            //runs when every textfield is filled
+                            onSubmit: (String pin) {
+                              _otpfull == true;
+                              // setState(() {
+                              //   // token == pin;
+                              //   // print(pin);
+                              // });
+                            }, // end onSubmit
                           ),
                         ),
                       ),
-                    ), //AND WRITE UP, whois creating
-                    Padding(
-                      padding: EdgeInsets.only(top: 36.h, bottom: 30.h),
-                      child: Form(
-                        key: formKey,
-                        child: OtpTextField(
-                          cursorColor:
-                              Theme.of(context).colorScheme.secondaryVariant,
-                          textStyle: Theme.of(context)
-                              .primaryTextTheme
-                              .bodyText1!
-                              .copyWith(fontSize: 25.sp),
-                          hasCustomInputDecoration: false,
-                          showFieldAsBox: false,
-                          numberOfFields: 6,
-                          borderColor: Colors.grey,
-                          focusedBorderColor: Colors.grey,
-                          disabledBorderColor: Colors.grey,
-                          autoFocus: true,
-                          clearText: true,
-                          enabledBorderColor: Colors.grey,
-                          onCodeChanged: (String code) {
-                            _otpfull == true;
-                          },
-                          //runs when every textfield is filled
-                          onSubmit: (String pin) {
-                            _otpfull == true;
-                            // setState(() {
-                            //   // token == pin;
-                            //   // print(pin);
-                            // });
-                          }, // end onSubmit
+                      SizedBox(
+                        height: 54.h,
+                        width: 400.w,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.resolveWith<Color>(
+                                      (Set<MaterialState> states) {
+                                if (_otpfull == true) return bcolor1;
+                                return uColor;
+                              }),
+                              // elevation: ,
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(6.r),
+                                side:
+                                    const BorderSide(color: Colors.transparent),
+                              ))),
+                          onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignIn())),
+                          child: Text(
+                            'Verify',
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).primaryTextTheme.headline3,
+                            // TextStyle(
+                            //     color: Colors.white,
+                            //     fontWeight: FontWeight.w500,
+                            //     fontFamily: 'Nunito',
+                            //     fontSize: 17.sp
+                            //
+                            // ),
+                          ),
                         ),
+                      ), //button
+                      SizedBox(
+                        height: 60.h,
                       ),
-                    ),
-                    SizedBox(
-                      height: 54.h,
-                      width: 400.w,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.resolveWith<Color>(
-                                    (Set<MaterialState> states) {
-                              if (_otpfull == true) return bcolor1;
-                              return uColor;
-                            }),
-                            // elevation: ,
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(6.r),
-                              side: const BorderSide(color: Colors.transparent),
-                            ))),
-                        onPressed: () => Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => SignIn())),
-                        child: Text(
-                          'Verify',
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).primaryTextTheme.headline3,
-                          // TextStyle(
-                          //     color: Colors.white,
-                          //     fontWeight: FontWeight.w500,
-                          //     fontFamily: 'Nunito',
-                          //     fontSize: 17.sp
-                          //
-                          // ),
-                        ),
-                      ),
-                    ), //button
-                    SizedBox(
-                      height: 60.h,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        RichText(
-                          text: TextSpan(text: '', children: [
-                            TextSpan(
-                                text: 'Resend code after 60 Seconds',
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .bodyText1),
-                          ]),
-                        ),
-                        SizedBox(
-                          height: 8.h,
-                        ),
-                        RichText(
-                          text: TextSpan(text: '', children: [
-                            TextSpan(
-                              text: 'Resend Code',
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontStyle: FontStyle.normal,
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 18.sp,
-                                  fontFamily: 'Nunito'),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () => Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) => const Home(),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            children: [
+                              RichText(
+                                text: TextSpan(text: '', children: [
+                                  TextSpan(
+                                      text: 'Resend code after ',
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .bodyText1),
+                                ]),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 8.h,
+                          ),
+                          RichText(
+                            text: TextSpan(text: '', children: [
+                              TextSpan(
+                                text: 'Resend Code',
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 18.sp,
+                                    fontFamily: 'Nunito'),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () => Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => const Home(),
+                                        ),
                                       ),
-                                    ),
-                            ),
-                          ]),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ), //TopOW
-            ],
-          ),
-        ),
-      ),
-    );
+                              ),
+                            ]),
+                          ),
+                        ],
+                      ),
+                    ]),
+                  ), //TopOW
+                ]))));
   }
 
   Future<void> verifyEmail() async {
@@ -292,7 +298,7 @@ class _OtpEmailState extends State<OtpEmail> {
           body: ({
             "username": username.toString(),
             "email": email.toString(),
-            "token": otpcontroller.text
+            "token": 'test123' //otpcontroller.text
           }));
       if (response.statusCode == 201) {
         if (!mounted) return;
