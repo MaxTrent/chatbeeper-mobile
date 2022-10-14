@@ -64,6 +64,7 @@ class CreateAccount extends StatefulWidget {
 class _CreateAccountState extends State<CreateAccount> {
   var _pageController = PageController();
   final format = DateFormat("dd/MM/yyyy");
+
   String? email;
   DateTime? birthday;
   String? password;

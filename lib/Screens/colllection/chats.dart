@@ -24,7 +24,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 25.sp),
+                .copyWith(fontSize: 27.sp, fontWeight: FontWeight.w400),
           ),
           messageType: 'receiver',
           imageUrl: 'imageUrl',
@@ -35,7 +35,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 25.sp),
+                .copyWith(fontSize: 27.sp, fontWeight: FontWeight.w400),
           ),
           messageType: 'sender',
           imageUrl: 'imageUrl',
@@ -46,7 +46,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 25.sp),
+                .copyWith(fontSize: 27.sp, fontWeight: FontWeight.w400),
           ),
           messageType: 'receiver',
           imageUrl: 'imageUrl',
@@ -57,7 +57,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 25.sp),
+                .copyWith(fontSize: 27.sp, fontWeight: FontWeight.w400),
           ),
           messageType: 'sender',
           imageUrl: 'imageUrl',
@@ -79,7 +79,7 @@ class _ChatScreenState extends State<ChatScreen> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
-                .copyWith(fontSize: 25.sp),
+                .copyWith(fontSize: 27.sp, fontWeight: FontWeight.w400),
           ),
           messageType: 'receiver',
           imageUrl: 'imageUrl',
@@ -196,13 +196,14 @@ class _ChatScreenState extends State<ChatScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 12.w, vertical: 8.h),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20.r),
-                                    color: Color(0xfff1f1f1),
-                                  ),
-                                  child: chatContent[index].message),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 12.w, vertical: 8.h),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20.r),
+                                  color: Color(0xfff1f1f1),
+                                ),
+                                child: chatContent[index].message,
+                              ),
                               SizedBox(
                                 height: 6.h,
                               ),
@@ -211,7 +212,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .bodyText1!
-                                    .copyWith(fontSize: 15.sp),
+                                    .copyWith(fontSize: 17.sp),
                               ),
                             ],
                           ),
@@ -265,68 +266,97 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Padding(
               padding: EdgeInsets.only(left: 10.0.w, right: 10.w),
               child: Container(
-                height: 80.h,
+                height: 50.h,
                 width: width,
-                child:
-                    Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-                  Expanded(
-                    child: TextField(
-                      onTap: () {
-                        FocusScopeNode currentFocus = FocusScope.of(context);
+                child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          onTap: () {
+                            FocusScopeNode currentFocus =
+                                FocusScope.of(context);
 
-                        if (!currentFocus.hasPrimaryFocus) {
-                          currentFocus.unfocus();
-                        }
-                      },
-                      decoration: InputDecoration(
-                        filled: true,
-                        focusColor: Colors.black,
-                        fillColor: Theme.of(context).scaffoldBackgroundColor,
-                        border: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey),
-                        ),
-                        label: Text(
-                          'Type a message',
-                          textAlign: TextAlign.end,
-                          style: Theme.of(context)
-                              .primaryTextTheme
-                              .bodyText1!
-                              .copyWith(
-                                  fontSize: 22.sp, fontWeight: FontWeight.w200),
+                            if (!currentFocus.hasPrimaryFocus) {
+                              currentFocus.unfocus();
+                            }
+                          },
+                          decoration: InputDecoration(
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30.r)),
+                                borderSide: BorderSide(
+                                  width: 0.5.w,
+                                  // color: _isvalid == true ? bcolor1: Colors.red),
+                                  color: bcolor1,
+                                )),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30.r)),
+                              borderSide:
+                                  BorderSide(width: 0.5.w, color: fColor2),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30.r)),
+                              borderSide:
+                                  BorderSide(width: 0.5.w, color: Colors.red),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30.r)),
+                              borderSide:
+                                  BorderSide(width: 0.5.w, color: Colors.red),
+                            ),
+                            errorStyle: TextStyle(height: 0, fontSize: 12.sp),
+                            filled: true,
+                            focusColor: Colors.black,
+                            fillColor:
+                                Theme.of(context).scaffoldBackgroundColor,
+                            label: Text(
+                              'Type a message',
+                              textAlign: TextAlign.end,
+                              style: Theme.of(context)
+                                  .primaryTextTheme
+                                  .bodyText1!
+                                  .copyWith(
+                                      fontSize: 22.sp,
+                                      fontWeight: FontWeight.w200),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  darkModeOn
-                      ? Container(
-                          height: 40.h,
-                          width: 40.w,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100.r),
-                            color: Color(0XFFF1F1F1),
-                          ),
-                          child: SvgPicture.asset(
-                            'images/gallery.svg',
-                            width: 10.w,
-                            height: 10.h,
-                          ))
-                      : Container(
-                          height: 40.h,
-                          width: 40.w,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100.r),
-                            color: Color(0xfff1f1f1),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: SvgPicture.asset(
-                              'images/gallery.svg',
-                              width: 20.w,
-                              height: 10.h,
-                              fit: BoxFit.fitHeight,
-                            ),
-                          )),
-                ]),
+                      darkModeOn
+                          ? Container(
+                              height: 40.h,
+                              width: 40.w,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(100.r),
+                                color: Color(0XFFF1F1F1),
+                              ),
+                              child: SvgPicture.asset(
+                                'images/gallery.svg',
+                                width: 10.w,
+                                height: 10.h,
+                              ))
+                          : Container(
+                              height: 40.h,
+                              width: 40.w,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(100.r),
+                                color: Color(0xfff1f1f1),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: SvgPicture.asset(
+                                  'images/gallery.svg',
+                                  width: 20.w,
+                                  height: 10.h,
+                                  fit: BoxFit.fitHeight,
+                                ),
+                              )),
+                    ]),
               ),
             ),
           ),

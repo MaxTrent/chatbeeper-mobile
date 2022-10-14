@@ -1,10 +1,12 @@
 import 'package:chat_beeper/Screens/colllection/timeline.dart';
+import 'package:chat_beeper/data/secure_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:chat_beeper/constants.dart';
 import 'package:http/http.dart' as http;
 import '../drafts.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class CreateComment extends StatefulWidget {
   const CreateComment({Key? key}) : super(key: key);
@@ -14,6 +16,7 @@ class CreateComment extends StatefulWidget {
 }
 
 class _CreateCommentState extends State<CreateComment> {
+  final storage = FlutterSecureStorage();
   var username = 'markpetr';
   var _commentController = TextEditingController();
 
@@ -386,7 +389,7 @@ class _CreateCommentState extends State<CreateComment> {
                               side: BorderSide(
                                   color: darkModeOn ? bcolor1 : bcolor1),
                             ))),
-                        onPressed: () {},
+                        onPressed: createComment,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -436,17 +439,23 @@ class _CreateCommentState extends State<CreateComment> {
   Future<dynamic> createComment() async {
     String authority = 'beeperchat.herokuapp.com';
     String unencodedPath = '/beep/6315fe0790e0ef30da0b8f05/comment';
-    final userJwt;
-
+    String? userJwt = await SecureStorage.getToken();
     final uri = Uri.https(authority, unencodedPath);
+    final response = await http.post(uri,
+        headers: {"Authorization": "Bearer $userJwt"},
+        body: {"text": _commentController.text});
+    print('token: $userJwt');
+    // print(response.toString());
+
     if (_commentController.text.isNotEmpty &&
         _formKey.currentState!.validate()) {
-      final response = await http.post(uri,
-          headers: {"Authorization": "Bearer userJwt"},
-          body: {"text": _commentController.text});
-      if (!mounted) return;
-      print(_commentController.text);
-      return response.body;
+      if (response.statusCode == 201) {
+        print('Success');
+        print(_commentController.text);
+        if (!mounted) return;
+      } else {
+        print('error');
+      }
     }
   }
 }

@@ -9,8 +9,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constants.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-
+import '../data/secure_storage.dart';
 import '../model/Signin_model.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SignIn extends StatefulWidget {
   static const String id = 'signIn-screen';
@@ -23,6 +24,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final storage = SecureStorage();
   final _formKey = GlobalKey<FormState>();
   // Icon? icon;
   // bool _visible = false;
@@ -303,11 +305,7 @@ class _SignInState extends State<SignIn> {
                                     const BorderSide(color: Colors.transparent),
                               ))),
                           onPressed: () {
-                            // logIn();
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Home()));
+                            logIn();
                           },
                           child: Text(
                             'Log in',
@@ -406,36 +404,23 @@ class _SignInState extends State<SignIn> {
       final response =
           await http.post(Uri.https('beeperchat.herokuapp.com', 'auth/login'),
               body: ({
-                "email": _userTextController.text.toString(),
-                "password": _passwordTextController.text.toString(),
+                "email": _userTextController.text,
+                "password": _passwordTextController.text,
               }));
       if (response.statusCode == 201) {
+        var data = json.decode(response.body);
+
+        print("Correct");
+        // print(data['userId']);
+        var jwtToken = data['jwt'];
+
         if (!mounted) return;
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => const Home()));
+        await SecureStorage.setToken(jwtToken);
         // If the server did return a 201 CREATED response,
         // then parse the JSON.
         // return LogIn.fromJson(jsonDecode(response.body));
-      } else {
-        if (!mounted) return;
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Incorrect details',
-                style: Theme.of(context)
-                    .primaryTextTheme
-                    .bodyText1!
-                    .copyWith(color: Colors.white)),
-            backgroundColor: bcolor,
-            behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(6.r),
-            ),
-            margin: EdgeInsets.only(
-                bottom: MediaQuery.of(context).size.height - 150.h,
-                right: 20.w,
-                left: 20.w),
-          ),
-        );
       }
     }
   }

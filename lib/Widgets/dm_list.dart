@@ -80,7 +80,7 @@ class _DmListState extends State<DmList> {
                                 .primaryTextTheme
                                 .bodyText1!
                                 .copyWith(
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FontWeight.w500,
                                     fontSize: 20.sp),
                             children: [
                               TextSpan(
@@ -95,13 +95,17 @@ class _DmListState extends State<DmList> {
                             ]),
                       ),
                     ),
-                    Text(
-                      widget.message,
-                      style: Theme.of(context)
-                          .primaryTextTheme
-                          .bodyText1!
-                          .copyWith(
-                              fontWeight: FontWeight.w500, fontSize: 20.sp),
+                    Wrap(
+                      children: [
+                        Text(
+                          widget.message,
+                          style: Theme.of(context)
+                              .primaryTextTheme
+                              .bodyText1!
+                              .copyWith(
+                                  fontWeight: FontWeight.w500, fontSize: 22.sp),
+                        ),
+                      ],
                     ),
                     SizedBox(
                       height: 5.5.h,

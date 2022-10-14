@@ -4,6 +4,7 @@ import 'package:chat_beeper/Screens/otp_email.dart';
 import 'package:chat_beeper/Screens/profile_page.dart';
 import 'package:chat_beeper/Screens/sponsor_beep.dart';
 import 'package:chat_beeper/Widgets/Post.dart';
+import 'package:chat_beeper/provider/theme_provider.dart';
 import 'package:chat_beeper/themedata.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,7 +29,7 @@ import 'package:chat_beeper/Screens/colllection/room.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/services.dart';
 
-void main() {
+Future<void> main() async {
   runApp(const MyApp());
 }
 

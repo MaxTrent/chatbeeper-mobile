@@ -26,13 +26,13 @@ class _DirectMessageState extends State<DirectMessage> {
         name: 'Chi Chi',
         username: 'hotbabechi',
         message:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing\nFermentum arcu...',
+            'Lorem ipsum dolor sit amet, consectetur\nadipiscing Fermentum arcu...',
         imageURL: 'images/userdp2.png',
         time: '1 hour ago'),
     DmUsers(
         name: 'Lagos babes',
         message:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing\nFermentum arcu...',
+            'Lorem ipsum dolor sit amet, consectetur\nadipiscing Fermentum arcu...',
         imageURL: 'images/userdp1.png',
         time: '4 hours ago'),
     DmUsers(
@@ -45,14 +45,14 @@ class _DirectMessageState extends State<DirectMessage> {
         name: 'Blackie Jack',
         username: 'blaqiee_',
         message:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing\nFermentum arcu...',
+            'Lorem ipsum dolor sit amet, consectetur\nadipiscing Fermentum arcu...',
         imageURL: 'images/userdp1',
         time: '10 hours ago'),
     DmUsers(
         name: 'Tunde Ayomide',
         username: 'Tumide.ox',
         message:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing\nFermentum arcu...',
+            'Lorem ipsum dolor sit amet, consectetur\nadipiscing Fermentum arcu...',
         imageURL: 'images/userdp2',
         time: '10 hours ago'),
   ];
@@ -165,8 +165,11 @@ class _DirectMessageState extends State<DirectMessage> {
                           ),
                           errorStyle: TextStyle(height: 0, fontSize: 12.sp),
                           hintText: 'Search message',
-                          hintStyle:
-                              Theme.of(context).primaryTextTheme.bodyText2,
+                          hintStyle: Theme.of(context)
+                              .primaryTextTheme
+                              .bodyText2!
+                              .copyWith(
+                                  fontSize: 20.sp, fontWeight: FontWeight.w400),
                           contentPadding:
                               EdgeInsets.only(top: 10.h, left: 10.w),
                           prefixIcon: Transform.scale(
@@ -185,14 +188,14 @@ class _DirectMessageState extends State<DirectMessage> {
                   ),
                 ),
                 SizedBox(
-                  width: width * 0.2,
+                  width: 66.w,
                 ),
                 Text(
                   'Message requests',
                   style: TextStyle(
                       color: bcolor3,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 18.sp),
+                      fontWeight: FontWeight.w400,
+                      fontSize: 20.sp),
                 ),
               ],
             ),
