@@ -11,7 +11,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../data/secure_storage.dart';
 import '../model/Signin_model.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SignIn extends StatefulWidget {
   static const String id = 'signIn-screen';
