@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:chat_beeper/Screens/colllection/timeline.dart';
 import 'package:chat_beeper/data/secure_storage.dart';
 import 'package:flutter/material.dart';
@@ -5,8 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:chat_beeper/constants.dart';
 import 'package:http/http.dart' as http;
+import '../comment_screen.dart';
 import '../drafts.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class CreateComment extends StatefulWidget {
   const CreateComment({Key? key}) : super(key: key);
@@ -16,7 +18,6 @@ class CreateComment extends StatefulWidget {
 }
 
 class _CreateCommentState extends State<CreateComment> {
-  final storage = FlutterSecureStorage();
   var username = 'markpetr';
   var _commentController = TextEditingController();
 
@@ -447,15 +448,16 @@ class _CreateCommentState extends State<CreateComment> {
     print('token: $userJwt');
     // print(response.toString());
 
-    if (_commentController.text.isNotEmpty &&
-        _formKey.currentState!.validate()) {
-      if (response.statusCode == 201) {
-        print('Success');
-        print(_commentController.text);
-        if (!mounted) return;
-      } else {
-        print('error');
-      }
+    if (response.statusCode == 201) {
+      var data = jsonDecode(response.body);
+      print('Success');
+      print(_commentController.text);
+      if (!mounted) return;
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: ((context) => Comment())));
+    } else {
+      print('error');
+      if (!mounted) return;
     }
   }
 }

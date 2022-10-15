@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:chat_beeper/data/secure_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:expandable/expandable.dart';
@@ -10,6 +13,7 @@ import 'package:chat_beeper/constants.dart';
 import 'package:readmore/readmore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../constants.dart';
+import 'package:http/http.dart' as http;
 
 class PostComment extends StatefulWidget {
   const PostComment({Key? key}) : super(key: key);
@@ -27,8 +31,13 @@ class _PostCommentState extends State<PostComment> {
 
   final bool _rebeeped = false;
 
-  String loremIpsum =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+  late String loremIpsum;
+
+  @override
+  void initState() {
+    getComment();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -951,5 +960,27 @@ class _PostCommentState extends State<PostComment> {
         ),
       ),
     ));
+  }
+
+  Future<void> getComment() async {
+    String authority = 'beeperchat.herokuapp.com';
+    String unencodedPath =
+        '/beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0';
+
+    final uri = Uri.https(authority, unencodedPath);
+    String? userJwt = await SecureStorage.getToken();
+    final response =
+        await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
+    if (response.statusCode == 200) {
+      var data = json.decode(response.body);
+      var comment = data['text'];
+      loremIpsum = comment;
+      print('Success');
+      print(comment);
+      if (!mounted) return;
+    } else {
+      print('Error');
+      if (!mounted) return;
+    }
   }
 }

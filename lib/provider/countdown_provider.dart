@@ -10,7 +10,7 @@ class CountDown extends ChangeNotifier {
   int get seconds => _seconds;
   Timer get countDownTimer => _countDownTimer;
 
-  startCountDown() {
+  Future<void> startCountDown() async {
     Timer.periodic(Duration(seconds: 1), (_) => setCountDown());
     notifyListeners();
   }
