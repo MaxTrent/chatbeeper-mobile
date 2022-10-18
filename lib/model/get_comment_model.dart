@@ -1,16 +1,17 @@
 // To parse this JSON data, do
 //
-//     final getComment = getCommentFromJson(jsonString);
+//     final GetCommentModel = GetCommentModelFromJson(jsonString);
 
 import 'dart:convert';
 
-GetComment getCommentFromJson(String str) =>
-    GetComment.fromJson(json.decode(str));
+GetCommentModel GetCommentModelFromJson(String str) =>
+    GetCommentModel.fromJson(json.decode(str));
 
-String getCommentToJson(GetComment data) => json.encode(data.toJson());
+String GetCommentModelToJson(GetCommentModel data) =>
+    json.encode(data.toJson());
 
-class GetComment {
-  GetComment({
+class GetCommentModel {
+  GetCommentModel({
     required this.rebeepsCount,
     required this.text,
     required this.media,
@@ -18,7 +19,6 @@ class GetComment {
     required this.likesCount,
     required this.dislikesCount,
     required this.beepsCount,
-    required this.v,
   });
 
   int rebeepsCount;
@@ -28,9 +28,9 @@ class GetComment {
   int likesCount;
   int dislikesCount;
   int beepsCount;
-  int v;
 
-  factory GetComment.fromJson(Map<String, dynamic> json) => GetComment(
+  factory GetCommentModel.fromJson(Map<String, dynamic> json) =>
+      GetCommentModel(
         rebeepsCount: json["rebeepsCount"],
         text: json["text"],
         media: json["media"],
@@ -38,7 +38,6 @@ class GetComment {
         likesCount: json["likesCount"],
         dislikesCount: json["dislikesCount"],
         beepsCount: json["beepsCount"],
-        v: json["__v"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -49,6 +48,5 @@ class GetComment {
         "likesCount": likesCount,
         "dislikesCount": dislikesCount,
         "beepsCount": beepsCount,
-        "__v": v,
       };
 }

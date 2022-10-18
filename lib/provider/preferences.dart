@@ -1,14 +1,14 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppPreferences {
-  static const THEME_STATUS = "themeNumber";
+  static const THEME_STATUS = "themeStatus";
 
-  setThemeNumber(bool value) async {
+  Future<void> setTheme(bool value) async {
     final preferences = await SharedPreferences.getInstance();
     preferences.setBool(THEME_STATUS, value);
   }
 
-  getTheme() async {
+  Future<bool> getTheme() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getBool(THEME_STATUS) ?? false;
   }
@@ -17,7 +17,7 @@ class AppPreferences {
 //   prefs.setString('token', token);
 // }
 
-  getToken() async {
+  Future<dynamic> getToken() async {
     final prefs = await SharedPreferences.getInstance();
     final key = 'token';
     final readValue = prefs.getString(key) ?? 0;
@@ -25,7 +25,7 @@ class AppPreferences {
     return readValue;
   }
 
-  updateToken(token) async {
+  Future<void> updateToken(token) async {
     final prefs = await SharedPreferences.getInstance();
     final key = 'token';
     final value = token;
