@@ -7,9 +7,8 @@ import 'package:group_radio_button/group_radio_button.dart';
 
 String _singleValue = "none";
 
-
 class AuthenticateSignup extends StatefulWidget {
-   const AuthenticateSignup({Key? key}) : super(key: key);
+  const AuthenticateSignup({Key? key}) : super(key: key);
   static const String id = 'authenticate-signup';
 
   @override
@@ -27,7 +26,7 @@ class _AuthenticateSignupState extends State<AuthenticateSignup> {
     double height = MediaQuery.of(context).size.height;
     ScreenUtil.init(
       context,
-      designSize:Size(485,926),
+      designSize: Size(485, 926),
     );
     return Scaffold(
       body: Form(
@@ -37,56 +36,68 @@ class _AuthenticateSignupState extends State<AuthenticateSignup> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-
             SizedBox(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
                   Padding(
-                    padding:  EdgeInsets.only(top: 60.h),
-                    child: Image.asset('images/logo1.png', height: 70.h, width: 70.w,),
+                    padding: EdgeInsets.only(top: 60.h),
+                    child: Image.asset(
+                      'images/logo1.png',
+                      height: 70.h,
+                      width: 70.w,
+                    ),
                   ),
                 ],
               ),
-            ),//top
-            SizedBox(height: height*0.05.h,),
+            ), //top
+            SizedBox(
+              height: height * 0.05.h,
+            ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                 Text(
+                Text(
                   'Authenticate Your Account',
-                  style: Theme.of(context).primaryTextTheme.subtitle2!.copyWith(fontSize: 25.sp),
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .subtitle2!
+                      .copyWith(fontSize: 25.sp),
                   // style: TextStyle(fontFamily: 'Anton', fontSize: 30),
                 ),
-                SizedBox(width:5, height: height*0.02.h),
-                 Center(
+                SizedBox(width: 5, height: height * 0.02.h),
+                Center(
                   child: Text(
                     'Select your preferred authentication method',
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).primaryTextTheme.headline5!.copyWith(color: Colors.grey.shade700,fontWeight: FontWeight.w400, fontSize: 18.sp),
+                    style: Theme.of(context)
+                        .primaryTextTheme
+                        .headline5!
+                        .copyWith(
+                            color: Colors.grey.shade700,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18.sp),
                     // style: TextStyle(fontFamily: 'Anton', fontSize: 30),
                   ),
-                ),//AND WRITE UP
+                ), //AND WRITE UP
 
-                  SizedBox(height: 18.h),
+                SizedBox(height: 18.h),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Padding(
-                      padding:  EdgeInsets.only(left: 50.w),
+                      padding: EdgeInsets.only(left: 50.w),
                       child: SizedBox(
-                        height: 90.h, width: width,
+                        height: 90.h,
+                        width: width,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             SizedBox(
-                              height:30.h,
+                              height: 30.h,
                               child: Theme(
-                                data: ThemeData(
-                                 unselectedWidgetColor: bcolor
-                                ),
+                                data: ThemeData(unselectedWidgetColor: bcolor),
                                 child: RadioButton(
                                   description: "Phone Number",
                                   value: "Phone Number",
@@ -94,21 +105,19 @@ class _AuthenticateSignupState extends State<AuthenticateSignup> {
                                   onChanged: (value) {
                                     setState(() {
                                       navigateToPage = true;
-                                      value: "Phone NUmber";
+                                      value:
+                                      "Phone NUmber";
                                     });
 
                                     if (navigateToPage) {
                                       Navigator.push(context,
                                           MaterialPageRoute(builder: (context) {
-                                            return OtpAuth();
-                                          }));
+                                        return OtpAuth();
+                                      }));
                                     }
                                   },
-
-
-
                                   activeColor: bcolor,
-                                  textStyle:  TextStyle(
+                                  textStyle: TextStyle(
                                     color: bcolor,
                                     fontFamily: 'Nunito',
                                     fontStyle: FontStyle.normal,
@@ -119,11 +128,9 @@ class _AuthenticateSignupState extends State<AuthenticateSignup> {
                               ),
                             ),
                             SizedBox(
-                              height:30.h,
+                              height: 30.h,
                               child: Theme(
-                                data:ThemeData(
-                                    unselectedWidgetColor: bcolor
-                                ),
+                                data: ThemeData(unselectedWidgetColor: bcolor),
                                 child: RadioButton(
                                   description: "Email",
                                   value: "Email",
@@ -137,12 +144,12 @@ class _AuthenticateSignupState extends State<AuthenticateSignup> {
                                     if (navigateToPage) {
                                       Navigator.push(context,
                                           MaterialPageRoute(builder: (context) {
-                                            return const OtpEmail();
-                                          }));
+                                        return OtpEmail();
+                                      }));
                                     }
                                   },
                                   textPosition: RadioButtonTextPosition.right,
-                                  textStyle:    TextStyle(
+                                  textStyle: TextStyle(
                                     color: bcolor,
                                     fontFamily: 'Nunito',
                                     fontStyle: FontStyle.normal,
@@ -150,20 +157,18 @@ class _AuthenticateSignupState extends State<AuthenticateSignup> {
                                     fontSize: 23.sp,
                                   ),
                                 ),
-                              ),//email
-                            ),//business
+                              ), //email
+                            ), //business
                           ],
                         ),
                       ),
                     ),
                   ],
                 ),
-
               ],
             ),
           ],
         ),
-
       ),
     );
   }

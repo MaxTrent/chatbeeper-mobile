@@ -40,7 +40,7 @@ class _PostCommentState extends State<PostComment> {
   @override
   void initState() {
     super.initState();
-    context.read<GetComment>().fetchComment();
+    context.read<GetComment>().fetchComment(context);
   }
 
   @override
@@ -929,45 +929,42 @@ class _PostCommentState extends State<PostComment> {
           ]);
     }
 
-    return ChangeNotifierProvider(
-      create: (_) => GetComment(),
-      child: ExpandableNotifier(
-          child: Padding(
-        padding: EdgeInsets.only(bottom: 10.h),
-        child: ScrollOnExpand(
-          child: SizedBox(
-            child: Card(
-              elevation: 0,
-              color: Theme.of(context).scaffoldBackgroundColor,
-              clipBehavior: Clip.antiAlias,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  ExpandableTheme(
-                    data: const ExpandableThemeData(),
-                    child: Expandable(
-                      collapsed: buildCollapsed1(),
-                      expanded: buildExpanded1(),
-                    ),
-                  ),
-                  Expandable(
-                    collapsed: buildCollapsed2(),
+    return ExpandableNotifier(
+        child: Padding(
+      padding: EdgeInsets.only(bottom: 10.h),
+      child: ScrollOnExpand(
+        child: SizedBox(
+          child: Card(
+            elevation: 0,
+            color: Theme.of(context).scaffoldBackgroundColor,
+            clipBehavior: Clip.antiAlias,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                ExpandableTheme(
+                  data: const ExpandableThemeData(),
+                  child: Expandable(
+                    collapsed: buildCollapsed1(),
                     expanded: buildExpanded1(),
                   ),
-                  // Expandable(
-                  //   collapsed: buildCollapsed3(),
-                  //   expanded: buildExpanded3(),
-                  // ),
-                  Divider(
-                    height: 1,
-                  ),
-                ],
-              ),
+                ),
+                Expandable(
+                  collapsed: buildCollapsed2(),
+                  expanded: buildExpanded1(),
+                ),
+                // Expandable(
+                //   collapsed: buildCollapsed3(),
+                //   expanded: buildExpanded3(),
+                // ),
+                Divider(
+                  height: 1,
+                ),
+              ],
             ),
           ),
         ),
-      )),
-    );
+      ),
+    ));
   }
 
   // Future<GetCommentModel> getComment() async {
@@ -992,4 +989,27 @@ class _PostCommentState extends State<PostComment> {
   //   }
   //   return getCommentModel;
   // }
+}
+
+Future<GetCommentModel> getComment(context) async {
+  late GetCommentModel getCommentModel;
+  String authority = 'beeperchat.herokuapp.com';
+  String unencodedPath =
+      '/beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0';
+
+  final uri = Uri.https(authority, unencodedPath);
+  String? userJwt = await SecureStorage.getToken();
+  try {
+    final response =
+        await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+      getCommentModel = GetCommentModel.fromJson(data);
+    } else {
+      throw "Unable to retrieve posts.";
+    }
+  } catch (e) {
+    print(e.toString());
+  }
+  return getCommentModel;
 }

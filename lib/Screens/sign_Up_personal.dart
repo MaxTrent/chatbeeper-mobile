@@ -1566,8 +1566,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                 Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            const OtpEmail()));
+                                        builder: (context) => OtpEmail()));
                               },
                               child: Text(
                                 'Create Account',
@@ -1679,7 +1678,7 @@ class _CreateAccountState extends State<CreateAccount> {
       if (response.statusCode == 201) {
         if (!mounted) return;
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => const OtpEmail()));
+            context, MaterialPageRoute(builder: (context) => OtpEmail()));
         print('object');
         // If the server did return a 201 CREATED response,
         // then parse the JSON.
@@ -1705,7 +1704,7 @@ class _CreateAccountState extends State<CreateAccount> {
         //   ),
         // );
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => const OtpEmail()));
+            context, MaterialPageRoute(builder: (context) => OtpEmail()));
       }
     }
   }

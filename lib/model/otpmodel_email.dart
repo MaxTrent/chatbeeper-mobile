@@ -1,15 +1,17 @@
 // To parse this JSON data, do
 //
-//     final verifyEmail = verifyEmailFromJson(jsonString);
+//     final VerifyEmailModel = verifyEmailModelFromJson(jsonString);
 
 import 'dart:convert';
 
-VerifyEmail verifyEmailFromJson(String str) => VerifyEmail.fromJson(json.decode(str));
+VerifyEmailModel verifyEmailModelFromJson(String str) =>
+    VerifyEmailModel.fromJson(json.decode(str));
 
-String verifyEmailToJson(VerifyEmail data) => json.encode(data.toJson());
+String verifyEmailModelToJson(VerifyEmailModel data) =>
+    json.encode(data.toJson());
 
-class VerifyEmail {
-  VerifyEmail({
+class VerifyEmailModel {
+  VerifyEmailModel({
     required this.username,
     required this.email,
     required this.token,
@@ -19,15 +21,16 @@ class VerifyEmail {
   String email;
   String token;
 
-  factory VerifyEmail.fromJson(Map<String, dynamic> json) => VerifyEmail(
-    username: json["username"] as String,
-    email: json["email"] as String,
-    token: json["token"] as String,
-  );
+  factory VerifyEmailModel.fromJson(Map<String, dynamic> json) =>
+      VerifyEmailModel(
+        username: json["username"] as String,
+        email: json["email"] as String,
+        token: json["token"] as String,
+      );
 
   Map<String, dynamic> toJson() => {
-    "username": username,
-    "email": email,
-    "token": token,
-  };
+        "username": username,
+        "email": email,
+        "token": token,
+      };
 }

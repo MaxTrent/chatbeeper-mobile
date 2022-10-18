@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
           OtpPassed.id: (context) => const OtpPassed(),
           ChooseUsername.id: (context) => const ChooseUsername(),
           AuthenticateSignup.id: (context) => AuthenticateSignup(),
-          OtpEmail.id: (context) => const OtpEmail(),
+          OtpEmail.id: (context) => OtpEmail(),
           Notifications.id: (context) => Notifications(),
           DirectMessage.id: (context) => DirectMessage(),
           Room.id: (context) => Room(),
