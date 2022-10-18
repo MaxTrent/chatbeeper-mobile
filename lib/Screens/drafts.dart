@@ -21,6 +21,7 @@ class Drafts extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     var brightness = MediaQuery.of(context).platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
+    bool _noDrafts = false;
     ScreenUtil.init(
       context,
       designSize: Size(485, 926),
@@ -57,10 +58,11 @@ class Drafts extends StatelessWidget {
             ),
             title: Padding(
               padding: EdgeInsets.only(top: 32.h),
-              child: Text(
-                'Drafts',
-                style: Theme.of(context).primaryTextTheme.bodyText1,
-              ),
+              child: Text('Drafts',
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .headline4!
+                      .copyWith(fontSize: 25.sp)),
             ),
             centerTitle: true,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -68,10 +70,30 @@ class Drafts extends StatelessWidget {
           ),
         ),
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) => const Draftcard(),
-        itemCount: 10,
-      ),
+      body: _noDrafts == false
+          ? Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SvgPicture.asset('images/draft.svg'),
+                  SizedBox(
+                    height: 21.h,
+                  ),
+                  Text(
+                    'No draft available!',
+                    style: Theme.of(context)
+                        .primaryTextTheme
+                        .bodyText1!
+                        .copyWith(fontSize: 20.sp),
+                  )
+                ],
+              ),
+            )
+          : ListView.builder(
+              itemBuilder: (context, index) => const Draftcard(),
+              itemCount: 10,
+            ),
     );
   }
 }

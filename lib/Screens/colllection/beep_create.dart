@@ -39,7 +39,7 @@ class WriteBeep extends StatelessWidget {
                     TextSpan(
                       text: 'Compose a beep',
                       style: TextStyle(
-                          color: bcolor1,
+                          color: fColor,
                           fontFamily: 'Nunito',
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.normal,
@@ -86,7 +86,7 @@ class WriteBeep extends StatelessWidget {
                     TextSpan(
                       text: 'Go to draft',
                       style: TextStyle(
-                          color: bcolor1,
+                          color: fColor,
                           fontFamily: 'Nunito',
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.normal,

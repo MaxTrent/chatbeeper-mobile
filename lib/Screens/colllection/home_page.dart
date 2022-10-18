@@ -27,11 +27,11 @@ class _HomeState extends State<Home> {
 
   bool _istapped = false;
   static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 32, fontWeight: FontWeight.bold);
   final List<Widget> _pages = <Widget>[
     const Timeline(),
     const TourPage(),
-    const WriteBeep(),
+    const Beep(),
     const Notifications(),
     const Room(),
     // const DirectMessage(),
@@ -74,15 +74,31 @@ class _HomeState extends State<Home> {
               backgroundColor: Colors.white,
             ),
             BottomNavigationBarItem(
-              icon: SvgPicture.asset('images/message-add.svg'),
+              icon: _selectedIndex == 2
+                  ? SvgPicture.asset('images/message-add-fill.svg')
+                  : SvgPicture.asset('images/message-add.svg'),
               label: 'Beep',
               backgroundColor: Colors.white,
             ),
             BottomNavigationBarItem(
               icon: _selectedIndex == 3
                   ? SvgPicture.asset('images/notification fill.svg')
-                  : SvgPicture.asset('images/notification 2.svg'),
-              label: 'Notification',
+                  : Stack(
+                      children: [
+                        SvgPicture.asset('images/notification 2.svg'),
+                        Positioned(
+                          left: 16.w,
+                          child: Container(
+                            height: 15.h,
+                            width: 15.w,
+                            decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(100.r)),
+                          ),
+                        )
+                      ],
+                    ),
+              label: 'Notifications',
               backgroundColor: Colors.white,
             ),
             BottomNavigationBarItem(

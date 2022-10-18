@@ -45,7 +45,7 @@ class _CountryState extends State<Country> {
             style: Theme.of(context)
                 .primaryTextTheme
                 .headline4!
-                .copyWith(fontSize: 17.sp)),
+                .copyWith(fontSize: 19.sp)),
       ),
       body: Column(
         children: [
@@ -59,7 +59,7 @@ class _CountryState extends State<Country> {
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 17.sp),
+                  .copyWith(fontSize: 19.sp),
             ),
           ),
           Divider(

@@ -36,21 +36,21 @@ class _ContactInfoState extends State<ContactInfo> {
           ),
           onPressed: () => Navigator.pop(context),
         ),
-        title:  Padding(
+        title: Padding(
           padding: EdgeInsets.only(top: 25.0.h),
           child: Text('Settings',
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 17.sp)),
+                  .copyWith(fontSize: 19.sp)),
         ),
         centerTitle: true,
       ),
       body: Column(
         children: [
           Divider(
-            color:uColor,
-          thickness: 0.5.h,
+            color: uColor,
+            thickness: 0.5.h,
           ),
           ListTile(
             dense: true,
@@ -59,11 +59,11 @@ class _ContactInfoState extends State<ContactInfo> {
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 17.sp),
+                  .copyWith(fontSize: 19.sp),
             ),
           ),
           Divider(
-          thickness: 0.5.h,
+            thickness: 0.5.h,
             color: uColor,
           ),
           ListTile(
@@ -73,14 +73,14 @@ class _ContactInfoState extends State<ContactInfo> {
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 15.sp),
+                  .copyWith(fontSize: 17.sp),
             ),
             trailing: Text(
               '@$username',
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 15.sp, color: Color(0xff386FA4)),
+                  .copyWith(fontSize: 17.sp, color: Color(0xff386FA4)),
             ),
           ),
           ListTile(
@@ -90,14 +90,14 @@ class _ContactInfoState extends State<ContactInfo> {
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 15.sp),
+                  .copyWith(fontSize: 17.sp),
             ),
             trailing: Text(
               phoneNumber,
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 15.sp, color: Color(0xff386FA4)),
+                  .copyWith(fontSize: 17.sp, color: Color(0xff386FA4)),
             ),
           ),
           ListTile(
@@ -107,14 +107,14 @@ class _ContactInfoState extends State<ContactInfo> {
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 15.sp),
+                  .copyWith(fontSize: 17.sp),
             ),
             trailing: Text(
               email,
               style: Theme.of(context)
                   .primaryTextTheme
                   .headline4!
-                  .copyWith(fontSize: 15.sp, color: Color(0xff386FA4)),
+                  .copyWith(fontSize: 17.sp, color: Color(0xff386FA4)),
             ),
           )
         ],
