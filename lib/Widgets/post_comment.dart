@@ -38,9 +38,10 @@ class _PostCommentState extends State<PostComment> {
   late String loremIpsum;
 
   @override
-  void initState() {
+  Future<void> initState() async {
+    await context.read<GetComment>().fetchComment(context);
+
     super.initState();
-    context.read<GetComment>().fetchComment(context);
   }
 
   @override
@@ -1012,4 +1013,64 @@ Future<GetCommentModel> getComment(context) async {
     print(e.toString());
   }
   return getCommentModel;
+}
+
+Future<void> deleteComment() async {
+  String authority = 'beeperchat.herokuapp.com';
+  String unencodedPath =
+      '/beep/6315fe0790e0ef30da0b8f05/comment/634579d5decf0c523d62a924';
+  final uri = Uri.https(authority, unencodedPath);
+  var userJwt = await SecureStorage.getToken();
+  final response =
+      await http.delete(uri, headers: {"Authorization": "Bearer $userJwt"});
+
+  try {
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+    } else {
+      throw Exception("Unable to delete comment");
+    }
+  } catch (e) {
+    print(e.toString());
+  }
+}
+
+Future<void> likeComment() async {
+  String authority = 'beeperchat.herokuapp.com';
+  String unencodedPath =
+      '/beep/6315fe0790e0ef30da0b8f05/comment/63457b4f755869fb5e88b411/unlike';
+  final uri = Uri.https(authority, unencodedPath);
+  var userJwt = await SecureStorage.getToken();
+  final response =
+      await http.patch(uri, headers: {"Authorization": "Bearer $userJwt"});
+
+  try {
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+    } else {
+      throw Exception("Unable to like comment");
+    }
+  } catch (e) {
+    print(e.toString());
+  }
+}
+
+Future<void> unlikeComment() async {
+  String authority = 'beeperchat.herokuapp.com';
+  String unencodedPath =
+      '/beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0/unlike';
+  final uri = Uri.https(authority, unencodedPath);
+  var userJwt = await SecureStorage.getToken();
+  final response =
+      await http.patch(uri, headers: {"Authorization": "Bearer $userJwt"});
+
+  try {
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+    } else {
+      throw Exception("Unable to like comment");
+    }
+  } catch (e) {
+    print(e.toString());
+  }
 }

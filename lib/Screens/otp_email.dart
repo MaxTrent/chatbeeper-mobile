@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:chat_beeper/provider/countdown_provider.dart';
 import 'package:chat_beeper/provider/sign_up_provider.dart';
-import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:chat_beeper/Screens/colllection/home_page.dart';
 import 'package:chat_beeper/Screens/otp_failed.dart';
 import 'package:chat_beeper/Screens/sign_in.dart';
 import 'package:chat_beeper/model/otpmodel_email.dart';
+import 'package:chat_beeper/provider/verify_email_provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
@@ -130,16 +130,14 @@ class OtpEmail extends StatelessWidget {
     );
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider<CountDown>(
-            create: (context) => CountDown(),
+          ChangeNotifierProvider<VerifyEmail>(
+            create: (_) => VerifyEmail(),
           ),
-          ChangeNotifierProvider<SignUpProvider>(
-            create: (context) => SignUpProvider(),
-          ),
+          ChangeNotifierProvider<CountDown>(create: (_) => CountDown()),
         ],
-        builder: ((context, child) => Scaffold(
+        builder: (_, child) => Scaffold(
             body: SingleChildScrollView(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 child: Form(
                     key: _formKey,
                     child: Column(children: [
@@ -214,46 +212,48 @@ class OtpEmail extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 54.h,
-                            width: 400.w,
-                            child: ElevatedButton(
-                              style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.resolveWith<Color>(
-                                          (Set<MaterialState> states) {
-                                    if (_otpfull == true) return bcolor1;
-                                    return uColor;
-                                  }),
-                                  // elevation: ,
-                                  shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(6.r),
-                                    side: const BorderSide(
-                                        color: Colors.transparent),
-                                  ))),
-                              onPressed: () => context
-                                  .read<SignUpProvider>()
-                                  .confirmEmail(
-                                      context, username, email, token),
-                              /*Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SignIn())),*/
-                              child: Text(
-                                'Verify',
-                                textAlign: TextAlign.center,
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .headline3,
-                                // TextStyle(
-                                //     color: Colors.white,
-                                //     fontWeight: FontWeight.w500,
-                                //     fontFamily: 'Nunito',
-                                //     fontSize: 17.sp
-                                //
-                                // ),
+                          Consumer<VerifyEmail>(
+                            builder: (context, value, child) => SizedBox(
+                              height: 54.h,
+                              width: 400.w,
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.resolveWith<
+                                            Color>((Set<MaterialState> states) {
+                                      if (_otpfull == true) return bcolor1;
+                                      return uColor;
+                                    }),
+                                    // elevation: ,
+                                    shape: MaterialStateProperty.all<
+                                            RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(6.r),
+                                      side: const BorderSide(
+                                          color: Colors.transparent),
+                                    ))),
+                                onPressed:
+                                    () => /*value.confirmEmail(
+                                    context, username, email, token),*/
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SignIn())),
+                                child: Text(
+                                  'Verify',
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .headline3,
+                                  // TextStyle(
+                                  //     color: Colors.white,
+                                  //     fontWeight: FontWeight.w500,
+                                  //     fontFamily: 'Nunito',
+                                  //     fontSize: 17.sp
+                                  //
+                                  // ),
+                                ),
                               ),
                             ),
                           ), //button
@@ -314,7 +314,7 @@ class OtpEmail extends StatelessWidget {
                           ),
                         ]),
                       ), //TopOW
-                    ]))))));
+                    ])))));
   }
 
   // Future<void> verifyEmail() async {
@@ -449,8 +449,9 @@ Future<VerifyEmailModel> verifyEmail(
     );
     throw Exception('Something went wrong');
   }
+}
   // else{
   //   if (!mounted) return;
 
   // }
-}
+
