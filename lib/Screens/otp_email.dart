@@ -19,10 +19,15 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-class OtpEmail extends StatelessWidget {
-  OtpEmail({Key? key}) : super(key: key);
+class OtpEmail extends StatefulWidget {
+  const OtpEmail({Key? key}) : super(key: key);
   static const String id = 'otpemail-screen';
 
+  @override
+  State<OtpEmail> createState() => _OtpEmailState();
+}
+
+class _OtpEmailState extends State<OtpEmail> {
   TextEditingController textEditingController = TextEditingController();
   // ..text = "123456";
 
@@ -40,6 +45,15 @@ class OtpEmail extends StatelessWidget {
   //   super.initState();
   // }
 
+  void initState() {
+    countTimer();
+    super.initState();
+  }
+
+  Future<void> countTimer() async {
+    final data = await context.read<CountDown>().startCountDown();
+    return data;
+  }
   // @override
   // void dispose() {
   //   errorController!.close();
@@ -388,68 +402,7 @@ class OtpEmail extends StatelessWidget {
   // }
 }
 
-Future<VerifyEmailModel> verifyEmail(
-    BuildContext context, String username, String email, String token) async {
-  final response = await http.patch(
-      Uri.https('beeperchat.herokuapp.com', 'auth/verify-token/email'),
-      body: ({
-        "username": username.toString(),
-        "email": email.toString(),
-        "token": 'test123' //otpcontroller.text
-      }));
-  if (response.statusCode == 201) {
-    print('object');
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => SignIn()));
-    return VerifyEmailModel.fromJson(json.decode(response.body));
-    // If the server did return a 201 CREATED response,
-    // then parse the JSON.
-    // return LogIn.fromJson(jsonDecode(response.body));
-  } else if (response.statusCode == 400) {
-    print('object2');
 
-    print(response.body);
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(response.body,
-            style: Theme.of(context)
-                .primaryTextTheme
-                .bodyText1!
-                .copyWith(color: Colors.white)),
-        backgroundColor: bcolor,
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6.r),
-        ),
-        margin: EdgeInsets.only(
-            bottom: MediaQuery.of(context).size.height - 150.h,
-            right: 20.w,
-            left: 20.w),
-      ),
-    );
-    return VerifyEmailModel.fromJson(json.decode(response.body));
-  } else {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Incorrect details',
-            style: Theme.of(context)
-                .primaryTextTheme
-                .bodyText1!
-                .copyWith(color: Colors.white)),
-        backgroundColor: bcolor,
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6.r),
-        ),
-        margin: EdgeInsets.only(
-            bottom: MediaQuery.of(context).size.height - 150.h,
-            right: 20.w,
-            left: 20.w),
-      ),
-    );
-    throw Exception('Something went wrong');
-  }
-}
   // else{
   //   if (!mounted) return;
 

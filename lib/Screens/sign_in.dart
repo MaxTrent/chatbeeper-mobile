@@ -59,11 +59,11 @@ class SignIn extends StatelessWidget {
                       Center(
                           child: Image.asset(
                         'images/logo1.png',
-                        height: 40.h,
-                        width: 40.w,
+                        height: 90.h,
+                        width: 90.w,
                       )),
                       SizedBox(
-                        height: 32.h,
+                        height: 20.h,
                       ),
                       Text(
                         'Welcome Back',
@@ -89,7 +89,7 @@ class SignIn extends StatelessWidget {
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .subtitle1!
-                                    .copyWith(fontSize: 15.sp),
+                                    .copyWith(fontSize: 20.sp),
                                 controller: userTextController,
                                 // validator: (val) {
                                 //   if (!val!.isValidEmail || val.isEmpty) {
@@ -140,11 +140,12 @@ class SignIn extends StatelessWidget {
                                   hintText: 'username',
                                   labelStyle: Theme.of(context)
                                       .primaryTextTheme
-                                      .bodyText1,
+                                      .bodyText1!
+                                      .copyWith(fontSize: 20.sp),
                                   hintStyle: Theme.of(context)
                                       .primaryTextTheme
                                       .bodyText2!
-                                      .copyWith(fontSize: 15.sp),
+                                      .copyWith(fontSize: 20.sp),
                                   // _isvalid == true ? Theme.of(context).primaryTextTheme.bodyText2!.copyWith(fontSize: 15.sp):
                                   // Theme.of(context).primaryTextTheme.bodyText2!.copyWith(fontSize: 15.sp, color: Colors.red),
                                   contentPadding:
@@ -186,7 +187,7 @@ class SignIn extends StatelessWidget {
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .subtitle1!
-                                    .copyWith(fontSize: 15.sp),
+                                    .copyWith(fontSize: 20.sp),
                                 controller: passwordTextController,
                                 decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
@@ -243,10 +244,12 @@ class SignIn extends StatelessWidget {
                                   labelText: 'Password',
                                   labelStyle: Theme.of(context)
                                       .primaryTextTheme
-                                      .bodyText1,
+                                      .bodyText1!
+                                      .copyWith(fontSize: 20.sp),
                                   hintStyle: Theme.of(context)
                                       .primaryTextTheme
-                                      .bodyText2,
+                                      .bodyText2!
+                                      .copyWith(fontSize: 20.sp),
                                   contentPadding:
                                       EdgeInsets.only(top: 10.h, left: 10.w),
                                   // hintStyle: Theme.of(context).primaryTextTheme.subtitle1,
@@ -309,10 +312,14 @@ class SignIn extends StatelessWidget {
                                           color: Colors.transparent),
                                     ))),
                                 onPressed: () {
-                                  context.read<LogIn>().signIn(
+                                  Navigator.push(
                                       context,
-                                      userTextController.text.toString(),
-                                      passwordTextController.text.toString());
+                                      MaterialPageRoute(
+                                          builder: (_) => const Home()));
+                                  // context.read<LogIn>().signIn(
+                                  //     context,
+                                  //     userTextController.text.toString(),
+                                  //     passwordTextController.text.toString());
                                 },
                                 child: Text(
                                   'Log in',
@@ -320,10 +327,10 @@ class SignIn extends StatelessWidget {
                                   style: Theme.of(context)
                                       .primaryTextTheme
                                       .headline3!
-                                      .copyWith(fontSize: 17.sp),
+                                      .copyWith(fontSize: 21.sp),
                                   // TextStyle(
                                   //     color: Colors.white,
-                                  //     fontWeight: FontWeight.w500,
+                                  // fontWeight: FontWeight.w500,
                                   //     fontFamily: 'Nunito',
                                   //     fontSize: 17.sp
                                   //
@@ -354,7 +361,7 @@ class SignIn extends StatelessWidget {
                                     RichText(
                                       text: TextSpan(text: '', children: [
                                         TextSpan(
-                                          text: 'Terms  of use',
+                                          text: 'Terms of use',
                                           style: TextStyle(
                                               color: bcolor3,
                                               fontFamily: 'Nunito',
@@ -431,28 +438,5 @@ class SignIn extends StatelessWidget {
     //     }
     //   }
     // }
-  }
-}
-
-Future<LogInModel> logIn(
-    BuildContext context, String email, String password) async {
-  final response =
-      await http.post(Uri.https('beeperchat.herokuapp.com', 'auth/login'),
-          body: ({
-            "email": email,
-            "password": password,
-          }));
-  if (response.statusCode == 201) {
-    var data = json.decode(response.body);
-
-    print("Correct");
-    // print(data['userId']);
-    var jwtToken = data['jwt'];
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const Home()));
-    await SecureStorage.setToken(jwtToken);
-    return LogInModel.fromJson(json.decode(response.body));
-  } else {
-    throw Exception('Something went wrong');
   }
 }

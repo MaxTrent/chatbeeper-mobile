@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:chat_beeper/data/secure_storage.dart';
+import 'package:chat_beeper/provider/comment_likes_provider.dart';
 import 'package:chat_beeper/provider/get_comment_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,13 +36,17 @@ class _PostCommentState extends State<PostComment> {
 
   final bool _rebeeped = false;
 
-  late String loremIpsum;
+  late String loremIpsum = 'Lorem ipsum and stuff';
 
-  @override
-  Future<void> initState() async {
-    await context.read<GetComment>().fetchComment(context);
+  // @override
+  // initState() {
+  //   commentCall();
+  //   super.initState();
+  // }
 
-    super.initState();
+  Future<void> commentCall() async {
+    // final stuff = await context.read<GetComment>().fetchComment(context);
+    // return stuff;
   }
 
   @override
@@ -431,6 +436,7 @@ class _PostCommentState extends State<PostComment> {
                 ),
                 LikeButton(
                   size: 24.h,
+                  // onTap: context.read<LikeCommentProvider>().likeComments(),
                   circleColor:
                       CircleColor(start: Colors.red.shade200, end: Colors.red),
                   bubblesColor: const BubblesColor(
@@ -930,42 +936,45 @@ class _PostCommentState extends State<PostComment> {
           ]);
     }
 
-    return ExpandableNotifier(
-        child: Padding(
-      padding: EdgeInsets.only(bottom: 10.h),
-      child: ScrollOnExpand(
-        child: SizedBox(
-          child: Card(
-            elevation: 0,
-            color: Theme.of(context).scaffoldBackgroundColor,
-            clipBehavior: Clip.antiAlias,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                ExpandableTheme(
-                  data: const ExpandableThemeData(),
-                  child: Expandable(
-                    collapsed: buildCollapsed1(),
+    return ChangeNotifierProvider(
+      create: (context) => GetComment(),
+      builder: (context, child) => ExpandableNotifier(
+          child: Padding(
+        padding: EdgeInsets.only(bottom: 10.h),
+        child: ScrollOnExpand(
+          child: SizedBox(
+            child: Card(
+              elevation: 0,
+              color: Theme.of(context).scaffoldBackgroundColor,
+              clipBehavior: Clip.antiAlias,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  ExpandableTheme(
+                    data: const ExpandableThemeData(),
+                    child: Expandable(
+                      collapsed: buildCollapsed1(),
+                      expanded: buildExpanded1(),
+                    ),
+                  ),
+                  Expandable(
+                    collapsed: buildCollapsed2(),
                     expanded: buildExpanded1(),
                   ),
-                ),
-                Expandable(
-                  collapsed: buildCollapsed2(),
-                  expanded: buildExpanded1(),
-                ),
-                // Expandable(
-                //   collapsed: buildCollapsed3(),
-                //   expanded: buildExpanded3(),
-                // ),
-                Divider(
-                  height: 1,
-                ),
-              ],
+                  // Expandable(
+                  //   collapsed: buildCollapsed3(),
+                  //   expanded: buildExpanded3(),
+                  // ),
+                  Divider(
+                    height: 1,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    ));
+      )),
+    );
   }
 
   // Future<GetCommentModel> getComment() async {
@@ -990,87 +999,4 @@ class _PostCommentState extends State<PostComment> {
   //   }
   //   return getCommentModel;
   // }
-}
-
-Future<GetCommentModel> getComment(context) async {
-  late GetCommentModel getCommentModel;
-  String authority = 'beeperchat.herokuapp.com';
-  String unencodedPath =
-      '/beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0';
-
-  final uri = Uri.https(authority, unencodedPath);
-  String? userJwt = await SecureStorage.getToken();
-  try {
-    final response =
-        await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
-    if (response.statusCode == 200) {
-      var data = jsonDecode(response.body);
-      getCommentModel = GetCommentModel.fromJson(data);
-    } else {
-      throw "Unable to retrieve posts.";
-    }
-  } catch (e) {
-    print(e.toString());
-  }
-  return getCommentModel;
-}
-
-Future<void> deleteComment() async {
-  String authority = 'beeperchat.herokuapp.com';
-  String unencodedPath =
-      '/beep/6315fe0790e0ef30da0b8f05/comment/634579d5decf0c523d62a924';
-  final uri = Uri.https(authority, unencodedPath);
-  var userJwt = await SecureStorage.getToken();
-  final response =
-      await http.delete(uri, headers: {"Authorization": "Bearer $userJwt"});
-
-  try {
-    if (response.statusCode == 200) {
-      var data = jsonDecode(response.body);
-    } else {
-      throw Exception("Unable to delete comment");
-    }
-  } catch (e) {
-    print(e.toString());
-  }
-}
-
-Future<void> likeComment() async {
-  String authority = 'beeperchat.herokuapp.com';
-  String unencodedPath =
-      '/beep/6315fe0790e0ef30da0b8f05/comment/63457b4f755869fb5e88b411/unlike';
-  final uri = Uri.https(authority, unencodedPath);
-  var userJwt = await SecureStorage.getToken();
-  final response =
-      await http.patch(uri, headers: {"Authorization": "Bearer $userJwt"});
-
-  try {
-    if (response.statusCode == 200) {
-      var data = jsonDecode(response.body);
-    } else {
-      throw Exception("Unable to like comment");
-    }
-  } catch (e) {
-    print(e.toString());
-  }
-}
-
-Future<void> unlikeComment() async {
-  String authority = 'beeperchat.herokuapp.com';
-  String unencodedPath =
-      '/beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0/unlike';
-  final uri = Uri.https(authority, unencodedPath);
-  var userJwt = await SecureStorage.getToken();
-  final response =
-      await http.patch(uri, headers: {"Authorization": "Bearer $userJwt"});
-
-  try {
-    if (response.statusCode == 200) {
-      var data = jsonDecode(response.body);
-    } else {
-      throw Exception("Unable to like comment");
-    }
-  } catch (e) {
-    print(e.toString());
-  }
 }

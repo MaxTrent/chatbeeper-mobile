@@ -453,8 +453,7 @@ class _CreateCommentState extends State<CreateComment> {
       print('Success');
       print(_commentController.text);
       if (!mounted) return;
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: ((context) => Comment())));
+      Navigator.pop(context, true);
     } else {
       print('error');
       if (!mounted) return;

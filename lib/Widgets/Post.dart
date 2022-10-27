@@ -516,7 +516,7 @@ class PostCard extends StatelessWidget {
                   // },
                 ), //heart
                 SizedBox(
-                  width: 110.w,
+                  width: 90.w,
                 ),
                 Expanded(
                   child: GestureDetector(

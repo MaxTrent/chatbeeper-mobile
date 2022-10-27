@@ -70,6 +70,19 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
   //   _tabcontroller.dispose();
   //   super.dispose();
   // }
+
+  @override
+  void initState() {
+    super.initState();
+
+    profileDetails();
+  }
+
+  Future<void> profileDetails() async {
+    var data = await context.read<GetProfileProvider>().fetchProfile(context);
+    return data;
+  }
+
   @override
   Widget build(BuildContext context) {
     _tabcontroller = TabController(length: 3, vsync: this);
@@ -1517,26 +1530,4 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
       )),
     );
   }
-}
-
-Future<GetProfileModel> getProfile(context) async {
-  late GetProfileModel profileModel;
-  String authority = 'beeperchat.herokuapp.com';
-  String unencodedPath = '/user';
-
-  final uri = Uri.https(authority, unencodedPath);
-  String? userJwt = await SecureStorage.getToken();
-  try {
-    final response =
-        await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
-    if (response.statusCode == 200) {
-      var data = jsonDecode(response.body);
-      profileModel = GetProfileModel.fromJson(data);
-    } else {
-      throw 'Unable to retrieve profile details';
-    }
-  } catch (e) {
-    print(e.toString());
-  }
-  return profileModel;
 }

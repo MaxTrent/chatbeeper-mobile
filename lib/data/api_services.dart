@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:chat_beeper/data/secure_storage.dart';
+import 'package:chat_beeper/model/like_comment_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../Screens/colllection/home_page.dart';
@@ -75,6 +76,69 @@ class ApiServices {
     }
   } //verify email
 
+  Future<void> verifyPhone(
+      BuildContext context, String username, String phone, String token) async {
+    final response = await http.patch(
+        Uri.https('beeperchat.herokuapp.com', '/auth/verify-token/phone'),
+        body: ({
+          "username": username.toString(),
+          "phone": phone.toString(),
+          "token": "test123"
+        }));
+    if (response.statusCode == 201) {
+      print('object');
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => SignIn()));
+      // return VerifyEmailModel.fromJson(json.decode(response.body));
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      // return LogIn.fromJson(jsonDecode(response.body));
+    } else if (response.statusCode == 400) {
+      print('object2');
+
+      print(response.body);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(response.body,
+              style: Theme.of(context)
+                  .primaryTextTheme
+                  .bodyText1!
+                  .copyWith(color: Colors.white)),
+          backgroundColor: bcolor,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6.r),
+          ),
+          margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).size.height - 150.h,
+              right: 20.w,
+              left: 20.w),
+        ),
+      );
+      // return VerifyEmailModel.fromJson(json.decode(response.body));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Incorrect details',
+              style: Theme.of(context)
+                  .primaryTextTheme
+                  .bodyText1!
+                  .copyWith(color: Colors.white)),
+          backgroundColor: bcolor,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6.r),
+          ),
+          margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).size.height - 150.h,
+              right: 20.w,
+              left: 20.w),
+        ),
+      );
+      throw Exception('Something went wrong');
+    }
+  } //verify phone
+
   Future<LogInModel> logIn(
       BuildContext context, String email, String password) async {
     final response =
@@ -94,6 +158,25 @@ class ApiServices {
       await SecureStorage.setToken(jwtToken);
       return LogInModel.fromJson(json.decode(response.body));
     } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Invalid Details',
+              style: Theme.of(context)
+                  .primaryTextTheme
+                  .bodyText1!
+                  .copyWith(color: Colors.white)),
+          backgroundColor: bcolor,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6.r),
+          ),
+          margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).size.height - 150.h,
+              right: 20.w,
+              left: 20.w),
+        ),
+      );
+
       throw Exception('Something went wrong');
     }
   } //sign in
@@ -163,7 +246,8 @@ class ApiServices {
     }
   } //delete comment
 
-  Future<void> likeComment() async {
+  Future<LikeCommentModel> likeComment() async {
+    late LikeCommentModel likeCommentModel;
     String authority = 'beeperchat.herokuapp.com';
     String unencodedPath =
         '/beep/6315fe0790e0ef30da0b8f05/comment/63457b4f755869fb5e88b411/unlike';
@@ -175,12 +259,15 @@ class ApiServices {
     try {
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
+
+        likeCommentModel = LikeCommentModel.fromJson(data);
       } else {
         throw Exception("Unable to like comment");
       }
     } catch (e) {
       print(e.toString());
     }
+    return likeCommentModel;
   } //like comment
 
   Future<void> unlikeComment() async {
@@ -242,4 +329,56 @@ class ApiServices {
       print(e.toString());
     }
   } //undislike comment
+}
+
+Future<LogInModel> logIn(
+    BuildContext context, String email, String password) async {
+  final response =
+      await http.post(Uri.https('beeperchat.herokuapp.com', 'auth/login'),
+          body: ({
+            "email": email,
+            "password": password,
+          }));
+  if (response.statusCode == 201) {
+    var data = json.decode(response.body);
+
+    print("Correct");
+    // print(data['userId']);
+    var jwtToken = data['jwt'];
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const Home()));
+    await SecureStorage.setToken(jwtToken);
+    return LogInModel.fromJson(json.decode(response.body));
+  } else {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Invalid Details',
+            style: Theme.of(context)
+                .primaryTextTheme
+                .bodyText1!
+                .copyWith(color: Colors.white)),
+        backgroundColor: bcolor,
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(6.r),
+        ),
+        margin: EdgeInsets.only(
+            bottom: MediaQuery.of(context).size.height - 150.h,
+            right: 20.w,
+            left: 20.w),
+      ),
+    );
+
+    throw Exception('Something went wrong');
+  }
+}
+
+Future<void> createBeep(String beep) async {
+  final response =
+      await http.post(Uri.https('beeperchat.herokuapp.com', '/feed'),
+          body: ({
+            "text": beep,
+          }));
+
+  if (response.statusCode == 201) {}
 }

@@ -612,7 +612,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                   RichText(
                                     text: TextSpan(text: '', children: [
                                       TextSpan(
-                                        text: 'Terms  of use',
+                                        text: 'Terms of use',
                                         style: TextStyle(
                                             color: bcolor3,
                                             fontFamily: 'Nunito',
@@ -1371,7 +1371,7 @@ class _CreateAccountState extends State<CreateAccount> {
                           Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                'Create  a username',
+                                'Create a username',
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .bodyText1,
