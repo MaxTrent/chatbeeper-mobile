@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 
 class LikeCommentProvider extends ChangeNotifier {
   late LikeCommentModel likeCommentModel;
-  late ApiServices apiServices;
 
   Future<void> likeComments() async {
-    likeCommentModel = await apiServices.likeComment();
+    likeCommentModel = await likeComment();
     notifyListeners();
   }
 }

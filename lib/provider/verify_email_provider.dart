@@ -4,11 +4,9 @@ import 'package:flutter/material.dart';
 
 class VerifyEmail extends ChangeNotifier {
   late VerifyEmailModel verifyEmailModel;
-  late ApiServices apiServices;
 
   Future<void> confirmEmail(context, username, email, token) async {
-    verifyEmailModel =
-        await apiServices.verifyEmail(context, username, email, token);
+    verifyEmailModel = await verifyEmail(context, username, email, token);
     notifyListeners();
   }
 }

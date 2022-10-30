@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetProfileModel getProfileModelFromJson(String str) =>
+GetProfileModel GetProfileModelFromJson(String str) =>
     GetProfileModel.fromJson(json.decode(str));
 
-String getProfileModelToJson(GetProfileModel data) =>
+String GetProfileModelToJson(GetProfileModel data) =>
     json.encode(data.toJson());
 
 class GetProfileModel {

@@ -7,10 +7,9 @@ import '../data/secure_storage.dart';
 
 class GetComment extends ChangeNotifier {
   late GetCommentModel getCommentModel;
-  late ApiServices apiServices;
 
   Future<void> fetchComment(context) async {
-    getCommentModel = await apiServices.getComment(context);
+    getCommentModel = await getComment(context);
     notifyListeners();
   }
 }

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:chat_beeper/provider/countdown_provider.dart';
-import 'package:chat_beeper/provider/sign_up_provider.dart';
 import 'package:chat_beeper/Screens/colllection/home_page.dart';
 import 'package:chat_beeper/Screens/otp_failed.dart';
 import 'package:chat_beeper/Screens/sign_in.dart';

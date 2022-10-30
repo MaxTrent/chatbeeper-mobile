@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:chat_beeper/data/api_services.dart';
 import 'package:chat_beeper/data/secure_storage.dart';
 import 'package:chat_beeper/provider/comment_likes_provider.dart';
 import 'package:chat_beeper/provider/get_comment_provider.dart';
@@ -35,19 +36,23 @@ class _PostCommentState extends State<PostComment> {
   String posttime = '1 hour ago';
 
   final bool _rebeeped = false;
+  // late final GetCommentModel getCommentModel;
 
   late String loremIpsum = 'Lorem ipsum and stuff';
 
-  // @override
-  // initState() {
-  //   commentCall();
-  //   super.initState();
-  // }
+  // _PostCommentState(this.getCommentModel);
+  late Future<GetCommentModel> futureComment;
 
-  Future<void> commentCall() async {
-    // final stuff = await context.read<GetComment>().fetchComment(context);
-    // return stuff;
+  @override
+  void initState() {
+    super.initState();
+    futureComment = getComment(context);
   }
+
+  // Future<void> commentCall() async {
+  //   // final stuff = await context.read<GetComment>().fetchComment(context);
+  //   // return stuff;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -326,590 +331,609 @@ class _PostCommentState extends State<PostComment> {
     }
 
     buildCollapsed2() {
-      return Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(
-              left: 16.w,
-              right: 10.w,
-              bottom: 12.h,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                ReadMoreText(
-                  context.watch<GetComment>().getCommentModel.text,
-                  trimExpandedText: 'see Less',
-                  trimLines: 3,
-                  trimMode: TrimMode.Line,
-                  trimCollapsedText: 'see more',
-                  colorClickableText: Colors.grey,
-                  style: Theme.of(context)
-                      .primaryTextTheme
-                      .bodyText1!
-                      .copyWith(fontWeight: FontWeight.w400, fontSize: 25.sp),
-                ),
-              ],
-            ),
-          ), //readmore text
-          Container(
-            height: 0.2.h,
-            color: uColor,
-          ), //divider
-          Padding(
-            padding: EdgeInsets.only(
-                left: 16.w, right: 0.w, bottom: 12.h, top: 12.h),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      return FutureBuilder<GetCommentModel>(
+        future: futureComment,
+        builder: ((context, snapshot) => Column(
               children: [
-                GestureDetector(
-                  child: SvgPicture.asset(
-                    'images/comment.svg',
-                    height: 24.h,
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: 16.w,
+                    right: 10.w,
+                    bottom: 12.h,
                   ),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Comment()));
-                  },
-                ),
-                SizedBox(
-                  width: 40.w,
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    showDialog(
-                      context: context,
-                      builder: (context) => const RebeepResponse(),
-                    );
-                  },
-                  child: _rebeeped == false
-                      ? SizedBox(
-                          height: 35.h,
-                          child: SvgPicture.asset(
-                            'images/rebeep.svg',
-                            height: 30.h,
-                          ))
-                      : SvgPicture.asset(
-                          'images/rebeep.svg',
-                          color: Colors.red,
-                          height: 35.h,
-                        ),
-                ), //infinite
-                SizedBox(
-                  width: 40.w,
-                ),
-                LikeButton(
-                  size: 24.h,
-                  circleColor: CircleColor(
-                      start: Colors.red.shade700, end: Colors.red.shade800),
-                  bubblesColor: BubblesColor(
-                    dotPrimaryColor: Colors.red.shade700,
-                    dotSecondaryColor: Colors.red.shade800,
-                  ),
-                  likeBuilder: (bool isLiked) {
-                    return isLiked == false
-                        ? SvgPicture.asset(
-                            'images/dislike_blue.svg',
-                          )
-                        : SvgPicture.asset('images/dislike_red.svg');
-                  },
-                  likeCount: 100,
-                  likeCountPadding: EdgeInsets.only(left: 3.w),
-                  // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                  //   Widget result;
-                  //   if (count == 0) {
-                  //     result = Text(
-                  //       "love",
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   } else
-                  //     result = Text(
-                  //       text,
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   return result;
-                  // },
-                ), //brokenheart
-                SizedBox(
-                  width: 40.w,
-                ),
-                LikeButton(
-                  size: 24.h,
-                  // onTap: context.read<LikeCommentProvider>().likeComments(),
-                  circleColor:
-                      CircleColor(start: Colors.red.shade200, end: Colors.red),
-                  bubblesColor: const BubblesColor(
-                    dotPrimaryColor: Colors.red,
-                    dotSecondaryColor: Colors.red,
-                  ),
-                  likeBuilder: (bool isLiked) {
-                    return isLiked == false
-                        ? SvgPicture.asset(
-                            'images/like.svg',
-                          )
-                        : SvgPicture.asset('images/favorite_red.svg');
-                  },
-                  likeCount: 100,
-                  likeCountPadding: EdgeInsets.only(left: 3.w),
-                  //   countBuilder: (int count, bool isLiked, String text){
-                  //     var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                  //     Widget result;
-                  //     if (count == 0) {
-                  //       result = Text(
-                  //         "love",
-                  //         style: TextStyle(color: color),
-                  //       );
-                  //     }else
-                  //       result = Text(
-                  //         text,
-                  //         style: TextStyle(color: color),
-                  //       );
-                  //     return result;
-                  //   }
-                  // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
-                  //   Widget result;
-                  //   if (count == 0) {
-                  //     result = Text(
-                  //       "love",
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   } else
-                  //     result = Text(
-                  //       text,
-                  //       style: TextStyle(color: color),
-                  //     );
-
-                  //   return result;
-                  // },
-                ), //heart
-                SizedBox(
-                  width: 110.w,
-                ),
-                Expanded(
-                  child: GestureDetector(
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: 5.h),
-                      child: SvgPicture.asset(
-                        'images/share.svg',
-                        height: 26.h,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      ReadMoreText(
+                        snapshot.hasData
+                            ? snapshot.data!.text
+                            : '${snapshot.error}',
+                        // context.watch<GetComment>().getCommentModel.text,
+                        trimExpandedText: 'see Less',
+                        trimLines: 3,
+                        trimMode: TrimMode.Line,
+                        trimCollapsedText: 'see more',
+                        colorClickableText: Colors.grey,
+                        style: Theme.of(context)
+                            .primaryTextTheme
+                            .bodyText1!
+                            .copyWith(
+                                fontWeight: FontWeight.w400, fontSize: 25.sp),
                       ),
-                    ),
-                    onTap: () {
-                      showModalBottomSheet(
-                        useRootNavigator: true,
-                        context: context,
-                        builder: (context) => Container(
-                          height: 336.h,
-                          color: Theme.of(context).scaffoldBackgroundColor,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  top: 6.h,
-                                ),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey.shade700,
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(100.r),
-                                    ),
-                                  ),
-                                  height: 5.h,
-                                  width: 45.w,
-                                ),
-                              ), //container
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  left: 16.h,
-                                  top: 6.h,
-                                ),
-                                child: Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Text(
-                                    'Share Beep',
-                                    style: Theme.of(context)
-                                        .primaryTextTheme
-                                        .bodyText1!
-                                        .copyWith(
-                                          color: bcolor3,
-                                          fontSize: 17.sp,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                  ),
-                                ),
-                              ), //share beep
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    bottom: 0.h,
-                                    left: 59.w,
-                                    right: 60.w,
-                                    top: 37.h),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                    ],
+                  ),
+                ), //readmore text
+                Container(
+                  height: 0.2.h,
+                  color: uColor,
+                ), //divider
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: 16.w, right: 0.w, bottom: 12.h, top: 12.h),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      GestureDetector(
+                        child: SvgPicture.asset(
+                          'images/comment.svg',
+                          height: 24.h,
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Comment()));
+                        },
+                      ),
+                      SizedBox(
+                        width: 40.w,
+                      ),
+                      GestureDetector(
+                        onTap: () async {
+                          showDialog(
+                            context: context,
+                            builder: (context) => const RebeepResponse(),
+                          );
+                        },
+                        child: _rebeeped == false
+                            ? SizedBox(
+                                height: 35.h,
+                                child: SvgPicture.asset(
+                                  'images/rebeep.svg',
+                                  height: 30.h,
+                                ))
+                            : SvgPicture.asset(
+                                'images/rebeep.svg',
+                                color: Colors.red,
+                                height: 35.h,
+                              ),
+                      ), //infinite
+                      SizedBox(
+                        width: 40.w,
+                      ),
+                      LikeButton(
+                        size: 24.h,
+                        circleColor: CircleColor(
+                            start: Colors.red.shade700,
+                            end: Colors.red.shade800),
+                        bubblesColor: BubblesColor(
+                          dotPrimaryColor: Colors.red.shade700,
+                          dotSecondaryColor: Colors.red.shade800,
+                        ),
+                        likeBuilder: (bool isLiked) {
+                          return isLiked == false
+                              ? SvgPicture.asset(
+                                  'images/dislike_blue.svg',
+                                )
+                              : SvgPicture.asset('images/dislike_red.svg');
+                        },
+                        likeCount: 100,
+                        likeCountPadding: EdgeInsets.only(left: 3.w),
+                        // countBuilder: (int count, bool isLiked, String text) {
+                        //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                        //   Widget result;
+                        //   if (count == 0) {
+                        //     result = Text(
+                        //       "love",
+                        //       style: TextStyle(color: color),
+                        //     );
+                        //   } else
+                        //     result = Text(
+                        //       text,
+                        //       style: TextStyle(color: color),
+                        //     );
+                        //   return result;
+                        // },
+                      ), //brokenheart
+                      SizedBox(
+                        width: 40.w,
+                      ),
+                      LikeButton(
+                        size: 24.h,
+                        // onTap: context.read<LikeCommentProvider>().likeComments(),
+                        circleColor: CircleColor(
+                            start: Colors.red.shade200, end: Colors.red),
+                        bubblesColor: const BubblesColor(
+                          dotPrimaryColor: Colors.red,
+                          dotSecondaryColor: Colors.red,
+                        ),
+                        likeBuilder: (bool isLiked) {
+                          return isLiked == false
+                              ? SvgPicture.asset(
+                                  'images/like.svg',
+                                )
+                              : SvgPicture.asset('images/favorite_red.svg');
+                        },
+                        likeCount: 100,
+                        likeCountPadding: EdgeInsets.only(left: 3.w),
+                        //   countBuilder: (int count, bool isLiked, String text){
+                        //     var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                        //     Widget result;
+                        //     if (count == 0) {
+                        //       result = Text(
+                        //         "love",
+                        //         style: TextStyle(color: color),
+                        //       );
+                        //     }else
+                        //       result = Text(
+                        //         text,
+                        //         style: TextStyle(color: color),
+                        //       );
+                        //     return result;
+                        //   }
+                        // countBuilder: (int count, bool isLiked, String text) {
+                        //   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+                        //   Widget result;
+                        //   if (count == 0) {
+                        //     result = Text(
+                        //       "love",
+                        //       style: TextStyle(color: color),
+                        //     );
+                        //   } else
+                        //     result = Text(
+                        //       text,
+                        //       style: TextStyle(color: color),
+                        //     );
+
+                        //   return result;
+                        // },
+                      ), //heart
+                      SizedBox(
+                        width: 110.w,
+                      ),
+                      Expanded(
+                        child: GestureDetector(
+                          child: Padding(
+                            padding: EdgeInsets.only(bottom: 5.h),
+                            child: SvgPicture.asset(
+                              'images/share.svg',
+                              height: 26.h,
+                            ),
+                          ),
+                          onTap: () {
+                            showModalBottomSheet(
+                              useRootNavigator: true,
+                              context: context,
+                              builder: (context) => Container(
+                                height: 336.h,
+                                color:
+                                    Theme.of(context).scaffoldBackgroundColor,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Column(
-                                      children: [
-                                        Container(
-                                          height: 50.h,
-                                          width: 50.w,
-                                          decoration: BoxDecoration(
-                                              color: Colors.transparent,
-                                              shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
-                                          child: Center(
-                                            child: GestureDetector(
-                                              onTap: () {},
-                                              child: SizedBox(
-                                                  height: 24.h,
-                                                  width: 18.w,
-                                                  child: SvgPicture.asset(
-                                                    'images/link.svg',
-                                                  )),
-                                            ),
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        top: 6.h,
+                                      ),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey.shade700,
+                                          shape: BoxShape.rectangle,
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(100.r),
                                           ),
                                         ),
-                                        SizedBox(
-                                          height: 8.h,
-                                        ),
-                                        Text(
-                                          'Copy Link',
-                                          style: TextStyle(
-                                              color: darkModeOn
-                                                  ? Colors.white
-                                                  : Colors.black,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 15.sp,
-                                              fontFamily: 'Nunito'),
-                                        ),
-                                      ],
-                                    ), //copy
-                                    SizedBox(
-                                      width: 35.w,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Container(
-                                          height: 50.h,
-                                          width: 50.w,
-                                          decoration: BoxDecoration(
-                                              color: Colors.transparent,
-                                              shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
-                                          child: Center(
-                                            child: GestureDetector(
-                                              onTap: () {},
-                                              child: SizedBox(
-                                                  height: 24.h,
-                                                  width: 18.w,
-                                                  child: SvgPicture.asset(
-                                                    'images/bookmark.svg',
-                                                  )),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 8.h,
-                                        ),
-                                        Text(
-                                          'Save',
-                                          style: TextStyle(
-                                              color: darkModeOn
-                                                  ? Colors.white
-                                                  : Colors.black,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 15.sp,
-                                              fontFamily: 'Nunito'),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      width: 35.w,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Container(
-                                          height: 50.h,
-                                          width: 50.w,
-                                          decoration: BoxDecoration(
-                                              color: Colors.transparent,
-                                              shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
-                                          child: Center(
-                                            child: GestureDetector(
-                                              onTap: () {},
-                                              child: SvgPicture.asset(
-                                                'images/Dm.svg',
-                                                height: 30.h,
-                                                width: 20.w,
+                                        height: 5.h,
+                                        width: 45.w,
+                                      ),
+                                    ), //container
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        left: 16.h,
+                                        top: 6.h,
+                                      ),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
+                                          'Share Beep',
+                                          style: Theme.of(context)
+                                              .primaryTextTheme
+                                              .bodyText1!
+                                              .copyWith(
                                                 color: bcolor3,
+                                                fontSize: 17.sp,
+                                                fontWeight: FontWeight.w700,
                                               ),
-                                            ),
-                                          ),
                                         ),
-                                        SizedBox(
-                                          height: 8.h,
-                                        ),
-                                        Text(
-                                          'DM',
-                                          style: TextStyle(
-                                              color: darkModeOn
-                                                  ? Colors.white
-                                                  : Colors.black,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 15.sp,
-                                              fontFamily: 'Nunito'),
-                                        ),
-                                      ],
-                                    ), //whatsappp
-                                    SizedBox(
-                                      width: 35.w,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Container(
-                                          height: 50.h,
-                                          width: 50.w,
-                                          decoration: BoxDecoration(
-                                              color: Colors.transparent,
-                                              shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
-                                          child: Center(
-                                            child: GestureDetector(
-                                              onTap: () {},
-                                              child: Image.asset(
-                                                'images/facebook.png',
-                                                height: 19.h,
-                                                width: 20.w,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 8.h,
-                                        ),
-                                        Text(
-                                          'Facebook',
-                                          style: TextStyle(
-                                              color: darkModeOn
-                                                  ? Colors.white
-                                                  : Colors.black,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 15.sp,
-                                              fontFamily: 'Nunito'),
-                                        ),
-                                      ],
-                                    ), //facebook
-                                  ],
-                                ),
-                              ), //icons 1
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    bottom: 0.h,
-                                    left: 59.w,
-                                    right: 60.w,
-                                    top: 37.h),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Container(
-                                          height: 50.h,
-                                          width: 50.w,
-                                          decoration: BoxDecoration(
-                                              color: Colors.transparent,
-                                              shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
-                                          child: Center(
-                                            child: GestureDetector(
-                                              onTap: () {},
-                                              child: SizedBox(
-                                                  height: 24.h,
-                                                  width: 18.w,
-                                                  child: SvgPicture.asset(
-                                                    'images/gmail.svg',
-                                                  )),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 8.h,
-                                        ),
-                                        Text(
-                                          'Gmail',
-                                          style: TextStyle(
-                                              color: darkModeOn
-                                                  ? Colors.white
-                                                  : Colors.black,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 15.sp,
-                                              fontFamily: 'Nunito'),
-                                        ),
-                                      ],
-                                    ), //gmail
-                                    SizedBox(
-                                      width: 35.w,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Container(
-                                          height: 50.h,
-                                          width: 50.w,
-                                          decoration: BoxDecoration(
-                                              color: Colors.transparent,
-                                              shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
-                                          child: Center(
-                                            child: GestureDetector(
-                                              onTap: () {},
-                                              child: SizedBox(
-                                                height: 24.h,
-                                                width: 24.w,
-                                                child: Image.asset(
-                                                  'images/whatsapp.png',
-                                                  height: 30.h,
-                                                  width: 20.w,
+                                      ),
+                                    ), //share beep
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          bottom: 0.h,
+                                          left: 59.w,
+                                          right: 60.w,
+                                          top: 37.h),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            children: [
+                                              Container(
+                                                height: 50.h,
+                                                width: 50.w,
+                                                decoration: BoxDecoration(
+                                                    color: Colors.transparent,
+                                                    shape: BoxShape.circle,
+                                                    border: Border.all(
+                                                        color: bcolor3)
+                                                    // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                                    // ),
+                                                    ),
+                                                child: Center(
+                                                  child: GestureDetector(
+                                                    onTap: () {},
+                                                    child: SizedBox(
+                                                        height: 24.h,
+                                                        width: 18.w,
+                                                        child: SvgPicture.asset(
+                                                          'images/link.svg',
+                                                        )),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 8.h,
-                                        ),
-                                        Text(
-                                          'Whatsapp',
-                                          style: TextStyle(
-                                              color: darkModeOn
-                                                  ? Colors.white
-                                                  : Colors.black,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 15.sp,
-                                              fontFamily: 'Nunito'),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      width: 35.w,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Container(
-                                          height: 50.h,
-                                          width: 50.w,
-                                          decoration: BoxDecoration(
-                                              color: Colors.transparent,
-                                              shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
+                                              SizedBox(
+                                                height: 8.h,
                                               ),
-                                          child: Center(
-                                            child: GestureDetector(
-                                              onTap: () {},
-                                              child: Image.asset(
-                                                'images/telegram.png',
-                                                height: 24.h,
-                                                width: 24.w,
+                                              Text(
+                                                'Copy Link',
+                                                style: TextStyle(
+                                                    color: darkModeOn
+                                                        ? Colors.white
+                                                        : Colors.black,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 15.sp,
+                                                    fontFamily: 'Nunito'),
                                               ),
-                                            ),
+                                            ],
+                                          ), //copy
+                                          SizedBox(
+                                            width: 35.w,
                                           ),
-                                        ),
-                                        SizedBox(
-                                          height: 8.h,
-                                        ),
-                                        Text(
-                                          'Telegram',
-                                          style: TextStyle(
-                                              color: darkModeOn
-                                                  ? Colors.white
-                                                  : Colors.black,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 15.sp,
-                                              fontFamily: 'Nunito'),
-                                        ),
-                                      ],
-                                    ), //telegram
-                                    SizedBox(
-                                      width: 35.w,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Container(
-                                          height: 50.h,
-                                          width: 50.w,
-                                          decoration: BoxDecoration(
-                                              color: Colors.transparent,
-                                              shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
+                                          Column(
+                                            children: [
+                                              Container(
+                                                height: 50.h,
+                                                width: 50.w,
+                                                decoration: BoxDecoration(
+                                                    color: Colors.transparent,
+                                                    shape: BoxShape.circle,
+                                                    border: Border.all(
+                                                        color: bcolor3)
+                                                    // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                                    // ),
+                                                    ),
+                                                child: Center(
+                                                  child: GestureDetector(
+                                                    onTap: () {},
+                                                    child: SizedBox(
+                                                        height: 24.h,
+                                                        width: 18.w,
+                                                        child: SvgPicture.asset(
+                                                          'images/bookmark.svg',
+                                                        )),
+                                                  ),
+                                                ),
                                               ),
-                                          child: Center(
-                                            child: GestureDetector(
-                                              onTap: () {},
-                                              child: SizedBox(
-                                                  height: 24.h,
-                                                  width: 30.w,
-                                                  child: SvgPicture.asset(
-                                                    'images/discord.svg',
-                                                  )),
-                                            ),
+                                              SizedBox(
+                                                height: 8.h,
+                                              ),
+                                              Text(
+                                                'Save',
+                                                style: TextStyle(
+                                                    color: darkModeOn
+                                                        ? Colors.white
+                                                        : Colors.black,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 15.sp,
+                                                    fontFamily: 'Nunito'),
+                                              ),
+                                            ],
                                           ),
-                                        ),
-                                        SizedBox(
-                                          height: 8.h,
-                                        ),
-                                        Text(
-                                          'Discord',
-                                          style: TextStyle(
-                                              color: darkModeOn
-                                                  ? Colors.white
-                                                  : Colors.black,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 15.sp,
-                                              fontFamily: 'Nunito'),
-                                        ),
-                                      ],
-                                    ), //discord
+                                          SizedBox(
+                                            width: 35.w,
+                                          ),
+                                          Column(
+                                            children: [
+                                              Container(
+                                                height: 50.h,
+                                                width: 50.w,
+                                                decoration: BoxDecoration(
+                                                    color: Colors.transparent,
+                                                    shape: BoxShape.circle,
+                                                    border: Border.all(
+                                                        color: bcolor3)
+                                                    // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                                    // ),
+                                                    ),
+                                                child: Center(
+                                                  child: GestureDetector(
+                                                    onTap: () {},
+                                                    child: SvgPicture.asset(
+                                                      'images/Dm.svg',
+                                                      height: 30.h,
+                                                      width: 20.w,
+                                                      color: bcolor3,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 8.h,
+                                              ),
+                                              Text(
+                                                'DM',
+                                                style: TextStyle(
+                                                    color: darkModeOn
+                                                        ? Colors.white
+                                                        : Colors.black,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 15.sp,
+                                                    fontFamily: 'Nunito'),
+                                              ),
+                                            ],
+                                          ), //whatsappp
+                                          SizedBox(
+                                            width: 35.w,
+                                          ),
+                                          Column(
+                                            children: [
+                                              Container(
+                                                height: 50.h,
+                                                width: 50.w,
+                                                decoration: BoxDecoration(
+                                                    color: Colors.transparent,
+                                                    shape: BoxShape.circle,
+                                                    border: Border.all(
+                                                        color: bcolor3)
+                                                    // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                                    // ),
+                                                    ),
+                                                child: Center(
+                                                  child: GestureDetector(
+                                                    onTap: () {},
+                                                    child: Image.asset(
+                                                      'images/facebook.png',
+                                                      height: 19.h,
+                                                      width: 20.w,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 8.h,
+                                              ),
+                                              Text(
+                                                'Facebook',
+                                                style: TextStyle(
+                                                    color: darkModeOn
+                                                        ? Colors.white
+                                                        : Colors.black,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 15.sp,
+                                                    fontFamily: 'Nunito'),
+                                              ),
+                                            ],
+                                          ), //facebook
+                                        ],
+                                      ),
+                                    ), //icons 1
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          bottom: 0.h,
+                                          left: 59.w,
+                                          right: 60.w,
+                                          top: 37.h),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            children: [
+                                              Container(
+                                                height: 50.h,
+                                                width: 50.w,
+                                                decoration: BoxDecoration(
+                                                    color: Colors.transparent,
+                                                    shape: BoxShape.circle,
+                                                    border: Border.all(
+                                                        color: bcolor3)
+                                                    // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                                    // ),
+                                                    ),
+                                                child: Center(
+                                                  child: GestureDetector(
+                                                    onTap: () {},
+                                                    child: SizedBox(
+                                                        height: 24.h,
+                                                        width: 18.w,
+                                                        child: SvgPicture.asset(
+                                                          'images/gmail.svg',
+                                                        )),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 8.h,
+                                              ),
+                                              Text(
+                                                'Gmail',
+                                                style: TextStyle(
+                                                    color: darkModeOn
+                                                        ? Colors.white
+                                                        : Colors.black,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 15.sp,
+                                                    fontFamily: 'Nunito'),
+                                              ),
+                                            ],
+                                          ), //gmail
+                                          SizedBox(
+                                            width: 35.w,
+                                          ),
+                                          Column(
+                                            children: [
+                                              Container(
+                                                height: 50.h,
+                                                width: 50.w,
+                                                decoration: BoxDecoration(
+                                                    color: Colors.transparent,
+                                                    shape: BoxShape.circle,
+                                                    border: Border.all(
+                                                        color: bcolor3)
+                                                    // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                                    // ),
+                                                    ),
+                                                child: Center(
+                                                  child: GestureDetector(
+                                                    onTap: () {},
+                                                    child: SizedBox(
+                                                      height: 24.h,
+                                                      width: 24.w,
+                                                      child: Image.asset(
+                                                        'images/whatsapp.png',
+                                                        height: 30.h,
+                                                        width: 20.w,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 8.h,
+                                              ),
+                                              Text(
+                                                'Whatsapp',
+                                                style: TextStyle(
+                                                    color: darkModeOn
+                                                        ? Colors.white
+                                                        : Colors.black,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 15.sp,
+                                                    fontFamily: 'Nunito'),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 35.w,
+                                          ),
+                                          Column(
+                                            children: [
+                                              Container(
+                                                height: 50.h,
+                                                width: 50.w,
+                                                decoration: BoxDecoration(
+                                                    color: Colors.transparent,
+                                                    shape: BoxShape.circle,
+                                                    border: Border.all(
+                                                        color: bcolor3)
+                                                    // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                                    // ),
+                                                    ),
+                                                child: Center(
+                                                  child: GestureDetector(
+                                                    onTap: () {},
+                                                    child: Image.asset(
+                                                      'images/telegram.png',
+                                                      height: 24.h,
+                                                      width: 24.w,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 8.h,
+                                              ),
+                                              Text(
+                                                'Telegram',
+                                                style: TextStyle(
+                                                    color: darkModeOn
+                                                        ? Colors.white
+                                                        : Colors.black,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 15.sp,
+                                                    fontFamily: 'Nunito'),
+                                              ),
+                                            ],
+                                          ), //telegram
+                                          SizedBox(
+                                            width: 35.w,
+                                          ),
+                                          Column(
+                                            children: [
+                                              Container(
+                                                height: 50.h,
+                                                width: 50.w,
+                                                decoration: BoxDecoration(
+                                                    color: Colors.transparent,
+                                                    shape: BoxShape.circle,
+                                                    border: Border.all(
+                                                        color: bcolor3)
+                                                    // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                                    // ),
+                                                    ),
+                                                child: Center(
+                                                  child: GestureDetector(
+                                                    onTap: () {},
+                                                    child: SizedBox(
+                                                        height: 24.h,
+                                                        width: 30.w,
+                                                        child: SvgPicture.asset(
+                                                          'images/discord.svg',
+                                                        )),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 8.h,
+                                              ),
+                                              Text(
+                                                'Discord',
+                                                style: TextStyle(
+                                                    color: darkModeOn
+                                                        ? Colors.white
+                                                        : Colors.black,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 15.sp,
+                                                    fontFamily: 'Nunito'),
+                                              ),
+                                            ],
+                                          ), //discord
+                                        ],
+                                      ),
+                                    ), //icons 2
                                   ],
                                 ),
-                              ), //icons 2
-                            ],
-                          ),
+                              ),
+                            );
+                          },
                         ),
-                      );
-                    },
-                  ),
-                ), //share
+                      ), //share
+                    ],
+                  ), //icons
+                ), //icons
               ],
-            ), //icons
-          ), //icons
-        ],
+            )),
       );
     }
 
@@ -936,45 +960,42 @@ class _PostCommentState extends State<PostComment> {
           ]);
     }
 
-    return ChangeNotifierProvider(
-      create: (context) => GetComment(),
-      builder: (context, child) => ExpandableNotifier(
-          child: Padding(
-        padding: EdgeInsets.only(bottom: 10.h),
-        child: ScrollOnExpand(
-          child: SizedBox(
-            child: Card(
-              elevation: 0,
-              color: Theme.of(context).scaffoldBackgroundColor,
-              clipBehavior: Clip.antiAlias,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  ExpandableTheme(
-                    data: const ExpandableThemeData(),
-                    child: Expandable(
-                      collapsed: buildCollapsed1(),
-                      expanded: buildExpanded1(),
-                    ),
-                  ),
-                  Expandable(
-                    collapsed: buildCollapsed2(),
+    return ExpandableNotifier(
+        child: Padding(
+      padding: EdgeInsets.only(bottom: 10.h),
+      child: ScrollOnExpand(
+        child: SizedBox(
+          child: Card(
+            elevation: 0,
+            color: Theme.of(context).scaffoldBackgroundColor,
+            clipBehavior: Clip.antiAlias,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                ExpandableTheme(
+                  data: const ExpandableThemeData(),
+                  child: Expandable(
+                    collapsed: buildCollapsed1(),
                     expanded: buildExpanded1(),
                   ),
-                  // Expandable(
-                  //   collapsed: buildCollapsed3(),
-                  //   expanded: buildExpanded3(),
-                  // ),
-                  Divider(
-                    height: 1,
-                  ),
-                ],
-              ),
+                ),
+                Expandable(
+                  collapsed: buildCollapsed2(),
+                  expanded: buildExpanded1(),
+                ),
+                // Expandable(
+                //   collapsed: buildCollapsed3(),
+                //   expanded: buildExpanded3(),
+                // ),
+                Divider(
+                  height: 1,
+                ),
+              ],
             ),
           ),
         ),
-      )),
-    );
+      ),
+    ));
   }
 
   // Future<GetCommentModel> getComment() async {

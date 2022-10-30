@@ -312,14 +312,14 @@ class SignIn extends StatelessWidget {
                                           color: Colors.transparent),
                                     ))),
                                 onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (_) => const Home()));
-                                  // context.read<LogIn>().signIn(
+                                  // Navigator.push(
                                   //     context,
-                                  //     userTextController.text.toString(),
-                                  //     passwordTextController.text.toString());
+                                  //     MaterialPageRoute(
+                                  //         builder: (_) => const Home()));
+                                  context.read<LogIn>().signIn(
+                                      context,
+                                      userTextController.text.toString(),
+                                      passwordTextController.text.toString());
                                 },
                                 child: Text(
                                   'Log in',

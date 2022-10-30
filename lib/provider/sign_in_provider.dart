@@ -4,10 +4,8 @@ import 'package:flutter/material.dart';
 
 class LogIn extends ChangeNotifier {
   late LogInModel logInModel;
-  late ApiServices apiServices;
   bool _visible = false;
   bool get visible => _visible;
-
   Future<void> signIn(context, email, password) async {
     logInModel = await logIn(context, email, password);
     notifyListeners();

@@ -6,10 +6,9 @@ import '../Screens/profile_page.dart';
 
 class GetProfileProvider extends ChangeNotifier {
   late GetProfileModel profileModel;
-  late ApiServices apiServices;
 
   Future<void> fetchProfile(context) async {
-    profileModel = await apiServices.getProfile(context);
+    profileModel = await getProfile(context);
     notifyListeners();
   }
 }
