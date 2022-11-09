@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 
 import '../Screens/profile_page.dart';
 
-class GetProfileProvider extends ChangeNotifier {
-  late GetProfileModel profileModel;
-
-  Future<void> fetchProfile(context) async {
-    profileModel = await getProfile(context);
-    notifyListeners();
-  }
-}
+// class GetProfileProvider extends ChangeNotifier {
+//   late GetProfileModel profileModel;
+//   Future<void> fetchProfile(context) async {
+//     profileModel = await getProfile(context);
+//     notifyListeners();
+//   }
+// }

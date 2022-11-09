@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:chat_beeper/Widgets/post_comment.dart';
 import 'package:chat_beeper/data/secure_storage.dart';
-import 'package:chat_beeper/model/createComment.dart';
+import 'package:chat_beeper/model/create_comment_model.dart';
 import 'package:chat_beeper/model/like_comment_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -10,6 +10,7 @@ import '../Screens/sign_in.dart';
 import '../constants.dart';
 import '../model/Signin_model.dart';
 import '../model/create_beep_model.dart';
+import '../model/get_beep_model.dart';
 import '../model/get_comment_model.dart';
 import '../model/otpmodel_email.dart';
 import '../model/profile_model.dart';
@@ -202,6 +203,7 @@ Future<GetProfileModel> getProfile(context) async {
   } catch (e) {
     print(e.toString());
   }
+  print(profileModel);
   return profileModel;
 } //get profile details
 
@@ -373,6 +375,32 @@ Future<void> undislikeComment() async {
 //     throw Exception('Something went wrong');
 //   }
 
+Future<CreateBeepModel> createBeep(BuildContext context, String beep) async {
+  late CreateBeepModel beepModel;
+  var userJwt = await SecureStorage.getToken();
+  final response =
+      await http.post(Uri.https('beeperchat.herokuapp.com', '/beep'),
+          body: ({
+            "text": beep,
+          }),
+          headers: {"Authorization": "Bearer $userJwt"});
+
+  try {
+    if (response.statusCode == 201) {
+      var data = jsonDecode(response.body);
+      beepModel = CreateBeepModel.fromJson(jsonDecode(response.body));
+      print(beep);
+      Navigator.of(context, rootNavigator: true).pushReplacement(
+          MaterialPageRoute(builder: (context) => const Home()));
+    } else {
+      throw Exception('unable to create beep');
+    }
+  } catch (e) {
+    print(e.toString());
+  }
+  return beepModel;
+}
+
 Future<CreateCommentModel> createComment(
     BuildContext context, String comment) async {
   late CreateCommentModel commentModel;
@@ -391,8 +419,8 @@ Future<CreateCommentModel> createComment(
       print(comment);
 
       commentModel = CreateCommentModel.fromJson(jsonDecode(response.body));
-
-      Navigator.pushReplacement(context,
+      // Navigator.pop(context);
+      Navigator.of(context, rootNavigator: true).pushReplacement(
           MaterialPageRoute(builder: (context) => const PostComment()));
       // if (!mounted) return;
     } else {
@@ -405,28 +433,38 @@ Future<CreateCommentModel> createComment(
   return commentModel;
 }
 
-Future<CreateBeepModel> createBeep(BuildContext context, String beep) async {
-  late CreateBeepModel beepModel;
-  var userJwt = await SecureStorage.getToken();
-  final response =
-      await http.post(Uri.https('beeperchat.herokuapp.com', '/beep'),
-          body: ({
-            "text": beep,
-          }),
-          headers: {"Authorization": "Bearer $userJwt"});
+// Future<GetBeepModel> getBeep(BuildContext context) async {
+//   late GetBeepModel getBeepModel;
+//   String authority = 'beeperchat.herokuapp.com';
+//   String unencodedPath = '/beep/6315fe0790e0ef30da0b8f05/likes';
+//   String? userJwt = await SecureStorage.getToken();
+//   final uri = Uri.https(authority, unencodedPath);
+//   final response =
+//       await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
+//   print(response.body);
 
-  try {
-    if (response.statusCode == 201) {
-      var data = jsonDecode(response.body);
-      beepModel = CreateBeepModel.fromJson(jsonDecode(response.body));
-      print(beep);
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Home()));
-    } else {
-      throw Exception('unable to create beep');
-    }
-  } catch (e) {
-    print(e.toString());
-  }
-  return beepModel;
-}
+//   if (response.statusCode == 200) {
+//     getBeepModel = GetBeepModel.fromJson(jsonDecode(response.body));
+//     print(getBeepModel);
+//     return getBeepModel;
+//   } else {
+//     throw 'Unable to get beeps';
+//   }
+//   // print(getBeepModel);
+//   // return getBeepModel;
+// }
+
+// Future<void> getBeep() async {
+//   List<GetBeepModel> getBeep;
+//   String authority = 'beeperchat.herokuapp.com';
+//   String unencodedPath = '/beep';
+//   String? userJwt = await SecureStorage.getToken();
+//   final uri = Uri.https(authority, unencodedPath);
+//   final response =
+//       await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
+//   print(response.body);
+//   List<dynamic> body = jsonDecode(response.body);
+
+//   // print(getBeepModel);
+//   // return getBeepModel;
+// }

@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetCommentModel GetCommentModelFromJson(String str) =>
+GetCommentModel getCommentModelFromJson(String str) =>
     GetCommentModel.fromJson(json.decode(str));
 
-String GetCommentModelToJson(GetCommentModel data) =>
+String getCommentModelToJson(GetCommentModel data) =>
     json.encode(data.toJson());
 
 class GetCommentModel {

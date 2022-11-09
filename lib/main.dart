@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
           DirectMessage.id: (context) => DirectMessage(),
           Room.id: (context) => Room(),
           GetStarted.id: (context) => GetStarted(),
-          PostCard.id: (context) => PostCard(),
+          // PostCard.id: (context) => PostCard(),
           Profile.id: (context) => Profile(),
           Beep.id: (context) => Beep(),
           SettingsPage.id: (context) => const SettingsPage(),

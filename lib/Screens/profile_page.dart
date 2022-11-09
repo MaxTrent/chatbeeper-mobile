@@ -61,6 +61,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
   final formKey = GlobalKey<FormState>();
   late TabController _tabcontroller;
   late Future<GetProfileModel> futureProfile;
+  String? text;
   // @override
   // void initState(){
   //   super.initState();
@@ -77,8 +78,12 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+    fetchProfile(context);
+  }
 
-    futureProfile = getProfile(context);
+  fetchProfile(context) async {
+    final futureProfilee = await getProfile(context);
+    return futureProfilee;
   }
 
   @override
@@ -106,7 +111,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                 //    ),
                 //  ),
                 body: FutureBuilder<GetProfileModel>(
-                  future: futureProfile,
+                  future: getProfile(context),
                   builder: (context, snapshot) => CustomScrollView(
                     slivers: [
                       SliverAppBar(
