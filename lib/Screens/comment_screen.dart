@@ -7,7 +7,10 @@ import 'package:chat_beeper/constants.dart';
 import '../Widgets/post_comment.dart';
 
 class Comment extends StatefulWidget {
-  const Comment({Key? key}) : super(key: key);
+  const Comment({
+    Key? key,
+    /* required List<Widget> children*/
+  }) : super(key: key);
 
   @override
   State<Comment> createState() => _CommentState();

@@ -91,7 +91,7 @@ class _GetStartedState extends State<GetStarted> {
                     style: Theme.of(context)
                         .primaryTextTheme
                         .headline3!
-                        .copyWith(fontSize: 17.sp),
+                        .copyWith(fontSize: 21.sp),
                     // TextStyle(
                     //     color: Colors.white,
                     //     fontWeight: FontWeight.w500,

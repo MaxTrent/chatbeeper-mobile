@@ -90,8 +90,8 @@ class _ConfirmRegisterState extends State<ConfirmRegister> {
                         ListTileTheme(
                           data: ListTileThemeData(
                             selectedColor: bcolor1,
-                            iconColor: _selectedIndex == 1 ? bcolor1 : uColor,
-                            textColor: _selectedIndex == 1 ? bcolor1 : uColor,
+                            iconColor: _selectedIndex == 1 ? bcolor1 : fColor2,
+                            textColor: _selectedIndex == 1 ? bcolor1 : fColor2,
                           ),
                           child: SizedBox(
                             height: 55.h,
@@ -104,20 +104,19 @@ class _ConfirmRegisterState extends State<ConfirmRegister> {
                                 borderRadius: BorderRadius.circular(6.r),
                                 side: BorderSide(
                                     color:
-                                        _selectedIndex == 1 ? bcolor1 : uColor,
+                                        _selectedIndex == 1 ? bcolor1 : fColor2,
                                     width: 1.w),
                               ),
                               leading: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 8.0.w, bottom: 12.h, right: 8.w),
+                                  padding:
+                                      EdgeInsets.only(left: 8.0.w, right: 8.w),
                                   child: SvgPicture.asset(
                                     'images/profile.svg',
                                     height: 20.h,
-                                    color: uColor,
+                                    color: fColor2,
                                   )),
                               title: Padding(
-                                padding:
-                                    EdgeInsets.only(bottom: 12.h, right: 19.w),
+                                padding: EdgeInsets.only(right: 19.w),
                                 child: Text('Personal Account',
                                     style: Theme.of(context)
                                         .primaryTextTheme
@@ -126,7 +125,7 @@ class _ConfirmRegisterState extends State<ConfirmRegister> {
                                           fontSize: 15.sp,
                                           color: _selectedIndex == 2
                                               ? bcolor1
-                                              : uColor,
+                                              : fColor2,
                                         )),
                               ),
                               onTap: () async {
@@ -165,7 +164,7 @@ class _ConfirmRegisterState extends State<ConfirmRegister> {
                                 borderRadius: BorderRadius.circular(6.r),
                                 side: BorderSide(
                                     color:
-                                        _selectedIndex == 2 ? bcolor1 : uColor,
+                                        _selectedIndex == 2 ? bcolor1 : fColor2,
                                     width: 1),
                               ),
                               onTap: () async {
@@ -185,16 +184,15 @@ class _ConfirmRegisterState extends State<ConfirmRegister> {
                               visualDensity: null,
                               dense: true,
                               leading: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 8.0.w, bottom: 12.h, right: 8.w),
+                                  padding:
+                                      EdgeInsets.only(left: 8.0.w, right: 8.w),
                                   child: SvgPicture.asset(
                                     'images/briefcase.svg',
                                     height: 20.h,
-                                    color: uColor,
+                                    color: fColor2,
                                   )),
                               title: Padding(
-                                padding:
-                                    EdgeInsets.only(bottom: 12.h, right: 19.w),
+                                padding: EdgeInsets.only(right: 19.w),
                                 child: Text('Business Account',
                                     style: Theme.of(context)
                                         .primaryTextTheme
@@ -203,7 +201,7 @@ class _ConfirmRegisterState extends State<ConfirmRegister> {
                                           fontSize: 15.sp,
                                           color: _selectedIndex == 2
                                               ? bcolor1
-                                              : uColor,
+                                              : fColor2,
                                         )
                                     //   TextStyle(
                                     //   fontWeight: FontWeight.w400,

@@ -29,7 +29,7 @@ class _LoginActivityState extends State<LoginActivity> {
     zoom: 14.4746,
   );
 
-  static const CameraPosition _kLake = const CameraPosition(
+  static const CameraPosition _kLake = CameraPosition(
       bearing: 192.8334901395799,
       target: LatLng(37.43296265331129, -122.08832357078792),
       tilt: 59.440717697143555,
@@ -55,7 +55,6 @@ class _LoginActivityState extends State<LoginActivity> {
                     bottom:
                         BorderSide(color: uColor, style: BorderStyle.solid))),
             child: AppBar(
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               automaticallyImplyLeading: true,
               leading: Padding(
                 padding: EdgeInsets.only(top: 29.h),
@@ -78,6 +77,7 @@ class _LoginActivityState extends State<LoginActivity> {
                 ),
               ),
               centerTitle: true,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               elevation: 0.5,
               // leading: Center(child: IconButton(icon:  Icon(Icons.arrow_back_ios_new, size:23.h,color: darkModeOn? Colors.white: Colors.black,), onPressed: () {
               //   Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) =>  Timeline()

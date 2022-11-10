@@ -11,7 +11,7 @@ class CountDown extends ChangeNotifier {
   Timer get countDownTimer => _countDownTimer;
 
   Future<void> startCountDown() async {
-    Timer.periodic(Duration(seconds: 1), (_) => setCountDown());
+    Timer.periodic(const Duration(seconds: 1), (_) => setCountDown());
     notifyListeners();
   }
 

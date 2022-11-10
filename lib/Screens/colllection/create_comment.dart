@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:chat_beeper/constants.dart';
 import 'package:http/http.dart' as http;
+import '../../data/api_services.dart';
 import '../comment_screen.dart';
 import '../drafts.dart';
 
@@ -382,7 +383,7 @@ class _CreateCommentState extends State<CreateComment> {
                                 ? MaterialStateProperty.all(Colors.transparent)
                                 : null,
                             side: MaterialStateProperty.all(
-                                BorderSide(color: bcolor1)),
+                                const BorderSide(color: bcolor1)),
 
                             // elevation: ,
                             shape: MaterialStateProperty.all<StadiumBorder>(
@@ -390,7 +391,9 @@ class _CreateCommentState extends State<CreateComment> {
                               side: BorderSide(
                                   color: darkModeOn ? bcolor1 : bcolor1),
                             ))),
-                        onPressed: createComment,
+                        onPressed: () {
+                          createComment(context, _commentController.text);
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -435,29 +438,5 @@ class _CreateCommentState extends State<CreateComment> {
         ),
       ),
     );
-  }
-
-  Future<dynamic> createComment() async {
-    String authority = 'beeperchat.herokuapp.com';
-    String unencodedPath = '/beep/6315fe0790e0ef30da0b8f05/comment';
-    String? userJwt = await SecureStorage.getToken();
-    final uri = Uri.https(authority, unencodedPath);
-    final response = await http.post(uri,
-        headers: {"Authorization": "Bearer $userJwt"},
-        body: {"text": _commentController.text});
-    print('token: $userJwt');
-    // print(response.toString());
-
-    if (response.statusCode == 201) {
-      var data = jsonDecode(response.body);
-      print('Success');
-      print(_commentController.text);
-      if (!mounted) return;
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: ((context) => Comment())));
-    } else {
-      print('error');
-      if (!mounted) return;
-    }
   }
 }

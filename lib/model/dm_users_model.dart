@@ -13,4 +13,6 @@ class DmUsers {
       required this.message,
       required this.imageURL,
       required this.time});
+
+      
 }

@@ -612,7 +612,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                   RichText(
                                     text: TextSpan(text: '', children: [
                                       TextSpan(
-                                        text: 'Terms  of use',
+                                        text: 'Terms of use',
                                         style: TextStyle(
                                             color: bcolor3,
                                             fontFamily: 'Nunito',
@@ -1371,7 +1371,7 @@ class _CreateAccountState extends State<CreateAccount> {
                           Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                'Create  a username',
+                                'Create a username',
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .bodyText1,
@@ -1566,8 +1566,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                 Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            const OtpEmail()));
+                                        builder: (context) => OtpEmail()));
                               },
                               child: Text(
                                 'Create Account',
@@ -1679,7 +1678,7 @@ class _CreateAccountState extends State<CreateAccount> {
       if (response.statusCode == 201) {
         if (!mounted) return;
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => const OtpEmail()));
+            context, MaterialPageRoute(builder: (context) => OtpEmail()));
         print('object');
         // If the server did return a 201 CREATED response,
         // then parse the JSON.
@@ -1705,7 +1704,7 @@ class _CreateAccountState extends State<CreateAccount> {
         //   ),
         // );
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => const OtpEmail()));
+            context, MaterialPageRoute(builder: (context) => OtpEmail()));
       }
     }
   }

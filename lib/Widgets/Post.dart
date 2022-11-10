@@ -1,6 +1,10 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 import 'package:chat_beeper/Screens/comment_screen.dart';
 import 'package:chat_beeper/Widgets/image_slider.dart';
 import 'package:chat_beeper/Widgets/rebeep_response.dart';
+import 'package:chat_beeper/model/get_beep_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:expandable/expandable.dart';
@@ -12,17 +16,37 @@ import 'package:readmore/readmore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import '../Screens/colllection/create_comment.dart';
+import '../data/api_services.dart';
+import '../data/secure_storage.dart';
 
-class PostCard extends StatelessWidget {
+class PostCard extends StatefulWidget {
+  String post;
+
+  PostCard({Key? key, required this.post}) : super(key: key);
+
+  // PostCard.({Key? key}) : super(key: key);
+  static const String id = 'post-card';
+
+  @override
+  State<PostCard> createState() => _PostCardState();
+}
+
+class _PostCardState extends State<PostCard> {
   String loremIpsum =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-  String FullName = 'Sarah Madini';
+  String fullName = 'Sarah Madini';
   String username = 'Madini';
   String posttime = '1 hour ago';
-
   final bool _rebeeped = false;
-  PostCard({Key? key}) : super(key: key);
-  static const String id = 'post-card';
+  // late Future<GetBeepModel> futureBeep;
+  late List<GetBeepModel> model;
+
+  @override
+  void initState() {
+    getBeep();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     var brightness = MediaQuery.of(context).platformBrightness;
@@ -76,7 +100,7 @@ class PostCard extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                "\ $FullName\ ",
+                                "\ $fullName\ ",
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .bodyText1!
@@ -301,7 +325,7 @@ class PostCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 ReadMoreText(
-                  loremIpsum,
+                  widget.post /*loremIpsum*/,
                   trimExpandedText: ' See less',
                   trimCollapsedText: ' See more',
                   trimLines: 3,
@@ -342,31 +366,31 @@ class PostCard extends StatelessWidget {
                   style: TextStyle(color: Colors.grey),
                 ),
                 /* LikeButton(
-                  size: 24.h,
-                  circleColor: CircleColor(
-                      start: Colors.red.shade700, end: Colors.red.shade800),
-                  bubblesColor: BubblesColor(
-                    dotPrimaryColor: Colors.red.shade700,
-                    dotSecondaryColor: Colors.red.shade800,
-                  ),
-                  likeBuilder: (bool _rebeeped) {
-                    return _rebeeped == false
-                        ? SizedBox(
-                            height: 35.h,
-                            child: SvgPicture.asset(
+                    size: 24.h,
+                    circleColor: CircleColor(
+                        start: Colors.red.shade700, end: Colors.red.shade800),
+                    bubblesColor: BubblesColor(
+                      dotPrimaryColor: Colors.red.shade700,
+                      dotSecondaryColor: Colors.red.shade800,
+                    ),
+                    likeBuilder: (bool _rebeeped) {
+                      return _rebeeped == false
+                          ? SizedBox(
+                              height: 35.h,
+                              child: SvgPicture.asset(
+                                'images/comment.svg',
+                                height: 30.h,
+                              ))
+                          : SvgPicture.asset(
                               'images/comment.svg',
-                              height: 30.h,
-                            ))
-                        : SvgPicture.asset(
-                            'images/comment.svg',
-                            color: Colors.red,
-                            height: 35.h,
-                          );
-                  },
-                  likeCount: 100,
-                  likeCountPadding: EdgeInsets.only(left: 3.w),
-                ),
-             */
+                              color: Colors.red,
+                              height: 35.h,
+                            );
+                    },
+                    likeCount: 100,
+                    likeCountPadding: EdgeInsets.only(left: 3.w),
+                  ),
+               */
                 SizedBox(
                   width: 40.w,
                 ),
@@ -516,7 +540,7 @@ class PostCard extends StatelessWidget {
                   // },
                 ), //heart
                 SizedBox(
-                  width: 110.w,
+                  width: 90.w,
                 ),
                 Expanded(
                   child: GestureDetector(
@@ -1058,5 +1082,22 @@ class PostCard extends StatelessWidget {
         ),
       ),
     ));
+  }
+
+  Future<void> getBeep() async {
+    List<GetBeepModel> getBeep;
+    String authority = 'beeperchat.herokuapp.com';
+    String unencodedPath = '/beep';
+    String? userJwt = await SecureStorage.getToken();
+    final uri = Uri.https(authority, unencodedPath);
+    final response =
+        await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
+    print(response.body);
+    List<dynamic> body = jsonDecode(response.body);
+    model = body.map((dynamic item) => GetBeepModel.fromJson(item)).toList();
+    setState(() {});
+
+    // print(getBeepModel);
+    // return getBeepModel;
   }
 }

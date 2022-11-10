@@ -1,5 +1,6 @@
 import 'package:chat_beeper/Screens/colllection/timeline.dart';
 import 'package:chat_beeper/Screens/drafts.dart';
+import 'package:chat_beeper/data/api_services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -379,7 +380,9 @@ class ComposeBeep extends StatelessWidget {
                                       ? bcolor1
                                       : Colors.transparent),
                             ))),
-                        onPressed: () {},
+                        onPressed: () {
+                          createBeep(context, _beepController.text);
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

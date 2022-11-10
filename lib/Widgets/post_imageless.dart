@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:chat_beeper/Widgets/Post.dart';
 import 'package:chat_beeper/Widgets/image_slider.dart';
 import 'package:chat_beeper/Widgets/rebeep_response.dart';
@@ -13,6 +15,9 @@ import 'package:readmore/readmore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import '../Screens/colllection/create_comment.dart';
+import '../data/api_services.dart';
+import '../data/secure_storage.dart';
+import '../model/get_beep_model.dart';
 
 class PostBeep extends StatefulWidget {
   PostBeep({Key? key}) : super(key: key);
@@ -33,6 +38,15 @@ class _PostBeepState extends State<PostBeep> {
   String posttime = '1 hour ago';
 
   final bool _rebeeped = false;
+  // late Future<GetBeepModel> futureBeep;
+
+  List<GetBeepModel>? model;
+
+  @override
+  void initState() {
+    getBeep();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -357,7 +371,7 @@ class _PostBeepState extends State<PostBeep> {
                   },
                   child: Container(
                     child: ReadMoreText(
-                      loremIpsum,
+                      /* model![0].text*/ loremIpsum,
                       trimExpandedText: 'See less',
                       trimLines: 3,
                       trimMode: TrimMode.Line,
@@ -547,7 +561,7 @@ class _PostBeepState extends State<PostBeep> {
                   // },
                 ), //heart
                 SizedBox(
-                  width: 100.w,
+                  width: 90.w,
                 ),
                 Expanded(
                   child: GestureDetector(
@@ -1074,5 +1088,22 @@ class _PostBeepState extends State<PostBeep> {
         ),
       ),
     ));
+  }
+
+  Future<void> getBeep() async {
+    List<GetBeepModel> getBeep;
+    String authority = 'beeperchat.herokuapp.com';
+    String unencodedPath = '/beep';
+    String? userJwt = await SecureStorage.getToken();
+    final uri = Uri.https(authority, unencodedPath);
+    final response =
+        await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
+    print(response.body);
+    List<dynamic> body = jsonDecode(response.body);
+    model = body.map((dynamic item) => GetBeepModel.fromJson(item)).toList();
+    setState(() {});
+
+    // print(getBeepModel);
+    // return getBeepModel;
   }
 }

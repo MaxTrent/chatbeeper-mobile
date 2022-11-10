@@ -37,13 +37,13 @@ class _HomeState extends State<Home> {
     // const DirectMessage(),
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-      // _pages[_selectedIndex]
-      _istapped = true;
-    });
-  }
+  // void _onItemTapped(int index) {
+  //   setState(() {
+  //     _selectedIndex = index;
+  //     // _pages[_selectedIndex]
+  //     _istapped = true;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {

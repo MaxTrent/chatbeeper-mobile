@@ -95,17 +95,13 @@ class _DmListState extends State<DmList> {
                             ]),
                       ),
                     ),
-                    Wrap(
-                      children: [
-                        Text(
-                          widget.message,
-                          style: Theme.of(context)
-                              .primaryTextTheme
-                              .bodyText1!
-                              .copyWith(
-                                  fontWeight: FontWeight.w500, fontSize: 22.sp),
-                        ),
-                      ],
+                    Text(
+                      widget.message,
+                      style: Theme.of(context)
+                          .primaryTextTheme
+                          .bodyText1!
+                          .copyWith(
+                              fontWeight: FontWeight.w500, fontSize: 22.sp),
                     ),
                     SizedBox(
                       height: 5.5.h,
