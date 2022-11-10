@@ -54,172 +54,169 @@ class _TimelineState extends State<Timeline> {
       designSize: const Size(485, 926),
     );
 
-    return FutureBuilder<List<GetBeepModel>>(
-        future: futureBeep,
-        builder: (context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            return Text(snapshot.data[1].text);
-          } else if (snapshot.hasError) {
-            return Text('${snapshot.error}');
-          }
+    // return FutureBuilder<List<GetBeepModel>>(
+    //     future: futureBeep,
+    //     builder: (context, AsyncSnapshot snapshot) {
+    //       if (snapshot.hasData) {
+    //         return Text(snapshot.data[1].text);
+    //       } else if (snapshot.hasError) {
+    //         return Text('${snapshot.error}');
+    //       }
 
-          // By default, show a loading spinner.
-          return const CircularProgressIndicator(
-            strokeWidth: 5,
-          );
-        }
-        //   return Scaffold(
-        //     key: _key,
-        //     // floatingActionButton: FloatingActionButton(
-        //     //     shape: RoundedRectangleBorder(
-        //     //         borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10.r), bottomRight:Radius.circular(10.r), topLeft:Radius.circular(10.r),topRight: Radius.circular(10.r), )
-        //     //     ),
-        //     //     foregroundColor: bcolor1,
-        //     //     backgroundColor: bcolor1,
-        //     //     child: IconButton(icon: const Icon(CupertinoIcons.pen), onPressed: () {
-        //     //       Navigator.push(context,MaterialPageRoute(builder: (context) =>  ComposeBeep()));
-        //     //     }, color: Colors.white,),
-        //     //     onPressed: (){}),
-        //     appBar: PreferredSize(
-        //       preferredSize: Size(428.w, 62.h),
-        //       child: Container(
-        //         decoration: const BoxDecoration(
-        //             border: Border(
-        //                 bottom: BorderSide(color: uColor, style: BorderStyle.solid))),
-        //         child: SafeArea(
-        //           child: AppBar(
-        //             leading: Padding(
-        //               padding: EdgeInsets.only(top: 15.h, bottom: 5.h),
-        //               child: Container(
-        //                 decoration: const BoxDecoration(
-        //                   shape: BoxShape.circle,
-        //                   color: Colors.black,
-        //                 ),
-        //                 height: 28.h,
-        //                 child: GestureDetector(
-        //                   onTap: () {
-        //                     _key.currentState!.openDrawer();
-        //                   },
-        //                   child: CircleAvatar(
-        //                     child: ClipRRect(
-        //                       borderRadius: BorderRadius.circular(100.0.r),
-        //                       child: Image.asset('images/pp_round.png'),
-        //                     ),
-        //                   ),
-        //                 ),
-        //               ),
-        //             ),
-        //             title: Padding(
-        //               padding: EdgeInsets.only(
-        //                 top: 20.h,
-        //               ),
-        //               child: SizedBox(
-        //                   height: 34.h,
-        //                   // width: 159.w,
-        //                   child: SvgPicture.asset(
-        //                     'images/chatbeeper_blue.svg',
-        //                   )),
-        //             ),
-        //             centerTitle: true,
-        //             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        //             elevation: 0.5,
-        //             actions: [
-        //               // SizedBox(width: 12.w,),
-        //               Padding(
-        //                 padding: EdgeInsets.only(top: 28.h, right: 20.w, bottom: 5.h),
-        //                 child: GestureDetector(
-        //                   onTap: () {
-        //                     // Navigator.push(context,
-        //                     //     MaterialPageRoute(builder: (context) => DirectMessage()));
-        //                   },
-        //                   child: darkModeOn == false
-        //                       ? SvgPicture.asset(
-        //                           color: Colors.black,
-        //                           'images/search.svg',
-        //                         )
-        //                       : SvgPicture.asset(
-        //                           color: Colors.white,
-        //                           'images/search_dark.svg',
-        //                         ),
-        //                 ),
-        //               ),
-        //               Padding(
-        //                 padding: EdgeInsets.only(top: 28.h, right: 18.w, bottom: 5.h),
-        //                 child: SizedBox(
-        //                   height: 28.h,
-        //                   width: 28.h,
-        //                   child: Transform.scale(
-        //                     scale: 1.2,
-        //                     child: GestureDetector(
-        //                       onTap: () {
-        //                         Navigator.push(
-        //                             context,
-        //                             MaterialPageRoute(
-        //                                 builder: (context) => DirectMessage()));
-        //                       },
-        //                       child: darkModeOn == false
-        //                           ? Stack(
-        //                               children: [
-        //                                 SvgPicture.asset(
-        //                                   color: Colors.black,
-        //                                   'images/Dm.svg',
-        //                                 ),
-        //                                 Positioned(
-        //                                   left: 16.w,
-        //                                   child: Container(
-        //                                     height: 15.h,
-        //                                     width: 15.w,
-        //                                     decoration: BoxDecoration(
-        //                                         color: Colors.red,
-        //                                         borderRadius:
-        //                                             BorderRadius.circular(100.r)),
-        //                                   ),
-        //                                 ),
-        //                               ],
-        //                             )
-        //                           : Stack(
-        //                               children: [
-        //                                 SvgPicture.asset(
-        //                                   color: Colors.white,
-        //                                   'images/sms.svg',
-        //                                 ),
-        //                                 Positioned(
-        //                                   left: 16.w,
-        //                                   child: Container(
-        //                                     height: 15.h,
-        //                                     width: 15.w,
-        //                                     decoration: BoxDecoration(
-        //                                         color: Colors.red,
-        //                                         borderRadius:
-        //                                             BorderRadius.circular(100.r)),
-        //                                   ),
-        //                                 )
-        //                               ],
-        //                             ),
-        //                     ),
-        //                   ),
-        //                 ),
-        //               )
-        //             ],
-        //           ),
-        //         ),
-        //       ),
-        //     ),
-        //     body: ListView.builder(
-        //         itemCount: model.length,
-        //         itemBuilder: (BuildContext context, index) {
-        //           return Column(
-        //             children: [
-        //               PostCard(
-        //                 post: model[index].text,
-        //               ),
-        //               PostBeep(),
-        //             ],
-        //           );
-        //         }),
-        //     drawer: AppDrawer(),
-        //   );
-        );
+    //       // By default, show a loading spinner.
+    //       return const CircularProgressIndicator(
+    //         strokeWidth: 5,
+    //       );
+    //     }
+    return Scaffold(
+      key: _key,
+      // floatingActionButton: FloatingActionButton(
+      //     shape: RoundedRectangleBorder(
+      //         borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10.r), bottomRight:Radius.circular(10.r), topLeft:Radius.circular(10.r),topRight: Radius.circular(10.r), )
+      //     ),
+      //     foregroundColor: bcolor1,
+      //     backgroundColor: bcolor1,
+      //     child: IconButton(icon: const Icon(CupertinoIcons.pen), onPressed: () {
+      //       Navigator.push(context,MaterialPageRoute(builder: (context) =>  ComposeBeep()));
+      //     }, color: Colors.white,),
+      //     onPressed: (){}),
+      appBar: PreferredSize(
+        preferredSize: Size(428.w, 62.h),
+        child: Container(
+          decoration: const BoxDecoration(
+              border: Border(
+                  bottom: BorderSide(color: uColor, style: BorderStyle.solid))),
+          child: SafeArea(
+            child: AppBar(
+              leading: Padding(
+                padding: EdgeInsets.only(top: 15.h, bottom: 5.h),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.black,
+                  ),
+                  height: 28.h,
+                  child: GestureDetector(
+                    onTap: () {
+                      _key.currentState!.openDrawer();
+                    },
+                    child: CircleAvatar(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(100.0.r),
+                        child: Image.asset('images/pp_round.png'),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              title: Padding(
+                padding: EdgeInsets.only(
+                  top: 20.h,
+                ),
+                child: SizedBox(
+                    height: 34.h,
+                    // width: 159.w,
+                    child: SvgPicture.asset(
+                      'images/chatbeeper_blue.svg',
+                    )),
+              ),
+              centerTitle: true,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              elevation: 0.5,
+              actions: [
+                // SizedBox(width: 12.w,),
+                Padding(
+                  padding: EdgeInsets.only(top: 28.h, right: 20.w, bottom: 5.h),
+                  child: GestureDetector(
+                    onTap: () {
+                      // Navigator.push(context,
+                      //     MaterialPageRoute(builder: (context) => DirectMessage()));
+                    },
+                    child: darkModeOn == false
+                        ? SvgPicture.asset(
+                            color: Colors.black,
+                            'images/search.svg',
+                          )
+                        : SvgPicture.asset(
+                            color: Colors.white,
+                            'images/search_dark.svg',
+                          ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 28.h, right: 18.w, bottom: 5.h),
+                  child: SizedBox(
+                    height: 28.h,
+                    width: 28.h,
+                    child: Transform.scale(
+                      scale: 1.2,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => DirectMessage()));
+                        },
+                        child: darkModeOn == false
+                            ? Stack(
+                                children: [
+                                  SvgPicture.asset(
+                                    color: Colors.black,
+                                    'images/Dm.svg',
+                                  ),
+                                  Positioned(
+                                    left: 16.w,
+                                    child: Container(
+                                      height: 15.h,
+                                      width: 15.w,
+                                      decoration: BoxDecoration(
+                                          color: Colors.red,
+                                          borderRadius:
+                                              BorderRadius.circular(100.r)),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            : Stack(
+                                children: [
+                                  SvgPicture.asset(
+                                    color: Colors.white,
+                                    'images/sms.svg',
+                                  ),
+                                  Positioned(
+                                    left: 16.w,
+                                    child: Container(
+                                      height: 15.h,
+                                      width: 15.w,
+                                      decoration: BoxDecoration(
+                                          color: Colors.red,
+                                          borderRadius:
+                                              BorderRadius.circular(100.r)),
+                                    ),
+                                  )
+                                ],
+                              ),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+      body: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (BuildContext context, index) {
+            return Column(
+              children: [
+                PostCard(),
+                PostBeep(),
+              ],
+            );
+          }),
+      drawer: AppDrawer(),
+    );
   }
 
   Future<List<GetBeepModel>> getBeep() async {

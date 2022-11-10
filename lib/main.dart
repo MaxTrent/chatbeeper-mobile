@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
         debugShowCheckedModeBanner: false,
-        initialRoute: SplashScreen.id,
+        initialRoute: SignIn.id,
         routes: {
           SponsorBeep.id: (context) => SponsorBeep(),
           SignIn.id: (context) => SignIn(),
