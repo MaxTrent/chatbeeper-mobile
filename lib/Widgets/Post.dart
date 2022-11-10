@@ -20,9 +20,7 @@ import '../data/api_services.dart';
 import '../data/secure_storage.dart';
 
 class PostCard extends StatefulWidget {
-  String post;
-
-  PostCard({Key? key, required this.post}) : super(key: key);
+  PostCard({Key? key}) : super(key: key);
 
   // PostCard.({Key? key}) : super(key: key);
   static const String id = 'post-card';
@@ -325,7 +323,7 @@ class _PostCardState extends State<PostCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 ReadMoreText(
-                  widget.post /*loremIpsum*/,
+                  loremIpsum,
                   trimExpandedText: ' See less',
                   trimCollapsedText: ' See more',
                   trimLines: 3,
