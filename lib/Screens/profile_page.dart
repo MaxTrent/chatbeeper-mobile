@@ -60,8 +60,9 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
   int _selectedButton = 0;
   final formKey = GlobalKey<FormState>();
   late TabController _tabcontroller;
-  late Future<GetProfileModel> futureProfile;
+
   String? text;
+  var fetchProfile;
   // @override
   // void initState(){
   //   super.initState();
@@ -78,12 +79,12 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    fetchProfile(context);
+    fetchProfileCall();
   }
 
-  fetchProfile(context) async {
-    final futureProfilee = await getProfile(context);
-    return futureProfilee;
+ Future<void> fetchProfileCall() async {
+    fetchProfile = await getProfile();
+    print('This is the profile response $fetchProfile');
   }
 
   @override
@@ -110,8 +111,8 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                 //      ),
                 //    ),
                 //  ),
-                body: FutureBuilder<GetProfileModel>(
-                  future: getProfile(context),
+                body: FutureBuilder<GetProfileModel?>(
+                  future: getProfile(),
                   builder: (context, snapshot) => CustomScrollView(
                     slivers: [
                       SliverAppBar(
@@ -357,7 +358,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                                     left: 13.0.w),
                                                 child: Text(
                                                   snapshot.hasData
-                                                      ? snapshot.data!.firstname
+                                                      ? snapshot.data!.firstname!
                                                       : '${snapshot.error}',
                                                   style: Theme.of(context)
                                                       .primaryTextTheme
@@ -381,7 +382,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                                   Text(
                                                     snapshot.hasData
                                                         ? snapshot
-                                                            .data!.username
+                                                            .data!.username!
                                                         : '${snapshot.error}',
                                                     style: TextStyle(
                                                         fontFamily: 'Nunito',
@@ -408,7 +409,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                                 color: Colors.grey.shade300,
                                                 child: Center(
                                                     child: Text(
-                                                  'Follows you',
+                                                 'Follows you',
                                                   style: TextStyle(
                                                     fontSize: 15.sp,
                                                     color: Colors.black,
@@ -476,41 +477,39 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.center,
                                                 children: [
-                                                  Expanded(
-                                                    child: Column(
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  top: 4.0.h),
-                                                          child: Text(
-                                                            '800',
-                                                            style: Theme.of(
-                                                                    context)
-                                                                .primaryTextTheme
-                                                                .bodyText1!
-                                                                .copyWith(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  fontSize:
-                                                                      15.sp,
-                                                                ),
-                                                          ),
+                                                  Column(
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                top: 4.0.h),
+                                                        child: Text(
+                                                          '800',
+                                                          style: Theme.of(
+                                                                  context)
+                                                              .primaryTextTheme
+                                                              .bodyText1!
+                                                              .copyWith(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                fontSize:
+                                                                    15.sp,
+                                                              ),
                                                         ),
-                                                        Text(
-                                                          'Following',
-                                                          style: TextStyle(
-                                                            fontFamily:
-                                                                'Nunito',
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            color: fColor2,
-                                                            fontSize: 15.sp,
-                                                          ),
+                                                      ),
+                                                      Text(
+                                                        'Following',
+                                                        style: TextStyle(
+                                                          fontFamily:
+                                                              'Nunito',
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          color: fColor2,
+                                                          fontSize: 15.sp,
                                                         ),
-                                                      ],
-                                                    ),
+                                                      ),
+                                                    ],
                                                   ), //following
                                                   Padding(
                                                     padding: EdgeInsets.only(
@@ -523,9 +522,9 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsets.only(
-                                                      right: 5,
-                                                      left: 5,
+                                                        EdgeInsets.only(
+                                                      right: 5.w,
+                                                      left: 5.w,
                                                     ),
                                                     child: Column(
                                                       children: [
@@ -569,7 +568,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                                     child: Container(
                                                       height: 30.h,
                                                       color: fColor2,
-                                                      width: 1,
+                                                     width: 1.w,
                                                     ),
                                                   ),
                                                   Column(
@@ -1613,6 +1612,9 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
               ),
             ),
           ),*/
-                ))));
+                ),
+            ),
+        ),
+    );
   }
 }

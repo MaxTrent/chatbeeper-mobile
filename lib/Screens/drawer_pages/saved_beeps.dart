@@ -161,14 +161,14 @@ class _SavedBeepsState extends State<SavedBeeps> {
                       PostBeep(),
                       const SponsoredTourCard(),
                       PostCard(
-                        post: 'hi',
+                        //post: 'hi',
                       ),
                       TourCard()
                     ],
                   );
                 },
               ),
-            ), //listview
+           ), //listview
           ],
         ),
       ),

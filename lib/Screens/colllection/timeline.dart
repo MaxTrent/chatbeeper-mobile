@@ -34,25 +34,51 @@ class _TimelineState extends State<Timeline> {
   final _key = GlobalKey<ScaffoldState>();
   String fullName = 'Jane Doe';
   String username = 'Janedoe_10';
-  late Future<List<GetBeepModel>> futureBeep;
+  bool _isLoading = false;
+  List<GetBeepModel> futureBeep = [];
 
   @override
   void initState() {
     super.initState();
-    futureBeep = getBeep();
+    getBeepCall();
+  }
+
+  void getBeepCall() async {
+    futureBeep = await getBeep();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (futureBeep.isNotEmpty) {
+        print('The beep contains ${futureBeep.length} items');
+        setState(() {
+          _isLoading = true;
+        });
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    var brightness = MediaQuery.of(context).platformBrightness;
+
+   // getBeepCall();
+
+    double width = MediaQuery
+        .of(context)
+        .size
+        .width;
+    double height = MediaQuery
+        .of(context)
+        .size
+        .height;
+    var brightness = MediaQuery
+        .of(context)
+        .platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
 
     ScreenUtil.init(
       context,
       designSize: const Size(485, 926),
     );
+    print('this is the feedBeep');
+    print(futureBeep);
 
     // return FutureBuilder<List<GetBeepModel>>(
     //     future: futureBeep,
@@ -98,6 +124,7 @@ class _TimelineState extends State<Timeline> {
                   height: 28.h,
                   child: GestureDetector(
                     onTap: () {
+                      getBeep();
                       _key.currentState!.openDrawer();
                     },
                     child: CircleAvatar(
@@ -121,7 +148,9 @@ class _TimelineState extends State<Timeline> {
                     )),
               ),
               centerTitle: true,
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              backgroundColor: Theme
+                  .of(context)
+                  .scaffoldBackgroundColor,
               elevation: 0.5,
               actions: [
                 // SizedBox(width: 12.w,),
@@ -134,13 +163,13 @@ class _TimelineState extends State<Timeline> {
                     },
                     child: darkModeOn == false
                         ? SvgPicture.asset(
-                            color: Colors.black,
-                            'images/search.svg',
-                          )
+                      color: Colors.black,
+                      'images/search.svg',
+                    )
                         : SvgPicture.asset(
-                            color: Colors.white,
-                            'images/search_dark.svg',
-                          ),
+                      color: Colors.white,
+                      'images/search_dark.svg',
+                    ),
                   ),
                 ),
                 Padding(
@@ -159,43 +188,43 @@ class _TimelineState extends State<Timeline> {
                         },
                         child: darkModeOn == false
                             ? Stack(
-                                children: [
-                                  SvgPicture.asset(
-                                    color: Colors.black,
-                                    'images/Dm.svg',
-                                  ),
-                                  Positioned(
-                                    left: 16.w,
-                                    child: Container(
-                                      height: 15.h,
-                                      width: 15.w,
-                                      decoration: BoxDecoration(
-                                          color: Colors.red,
-                                          borderRadius:
-                                              BorderRadius.circular(100.r)),
-                                    ),
-                                  ),
-                                ],
-                              )
-                            : Stack(
-                                children: [
-                                  SvgPicture.asset(
-                                    color: Colors.white,
-                                    'images/sms.svg',
-                                  ),
-                                  Positioned(
-                                    left: 16.w,
-                                    child: Container(
-                                      height: 15.h,
-                                      width: 15.w,
-                                      decoration: BoxDecoration(
-                                          color: Colors.red,
-                                          borderRadius:
-                                              BorderRadius.circular(100.r)),
-                                    ),
-                                  )
-                                ],
+                          children: [
+                            SvgPicture.asset(
+                              color: Colors.black,
+                              'images/Dm.svg',
+                            ),
+                            Positioned(
+                              left: 16.w,
+                              child: Container(
+                                height: 15.h,
+                                width: 15.w,
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius:
+                                    BorderRadius.circular(100.r)),
                               ),
+                            ),
+                          ],
+                        )
+                            : Stack(
+                          children: [
+                            SvgPicture.asset(
+                              color: Colors.white,
+                              'images/sms.svg',
+                            ),
+                            Positioned(
+                              left: 16.w,
+                              child: Container(
+                                height: 15.h,
+                                width: 15.w,
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius:
+                                    BorderRadius.circular(100.r)),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -220,27 +249,32 @@ class _TimelineState extends State<Timeline> {
   }
 
   Future<List<GetBeepModel>> getBeep() async {
-    List<GetBeepModel> getBeep;
+    print("Beep Called!");
     String authority = 'beeperchat.herokuapp.com';
     String unencodedPath = '/beep';
     String? userJwt = await SecureStorage.getToken();
+    print('Bearer------$userJwt');
     final uri = Uri.https(authority, unencodedPath);
+    print("uri-------$uri");
     http.Response response =
-        await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
+    await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
+    print('response------$response');
+    print('Bearer------$userJwt');
 
-    if (response.statusCode == 200) {
-      // print(response.body);
-      var jsonResponse = jsonDecode(response.body);
-
-      return getBeepModelFromJson(jsonResponse);
-      // print(jsonResponse);
-      // return jsonResponse.map((e) => GetBeepModel.fromJson(e)).toList();
-      // return models;
-    } else {
-      throw Exception('can\'t load beeps');
+    try {
+      if (response.statusCode == 200) {
+        print('this is response body${response.body}');
+        return getBeepModelFromJson(response.body);
+      } else {
+        print(response.statusCode);
+        return [];
+        // throw Exception('can\'t load beeps');
+      }
+    } catch (e) {
+      print("this is an exception====$e");
+      return [];
     }
 
-    // print(getBeepModel);
-    // return getBeepModel;
   }
 }
+
