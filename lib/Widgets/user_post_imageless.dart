@@ -77,48 +77,50 @@ class _PostBeepState extends State<UserPostBeep> {
                       SizedBox(
                         width: 8.w,
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 7.h,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "\ $FullName\ ",
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .bodyText1!
-                                    .copyWith(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 22.sp),
-                              ),
-                              Text(
-                                '@$username ',
-                                style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w600,
-                                    color: fColor2,
-                                    fontSize: 21.sp),
-                              ),
-                              const Icon(
-                                Icons.verified_rounded,
-                                color: bcolor5,
-                                size: 15,
-                              ),
-                            ],
-                          ),
-                          Text(
-                            '\ $posttime',
-                            style: TextStyle(
-                                fontFamily: 'Nunito',
-                                fontWeight: FontWeight.w500,
-                                color: fColor2,
-                                fontSize: 17.sp),
-                          ),
-                        ],
-                      ),
+                     SingleChildScrollView(
+                       child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 7.h,
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  "\ $FullName\ ",
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .bodyText1!
+                                      .copyWith(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 22.sp),
+                                ),
+                                Text(
+                                  '@$username ',
+                                  style: TextStyle(
+                                      fontFamily: 'Nunito',
+                                      fontWeight: FontWeight.w600,
+                                      color: fColor2,
+                                      fontSize: 21.sp),
+                                ),
+                                const Icon(
+                                  Icons.verified_rounded,
+                                  color: bcolor5,
+                                  size: 15,
+                                ),
+                              ],
+                            ),
+                            Text(
+                              '\ $posttime',
+                              style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                  fontWeight: FontWeight.w500,
+                                  color: fColor2,
+                                  fontSize: 17.sp),
+                            ),
+                          ],
+                        ),
+                     ),
                       Spacer(),
                       PopupMenuButton<int>(
                         onSelected: (value) {

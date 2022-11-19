@@ -184,27 +184,31 @@ Future<LogInModel> logIn(
   }
 } //sign in
 
-Future<GetProfileModel> getProfile(context) async {
-  late GetProfileModel profileModel;
+Future<GetProfileModel?> getProfile() async {
   String authority = 'beeperchat.herokuapp.com';
   String unencodedPath = '/user';
-
   final uri = Uri.https(authority, unencodedPath);
+  print("uri-------$uri");
   String? userJwt = await SecureStorage.getToken();
-  try {
-    final response =
+  http.Response response =
         await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
+  print('response------$response');
+  print('Bearer------$userJwt');
+
+    try{
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body);
-      profileModel = GetProfileModel.fromJson(data);
+    //  var data = jsonDecode(response.body);
+      print("this is success");
+     return getProfileModelFromJson(response.body);
     } else {
-      throw 'Unable to retrieve profile details';
+      print(response.statusCode);
+     return null;
     }
   } catch (e) {
-    print(e.toString());
+    print(e);
   }
-  print(profileModel);
-  return profileModel;
+
+  return null;
 } //get profile details
 
 Future<GetCommentModel> getComment(context) async {

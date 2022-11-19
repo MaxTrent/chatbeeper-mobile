@@ -41,7 +41,7 @@ class _PostCardState extends State<PostCard> {
 
   @override
   void initState() {
-    getBeep();
+   // getBeep();
     super.initState();
   }
 
@@ -88,49 +88,51 @@ class _PostCardState extends State<PostCard> {
                       SizedBox(
                         width: 8.w,
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "\ $fullName\ ",
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .bodyText1!
-                                    .copyWith(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 22.sp),
-                              ),
-                              Text(
-                                '@$username ',
-                                style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w600,
-                                    color: fColor2,
-                                    fontSize: 21.sp),
-                              ),
-                              Icon(
-                                Icons.verified_rounded,
-                                color: bcolor5,
-                                size: 15.h,
-                              ),
-                            ],
-                          ),
-                          Text(
-                            '\ $posttime',
-                            style: TextStyle(
-                                fontFamily: 'Nunito',
-                                fontWeight: FontWeight.w500,
-                                color: fColor2,
-                                fontSize: 17.sp),
-                          ),
-                        ],
-                      ),
+                     SingleChildScrollView(
+                       child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  "\ $fullName\ ",
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .bodyText1!
+                                      .copyWith(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 22.sp),
+                                ),
+                                Text(
+                                  '@$username ',
+                                  style: TextStyle(
+                                      fontFamily: 'Nunito',
+                                      fontWeight: FontWeight.w600,
+                                      color: fColor2,
+                                      fontSize: 21.sp),
+                                ),
+                                Icon(
+                                  Icons.verified_rounded,
+                                  color: bcolor5,
+                                  size: 15.h,
+                                ),
+                              ],
+                            ),
+                            Text(
+                              '\ $posttime',
+                              style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                  fontWeight: FontWeight.w500,
+                                  color: fColor2,
+                                  fontSize: 17.sp),
+                            ),
+                          ],
+                        ),
+                     ),
                       Spacer(),
                       PopupMenuButton<int>(
                         icon: Icon(
@@ -1083,17 +1085,17 @@ class _PostCardState extends State<PostCard> {
   }
 
   Future<void> getBeep() async {
-    List<GetBeepModel> getBeep;
-    String authority = 'beeperchat.herokuapp.com';
-    String unencodedPath = '/beep';
-    String? userJwt = await SecureStorage.getToken();
-    final uri = Uri.https(authority, unencodedPath);
-    final response =
-        await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
-    print(response.body);
-    List<dynamic> body = jsonDecode(response.body);
-    model = body.map((dynamic item) => GetBeepModel.fromJson(item)).toList();
-    setState(() {});
+    // List<GetBeepModel> getBeep;
+    // String authority = 'beeperchat.herokuapp.com';
+    // String unencodedPath = '/beep';
+    // String? userJwt = await SecureStorage.getToken();
+    // final uri = Uri.https(authority, unencodedPath);
+    // final response =
+    //     await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
+    // print(response.body);
+    // List<dynamic> body = jsonDecode(response.body);
+    // model = body.map((dynamic item) => GetBeepModel.fromJson(item)).toList();
+    // setState(() {});
 
     // print(getBeepModel);
     // return getBeepModel;
