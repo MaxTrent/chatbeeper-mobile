@@ -71,7 +71,7 @@ class _PostCardState extends State<PostCard> {
         Padding(
           padding: EdgeInsets.fromLTRB(4.w, 8.w, 0.w, 5.h),
           child: SizedBox(
-            height: 50.h,
+            height: 60.h,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -89,6 +89,7 @@ class _PostCardState extends State<PostCard> {
                         width: 8.w,
                       ),
                      SingleChildScrollView(
+                       physics: NeverScrollableScrollPhysics(),
                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -539,9 +540,9 @@ class _PostCardState extends State<PostCard> {
                   //   return result;
                   // },
                 ), //heart
-                SizedBox(
-                  width: 90.w,
-                ),
+                // SizedBox(
+                //   width: 90.w,
+                // ),
                 Expanded(
                   child: GestureDetector(
                     child: Padding(
@@ -590,10 +591,10 @@ class _PostCardState extends State<PostCard> {
                                         .primaryTextTheme
                                         .bodyText1!
                                         .copyWith(
-                                          color: bcolor3,
-                                          fontSize: 22.sp,
-                                          fontWeight: FontWeight.w700,
-                                        ),
+                                      color: bcolor3,
+                                      fontSize: 17.sp,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
                                 ),
                               ), //share beep
@@ -605,7 +606,7 @@ class _PostCardState extends State<PostCard> {
                                     top: 37.h),
                                 child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  MainAxisAlignment.spaceBetween,
                                   children: [
                                     Column(
                                       children: [
@@ -615,20 +616,21 @@ class _PostCardState extends State<PostCard> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
                                               child: SizedBox(
-                                                  height: 25.h,
-                                                  width: 25.w,
+                                                  height: 30.h,
+                                                  width: 30.w,
                                                   child: SvgPicture.asset(
                                                     'images/link.svg',
-                                                    height: 25.h,
-                                                    width: 25.w,
+                                                    height: 30.h,
+                                                    width: 30.w,
                                                     fit: BoxFit.contain,
                                                   )),
                                             ),
@@ -650,7 +652,7 @@ class _PostCardState extends State<PostCard> {
                                       ],
                                     ), //copy
                                     SizedBox(
-                                      width: 35.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -660,16 +662,17 @@ class _PostCardState extends State<PostCard> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
                                               child: SizedBox(
-                                                  height: 25.h,
-                                                  width: 25.w,
+                                                  height: 30.h,
+                                                  width: 30.w,
                                                   child: SvgPicture.asset(
                                                     'images/bookmark.svg',
                                                     height: 30.h,
@@ -695,7 +698,7 @@ class _PostCardState extends State<PostCard> {
                                       ],
                                     ),
                                     SizedBox(
-                                      width: 35.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -705,10 +708,11 @@ class _PostCardState extends State<PostCard> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
@@ -738,7 +742,7 @@ class _PostCardState extends State<PostCard> {
                                       ],
                                     ), //whatsappp
                                     SizedBox(
-                                      width: 35.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -748,17 +752,18 @@ class _PostCardState extends State<PostCard> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
                                               child: Image.asset(
                                                 'images/facebook.png',
-                                                height: 35.h,
-                                                width: 35.w,
+                                                height: 40.h,
+                                                width: 40.w,
                                                 fit: BoxFit.contain,
                                               ),
                                             ),
@@ -790,7 +795,7 @@ class _PostCardState extends State<PostCard> {
                                     top: 37.h),
                                 child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Column(
                                       children: [
@@ -800,10 +805,11 @@ class _PostCardState extends State<PostCard> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
@@ -812,8 +818,8 @@ class _PostCardState extends State<PostCard> {
                                                   width: 30.w,
                                                   child: SvgPicture.asset(
                                                     'images/gmail.svg',
-                                                    height: 35.h,
-                                                    width: 35.w,
+                                                    height: 100.h,
+                                                    width: 100.w,
                                                     fit: BoxFit.contain,
                                                   )),
                                             ),
@@ -835,7 +841,7 @@ class _PostCardState extends State<PostCard> {
                                       ],
                                     ), //gmail
                                     SizedBox(
-                                      width: 45.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -845,10 +851,11 @@ class _PostCardState extends State<PostCard> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
@@ -881,7 +888,7 @@ class _PostCardState extends State<PostCard> {
                                       ],
                                     ),
                                     SizedBox(
-                                      width: 35.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -891,17 +898,18 @@ class _PostCardState extends State<PostCard> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
                                               child: Image.asset(
                                                 'images/telegram.png',
-                                                height: 30.h,
-                                                width: 30.w,
+                                                height: 35.h,
+                                                width: 35.w,
                                                 fit: BoxFit.contain,
                                               ),
                                             ),
@@ -923,7 +931,7 @@ class _PostCardState extends State<PostCard> {
                                       ],
                                     ), //telegram
                                     SizedBox(
-                                      width: 50.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -933,21 +941,21 @@ class _PostCardState extends State<PostCard> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
                                               child: SizedBox(
-                                                  height: 30.h,
-                                                  width: 30.w,
+                                                  height: 35.h,
+                                                  width: 35.w,
                                                   child: SvgPicture.asset(
                                                     'images/discord.svg',
-                                                    height: 30.h,
-                                                    width: 30.w,
-                                                    fit: BoxFit.contain,
+                                                    height: 35.h,
+                                                    width: 35.w,
                                                   )),
                                             ),
                                           ),

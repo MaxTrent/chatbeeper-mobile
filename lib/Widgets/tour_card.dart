@@ -133,13 +133,13 @@ class _TourCardState extends State<TourCard> {
                 alignment: Alignment.topCenter,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.black.withOpacity(0.6),
+                  color: Colors.black.withOpacity(0.4),
                 ),
                 child: PopupMenuButton<int>(
                   icon: Icon(
                     Icons.more_vert_sharp,
                     size: 24.h,
-                    color: Theme.of(context).colorScheme.secondaryVariant,
+                    color:Colors.white,
                   ),
                   iconSize: 24.h,
                   itemBuilder: (context) => [

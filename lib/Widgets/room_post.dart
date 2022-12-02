@@ -153,6 +153,7 @@ class RoomCard extends StatelessWidget {
                               height: 12.h,
                             ),
                             Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
                                   "\ $FullName\ ",
@@ -160,21 +161,21 @@ class RoomCard extends StatelessWidget {
                                       .primaryTextTheme
                                       .bodyText1!
                                       .copyWith(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 22.sp),
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 22.sp),
                                 ),
                                 Text(
-                                  '@$username',
+                                  '@$username ',
                                   style: TextStyle(
                                       fontFamily: 'Nunito',
                                       fontWeight: FontWeight.w600,
-                                      color: Colors.grey,
+                                      color: fColor2,
                                       fontSize: 21.sp),
                                 ),
-                                Icon(
+                                const Icon(
                                   Icons.verified_rounded,
                                   color: bcolor5,
-                                  size: 15.h,
+                                  size: 15,
                                 ),
                               ],
                             ),
@@ -183,12 +184,12 @@ class RoomCard extends StatelessWidget {
                               style: TextStyle(
                                   fontFamily: 'Nunito',
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.grey,
+                                  color: fColor2,
                                   fontSize: 17.sp),
                             ),
                           ],
                         ),
-                        Spacer(),
+                        const Spacer(),
                         PopupMenuButton<int>(
                           icon: Icon(
                             Icons.more_vert_sharp,
@@ -364,22 +365,16 @@ class RoomCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: 5.h,
-                      bottom: 5.h,
-                    ),
-                    child: Text(
-                      bio,
-                      textAlign: TextAlign.left,
-                      style: Theme.of(context)
-                          .primaryTextTheme
-                          .bodyText1!
-                          .copyWith(
-                              fontSize: 25.sp,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Nunito'),
-                    ),
+                  Text(
+                    bio,
+                    textAlign: TextAlign.left,
+                    style: Theme.of(context)
+                        .primaryTextTheme
+                        .bodyText1!
+                        .copyWith(
+                            fontSize: 25.sp,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Nunito'),
                   ),
                 ],
               ),

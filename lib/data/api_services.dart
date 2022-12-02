@@ -39,6 +39,7 @@ Future<VerifyEmailModel> verifyEmail(
     print(response.body);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        duration: const Duration(seconds: 5),
         content: Text(response.body,
             style: Theme.of(context)
                 .primaryTextTheme
@@ -59,6 +60,7 @@ Future<VerifyEmailModel> verifyEmail(
   } else {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        duration: const Duration(seconds: 5),
         content: Text('Incorrect details',
             style: Theme.of(context)
                 .primaryTextTheme
@@ -102,6 +104,7 @@ Future<void> verifyPhone(
     print(response.body);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        duration: const Duration(seconds: 5),
         content: Text(response.body,
             style: Theme.of(context)
                 .primaryTextTheme
@@ -122,6 +125,7 @@ Future<void> verifyPhone(
   } else {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        duration: const Duration(seconds: 5),
         content: Text('Incorrect details',
             style: Theme.of(context)
                 .primaryTextTheme
@@ -160,10 +164,13 @@ Future<LogInModel> logIn(
         context, MaterialPageRoute(builder: (context) => const Home()));
     await SecureStorage.setToken(jwtToken);
     return LogInModel.fromJson(json.decode(response.body));
-  } else {
+  }
+   if (response.statusCode == 404){
+    var data = json.decode(response.body);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Invalid Details',
+        duration: const Duration(seconds: 5),
+        content: Text('User not found',
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
@@ -179,9 +186,52 @@ Future<LogInModel> logIn(
             left: 20.w),
       ),
     );
-
-    throw Exception('Something went wrong');
   }
+   if (response.statusCode == 400){
+    var data = json.decode(response.body);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 5),
+        content: Text('Something went wrong. try again',
+            style: Theme.of(context)
+                .primaryTextTheme
+                .bodyText1!
+                .copyWith(color: Colors.white)),
+        backgroundColor: bcolor,
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(6.r),
+        ),
+        margin: EdgeInsets.only(
+            bottom: MediaQuery.of(context).size.height - 150.h,
+            right: 20.w,
+            left: 20.w),
+      ),
+    );
+  }
+  if (response.statusCode == 401){
+    var data = json.decode(response.body);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 5),
+        content: Text('Incorrect username/password',
+            style: Theme.of(context)
+                .primaryTextTheme
+                .bodyText1!
+                .copyWith(color: Colors.white)),
+        backgroundColor: bcolor,
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(6.r),
+        ),
+        margin: EdgeInsets.only(
+            bottom: MediaQuery.of(context).size.height - 150.h,
+            right: 20.w,
+            left: 20.w),
+      ),
+    );
+  }
+  throw Exception(response.body);
 } //sign in
 
 Future<GetProfileModel?> getProfile() async {
@@ -191,18 +241,18 @@ Future<GetProfileModel?> getProfile() async {
   print("uri-------$uri");
   String? userJwt = await SecureStorage.getToken();
   http.Response response =
-        await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
+      await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
   print('response------$response');
   print('Bearer------$userJwt');
 
-    try{
+  try {
     if (response.statusCode == 200) {
-    //  var data = jsonDecode(response.body);
+      //  var data = jsonDecode(response.body);
       print("this is success");
-     return getProfileModelFromJson(response.body);
+      return getProfileModelFromJson(response.body);
     } else {
       print(response.statusCode);
-     return null;
+      return null;
     }
   } catch (e) {
     print(e);

@@ -127,134 +127,131 @@ class _AppDrawerState extends State<AppDrawer> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 16.w, right: 17.w),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          child: GestureDetector(
-                            onTap: () {
-                              // Navigator.pop(context);
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //       builder: (context) => const Following(),
-                              //     ));
-                            },
-                            child: Row(
-                              children: [
-                                Text(
-                                  '100K',
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .bodyText1!
-                                      .copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 21.sp,
-                                      ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        child: GestureDetector(
+                          onTap: () {
+                            // Navigator.pop(context);
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //       builder: (context) => const Following(),
+                            //     ));
+                          },
+                          child: Row(
+                            children: [
+                              Text(
+                                '100K',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18.sp,
+                                    ),
+                              ),
+                              SizedBox(
+                                width: 3.w,
+                              ),
+                              Text(
+                                'Beeps',
+                                style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                  fontWeight: FontWeight.w600,
+                                  color: fColor2,
+                                  fontSize: 18.sp,
                                 ),
-                                SizedBox(
-                                  width: 3.w,
-                                ),
-                                Text(
-                                  'Beeps',
-                                  style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w600,
-                                    color: fColor2,
-                                    fontSize: 21.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ), //beeps
-                        SizedBox(
-                          width: 7.w,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 5, left: 5),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const Followers(),
-                                  ));
-                            },
-                            child: Row(
-                              children: [
-                                Text(
-                                  '800',
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .bodyText1!
-                                      .copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 21.sp,
-                                      ),
+                      ), //beeps
+                      SizedBox(
+                        width: 7.w,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 5, left: 5),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Followers(),
+                                ));
+                          },
+                          child: Row(
+                            children: [
+                              Text(
+                                '800',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18.sp,
+                                    ),
+                              ),
+                              SizedBox(
+                                width: 5.w,
+                              ),
+                              Text(
+                                'Followers',
+                                style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                  fontWeight: FontWeight.w700,
+                                  color: fColor2,
+                                  fontSize: 18.sp,
                                 ),
-                                SizedBox(
-                                  width: 5.w,
-                                ),
-                                Text(
-                                  'Followers',
-                                  style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w700,
-                                    color: fColor2,
-                                    fontSize: 21.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ), //followers
-                        SizedBox(
-                          width: 7.w,
                         ),
-                        SizedBox(
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const Following(),
-                                  ));
-                            },
-                            child: Row(
-                              children: [
-                                Text(
-                                  '2k',
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .bodyText1!
-                                      .copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 22.sp,
-                                      ),
+                      ), //followers
+                      SizedBox(
+                        width: 7.w,
+                      ),
+                      SizedBox(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Following(),
+                                ));
+                          },
+                          child: Row(
+                            children: [
+                              Text(
+                                '2k',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 22.sp,
+                                    ),
+                              ),
+                              SizedBox(
+                                width: 5.w,
+                              ),
+                              Text(
+                                'Following',
+                                style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                  fontWeight: FontWeight.w600,
+                                  color: fColor2,
+                                  fontSize: 18.sp,
                                 ),
-                                SizedBox(
-                                  width: 5.w,
-                                ),
-                                Text(
-                                  'Following',
-                                  style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w600,
-                                    color: fColor2,
-                                    fontSize: 21.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ), //following
-                      ],
-                    ),
+                        ),
+                      ), //following
+                    ],
                   ), //following followers
                   SizedBox(
                     height: 12.h,

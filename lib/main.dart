@@ -3,7 +3,7 @@ import 'package:chat_beeper/Screens/get_started.dart';
 import 'package:chat_beeper/Screens/otp_email.dart';
 import 'package:chat_beeper/Screens/profile_page.dart';
 import 'package:chat_beeper/Screens/sponsor_beep.dart';
-import 'package:chat_beeper/Widgets/Post.dart';
+// import 'package:chat_beeper/Widgets/Post.dart';
 import 'package:chat_beeper/themedata.dart';
 import 'package:flutter/material.dart';
 import 'Screens/colllection/beep.dart';
@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
         debugShowCheckedModeBanner: false,
-        initialRoute: SignIn.id,
+        initialRoute: GetStarted.id,
         routes: {
           SponsorBeep.id: (context) => SponsorBeep(),
           SignIn.id: (context) => SignIn(),
@@ -65,14 +65,14 @@ class MyApp extends StatelessWidget {
           OtpPassed.id: (context) => const OtpPassed(),
           ChooseUsername.id: (context) => const ChooseUsername(),
           AuthenticateSignup.id: (context) => const AuthenticateSignup(),
-          OtpEmail.id: (context) => OtpEmail(),
-          Notifications.id: (context) => Notifications(),
-          DirectMessage.id: (context) => DirectMessage(),
-          Room.id: (context) => Room(),
-          GetStarted.id: (context) => GetStarted(),
+          OtpEmail.id: (context) => const OtpEmail(),
+          Notifications.id: (context) => const Notifications(),
+          DirectMessage.id: (context) => const DirectMessage(),
+          Room.id: (context) => const Room(),
+          GetStarted.id: (context) => const GetStarted(),
           // PostCard.id: (context) => PostCard(),
-          Profile.id: (context) => Profile(),
-          Beep.id: (context) => Beep(),
+          Profile.id: (context) => const Profile(),
+          Beep.id: (context) => const Beep(),
           SettingsPage.id: (context) => const SettingsPage(),
         },
       ),

@@ -546,6 +546,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
+                                      duration: const Duration(seconds: 5),
                                       content: Text('Registration Incomplete',
                                           style: Theme.of(context)
                                               .primaryTextTheme
@@ -1158,6 +1159,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                     _birthdateControlller.text.isEmpty) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
+                                      duration: const Duration(seconds: 5),
                                       content: Text('Registration Incomplete',
                                           style: Theme.of(context)
                                               .primaryTextTheme

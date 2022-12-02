@@ -59,8 +59,9 @@ class _PostBeepState extends State<UserPostBeep> {
         Padding(
           padding: EdgeInsets.fromLTRB(4.w, 0.h, 0.w, 5.h),
           child: SizedBox(
-            height: 47.h,
+            height: 60.h,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Expanded(
@@ -77,14 +78,17 @@ class _PostBeepState extends State<UserPostBeep> {
                       SizedBox(
                         width: 8.w,
                       ),
-                     SingleChildScrollView(
-                       child: Column(
+                      SingleChildScrollView(
+                        physics: NeverScrollableScrollPhysics(),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              height: 7.h,
+                              height: 2.h,
                             ),
                             Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
                                   "\ $FullName\ ",
@@ -92,8 +96,8 @@ class _PostBeepState extends State<UserPostBeep> {
                                       .primaryTextTheme
                                       .bodyText1!
                                       .copyWith(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 22.sp),
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 22.sp),
                                 ),
                                 Text(
                                   '@$username ',
@@ -120,116 +124,211 @@ class _PostBeepState extends State<UserPostBeep> {
                             ),
                           ],
                         ),
-                     ),
+                      ),
                       Spacer(),
-                      PopupMenuButton<int>(
-                        onSelected: (value) {
-                          if (value == 1) {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SponsorBeep()));
-                          }
-                        },
-                        icon: Icon(
-                          Icons.more_vert_sharp,
-                          size: 24.h,
-                          color: Theme.of(context).colorScheme.secondaryVariant,
-                        ),
-                        iconSize: 24.h,
-                        itemBuilder: (context) => [
-                          PopupMenuItem(
-                            height: 40.h,
-                            value: 1,
-                            // row has two child icon and text.
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                    height: 24.h,
-                                    width: 24.w,
-                                    child: darkModeOn == false
-                                        ? SvgPicture.asset(
-                                            'images/fa_handshake-o.svg')
-                                        : SvgPicture.asset(
-                                            'images/fa_handshake-o.svg',
-                                            color: Colors.white,
-                                          )),
-                                SizedBox(
-                                  width: 10.w,
-                                ),
-                                Text(
-                                  "Sponsor beep",
-                                  style: TextStyle(
-                                      fontFamily: 'Nunito',
-                                      fontSize: 22.sp,
-                                      fontWeight: FontWeight.w600,
-                                      color: darkModeOn
-                                          ? Colors.white
-                                          : Colors.black),
-                                )
-                              ],
+                      Column(
+                        children: [
+                          SizedBox(height: 7.h),
+                          Container(
+                            color:
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Colors.white
+                                : Colors.grey.shade300,
+                            height: 28.h,
+                            width: 80.w,
+                            child: Center(
+                              child: Text(
+                                'Sponsored',
+                                style: TextStyle(
+                                    color: (Theme.of(context).brightness ==
+                                        Brightness.dark
+                                        ? fColor2
+                                        : Colors.black),
+                                    fontSize: 15.sp,
+                                    fontFamily: 'Nunito',
+                                    fontWeight: FontWeight.w500),
+                              ),
                             ),
-                          ), //mute
-                          PopupMenuItem(
-                            height: 40.h,
-                            value: 2,
-                            // row has two child icon and text.
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                    height: 24.h,
-                                    width: 24.w,
-                                    child: darkModeOn == false
-                                        ? SvgPicture.asset('images/data.svg')
-                                        : SvgPicture.asset(
-                                            'images/data.svg',
-                                            color: Colors.white,
-                                          )),
-                                SizedBox(
-                                  width: 10.w,
-                                ),
-                                Text(
-                                  "Beep data",
-                                  style: TextStyle(
-                                      fontFamily: 'Nunito',
-                                      fontSize: 22.sp,
-                                      fontWeight: FontWeight.w600,
-                                      color: darkModeOn
-                                          ? Colors.white
-                                          : Colors.black),
-                                )
-                              ],
-                            ),
-                          ), //block
-                          PopupMenuItem(
-                            height: 40.h,
-                            value: 3,
-                            // row has two child icon and text.
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                    height: 24.h,
-                                    width: 24.w,
-                                    child: SvgPicture.asset(
-                                        'images/uiw_delete.svg')),
-                                SizedBox(
-                                  width: 10.w,
-                                ),
-                                Text(
-                                  "Delete beep",
-                                  style: TextStyle(
-                                      fontFamily: 'Nunito',
-                                      fontSize: 22.sp,
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xffC92828)),
-                                )
-                              ],
-                            ),
-                          ), //unfollow
+                          ),
                         ],
-                        offset: Offset(-28.w, 40.h),
-                        color: Theme.of(context).scaffoldBackgroundColor,
-                        elevation: 2,
+                      ),
+                      SizedBox(
+                        width: 3.w,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 25.0.h),
+                        child: PopupMenuButton<int>(
+                          icon: Icon(
+                            Icons.more_vert_sharp,
+                            size: 24.h,
+                            color:
+                            Theme.of(context).colorScheme.secondaryVariant,
+                          ),
+                          iconSize: 24.h,
+                          itemBuilder: (context) => [
+                            PopupMenuItem(
+                              value: 1,
+                              height: 40.h,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h,
+                                      width: 24.w,
+                                      child: darkModeOn == false
+                                          ? SvgPicture.asset('images/mute.svg')
+                                          : SvgPicture.asset(
+                                        'images/mute.svg',
+                                        color: Colors.white,
+                                      )),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Text(
+                                    "Mute",
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black),
+                                  )
+                                ],
+                              ),
+                            ), //mute
+                            PopupMenuItem(
+                              height: 40.h,
+                              value: 2,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h,
+                                      width: 24.w,
+                                      child: darkModeOn == false
+                                          ? SvgPicture.asset('images/block.svg')
+                                          : SvgPicture.asset(
+                                        'images/block.svg',
+                                        color: Colors.white,
+                                      )),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Text(
+                                    "Block",
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black),
+                                  )
+                                ],
+                              ),
+                            ), //block
+                            PopupMenuItem(
+                              height: 40.h,
+                              value: 3,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h,
+                                      width: 24.w,
+                                      child: darkModeOn == false
+                                          ? SvgPicture.asset(
+                                          'images/unfollow.svg')
+                                          : SvgPicture.asset(
+                                        'images/unfollow.svg',
+                                        color: Colors.white,
+                                      )),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Text(
+                                    "Unfollow",
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black),
+                                  )
+                                ],
+                              ),
+                            ), //unfollow
+                            PopupMenuItem(
+                              value: 4,
+                              height: 40.h,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h,
+                                      width: 24.w,
+                                      child: darkModeOn == false
+                                          ? SvgPicture.asset(
+                                          'images/not interested.svg')
+                                          : SvgPicture.asset(
+                                        'images/not interested.svg',
+                                        color: Colors.white,
+                                      )),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Text(
+                                    "Not interested in this",
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black),
+                                  )
+                                ],
+                              ),
+                            ), //not interested
+                            PopupMenuItem(
+                              value: 5,
+                              height: 40.h,
+                              // row has two child icon and text.
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      height: 24.h,
+                                      width: 24.w,
+                                      child: darkModeOn == false
+                                          ? SvgPicture.asset(
+                                          'images/report.svg')
+                                          : SvgPicture.asset(
+                                        'images/report.svg',
+                                        color: Colors.white,
+                                      )),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Text(
+                                    "Report this account",
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: darkModeOn
+                                            ? Colors.white
+                                            : Colors.black),
+                                  )
+                                ],
+                              ),
+                            ), //report
+                          ],
+                          offset: Offset(-28.w, 40.h),
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                          elevation: 2,
+                        ),
                       ),
                     ],
                   ),

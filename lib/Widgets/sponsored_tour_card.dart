@@ -10,6 +10,7 @@ import 'package:expandable/expandable.dart';
 // import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chat_beeper/Screens/comment_screen.dart';
 import '../Screens/colllection/dm.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class SponsoredTourCard extends StatefulWidget {
   const SponsoredTourCard({Key? key}) : super(key: key);
@@ -71,13 +72,19 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
           SizedBox(
             height: 486.h,
             width: width,
-            child: Image(
-              key: Key(displayImage.id),
-              image: NetworkImage(
-                displayImage.url,
-              ),
-              fit: BoxFit.cover,
-            ),
+            child: CachedNetworkImage(
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              key: Key(displayImage.id), imageUrl:displayImage.url,),
+
+            // Image(
+            //   key: Key(displayImage.id),
+            //   image: NetworkImage(
+            //     displayImage.url,
+            //   ),
+            //   fit: BoxFit.cover,
+            // ),
+
+
           ),
           Positioned(
               top: 15.h,
@@ -88,13 +95,13 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                 alignment: Alignment.topCenter,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.black.withOpacity(0.6),
+                  color: Colors.black.withOpacity(0.4),
                 ),
                 child: PopupMenuButton<int>(
                   icon: Icon(
                     Icons.more_vert_sharp,
                     size: 24.h,
-                    color: Theme.of(context).colorScheme.secondaryVariant,
+                    color: Colors.white,
                   ),
                   iconSize: 24.h,
                   itemBuilder: (context) => [
@@ -260,7 +267,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
             left: 28.w,
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.6),
+                color: Colors.black.withOpacity(0.4),
               ),
               height: 28.h,
               width: 80.w,
@@ -281,7 +288,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
             // left: 10.w,
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.6),
+                color: Colors.black.withOpacity(0.4),
               ),
               height: 74.h,
               width: width,

@@ -435,7 +435,7 @@ class _NotificationsState extends State<Notifications> {
                                   .primaryTextTheme
                                   .bodyText1!
                                   .copyWith(
-                                      fontSize: 20.sp,
+                                      fontSize: 18.sp,
                                       fontWeight: FontWeight.w600)),
                           SizedBox(
                             width: 12.w,
@@ -585,7 +585,7 @@ class _NotificationsState extends State<Notifications> {
             ),
           ),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 border: Border(
                     bottom: BorderSide(
               color: uColor,

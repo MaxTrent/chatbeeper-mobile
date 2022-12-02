@@ -134,7 +134,7 @@ class _DirectMessageState extends State<DirectMessage> {
                   child: SizedBox(
                     width: 256.w,
                     child: Padding(
-                      padding: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       child: TextFormField(
                         decoration: InputDecoration(
                           floatingLabelBehavior: FloatingLabelBehavior.auto,
@@ -188,14 +188,14 @@ class _DirectMessageState extends State<DirectMessage> {
                   ),
                 ),
                 SizedBox(
-                  width: 66.w,
+                  width: 20.w,
                 ),
                 Text(
                   'Message requests',
                   style: TextStyle(
                       color: bcolor3,
                       fontWeight: FontWeight.w400,
-                      fontSize: 20.sp),
+                      fontSize: 16.sp),
                 ),
               ],
             ),

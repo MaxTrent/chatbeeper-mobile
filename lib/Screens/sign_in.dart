@@ -1,14 +1,17 @@
-import 'package:chat_beeper/Screens/colllection/home_page.dart';
+// ignore_for_file: must_be_immutable
+
+// import 'package:chat_beeper/Screens/colllection/home_page.dart';
 import 'package:chat_beeper/Screens/password_recovery.dart';
+import 'package:chat_beeper/Screens/sign_Up_personal.dart';
 import 'package:chat_beeper/provider/sign_in_provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constants.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+// import 'dart:convert';
+// import 'package:http/http.dart' as http;
 import '../data/secure_storage.dart';
-import '../model/Signin_model.dart';
+// import '../model/Signin_model.dart';
 import 'package:provider/provider.dart';
 
 class SignIn extends StatelessWidget {
@@ -30,7 +33,7 @@ class SignIn extends StatelessWidget {
   // String? apassword = '123456';
   // String? vPassword;
   // bool _loading = false;
-  FocusNode _focus = FocusNode();
+  // FocusNode _focus = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +85,6 @@ class SignIn extends StatelessWidget {
                             SizedBox(
                               width: 372.w,
                               child: TextFormField(
-                                textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.emailAddress,
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
@@ -91,22 +93,12 @@ class SignIn extends StatelessWidget {
                                     .subtitle1!
                                     .copyWith(fontSize: 20.sp),
                                 controller: userTextController,
-                                // validator: (val) {
-                                //   if (!val!.isValidEmail || val.isEmpty) {
-                                //     return 'Enter valid email';
-                                //   }
-                                // //   if(val.isValidEmail ){
-                                // //     val = vUser;
-                                // //   }
-                                //   return null;
-                                // },
-                                // onFieldSubmitted:(value){
-                                //   value = userextController.text.toString();
-                                // },
-                                //
-                                // onSaved: (value){
-                                //   value = vUser;
-                                // },
+                                validator: ((value) {
+                                  if (!value!.isValidUname && !value.isValidEmail || value.isEmpty) {
+                                    return 'Enter a valid Username';
+                                  }
+                                  return null;
+                                }),
                                 decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.all(
@@ -164,22 +156,18 @@ class SignIn extends StatelessWidget {
                               width: 372.w,
                               child: TextFormField(
                                 textInputAction: TextInputAction.done,
-                                // validator: (val) {
-                                //   if(val!.isEmpty || val.length < 6){
-                                //     return'Password has to be atleast 6 characters long. try again';
-                                //   }
-                                //   if(val.isValidPassword ){
-                                //   val = vPassword;
-                                //   }
-                                //   return null;
-                                // },
-                                // onFieldSubmitted: (val){
-                                //   val = passwordTextController.text.toString();
-                                //   password == val;
-                                // },
-                                // onSaved: (val){
-                                //   val = passwordTextController.text.toString();
-                                // },
+                                validator: (value) {
+                                  // if (value!.isValidPassword)
+                                  //   return 'Enter valid password';
+                                  if (!value!.isValidPassword) {
+                                    password = value;
+                                  }
+                                  if (value.isEmpty || value.length < 6) {
+                                    //print('$value is incorrect');
+                                    return 'Password has to be atleast 6 characters long. try again';
+                                  }
+                                  return null;
+                                },
                                 obscureText:
                                     context.read<LogIn>().visible == false
                                         ? true
@@ -312,14 +300,13 @@ class SignIn extends StatelessWidget {
                                           color: Colors.transparent),
                                     ))),
                                 onPressed: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (_) => const Home()));
-                                  context.read<LogIn>().signIn(
-                                      context,
-                                      userTextController.text.toString(),
-                                      passwordTextController.text.toString());
+                                  if (formKey.currentState!.validate()) {
+                                    context.read<LogIn>().signIn(
+                                        context,
+                                        userTextController.text.toString(),
+                                        passwordTextController.text.toString());
+                                  }
+
                                 },
                                 child: Text(
                                   'Log in',

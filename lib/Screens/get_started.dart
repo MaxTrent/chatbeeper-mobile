@@ -1,5 +1,6 @@
 import 'package:chat_beeper/Screens/colllection/home_page.dart';
 import 'package:chat_beeper/Screens/colllection/settings_page.dart';
+import 'package:chat_beeper/Screens/sign_in.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -79,7 +80,7 @@ class _GetStartedState extends State<GetStarted> {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const ConfirmRegister(),
+                      builder: (context) => SignIn(),
                     ));
               },
               child: Row(

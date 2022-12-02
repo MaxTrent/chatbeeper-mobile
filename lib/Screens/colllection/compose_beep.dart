@@ -408,13 +408,10 @@ class ComposeBeep extends StatelessWidget {
                             SizedBox(
                               width: 5.w,
                             ),
-                            SizedBox(
-                              height: 20.h,
-                              child: darkModeOn
-                                  ? SvgPicture.asset(
-                                      'images/paperplane blue.svg')
-                                  : SvgPicture.asset('images/paperplane.svg'),
-                            )
+                            darkModeOn
+                                ? SvgPicture.asset(
+                                    'images/paperplane blue.svg', height: 15.h,width: 10.w,)
+                                : SvgPicture.asset('images/paperplane.svg',height: 15.h,width: 10.w,)
                           ],
                         ),
                       ),
