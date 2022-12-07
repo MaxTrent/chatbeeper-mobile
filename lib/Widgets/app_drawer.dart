@@ -17,6 +17,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../Widgets/Post.dart';
 import '../../constants.dart';
 import '../Screens/drawer_pages/request_verification.dart';
+import '../data/api_services.dart';
+import '../model/profile_model.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -40,7 +42,9 @@ class _AppDrawerState extends State<AppDrawer> {
       context,
       designSize: Size(485, 926),
     );
-    return SizedBox(
+   return FutureBuilder<GetProfileModel?>(
+        future: getProfile(),
+    builder: (context, snapshot) => SizedBox(
       width: 372.w,
       child: Drawer(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -96,28 +100,39 @@ class _AppDrawerState extends State<AppDrawer> {
                               height: 65.h,
                             ),
                           ),
-                          SizedBox(
-                            width: 12.w,
-                          ),
+                          // SizedBox(
+                          //   width: 12.w,
+                          // ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text(
-                                fullName,
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .bodyText1!
-                                    .copyWith(
-                                        fontWeight: FontWeight.w600,
+                              Container(
+                                // color: Colors.yellow,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                    snapshot.hasData
+                                        ? '${snapshot.data!.firstname!} ${snapshot.data!.lastname!}'
+                                        : '${snapshot.error}',
+                                    style: Theme.of(context).primaryTextTheme.bodyText1!
+                                        .copyWith(
+                                        fontWeight:
+                                        FontWeight.w600,
                                         color: bcolor3,
-                                        fontSize: 25.sp),
+                                        fontSize: 16.sp,
+                                    ), textAlign: TextAlign.center,
+                                  ),]
+                                ),
                               ), //full name
                               Text(
-                                '\@$username',
+                                snapshot.hasData
+                                    ? '@''${snapshot.data!.username!}'
+                                            : '${snapshot.error}',
                                 style: TextStyle(
                                     fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight:
+                                    FontWeight.w600,
                                     color: fColor2,
                                     fontSize: 20.sp),
                               ), //username
@@ -608,6 +623,6 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
         ),
       ),
-    );
+    ));
   }
 }

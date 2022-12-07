@@ -19,6 +19,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../Widgets/Post.dart';
 import '../../constants.dart';
+import '../../data/api_services.dart';
 import '../../data/secure_storage.dart';
 import '../drawer_pages/request_verification.dart';
 
@@ -36,7 +37,7 @@ class _TimelineState extends State<Timeline> {
   String username = 'Janedoe_10';
   bool _isLoading = false;
   List<GetBeepModel> futureBeep = [];
-
+  var fetchProfile;
   @override
   void initState() {
     super.initState();
@@ -53,6 +54,10 @@ class _TimelineState extends State<Timeline> {
         });
       }
     });
+  }
+  Future<void> fetchProfileCall() async {
+    fetchProfile = await getProfile();
+    print('This is the profile response $fetchProfile');
   }
 
   @override
@@ -244,13 +249,13 @@ class _TimelineState extends State<Timeline> {
               ],
             );
           }),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
     );
   }
 
   Future<List<GetBeepModel>> getBeep() async {
     print("Beep Called!");
-    String authority = 'beeperchat.herokuapp.com';
+    String authority = 'chatbeeper.onrender.com';
     String unencodedPath = '/beep';
     String? userJwt = await SecureStorage.getToken();
     print('Bearer------$userJwt');

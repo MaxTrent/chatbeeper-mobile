@@ -19,7 +19,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 Future<VerifyEmailModel> verifyEmail(
     BuildContext context, String username, String email, String token) async {
   final response = await http.patch(
-      Uri.https('beeperchat.herokuapp.com', 'auth/verify-token/email'),
+      Uri.https('chatbeeper.onrender.com', 'auth/verify-token/email'),
       body: ({
         "username": username.toString(),
         "email": email.toString(),
@@ -84,7 +84,7 @@ Future<VerifyEmailModel> verifyEmail(
 Future<void> verifyPhone(
     BuildContext context, String username, String phone, String token) async {
   final response = await http.patch(
-      Uri.https('beeperchat.herokuapp.com', '/auth/verify-token/phone'),
+      Uri.https('chatbeeper.onrender.com', '/auth/verify-token/phone'),
       body: ({
         "username": username.toString(),
         "phone": phone.toString(),
@@ -149,7 +149,7 @@ Future<void> verifyPhone(
 Future<LogInModel> logIn(
     BuildContext context, String email, String password) async {
   final response =
-      await http.post(Uri.https('beeperchat.herokuapp.com', 'auth/login'),
+      await http.post(Uri.https('chatbeeper.onrender.com', 'auth/login'),
           body: ({
             "email": email,
             "password": password,
@@ -235,7 +235,7 @@ Future<LogInModel> logIn(
 } //sign in
 
 Future<GetProfileModel?> getProfile() async {
-  String authority = 'beeperchat.herokuapp.com';
+  String authority = 'chatbeeper.onrender.com';
   String unencodedPath = '/user';
   final uri = Uri.https(authority, unencodedPath);
   print("uri-------$uri");
@@ -263,7 +263,7 @@ Future<GetProfileModel?> getProfile() async {
 
 Future<GetCommentModel> getComment(context) async {
   late GetCommentModel getCommentModel;
-  String authority = 'beeperchat.herokuapp.com';
+  String authority = 'chatbeeper.onrender.com';
   String unencodedPath =
       '/beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0';
 
@@ -285,7 +285,7 @@ Future<GetCommentModel> getComment(context) async {
 } //get comment
 
 Future<void> deleteComment() async {
-  String authority = 'beeperchat.herokuapp.com';
+  String authority = 'chatbeeper.onrender.com';
   String unencodedPath =
       '/beep/6315fe0790e0ef30da0b8f05/comment/634579d5decf0c523d62a924';
   final uri = Uri.https(authority, unencodedPath);
@@ -306,7 +306,7 @@ Future<void> deleteComment() async {
 
 Future<LikeCommentModel> likeComment() async {
   late LikeCommentModel likeCommentModel;
-  String authority = 'beeperchat.herokuapp.com';
+  String authority = 'chatbeeper.onrender.com';
   String unencodedPath =
       '/beep/6315fe0790e0ef30da0b8f05/comment/63457b4f755869fb5e88b411/unlike';
   final uri = Uri.https(authority, unencodedPath);
@@ -329,7 +329,7 @@ Future<LikeCommentModel> likeComment() async {
 } //like comment
 
 Future<void> unlikeComment() async {
-  String authority = 'beeperchat.herokuapp.com';
+  String authority = 'chatbeeper.onrender.com';
   String unencodedPath =
       '/beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0/unlike';
   final uri = Uri.https(authority, unencodedPath);
@@ -349,7 +349,7 @@ Future<void> unlikeComment() async {
 } //unlike comment
 
 Future<void> dislikeComment() async {
-  String authority = 'beeperchat.herokuapp.com';
+  String authority = 'chatbeeper.onrender.com';
   String unencodedPath =
       ' /beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0/dislike';
   final uri = Uri.https(authority, unencodedPath);
@@ -369,7 +369,7 @@ Future<void> dislikeComment() async {
 } //dislike comment
 
 Future<void> undislikeComment() async {
-  String authority = 'beeperchat.herokuapp.com';
+  String authority = 'chatbeeper.onrender.com';
   String unencodedPath =
       ' /beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0/undislike';
   final uri = Uri.https(authority, unencodedPath);
@@ -391,7 +391,7 @@ Future<void> undislikeComment() async {
 // Future<LogInModel> logIn(
 //     BuildContext context, String email, String password) async {
 //   final response =
-//       await http.post(Uri.https('beeperchat.herokuapp.com', 'auth/login'),
+//       await http.post(Uri.https('chatbeeper.onrender.com', 'auth/login'),
 //           body: ({
 //             "email": email,
 //             "password": password,
@@ -433,7 +433,7 @@ Future<CreateBeepModel> createBeep(BuildContext context, String beep) async {
   late CreateBeepModel beepModel;
   var userJwt = await SecureStorage.getToken();
   final response =
-      await http.post(Uri.https('beeperchat.herokuapp.com', '/beep'),
+      await http.post(Uri.https('chatbeeper.onrender.com', '/beep'),
           body: ({
             "text": beep,
           }),
@@ -458,7 +458,7 @@ Future<CreateBeepModel> createBeep(BuildContext context, String beep) async {
 Future<CreateCommentModel> createComment(
     BuildContext context, String comment) async {
   late CreateCommentModel commentModel;
-  String authority = 'beeperchat.herokuapp.com';
+  String authority = 'chatbeeper.onrender.com';
   String unencodedPath = '/beep/6315fe0790e0ef30da0b8f05/comment';
   String? userJwt = await SecureStorage.getToken();
   final uri = Uri.https(authority, unencodedPath);
@@ -489,7 +489,7 @@ Future<CreateCommentModel> createComment(
 
 // Future<GetBeepModel> getBeep(BuildContext context) async {
 //   late GetBeepModel getBeepModel;
-//   String authority = 'beeperchat.herokuapp.com';
+//   String authority = 'chatbeeper.onrender.com';
 //   String unencodedPath = '/beep/6315fe0790e0ef30da0b8f05/likes';
 //   String? userJwt = await SecureStorage.getToken();
 //   final uri = Uri.https(authority, unencodedPath);
@@ -510,7 +510,7 @@ Future<CreateCommentModel> createComment(
 
 // Future<void> getBeep() async {
 //   List<GetBeepModel> getBeep;
-//   String authority = 'beeperchat.herokuapp.com';
+//   String authority = 'chatbeeper.onrender.com';
 //   String unencodedPath = '/beep';
 //   String? userJwt = await SecureStorage.getToken();
 //   final uri = Uri.https(authority, unencodedPath);

@@ -381,13 +381,9 @@ class UserPost extends StatelessWidget {
                   },
                 ),
                 Text(
-                  ' 100',
-                  style: TextStyle(color: Colors.grey),
-                ),
+                  ' 100', style: TextStyle(color: Colors.grey),),
 
-                SizedBox(
-                  width: 40.w,
-                ),
+                SizedBox(width: 40.w,),
                 GestureDetector(
                   onTap: () async {
                     showDialog(
@@ -423,26 +419,6 @@ class UserPost extends StatelessWidget {
                   ),
                 ),
 
-                // GestureDetector(
-                //   onTap: () async {
-                //     showDialog(
-                //       context: context,
-                //       builder: (context) => const RebeepResponse(),
-                //     );
-                //   },
-                //   child: _rebeeped == false
-                //       ? SizedBox(
-                //           height: 35.h,
-                //           child: SvgPicture.asset(
-                //             'images/rebeep.svg',
-                //             height: 30.h,
-                //           ))
-                //       : SvgPicture.asset(
-                //           'images/rebeep.svg',
-                //           color: Colors.red,
-                //           height: 35.h,
-                //         ),
-                // ), //infinite
                 SizedBox(
                   width: 40.w,
                 ),
@@ -463,25 +439,9 @@ class UserPost extends StatelessWidget {
                   },
                   likeCount: 100,
                   likeCountPadding: EdgeInsets.only(left: 3.w),
-                  // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : fColor2;
-                  //   Widget result;
-                  //   if (count == 0) {
-                  //     result = Text(
-                  //       "love",
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   } else
-                  //     result = Text(
-                  //       text,
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   return result;
-                  // },
+
                 ), //brokenheart
-                SizedBox(
-                  width: 40.w,
-                ),
+                SizedBox(width: 40.w,),
                 LikeButton(
                   size: 24.h,
                   circleColor:
@@ -499,40 +459,8 @@ class UserPost extends StatelessWidget {
                   },
                   likeCount: 100,
                   likeCountPadding: EdgeInsets.only(left: 3.w),
-                  //   countBuilder: (int count, bool isLiked, String text){
-                  //     var color = isLiked ? Colors.deepPurpleAccent : fColor2;
-                  //     Widget result;
-                  //     if (count == 0) {
-                  //       result = Text(
-                  //         "love",
-                  //         style: TextStyle(color: color),
-                  //       );
-                  //     }else
-                  //       result = Text(
-                  //         text,
-                  //         style: TextStyle(color: color),
-                  //       );
-                  //     return result;
-                  //   }
-                  // countBuilder: (int count, bool isLiked, String text) {
-                  //   var color = isLiked ? Colors.deepPurpleAccent : fColor2;
-                  //   Widget result;
-                  //   if (count == 0) {
-                  //     result = Text(
-                  //       "love",
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   } else
-                  //     result = Text(
-                  //       text,
-                  //       style: TextStyle(color: color),
-                  //     );
-                  //   return result;
-                  // },
                 ), //heart
-                SizedBox(
-                  width: 100.w,
-                ),
+                SizedBox(width: 50.w,),
                 Expanded(
                   child: GestureDetector(
                     child: Padding(

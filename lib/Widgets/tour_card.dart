@@ -7,7 +7,7 @@ import 'package:readmore/readmore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:expandable/expandable.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import '../Screens/comment_screen.dart';
 import '../Screens/colllection/dm.dart';
 
@@ -72,13 +72,18 @@ class _TourCardState extends State<TourCard> {
           SizedBox(
             height: 486.h,
             width: width,
-            child: Image(
+            child: CachedNetworkImage(
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              imageUrl: displayImage.url,
               key: Key(displayImage.id),
-              image: NetworkImage(
-                displayImage.url,
-              ),
-              fit: BoxFit.cover,
             ),
+            // Image(
+            //   key: Key(displayImage.id),
+            //   image: NetworkImage(
+            //     displayImage.url,
+            //   ),
+            //   fit: BoxFit.cover,
+            // ),
           ),
           Positioned(
               top: 420.h,

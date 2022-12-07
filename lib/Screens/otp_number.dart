@@ -197,7 +197,7 @@ class _OtpAuthState extends State<OtpAuth> {
   }
 
   Future<dynamic> verifyPhone() async {
-    String authority = 'beeperchat.herokuapp.com';
+    String authority = 'chatbeeper.onrender.com';
     String unencodedPath = '/auth/verify-token/phone';
 
     final uri = Uri.https(authority, unencodedPath);

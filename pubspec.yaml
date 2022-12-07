@@ -70,7 +70,6 @@ dev_dependencies:
   like_button: ^2.0.4
   pin_code_fields: ^7.4.0
   readmore: ^2.1.0
-
 flutter_icons:
   android: true
   ios: true

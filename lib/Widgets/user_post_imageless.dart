@@ -556,7 +556,7 @@ class _PostBeepState extends State<UserPostBeep> {
                   // },
                 ), //heart
                 SizedBox(
-                  width: 110.w,
+                  width: 50.w,
                 ),
                 Expanded(
                   child: GestureDetector(

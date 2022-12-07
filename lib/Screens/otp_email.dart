@@ -82,7 +82,7 @@ class _OtpEmailState extends State<OtpEmail> {
 
   // Future<VerifyEmail> verify(String username, String email, String token) async{
   //   if(formKey.currentState!.validate() &&otpcontroller.text.isNotEmpty){
-  //     final response = await http.post(Uri.https('beeperchat.herokuapp.com', 'auth/verify-token/email'),
+  //     final response = await http.post(Uri.https('chatbeeper.onrender.com', 'auth/verify-token/email'),
   //         body: ({
   //           "username": username,
   //           "email": email,
@@ -333,7 +333,7 @@ class _OtpEmailState extends State<OtpEmail> {
   // Future<void> verifyEmail() async {
   //   if (_formKey.currentState!.validate() && otpcontroller.text.isNotEmpty) {
   //     final response = await http.patch(
-  //         Uri.https('beeperchat.herokuapp.com', 'auth/verify-token/email'),
+  //         Uri.https('chatbeeper.onrender.com', 'auth/verify-token/email'),
   //         body: ({
   //           "username": username.toString(),
   //           "email": email.toString(),
