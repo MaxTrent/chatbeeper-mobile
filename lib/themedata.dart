@@ -26,7 +26,8 @@ class AppTheme {
         primaryContainer: bcolor4,
         secondary: Colors.black38,
         secondaryVariant: Colors.black),
-    iconTheme: IconThemeData(color: Colors.black),
+    iconTheme: IconThemeData(color: Colors.black,
+    ),
     textTheme: TextTheme(
       headline5: TextStyle(
         color: Colors.black,

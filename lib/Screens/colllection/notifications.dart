@@ -27,6 +27,7 @@ class Notifications extends StatefulWidget {
 
 class _NotificationsState extends State<Notifications> {
   final _key = GlobalKey<ScaffoldState>();
+  final _lkey = GlobalKey<ScaffoldState>();
   String fullName = 'Jane Doe';
   String username = 'Janedoe_10';
 
@@ -94,7 +95,7 @@ class _NotificationsState extends State<Notifications> {
       ),
       key: _key,
       body: ListView(
-        key: _key,
+        key: _lkey,
         controller: ScrollController(),
         children: [
           Container(
@@ -737,7 +738,7 @@ class _NotificationsState extends State<Notifications> {
       ),
       */
 
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
     );
   }
 }

@@ -30,6 +30,7 @@ class SettingsPage extends StatelessWidget {
     bool darkModeOn = brightness == Brightness.dark;
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+   bool  _isSwitched = false;
     return ChangeNotifierProvider(
       create: (context) => ModelTheme(),
       child: Scaffold(
@@ -122,7 +123,7 @@ class SettingsPage extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const ContactInfo())),
-              ),
+              ),//contact info
               ListTile(
                 dense: true,
                 title: Text(
@@ -140,7 +141,7 @@ class SettingsPage extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const IdentityConfirmation())),
-              ),
+              ),//identity confirmation
               ListTile(
                 dense: true,
                 title: Text(
@@ -154,7 +155,7 @@ class SettingsPage extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const DeactivateAccount())),
-              ),
+              ),//deactivae
               Padding(
                 padding: EdgeInsets.only(top: 5.0.w),
                 child: ListTile(
@@ -201,7 +202,7 @@ class SettingsPage extends StatelessWidget {
                 ),
                 onTap: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) => PasswordChange())),
-              ),
+              ),//password
               ListTile(
                 dense: true,
                 title: Text(
@@ -219,7 +220,7 @@ class SettingsPage extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const LoginActivity())),
-              ),
+              ),//login activity
               ListTile(
                   dense: true,
                   title: Text(
@@ -234,7 +235,7 @@ class SettingsPage extends StatelessWidget {
                     size: 17.h,
                   ),
                   onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TwoFactAuth()))),
+                      MaterialPageRoute(builder: (context) => TwoFactAuth()))),//two factor auth
               ListTile(
                 dense: true,
                 title: Text(
@@ -248,7 +249,7 @@ class SettingsPage extends StatelessWidget {
                   onChanged: null,
                   value: false,
                 ),
-              ),
+              ),//lock room
               ListTile(
                 dense: true,
                 title: Row(
@@ -270,7 +271,7 @@ class SettingsPage extends StatelessWidget {
                   ],
                 ),
                 onTap: null,
-              ),
+              ),//notif
               Divider(
                 thickness: 0.5.h,
                 color: fColor2,
@@ -310,7 +311,7 @@ class SettingsPage extends StatelessWidget {
                   ],
                 ),
                 onTap: null,
-              ),
+              ),//appearance
               Divider(
                 thickness: 0.5.h,
                 color: fColor2,

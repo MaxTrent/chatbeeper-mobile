@@ -22,7 +22,7 @@ class _FollowerRequestsState extends State<FollowerRequests> {
       appBar: PreferredSize(
         preferredSize: Size(428.w,68.h),
         child: Container(
-          decoration:  BoxDecoration(
+          decoration:  const BoxDecoration(
               border: Border(
                   bottom: BorderSide(
                       color: uColor,

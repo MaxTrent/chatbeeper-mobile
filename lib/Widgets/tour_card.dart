@@ -73,9 +73,14 @@ class _TourCardState extends State<TourCard> {
             height: 486.h,
             width: width,
             child: CachedNetworkImage(
-              placeholder: (context, url) => const CircularProgressIndicator(),
+              placeholder: (context, url) =>  ClipRect(
+                child: Container(
+                  color: Colors.grey,
+                ),
+              ),
               imageUrl: displayImage.url,
               key: Key(displayImage.id),
+              fit: BoxFit.cover,
             ),
             // Image(
             //   key: Key(displayImage.id),

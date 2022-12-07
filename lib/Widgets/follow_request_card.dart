@@ -274,7 +274,7 @@ class _FollowRequestCardState extends State<FollowRequestCard> {
                           'Decline',
                           style: TextStyle(
                               color: Colors.black,
-                              fontSize: 20.sp,
+                              fontSize: 15.sp,
                               fontWeight: FontWeight.w600),
                         ),
                       ),
@@ -299,7 +299,7 @@ class _FollowRequestCardState extends State<FollowRequestCard> {
                           'Accept',
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 20.sp,
+                              fontSize: 15.sp,
                               fontWeight: FontWeight.w600),
                         ),
                       ),

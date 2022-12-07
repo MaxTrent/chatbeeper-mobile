@@ -1,4 +1,5 @@
 import 'package:chat_beeper/Screens/colllection/settings_page.dart';
+import 'package:chat_beeper/Screens/drawer_pages/promotions.dart';
 import 'package:chat_beeper/Screens/get_started.dart';
 import 'package:chat_beeper/Screens/otp_email.dart';
 import 'package:chat_beeper/Screens/profile_page.dart';
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
         debugShowCheckedModeBanner: false,
-        initialRoute: GetStarted.id,
+        initialRoute: SplashScreen.id,
         routes: {
           SponsorBeep.id: (context) => SponsorBeep(),
           SignIn.id: (context) => SignIn(),
@@ -73,6 +74,7 @@ class MyApp extends StatelessWidget {
           // PostCard.id: (context) => PostCard(),
           Profile.id: (context) => const Profile(),
           Beep.id: (context) => const Beep(),
+          Sponsored.id: (context) => const Sponsored(),
           SettingsPage.id: (context) => const SettingsPage(),
         },
       ),

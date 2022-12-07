@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:chat_beeper/Widgets/post_comment.dart';
 import 'package:chat_beeper/data/secure_storage.dart';
 import 'package:chat_beeper/model/create_comment_model.dart';
@@ -15,6 +16,7 @@ import '../model/get_comment_model.dart';
 import '../model/otpmodel_email.dart';
 import '../model/profile_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+final client = HttpClient();
 
 Future<VerifyEmailModel> verifyEmail(
     BuildContext context, String username, String email, String token) async {
@@ -146,7 +148,7 @@ Future<void> verifyPhone(
   }
 } //verify phone
 
-Future<LogInModel> logIn(
+ Future<LogInModel> logIn(
     BuildContext context, String email, String password) async {
   final response =
       await http.post(Uri.https('chatbeeper.onrender.com', 'auth/login'),
@@ -234,7 +236,7 @@ Future<LogInModel> logIn(
   throw Exception(response.body);
 } //sign in
 
-Future<GetProfileModel?> getProfile() async {
+Future<GetProfileModel> getProfile() async {
   String authority = 'chatbeeper.onrender.com';
   String unencodedPath = '/user';
   final uri = Uri.https(authority, unencodedPath);
@@ -245,20 +247,15 @@ Future<GetProfileModel?> getProfile() async {
   print('response------$response');
   print('Bearer------$userJwt');
 
-  try {
     if (response.statusCode == 200) {
       //  var data = jsonDecode(response.body);
       print("this is success");
       return getProfileModelFromJson(response.body);
     } else {
       print(response.statusCode);
-      return null;
+   throw Exception('failure');
     }
-  } catch (e) {
-    print(e);
-  }
 
-  return null;
 } //get profile details
 
 Future<GetCommentModel> getComment(context) async {

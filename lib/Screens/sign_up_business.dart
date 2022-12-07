@@ -238,22 +238,22 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: bcolor1)),
+                                        width: 2.w, color: bcolor1)),
                                 enabledBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: uColor)),
+                                        width: 2.w, color: uColor)),
                                 errorBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: Colors.red)),
+                                        width: 2.w, color: Colors.red)),
                                 focusedErrorBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: Colors.red)),
+                                        width: 2.w, color: Colors.red)),
                                 errorStyle:
                                     TextStyle(height: 0, fontSize: 10.sp),
                               )),
@@ -295,22 +295,22 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: bcolor1)),
+                                        width: 2.w, color: bcolor1)),
                                 enabledBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: uColor)),
+                                        width: 2.w, color: uColor)),
                                 errorBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: Colors.red)),
+                                        width: 2.w, color: Colors.red)),
                                 focusedErrorBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: Colors.red)),
+                                        width: 2.w, color: Colors.red)),
                                 errorStyle:
                                     TextStyle(height: 0, fontSize: 10.sp),
                               )),
@@ -371,7 +371,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                    width: 0.5.w,
+                                    width: 2.w,
                                     // color: _isvalid == true ? bcolor1: Colors.red),
                                     color: bcolor1,
                                   )),
@@ -379,19 +379,19 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(6.r)),
                                 borderSide:
-                                    BorderSide(width: 0.5.w, color: uColor),
+                                    BorderSide(width: 2.w, color: uColor),
                               ),
                               errorBorder: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(6.r)),
                                 borderSide:
-                                    BorderSide(width: 0.5.w, color: Colors.red),
+                                    BorderSide(width: 2.w, color: Colors.red),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(6.r)),
                                 borderSide:
-                                    BorderSide(width: 0.5.w, color: Colors.red),
+                                    BorderSide(width: 2.w, color: Colors.red),
                               ),
                               errorStyle: TextStyle(height: 0, fontSize: 10.sp),
                               labelText: 'Phone Number',
@@ -658,7 +658,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(6.r)),
                                       borderSide: BorderSide(
-                                        width: 0.5.w,
+                                        width: 2.w,
                                         // color: _isvalid == true ? bcolor1: Colors.red),
                                         color: bcolor1,
                                       )),
@@ -666,21 +666,21 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(6.r)),
                                       borderSide: BorderSide(
-                                        width: 0.5.w,
+                                        width: 2.w,
                                         color: uColor,
                                       )),
                                   errorBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(6.r)),
                                       borderSide: BorderSide(
-                                        width: 0.5.w,
+                                        width: 2.w,
                                         color: Colors.red,
                                       )),
                                   focusedErrorBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(6.r)),
                                       borderSide: BorderSide(
-                                        width: 0.5.w,
+                                        width: 2.w,
                                         color: Colors.red,
                                       )),
                                   focusColor: uColor,
@@ -727,25 +727,25 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:
-                                      BorderSide(width: 0.5.w, color: uColor),
+                                      BorderSide(width: 2.w, color: uColor),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:
-                                      BorderSide(width: 0.5.w, color: bcolor1),
+                                      BorderSide(width: 2.w, color: bcolor1),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 errorStyle:
                                     TextStyle(height: 0, fontSize: 10.sp),
@@ -815,25 +815,25 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:
-                                      BorderSide(width: 0.5.w, color: uColor),
+                                      BorderSide(width: 2.w, color: uColor),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:
-                                      BorderSide(width: 0.5.w, color: bcolor1),
+                                      BorderSide(width: 2.w, color: bcolor1),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 errorStyle:
                                     TextStyle(height: 0, fontSize: 10.sp),
@@ -1342,13 +1342,13 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width: 1.5.w,
+                                      width: 2.w,
                                       color: bcolor3),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width:0.5.w,
+                                      width:2.w,
                                       color: bcolor3),
                                 ),
 
@@ -1382,13 +1382,13 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                 focusedBorder:  OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width: 0.5.w,
+                                      width: 2.w,
                                       color: bcolor1),
                                 ),
                                 enabledBorder:  OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width: 0.5.w,
+                                      width: 2.w,
                                       color: bcolor1),
                                 ),
 
@@ -1427,13 +1427,13 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width: 1.5.w,
+                                      width: 2.w,
                                       color: bcolor3),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width:0.5.w,
+                                      width:2.w,
                                       color: bcolor3),
                                 ),
 
@@ -1466,13 +1466,13 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width: 1.5.w,
+                                      width: 2.w,
                                       color: bcolor3),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width:0.5.w,
+                                      width:2.w,
                                       color: bcolor3),
                                 ),
 
@@ -1519,13 +1519,13 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width: 1.5.w,
+                                      width: 2.w,
                                       color: bcolor3),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width:0.5.w,
+                                      width:2.w,
                                       color: bcolor3),
                                 ),
                                 suffixIcon: IconButton(

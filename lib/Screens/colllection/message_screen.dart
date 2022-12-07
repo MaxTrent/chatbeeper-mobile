@@ -109,7 +109,7 @@ class _MessagesState extends State<Messages> {
       //           focusedBorder: UnderlineInputBorder(
       //               borderRadius: BorderRadius.all(Radius.circular(6.r)),
       //               borderSide:BorderSide(
-      //                 width: 0.5.w,
+      //                 width: 2.w,
       //                 // color: _isvalid == true ? bcolor1: Colors.red),
       //                 color: Colors.red,
       //               )
@@ -117,7 +117,7 @@ class _MessagesState extends State<Messages> {
       //           enabledBorder: UnderlineInputBorder(
       //               borderRadius: BorderRadius.all(Radius.circular(6.r)),
       //               borderSide:BorderSide(
-      //                 width: 0.5.w,
+      //                 width: 2.w,
       //                 // color: _isvalid == true ? bcolor1: Colors.red),
       //                 color: Colors.red,
       //               )
@@ -125,7 +125,7 @@ class _MessagesState extends State<Messages> {
       //           errorBorder: UnderlineInputBorder(
       //               borderRadius: BorderRadius.all(Radius.circular(6.r)),
       //               borderSide:BorderSide(
-      //                 width: 0.5.w,
+      //                 width: 2.w,
       //                 // color: _isvalid == true ? bcolor1: Colors.red),
       //                 color: Colors.red,
       //               )
@@ -133,7 +133,7 @@ class _MessagesState extends State<Messages> {
       //           focusedErrorBorder: UnderlineInputBorder(
       //               borderRadius: BorderRadius.all(Radius.circular(6.r)),
       //               borderSide:BorderSide(
-      //                 width: 0.5.w,
+      //                 width: 2.w,
       //                 // color: _isvalid == true ? bcolor1: Colors.red),
       //                 color: Colors.red,
       //               )

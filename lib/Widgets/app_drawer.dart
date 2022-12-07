@@ -1,3 +1,4 @@
+import 'package:chat_beeper/Screens/drawer_pages/promotions.dart';
 import 'package:flutter/material.dart';
 import 'package:chat_beeper/Screens/colllection/compose_beep.dart';
 import 'package:chat_beeper/Screens/colllection/dm.dart';
@@ -17,6 +18,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../Widgets/Post.dart';
 import '../../constants.dart';
 import '../Screens/drawer_pages/request_verification.dart';
+import '../Screens/sign_up_business.dart';
 import '../data/api_services.dart';
 import '../model/profile_model.dart';
 
@@ -29,9 +31,14 @@ class AppDrawer extends StatefulWidget {
 
 class _AppDrawerState extends State<AppDrawer> {
   final _key = GlobalKey<ScaffoldState>();
-  String fullName = 'Jane Doe';
-  String username = 'Janedoe_10';
-
+  // String fullName = 'Jane Doe';
+  // String username = 'Janedoe_10';
+  late Future<GetProfileModel> futureprofile;
+  @override
+  void initState() {
+    super.initState();
+    futureprofile = getProfile();
+  }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -43,7 +50,7 @@ class _AppDrawerState extends State<AppDrawer> {
       designSize: Size(485, 926),
     );
    return FutureBuilder<GetProfileModel?>(
-        future: getProfile(),
+        future: futureprofile,
     builder: (context, snapshot) => SizedBox(
       width: 372.w,
       child: Drawer(
@@ -461,7 +468,14 @@ class _AppDrawerState extends State<AppDrawer> {
 
                         // overlayColor: MaterialStateProperty.all(Colors.transparent),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: (context) => const CreateBusiness(),
+                        //     ));
+                      },
                       child: Row(
                         children: [
                           SizedBox(
@@ -590,7 +604,14 @@ class _AppDrawerState extends State<AppDrawer> {
 
                         // overlayColor: MaterialStateProperty.all(Colors.transparent),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>  const Sponsored(),
+                            ));
+                      },
                       child: Row(
                         children: [
                           SizedBox(

@@ -164,7 +164,7 @@ class _PostBeepState extends State<PostBeep> {
                                     fontWeight: FontWeight.w500),
                               ),
                             ),
-                          ),
+                          ),//sponsored
                         ],
                       ),
                       SizedBox(
@@ -1043,6 +1043,7 @@ class _PostBeepState extends State<PostBeep> {
     return ExpandableNotifier(
         child: ScrollOnExpand(
       child: SizedBox(
+        width: MediaQuery.of(context).size.width,
         child: Card(
           elevation: 0,
           color: Theme.of(context).scaffoldBackgroundColor,

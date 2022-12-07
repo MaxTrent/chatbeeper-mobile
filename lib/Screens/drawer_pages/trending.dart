@@ -83,21 +83,21 @@ class _TrendingState extends State<Trending> {
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(30.r)),
                           borderSide: BorderSide(
-                            width: 0.5.w,
+                            width: 2.w,
                             // color: _isvalid == true ? bcolor1: Colors.red),
                             color: bcolor1,
                           )),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(30.r)),
-                        borderSide: BorderSide(width: 0.5.w, color: uColor),
+                        borderSide: BorderSide(width: 2.w, color: uColor),
                       ),
                       errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(30.r)),
-                        borderSide: BorderSide(width: 0.5.w, color: Colors.red),
+                        borderSide: BorderSide(width: 2.w, color: Colors.red),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(30.r)),
-                        borderSide: BorderSide(width: 0.5.w, color: Colors.red),
+                        borderSide: BorderSide(width: 2.w, color: Colors.red),
                       ),
                       errorStyle: TextStyle(height: 0, fontSize: 10.sp),
                       hintText: '#Search topic',

@@ -73,8 +73,14 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
             height: 486.h,
             width: width,
             child: CachedNetworkImage(
-              placeholder: (context, url) => const CircularProgressIndicator(),
-              key: Key(displayImage.id), imageUrl:displayImage.url,),
+              placeholder: (context, url) =>  ClipRect(
+                child: Container(
+                  color: Colors.grey,
+                ),
+              ),
+              key: Key(displayImage.id), imageUrl:displayImage.url,
+            fit:BoxFit.cover
+            ),
 
             // Image(
             //   key: Key(displayImage.id),
@@ -415,7 +421,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   PopupMenuButton<int>(
                     icon: Icon(
                       Icons.more_vert_sharp,
