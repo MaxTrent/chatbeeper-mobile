@@ -19,10 +19,10 @@ class PaymentSponsored extends StatefulWidget {
 
 class _PaymentSponsoredState extends State<PaymentSponsored> {
   String? fullname;
-  var _cardnumber = TextEditingController();
-  var _exp = TextEditingController();
-  var _fnameTextController = TextEditingController();
-  var _cvv = TextEditingController();
+  final _cardnumber = TextEditingController();
+  final _exp = TextEditingController();
+  final _fnameTextController = TextEditingController();
+  final _cvv = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -53,7 +53,7 @@ class _PaymentSponsoredState extends State<PaymentSponsored> {
                     )),
               ),
               centerTitle: true,
-              automaticallyImplyLeading: true,
+              automaticallyImplyLeading: false,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               elevation: 0.5,
             ),
