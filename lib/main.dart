@@ -1,5 +1,6 @@
 import 'package:chat_beeper/Screens/colllection/settings_page.dart';
 import 'package:chat_beeper/Screens/drawer_pages/promotions.dart';
+import 'package:chat_beeper/Screens/drawer_pages/trending.dart';
 import 'package:chat_beeper/Screens/get_started.dart';
 import 'package:chat_beeper/Screens/otp_email.dart';
 import 'package:chat_beeper/Screens/profile_page.dart';
@@ -76,6 +77,7 @@ class MyApp extends StatelessWidget {
           Beep.id: (context) => const Beep(),
           Sponsored.id: (context) => const Sponsored(),
           SettingsPage.id: (context) => const SettingsPage(),
+          Trending.id: (context) => const SettingsPage(),
         },
       ),
     );

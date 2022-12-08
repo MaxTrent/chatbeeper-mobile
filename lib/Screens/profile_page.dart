@@ -324,79 +324,64 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                         children: [
                                           SizedBox(height: 40.h,),
                                           Column(
+                                            mainAxisAlignment: MainAxisAlignment.start,
                                             children: [
-                                              Center(
-                                                child: Padding(
-                                                  padding: EdgeInsets.only(
-                                                      left: 13.0.w),
-                                                  child: Text(
-                                                    snapshot.hasData
-                                                        ? '${snapshot.data!.firstname!} ${snapshot.data!.lastname!}'
-                                                        : '${snapshot.error}',
-                                                    style: Theme.of(context)
-                                                        .primaryTextTheme
-                                                        .bodyText1!
-                                                        .copyWith(
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            color: bcolor3,
-                                                            fontSize: 16.sp),
-                                                  ),
-                                                ),
+                                              Text(
+                                                snapshot.hasData
+                                                    ? '${snapshot.data!.firstname!} ${snapshot.data!.lastname!}'
+                                                    : '${snapshot.error}',
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .bodyText1!
+                                                    .copyWith(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: bcolor3,
+                                                        fontSize: 16.sp),
                                               ), //full name
                                               SizedBox(height: 2.h),
-                                              Padding(
-                                                padding:
-                                                    EdgeInsets.only(left: 13.0.w),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Text(
-                                                      snapshot.hasData
-                                                          ? snapshot
-                                                              .data!.username!
-                                                          : '${snapshot.error}',
-                                                      style: TextStyle(
-                                                          fontFamily: 'Nunito',
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          color: fColor2,
-                                                          fontSize: 15.sp),
-                                                    ),
-                                                    Icon(
-                                                      Icons.verified_rounded,
-                                                      color: bcolor5,
-                                                      size: 15.h,
-                                                    ),
-                                                  ],
-                                                ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    snapshot.hasData
+                                                        ? snapshot
+                                                            .data!.username!
+                                                        : '${snapshot.error}',
+                                                    style: TextStyle(
+                                                        fontFamily: 'Nunito',
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: fColor2,
+                                                        fontSize: 15.sp),
+                                                  ),
+                                                  Icon(
+                                                    Icons.verified_rounded,
+                                                    color: bcolor5,
+                                                    size: 15.h,
+                                                  ),
+                                                ],
                                               ), //username
                                               SizedBox(height: 2.h),
-                                              Padding(
-                                                padding: EdgeInsets.only(left: 2.0.w),
-                                                child: Container(
-                                                  height: 20.h,
-                                                  width: 80.w,
-                                                  color: Colors.grey.shade300,
-                                                  child: Center(
-                                                      child: Text(
-                                                   'Follows you',
-                                                    style: TextStyle(
-                                                      fontSize: 12.sp,
-                                                      color: Colors.black,
-                                                      fontFamily: 'Nunito',
-                                                      fontWeight: FontWeight.bold,
-                                                    ),
-                                                  )),
-                                                ),
+                                              Container(
+                                                height: 20.h,
+                                                width: 80.w,
+                                                color: Colors.grey.shade300,
+                                                child: Center(
+                                                    child: Text(
+                                                 'Follows you',
+                                                  style: TextStyle(
+                                                    fontSize: 12.sp,
+                                                    color: Colors.black,
+                                                    fontFamily: 'Nunito',
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                )),
                                               ),//follows you
                                               SizedBox(height: 10.h,),
                                               Padding(
-                                                padding: EdgeInsets.only(
-                                                    left: 65.w,
-                                                    right: 52.w,
-                                                    bottom: 14.h),
+                                                padding:  EdgeInsets.only(left: 52.w, right: 52.w, bottom: 14.h),
                                                 child: Column(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,

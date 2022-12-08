@@ -454,9 +454,7 @@ class _PostBeepState extends State<PostBeep> {
                     likeCount: 100,
                     likeCountPadding: EdgeInsets.only(left: 3.w),
                   ),
-                ),
-
-                // GestureDetector(
+                ), // GestureDetector(
                 //   onTap: () async {
                 //     showDialog(
                 //       context: context,

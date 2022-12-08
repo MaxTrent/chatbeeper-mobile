@@ -348,7 +348,7 @@ Future<void> unlikeComment() async {
 Future<void> dislikeComment() async {
   String authority = 'chatbeeper.onrender.com';
   String unencodedPath =
-      ' /beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0/dislike';
+      '/beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0/dislike';
   final uri = Uri.https(authority, unencodedPath);
   var userJwt = await SecureStorage.getToken();
   final response =
@@ -368,7 +368,7 @@ Future<void> dislikeComment() async {
 Future<void> undislikeComment() async {
   String authority = 'chatbeeper.onrender.com';
   String unencodedPath =
-      ' /beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0/undislike';
+      '/beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0/undislike';
   final uri = Uri.https(authority, unencodedPath);
   var userJwt = await SecureStorage.getToken();
   final response =
@@ -385,46 +385,51 @@ Future<void> undislikeComment() async {
   }
 } //undislike comment
 
-// Future<LogInModel> logIn(
-//     BuildContext context, String email, String password) async {
-//   final response =
-//       await http.post(Uri.https('chatbeeper.onrender.com', 'auth/login'),
-//           body: ({
-//             "email": email,
-//             "password": password,
-//           }));
-//   if (response.statusCode == 201) {
-//     var data = json.decode(response.body);
 
-//     print("Correct");
-//     // print(data['userId']);
-//     var jwtToken = data['jwt'];
-//     Navigator.pushReplacement(
-//         context, MaterialPageRoute(builder: (context) => const Home()));
-//     await SecureStorage.setToken(jwtToken);
-//     return LogInModel.fromJson(json.decode(response.body));
-//   } else {
-//     ScaffoldMessenger.of(context).showSnackBar(
-//       SnackBar(
-//         content: Text('Invalid Details',
-//             style: Theme.of(context)
-//                 .primaryTextTheme
-//                 .bodyText1!
-//                 .copyWith(color: Colors.white)),
-//         backgroundColor: bcolor,
-//         behavior: SnackBarBehavior.floating,
-//         shape: RoundedRectangleBorder(
-//           borderRadius: BorderRadius.circular(6.r),
-//         ),
-//         margin: EdgeInsets.only(
-//             bottom: MediaQuery.of(context).size.height - 150.h,
-//             right: 20.w,
-//             left: 20.w),
-//       ),
-//     );
+Future<void> unLikeBeep() async {
+  late LikeCommentModel likeCommentModel;
+  String authority = 'chatbeeper.onrender.com';
+  String unencodedPath =
+      '/beep//6317358a956883227889b4c2/unlike';
+  final uri = Uri.https(authority, unencodedPath);
+  var userJwt = await SecureStorage.getToken();
+  final response =
+  await http.patch(uri, headers: {"Authorization": "Bearer $userJwt"});
 
-//     throw Exception('Something went wrong');
-//   }
+  try {
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+
+      likeCommentModel = LikeCommentModel.fromJson(data);
+    } else {
+      throw Exception("Unable to Unlike");
+    }
+  } catch (e) {
+    print(e.toString());
+  }
+  // return likeCommentModel;
+}
+
+Future<void> unDislikeBeep() async {
+  String authority = 'chatbeeper.onrender.com';
+  String unencodedPath =
+      '/beep/62f71b85886e6e5426e7eb1f/undislike';
+  final uri = Uri.https(authority, unencodedPath);
+  var userJwt = await SecureStorage.getToken();
+  final response =
+  await http.patch(uri, headers: {"Authorization": "Bearer $userJwt"});
+
+  try {
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+    } else {
+      throw Exception("Unable to undislike Beep");
+    }
+  } catch (e) {
+    print(e.toString());
+  }
+}
+
 
 Future<CreateBeepModel> createBeep(BuildContext context, String beep) async {
   late CreateBeepModel beepModel;
@@ -483,6 +488,7 @@ Future<CreateCommentModel> createComment(
   }
   return commentModel;
 }
+
 
 // Future<GetBeepModel> getBeep(BuildContext context) async {
 //   late GetBeepModel getBeepModel;

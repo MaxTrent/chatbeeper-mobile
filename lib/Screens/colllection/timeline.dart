@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:chat_beeper/Screens/colllection/compose_beep.dart';
 import 'package:chat_beeper/Screens/colllection/dm.dart';
@@ -22,6 +23,90 @@ import '../../constants.dart';
 import '../../data/api_services.dart';
 import '../../data/secure_storage.dart';
 import '../drawer_pages/request_verification.dart';
+import '../sponsor_duration.dart';
+
+
+class CustomSearchDelegate extends SearchDelegate {
+  // Demo list to show querying
+  List<String> searchTerms = [
+    "@dhhdh",
+    "@cjdvjvfj",
+    "djjvj",
+    "Pear",
+    "Watdcjvjermelons",
+    "Blueberries",
+    "Pineapples",
+    "Strawberries"
+  ];
+
+  // first overwrite to
+  // clear the search text
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+        onPressed: () {
+          query = '';
+        },
+        icon: Icon(Icons.clear),
+      ),
+    ];
+  }
+
+  // second overwrite to pop out of search menu
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return
+      IconButton(
+      onPressed: () {
+        close(context, null);
+      },
+      icon: Icon(Icons.arrow_back),
+    )
+    ;
+  }
+
+  // third overwrite to show query result
+  @override
+  Widget buildResults(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var fruit in searchTerms) {
+      if (fruit.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(fruit);
+      }
+    }
+    return ListView.builder(
+      itemCount: matchQuery.length,
+      itemBuilder: (context, index) {
+        var result = matchQuery[index];
+        return ListTile(
+          title: Text(result),
+        );
+      },
+    );
+  }
+
+  // last overwrite to show the
+  // querying process at the runtime
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var fruit in searchTerms) {
+      if (fruit.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(fruit);
+      }
+    }
+    return ListView.builder(
+      itemCount: matchQuery.length,
+      itemBuilder: (context, index) {
+        var result = matchQuery[index];
+        return ListTile(
+          title: Text(result),
+        );
+      },
+    );
+  }
+}
 
 class Timeline extends StatefulWidget {
   const Timeline({Key? key}) : super(key: key);
@@ -36,6 +121,7 @@ class _TimelineState extends State<Timeline> {
   String fullName = 'Jane Doe';
   String username = 'Janedoe_10';
   bool _isLoading = false;
+  bool _isSearching = false;
   List<GetBeepModel> futureBeep = [];
   var fetchProfile;
   @override
@@ -59,7 +145,6 @@ class _TimelineState extends State<Timeline> {
     fetchProfile = await getProfile();
     print('This is the profile response $fetchProfile');
   }
-
   @override
   Widget build(BuildContext context) {
 
@@ -101,16 +186,6 @@ class _TimelineState extends State<Timeline> {
     //     }
     return Scaffold(
       key: _key,
-      // floatingActionButton: FloatingActionButton(
-      //     shape: RoundedRectangleBorder(
-      //         borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10.r), bottomRight:Radius.circular(10.r), topLeft:Radius.circular(10.r),topRight: Radius.circular(10.r), )
-      //     ),
-      //     foregroundColor: bcolor1,
-      //     backgroundColor: bcolor1,
-      //     child: IconButton(icon: const Icon(CupertinoIcons.pen), onPressed: () {
-      //       Navigator.push(context,MaterialPageRoute(builder: (context) =>  ComposeBeep()));
-      //     }, color: Colors.white,),
-      //     onPressed: (){}),
       appBar: PreferredSize(
         preferredSize: Size(428.w, 62.h),
         child: Container(
@@ -118,7 +193,7 @@ class _TimelineState extends State<Timeline> {
               border: Border(
                   bottom: BorderSide(color: uColor, style: BorderStyle.solid))),
           child: SafeArea(
-            child: AppBar(
+            child: _isSearching ==false ? AppBar(
               leading: Padding(
                 padding: EdgeInsets.only(top: 15.h, bottom: 5.h),
                 child: Container(
@@ -163,8 +238,16 @@ class _TimelineState extends State<Timeline> {
                   padding: EdgeInsets.only(top: 28.h, right: 20.w, bottom: 5.h),
                   child: GestureDetector(
                     onTap: () {
-                      // Navigator.push(context,
-                      //     MaterialPageRoute(builder: (context) => DirectMessage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Trending(),
+                          ));
+                      // showSearch(
+                      //     context: context,
+                      //     // delegate to customize the search bar
+                      //     delegate: CustomSearchDelegate()
+                      // );
                     },
                     child: darkModeOn == false
                         ? SvgPicture.asset(
@@ -235,7 +318,7 @@ class _TimelineState extends State<Timeline> {
                   ),
                 )
               ],
-            ),
+            ): CupertinoSearchTextField(),
           ),
         ),
       ),
@@ -281,5 +364,6 @@ class _TimelineState extends State<Timeline> {
     }
 
   }
+
 }
 

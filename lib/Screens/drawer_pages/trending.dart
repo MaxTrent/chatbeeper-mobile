@@ -7,9 +7,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../Widgets/search_delegate.dart';
 
+List<String> searchTerms = [
+  "@dhhdh",
+  "@cjdvjvfj",
+  "djjvj",
+  "Pear",
+  "Watdcjvjermelons",
+  "Blueberries",
+  "Pineapples",
+  "Strawberries"
+];
 class Trending extends StatefulWidget {
   const Trending({Key? key}) : super(key: key);
-
+  static const String id = 'trending';
   @override
   State<Trending> createState() => _TrendingState();
 }
@@ -68,7 +78,7 @@ class _TrendingState extends State<Trending> {
               showSearch(context: context, delegate: Searchdelegate());
             },
             child: Container(
-              height: 80.h,
+              height: 60.h,
               width: width,
               decoration: const BoxDecoration(
                   border: Border(
@@ -76,44 +86,26 @@ class _TrendingState extends State<Trending> {
               )),
               child: SizedBox(
                 child: Padding(
-                  padding: EdgeInsets.all(8),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      floatingLabelBehavior: FloatingLabelBehavior.auto,
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(30.r)),
-                          borderSide: BorderSide(
-                            width: 2.w,
-                            // color: _isvalid == true ? bcolor1: Colors.red),
-                            color: bcolor1,
-                          )),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(30.r)),
-                        borderSide: BorderSide(width: 2.w, color: uColor),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(30.r)),
-                        borderSide: BorderSide(width: 2.w, color: Colors.red),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(30.r)),
-                        borderSide: BorderSide(width: 2.w, color: Colors.red),
-                      ),
-                      errorStyle: TextStyle(height: 0, fontSize: 10.sp),
-                      hintText: '#Search topic',
-                      hintStyle: Theme.of(context).primaryTextTheme.bodyText2,
-                      contentPadding: EdgeInsets.only(top: 10.h, left: 10.w),
-                      prefixIcon: Transform.scale(
-                          scale: 0.5,
-                          child: SvgPicture.asset(
-                            'images/search.svg',
-                            color: darkModeOn ? Colors.white : Colors.black,
-                          )),
-                      // hintStyle: Theme.of(context).primaryTextTheme.subtitle1,
-
-                      focusColor: uColor,
-                      // focusColor: Theme.of(context).colorScheme.primary,
+                  padding: const EdgeInsets.all(8),
+                  child: CupertinoSearchTextField(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: uColor),
+                      borderRadius: BorderRadius.all(Radius.circular(16.r)),
                     ),
+                    prefixIcon: Transform.scale(
+                        scale: 1.0,
+                        child: SvgPicture.asset(
+                          'images/search.svg',
+                          color: darkModeOn ? Colors.white : Colors.black,
+                        )),
+                    prefixInsets:EdgeInsets.only(left: 10.h, right: 10.w),
+                    placeholder: '#Search topic',
+                    placeholderStyle: TextStyle(
+                      fontWeight: FontWeight.w500, fontSize: 18.sp, color: Colors.grey
+                    ),
+                  onChanged: (value){
+
+                  },
                   ),
                 ),
               ),

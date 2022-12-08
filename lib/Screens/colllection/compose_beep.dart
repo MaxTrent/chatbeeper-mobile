@@ -5,13 +5,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:chat_beeper/constants.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:like_button/like_button.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'dart:io';
+import 'package:flutter/services.dart';
 import 'beep_create.dart';
 
-class ComposeBeep extends StatelessWidget {
+class ComposeBeep extends StatefulWidget {
   const ComposeBeep({Key? key}) : super(key: key);
+
+  @override
+  State<ComposeBeep> createState() => _ComposeBeepState();
+}
+
+class _ComposeBeepState extends State<ComposeBeep> {
   @override
   Widget build(BuildContext context) {
     var _beepController = TextEditingController();
@@ -52,173 +60,129 @@ class ComposeBeep extends StatelessWidget {
                             ? Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Timeline()))
+                                    builder: (context) => const Timeline()))
                             : showDialog(
                                 context: context,
-                                builder: (ctx) => ConstrainedBox(
-                                  constraints: BoxConstraints(
-                                    maxHeight: 64.h,
-                                    maxWidth: 257.w,
-                                  ),
-                                  child: AlertDialog(
-                                    titlePadding: EdgeInsets.zero,
-                                    buttonPadding: EdgeInsets.zero,
-                                    contentPadding: EdgeInsets.zero,
-                                    actionsPadding:
-                                        EdgeInsets.only(bottom: 30.h),
-                                    backgroundColor:
-                                        Colors.white.withOpacity(0.8),
-                                    alignment: Alignment(0, 0.8),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(100.0.r))),
-                                    actions: [
-                                      SizedBox(
-                                        width: 86.w,
-                                        height: 39.13.h,
-                                        child: OutlinedButton(
-                                            style: OutlinedButton.styleFrom(
-                                                shape: const StadiumBorder(),
-                                                padding: EdgeInsets.zero,
-                                                backgroundColor: Colors.white),
-                                            onPressed: () {
-                                              // FocusScope.of(context).unfocus();
-                                              // TextEditingController().clear();
-                                              Navigator.of(context,
-                                                      rootNavigator: true)
-                                                  .pop();
-                                            },
-                                            child: Center(
-                                              child: Text(
-                                                'Cancel',
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontFamily: 'Nunito',
-                                                    fontSize: 18.sp,
-                                                    fontWeight:
-                                                        FontWeight.w700),
-                                              ),
-                                            )),
-                                      ), //cancel
-                                      SizedBox(
-                                        width: 9.24.w,
-                                      ),
-                                      SizedBox(
-                                        width: 86.w,
-                                        height: 39.13.h,
-                                        child: OutlinedButton(
-                                            style: OutlinedButton.styleFrom(
-                                                shape: const StadiumBorder(),
-                                                backgroundColor: bcolor3),
-                                            onPressed: () {
-                                              // FocusScope.of(context).unfocus();
-                                              // TextEditingController().clear();
-                                              Navigator.of(context,
-                                                      rootNavigator: true)
-                                                  .pop();
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          Drafts()));
-                                            },
-                                            child: Center(
-                                              child: Text(
-                                                'Save',
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontFamily: 'Nunito',
-                                                    fontSize: 18.sp,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                              ),
-                                            )),
-                                      ), //save
-                                    ],
-                                    actionsAlignment: MainAxisAlignment.center,
-                                    content: Padding(
-                                      padding: EdgeInsets.only(bottom: 5.0.h),
-                                      child: Builder(
-                                        builder: (context) {
-                                          // Get available height and width of the build area of this widget. Make a choice depending on the size.
-                                          var height = MediaQuery.of(context)
-                                              .size
-                                              .height;
-                                          var width =
-                                              MediaQuery.of(context).size.width;
-
-                                          return Column(
-                                            // crossAxisAlignment: CrossAxisAlignment.center
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-                                              Text(
-                                                'Save Beep?',
-                                                style: TextStyle(
-                                                    color: bcolor3,
-                                                    fontFamily: 'Nunito',
-                                                    fontSize: 20.sp,
-                                                    fontWeight:
-                                                        FontWeight.w700),
-                                              ),
-                                              SizedBox(
-                                                height: 5.h,
-                                              ),
-                                              // Padding(
-                                              //   padding:  EdgeInsets.only(bottom: 8.h),
-                                              //   child: Row(
-                                              //     // mainAxisAlignment: MainAxisAlignment.center,
-                                              //     // mainAxisSize: MainAxisSize.min,
-                                              //     children: [
-                                              //       SizedBox(
-                                              //         width: 68.w, height: 21.13.h,
-                                              //         child:OutlinedButton(
-                                              //             style: OutlinedButton.styleFrom(
-                                              //                 shape: StadiumBorder(),
-                                              //                 backgroundColor: Colors.white),
-                                              //             onPressed: (){
-                                              //               FocusScope.of(context).unfocus();
-                                              //               TextEditingController().clear();
-                                              //             }, child: Text('Cancel',
-                                              //          style: TextStyle(
-                                              //               color: Colors.black, fontFamily: 'Nunito', fontSize: 8.5.sp,
-                                              //               fontWeight: FontWeight.w500
-                                              //           ),
-                                              //         )),
-                                              //       ),//cancel
-                                              //       SizedBox(
-                                              //         width: 9.24.w,
-                                              //       ),
-                                              //       SizedBox(
-                                              //         width: 68.w, height: 21.13.h,
-                                              //         child:OutlinedButton(
-                                              //             style: OutlinedButton.styleFrom(
-                                              //                 shape: StadiumBorder(),
-                                              //                 backgroundColor: bcolor3),
-                                              //             onPressed: (){
-                                              //               FocusScope.of(context).unfocus();
-                                              //               TextEditingController().clear();
-                                              //               Navigator.pop(context);
-                                              //             }, child: Text('Save',
-                                              //           style: TextStyle(
-                                              //               color: Colors.white, fontFamily: 'Nunito', fontSize: 18.sp,
-                                              //               fontWeight: FontWeight.w600
-                                              //           ),
-                                              //         )),
-                                              //       ),//save
-                                              //     ],
-                                              //   ),
-                                              // ),
-                                            ],
-                                          );
-                                        },
-                                      ),
+                                builder: (ctx) => AlertDialog(
+                                  // titlePadding: EdgeInsets.zero,
+                                  // buttonPadding: EdgeInsets.zero,
+                                  // contentPadding: EdgeInsets.zero,
+                                  // actionsPadding:
+                                  //     EdgeInsets.only(bottom: 30.h),
+                                  backgroundColor:
+                                      Colors.white.withOpacity(0.8),
+                                  alignment: const Alignment(0, -1),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(100.0.r))),
+                                  actions: [
+                                    SizedBox(
+                                      width: 86.w,
+                                      height: 39.13.h,
+                                      child: OutlinedButton(
+                                          style: OutlinedButton.styleFrom(
+                                              shape: const StadiumBorder(),
+                                              padding: EdgeInsets.zero,
+                                              backgroundColor: Colors.white),
+                                          onPressed: () {
+                                            // FocusScope.of(context).unfocus();
+                                            // TextEditingController().clear();
+                                            Navigator.of(context,
+                                                    rootNavigator: true)
+                                                .pop();
+                                          },
+                                          child: Center(
+                                            child: Text(
+                                              'Cancel',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontFamily: 'Nunito',
+                                                  fontSize: 18.sp,
+                                                  fontWeight:
+                                                      FontWeight.w700),
+                                            ),
+                                          )),
+                                    ), //cancel
+                                    SizedBox(
+                                      width: 9.24.w,
                                     ),
+                                    SizedBox(
+                                      width: 86.w,
+                                      height: 39.13.h,
+                                      child: OutlinedButton(
+                                          style: OutlinedButton.styleFrom(
+                                              shape: const StadiumBorder(),
+                                              backgroundColor: bcolor3),
+                                          onPressed: () {
+                                            // FocusScope.of(context).unfocus();
+                                            // TextEditingController().clear();
+                                            Navigator.of(context,
+                                                    rootNavigator: true)
+                                                .pop();
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        Drafts()));
+                                          },
+                                          child: Center(
+                                            child: Text(
+                                              'Save',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontFamily: 'Nunito',
+                                                  fontSize: 18.sp,
+                                                  fontWeight:
+                                                      FontWeight.w600),
+                                            ),
+                                          )),
+                                    ), //save
+                                  ],
+                                  actionsAlignment: MainAxisAlignment.center,
+                                  content: Text('Save Beep?',
+                                  style: TextStyle(
+                                      color: bcolor3,
+                                      fontFamily: 'Nunito',
+                                      fontSize: 20.sp,
+                                      fontWeight:
+                                      FontWeight.w700
                                   ),
+                                  ),
+                                  contentPadding: EdgeInsets.only(top: 10.h, left: 100.w),
+                                  // content: Builder(
+                                  //   builder: (context) {
+                                  //     // Get available height and width of the build area of this widget. Make a choice depending on the size.
+                                  //     var height = MediaQuery.of(context)
+                                  //         .size
+                                  //         .height;
+                                  //     var width =
+                                  //         MediaQuery.of(context).size.width;
+                                  //
+                                  //     return Column(
+                                  //       // crossAxisAlignment: CrossAxisAlignment.center
+                                  //       mainAxisAlignment:
+                                  //           MainAxisAlignment.center,
+                                  //       mainAxisSize: MainAxisSize.min,
+                                  //       children: [
+                                  //         SizedBox(
+                                  //           height: 10.h,
+                                  //         ),
+                                  //         Text(
+                                  //           'Save Beep?',
+                                  //           style: TextStyle(
+                                  //               color: bcolor3,
+                                  //               fontFamily: 'Nunito',
+                                  //               fontSize: 20.sp,
+                                  //               fontWeight:
+                                  //                   FontWeight.w700),
+                                  //         ),
+                                  //         SizedBox(
+                                  //           height: 5.h,
+                                  //         ),
+                                  //       ],
+                                  //     );
+                                  //   },
+                                  // ),
                                 ),
                               );
                         // FocusScope.of(context).unfocus();
@@ -227,7 +191,7 @@ class ComposeBeep extends StatelessWidget {
                         // Navigator.pop(context);
                       },
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Padding(
                       padding: EdgeInsets.only(
                         right: 30.w,
@@ -265,58 +229,74 @@ class ComposeBeep extends StatelessWidget {
                 ],
               ),
               Expanded(
-                child: TextFormField(
-                  controller: _beepController,
-                  style: Theme.of(context).primaryTextTheme.bodyText2!.copyWith(
-                      color: darkModeOn ? Colors.white : Colors.black),
-                  autofocus: true,
-                  maxLines: 10,
-                  decoration: InputDecoration(
-                    floatingLabelBehavior: FloatingLabelBehavior.auto,
-                    focusedBorder: UnderlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(6.r)),
-                        borderSide: BorderSide(
-                          width: 2.w,
-                          // color: _isvalid == true ? bcolor1: Colors.red),
-                          color: Colors.transparent,
-                        )),
-                    enabledBorder: UnderlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(6.r)),
-                        borderSide: BorderSide(
-                          width: 2.w,
-                          // color: _isvalid == true ? bcolor1: Colors.red),
-                          color: Colors.transparent,
-                        )),
-                    errorBorder: UnderlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(6.r)),
-                        borderSide: BorderSide(
-                          width: 2.w,
-                          // color: _isvalid == true ? bcolor1: Colors.red),
-                          color: Colors.transparent,
-                        )),
-                    focusedErrorBorder: UnderlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(6.r)),
-                        borderSide: BorderSide(
-                          width: 2.w,
-                          // color: _isvalid == true ? bcolor1: Colors.red),
-                          color: Colors.transparent,
-                        )),
-                    // errorStyle: TextStyle(
-                    //     height: 0, fontSize: 10.sp
-                    // ),
-                    hintText: "What\'s going on?",
-                    hintStyle: Theme.of(context)
-                        .primaryTextTheme
-                        .bodyText2!
-                        .copyWith(fontSize: 25.sp),
-                    contentPadding: EdgeInsets.only(top: 10.h, left: 50.w),
-                    // hintStyle: Theme.of(context).primaryTextTheme.subtitle1,
+                child: Container(
+                  color: Colors.yellow,
+                  height: 250.h,
+                  child: TextFormField(
+                    controller: _beepController,
+                    style: Theme.of(context).primaryTextTheme.bodyText2!.copyWith(
+                        color: darkModeOn ? Colors.white : Colors.black),
+                    autofocus: true,
+                    maxLines: 10,
+                    decoration: InputDecoration(
+                      floatingLabelBehavior: FloatingLabelBehavior.auto,
+                      focusedBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(6.r)),
+                          borderSide: BorderSide(
+                            width: 2.w,
+                            // color: _isvalid == true ? bcolor1: Colors.red),
+                            color: Colors.transparent,
+                          )),
+                      enabledBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(6.r)),
+                          borderSide: BorderSide(
+                            width: 2.w,
+                            // color: _isvalid == true ? bcolor1: Colors.red),
+                            color: Colors.transparent,
+                          )),
+                      errorBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(6.r)),
+                          borderSide: BorderSide(
+                            width: 2.w,
+                            // color: _isvalid == true ? bcolor1: Colors.red),
+                            color: Colors.transparent,
+                          )),
+                      focusedErrorBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(6.r)),
+                          borderSide: BorderSide(
+                            width: 2.w,
+                            // color: _isvalid == true ? bcolor1: Colors.red),
+                            color: Colors.transparent,
+                          )),
+                      // errorStyle: TextStyle(
+                      //     height: 0, fontSize: 10.sp
+                      // ),
+                      hintText: "What\'s going on?",
+                      hintStyle: Theme.of(context)
+                          .primaryTextTheme
+                          .bodyText2!
+                          .copyWith(fontSize: 25.sp),
+                      contentPadding: EdgeInsets.only(top: 10.h, left: 50.w),
+                      // hintStyle: Theme.of(context).primaryTextTheme.subtitle1,
 
-                    focusColor: Colors.transparent,
-                    // focusColor: Theme.of(context).colorScheme.primary,
+                      focusColor: Colors.transparent,
+                      // focusColor: Theme.of(context).colorScheme.primary,
+                    ),
                   ),
                 ),
               ),
+            Container(
+             height: 80.h,
+                color: Colors.grey,
+                child: document == null ? null : ClipRect(
+                  child: Image.file(
+                    document!,
+                    width: 80.w,
+                    height: 80.h,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+            ),
               Row(
                 children: [
                   Padding(
@@ -328,7 +308,7 @@ class ComposeBeep extends StatelessWidget {
                         color: Colors.grey.shade200,
                       ),
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: pickImage,
                         icon: SvgPicture.asset('images/gallery.svg'),
                         iconSize: 26.h,
                       ),
@@ -357,9 +337,6 @@ class ComposeBeep extends StatelessWidget {
                       //     height: 26.h,
                       //     width: 26.w,
                     ),
-                  ),
-                  SizedBox(
-                    width: width * 0.48,
                   ),
                   Padding(
                     padding: EdgeInsets.only(bottom: 16.h),
@@ -424,5 +401,41 @@ class ComposeBeep extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  File? document;
+
+  Future pickImage() async {
+
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      setState(() {
+        if (image == null) return;
+        final tempImage = File(image.path);
+        setState(() {
+          document = tempImage;
+        });
+      });
+    } on PlatformException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(seconds: 5),
+          content: Text('Filed to Pick image',
+              style: Theme.of(context)
+                  .primaryTextTheme
+                  .bodyText1!
+                  .copyWith(color: Colors.white)),
+          backgroundColor: bcolor,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6.r),
+          ),
+          margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).size.height - 150.h,
+              right: 20.w,
+              left: 20.w),
+        ),
+      );
+    }
   }
 }
