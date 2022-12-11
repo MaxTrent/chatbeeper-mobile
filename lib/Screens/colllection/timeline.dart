@@ -1,5 +1,9 @@
 import 'dart:convert';
+import 'package:chat_beeper/provider/getBeep.dart';
+import 'package:chat_beeper/utility/app_ui_util.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
 import 'package:chat_beeper/Screens/colllection/compose_beep.dart';
 import 'package:chat_beeper/Screens/colllection/dm.dart';
@@ -117,6 +121,7 @@ class Timeline extends StatefulWidget {
 }
 
 class _TimelineState extends State<Timeline> {
+  GetBeepController getBeepController = Get.put(GetBeepController());
   final _key = GlobalKey<ScaffoldState>();
   String fullName = 'Jane Doe';
   String username = 'Janedoe_10';
@@ -131,7 +136,7 @@ class _TimelineState extends State<Timeline> {
   }
 
   void getBeepCall() async {
-    futureBeep = await getBeep();
+    futureBeep = await getBeepController.getBeep();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (futureBeep.isNotEmpty) {
         print('The beep contains ${futureBeep.length} items');
@@ -204,7 +209,7 @@ class _TimelineState extends State<Timeline> {
                   height: 28.h,
                   child: GestureDetector(
                     onTap: () {
-                      getBeep();
+                     getBeepController.getBeep();
                       _key.currentState!.openDrawer();
                     },
                     child: CircleAvatar(
@@ -322,7 +327,17 @@ class _TimelineState extends State<Timeline> {
           ),
         ),
       ),
-      body: ListView.builder(
+      body: (getBeepController.isLoading.value)?Center(
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+           children: [
+              CircularProgressIndicator(),
+              customText1('Loading...', Colors.black, 18.sp)
+            ],
+          ),
+        ),
+      ):ListView.builder(
           itemCount: 10,
           itemBuilder: (BuildContext context, index) {
             return Column(
@@ -334,35 +349,6 @@ class _TimelineState extends State<Timeline> {
           }),
       drawer: const AppDrawer(),
     );
-  }
-
-  Future<List<GetBeepModel>> getBeep() async {
-    print("Beep Called!");
-    String authority = 'chatbeeper.onrender.com';
-    String unencodedPath = '/beep';
-    String? userJwt = await SecureStorage.getToken();
-    print('Bearer------$userJwt');
-    final uri = Uri.https(authority, unencodedPath);
-    print("uri-------$uri");
-    http.Response response =
-    await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
-    print('response------$response');
-    print('Bearer------$userJwt');
-
-    try {
-      if (response.statusCode == 200) {
-        print('this is response body${response.body}');
-        return getBeepModelFromJson(response.body);
-      } else {
-        print(response.statusCode);
-        return [];
-        // throw Exception('can\'t load beeps');
-      }
-    } catch (e) {
-      print("this is an exception====$e");
-      return [];
-    }
-
   }
 
 }

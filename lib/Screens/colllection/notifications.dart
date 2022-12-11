@@ -642,10 +642,11 @@ class _NotificationsState extends State<Notifications> {
                       height: 10.h,
                     ),
                     Container(
+                      
                       decoration: BoxDecoration(
                           border: Border.all(
                               color:
-                                  const Color(0xff9E9E9E80).withOpacity(0.5)),
+                                 const Color(0xff9E9E9E80).withOpacity(0.5)),
                           borderRadius: BorderRadius.circular(16.0.r)),
                       child: PostBeep(),
                     ),

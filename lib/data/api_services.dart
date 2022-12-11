@@ -4,6 +4,7 @@ import 'package:chat_beeper/Widgets/post_comment.dart';
 import 'package:chat_beeper/data/secure_storage.dart';
 import 'package:chat_beeper/model/create_comment_model.dart';
 import 'package:chat_beeper/model/like_comment_model.dart';
+import 'package:chat_beeper/utility/userUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../Screens/colllection/home_page.dart';
@@ -162,6 +163,7 @@ Future<void> verifyPhone(
     print("Correct");
     // print(data['userId']);
     var jwtToken = data['jwt'];
+    userAccessToken=jwtToken;
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => const Home()));
     await SecureStorage.setToken(jwtToken);
