@@ -164,7 +164,7 @@ class _PostBeepState extends State<PostBeep> {
                                     fontWeight: FontWeight.w500),
                               ),
                             ),
-                          ),//sponsored
+                          ),
                         ],
                       ),
                       SizedBox(
@@ -454,7 +454,9 @@ class _PostBeepState extends State<PostBeep> {
                     likeCount: 100,
                     likeCountPadding: EdgeInsets.only(left: 3.w),
                   ),
-                ), // GestureDetector(
+                ),
+
+                // GestureDetector(
                 //   onTap: () async {
                 //     showDialog(
                 //       context: context,
@@ -1041,7 +1043,6 @@ class _PostBeepState extends State<PostBeep> {
     return ExpandableNotifier(
         child: ScrollOnExpand(
       child: SizedBox(
-        width: MediaQuery.of(context).size.width,
         child: Card(
           elevation: 0,
           color: Theme.of(context).scaffoldBackgroundColor,
