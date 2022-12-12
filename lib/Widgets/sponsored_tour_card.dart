@@ -263,7 +263,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                       ),
                     ), //report
                   ],
-                  offset: Offset(-28.w, 40.h),
+                  offset: Offset(-4.w, 30.h),
                   color: Theme.of(context).scaffoldBackgroundColor,
                   elevation: 2,
                 ),
@@ -582,7 +582,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                         ),
                       ), //report
                     ],
-                    offset: Offset(-28.w, 40.h),
+                    offset: Offset(-4.w, 30.h),
                     color: Theme.of(context).scaffoldBackgroundColor,
                     elevation: 2,
                   ),

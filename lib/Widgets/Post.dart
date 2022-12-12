@@ -30,6 +30,8 @@ class PostCard extends StatefulWidget {
 }
 
 class _PostCardState extends State<PostCard> {
+  late List<PostImage> images;
+  late PostImage displayImage;
   String loremIpsum =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
   String fullName = 'Sarah Madini';
@@ -301,7 +303,7 @@ class _PostCardState extends State<PostCard> {
                             ),
                           ), //report
                         ],
-                        offset: Offset(-28.w, 40.h),
+                        offset: Offset(-4.w, 30.h),
                         color: Theme.of(context).scaffoldBackgroundColor,
                         elevation: 2,
                       ),
@@ -1108,4 +1110,11 @@ class _PostCardState extends State<PostCard> {
     // print(getBeepModel);
     // return getBeepModel;
   }
+}
+class PostImage {
+  String id, url;
+  PostImage({
+    required this.url,
+    required this.id,
+  });
 }

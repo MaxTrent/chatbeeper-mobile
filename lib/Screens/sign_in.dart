@@ -321,14 +321,12 @@ class _SignInState extends State<SignIn> {
                                         userTextController.text.toString(),
                                         passwordTextController.text.toString());
                                   }
-                                  // else  if (formKey.currentState!.validate() || !formKey.currentState!.validate() && _loading == true) {
-                                  //   setState(() {
-                                  //    print('object');
-                                  //   });
-                                  // }
+                                 setState(() {
+                                   !_loading;
+                                 });
                                 },
                                 child:
-                                // _loading == false ?
+                                _loading == false ?
                                 Text(
                                   'Log in',
                                   textAlign: TextAlign.center,
@@ -344,13 +342,13 @@ class _SignInState extends State<SignIn> {
                                   //
                                   // ),
                                 )
-                                 // SizedBox(
-                                 //    width: 35.w,
-                                 //    height: 30.h,
-                                 //    child: const CircularProgressIndicator(
-                                 //      color: Colors.white,
-                                 //      strokeWidth: 2,
-                                 //    )),
+                                : SizedBox(
+                                    width: 35.w,
+                                    height: 30.h,
+                                    child: const CircularProgressIndicator(
+                                      color: Colors.white,
+                                      strokeWidth: 2,
+                                    )),
                               ),
                             ), //button
                             SizedBox(

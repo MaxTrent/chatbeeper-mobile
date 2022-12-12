@@ -121,10 +121,21 @@ class _TourCardState extends State<TourCard> {
                                       width: 2,
                                       color: Colors.white,
                                     )),
-                          child: Image.network(
-                            images[index].url,
-                            fit: BoxFit.cover,
+                          child:
+                          // Image.network(
+                          //   images[index].url,
+                          //   fit: BoxFit.cover,
+                          //   key: Key(images[index].id),
+                          // ),
+                          CachedNetworkImage(
+                            placeholder: (context, url) =>  ClipRect(
+                              child: Container(
+                                color: Colors.grey,
+                              ),
+                            ),
+                            imageUrl:   images[index].url,
                             key: Key(images[index].id),
+                            fit: BoxFit.cover,
                           ),
                         ),
                       )),
@@ -305,11 +316,12 @@ class _TourCardState extends State<TourCard> {
                       ),
                     ), //report
                   ],
-                  offset: Offset(-28.w, 40.h),
+                  offset: Offset(-4.w, 30.h),
                   color: Theme.of(context).scaffoldBackgroundColor,
                   elevation: 2,
                 ),
-              )), //popup menu
+              )),//menu
+          //popup menu
           // Positioned(
           //     top: 5.h,
           //     left: 420.w,
@@ -614,7 +626,7 @@ class _TourCardState extends State<TourCard> {
                         ),
                       ), //report
                     ],
-                    offset: Offset(-28.w, 40.h),
+                    offset: Offset(-4.w, 30.h),
                     color: Theme.of(context).scaffoldBackgroundColor,
                     elevation: 2,
                   ),
