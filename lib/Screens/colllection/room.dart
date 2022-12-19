@@ -286,6 +286,6 @@ class _RoomState extends State<Room> {
             ), //listview
           ],
         ),
-        drawer: AppDrawer());
+        drawer: const AppDrawer());
   }
 }

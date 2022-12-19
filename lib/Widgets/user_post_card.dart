@@ -97,13 +97,13 @@ class UserPost extends StatelessWidget {
                                   style: TextStyle(
                                       fontFamily: 'Nunito',
                                       fontWeight: FontWeight.w600,
-                                      color: fColor2,
-                                      fontSize: 21.sp),
+                                      color: darkModeOn==false?Colors.grey:Colors.grey.shade500,
+                                      fontSize: 19.sp),
                                 ),
-                                const Icon(
+                                 Icon(
                                   Icons.verified_rounded,
                                   color: bcolor5,
-                                  size: 15,
+                                  size: 15.h,
                                 ),
                               ],
                             ),
@@ -112,7 +112,7 @@ class UserPost extends StatelessWidget {
                               style: TextStyle(
                                   fontFamily: 'Nunito',
                                   fontWeight: FontWeight.w500,
-                                  color: fColor2,
+                                  color: darkModeOn==false?Colors.grey:Colors.grey.shade500,
                                   fontSize: 17.sp),
                             ),
                           ],

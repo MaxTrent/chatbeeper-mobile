@@ -85,7 +85,7 @@ class RoomCard extends StatelessWidget {
                                       fontFamily: 'Nunito',
                                       fontWeight: FontWeight.w600,
                                       fontSize: 21.sp,
-                                      color: Colors.grey),
+                                      color: darkModeOn==false?Colors.grey:Colors.grey.shade500),
                                 ),
                                 Icon(
                                   Icons.verified_rounded,
@@ -96,10 +96,10 @@ class RoomCard extends StatelessWidget {
                             ),
                             Text(
                               '\ $posttime',
-                              style: const TextStyle(
+                              style:  TextStyle(
                                   fontFamily: 'Nunito',
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.grey),
+                                  color: darkModeOn==false?Colors.grey:Colors.grey.shade500),
                             ),
                           ],
                         ),

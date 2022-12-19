@@ -142,6 +142,11 @@ class _PaymentSponsoredState extends State<PaymentSponsored> {
                 ),
                 errorStyle:
                 TextStyle(height: 0, fontSize: 10.sp),
+                suffixIcon: Row(children: [
+                  SvgPicture.asset('images/visa.svg', height: 20.h,width: 20.h,),
+                  SvgPicture.asset('images/Mmastercard.svg',height: 20.h,width: 20.h,),
+
+                ],),
                 labelText: 'Card Number',
                 hintText: 'Card Number',
                 labelStyle: Theme.of(context)

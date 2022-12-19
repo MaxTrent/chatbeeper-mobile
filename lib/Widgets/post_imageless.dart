@@ -119,13 +119,13 @@ class _PostBeepState extends State<PostBeep> {
                                   style: TextStyle(
                                       fontFamily: 'Nunito',
                                       fontWeight: FontWeight.w600,
-                                      color: fColor2,
-                                      fontSize: 21.sp),
+                                      color: darkModeOn==false?Colors.grey:Colors.grey.shade500,
+                                      fontSize: 19.sp),
                                 ),
-                                const Icon(
+                                 Icon(
                                   Icons.verified_rounded,
                                   color: bcolor5,
-                                  size: 15,
+                                  size: 15.h,
                                 ),
                               ],
                             ),
@@ -134,7 +134,7 @@ class _PostBeepState extends State<PostBeep> {
                               style: TextStyle(
                                   fontFamily: 'Nunito',
                                   fontWeight: FontWeight.w500,
-                                  color: fColor2,
+                                  color: darkModeOn==false?Colors.grey:Colors.grey.shade500,
                                   fontSize: 17.sp),
                             ),
                           ],
@@ -455,27 +455,6 @@ class _PostBeepState extends State<PostBeep> {
                     likeCountPadding: EdgeInsets.only(left: 3.w),
                   ),
                 ),
-
-                // GestureDetector(
-                //   onTap: () async {
-                //     showDialog(
-                //       context: context,
-                //       builder: (context) => const RebeepResponse(),
-                //     );
-                //   },
-                //   child: _rebeeped == false
-                //       ? SizedBox(
-                //           height: 35.h,
-                //           child: SvgPicture.asset(
-                //             'images/rebeep.svg',
-                //             height: 30.h,
-                //           ))
-                //       : SvgPicture.asset(
-                //           'images/rebeep.svg',
-                //           color: Colors.red,
-                //           height: 35.h,
-                //         ),
-                // ), //infinite
                 SizedBox(
                   width: 40.w,
                 ),

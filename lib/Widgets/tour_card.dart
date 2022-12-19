@@ -451,7 +451,7 @@ class _TourCardState extends State<TourCard> {
                                 fontFamily: 'Nunito',
                                 fontWeight: FontWeight.w600,
                                 color: Colors.grey,
-                                fontSize: 21.sp),
+                                fontSize: 19.sp),
                           ),
                           Icon(
                             Icons.verified_rounded,
@@ -465,7 +465,7 @@ class _TourCardState extends State<TourCard> {
                         style: TextStyle(
                             fontFamily: 'Nunito',
                             fontWeight: FontWeight.w500,
-                            color: Colors.grey,
+                            color: darkModeOn==false?Colors.grey:Colors.grey.shade500,
                             fontSize: 17.sp),
                       ),
                     ],
@@ -807,18 +807,18 @@ class _TourCardState extends State<TourCard> {
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: Text(
-                                      'Share Beep',
+                                      'Share Post',
                                       style: Theme.of(context)
                                           .primaryTextTheme
                                           .bodyText1!
                                           .copyWith(
-                                            color: bcolor3,
-                                            fontSize: 17.sp,
-                                            fontWeight: FontWeight.w700,
-                                          ),
+                                        color: bcolor3,
+                                        fontSize: 17.sp,
+                                        fontWeight: FontWeight.w700,
+                                      ),
                                     ),
                                   ),
-                                ), //share beep
+                                ), //share post
                                 Padding(
                                   padding: EdgeInsets.only(
                                       bottom: 0.h,
@@ -827,7 +827,7 @@ class _TourCardState extends State<TourCard> {
                                       top: 37.h),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       Column(
                                         children: [
@@ -838,20 +838,20 @@ class _TourCardState extends State<TourCard> {
                                                 color: Colors.transparent,
                                                 shape: BoxShape.circle,
                                                 border:
-                                                    Border.all(color: bcolor3)
-                                                // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                                // ),
-                                                ),
+                                                Border.all(color: bcolor3)
+                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                              // ),
+                                            ),
                                             child: Center(
                                               child: GestureDetector(
                                                 onTap: () {},
                                                 child: SizedBox(
-                                                    height: 35.h,
-                                                    width: 35.w,
+                                                    height: 30.h,
+                                                    width: 30.w,
                                                     child: SvgPicture.asset(
                                                       'images/link.svg',
-                                                      height: 40.h,
-                                                      width: 40.w,
+                                                      height: 30.h,
+                                                      width: 30.w,
                                                       fit: BoxFit.contain,
                                                     )),
                                               ),
@@ -873,7 +873,7 @@ class _TourCardState extends State<TourCard> {
                                         ],
                                       ), //copy
                                       SizedBox(
-                                        width: 35.w,
+                                        width: 20.w,
                                       ),
                                       Column(
                                         children: [
@@ -884,10 +884,10 @@ class _TourCardState extends State<TourCard> {
                                                 color: Colors.transparent,
                                                 shape: BoxShape.circle,
                                                 border:
-                                                    Border.all(color: bcolor3)
-                                                // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                                // ),
-                                                ),
+                                                Border.all(color: bcolor3)
+                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                              // ),
+                                            ),
                                             child: Center(
                                               child: GestureDetector(
                                                 onTap: () {},
@@ -896,8 +896,8 @@ class _TourCardState extends State<TourCard> {
                                                     width: 30.w,
                                                     child: SvgPicture.asset(
                                                       'images/bookmark.svg',
-                                                      height: 50.h,
-                                                      width: 50.w,
+                                                      height: 30.h,
+                                                      width: 30.w,
                                                       fit: BoxFit.contain,
                                                     )),
                                               ),
@@ -919,7 +919,7 @@ class _TourCardState extends State<TourCard> {
                                         ],
                                       ),
                                       SizedBox(
-                                        width: 35.w,
+                                        width: 20.w,
                                       ),
                                       Column(
                                         children: [
@@ -930,17 +930,17 @@ class _TourCardState extends State<TourCard> {
                                                 color: Colors.transparent,
                                                 shape: BoxShape.circle,
                                                 border:
-                                                    Border.all(color: bcolor3)
-                                                // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                                // ),
-                                                ),
+                                                Border.all(color: bcolor3)
+                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                              // ),
+                                            ),
                                             child: Center(
                                               child: GestureDetector(
                                                 onTap: () {},
                                                 child: SvgPicture.asset(
                                                   'images/Dm.svg',
-                                                  height: 40.h,
-                                                  width: 40.w,
+                                                  height: 30.h,
+                                                  width: 30.w,
                                                   fit: BoxFit.contain,
                                                   color: bcolor3,
                                                 ),
@@ -963,7 +963,7 @@ class _TourCardState extends State<TourCard> {
                                         ],
                                       ), //whatsappp
                                       SizedBox(
-                                        width: 35.w,
+                                        width: 20.w,
                                       ),
                                       Column(
                                         children: [
@@ -974,17 +974,17 @@ class _TourCardState extends State<TourCard> {
                                                 color: Colors.transparent,
                                                 shape: BoxShape.circle,
                                                 border:
-                                                    Border.all(color: bcolor3)
-                                                // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                                // ),
-                                                ),
+                                                Border.all(color: bcolor3)
+                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                              // ),
+                                            ),
                                             child: Center(
                                               child: GestureDetector(
                                                 onTap: () {},
                                                 child: Image.asset(
                                                   'images/facebook.png',
-                                                  height: 50.h,
-                                                  width: 50.w,
+                                                  height: 40.h,
+                                                  width: 40.w,
                                                   fit: BoxFit.contain,
                                                 ),
                                               ),
@@ -1016,7 +1016,7 @@ class _TourCardState extends State<TourCard> {
                                       top: 37.h),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Column(
                                         children: [
@@ -1027,16 +1027,16 @@ class _TourCardState extends State<TourCard> {
                                                 color: Colors.transparent,
                                                 shape: BoxShape.circle,
                                                 border:
-                                                    Border.all(color: bcolor3)
-                                                // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                                // ),
-                                                ),
+                                                Border.all(color: bcolor3)
+                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                              // ),
+                                            ),
                                             child: Center(
                                               child: GestureDetector(
                                                 onTap: () {},
                                                 child: SizedBox(
-                                                    height: 35.h,
-                                                    width: 35.w,
+                                                    height: 30.h,
+                                                    width: 30.w,
                                                     child: SvgPicture.asset(
                                                       'images/gmail.svg',
                                                       height: 100.h,
@@ -1062,7 +1062,7 @@ class _TourCardState extends State<TourCard> {
                                         ],
                                       ), //gmail
                                       SizedBox(
-                                        width: 45.w,
+                                        width: 20.w,
                                       ),
                                       Column(
                                         children: [
@@ -1073,10 +1073,10 @@ class _TourCardState extends State<TourCard> {
                                                 color: Colors.transparent,
                                                 shape: BoxShape.circle,
                                                 border:
-                                                    Border.all(color: bcolor3)
-                                                // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                                // ),
-                                                ),
+                                                Border.all(color: bcolor3)
+                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                              // ),
+                                            ),
                                             child: Center(
                                               child: GestureDetector(
                                                 onTap: () {},
@@ -1109,7 +1109,7 @@ class _TourCardState extends State<TourCard> {
                                         ],
                                       ),
                                       SizedBox(
-                                        width: 35.w,
+                                        width: 20.w,
                                       ),
                                       Column(
                                         children: [
@@ -1120,17 +1120,17 @@ class _TourCardState extends State<TourCard> {
                                                 color: Colors.transparent,
                                                 shape: BoxShape.circle,
                                                 border:
-                                                    Border.all(color: bcolor3)
-                                                // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                                // ),
-                                                ),
+                                                Border.all(color: bcolor3)
+                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                              // ),
+                                            ),
                                             child: Center(
                                               child: GestureDetector(
                                                 onTap: () {},
                                                 child: Image.asset(
                                                   'images/telegram.png',
-                                                  height: 40.h,
-                                                  width: 40.w,
+                                                  height: 35.h,
+                                                  width: 35.w,
                                                   fit: BoxFit.contain,
                                                 ),
                                               ),
@@ -1152,7 +1152,7 @@ class _TourCardState extends State<TourCard> {
                                         ],
                                       ), //telegram
                                       SizedBox(
-                                        width: 50.w,
+                                        width: 20.w,
                                       ),
                                       Column(
                                         children: [
@@ -1163,21 +1163,20 @@ class _TourCardState extends State<TourCard> {
                                                 color: Colors.transparent,
                                                 shape: BoxShape.circle,
                                                 border:
-                                                    Border.all(color: bcolor3)
-                                                // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                                // ),
-                                                ),
+                                                Border.all(color: bcolor3)
+                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                              // ),
+                                            ),
                                             child: Center(
                                               child: GestureDetector(
                                                 onTap: () {},
                                                 child: SizedBox(
-                                                    height: 40.h,
-                                                    width: 40.w,
+                                                    height: 35.h,
+                                                    width: 35.w,
                                                     child: SvgPicture.asset(
                                                       'images/discord.svg',
-                                                      height: 50.h,
-                                                      width: 50.w,
-                                                      fit: BoxFit.contain,
+                                                      height: 35.h,
+                                                      width: 35.w,
                                                     )),
                                               ),
                                             ),

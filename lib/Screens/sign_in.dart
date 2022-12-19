@@ -322,7 +322,7 @@ class _SignInState extends State<SignIn> {
                                         passwordTextController.text.toString());
                                   }
                                  setState(() {
-                                   !_loading;
+                                   _loading = true;
                                  });
                                 },
                                 child:

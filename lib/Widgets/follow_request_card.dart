@@ -74,7 +74,7 @@ class _FollowRequestCardState extends State<FollowRequestCard> {
                           style: TextStyle(
                               fontFamily: 'Nunito',
                               fontWeight: FontWeight.w500,
-                              color: Colors.grey),
+                              color: darkModeOn==false?Colors.grey:Colors.grey.shade500),
                         ),
                       ],
                     ),

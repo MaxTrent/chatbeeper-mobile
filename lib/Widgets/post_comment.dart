@@ -129,8 +129,8 @@ class _PostCommentState extends State<PostComment> {
                               style: TextStyle(
                                   fontFamily: 'Nunito',
                                   fontWeight: FontWeight.w600,
-                                  color: Colors.grey,
-                                  fontSize: 21.sp),
+                                  color: darkModeOn==false?Colors.grey:Colors.grey.shade500,
+                                  fontSize: 19.sp),
                             ),
                              Icon(
                               Icons.verified_rounded,
@@ -144,7 +144,7 @@ class _PostCommentState extends State<PostComment> {
                           style: TextStyle(
                               fontFamily: 'Nunito',
                               fontWeight: FontWeight.w500,
-                              color: fColor2,
+                              color: darkModeOn==false?Colors.grey:Colors.grey.shade500,
                               fontSize: 14.sp),
                         ),
                       ],

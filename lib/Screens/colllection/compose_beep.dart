@@ -1,3 +1,4 @@
+import 'package:chat_beeper/Screens/colllection/home_page.dart';
 import 'package:chat_beeper/Screens/colllection/timeline.dart';
 import 'package:chat_beeper/Screens/drafts.dart';
 import 'package:chat_beeper/data/api_services.dart';
@@ -53,7 +54,7 @@ class _ComposeBeepState extends State<ComposeBeep> {
                       child: Icon(
                         Icons.arrow_back_ios_sharp,
                         size: 20.h,
-                        color: darkModeOn ? bcolor : bcolor,
+                        color: bcolor,
                       ),
                       onTap: () {
                         _beepController.text.isEmpty
@@ -229,9 +230,8 @@ class _ComposeBeepState extends State<ComposeBeep> {
                 ],
               ),
               Expanded(
-                child: Container(
-                  color: Colors.yellow,
-                  height: 250.h,
+                child: SizedBox(
+                  height: 230.h,
                   child: TextFormField(
                     controller: _beepController,
                     style: Theme.of(context).primaryTextTheme.bodyText2!.copyWith(
@@ -285,18 +285,21 @@ class _ComposeBeepState extends State<ComposeBeep> {
                   ),
                 ),
               ),
-            Container(
-             height: 80.h,
-                color: Colors.grey,
-                child: document == null ? null : ClipRect(
-                  child: Image.file(
-                    document!,
-                    width: 80.w,
-                    height: 80.h,
-                    fit: BoxFit.cover,
+            Padding(
+              padding:  EdgeInsets.only(left: 15.w,bottom: 3.h),
+              child: SizedBox(
+               height: 80.h,
+                  child: document == null ? null : ClipRect(
+                    child: Image.file(
+                      document!,
+                      width: 80.w,
+                      height: 80.h,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
+              ),
             ),
+              SizedBox(height: 10.h,),
               Row(
                 children: [
                   Padding(
@@ -321,7 +324,7 @@ class _ComposeBeepState extends State<ComposeBeep> {
                     width: 24.w,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 16.h),
+                    padding: EdgeInsets.only(bottom: 16.h,right: 225.w),
                     child: Container(
                       height: 40.h, width: 40.h,
                       decoration: BoxDecoration(
@@ -358,7 +361,29 @@ class _ComposeBeepState extends State<ComposeBeep> {
                                       : Colors.transparent),
                             ))),
                         onPressed: () {
-                          createBeep(context, _beepController.text);
+                          // Navigator.push(context, MaterialPageRoute(builder: (context)=>const Home()));
+                          // createBeep(context, _beepController.text);
+                          showDialog(
+                            context: context,
+                            builder: (ctx) => AlertDialog(
+                              backgroundColor:
+                              Colors.white.withOpacity(0.8),
+                              alignment: const Alignment(0, -1),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(100.0.r))),
+                              actionsAlignment: MainAxisAlignment.center,
+                              content: Text(darkModeOn==true?'Your beep has been sent':'Ding! beep has been sent already ',
+                                style: TextStyle(
+                                    color: bcolor3,
+                                    fontFamily: 'Nunito',
+                                    fontSize: 20.sp,
+                                    fontWeight:
+                                    FontWeight.w700
+                                ),
+                              ),
+                              contentPadding: EdgeInsets.only(top: 10.h, left: 45.w, bottom: 10.h),
+                            ),);
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
