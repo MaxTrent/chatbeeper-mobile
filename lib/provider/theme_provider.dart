@@ -15,11 +15,9 @@ class ModelTheme extends ChangeNotifier {
 
   setTheme(bool value) {}
 
-  // ---implement ToggleTheme function----
   Future<void> toggleTheme(bool isOn) async {
     themeMode = isOn ? ThemeMode.dark : ThemeMode.light;
 
-    //---notify material app to update UI----
     notifyListeners();
   }
 }

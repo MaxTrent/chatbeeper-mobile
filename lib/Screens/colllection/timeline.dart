@@ -1,26 +1,15 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:chat_beeper/Screens/colllection/compose_beep.dart';
 import 'package:chat_beeper/Screens/colllection/dm.dart';
-import 'package:chat_beeper/Screens/colllection/settings_page.dart';
-import 'package:chat_beeper/Screens/drawer_pages/follower_request.dart';
-import 'package:chat_beeper/Screens/drawer_pages/saved_beeps.dart';
-import 'package:chat_beeper/Screens/drawer_pages/trending.dart';
-import 'package:chat_beeper/Screens/followers.dart';
-import 'package:chat_beeper/Screens/following.dart';
-import 'package:chat_beeper/Screens/profile_page.dart';
 import 'package:chat_beeper/Widgets/app_drawer.dart';
 import 'package:chat_beeper/Widgets/post_imageless.dart';
 import 'package:chat_beeper/model/get_beep_model.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../Widgets/Post.dart';
 import '../../constants.dart';
 import '../../data/secure_storage.dart';
-import '../drawer_pages/request_verification.dart';
 
 class Timeline extends StatefulWidget {
   const Timeline({Key? key}) : super(key: key);

@@ -10,7 +10,6 @@ import '../Screens/sign_in.dart';
 import '../constants.dart';
 import '../model/Signin_model.dart';
 import '../model/create_beep_model.dart';
-import '../model/get_beep_model.dart';
 import '../model/get_comment_model.dart';
 import '../model/otpmodel_email.dart';
 import '../model/profile_model.dart';

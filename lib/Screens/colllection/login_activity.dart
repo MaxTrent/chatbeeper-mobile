@@ -18,7 +18,6 @@ class LoginActivity extends StatefulWidget {
 }
 
 class _LoginActivityState extends State<LoginActivity> {
-
   String device = 'iPhone 13';
   String location = 'Lagos, Nigeria';
   String lastSeen = 'Active now';
@@ -34,7 +33,6 @@ class _LoginActivityState extends State<LoginActivity> {
       target: LatLng(37.43296265331129, -122.08832357078792),
       tilt: 59.440717697143555,
       zoom: 19.151926040649414);
-
 
   @override
   Widget build(BuildContext context) {

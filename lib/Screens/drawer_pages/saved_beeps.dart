@@ -160,9 +160,7 @@ class _SavedBeepsState extends State<SavedBeeps> {
                     children: [
                       PostBeep(),
                       const SponsoredTourCard(),
-                      PostCard(
-                        post: 'hi',
-                      ),
+                      PostCard(),
                       TourCard()
                     ],
                   );

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:chat_beeper/Widgets/image_slider.dart';
 import 'package:chat_beeper/Widgets/profile_tab.dart';
 import 'package:chat_beeper/Widgets/user_post_card.dart';
