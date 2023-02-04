@@ -30,14 +30,14 @@ class _DmListState extends State<DmList> {
     var brightness = MediaQuery.of(context).platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           border: Border(
               bottom: BorderSide(
         color: uColor,
       ))),
       child: ListTile(
         onTap: () => Navigator.push(
-            context, MaterialPageRoute(builder: (ctx) => ChatScreen())),
+            context, MaterialPageRoute(builder: (ctx) => const ChatScreen())),
         onLongPress: () {},
         dense: false,
         title: Column(
@@ -101,7 +101,7 @@ class _DmListState extends State<DmList> {
                           .primaryTextTheme
                           .bodyText1!
                           .copyWith(
-                              fontWeight: FontWeight.w500, fontSize: 22.sp),
+                              fontWeight: FontWeight.w500, fontSize: 18.sp),
                     ),
                     SizedBox(
                       height: 5.5.h,

@@ -1,37 +1,54 @@
-import 'package:chat_beeper/Screens/colllection/home_page.dart';
+// ignore_for_file: must_be_immutable
+
+// import 'package:chat_beeper/Screens/colllection/home_page.dart';
 import 'package:chat_beeper/Screens/password_recovery.dart';
+import 'package:chat_beeper/Screens/sign_Up_personal.dart';
 import 'package:chat_beeper/provider/sign_in_provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constants.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:flutter/services.dart';
+// import 'dart:convert';
+// import 'package:http/http.dart' as http;
 import '../data/secure_storage.dart';
-import '../model/Signin_model.dart';
+// import '../model/Signin_model.dart';
 import 'package:provider/provider.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends StatefulWidget {
   static const String id = 'signIn-screen';
 
   SignIn({Key? key}) : super(key: key);
-  // const SignIn({Key? key}) : super(key: key);
 
+  @override
+  State<SignIn> createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
+  // const SignIn({Key? key}) : super(key: key);
   final storage = SecureStorage();
+
   final formKey = GlobalKey<FormState>();
+
   // Icon? icon;
   final userTextController = TextEditingController();
-  final passwordTextController = TextEditingController();
-  Icon? icon;
-  String? user = 'b@gmail.com';
-  String? email;
-  String? vUser;
-  String? password;
-  // String? apassword = '123456';
-  // String? vPassword;
-  // bool _loading = false;
-  FocusNode _focus = FocusNode();
 
+  final passwordTextController = TextEditingController();
+
+  Icon? icon;
+
+  String? user = 'b@gmail.com';
+
+  String? email;
+
+  String? vUser;
+
+  String? password;
+
+  // String? apassword = '123456';
+  bool _loading = false;
+
+  // FocusNode _focus = FocusNode();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -82,7 +99,6 @@ class SignIn extends StatelessWidget {
                             SizedBox(
                               width: 372.w,
                               child: TextFormField(
-                                textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.emailAddress,
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
@@ -91,28 +107,18 @@ class SignIn extends StatelessWidget {
                                     .subtitle1!
                                     .copyWith(fontSize: 20.sp),
                                 controller: userTextController,
-                                // validator: (val) {
-                                //   if (!val!.isValidEmail || val.isEmpty) {
-                                //     return 'Enter valid email';
-                                //   }
-                                // //   if(val.isValidEmail ){
-                                // //     val = vUser;
-                                // //   }
-                                //   return null;
-                                // },
-                                // onFieldSubmitted:(value){
-                                //   value = userextController.text.toString();
-                                // },
-                                //
-                                // onSaved: (value){
-                                //   value = vUser;
-                                // },
+                                validator: ((value) {
+                                  if (!value!.isValidUname && !value.isValidEmail || value.isEmpty) {
+                                    return 'Enter a valid Username';
+                                  }
+                                  return null;
+                                }),
                                 decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(6.r)),
                                       borderSide: BorderSide(
-                                        width: 0.5.w,
+                                        width: 2.w,
                                         // color: _isvalid == true ? bcolor1: Colors.red),
                                         color: bcolor1,
                                       )),
@@ -120,19 +126,19 @@ class SignIn extends StatelessWidget {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide:
-                                        BorderSide(width: 0.5.w, color: uColor),
+                                        BorderSide(width: 2.w, color: uColor),
                                   ),
                                   errorBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: Colors.red),
+                                        width: 2.w, color: Colors.red),
                                   ),
                                   focusedErrorBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: Colors.red),
+                                        width: 2.w, color: Colors.red),
                                   ),
                                   errorStyle:
                                       TextStyle(height: 0, fontSize: 10.sp),
@@ -164,22 +170,18 @@ class SignIn extends StatelessWidget {
                               width: 372.w,
                               child: TextFormField(
                                 textInputAction: TextInputAction.done,
-                                // validator: (val) {
-                                //   if(val!.isEmpty || val.length < 6){
-                                //     return'Password has to be atleast 6 characters long. try again';
-                                //   }
-                                //   if(val.isValidPassword ){
-                                //   val = vPassword;
-                                //   }
-                                //   return null;
-                                // },
-                                // onFieldSubmitted: (val){
-                                //   val = passwordTextController.text.toString();
-                                //   password == val;
-                                // },
-                                // onSaved: (val){
-                                //   val = passwordTextController.text.toString();
-                                // },
+                                validator: (value) {
+                                  // if (value!.isValidPassword)
+                                  //   return 'Enter valid password';
+                                  if (!value!.isValidPassword) {
+                                    password = value;
+                                  }
+                                  if (value.isEmpty || value.length < 6) {
+                                    //print('$value is incorrect');
+                                    return 'Password has to be atleast 6 characters long. try again';
+                                  }
+                                  return null;
+                                },
                                 obscureText:
                                     context.read<LogIn>().visible == false
                                         ? true
@@ -194,7 +196,7 @@ class SignIn extends StatelessWidget {
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(6.r)),
                                       borderSide: BorderSide(
-                                        width: 0.5.w,
+                                        width: 2.w,
                                         // color: _isvalid == true ? bcolor1: Colors.red),
                                         color: bcolor1,
                                       )),
@@ -202,19 +204,19 @@ class SignIn extends StatelessWidget {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide:
-                                        BorderSide(width: 0.5.w, color: uColor),
+                                        BorderSide(width: 2.w, color: uColor),
                                   ),
                                   errorBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: Colors.red),
+                                        width: 2.w, color: Colors.red),
                                   ),
                                   focusedErrorBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: Colors.red),
+                                        width: 2.w, color: Colors.red),
                                   ),
                                   errorStyle:
                                       TextStyle(height: 0, fontSize: 10.sp),
@@ -311,17 +313,21 @@ class SignIn extends StatelessWidget {
                                       side: const BorderSide(
                                           color: Colors.transparent),
                                     ))),
-                                onPressed: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (_) => const Home()));
-                                  context.read<LogIn>().signIn(
-                                      context,
-                                      userTextController.text.toString(),
-                                      passwordTextController.text.toString());
+                                onPressed: ()  {
+                                  // await Future.delayed(const Duration(seconds: 5));
+                                  if (formKey.currentState!.validate()) {
+                                    context.read<LogIn>().signIn(
+                                        context,
+                                        userTextController.text.toString(),
+                                        passwordTextController.text.toString());
+                                  }
+                                 setState(() {
+                                   _loading = true;
+                                 });
                                 },
-                                child: Text(
+                                child:
+                                _loading == false ?
+                                Text(
                                   'Log in',
                                   textAlign: TextAlign.center,
                                   style: Theme.of(context)
@@ -335,7 +341,14 @@ class SignIn extends StatelessWidget {
                                   //     fontSize: 17.sp
                                   //
                                   // ),
-                                ),
+                                )
+                                : SizedBox(
+                                    width: 35.w,
+                                    height: 30.h,
+                                    child: const CircularProgressIndicator(
+                                      color: Colors.white,
+                                      strokeWidth: 2,
+                                    )),
                               ),
                             ), //button
                             SizedBox(
@@ -411,32 +424,5 @@ class SignIn extends StatelessWidget {
           )),
     );
 
-    // Future<void> logIn(String email, String password) async {
-    //   if (formKey.currentState!.validate() &&
-    //       userTextController.text.isNotEmpty &&
-    //       passwordTextController.text.isNotEmpty) {
-    //     final response =
-    //         await http.post(Uri.https('beeperchat.herokuapp.com', 'auth/login'),
-    //             body: ({
-    //               "email": userTextController.text,
-    //               "password": passwordTextController.text,
-    //             }));
-    //     if (response.statusCode == 201) {
-    //       var data = json.decode(response.body);
-
-    //       print("Correct");
-    //       // print(data['userId']);
-    //       var jwtToken = data['jwt'];
-
-    //       if (!mounted) return;
-    //       Navigator.pushReplacement(
-    //           context, MaterialPageRoute(builder: (context) => const Home()));
-    //       await SecureStorage.setToken(jwtToken);
-    //       // If the server did return a 201 CREATED response,
-    //       // then parse the JSON.
-    //       // return LogIn.fromJson(jsonDecode(response.body));
-    //     }
-    //   }
-    // }
   }
 }

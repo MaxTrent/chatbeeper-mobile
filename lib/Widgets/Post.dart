@@ -30,6 +30,8 @@ class PostCard extends StatefulWidget {
 }
 
 class _PostCardState extends State<PostCard> {
+  late List<PostImage> images;
+  late PostImage displayImage;
   String loremIpsum =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
   String fullName = 'Sarah Madini';
@@ -41,7 +43,7 @@ class _PostCardState extends State<PostCard> {
 
   @override
   void initState() {
-    getBeep();
+   // getBeep();
     super.initState();
   }
 
@@ -71,7 +73,7 @@ class _PostCardState extends State<PostCard> {
         Padding(
           padding: EdgeInsets.fromLTRB(4.w, 8.w, 0.w, 5.h),
           child: SizedBox(
-            height: 50.h,
+            height: 60.h,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -88,49 +90,52 @@ class _PostCardState extends State<PostCard> {
                       SizedBox(
                         width: 8.w,
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "\ $fullName\ ",
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .bodyText1!
-                                    .copyWith(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 22.sp),
-                              ),
-                              Text(
-                                '@$username ',
-                                style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w600,
-                                    color: fColor2,
-                                    fontSize: 21.sp),
-                              ),
-                              Icon(
-                                Icons.verified_rounded,
-                                color: bcolor5,
-                                size: 15.h,
-                              ),
-                            ],
-                          ),
-                          Text(
-                            '\ $posttime',
-                            style: TextStyle(
-                                fontFamily: 'Nunito',
-                                fontWeight: FontWeight.w500,
-                                color: fColor2,
-                                fontSize: 17.sp),
-                          ),
-                        ],
-                      ),
+                     SingleChildScrollView(
+                       physics: NeverScrollableScrollPhysics(),
+                       child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  "\ $fullName\ ",
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .bodyText1!
+                                      .copyWith(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 22.sp),
+                                ),
+                                Text(
+                                  '@$username ',
+                                  style: TextStyle(
+                                      fontFamily: 'Nunito',
+                                      fontWeight: FontWeight.w600,
+                                      color: darkModeOn==false?Colors.grey:Colors.grey.shade500,
+                                      fontSize: 19.sp),
+                                ),
+                                Icon(
+                                  Icons.verified_rounded,
+                                  color: bcolor5,
+                                  size: 15.h,
+                                ),
+                              ],
+                            ),
+                            Text(
+                              '\ $posttime',
+                              style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                  fontWeight: FontWeight.w500,
+                                  color: darkModeOn==false?Colors.grey:Colors.grey.shade500,
+                                  fontSize: 17.sp),
+                            ),
+                          ],
+                        ),
+                     ),
                       Spacer(),
                       PopupMenuButton<int>(
                         icon: Icon(
@@ -298,7 +303,7 @@ class _PostCardState extends State<PostCard> {
                             ),
                           ), //report
                         ],
-                        offset: Offset(-28.w, 40.h),
+                        offset: Offset(-4.w, 30.h),
                         color: Theme.of(context).scaffoldBackgroundColor,
                         elevation: 2,
                       ),
@@ -537,9 +542,9 @@ class _PostCardState extends State<PostCard> {
                   //   return result;
                   // },
                 ), //heart
-                SizedBox(
-                  width: 90.w,
-                ),
+                // SizedBox(
+                //   width: 90.w,
+                // ),
                 Expanded(
                   child: GestureDetector(
                     child: Padding(
@@ -588,10 +593,10 @@ class _PostCardState extends State<PostCard> {
                                         .primaryTextTheme
                                         .bodyText1!
                                         .copyWith(
-                                          color: bcolor3,
-                                          fontSize: 22.sp,
-                                          fontWeight: FontWeight.w700,
-                                        ),
+                                      color: bcolor3,
+                                      fontSize: 17.sp,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
                                 ),
                               ), //share beep
@@ -603,7 +608,7 @@ class _PostCardState extends State<PostCard> {
                                     top: 37.h),
                                 child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  MainAxisAlignment.spaceBetween,
                                   children: [
                                     Column(
                                       children: [
@@ -613,20 +618,21 @@ class _PostCardState extends State<PostCard> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
                                               child: SizedBox(
-                                                  height: 25.h,
-                                                  width: 25.w,
+                                                  height: 30.h,
+                                                  width: 30.w,
                                                   child: SvgPicture.asset(
                                                     'images/link.svg',
-                                                    height: 25.h,
-                                                    width: 25.w,
+                                                    height: 30.h,
+                                                    width: 30.w,
                                                     fit: BoxFit.contain,
                                                   )),
                                             ),
@@ -648,7 +654,7 @@ class _PostCardState extends State<PostCard> {
                                       ],
                                     ), //copy
                                     SizedBox(
-                                      width: 35.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -658,16 +664,17 @@ class _PostCardState extends State<PostCard> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
                                               child: SizedBox(
-                                                  height: 25.h,
-                                                  width: 25.w,
+                                                  height: 30.h,
+                                                  width: 30.w,
                                                   child: SvgPicture.asset(
                                                     'images/bookmark.svg',
                                                     height: 30.h,
@@ -693,7 +700,7 @@ class _PostCardState extends State<PostCard> {
                                       ],
                                     ),
                                     SizedBox(
-                                      width: 35.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -703,10 +710,11 @@ class _PostCardState extends State<PostCard> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
@@ -736,7 +744,7 @@ class _PostCardState extends State<PostCard> {
                                       ],
                                     ), //whatsappp
                                     SizedBox(
-                                      width: 35.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -746,17 +754,18 @@ class _PostCardState extends State<PostCard> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
                                               child: Image.asset(
                                                 'images/facebook.png',
-                                                height: 35.h,
-                                                width: 35.w,
+                                                height: 40.h,
+                                                width: 40.w,
                                                 fit: BoxFit.contain,
                                               ),
                                             ),
@@ -788,7 +797,7 @@ class _PostCardState extends State<PostCard> {
                                     top: 37.h),
                                 child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Column(
                                       children: [
@@ -798,10 +807,11 @@ class _PostCardState extends State<PostCard> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
@@ -810,8 +820,8 @@ class _PostCardState extends State<PostCard> {
                                                   width: 30.w,
                                                   child: SvgPicture.asset(
                                                     'images/gmail.svg',
-                                                    height: 35.h,
-                                                    width: 35.w,
+                                                    height: 100.h,
+                                                    width: 100.w,
                                                     fit: BoxFit.contain,
                                                   )),
                                             ),
@@ -833,7 +843,7 @@ class _PostCardState extends State<PostCard> {
                                       ],
                                     ), //gmail
                                     SizedBox(
-                                      width: 45.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -843,10 +853,11 @@ class _PostCardState extends State<PostCard> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
@@ -879,7 +890,7 @@ class _PostCardState extends State<PostCard> {
                                       ],
                                     ),
                                     SizedBox(
-                                      width: 35.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -889,17 +900,18 @@ class _PostCardState extends State<PostCard> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
                                               child: Image.asset(
                                                 'images/telegram.png',
-                                                height: 30.h,
-                                                width: 30.w,
+                                                height: 35.h,
+                                                width: 35.w,
                                                 fit: BoxFit.contain,
                                               ),
                                             ),
@@ -921,7 +933,7 @@ class _PostCardState extends State<PostCard> {
                                       ],
                                     ), //telegram
                                     SizedBox(
-                                      width: 50.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -931,21 +943,21 @@ class _PostCardState extends State<PostCard> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
                                               child: SizedBox(
-                                                  height: 30.h,
-                                                  width: 30.w,
+                                                  height: 35.h,
+                                                  width: 35.w,
                                                   child: SvgPicture.asset(
                                                     'images/discord.svg',
-                                                    height: 30.h,
-                                                    width: 30.w,
-                                                    fit: BoxFit.contain,
+                                                    height: 35.h,
+                                                    width: 35.w,
                                                   )),
                                             ),
                                           ),
@@ -1083,19 +1095,26 @@ class _PostCardState extends State<PostCard> {
   }
 
   Future<void> getBeep() async {
-    List<GetBeepModel> getBeep;
-    String authority = 'beeperchat.herokuapp.com';
-    String unencodedPath = '/beep';
-    String? userJwt = await SecureStorage.getToken();
-    final uri = Uri.https(authority, unencodedPath);
-    final response =
-        await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
-    print(response.body);
-    List<dynamic> body = jsonDecode(response.body);
-    model = body.map((dynamic item) => GetBeepModel.fromJson(item)).toList();
-    setState(() {});
+    // List<GetBeepModel> getBeep;
+    // String authority = 'chatbeeper.onrender.com';
+    // String unencodedPath = '/beep';
+    // String? userJwt = await SecureStorage.getToken();
+    // final uri = Uri.https(authority, unencodedPath);
+    // final response =
+    //     await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
+    // print(response.body);
+    // List<dynamic> body = jsonDecode(response.body);
+    // model = body.map((dynamic item) => GetBeepModel.fromJson(item)).toList();
+    // setState(() {});
 
     // print(getBeepModel);
     // return getBeepModel;
   }
+}
+class PostImage {
+  String id, url;
+  PostImage({
+    required this.url,
+    required this.id,
+  });
 }

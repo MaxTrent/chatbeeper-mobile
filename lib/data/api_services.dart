@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:chat_beeper/Widgets/post_comment.dart';
 import 'package:chat_beeper/data/secure_storage.dart';
 import 'package:chat_beeper/model/create_comment_model.dart';
 import 'package:chat_beeper/model/like_comment_model.dart';
+import 'package:chat_beeper/utility/userUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../Screens/colllection/home_page.dart';
@@ -14,11 +16,12 @@ import '../model/get_comment_model.dart';
 import '../model/otpmodel_email.dart';
 import '../model/profile_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+final client = HttpClient();
 
 Future<VerifyEmailModel> verifyEmail(
     BuildContext context, String username, String email, String token) async {
   final response = await http.patch(
-      Uri.https('beeperchat.herokuapp.com', 'auth/verify-token/email'),
+      Uri.https('chatbeeper.onrender.com', 'auth/verify-token/email'),
       body: ({
         "username": username.toString(),
         "email": email.toString(),
@@ -38,6 +41,7 @@ Future<VerifyEmailModel> verifyEmail(
     print(response.body);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        duration: const Duration(seconds: 5),
         content: Text(response.body,
             style: Theme.of(context)
                 .primaryTextTheme
@@ -58,6 +62,7 @@ Future<VerifyEmailModel> verifyEmail(
   } else {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        duration: const Duration(seconds: 5),
         content: Text('Incorrect details',
             style: Theme.of(context)
                 .primaryTextTheme
@@ -81,7 +86,7 @@ Future<VerifyEmailModel> verifyEmail(
 Future<void> verifyPhone(
     BuildContext context, String username, String phone, String token) async {
   final response = await http.patch(
-      Uri.https('beeperchat.herokuapp.com', '/auth/verify-token/phone'),
+      Uri.https('chatbeeper.onrender.com', '/auth/verify-token/phone'),
       body: ({
         "username": username.toString(),
         "phone": phone.toString(),
@@ -101,6 +106,7 @@ Future<void> verifyPhone(
     print(response.body);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        duration: const Duration(seconds: 5),
         content: Text(response.body,
             style: Theme.of(context)
                 .primaryTextTheme
@@ -121,6 +127,7 @@ Future<void> verifyPhone(
   } else {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        duration: const Duration(seconds: 5),
         content: Text('Incorrect details',
             style: Theme.of(context)
                 .primaryTextTheme
@@ -141,28 +148,32 @@ Future<void> verifyPhone(
   }
 } //verify phone
 
-Future<LogInModel> logIn(
+ Future<LogInModel> logIn(
     BuildContext context, String email, String password) async {
   final response =
-      await http.post(Uri.https('beeperchat.herokuapp.com', 'auth/login'),
+      await http.post(Uri.https('chatbeeper.onrender.com', 'auth/login'),
           body: ({
             "email": email,
             "password": password,
           }));
   if (response.statusCode == 201) {
     var data = json.decode(response.body);
-
-    print("Correct");
+print('Correct');
+print('Response gotten');
     // print(data['userId']);
     var jwtToken = data['jwt'];
+    userAccessToken=jwtToken;
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => const Home()));
     await SecureStorage.setToken(jwtToken);
     return LogInModel.fromJson(json.decode(response.body));
-  } else {
+  }
+   if (response.statusCode == 404){
+    var data = json.decode(response.body);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Invalid Details',
+        duration: const Duration(seconds: 5),
+        content: Text('User not found',
             style: Theme.of(context)
                 .primaryTextTheme
                 .bodyText1!
@@ -178,37 +189,79 @@ Future<LogInModel> logIn(
             left: 20.w),
       ),
     );
-
-    throw Exception('Something went wrong');
   }
+   if (response.statusCode == 400){
+    var data = json.decode(response.body);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 5),
+        content: Text('Something went wrong. try again',
+            style: Theme.of(context)
+                .primaryTextTheme
+                .bodyText1!
+                .copyWith(color: Colors.white)),
+        backgroundColor: bcolor,
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(6.r),
+        ),
+        margin: EdgeInsets.only(
+            bottom: MediaQuery.of(context).size.height - 150.h,
+            right: 20.w,
+            left: 20.w),
+      ),
+    );
+  }
+  if (response.statusCode == 401){
+    var data = json.decode(response.body);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 5),
+        content: Text('Incorrect username/password',
+            style: Theme.of(context)
+                .primaryTextTheme
+                .bodyText1!
+                .copyWith(color: Colors.white)),
+        backgroundColor: bcolor,
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(6.r),
+        ),
+        margin: EdgeInsets.only(
+            bottom: MediaQuery.of(context).size.height - 150.h,
+            right: 20.w,
+            left: 20.w),
+      ),
+    );
+  }
+  throw Exception(response.body);
 } //sign in
 
-Future<GetProfileModel> getProfile(context) async {
-  late GetProfileModel profileModel;
-  String authority = 'beeperchat.herokuapp.com';
+Future<GetProfileModel> getProfile() async {
+  String authority = 'chatbeeper.onrender.com';
   String unencodedPath = '/user';
-
   final uri = Uri.https(authority, unencodedPath);
+  print("uri-------$uri");
   String? userJwt = await SecureStorage.getToken();
-  try {
-    final response =
-        await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
+  http.Response response =
+      await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
+  print('response------$response');
+  print('Bearer------$userJwt');
+
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body);
-      profileModel = GetProfileModel.fromJson(data);
+      //  var data = jsonDecode(response.body);
+      print("this is success");
+      return getProfileModelFromJson(response.body);
     } else {
-      throw 'Unable to retrieve profile details';
+      print(response.statusCode);
+   throw Exception('failure');
     }
-  } catch (e) {
-    print(e.toString());
-  }
-  print(profileModel);
-  return profileModel;
+
 } //get profile details
 
 Future<GetCommentModel> getComment(context) async {
   late GetCommentModel getCommentModel;
-  String authority = 'beeperchat.herokuapp.com';
+  String authority = 'chatbeeper.onrender.com';
   String unencodedPath =
       '/beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0';
 
@@ -230,7 +283,7 @@ Future<GetCommentModel> getComment(context) async {
 } //get comment
 
 Future<void> deleteComment() async {
-  String authority = 'beeperchat.herokuapp.com';
+  String authority = 'chatbeeper.onrender.com';
   String unencodedPath =
       '/beep/6315fe0790e0ef30da0b8f05/comment/634579d5decf0c523d62a924';
   final uri = Uri.https(authority, unencodedPath);
@@ -251,7 +304,7 @@ Future<void> deleteComment() async {
 
 Future<LikeCommentModel> likeComment() async {
   late LikeCommentModel likeCommentModel;
-  String authority = 'beeperchat.herokuapp.com';
+  String authority = 'chatbeeper.onrender.com';
   String unencodedPath =
       '/beep/6315fe0790e0ef30da0b8f05/comment/63457b4f755869fb5e88b411/unlike';
   final uri = Uri.https(authority, unencodedPath);
@@ -274,7 +327,7 @@ Future<LikeCommentModel> likeComment() async {
 } //like comment
 
 Future<void> unlikeComment() async {
-  String authority = 'beeperchat.herokuapp.com';
+  String authority = 'chatbeeper.onrender.com';
   String unencodedPath =
       '/beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0/unlike';
   final uri = Uri.https(authority, unencodedPath);
@@ -294,9 +347,9 @@ Future<void> unlikeComment() async {
 } //unlike comment
 
 Future<void> dislikeComment() async {
-  String authority = 'beeperchat.herokuapp.com';
+  String authority = 'chatbeeper.onrender.com';
   String unencodedPath =
-      ' /beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0/dislike';
+      '/beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0/dislike';
   final uri = Uri.https(authority, unencodedPath);
   var userJwt = await SecureStorage.getToken();
   final response =
@@ -314,9 +367,9 @@ Future<void> dislikeComment() async {
 } //dislike comment
 
 Future<void> undislikeComment() async {
-  String authority = 'beeperchat.herokuapp.com';
+  String authority = 'chatbeeper.onrender.com';
   String unencodedPath =
-      ' /beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0/undislike';
+      '/beep/6315fe0790e0ef30da0b8f05/comment/631615c75f370c671d6377a0/undislike';
   final uri = Uri.https(authority, unencodedPath);
   var userJwt = await SecureStorage.getToken();
   final response =
@@ -333,52 +386,57 @@ Future<void> undislikeComment() async {
   }
 } //undislike comment
 
-// Future<LogInModel> logIn(
-//     BuildContext context, String email, String password) async {
-//   final response =
-//       await http.post(Uri.https('beeperchat.herokuapp.com', 'auth/login'),
-//           body: ({
-//             "email": email,
-//             "password": password,
-//           }));
-//   if (response.statusCode == 201) {
-//     var data = json.decode(response.body);
 
-//     print("Correct");
-//     // print(data['userId']);
-//     var jwtToken = data['jwt'];
-//     Navigator.pushReplacement(
-//         context, MaterialPageRoute(builder: (context) => const Home()));
-//     await SecureStorage.setToken(jwtToken);
-//     return LogInModel.fromJson(json.decode(response.body));
-//   } else {
-//     ScaffoldMessenger.of(context).showSnackBar(
-//       SnackBar(
-//         content: Text('Invalid Details',
-//             style: Theme.of(context)
-//                 .primaryTextTheme
-//                 .bodyText1!
-//                 .copyWith(color: Colors.white)),
-//         backgroundColor: bcolor,
-//         behavior: SnackBarBehavior.floating,
-//         shape: RoundedRectangleBorder(
-//           borderRadius: BorderRadius.circular(6.r),
-//         ),
-//         margin: EdgeInsets.only(
-//             bottom: MediaQuery.of(context).size.height - 150.h,
-//             right: 20.w,
-//             left: 20.w),
-//       ),
-//     );
+Future<void> unLikeBeep() async {
+  late LikeCommentModel likeCommentModel;
+  String authority = 'chatbeeper.onrender.com';
+  String unencodedPath =
+      '/beep//6317358a956883227889b4c2/unlike';
+  final uri = Uri.https(authority, unencodedPath);
+  var userJwt = await SecureStorage.getToken();
+  final response =
+  await http.patch(uri, headers: {"Authorization": "Bearer $userJwt"});
 
-//     throw Exception('Something went wrong');
-//   }
+  try {
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+
+      likeCommentModel = LikeCommentModel.fromJson(data);
+    } else {
+      throw Exception("Unable to Unlike");
+    }
+  } catch (e) {
+    print(e.toString());
+  }
+  // return likeCommentModel;
+}
+
+Future<void> unDislikeBeep() async {
+  String authority = 'chatbeeper.onrender.com';
+  String unencodedPath =
+      '/beep/62f71b85886e6e5426e7eb1f/undislike';
+  final uri = Uri.https(authority, unencodedPath);
+  var userJwt = await SecureStorage.getToken();
+  final response =
+  await http.patch(uri, headers: {"Authorization": "Bearer $userJwt"});
+
+  try {
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+    } else {
+      throw Exception("Unable to undislike Beep");
+    }
+  } catch (e) {
+    print(e.toString());
+  }
+}
+
 
 Future<CreateBeepModel> createBeep(BuildContext context, String beep) async {
   late CreateBeepModel beepModel;
   var userJwt = await SecureStorage.getToken();
   final response =
-      await http.post(Uri.https('beeperchat.herokuapp.com', '/beep'),
+      await http.post(Uri.https('chatbeeper.onrender.com', '/beep'),
           body: ({
             "text": beep,
           }),
@@ -403,7 +461,7 @@ Future<CreateBeepModel> createBeep(BuildContext context, String beep) async {
 Future<CreateCommentModel> createComment(
     BuildContext context, String comment) async {
   late CreateCommentModel commentModel;
-  String authority = 'beeperchat.herokuapp.com';
+  String authority = 'chatbeeper.onrender.com';
   String unencodedPath = '/beep/6315fe0790e0ef30da0b8f05/comment';
   String? userJwt = await SecureStorage.getToken();
   final uri = Uri.https(authority, unencodedPath);
@@ -432,9 +490,10 @@ Future<CreateCommentModel> createComment(
   return commentModel;
 }
 
+
 // Future<GetBeepModel> getBeep(BuildContext context) async {
 //   late GetBeepModel getBeepModel;
-//   String authority = 'beeperchat.herokuapp.com';
+//   String authority = 'chatbeeper.onrender.com';
 //   String unencodedPath = '/beep/6315fe0790e0ef30da0b8f05/likes';
 //   String? userJwt = await SecureStorage.getToken();
 //   final uri = Uri.https(authority, unencodedPath);
@@ -455,7 +514,7 @@ Future<CreateCommentModel> createComment(
 
 // Future<void> getBeep() async {
 //   List<GetBeepModel> getBeep;
-//   String authority = 'beeperchat.herokuapp.com';
+//   String authority = 'chatbeeper.onrender.com';
 //   String unencodedPath = '/beep';
 //   String? userJwt = await SecureStorage.getToken();
 //   final uri = Uri.https(authority, unencodedPath);

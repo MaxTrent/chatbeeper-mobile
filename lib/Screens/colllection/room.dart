@@ -234,7 +234,7 @@ class _RoomState extends State<Room> {
                     ),
                   ), //interest and settings
                   Padding(
-                    padding: EdgeInsets.only(top: 2.h, left: 16.w, right: 16.w),
+                    padding: EdgeInsets.only(top: 2.h, ),
                     child: SizedBox(
                       height: 60.h,
                       child: ListView.separated(
@@ -286,6 +286,6 @@ class _RoomState extends State<Room> {
             ), //listview
           ],
         ),
-        drawer: AppDrawer());
+        drawer: const AppDrawer());
   }
 }

@@ -229,7 +229,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                      width: 0.5.w,
+                                      width: 2.w,
                                       // color: _isvalid == true ? bcolor1: Colors.red),
                                       color: bcolor1,
                                     )),
@@ -237,19 +237,19 @@ class _CreateAccountState extends State<CreateAccount> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:
-                                      BorderSide(width: 0.5.w, color: uColor),
+                                      BorderSide(width: 2.w, color: uColor),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 errorStyle:
                                     TextStyle(height: 0, fontSize: 10.sp),
@@ -302,7 +302,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                      width: 0.5.w,
+                                      width: 2.w,
                                       // color: _isvalid == true ? bcolor1: Colors.red),
                                       color: bcolor1,
                                     )),
@@ -310,19 +310,19 @@ class _CreateAccountState extends State<CreateAccount> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:
-                                      BorderSide(width: 0.5.w, color: uColor),
+                                      BorderSide(width: 2.w, color: uColor),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 errorStyle:
                                     TextStyle(height: 0, fontSize: 10.sp),
@@ -367,7 +367,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                      width: 0.5.w,
+                                      width: 2.w,
                                       // color: _isvalid == true ? bcolor1: Colors.red),
                                       color: bcolor1,
                                     )),
@@ -375,19 +375,19 @@ class _CreateAccountState extends State<CreateAccount> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:
-                                      BorderSide(width: 0.5.w, color: uColor),
+                                      BorderSide(width: 2.w, color: uColor),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 errorStyle:
                                     TextStyle(height: 0, fontSize: 10.sp),
@@ -468,7 +468,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                      width: 0.5.w,
+                                      width: 2.w,
                                       // color: _isvalid == true ? bcolor1: Colors.red),
                                       color: bcolor1,
                                     )),
@@ -476,19 +476,19 @@ class _CreateAccountState extends State<CreateAccount> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:
-                                      BorderSide(width: 0.5.w, color: uColor),
+                                      BorderSide(width: 2.w, color: uColor),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 errorStyle:
                                     TextStyle(height: 0, fontSize: 10.sp),
@@ -546,6 +546,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
+                                      duration: const Duration(seconds: 5),
                                       content: Text('Registration Incomplete',
                                           style: Theme.of(context)
                                               .primaryTextTheme
@@ -761,7 +762,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                      width: 0.5.w,
+                                      width: 2.w,
                                       // color: _isvalid == true ? bcolor1: Colors.red),
                                       color: bcolor1,
                                     )),
@@ -769,19 +770,19 @@ class _CreateAccountState extends State<CreateAccount> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:
-                                      BorderSide(width: 0.5.w, color: uColor),
+                                      BorderSide(width: 2.w, color: uColor),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 errorStyle:
                                     TextStyle(height: 0, fontSize: 10.sp),
@@ -962,7 +963,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                      width: 0.5.w,
+                                      width: 2.w,
                                       // color: _isvalid == true ? bcolor1: Colors.red),
                                       color: bcolor1,
                                     )),
@@ -970,19 +971,19 @@ class _CreateAccountState extends State<CreateAccount> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:
-                                      BorderSide(width: 0.5.w, color: uColor),
+                                      BorderSide(width: 2.w, color: uColor),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 errorStyle:
                                     TextStyle(height: 0, fontSize: 10.sp),
@@ -1055,7 +1056,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                      width: 0.5.w,
+                                      width: 2.w,
                                       // color: _isvalid == true ? bcolor1: Colors.red),
                                       color: bcolor1,
                                     )),
@@ -1063,19 +1064,19 @@ class _CreateAccountState extends State<CreateAccount> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:
-                                      BorderSide(width: 0.5.w, color: uColor),
+                                      BorderSide(width: 2.w, color: uColor),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 errorStyle:
                                     TextStyle(height: 0, fontSize: 10.sp),
@@ -1158,6 +1159,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                     _birthdateControlller.text.isEmpty) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
+                                      duration: const Duration(seconds: 5),
                                       content: Text('Registration Incomplete',
                                           style: Theme.of(context)
                                               .primaryTextTheme
@@ -1428,7 +1430,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(6.r)),
                                       borderSide: BorderSide(
-                                        width: 1.5.w,
+                                        width: 2.w,
                                         // color: _isvalid == true ? bcolor1: Colors.red),
                                         color: uColor,
                                       )),
@@ -1436,7 +1438,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                      width: 1.5.w,
+                                      width: 2.w,
                                       // color: _isvalid == true ? bcolor1: Colors.red),
                                       color: uColor,
                                     ),
@@ -1445,7 +1447,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                      width: 1.5.w,
+                                      width: 2.w,
                                       // color: _isvalid == true ? bcolor1: Colors.red),
                                       color: uColor,
                                     ),
@@ -1454,7 +1456,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                      width: 1.5.w,
+                                      width: 2.w,
                                       // color: _isvalid == true ? bcolor1: Colors.red),
                                       color: uColor,
                                     ),
@@ -1664,7 +1666,7 @@ class _CreateAccountState extends State<CreateAccount> {
     if (_chooseusername.text.isValidUname &&
         formKeyy.currentState!.validate()) {
       final response =
-          await http.post(Uri.https('beeperchat.herokuapp.com', '/user'),
+          await http.post(Uri.https('chatbeeper.onrender.com', '/user'),
               body: ({
                 "username": _chooseusername.text.toString(),
                 "email": _emailTextController.text.toString(),

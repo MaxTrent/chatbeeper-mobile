@@ -10,7 +10,13 @@ final List<String> imgList = [
   'images/tlimage1.png',
   'images/tlimage1.png',
 ];
-
+class PostImage {
+  String id, url;
+  PostImage({
+    required this.url,
+    required this.id,
+  });
+}
 class ImageSlider extends StatefulWidget {
   const ImageSlider({Key? key}) : super(key: key);
 
@@ -34,6 +40,36 @@ class _ImageSliderState extends State<ImageSlider> {
   ))
       .toList();
 
+  late List<PostImage> images;
+  late PostImage displayImage;
+  bool _itemtapped = false;
+  @override
+  void initState() {
+    images = [
+      PostImage(
+          url:
+          'https://images.unsplash.com/photo-1657299141984-dd9196274cde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+          id: 'i001'),
+      PostImage(
+          url:
+          'https://images.unsplash.com/photo-1659536540455-161b929e650c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
+          id: 'i002'),
+      PostImage(
+          url:
+          'https://images.unsplash.com/photo-1657299170111-371dabe2e60d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
+          id: 'i003'),
+      PostImage(
+          url:
+          'https://images.unsplash.com/photo-1657299170111-371dabe2e60d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
+          id: 'i004'),
+      PostImage(
+          url:
+          'https://images.unsplash.com/photo-1659536540455-161b929e650c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
+          id: 'i005'),
+    ];
+    displayImage = images[0];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

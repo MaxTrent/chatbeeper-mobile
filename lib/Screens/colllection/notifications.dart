@@ -27,6 +27,7 @@ class Notifications extends StatefulWidget {
 
 class _NotificationsState extends State<Notifications> {
   final _key = GlobalKey<ScaffoldState>();
+  final _lkey = GlobalKey<ScaffoldState>();
   String fullName = 'Jane Doe';
   String username = 'Janedoe_10';
 
@@ -94,7 +95,7 @@ class _NotificationsState extends State<Notifications> {
       ),
       key: _key,
       body: ListView(
-        key: _key,
+        key: _lkey,
         controller: ScrollController(),
         children: [
           Container(
@@ -435,7 +436,7 @@ class _NotificationsState extends State<Notifications> {
                                   .primaryTextTheme
                                   .bodyText1!
                                   .copyWith(
-                                      fontSize: 20.sp,
+                                      fontSize: 18.sp,
                                       fontWeight: FontWeight.w600)),
                           SizedBox(
                             width: 12.w,
@@ -585,7 +586,7 @@ class _NotificationsState extends State<Notifications> {
             ),
           ),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 border: Border(
                     bottom: BorderSide(
               color: uColor,
@@ -641,10 +642,11 @@ class _NotificationsState extends State<Notifications> {
                       height: 10.h,
                     ),
                     Container(
+                      
                       decoration: BoxDecoration(
                           border: Border.all(
                               color:
-                                  const Color(0xff9E9E9E80).withOpacity(0.5)),
+                                 const Color(0xff9E9E9E80).withOpacity(0.5)),
                           borderRadius: BorderRadius.circular(16.0.r)),
                       child: PostBeep(),
                     ),
@@ -737,7 +739,7 @@ class _NotificationsState extends State<Notifications> {
       ),
       */
 
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
     );
   }
 }

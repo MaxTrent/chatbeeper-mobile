@@ -112,25 +112,25 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       errorBorder:   OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(6.r)),
                         borderSide: BorderSide(
-                            width: 0.5.w,
+                            width: 2.w,
                             color: bcolor3),
                       ),
                       focusedErrorBorder:   OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(6.r)),
                         borderSide: BorderSide(
-                            width: 1.5.w,
+                            width: 2.w,
                             color: bcolor3),
                       ),
                       focusedBorder:  OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(6.r)),
                         borderSide:BorderSide(
-                            width: 1.5.w,
+                            width: 2.w,
                             color: bcolor3),
                       ),
                       enabledBorder:  OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(6.r)),
                         borderSide: BorderSide(
-                            width: 1.5.w,
+                            width: 2.w,
                             color: bcolor3),
                       ),
 

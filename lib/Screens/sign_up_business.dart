@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:chat_beeper/Screens/sign_in.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +15,8 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'upload_business_name.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 extension ExtString on String {
   bool get isValidEmail {
@@ -56,6 +60,40 @@ class CreateBusiness extends StatefulWidget {
 }
 
 class _CreateBusinessState extends State<CreateBusiness> {
+  File? document;
+  Future pickImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      setState(() {
+        if (image == null) return;
+        final tempImage = File(image.path);
+        setState(() {
+          document = tempImage;
+        });
+      });
+    } on PlatformException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(seconds: 5),
+          content: Text('Filed to Pick image',
+              style: Theme.of(context)
+                  .primaryTextTheme
+                  .bodyText1!
+                  .copyWith(color: Colors.white)),
+          backgroundColor: bcolor,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6.r),
+          ),
+          margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).size.height - 150.h,
+              right: 20.w,
+              left: 20.w),
+        ),
+      );
+    }
+  }
+
   String? email;
   String? password;
   String? bname;
@@ -65,6 +103,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
   bool _visible = false;
   bool _isvalid = false;
   bool _expanded = false;
+  bool _isloading = false;
   int _currentPage = 1;
   var _emailTextController = TextEditingController();
   var _passwordTextController = TextEditingController();
@@ -96,6 +135,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
         controller: _pageController,
         children: [
           SingleChildScrollView(
+            //first
             child: Form(
               key: _formKey1,
               child: Column(
@@ -198,22 +238,22 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: bcolor1)),
+                                        width: 2.w, color: bcolor1)),
                                 enabledBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: uColor)),
+                                        width: 2.w, color: uColor)),
                                 errorBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: Colors.red)),
+                                        width: 2.w, color: Colors.red)),
                                 focusedErrorBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: Colors.red)),
+                                        width: 2.w, color: Colors.red)),
                                 errorStyle:
                                     TextStyle(height: 0, fontSize: 10.sp),
                               )),
@@ -255,22 +295,22 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: bcolor1)),
+                                        width: 2.w, color: bcolor1)),
                                 enabledBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: uColor)),
+                                        width: 2.w, color: uColor)),
                                 errorBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: Colors.red)),
+                                        width: 2.w, color: Colors.red)),
                                 focusedErrorBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(6.r)),
                                     borderSide: BorderSide(
-                                        width: 0.5.w, color: Colors.red)),
+                                        width: 2.w, color: Colors.red)),
                                 errorStyle:
                                     TextStyle(height: 0, fontSize: 10.sp),
                               )),
@@ -331,7 +371,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                    width: 0.5.w,
+                                    width: 2.w,
                                     // color: _isvalid == true ? bcolor1: Colors.red),
                                     color: bcolor1,
                                   )),
@@ -339,19 +379,19 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(6.r)),
                                 borderSide:
-                                    BorderSide(width: 0.5.w, color: uColor),
+                                    BorderSide(width: 2.w, color: uColor),
                               ),
                               errorBorder: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(6.r)),
                                 borderSide:
-                                    BorderSide(width: 0.5.w, color: Colors.red),
+                                    BorderSide(width: 2.w, color: Colors.red),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(6.r)),
                                 borderSide:
-                                    BorderSide(width: 0.5.w, color: Colors.red),
+                                    BorderSide(width: 2.w, color: Colors.red),
                               ),
                               errorStyle: TextStyle(height: 0, fontSize: 10.sp),
                               labelText: 'Phone Number',
@@ -407,6 +447,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
+                                    duration: const Duration(seconds: 5),
                                     content: Text('Registration Incomplete',
                                         style: Theme.of(context)
                                             .primaryTextTheme
@@ -508,6 +549,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
             ),
           ),
           SingleChildScrollView(
+            //second
             child: Form(
                 key: _formKey2,
                 child: Column(
@@ -616,7 +658,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(6.r)),
                                       borderSide: BorderSide(
-                                        width: 0.5.w,
+                                        width: 2.w,
                                         // color: _isvalid == true ? bcolor1: Colors.red),
                                         color: bcolor1,
                                       )),
@@ -624,21 +666,21 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(6.r)),
                                       borderSide: BorderSide(
-                                        width: 0.5.w,
+                                        width: 2.w,
                                         color: uColor,
                                       )),
                                   errorBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(6.r)),
                                       borderSide: BorderSide(
-                                        width: 0.5.w,
+                                        width: 2.w,
                                         color: Colors.red,
                                       )),
                                   focusedErrorBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(6.r)),
                                       borderSide: BorderSide(
-                                        width: 0.5.w,
+                                        width: 2.w,
                                         color: Colors.red,
                                       )),
                                   focusColor: uColor,
@@ -685,25 +727,25 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:
-                                      BorderSide(width: 0.5.w, color: uColor),
+                                      BorderSide(width: 2.w, color: uColor),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:
-                                      BorderSide(width: 0.5.w, color: bcolor1),
+                                      BorderSide(width: 2.w, color: bcolor1),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 errorStyle:
                                     TextStyle(height: 0, fontSize: 10.sp),
@@ -773,25 +815,25 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:
-                                      BorderSide(width: 0.5.w, color: uColor),
+                                      BorderSide(width: 2.w, color: uColor),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:
-                                      BorderSide(width: 0.5.w, color: bcolor1),
+                                      BorderSide(width: 2.w, color: bcolor1),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
-                                      width: 0.5.w, color: Colors.red),
+                                      width: 2.w, color: Colors.red),
                                 ),
                                 errorStyle:
                                     TextStyle(height: 0, fontSize: 10.sp),
@@ -854,6 +896,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
+                                      duration: const Duration(seconds: 5),
                                       content: Text('Registration Incomplete',
                                           style: Theme.of(context)
                                               .primaryTextTheme
@@ -957,6 +1000,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
                 )),
           ),
           SingleChildScrollView(
+            //upload document
             child: Form(
               key: _formKey3,
               child: Padding(
@@ -972,7 +1016,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
                       'images/logo1.png',
                       height: 90.h,
                       width: 90.w,
-                    )),
+                    )), //logo
                     SizedBox(
                       height: 32.h,
                     ),
@@ -982,7 +1026,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
                           .primaryTextTheme
                           .headline4!
                           .copyWith(fontSize: 32.sp),
-                    ),
+                    ), //upload document
                     SizedBox(
                       height: 35.h,
                     ),
@@ -1042,34 +1086,51 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                 ),
                         ],
                       ),
-                    ),
+                    ), //checks
+
                     SizedBox(
                       height: 30.h,
                     ),
-                    DottedBorder(
-                      strokeWidth: 1,
-                      color: fColor,
-                      dashPattern: [8, 8],
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 29.0.h, horizontal: 14.w),
+                    SizedBox(
+                      //dotted
+                      height: 131.h,
+                      child: DottedBorder(
+                        strokeWidth: 1,
+                        color: fColor,
+                        dashPattern: const [8, 8],
                         child: Row(
-                          //mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                'Upload your business credentials\n(CAC or International Passport)',
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .bodyText1!
-                                    .copyWith(fontSize: 18.sp, color: fColor),
+                            Padding(
+                              padding: EdgeInsets.only(top: 38.h),
+                              child: SizedBox(
+                                height: 56.h,
+                                child: TextButton(
+                                  onPressed: pickImage,
+                                  style: ButtonStyle(
+                                    overlayColor: MaterialStateProperty.all(
+                                        Colors.transparent),
+                                    splashFactory: NoSplash.splashFactory,
+                                  ),
+                                  child: Text(
+                                    'Upload your business credentials\n(CAC or International Passport)',
+                                    style: Theme.of(context)
+                                        .primaryTextTheme
+                                        .bodyText1!
+                                        .copyWith(
+                                            fontSize: 16.sp, color: fColor),
+                                  ),
+                                ),
                               ),
                             ),
                             SizedBox(
                               width: 20.w,
                             ),
-                            SvgPicture.asset('images/Group 156.svg'),
+                            Padding(
+                              padding: EdgeInsets.only(top: 29.h),
+                              child: SvgPicture.asset('images/Group 156.svg',
+                                  width: 110.69.w, height: 73.h),
+                            ),
                           ],
                         ),
                       ),
@@ -1082,26 +1143,27 @@ class _CreateBusinessState extends State<CreateBusiness> {
                             .copyWith(
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xff696969))),
-                    SizedBox(
-                      height: 162.h,
-                    ),
+                                color: Color(0xff696969))), //jpg,kb etc
+                    document != null
+                        ? Column(
+                            children: [
+                              SizedBox(height: 10.h),
+                              Image.file(
+                                document!,
+                                width: 400.w,
+                                height: 130.h,
+                                fit: BoxFit.cover,
+                              ),
+                              SizedBox(height: 30.h),
+                            ],
+                          )
+                        : SizedBox(height: 162.h),
                     SizedBox(
                       height: 54.h,
                       width: 400.w,
                       child: ElevatedButton(
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(fColor),
-                            //     MaterialStateProperty.resolveWith<Color>(
-                            //         (Set<MaterialState> states) {
-                            //   if (_passwordTextController.text.isEmpty ||
-                            //       _cpasswordTextController.text.isEmpty ||
-                            //       _dateControlller.text.isEmpty)
-                            //     return bcolor1;
-                            //   return bcolor1;
-                            // }),
-
-                            // elevation: ,
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(6.r),
@@ -1157,6 +1219,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
             ),
           ),
           SingleChildScrollView(
+            //last
             child: Padding(
               padding: EdgeInsets.only(left: 28.w, right: 28.w),
               child: Column(
@@ -1205,16 +1268,6 @@ class _CreateBusinessState extends State<CreateBusiness> {
                     child: ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(bcolor1),
-                          //     MaterialStateProperty.resolveWith<Color>(
-                          //         (Set<MaterialState> states) {
-                          //   if (_passwordTextController.text.isEmpty ||
-                          //       _cpasswordTextController.text.isEmpty ||
-                          //       _dateControlller.text.isEmpty)
-                          //     return bcolor1;
-                          //   return bcolor1;
-                          // }),
-
-                          // elevation: ,
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
@@ -1226,35 +1279,6 @@ class _CreateBusinessState extends State<CreateBusiness> {
                             context,
                             MaterialPageRoute(
                                 builder: ((context) => SignIn())));
-                        // if (_formKey2.currentState!.validate()) {
-                        //   // print(
-                        //   //     '${_phoneTextController.text.toString()}, ${_bnameTextController.text.toString()},${_emailTextController.text.toString()}');
-                        //   _pageController.nextPage(
-                        //       duration: Duration(milliseconds: 500),
-                        //       curve: Curves.easeIn);
-                        // } else {
-                        //   ScaffoldMessenger.of(context).showSnackBar(
-                        //     SnackBar(
-                        //       content: Text('Registration Incomplete',
-                        //           style: Theme.of(context)
-                        //               .primaryTextTheme
-                        //               .bodyText1!
-                        //               .copyWith(color: Colors.white)),
-                        //       backgroundColor: bcolor,
-                        //       behavior: SnackBarBehavior.floating,
-                        //       shape: RoundedRectangleBorder(
-                        //         borderRadius: BorderRadius.circular(6.r),
-                        //       ),
-                        //       margin: EdgeInsets.only(
-                        //           bottom: MediaQuery.of(context).size.height -
-                        //               150.h,
-                        //           right: 20.w,
-                        //           left: 20.w),
-                        //     ),
-                        //   );
-                        // }
-
-                        // return;
                       },
                       child: Text(
                         'Login',
@@ -1318,13 +1342,13 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width: 1.5.w,
+                                      width: 2.w,
                                       color: bcolor3),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width:0.5.w,
+                                      width:2.w,
                                       color: bcolor3),
                                 ),
 
@@ -1358,13 +1382,13 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                 focusedBorder:  OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width: 0.5.w,
+                                      width: 2.w,
                                       color: bcolor1),
                                 ),
                                 enabledBorder:  OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width: 0.5.w,
+                                      width: 2.w,
                                       color: bcolor1),
                                 ),
 
@@ -1403,13 +1427,13 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width: 1.5.w,
+                                      width: 2.w,
                                       color: bcolor3),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width:0.5.w,
+                                      width:2.w,
                                       color: bcolor3),
                                 ),
 
@@ -1442,13 +1466,13 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width: 1.5.w,
+                                      width: 2.w,
                                       color: bcolor3),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width:0.5.w,
+                                      width:2.w,
                                       color: bcolor3),
                                 ),
 
@@ -1495,13 +1519,13 @@ class _CreateBusinessState extends State<CreateBusiness> {
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width: 1.5.w,
+                                      width: 2.w,
                                       color: bcolor3),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   borderSide:BorderSide(
-                                      width:0.5.w,
+                                      width:2.w,
                                       color: bcolor3),
                                 ),
                                 suffixIcon: IconButton(

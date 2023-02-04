@@ -287,28 +287,28 @@ class _CreateCommentState extends State<CreateComment> {
                     focusedBorder: UnderlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(6.r)),
                         borderSide: BorderSide(
-                          width: 0.5.w,
+                          width: 2.w,
                           // color: _isvalid == true ? bcolor1: Colors.red),
                           color: Colors.transparent,
                         )),
                     enabledBorder: UnderlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(6.r)),
                         borderSide: BorderSide(
-                          width: 0.5.w,
+                          width: 2.w,
                           // color: _isvalid == true ? bcolor1: Colors.red),
                           color: Colors.transparent,
                         )),
                     errorBorder: UnderlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(6.r)),
                         borderSide: BorderSide(
-                          width: 0.5.w,
+                          width: 2.w,
                           // color: _isvalid == true ? bcolor1: Colors.red),
                           color: Colors.transparent,
                         )),
                     focusedErrorBorder: UnderlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(6.r)),
                         borderSide: BorderSide(
-                          width: 0.5.w,
+                          width: 2.w,
                           // color: _isvalid == true ? bcolor1: Colors.red),
                           color: Colors.transparent,
                         )),

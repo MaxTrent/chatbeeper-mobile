@@ -2,6 +2,7 @@ import 'package:chat_beeper/Screens/colllection/beep.dart';
 import 'package:chat_beeper/Screens/colllection/beep_create.dart';
 import 'package:chat_beeper/Screens/colllection/room.dart';
 import 'package:chat_beeper/Screens/colllection/tour_page.dart';
+import 'package:chat_beeper/Screens/drawer_pages/trending.dart';
 import 'package:chat_beeper/Widgets/Post.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _HomeState extends State<Home> {
     const Beep(),
     const Notifications(),
     const Room(),
-    // const DirectMessage(),
+    const Trending(),
   ];
 
   // void _onItemTapped(int index) {

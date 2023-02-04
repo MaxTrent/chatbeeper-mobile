@@ -1,4 +1,9 @@
 import 'dart:convert';
+import 'package:chat_beeper/provider/getBeep.dart';
+import 'package:chat_beeper/utility/app_ui_util.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
 import 'package:chat_beeper/Screens/colllection/dm.dart';
 import 'package:chat_beeper/Widgets/app_drawer.dart';
@@ -9,7 +14,94 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../Widgets/Post.dart';
 import '../../constants.dart';
+import '../../data/api_services.dart';
 import '../../data/secure_storage.dart';
+
+import '../drawer_pages/request_verification.dart';
+import '../sponsor_duration.dart';
+
+
+class CustomSearchDelegate extends SearchDelegate {
+  // Demo list to show querying
+  List<String> searchTerms = [
+    "@dhhdh",
+    "@cjdvjvfj",
+    "djjvj",
+    "Pear",
+    "Watdcjvjermelons",
+    "Blueberries",
+    "Pineapples",
+    "Strawberries"
+  ];
+
+  // first overwrite to
+  // clear the search text
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+        onPressed: () {
+          query = '';
+        },
+        icon: Icon(Icons.clear),
+      ),
+    ];
+  }
+
+  // second overwrite to pop out of search menu
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return
+      IconButton(
+      onPressed: () {
+        close(context, null);
+      },
+      icon: Icon(Icons.arrow_back),
+    )
+    ;
+  }
+
+  // third overwrite to show query result
+  @override
+  Widget buildResults(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var fruit in searchTerms) {
+      if (fruit.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(fruit);
+      }
+    }
+    return ListView.builder(
+      itemCount: matchQuery.length,
+      itemBuilder: (context, index) {
+        var result = matchQuery[index];
+        return ListTile(
+          title: Text(result),
+        );
+      },
+    );
+  }
+
+  // last overwrite to show the
+  // querying process at the runtime
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var fruit in searchTerms) {
+      if (fruit.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(fruit);
+      }
+    }
+    return ListView.builder(
+      itemCount: matchQuery.length,
+      itemBuilder: (context, index) {
+        var result = matchQuery[index];
+        return ListTile(
+          title: Text(result),
+        );
+      },
+    );
+  }
+}
 
 class Timeline extends StatefulWidget {
   const Timeline({Key? key}) : super(key: key);
@@ -20,28 +112,59 @@ class Timeline extends StatefulWidget {
 }
 
 class _TimelineState extends State<Timeline> {
+  GetBeepController getBeepController = Get.put(GetBeepController());
   final _key = GlobalKey<ScaffoldState>();
   String fullName = 'Jane Doe';
   String username = 'Janedoe_10';
-  late Future<List<GetBeepModel>> futureBeep;
-
+  bool _isLoading = false;
+  bool _isSearching = false;
+  List<GetBeepModel> futureBeep = [];
+  var fetchProfile;
   @override
   void initState() {
     super.initState();
-    futureBeep = getBeep();
+    getBeepCall();
   }
 
+  void getBeepCall() async {
+    futureBeep = await getBeepController.getBeep();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (futureBeep.isNotEmpty) {
+        print('The beep contains ${futureBeep.length} items');
+        setState(() {
+          _isLoading = true;
+        });
+      }
+    });
+  }
+  Future<void> fetchProfileCall() async {
+    fetchProfile = await getProfile();
+    print('This is the profile response $fetchProfile');
+  }
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    var brightness = MediaQuery.of(context).platformBrightness;
+
+   // getBeepCall();
+
+    double width = MediaQuery
+        .of(context)
+        .size
+        .width;
+    double height = MediaQuery
+        .of(context)
+        .size
+        .height;
+    var brightness = MediaQuery
+        .of(context)
+        .platformBrightness;
     bool darkModeOn = brightness == Brightness.dark;
 
     ScreenUtil.init(
       context,
       designSize: const Size(485, 926),
     );
+    print('this is the feedBeep');
+    print(futureBeep);
 
     // return FutureBuilder<List<GetBeepModel>>(
     //     future: futureBeep,
@@ -59,16 +182,6 @@ class _TimelineState extends State<Timeline> {
     //     }
     return Scaffold(
       key: _key,
-      // floatingActionButton: FloatingActionButton(
-      //     shape: RoundedRectangleBorder(
-      //         borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10.r), bottomRight:Radius.circular(10.r), topLeft:Radius.circular(10.r),topRight: Radius.circular(10.r), )
-      //     ),
-      //     foregroundColor: bcolor1,
-      //     backgroundColor: bcolor1,
-      //     child: IconButton(icon: const Icon(CupertinoIcons.pen), onPressed: () {
-      //       Navigator.push(context,MaterialPageRoute(builder: (context) =>  ComposeBeep()));
-      //     }, color: Colors.white,),
-      //     onPressed: (){}),
       appBar: PreferredSize(
         preferredSize: Size(428.w, 62.h),
         child: Container(
@@ -76,7 +189,7 @@ class _TimelineState extends State<Timeline> {
               border: Border(
                   bottom: BorderSide(color: uColor, style: BorderStyle.solid))),
           child: SafeArea(
-            child: AppBar(
+            child: _isSearching ==false ? AppBar(
               leading: Padding(
                 padding: EdgeInsets.only(top: 15.h, bottom: 5.h),
                 child: Container(
@@ -87,6 +200,7 @@ class _TimelineState extends State<Timeline> {
                   height: 28.h,
                   child: GestureDetector(
                     onTap: () {
+                     getBeepController.getBeep();
                       _key.currentState!.openDrawer();
                     },
                     child: CircleAvatar(
@@ -110,7 +224,9 @@ class _TimelineState extends State<Timeline> {
                     )),
               ),
               centerTitle: true,
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              backgroundColor: Theme
+                  .of(context)
+                  .scaffoldBackgroundColor,
               elevation: 0.5,
               actions: [
                 // SizedBox(width: 12.w,),
@@ -118,18 +234,26 @@ class _TimelineState extends State<Timeline> {
                   padding: EdgeInsets.only(top: 28.h, right: 20.w, bottom: 5.h),
                   child: GestureDetector(
                     onTap: () {
-                      // Navigator.push(context,
-                      //     MaterialPageRoute(builder: (context) => DirectMessage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Trending(),
+                          ));
+                      // showSearch(
+                      //     context: context,
+                      //     // delegate to customize the search bar
+                      //     delegate: CustomSearchDelegate()
+                      // );
                     },
                     child: darkModeOn == false
                         ? SvgPicture.asset(
-                            color: Colors.black,
-                            'images/search.svg',
-                          )
+                      color: Colors.black,
+                      'images/search.svg',
+                    )
                         : SvgPicture.asset(
-                            color: Colors.white,
-                            'images/search_dark.svg',
-                          ),
+                      color: Colors.white,
+                      'images/search_dark.svg',
+                    ),
                   ),
                 ),
                 Padding(
@@ -148,53 +272,63 @@ class _TimelineState extends State<Timeline> {
                         },
                         child: darkModeOn == false
                             ? Stack(
-                                children: [
-                                  SvgPicture.asset(
-                                    color: Colors.black,
-                                    'images/Dm.svg',
-                                  ),
-                                  Positioned(
-                                    left: 16.w,
-                                    child: Container(
-                                      height: 15.h,
-                                      width: 15.w,
-                                      decoration: BoxDecoration(
-                                          color: Colors.red,
-                                          borderRadius:
-                                              BorderRadius.circular(100.r)),
-                                    ),
-                                  ),
-                                ],
-                              )
-                            : Stack(
-                                children: [
-                                  SvgPicture.asset(
-                                    color: Colors.white,
-                                    'images/sms.svg',
-                                  ),
-                                  Positioned(
-                                    left: 16.w,
-                                    child: Container(
-                                      height: 15.h,
-                                      width: 15.w,
-                                      decoration: BoxDecoration(
-                                          color: Colors.red,
-                                          borderRadius:
-                                              BorderRadius.circular(100.r)),
-                                    ),
-                                  )
-                                ],
+                          children: [
+                            SvgPicture.asset(
+                              color: Colors.black,
+                              'images/Dm.svg',
+                            ),
+                            Positioned(
+                              left: 16.w,
+                              child: Container(
+                                height: 15.h,
+                                width: 15.w,
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius:
+                                    BorderRadius.circular(100.r)),
                               ),
+                            ),
+                          ],
+                        )
+                            : Stack(
+                          children: [
+                            SvgPicture.asset(
+                              color: Colors.white,
+                              'images/sms.svg',
+                            ),
+                            Positioned(
+                              left: 16.w,
+                              child: Container(
+                                height: 15.h,
+                                width: 15.w,
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius:
+                                    BorderRadius.circular(100.r)),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 )
               ],
-            ),
+            ): CupertinoSearchTextField(),
           ),
         ),
       ),
-      body: ListView.builder(
+      body: (getBeepController.isLoading.value)?Center(
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+           children: [
+              CircularProgressIndicator(),
+              customText1('Loading...', Colors.black, 18.sp)
+            ],
+          ),
+        ),
+      ):ListView.builder(
           itemCount: 10,
           itemBuilder: (BuildContext context, index) {
             return Column(
@@ -204,32 +338,9 @@ class _TimelineState extends State<Timeline> {
               ],
             );
           }),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
     );
   }
 
-  Future<List<GetBeepModel>> getBeep() async {
-    List<GetBeepModel> getBeep;
-    String authority = 'beeperchat.herokuapp.com';
-    String unencodedPath = '/beep';
-    String? userJwt = await SecureStorage.getToken();
-    final uri = Uri.https(authority, unencodedPath);
-    http.Response response =
-        await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
-
-    if (response.statusCode == 200) {
-      // print(response.body);
-      var jsonResponse = jsonDecode(response.body);
-
-      return getBeepModelFromJson(jsonResponse);
-      // print(jsonResponse);
-      // return jsonResponse.map((e) => GetBeepModel.fromJson(e)).toList();
-      // return models;
-    } else {
-      throw Exception('can\'t load beeps');
-    }
-
-    // print(getBeepModel);
-    // return getBeepModel;
-  }
 }
+

@@ -10,6 +10,7 @@ import 'package:expandable/expandable.dart';
 // import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chat_beeper/Screens/comment_screen.dart';
 import '../Screens/colllection/dm.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class SponsoredTourCard extends StatefulWidget {
   const SponsoredTourCard({Key? key}) : super(key: key);
@@ -71,13 +72,25 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
           SizedBox(
             height: 486.h,
             width: width,
-            child: Image(
-              key: Key(displayImage.id),
-              image: NetworkImage(
-                displayImage.url,
+            child: CachedNetworkImage(
+              placeholder: (context, url) =>  ClipRect(
+                child: Container(
+                  color: Colors.grey,
+                ),
               ),
-              fit: BoxFit.cover,
+              key: Key(displayImage.id), imageUrl:displayImage.url,
+            fit:BoxFit.cover
             ),
+
+            // Image(
+            //   key: Key(displayImage.id),
+            //   image: NetworkImage(
+            //     displayImage.url,
+            //   ),
+            //   fit: BoxFit.cover,
+            // ),
+
+
           ),
           Positioned(
               top: 15.h,
@@ -88,13 +101,13 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                 alignment: Alignment.topCenter,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.black.withOpacity(0.6),
+                  color: Colors.black.withOpacity(0.4),
                 ),
                 child: PopupMenuButton<int>(
                   icon: Icon(
                     Icons.more_vert_sharp,
                     size: 24.h,
-                    color: Theme.of(context).colorScheme.secondaryVariant,
+                    color: Colors.white,
                   ),
                   iconSize: 24.h,
                   itemBuilder: (context) => [
@@ -250,7 +263,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                       ),
                     ), //report
                   ],
-                  offset: Offset(-28.w, 40.h),
+                  offset: Offset(-4.w, 30.h),
                   color: Theme.of(context).scaffoldBackgroundColor,
                   elevation: 2,
                 ),
@@ -260,7 +273,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
             left: 28.w,
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.6),
+                color: Colors.black.withOpacity(0.4),
               ),
               height: 28.h,
               width: 80.w,
@@ -281,7 +294,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
             // left: 10.w,
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.6),
+                color: Colors.black.withOpacity(0.4),
               ),
               height: 74.h,
               width: width,
@@ -388,13 +401,13 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                             style: TextStyle(
                                 fontFamily: 'Nunito',
                                 fontWeight: FontWeight.w600,
-                                color: Colors.grey,
-                                fontSize: 21.sp),
+                                color: darkModeOn==false?Colors.grey:Colors.grey.shade500,
+                                fontSize: 19.sp),
                           ),
-                          const Icon(
+                           Icon(
                             Icons.verified_rounded,
                             color: bcolor5,
-                            size: 15,
+                            size: 15.h,
                           ),
                         ],
                       ),
@@ -403,12 +416,12 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                         style: TextStyle(
                             fontFamily: 'Nunito',
                             fontWeight: FontWeight.w500,
-                            color: Colors.grey,
+                            color: darkModeOn==false?Colors.grey:Colors.grey.shade500,
                             fontSize: 17.sp),
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   PopupMenuButton<int>(
                     icon: Icon(
                       Icons.more_vert_sharp,
@@ -569,7 +582,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                         ),
                       ), //report
                     ],
-                    offset: Offset(-28.w, 40.h),
+                    offset: Offset(-4.w, 30.h),
                     color: Theme.of(context).scaffoldBackgroundColor,
                     elevation: 2,
                   ),
@@ -750,7 +763,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: Text(
-                                      'Share Beep',
+                                      'Share Post',
                                       style: Theme.of(context)
                                           .primaryTextTheme
                                           .bodyText1!
@@ -761,7 +774,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                           ),
                                     ),
                                   ),
-                                ), //share beep
+                                ), //share post
                                 Padding(
                                   padding: EdgeInsets.only(
                                       bottom: 0.h,
@@ -770,7 +783,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                       top: 37.h),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       Column(
                                         children: [
@@ -781,20 +794,20 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                 color: Colors.transparent,
                                                 shape: BoxShape.circle,
                                                 border:
-                                                    Border.all(color: bcolor3)
-                                                // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                                // ),
-                                                ),
+                                                Border.all(color: bcolor3)
+                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                              // ),
+                                            ),
                                             child: Center(
                                               child: GestureDetector(
                                                 onTap: () {},
                                                 child: SizedBox(
-                                                    height: 35.h,
-                                                    width: 35.w,
+                                                    height: 30.h,
+                                                    width: 30.w,
                                                     child: SvgPicture.asset(
                                                       'images/link.svg',
-                                                      height: 40.h,
-                                                      width: 40.w,
+                                                      height: 30.h,
+                                                      width: 30.w,
                                                       fit: BoxFit.contain,
                                                     )),
                                               ),
@@ -816,7 +829,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                         ],
                                       ), //copy
                                       SizedBox(
-                                        width: 35.w,
+                                        width: 20.w,
                                       ),
                                       Column(
                                         children: [
@@ -827,10 +840,10 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                 color: Colors.transparent,
                                                 shape: BoxShape.circle,
                                                 border:
-                                                    Border.all(color: bcolor3)
-                                                // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                                // ),
-                                                ),
+                                                Border.all(color: bcolor3)
+                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                              // ),
+                                            ),
                                             child: Center(
                                               child: GestureDetector(
                                                 onTap: () {},
@@ -839,8 +852,8 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                     width: 30.w,
                                                     child: SvgPicture.asset(
                                                       'images/bookmark.svg',
-                                                      height: 50.h,
-                                                      width: 50.w,
+                                                      height: 30.h,
+                                                      width: 30.w,
                                                       fit: BoxFit.contain,
                                                     )),
                                               ),
@@ -862,7 +875,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                         ],
                                       ),
                                       SizedBox(
-                                        width: 35.w,
+                                        width: 20.w,
                                       ),
                                       Column(
                                         children: [
@@ -873,17 +886,17 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                 color: Colors.transparent,
                                                 shape: BoxShape.circle,
                                                 border:
-                                                    Border.all(color: bcolor3)
-                                                // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                                // ),
-                                                ),
+                                                Border.all(color: bcolor3)
+                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                              // ),
+                                            ),
                                             child: Center(
                                               child: GestureDetector(
                                                 onTap: () {},
                                                 child: SvgPicture.asset(
                                                   'images/Dm.svg',
-                                                  height: 40.h,
-                                                  width: 40.w,
+                                                  height: 30.h,
+                                                  width: 30.w,
                                                   fit: BoxFit.contain,
                                                   color: bcolor3,
                                                 ),
@@ -906,7 +919,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                         ],
                                       ), //whatsappp
                                       SizedBox(
-                                        width: 35.w,
+                                        width: 20.w,
                                       ),
                                       Column(
                                         children: [
@@ -917,17 +930,17 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                 color: Colors.transparent,
                                                 shape: BoxShape.circle,
                                                 border:
-                                                    Border.all(color: bcolor3)
-                                                // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                                // ),
-                                                ),
+                                                Border.all(color: bcolor3)
+                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                              // ),
+                                            ),
                                             child: Center(
                                               child: GestureDetector(
                                                 onTap: () {},
                                                 child: Image.asset(
                                                   'images/facebook.png',
-                                                  height: 50.h,
-                                                  width: 50.w,
+                                                  height: 40.h,
+                                                  width: 40.w,
                                                   fit: BoxFit.contain,
                                                 ),
                                               ),
@@ -959,7 +972,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                       top: 37.h),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Column(
                                         children: [
@@ -970,16 +983,16 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                 color: Colors.transparent,
                                                 shape: BoxShape.circle,
                                                 border:
-                                                    Border.all(color: bcolor3)
-                                                // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                                // ),
-                                                ),
+                                                Border.all(color: bcolor3)
+                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                              // ),
+                                            ),
                                             child: Center(
                                               child: GestureDetector(
                                                 onTap: () {},
                                                 child: SizedBox(
-                                                    height: 35.h,
-                                                    width: 35.w,
+                                                    height: 30.h,
+                                                    width: 30.w,
                                                     child: SvgPicture.asset(
                                                       'images/gmail.svg',
                                                       height: 100.h,
@@ -1005,7 +1018,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                         ],
                                       ), //gmail
                                       SizedBox(
-                                        width: 45.w,
+                                        width: 20.w,
                                       ),
                                       Column(
                                         children: [
@@ -1016,10 +1029,10 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                 color: Colors.transparent,
                                                 shape: BoxShape.circle,
                                                 border:
-                                                    Border.all(color: bcolor3)
-                                                // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                                // ),
-                                                ),
+                                                Border.all(color: bcolor3)
+                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                              // ),
+                                            ),
                                             child: Center(
                                               child: GestureDetector(
                                                 onTap: () {},
@@ -1052,7 +1065,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                         ],
                                       ),
                                       SizedBox(
-                                        width: 35.w,
+                                        width: 20.w,
                                       ),
                                       Column(
                                         children: [
@@ -1063,17 +1076,17 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                 color: Colors.transparent,
                                                 shape: BoxShape.circle,
                                                 border:
-                                                    Border.all(color: bcolor3)
-                                                // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                                // ),
-                                                ),
+                                                Border.all(color: bcolor3)
+                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                              // ),
+                                            ),
                                             child: Center(
                                               child: GestureDetector(
                                                 onTap: () {},
                                                 child: Image.asset(
                                                   'images/telegram.png',
-                                                  height: 40.h,
-                                                  width: 40.w,
+                                                  height: 35.h,
+                                                  width: 35.w,
                                                   fit: BoxFit.contain,
                                                 ),
                                               ),
@@ -1095,7 +1108,7 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                         ],
                                       ), //telegram
                                       SizedBox(
-                                        width: 50.w,
+                                        width: 20.w,
                                       ),
                                       Column(
                                         children: [
@@ -1106,21 +1119,20 @@ class _SponsoredTourCardState extends State<SponsoredTourCard> {
                                                 color: Colors.transparent,
                                                 shape: BoxShape.circle,
                                                 border:
-                                                    Border.all(color: bcolor3)
-                                                // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                                // ),
-                                                ),
+                                                Border.all(color: bcolor3)
+                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                              // ),
+                                            ),
                                             child: Center(
                                               child: GestureDetector(
                                                 onTap: () {},
                                                 child: SizedBox(
-                                                    height: 40.h,
-                                                    width: 40.w,
+                                                    height: 35.h,
+                                                    width: 35.w,
                                                     child: SvgPicture.asset(
                                                       'images/discord.svg',
-                                                      height: 50.h,
-                                                      width: 50.w,
-                                                      fit: BoxFit.contain,
+                                                      height: 35.h,
+                                                      width: 35.w,
                                                     )),
                                               ),
                                             ),

@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../constants.dart';
 import 'identity_verified.dart';
@@ -127,7 +131,7 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
               Padding(
                 padding: EdgeInsets.only(left: 16.0.w, right: 16.0.w),
                 child: DottedBorder(
-                    color: Color.fromRGBO(41, 91, 133, 1),
+                    color: const Color.fromRGBO(41, 91, 133, 1),
                     padding: EdgeInsets.only(top: 29.h, bottom: 29.h),
                     strokeWidth: 1,
                     dashPattern: const [8, 8],
@@ -137,14 +141,16 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
                       child: Row(
                         children: [
                           TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                pickImage();
+                              },
                               child: Text(
                                 'Upload your Passport',
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .headline4!
                                     .copyWith(
-                                        fontSize: 19.sp,
+                                        fontSize: 16.sp,
                                         color: Color(0xff295B85)),
                               )),
                           SizedBox(
@@ -154,10 +160,23 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
                         ],
                       ),
                     )),
-              ),
-              SizedBox(
-                height: 136.h,
-              ),
+              ),//border
+              document != null
+                  ? Column(
+                children: [
+                  SizedBox(height: 10.h),
+                  Center(
+                    child: Image.file(
+                      document!,
+                      width: 400.w,
+                      height: 130.h,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  SizedBox(height: 30.h),
+                ],
+              )
+                  : SizedBox(height: 162.h),
               Center(
                 child: SizedBox(
                   height: 54.h,
@@ -175,7 +194,7 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
                     onPressed: () => Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => IdentityVerified())),
+                            builder: (context) => const IdentityVerified())),
                     child: Text(
                       'Next',
                       textAlign: TextAlign.center,
@@ -186,9 +205,42 @@ class _IdentityConfirmationState extends State<IdentityConfirmation> {
                     ),
                   ),
                 ),
-              ),
+              ),//button
             ],
           ),
         ));
+  }
+  File? document;
+  Future pickImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      setState(() {
+        if (image == null) return;
+        final tempImage = File(image.path);
+        setState(() {
+          document = tempImage;
+        });
+      });
+    } on PlatformException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(seconds: 5),
+          content: Text('Filed to Pick image',
+              style: Theme.of(context)
+                  .primaryTextTheme
+                  .bodyText1!
+                  .copyWith(color: Colors.white)),
+          backgroundColor: bcolor,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6.r),
+          ),
+          margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).size.height - 150.h,
+              right: 20.w,
+              left: 20.w),
+        ),
+      );
+    }
   }
 }

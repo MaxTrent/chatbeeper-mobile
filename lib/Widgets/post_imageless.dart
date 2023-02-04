@@ -44,7 +44,7 @@ class _PostBeepState extends State<PostBeep> {
 
   @override
   void initState() {
-    getBeep();
+   //getBeep();
     super.initState();
   }
 
@@ -74,7 +74,7 @@ class _PostBeepState extends State<PostBeep> {
         Padding(
           padding: EdgeInsets.fromLTRB(4.w, 0.h, 0.w, 5.h),
           child: SizedBox(
-            height: 43.h,
+            height: 60.h,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,50 +93,53 @@ class _PostBeepState extends State<PostBeep> {
                       SizedBox(
                         width: 8.w,
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 2.h,
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                "\ $fullName\ ",
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .bodyText1!
-                                    .copyWith(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 22.sp),
-                              ),
-                              Text(
-                                '@$username ',
-                                style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w600,
-                                    color: fColor2,
-                                    fontSize: 21.sp),
-                              ),
-                              const Icon(
-                                Icons.verified_rounded,
-                                color: bcolor5,
-                                size: 15,
-                              ),
-                            ],
-                          ),
-                          Text(
-                            '\ $posttime',
-                            style: TextStyle(
-                                fontFamily: 'Nunito',
-                                fontWeight: FontWeight.w500,
-                                color: fColor2,
-                                fontSize: 17.sp),
-                          ),
-                        ],
-                      ),
+                    SingleChildScrollView(
+                      physics: NeverScrollableScrollPhysics(),
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 2.h,
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "\ $fullName\ ",
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .bodyText1!
+                                      .copyWith(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 22.sp),
+                                ),
+                                Text(
+                                  '@$username ',
+                                  style: TextStyle(
+                                      fontFamily: 'Nunito',
+                                      fontWeight: FontWeight.w600,
+                                      color: darkModeOn==false?Colors.grey:Colors.grey.shade500,
+                                      fontSize: 19.sp),
+                                ),
+                                 Icon(
+                                  Icons.verified_rounded,
+                                  color: bcolor5,
+                                  size: 15.h,
+                                ),
+                              ],
+                            ),
+                            Text(
+                              '\ $posttime',
+                              style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                  fontWeight: FontWeight.w500,
+                                  color: darkModeOn==false?Colors.grey:Colors.grey.shade500,
+                                  fontSize: 17.sp),
+                            ),
+                          ],
+                        ),
+                    ),
                       Spacer(),
                       Column(
                         children: [
@@ -337,7 +340,7 @@ class _PostBeepState extends State<PostBeep> {
                               ),
                             ), //report
                           ],
-                          offset: Offset(-28.w, 40.h),
+                          offset: Offset(-4.w, 30.h),
                           color: Theme.of(context).scaffoldBackgroundColor,
                           elevation: 2,
                         ),
@@ -452,27 +455,6 @@ class _PostBeepState extends State<PostBeep> {
                     likeCountPadding: EdgeInsets.only(left: 3.w),
                   ),
                 ),
-
-                // GestureDetector(
-                //   onTap: () async {
-                //     showDialog(
-                //       context: context,
-                //       builder: (context) => const RebeepResponse(),
-                //     );
-                //   },
-                //   child: _rebeeped == false
-                //       ? SizedBox(
-                //           height: 35.h,
-                //           child: SvgPicture.asset(
-                //             'images/rebeep.svg',
-                //             height: 30.h,
-                //           ))
-                //       : SvgPicture.asset(
-                //           'images/rebeep.svg',
-                //           color: Colors.red,
-                //           height: 35.h,
-                //         ),
-                // ), //infinite
                 SizedBox(
                   width: 40.w,
                 ),
@@ -560,9 +542,6 @@ class _PostBeepState extends State<PostBeep> {
                   //   return result;
                   // },
                 ), //heart
-                SizedBox(
-                  width: 90.w,
-                ),
                 Expanded(
                   child: GestureDetector(
                     child: Padding(
@@ -611,10 +590,10 @@ class _PostBeepState extends State<PostBeep> {
                                         .primaryTextTheme
                                         .bodyText1!
                                         .copyWith(
-                                          color: bcolor3,
-                                          fontSize: 17.sp,
-                                          fontWeight: FontWeight.w700,
-                                        ),
+                                      color: bcolor3,
+                                      fontSize: 17.sp,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
                                 ),
                               ), //share beep
@@ -626,7 +605,7 @@ class _PostBeepState extends State<PostBeep> {
                                     top: 37.h),
                                 child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  MainAxisAlignment.spaceBetween,
                                   children: [
                                     Column(
                                       children: [
@@ -636,20 +615,21 @@ class _PostBeepState extends State<PostBeep> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
                                               child: SizedBox(
-                                                  height: 35.h,
-                                                  width: 35.w,
+                                                  height: 30.h,
+                                                  width: 30.w,
                                                   child: SvgPicture.asset(
                                                     'images/link.svg',
-                                                    height: 40.h,
-                                                    width: 40.w,
+                                                    height: 30.h,
+                                                    width: 30.w,
                                                     fit: BoxFit.contain,
                                                   )),
                                             ),
@@ -671,7 +651,7 @@ class _PostBeepState extends State<PostBeep> {
                                       ],
                                     ), //copy
                                     SizedBox(
-                                      width: 35.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -681,10 +661,11 @@ class _PostBeepState extends State<PostBeep> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
@@ -693,8 +674,8 @@ class _PostBeepState extends State<PostBeep> {
                                                   width: 30.w,
                                                   child: SvgPicture.asset(
                                                     'images/bookmark.svg',
-                                                    height: 50.h,
-                                                    width: 50.w,
+                                                    height: 30.h,
+                                                    width: 30.w,
                                                     fit: BoxFit.contain,
                                                   )),
                                             ),
@@ -716,7 +697,7 @@ class _PostBeepState extends State<PostBeep> {
                                       ],
                                     ),
                                     SizedBox(
-                                      width: 35.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -726,17 +707,18 @@ class _PostBeepState extends State<PostBeep> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
                                               child: SvgPicture.asset(
                                                 'images/Dm.svg',
-                                                height: 40.h,
-                                                width: 40.w,
+                                                height: 30.h,
+                                                width: 30.w,
                                                 fit: BoxFit.contain,
                                                 color: bcolor3,
                                               ),
@@ -759,7 +741,7 @@ class _PostBeepState extends State<PostBeep> {
                                       ],
                                     ), //whatsappp
                                     SizedBox(
-                                      width: 35.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -769,17 +751,18 @@ class _PostBeepState extends State<PostBeep> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
                                               child: Image.asset(
                                                 'images/facebook.png',
-                                                height: 50.h,
-                                                width: 50.w,
+                                                height: 40.h,
+                                                width: 40.w,
                                                 fit: BoxFit.contain,
                                               ),
                                             ),
@@ -811,7 +794,7 @@ class _PostBeepState extends State<PostBeep> {
                                     top: 37.h),
                                 child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Column(
                                       children: [
@@ -821,16 +804,17 @@ class _PostBeepState extends State<PostBeep> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
                                               child: SizedBox(
-                                                  height: 35.h,
-                                                  width: 35.w,
+                                                  height: 30.h,
+                                                  width: 30.w,
                                                   child: SvgPicture.asset(
                                                     'images/gmail.svg',
                                                     height: 100.h,
@@ -856,7 +840,7 @@ class _PostBeepState extends State<PostBeep> {
                                       ],
                                     ), //gmail
                                     SizedBox(
-                                      width: 45.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -866,10 +850,11 @@ class _PostBeepState extends State<PostBeep> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
@@ -902,7 +887,7 @@ class _PostBeepState extends State<PostBeep> {
                                       ],
                                     ),
                                     SizedBox(
-                                      width: 35.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -912,17 +897,18 @@ class _PostBeepState extends State<PostBeep> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
                                               child: Image.asset(
                                                 'images/telegram.png',
-                                                height: 40.h,
-                                                width: 40.w,
+                                                height: 35.h,
+                                                width: 35.w,
                                                 fit: BoxFit.contain,
                                               ),
                                             ),
@@ -944,7 +930,7 @@ class _PostBeepState extends State<PostBeep> {
                                       ],
                                     ), //telegram
                                     SizedBox(
-                                      width: 50.w,
+                                      width: 20.w,
                                     ),
                                     Column(
                                       children: [
@@ -954,21 +940,21 @@ class _PostBeepState extends State<PostBeep> {
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
                                               shape: BoxShape.circle,
-                                              border: Border.all(color: bcolor3)
-                                              // image: DecorationImage(image: AssetImage('images/pp_round.png',),
-                                              // ),
-                                              ),
+                                              border:
+                                              Border.all(color: bcolor3)
+                                            // image: DecorationImage(image: AssetImage('images/pp_round.png',),
+                                            // ),
+                                          ),
                                           child: Center(
                                             child: GestureDetector(
                                               onTap: () {},
                                               child: SizedBox(
-                                                  height: 40.h,
-                                                  width: 40.w,
+                                                  height: 35.h,
+                                                  width: 35.w,
                                                   child: SvgPicture.asset(
                                                     'images/discord.svg',
-                                                    height: 50.h,
-                                                    width: 50.w,
-                                                    fit: BoxFit.contain,
+                                                    height: 35.h,
+                                                    width: 35.w,
                                                   )),
                                             ),
                                           ),
@@ -1090,20 +1076,20 @@ class _PostBeepState extends State<PostBeep> {
     ));
   }
 
-  Future<void> getBeep() async {
-    List<GetBeepModel> getBeep;
-    String authority = 'beeperchat.herokuapp.com';
-    String unencodedPath = '/beep';
-    String? userJwt = await SecureStorage.getToken();
-    final uri = Uri.https(authority, unencodedPath);
-    final response =
-        await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
-    print(response.body);
-    List<dynamic> body = jsonDecode(response.body);
-    model = body.map((dynamic item) => GetBeepModel.fromJson(item)).toList();
-    setState(() {});
-
-    // print(getBeepModel);
-    // return getBeepModel;
-  }
+  // Future<void> getBeep() async {
+  //   List<GetBeepModel> getBeep;
+  //   String authority = 'chatbeeper.onrender.com';
+  //   String unencodedPath = '/beep';
+  //   String? userJwt = await SecureStorage.getToken();
+  //   final uri = Uri.https(authority, unencodedPath);
+  //   final response =
+  //       await http.get(uri, headers: {"Authorization": "Bearer $userJwt"});
+  //   print(response.body);
+  //   List<dynamic> body = jsonDecode(response.body);
+  //   model = body.map((dynamic item) => GetBeepModel.fromJson(item)).toList();
+  //   setState(() {});
+  //
+  //   // print(getBeepModel);
+  //   // return getBeepModel;
+  // }
 }

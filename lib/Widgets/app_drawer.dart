@@ -1,3 +1,4 @@
+import 'package:chat_beeper/Screens/drawer_pages/promotions.dart';
 import 'package:flutter/material.dart';
 import 'package:chat_beeper/Screens/colllection/compose_beep.dart';
 import 'package:chat_beeper/Screens/colllection/dm.dart';
@@ -17,6 +18,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../Widgets/Post.dart';
 import '../../constants.dart';
 import '../Screens/drawer_pages/request_verification.dart';
+import '../Screens/sign_up_business.dart';
+import '../data/api_services.dart';
+import '../model/profile_model.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -27,9 +31,14 @@ class AppDrawer extends StatefulWidget {
 
 class _AppDrawerState extends State<AppDrawer> {
   final _key = GlobalKey<ScaffoldState>();
-  String fullName = 'Jane Doe';
-  String username = 'Janedoe_10';
-
+  // String fullName = 'Jane Doe';
+  // String username = 'Janedoe_10';
+  late Future<GetProfileModel> futureprofile;
+  @override
+  void initState() {
+    super.initState();
+    futureprofile = getProfile();
+  }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -40,7 +49,9 @@ class _AppDrawerState extends State<AppDrawer> {
       context,
       designSize: Size(485, 926),
     );
-    return SizedBox(
+   return FutureBuilder<GetProfileModel?>(
+        future: futureprofile,
+    builder: (context, snapshot) => SizedBox(
       width: 372.w,
       child: Drawer(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -96,28 +107,39 @@ class _AppDrawerState extends State<AppDrawer> {
                               height: 65.h,
                             ),
                           ),
-                          SizedBox(
-                            width: 12.w,
-                          ),
+                          // SizedBox(
+                          //   width: 12.w,
+                          // ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text(
-                                fullName,
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .bodyText1!
-                                    .copyWith(
-                                        fontWeight: FontWeight.w600,
+                              Container(
+                                // color: Colors.yellow,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                    snapshot.hasData
+                                        ? '${snapshot.data!.firstname!} ${snapshot.data!.lastname!}'
+                                        : '${snapshot.error}',
+                                    style: Theme.of(context).primaryTextTheme.bodyText1!
+                                        .copyWith(
+                                        fontWeight:
+                                        FontWeight.w600,
                                         color: bcolor3,
-                                        fontSize: 25.sp),
+                                        fontSize: 16.sp,
+                                    ), textAlign: TextAlign.center,
+                                  ),]
+                                ),
                               ), //full name
                               Text(
-                                '\@$username',
+                                snapshot.hasData
+                                    ? '@''${snapshot.data!.username!}'
+                                            : '${snapshot.error}',
                                 style: TextStyle(
                                     fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight:
+                                    FontWeight.w600,
                                     color: fColor2,
                                     fontSize: 20.sp),
                               ), //username
@@ -127,134 +149,131 @@ class _AppDrawerState extends State<AppDrawer> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 16.w, right: 17.w),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          child: GestureDetector(
-                            onTap: () {
-                              // Navigator.pop(context);
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //       builder: (context) => const Following(),
-                              //     ));
-                            },
-                            child: Row(
-                              children: [
-                                Text(
-                                  '100K',
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .bodyText1!
-                                      .copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 21.sp,
-                                      ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        child: GestureDetector(
+                          onTap: () {
+                            // Navigator.pop(context);
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //       builder: (context) => const Following(),
+                            //     ));
+                          },
+                          child: Row(
+                            children: [
+                              Text(
+                                '100K',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18.sp,
+                                    ),
+                              ),
+                              SizedBox(
+                                width: 3.w,
+                              ),
+                              Text(
+                                'Beeps',
+                                style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                  fontWeight: FontWeight.w600,
+                                  color: fColor2,
+                                  fontSize: 18.sp,
                                 ),
-                                SizedBox(
-                                  width: 3.w,
-                                ),
-                                Text(
-                                  'Beeps',
-                                  style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w600,
-                                    color: fColor2,
-                                    fontSize: 21.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ), //beeps
-                        SizedBox(
-                          width: 7.w,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 5, left: 5),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const Followers(),
-                                  ));
-                            },
-                            child: Row(
-                              children: [
-                                Text(
-                                  '800',
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .bodyText1!
-                                      .copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 21.sp,
-                                      ),
+                      ), //beeps
+                      SizedBox(
+                        width: 7.w,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 5, left: 5),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Followers(),
+                                ));
+                          },
+                          child: Row(
+                            children: [
+                              Text(
+                                '800',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18.sp,
+                                    ),
+                              ),
+                              SizedBox(
+                                width: 5.w,
+                              ),
+                              Text(
+                                'Followers',
+                                style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                  fontWeight: FontWeight.w700,
+                                  color: fColor2,
+                                  fontSize: 18.sp,
                                 ),
-                                SizedBox(
-                                  width: 5.w,
-                                ),
-                                Text(
-                                  'Followers',
-                                  style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w700,
-                                    color: fColor2,
-                                    fontSize: 21.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ), //followers
-                        SizedBox(
-                          width: 7.w,
                         ),
-                        SizedBox(
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const Following(),
-                                  ));
-                            },
-                            child: Row(
-                              children: [
-                                Text(
-                                  '2k',
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .bodyText1!
-                                      .copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 22.sp,
-                                      ),
+                      ), //followers
+                      SizedBox(
+                        width: 7.w,
+                      ),
+                      SizedBox(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Following(),
+                                ));
+                          },
+                          child: Row(
+                            children: [
+                              Text(
+                                '2k',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 22.sp,
+                                    ),
+                              ),
+                              SizedBox(
+                                width: 5.w,
+                              ),
+                              Text(
+                                'Following',
+                                style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                  fontWeight: FontWeight.w600,
+                                  color: fColor2,
+                                  fontSize: 18.sp,
                                 ),
-                                SizedBox(
-                                  width: 5.w,
-                                ),
-                                Text(
-                                  'Following',
-                                  style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w600,
-                                    color: fColor2,
-                                    fontSize: 21.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ), //following
-                      ],
-                    ),
+                        ),
+                      ), //following
+                    ],
                   ), //following followers
                   SizedBox(
                     height: 12.h,
@@ -449,7 +468,14 @@ class _AppDrawerState extends State<AppDrawer> {
 
                         // overlayColor: MaterialStateProperty.all(Colors.transparent),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: (context) => const CreateBusiness(),
+                        //     ));
+                      },
                       child: Row(
                         children: [
                           SizedBox(
@@ -578,7 +604,14 @@ class _AppDrawerState extends State<AppDrawer> {
 
                         // overlayColor: MaterialStateProperty.all(Colors.transparent),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>  const Sponsored(),
+                            ));
+                      },
                       child: Row(
                         children: [
                           SizedBox(
@@ -611,6 +644,6 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
         ),
       ),
-    );
+    ));
   }
 }
