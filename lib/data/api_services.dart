@@ -159,8 +159,8 @@ Future<void> verifyPhone(
           }));
   if (response.statusCode == 201) {
     var data = json.decode(response.body);
-
-    print("Correct");
+print('Correct');
+print('Response gotten');
     // print(data['userId']);
     var jwtToken = data['jwt'];
     userAccessToken=jwtToken;
